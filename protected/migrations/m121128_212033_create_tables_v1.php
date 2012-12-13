@@ -62,7 +62,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'PRIMARY KEY (`CategoryID`)',
 				'UNIQUE INDEX `CategoryName_UNIQUE` (`CategoryName` ASC)'
 			), 
-			'ENGINE=InnoDB');
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_ticket_subjects', array(
 				'SubjectID' => 'INT(3) NOT NULL AUTO_INCREMENT',
@@ -106,12 +106,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_user_info_ci_departments1_idx` (`DepartmentID` ASC)',
 				'CONSTRAINT `fk_ci_user_info_ci_roles`
 					FOREIGN KEY (`RoleID` )
-					REFERENCES `ci_info`.`ci_roles` (`RoleID` )
+					REFERENCES `ci2`.`ci_roles` (`RoleID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_user_info_ci_departments1`
 					FOREIGN KEY (`DepartmentID` )
-					REFERENCES `ci_info`.`ci_departments` (`DepartmentID` )
+					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -125,7 +125,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_departments_ci_user_info1_idx` (`SupervisorID` ASC)',
 				'CONSTRAINT `fk_ci_departments_ci_user_info1`
 					FOREIGN KEY (`SupervisorID` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -139,12 +139,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_department_tiers_ci_departments2_idx` (`SubDepartmentID` ASC)',
 				'CONSTRAINT `fk_ci_department_tiers_ci_departments1`
 					FOREIGN KEY (`MainDepartmentID` )
-					REFERENCES `ci_info`.`ci_departments` (`DepartmentID` )
+					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_department_tiers_ci_departments2`
 					FOREIGN KEY (`SubDepartmentID` )
-					REFERENCES `ci_info`.`ci_departments` (`DepartmentID` )
+					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -165,22 +165,22 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`SubjectID` ASC)' ,
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
 					FOREIGN KEY (`OpenedBy` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
 					FOREIGN KEY (`CategoryID` )
-					REFERENCES `ci_info`.`ci_ticket_categories` (`CategoryID` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`CategoryID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
 					FOREIGN KEY (`ClosedByUserID` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
 					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci_info`.`ci_ticket_subjects` (`SubjectID` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -194,12 +194,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`SubjectID` ASC)',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
 					FOREIGN KEY (`CategoryID` )
-					REFERENCES `ci_info`.`ci_ticket_categories` (`CategoryID` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`CategoryID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
 					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci_info`.`ci_ticket_subjects` (`SubjectID` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -213,12 +213,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_subject_tips_ci_tips1_idx` (`TipID` ASC)',
 				'CONSTRAINT `fk_ci_subject_tips_ci_ticket_subjects1`
 					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci_info`.`ci_ticket_subjects` (`SubjectID` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_subject_tips_ci_tips1`
 					FOREIGN KEY (`TipID` )
-					REFERENCES `ci_info`.`ci_tips` (`TipID` )
+					REFERENCES `ci2`.`ci_tips` (`TipID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -236,7 +236,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_computer_inventory_ci_user_info1_idx` (`UserID` ASC)',
 				'CONSTRAINT `fk_ci_computer_inventory_ci_user_info1`
 					FOREIGN KEY (`UserID` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -252,12 +252,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_evaluations_ci_user_info2_idx` (`Evaluator` ASC)',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info1`
 					FOREIGN KEY (`Employee` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info2`
 					FOREIGN KEY (`Evaluator` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -272,12 +272,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_evaluation_answers_ci_evaluation_questions1_idx` (`QuestionID` ASC)',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluations1`
 					FOREIGN KEY (`EvaluationID` )
-					REFERENCES `ci_info`.`ci_evaluations` (`EvaluationID` )
+					REFERENCES `ci2`.`ci_evaluations` (`EvaluationID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluation_questions1`
 					FOREIGN KEY (`QuestionID` )
-					REFERENCES `ci_info`.`ci_evaluation_questions` (`QuestionID` )
+					REFERENCES `ci2`.`ci_evaluation_questions` (`QuestionID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -293,7 +293,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_documents_ci_user_info1_idx` (`Uploader` ASC)',
 				'CONSTRAINT `fk_ci_documents_ci_user_info1`
 					FOREIGN KEY (`Uploader` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -307,12 +307,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'PRIMARY KEY (`MessageID`, `DocumentID`)',
 				'CONSTRAINT `fk_ci_message_documents_ci_messages1`
 					FOREIGN KEY (`MessageID` )
-					REFERENCES `ci_info`.`ci_messages` (`MessageID` )
+					REFERENCES `ci2`.`ci_messages` (`MessageID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_message_documents_ci_documents1`
 					FOREIGN KEY (`DocumentID` )
-					REFERENCES `ci_info`.`ci_documents` (`DocumentID` )
+					REFERENCES `ci2`.`ci_documents` (`DocumentID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
@@ -330,17 +330,17 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_document_processor_ci_document_type1_idx` (`DocumentTypeID` ASC)',
 				'CONSTRAINT `fk_ci_document_processor_ci_user_info1`
 					FOREIGN KEY (`CompletedBy` )
-					REFERENCES `ci_info`.`ci_user_info` (`UserID` )
+					REFERENCES `ci2`.`ci_user_info` (`UserID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_documents1`
 					FOREIGN KEY (`DocumentID` )
-					REFERENCES `ci_info`.`ci_documents` (`DocumentID` )
+					REFERENCES `ci2`.`ci_documents` (`DocumentID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_document_type1`
 					FOREIGN KEY (`DocumentTypeID` )
-					REFERENCES `ci_info`.`ci_document_type` (`TypeID` )
+					REFERENCES `ci2`.`ci_document_type` (`TypeID` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),

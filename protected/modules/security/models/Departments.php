@@ -7,6 +7,12 @@
  * @property integer $DepartmentID
  * @property string $DepartmentName
  * @property integer $SupervisorID
+ *
+ * The followings are the available model relations:
+ * @property DepartmentTiers[] $departmentTiers
+ * @property DepartmentTiers[] $departmentTiers1
+ * @property UserInfo $supervisor
+ * @property UserInfo[] $userInfos
  */
 class Departments extends CActiveRecord
 {
@@ -53,9 +59,10 @@ class Departments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::HAS_MANY, 'UserInfo', 'DepartmentID'),
-			'departments' => array(self::HAS_MANY, 'DepartmentTiers', 
-				array('MainDepartmentID'=>'DepartmentID', 'SubDepartmentID'=>'DepartmentID'))
+			'departmentTiers' => array(self::HAS_MANY, 'DepartmentTiers', 'MainDepartmentID'),
+			'departmentTiers1' => array(self::HAS_MANY, 'DepartmentTiers', 'SubDepartmentID'),
+			'supervisor' => array(self::BELONGS_TO, 'UserInfo', 'SupervisorID'),
+			'userInfos' => array(self::HAS_MANY, 'UserInfo', 'DepartmentID'),
 		);
 	}
 

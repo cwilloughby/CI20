@@ -26,11 +26,6 @@ class DepartmentTiers extends CActiveRecord
 	{
 		return 'ci_department_tiers';
 	}
-	
-	public function primaryKey()
-	{
-		return array('MainDepartmentID', 'SubDepartmentID');
-	}
 
 	/**
 	 * @return array validation rules for model attributes.
