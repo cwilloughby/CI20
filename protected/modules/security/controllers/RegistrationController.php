@@ -50,7 +50,14 @@ class RegistrationController extends Controller
 			{
 				// Form inputs are valid.
 				// Redirect to the email controller's register email action in the email module.
-				$this->redirect(array('/email/email/registeremail'));
+				$this->redirect(array('/email/email/registeremail',
+							'FirstName'=>$model->FirstName,
+							'LastName'=>$model->LastName,
+							'MiddleName'=>$model->MiddleName,
+							'Email'=>$model->Email,
+							'PhoneExt'=>$model->PhoneExt,
+							'DepartmentID'=>$model->DepartmentID,
+							'HireDate'=>$model->HireDate));
 			}
 		}
 		
@@ -71,7 +78,16 @@ class RegistrationController extends Controller
 			{
 				// form inputs are valid. 
 				// Redirect to the email controller's add email action in the email module.
-				$this->redirect(array('/email/email/addemail'));
+				$this->redirect(
+						array('/email/email/addemail', 
+							'FirstName'=>$model->FirstName,
+							'LastName'=>$model->LastName,
+							'MiddleName'=>$model->MiddleName,
+							'Email'=>$model->Email,
+							'PhoneExt'=>$model->PhoneExt,
+							'DepartmentID'=>$model->DepartmentID,
+							'HireDate'=>$model->HireDate,
+						));
 			}
 		}
 		

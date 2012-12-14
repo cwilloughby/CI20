@@ -49,23 +49,21 @@ class EmailController extends Controller
 		$this->mail->IsSMTP();
 		$this->mail->Host = self::HOST;
 
-		
 		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 		
 		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
 		$this->mail->Subject = "Register Email";
 		
-		/*
-		$link =  "http://" . $_SERVER['HTTP_HOST'] . $this->url()->fromRoute('adduser')
-			. '?firstname=' . $form->get('firstname')->getValue()
-			. '&lastname=' . $form->get('lastname')->getValue()
-			. '&email=' . $form->get('email')->getValue()
-			. '&phone=' . $form->get('phone')->getValue()
-			. '&department=' . $form->get('department')->getValue();
-		*/
+		$link = "http://ci2/security/registration/adduser"				
+					. '?firstname=' . $_GET['FirstName']
+					. '&lastname=' . $_GET['LastName']
+					. '&middlename=' . $_GET['MiddleName']
+					. '&email=' . $_GET['Email']
+					. '&phone=' . $_GET['PhoneExt']
+					. '&department=' . $_GET['DepartmentID']
+					. '&hiredate=' . $_GET['HireDate'];
 		
-		
-		$this->mail->Body = "Link:" . Yii::app()->getBaseUrl();
+		$this->mail->Body = "Link: " . $link;
 		
 		$this->mail->Send();
 		

@@ -5268,3 +5268,250 @@ Stack trace:
 REQUEST_URI=/security/registration/adduser
 HTTP_REFERER=http://ci2/security/registration/register
 ---
+2012/12/14 18:45:24 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:45:24 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:46:24 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:46:24 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:49:28 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:49:28 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:50:02 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:50:02 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:51:51 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:51:51 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:53:35 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:53:35 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:55:03 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 18:55:03 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:01:10 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:01:10 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:04:07 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:04:07 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:14:46 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:14:46 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:15:10 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:15:10 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:16:12 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:16:12 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:16:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('registeremail')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('email/email/reg...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/email/email/registeremail
+HTTP_REFERER=http://ci2/security/registration/register
+---
+2012/12/14 19:18:39 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:18:39 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:20:48 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:20:48 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:20:48 [error] [php] Undefined variable: model (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:57)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): EmailController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): EmailController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): EmailController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): EmailController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/registeremail
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:21:42 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:21:42 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:21:42 [error] [php] urlencode() expects parameter 1 to be string, object given (C:\wamp\framework\web\CUrlManager.php:438)
+Stack trace:
+#0 C:\wamp\framework\web\CUrlManager.php(300): CUrlRule->createUrl()
+#1 C:\wamp\framework\base\CApplication.php(524): CUrlManager->createUrl()
+#2 C:\wamp\framework\web\CController.php(968): CWebApplication->createUrl()
+#3 C:\wamp\framework\web\CController.php(1029): RegistrationController->createUrl()
+#4 C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php(54): RegistrationController->redirect()
+#5 C:\wamp\framework\web\actions\CInlineAction.php(50): RegistrationController->actionRegister()
+#6 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 C:\wamp\framework\web\filters\CFilterChain.php(134): RegistrationController->runAction()
+#8 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#10 C:\wamp\framework\web\filters\CInlineFilter.php(59): RegistrationController->filterAccessControl()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#12 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(266): RegistrationController->runActionWithFilters()
+#14 C:\wamp\framework\web\CWebApplication.php(283): RegistrationController->run()
+#15 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#16 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/registration/register
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (54)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:22:35 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:22:35 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:22:35 [error] [php] Undefined variable: model (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:57)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): EmailController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): EmailController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): EmailController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): EmailController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/registeremail?FirstName=c&LastName=w&MiddleName=&Email=test%40test.com&PhoneExt=12345&DepartmentID=0&HireDate=
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:23:38 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:23:38 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:23:38 [error] [php] Undefined variable: FirstName (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:57)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): EmailController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): EmailController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): EmailController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): EmailController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/registeremail?FirstName=c&LastName=w&MiddleName=&Email=test%40test.com&PhoneExt=12345&DepartmentID=0&HireDate=
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:24:39 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:24:39 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:24:40 [error] [exception.CException] exception 'CException' with message 'Property "EmailController.FirstName" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php(57): CComponent->__get('FirstName')
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): EmailController->actionRegisteremail()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\framework\web\CWebApplication.php(283): CController->run('registeremail')
+#11 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('email/email/reg...')
+#12 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/email/email/registeremail?FirstName=c&LastName=w&MiddleName=&Email=test%40test.com&PhoneExt=12345&DepartmentID=0&HireDate=
+HTTP_REFERER=http://ci2/security/registration/register
+---
+2012/12/14 19:27:41 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:27:41 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:32:10 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:32:10 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:33:38 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:33:38 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:37:35 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:37:35 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:45:49 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/14 19:45:49 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
