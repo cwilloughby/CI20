@@ -30,14 +30,11 @@ class UserIdentity extends CUserIdentity
 		}
         else
         {
-			/*
-			I haven't figured out how to take advantage of the table relationships that were made in 
-			the model classes yet. So for now I'm searching the Role table directly for the role name.
-			*/
-			$role = Roles::model()->findByAttributes(array('RoleID'=>$record->RoleID));
+			// Search the Role table for a matching primary key inorder to get the name of the user's role.
+			$role = Roles::model()->findByPk($record->RoleID);
 			
             $this->_id=$record->UserID;
-			print_r($role->RoleName);
+
             $this->setState('roles', $role->RoleName);
             $this->errorCode=self::ERROR_NONE;
         }

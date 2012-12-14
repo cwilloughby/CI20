@@ -1,13 +1,13 @@
 <?php
 /* @var $this UserInfoController */
-/* @var $model UserInfo */
+/* @var $model AddUserForm */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'adduser-form',
+	'id'=>'user-info-adduser-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -16,47 +16,58 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->labelEx($model,'FirstName'); ?>
+		<?php echo $form->textField($model,'FirstName'); ?>
+		<?php echo $form->error($model,'FirstName'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'MiddleName'); ?>
+		<?php echo $form->textField($model,'MiddleName'); ?>
+		<?php echo $form->error($model,'MiddleName'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'LastName'); ?>
+		<?php echo $form->textField($model,'LastName'); ?>
+		<?php echo $form->error($model,'LastName'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'firstname'); ?>
-		<?php echo $form->textField($model,'firstname'); ?>
-		<?php echo $form->error($model,'firstname'); ?>
+		<?php echo $form->labelEx($model,'Username'); ?>
+		<?php echo $form->textField($model,'Username'); ?>
+		<?php echo $form->error($model,'Username'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'lastname'); ?>
-		<?php echo $form->textField($model,'lastname'); ?>
-		<?php echo $form->error($model,'lastname'); ?>
+		<?php echo $form->labelEx($model,'Email'); ?>
+		<?php echo $form->textField($model,'Email'); ?>
+		<?php echo $form->error($model,'Email'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
+		<?php echo $form->labelEx($model,'PhoneExt'); ?>
+		<?php echo $form->textField($model,'PhoneExt'); ?>
+		<?php echo $form->error($model,'PhoneExt'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'phoneext'); ?>
-		<?php echo $form->textField($model,'phoneext'); ?>
-		<?php echo $form->error($model,'phoneext'); ?>
+		<?php echo $form->labelEx($model,'HireDate'); ?>
+		<?php echo $form->textField($model,'HireDate'); ?>
+		<?php echo $form->error($model,'HireDate'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'departmentid'); ?>
-		<?php echo $form->dropDownList($model,'departmentid', $departments); ?>
-		<?php echo $form->error($model,'departmentid'); ?>
+		<?php echo $form->labelEx($model,'DepartmentID'); ?>
+		<?php echo $form->dropDownList($model,'DepartmentID', $departments); ?>
+		<?php echo $form->error($model,'DepartmentID'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'roleid'); ?>
-		<?php echo $form->dropDownList($model,'roleid', $roles); ?>
-		<?php echo $form->error($model,'roleid'); ?>
+		<?php echo $form->labelEx($model,'RoleID'); ?>
+		<?php echo $form->dropDownList($model,'RoleID', $roles); ?>
+		<?php echo $form->error($model,'RoleID'); ?>
 	</div>
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>

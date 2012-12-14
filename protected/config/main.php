@@ -18,7 +18,7 @@ return array(
 		'application.components.*',
 		'application.modules.security.models.*',
 		'application.modules.security.components.*',
-		'application.extensions.phpmailer.JPhpMailer'
+		'application.extensions.phpmailer.JPhpMailer',
 	),
 
 	'modules'=>array(

@@ -2,7 +2,7 @@
 
 class RegistrationController extends Controller
 {
-	/**
+	/*
 	 * @return array action filters
 	 */
 	public function filters()
@@ -12,8 +12,8 @@ class RegistrationController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
-	/**
+	
+	/*
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
@@ -41,50 +41,54 @@ class RegistrationController extends Controller
 	
 	public function actionRegister()
 	{
-		$model=new RegisterForm;
+		$model = new RegisterForm();
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
 		if(isset($_POST['RegisterForm']))
 		{
 			$model->attributes=$_POST['RegisterForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->register())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate())
+			{
+				// Form inputs are valid.
+				// Redirect to the email controller's register email action in the email module.
+				$this->redirect(array('/email/email/registeremail',
+							'FirstName'=>$model->FirstName,
+							'LastName'=>$model->LastName,
+							'MiddleName'=>$model->MiddleName,
+							'Email'=>$model->Email,
+							'PhoneExt'=>$model->PhoneExt,
+							'DepartmentID'=>$model->DepartmentID,
+							'HireDate'=>$model->HireDate));
+			}
 		}
-
-		$departments=Departments::model()->findAll();
 		
+		$departments=Departments::model()->findAll();
 		$departments = array_merge(array(""=>""),CHtml::listData($departments,'DepartmentID','DepartmentName'));
 		
-		// display the login form
 		$this->render('register',array('model'=>$model, 'departments'=>$departments));
 	}
 	
 	public function actionAdduser()
 	{
-		$model=new AddUserForm;
+		$model=new AddUserForm();
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='adduser-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
 		if(isset($_POST['AddUserForm']))
 		{
 			$model->attributes=$_POST['AddUserForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->adduser())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate())
+			{
+				// form inputs are valid. 
+				// Redirect to the email controller's add email action in the email module.
+				$this->redirect(
+						array('/email/email/addemail', 
+							'FirstName'=>$model->FirstName,
+							'LastName'=>$model->LastName,
+							'MiddleName'=>$model->MiddleName,
+							'Email'=>$model->Email,
+							'PhoneExt'=>$model->PhoneExt,
+							'DepartmentID'=>$model->DepartmentID,
+							'HireDate'=>$model->HireDate,
+						));
+			}
 		}
 		
 		$departments=Departments::model()->findAll();
@@ -93,12 +97,6 @@ class RegistrationController extends Controller
 		$roles = array_merge(array(""=>""),CHtml::listData($roles,'RoleID','RoleName'));
 		$departments = array_merge(array(""=>""),CHtml::listData($departments,'DepartmentID','DepartmentName'));
 		
-		// display the login form
 		$this->render('adduser',array('model'=>$model, 'roles'=>$roles, 'departments'=>$departments));
-	}
-
-	public function actionMail()
-	{
-		$this->render('mail');
 	}
 }
