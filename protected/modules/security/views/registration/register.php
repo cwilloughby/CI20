@@ -1,6 +1,6 @@
 <?php
 /* @var $this RegistrationController */
-/* @var $model UserInfo */
+/* @var $model RegisterForm */
 /* @var $form CActiveForm */
 ?>
 

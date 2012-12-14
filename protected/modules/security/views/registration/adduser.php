@@ -1,6 +1,6 @@
 <?php
 /* @var $this UserInfoController */
-/* @var $model UserInfo */
+/* @var $model AddUserForm */
 /* @var $form CActiveForm */
 ?>
 
@@ -37,12 +37,6 @@
 		<?php echo $form->labelEx($model,'Username'); ?>
 		<?php echo $form->textField($model,'Username'); ?>
 		<?php echo $form->error($model,'Username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Password'); ?>
-		<?php echo $form->textField($model,'Password'); ?>
-		<?php echo $form->error($model,'Password'); ?>
 	</div>
 
 	<div class="row">

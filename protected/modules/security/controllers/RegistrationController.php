@@ -41,15 +41,16 @@ class RegistrationController extends Controller
 	
 	public function actionRegister()
 	{
-		$model=new UserInfo('register');
+		$model = new RegisterForm();
 
-		if(isset($_POST['UserInfo']))
+		if(isset($_POST['RegisterForm']))
 		{
-			$model->attributes=$_POST['UserInfo'];
+			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate())
 			{
-				// form inputs are valid.
-				// Code to send email to IT is not done yet.
+				// Form inputs are valid.
+				// Redirect to the email controller's register email action in the email module.
+				$this->redirect(array('/email/email/registeremail'));
 			}
 		}
 		
@@ -61,15 +62,16 @@ class RegistrationController extends Controller
 	
 	public function actionAdduser()
 	{
-		$model=new UserInfo('register');
+		$model=new AddUserForm();
 
-		if(isset($_POST['UserInfo']))
+		if(isset($_POST['AddUserForm']))
 		{
-			$model->attributes=$_POST['UserInfo'];
+			$model->attributes=$_POST['AddUserForm'];
 			if($model->validate())
 			{
-				// form inputs are valid, do something here
-				
+				// form inputs are valid. 
+				// Redirect to the email controller's add email action in the email module.
+				$this->redirect(array('/email/email/addemail'));
 			}
 		}
 		
@@ -80,10 +82,5 @@ class RegistrationController extends Controller
 		$departments = array_merge(array(""=>""),CHtml::listData($departments,'DepartmentID','DepartmentName'));
 		
 		$this->render('adduser',array('model'=>$model, 'roles'=>$roles, 'departments'=>$departments));
-	}
-	
-	public function actionMail()
-	{
-		$this->render('mail');
 	}
 }
