@@ -34,19 +34,19 @@ return array(
 		'email',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
-			'userid'=>'UserID', //default: userid
-			'username'=>'Username', //default:username
+			'userid'=>'userid', //default: userid
+			'username'=>'username', //default:username
 			'delimeter'=>'@', //default:-
-			'debug'=>true, //default :false
-			'pageSize'=>10, // default : 15
-			'superUser'=>'cwilloughby', //default: Authorizer
+			'debug'=>false, //default :false
+			'pageSize'=>20, // default : 15
+			'superUser'=>'IT', //default: Authorizer
 			'css'=>'srbac.css', //default: srbac.css
 			//default: application.views.layouts.main, must be an existing alias
 			'layout'=>'application.views.layouts.main', 
 			//default: srbac.views.authitem.unauthorized, must be an existing alias
 			'notAuthorizedView'=>'srbac.views.authitem.unauthorized', 
 			'alwaysAllowed'=>array( //default: array()
-				'SiteLogin', 'SiteLogout', 'SiteIndex', 'SiteAdmin', 'SiteError', 'SiteContact'
+				'Login', 'Logout', 'SiteIndex', 'SiteAdmin', 'SiteError'
 			),
 			'userActions'=>array('Show', 'View', 'List'), //default: array()
 			'listBoxNumberOfLines'=>15, //default : 10
@@ -98,9 +98,9 @@ return array(
 		'authManager'=>array(
 			'class'=>'application.modules.srbac.components.SDbAuthManager',
 			'connectionID'=>'db',
-			'itemTable'=>'items',
-			'assignmentTable'=>'assignments',
-			'itemChildTable'=>'itemchildren',
+			'itemTable'=>'ci_auth_items',
+			'assignmentTable'=>'ci_auth_assignments',
+			'itemChildTable'=>'ci_auth_item_children',
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

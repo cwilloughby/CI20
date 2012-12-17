@@ -6135,3 +6135,89 @@ Stack trace:
 REQUEST_URI=/security/registration/register
 HTTP_REFERER=http://ci2/security/login/login
 ---
+2012/12/17 20:08:47 [error] [exception.CException] exception 'CException' with message 'Property "AddUserForm.Roleid" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\web\helpers\CHtml.php(2158): CComponent->__get('Roleid')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1515): CHtml::resolveValue(Object(AddUserForm), 'Roleid')
+#2 C:\wamp\framework\web\widgets\CActiveForm.php(764): CHtml::activeDropDownList(Object(AddUserForm), 'Roleid', Array, Array)
+#3 C:\wamp\www\CI20\protected\modules\security\views\registration\adduser.php(68): CActiveForm->dropDownList(Object(AddUserForm), 'Roleid', Array)
+#4 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#5 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#6 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#7 C:\wamp\framework\web\CController.php(783): CController->renderPartial('adduser', Array, true)
+#8 C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php(100): CController->render('adduser', Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(50): RegistrationController->actionAdduser()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\framework\web\CWebApplication.php(283): CController->run('adduser')
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/regist...')
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/security/registration/adduser
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/17 20:10:50 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.UserID" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('UserID')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('UserID')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1772): CHtml::value(Object(UserInfo), 'UserID')
+#3 C:\wamp\www\CI20\protected\modules\srbac\views\authitem\tabViews\roleToUser.php(42): CHtml::listData(Array, 'UserID', 'Username')
+#4 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#5 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#6 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#7 C:\wamp\framework\web\widgets\CTabView.php(215): CController->renderPartial('tabViews/roleTo...', Array)
+#8 C:\wamp\framework\web\widgets\CTabView.php(147): CTabView->renderBody()
+#9 C:\wamp\framework\web\CBaseController.php(174): CTabView->run()
+#10 C:\wamp\www\CI20\protected\modules\srbac\views\authitem\assign.php(57): CBaseController->widget('system.web.widg...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('assign', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(217): CController->render('assign', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAssign()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\framework\web\CWebApplication.php(283): CController->run('assign')
+#21 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#22 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/srbac/authitem/assign
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2012/12/17 20:15:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:15:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:17:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:17:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:17:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:17:42 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.ci_auth_items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `ci_auth_items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 20:17:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.ci_auth_items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `ci_auth_items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)

@@ -64,9 +64,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Roleid'); ?>
-		<?php echo $form->dropDownList($model,'Roleid', $roles); ?>
-		<?php echo $form->error($model,'Roleid'); ?>
+		<?php echo $form->labelEx($model,'roleid'); ?>
+		<?php echo $form->dropDownList($model,'roleid', $roles); ?>
+		<?php echo $form->error($model,'roleid'); ?>
 	</div>
 
 	<div class="row buttons">
