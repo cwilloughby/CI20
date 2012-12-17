@@ -4,9 +4,9 @@
  * This is the model class for table "ci_departments".
  *
  * The followings are the available columns in table 'ci_departments':
- * @property integer $DepartmentID
- * @property string $DepartmentName
- * @property integer $SupervisorID
+ * @property integer $departmentid
+ * @property string $departmentname
+ * @property integer $supervisorid
  *
  * The followings are the available model relations:
  * @property DepartmentTiers[] $departmentTiers
@@ -42,12 +42,12 @@ class Departments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('DepartmentName', 'required'),
-			array('SupervisorID', 'numerical', 'integerOnly'=>true),
-			array('DepartmentName', 'length', 'max'=>35),
+			array('departmentname', 'required'),
+			array('supervisorid', 'numerical', 'integerOnly'=>true),
+			array('departmentname', 'length', 'max'=>35),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('DepartmentID, DepartmentName, SupervisorID', 'safe', 'on'=>'search'),
+			array('departmentid, departmentname, supervisorid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,10 +59,10 @@ class Departments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'departmentTiers' => array(self::HAS_MANY, 'DepartmentTiers', 'MainDepartmentID'),
-			'departmentTiers1' => array(self::HAS_MANY, 'DepartmentTiers', 'SubDepartmentID'),
-			'supervisor' => array(self::BELONGS_TO, 'UserInfo', 'SupervisorID'),
-			'userInfos' => array(self::HAS_MANY, 'UserInfo', 'DepartmentID'),
+			'departmentTiers' => array(self::HAS_MANY, 'DepartmentTiers', 'maindepartmentid'),
+			'departmentTiers1' => array(self::HAS_MANY, 'DepartmentTiers', 'subdepartmentid'),
+			'supervisor' => array(self::BELONGS_TO, 'UserInfo', 'supervisorid'),
+			'userInfos' => array(self::HAS_MANY, 'UserInfo', 'departmentid'),
 		);
 	}
 
@@ -72,9 +72,9 @@ class Departments extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'DepartmentID' => 'Department',
-			'DepartmentName' => 'Department Name',
-			'SupervisorID' => 'Supervisor',
+			'departmentid' => 'Department',
+			'departmentname' => 'Department Name',
+			'supervisorid' => 'Supervisor',
 		);
 	}
 
@@ -89,9 +89,9 @@ class Departments extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('DepartmentID',$this->DepartmentID);
-		$criteria->compare('DepartmentName',$this->DepartmentName,true);
-		$criteria->compare('SupervisorID',$this->SupervisorID);
+		$criteria->compare('departmentid',$this->departmentid);
+		$criteria->compare('departmentname',$this->departmentname,true);
+		$criteria->compare('supervisorid',$this->supervisorid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

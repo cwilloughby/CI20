@@ -19,6 +19,7 @@ return array(
 		'application.modules.security.models.*',
 		'application.modules.security.components.*',
 		'application.extensions.phpmailer.JPhpMailer',
+		'application.modules.srbac.controllers.SBaseController',
 	),
 
 	'modules'=>array(
@@ -31,6 +32,33 @@ return array(
 		),
 		'security',
 		'email',
+		'srbac'=>array(
+			'userclass'=>'UserInfo', //default: User
+			'userid'=>'UserID', //default: userid
+			'username'=>'Username', //default:username
+			'delimeter'=>'@', //default:-
+			'debug'=>true, //default :false
+			'pageSize'=>10, // default : 15
+			'superUser'=>'cwilloughby', //default: Authorizer
+			'css'=>'srbac.css', //default: srbac.css
+			//default: application.views.layouts.main, must be an existing alias
+			'layout'=>'application.views.layouts.main', 
+			//default: srbac.views.authitem.unauthorized, must be an existing alias
+			'notAuthorizedView'=>'srbac.views.authitem.unauthorized', 
+			'alwaysAllowed'=>array( //default: array()
+				'SiteLogin', 'SiteLogout', 'SiteIndex', 'SiteAdmin', 'SiteError', 'SiteContact'
+			),
+			'userActions'=>array('Show', 'View', 'List'), //default: array()
+			'listBoxNumberOfLines'=>15, //default : 10
+			'imagesPath'=>'srbac.images', // default: srbac.images
+			'imagesPack'=>'noia', //default: noia
+			'iconText'=>true, //default: false
+			'header'=>'srbac.views.authitem.header', //default: srbac.views.authitem.header, must be an existing alias
+			'footer'=>'srbac.views.authitem.footer', //default: srbac.views.authitem.footer, must be an existing alias
+			'showHeader'=>true, // default: false
+			'showFooter'=>true, // default: false
+			'alwaysAllowedPath'=>'srbac.components', //default: srbac.components, must be an existing alias
+		),
 	),
 
 	// application components
@@ -60,11 +88,19 @@ return array(
 		*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
+			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
+		),
+		'authManager'=>array(
+			'class'=>'application.modules.srbac.components.SDbAuthManager',
+			'connectionID'=>'db',
+			'itemTable'=>'items',
+			'assignmentTable'=>'assignments',
+			'itemChildTable'=>'itemchildren',
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

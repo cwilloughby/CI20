@@ -16,45 +16,45 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'FirstName'); ?>
-		<?php echo $form->textField($model,'FirstName'); ?>
-		<?php echo $form->error($model,'FirstName'); ?>
+		<?php echo $form->labelEx($model,'firstname'); ?>
+		<?php echo $form->textField($model,'firstname'); ?>
+		<?php echo $form->error($model,'firstname'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'LastName'); ?>
-		<?php echo $form->textField($model,'LastName'); ?>
-		<?php echo $form->error($model,'LastName'); ?>
+		<?php echo $form->labelEx($model,'lastname'); ?>
+		<?php echo $form->textField($model,'lastname'); ?>
+		<?php echo $form->error($model,'lastname'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'MiddleName'); ?>
-		<?php echo $form->textField($model,'MiddleName'); ?>
-		<?php echo $form->error($model,'MiddleName'); ?>
+		<?php echo $form->labelEx($model,'middlename'); ?>
+		<?php echo $form->textField($model,'middlename'); ?>
+		<?php echo $form->error($model,'middlename'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Email'); ?>
-		<?php echo $form->textField($model,'Email'); ?>
-		<?php echo $form->error($model,'Email'); ?>
+		<?php echo $form->labelEx($model,'email'); ?>
+		<?php echo $form->textField($model,'email'); ?>
+		<?php echo $form->error($model,'email'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'PhoneExt'); ?>
-		<?php echo $form->textField($model,'PhoneExt'); ?>
-		<?php echo $form->error($model,'PhoneExt'); ?>
+		<?php echo $form->labelEx($model,'phoneext'); ?>
+		<?php echo $form->textField($model,'phoneext'); ?>
+		<?php echo $form->error($model,'phoneext'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'DepartmentID'); ?>
-		<?php echo $form->dropDownList($model,'DepartmentID', $departments); ?>
-		<?php echo $form->error($model,'DepartmentID'); ?>
+		<?php echo $form->labelEx($model,'departmentid'); ?>
+		<?php echo $form->dropDownList($model,'departmentid', $departments); ?>
+		<?php echo $form->error($model,'departmentid'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'HireDate'); ?>
-		<?php echo $form->textField($model,'HireDate'); ?>
-		<?php echo $form->error($model,'HireDate'); ?>
+		<?php echo $form->labelEx($model,'hiredate'); ?>
+		<?php echo $form->textField($model,'hiredate'); ?>
+		<?php echo $form->error($model,'hiredate'); ?>
 	</div>
 
 	<div class="row buttons">

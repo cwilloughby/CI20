@@ -22,325 +22,325 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 	public function up()
 	{
 		$this->createTable('ci_roles', array(
-				'RoleID' => 'INT(3) NOT NULL AUTO_INCREMENT',
-				'RoleName' => 'VARCHAR(35) NOT NULL',
-				'PRIMARY KEY (`RoleID`)',
-				'UNIQUE INDEX `RoleName_UNIQUE` (`RoleName` ASC)'
+				'roleid' => 'INT(3) NOT NULL AUTO_INCREMENT',
+				'rolename' => 'VARCHAR(35) NOT NULL',
+				'PRIMARY KEY (`roleid`)',
+				'UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_tips', array(	
-				'TipID' => 'INT(3) NOT NULL',
-				'Tip' => 'VARCHAR(100) NULL',
-				'PRIMARY KEY (`TipID`)'
+				'tipid' => 'INT(3) NOT NULL',
+				'tip' => 'VARCHAR(100) NULL',
+				'PRIMARY KEY (`tipid`)'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_document_type', array(
-					'TypeID' => 'INT(3) NOT NULL',
-					'TypeName' => 'VARCHAR(45) NULL',
-					'PRIMARY KEY (`TypeID`)'
+					'typeid' => 'INT(3) NOT NULL',
+					'typename' => 'VARCHAR(45) NULL',
+					'PRIMARY KEY (`typeID`)'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_messages', array(
-				'MessageID' => 'INT(11) NOT NULL AUTO_INCREMENT',
-				'To' => 'VARCHAR(500) NOT NULL',
-				'From' => 'VARCHAR(500) NOT NULL',
-				'Subject' => 'VARCHAR(125) NOT NULL',
-				'MessageBody' => 'VARCHAR(500) NULL',
-				'MessageType' => 'VARCHAR(45) NOT NULL',
-				'SuccessfullySent' => 'TINYINT(1) NOT NULL',
-				'DateSent' => 'DATE NULL' ,
+				'messageid' => 'INT(11) NOT NULL AUTO_INCREMENT',
+				'to' => 'VARCHAR(500) NOT NULL',
+				'from' => 'VARCHAR(500) NOT NULL',
+				'subject' => 'VARCHAR(125) NOT NULL',
+				'messagebody' => 'VARCHAR(500) NULL',
+				'messagetype' => 'VARCHAR(45) NOT NULL',
+				'successfullysent' => 'TINYINT(1) NOT NULL',
+				'datesent' => 'DATE NULL' ,
 				'PRIMARY KEY (`MessageID`)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_ticket_categories', array(
-				'CategoryID' => 'INT(3) NOT NULL AUTO_INCREMENT',
-				'CategoryName' => 'VARCHAR(75) NOT NULL',
-				'PRIMARY KEY (`CategoryID`)',
-				'UNIQUE INDEX `CategoryName_UNIQUE` (`CategoryName` ASC)'
+				'categoryid' => 'INT(3) NOT NULL AUTO_INCREMENT',
+				'categoryname' => 'VARCHAR(75) NOT NULL',
+				'PRIMARY KEY (`categoryid`)',
+				'UNIQUE INDEX `categoryname_UNIQUE` (`categoryname` ASC)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_ticket_subjects', array(
-				'SubjectID' => 'INT(3) NOT NULL AUTO_INCREMENT',
-				'SubjectName' => 'VARCHAR(75) NOT NULL',
-				'PRIMARY KEY (`SubjectID`)',
-				'UNIQUE INDEX `SubjectName_UNIQUE` (`SubjectName` ASC)'
+				'subjectid' => 'INT(3) NOT NULL AUTO_INCREMENT',
+				'subjectname' => 'VARCHAR(75) NOT NULL',
+				'PRIMARY KEY (`subjectid`)',
+				'UNIQUE INDEX `subjectName_UNIQUE` (`subjectname` ASC)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_monitor_inventory', array(
-				'ServiceTag' => 'VARCHAR(45) NOT NULL',
-				'Size' => 'VARCHAR(45) NULL',
-				'PRIMARY KEY (`ServiceTag`)' 
+				'servicetag' => 'VARCHAR(45) NOT NULL',
+				'size' => 'VARCHAR(45) NULL',
+				'PRIMARY KEY (`servicetag`)' 
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_evaluation_questions', array(
-				'QuestionID' => 'INT(4) NOT NULL',
-				'Question' => 'VARCHAR(500) NOT NULL',
-				'PRIMARY KEY (`QuestionID`)'
+				'questionid' => 'INT(4) NOT NULL',
+				'question' => 'VARCHAR(500) NOT NULL',
+				'PRIMARY KEY (`questionid`)'
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_user_info', array(
-				'UserID' => 'INT(11) NOT NULL AUTO_INCREMENT',
-				'FirstName' => 'VARCHAR(30) NOT NULL',
-				'LastName' => 'VARCHAR(40) NOT NULL',
-				'MiddleName' => 'VARCHAR(45) NULL',
-				'Username' => 'VARCHAR(41) NOT NULL',
-				'Password' => 'VARCHAR(128) NOT NULL',
-				'Email' => 'VARCHAR(100) NOT NULL',
-				'PhoneExt' => 'INT(5) NOT NULL',
-				'DepartmentID' => 'INT(2) NOT NULL',
-				'RoleID' => 'INT(2) NOT NULL',
-				'HireDate' => 'DATE NULL',
-				'Active' => 'TINYINT(1) NULL',
-				'PRIMARY KEY (`UserID`)',
-				'INDEX `Email` (`Email` ASC, `PhoneExt` ASC)',
-				'INDEX `Username` (`Username` ASC)',
-				'INDEX `fk_ci_user_info_ci_roles_idx` (`RoleID` ASC)',
-				'INDEX `fk_ci_user_info_ci_departments1_idx` (`DepartmentID` ASC)',
+				'userid' => 'INT(11) NOT NULL AUTO_INCREMENT',
+				'firstname' => 'VARCHAR(30) NOT NULL',
+				'lastname' => 'VARCHAR(40) NOT NULL',
+				'middlename' => 'VARCHAR(45) NULL',
+				'username' => 'VARCHAR(41) NOT NULL',
+				'password' => 'VARCHAR(128) NOT NULL',
+				'email' => 'VARCHAR(100) NOT NULL',
+				'phoneext' => 'INT(5) NOT NULL',
+				'departmentid' => 'INT(2) NOT NULL',
+				'roleid' => 'INT(2) NOT NULL',
+				'hireDate' => 'DATE NULL',
+				'active' => 'TINYINT(1) NULL',
+				'PRIMARY KEY (`userid`)',
+				'INDEX `rmail` (`email` ASC, `phoneext` ASC)',
+				'INDEX `username` (`username` ASC)',
+				'INDEX `fk_ci_user_info_ci_roles_idx` (`roleid` ASC)',
+				'INDEX `fk_ci_user_info_ci_departments1_idx` (`departmentid` ASC)',
 				'CONSTRAINT `fk_ci_user_info_ci_roles`
-					FOREIGN KEY (`RoleID` )
-					REFERENCES `ci2`.`ci_roles` (`RoleID` )
+					FOREIGN KEY (`roleid` )
+					REFERENCES `ci2`.`ci_roles` (`roleid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_user_info_ci_departments1`
-					FOREIGN KEY (`DepartmentID` )
-					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
+					FOREIGN KEY (`departmentid` )
+					REFERENCES `ci2`.`ci_departments` (`departmentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_departments', array(
-				'DepartmentID' => 'INT(2) NOT NULL AUTO_INCREMENT',
-				'DepartmentName' => 'VARCHAR(35) NOT NULL',
-				'SupervisorID' => 'INT(11) NOT NULL',
-				'PRIMARY KEY (`DepartmentID`)',
-				'INDEX `fk_ci_departments_ci_user_info1_idx` (`SupervisorID` ASC)',
+				'departmentid' => 'INT(2) NOT NULL AUTO_INCREMENT',
+				'departmentname' => 'VARCHAR(35) NOT NULL',
+				'supervisorid' => 'INT(11) NOT NULL',
+				'PRIMARY KEY (`departmentid`)',
+				'INDEX `fk_ci_departments_ci_user_info1_idx` (`supervisorid` ASC)',
 				'CONSTRAINT `fk_ci_departments_ci_user_info1`
-					FOREIGN KEY (`SupervisorID` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`supervisorid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_department_tiers', array(
-				'MainDepartmentID' => 'INT(2) NOT NULL',
-				'SubDepartmentID' => 'INT(2) NOT NULL',
-				'PRIMARY KEY (`MainDepartmentID`, `SubDepartmentID`)',
-				'INDEX `fk_ci_department_tiers_ci_departments1_idx` (`MainDepartmentID` ASC)',
-				'INDEX `fk_ci_department_tiers_ci_departments2_idx` (`SubDepartmentID` ASC)',
+				'maindepartmentid' => 'INT(2) NOT NULL',
+				'subdepartmentid' => 'INT(2) NOT NULL',
+				'PRIMARY KEY (`maindepartmentid`, `subdepartmentid`)',
+				'INDEX `fk_ci_department_tiers_ci_departments1_idx` (`maindepartmentid` ASC)',
+				'INDEX `fk_ci_department_tiers_ci_departments2_idx` (`subdepartmentid` ASC)',
 				'CONSTRAINT `fk_ci_department_tiers_ci_departments1`
-					FOREIGN KEY (`MainDepartmentID` )
-					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
+					FOREIGN KEY (`maindepartmentid` )
+					REFERENCES `ci2`.`ci_departments` (`departmentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_department_tiers_ci_departments2`
-					FOREIGN KEY (`SubDepartmentID` )
-					REFERENCES `ci2`.`ci_departments` (`DepartmentID` )
+					FOREIGN KEY (`subdepartmentid` )
+					REFERENCES `ci2`.`ci_departments` (`departmentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_trouble_tickets', array(
-				'TicketID' => 'INT(10) NOT NULL AUTO_INCREMENT',
-				'OpenedBy' => 'INT(11) NOT NULL',
-				'OpenDate' => 'DATE NOT NULL',
-				'CategoryID' => 'INT(3) NOT NULL',
-				'SubjectID' => 'INT(3) NOT NULL',
-				'ClosedByUserID' => 'INT(11) NULL',
-				'CloseDate' => 'DATE NULL',
-				'PRIMARY KEY (`TicketID`, `CategoryID`, `SubjectID`)',
-				'INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`OpenedBy` ASC)' ,
-				'INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`CategoryID` ASC)' ,
-				'INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`ClosedByUserID` ASC)' ,
-				'INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`SubjectID` ASC)' ,
+				'ticketid' => 'INT(10) NOT NULL AUTO_INCREMENT',
+				'openedby' => 'INT(11) NOT NULL',
+				'opendate' => 'DATE NOT NULL',
+				'categoryid' => 'INT(3) NOT NULL',
+				'subjectid' => 'INT(3) NOT NULL',
+				'closedbyuserid' => 'INT(11) NULL',
+				'closedate' => 'DATE NULL',
+				'PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`)',
+				'INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC)' ,
+				'INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC)' ,
+				'INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC)' ,
+				'INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC)' ,
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
-					FOREIGN KEY (`OpenedBy` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`openedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
-					FOREIGN KEY (`CategoryID` )
-					REFERENCES `ci2`.`ci_ticket_categories` (`CategoryID` )
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
-					FOREIGN KEY (`ClosedByUserID` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`closedbyuserid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
-					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
-		
+
 		$this->createTable('ci_category_subject_bridge', array(
-				'CategoryID' => 'INT(3) NOT NULL',
-				'SubjectID' => 'INT(3) NOT NULL',
-				'PRIMARY KEY (`CategoryID`, `SubjectID`)',
-				'INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`CategoryID` ASC)',
-				'INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`SubjectID` ASC)',
+				'categoryid' => 'INT(3) NOT NULL',
+				'subjectid' => 'INT(3) NOT NULL',
+				'PRIMARY KEY (`categoryid`, `subjectid`)',
+				'INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC)',
+				'INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC)',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
-					FOREIGN KEY (`CategoryID` )
-					REFERENCES `ci2`.`ci_ticket_categories` (`CategoryID` )
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
-					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_subject_tips', array(
-				'SubjectID' => 'INT(3) NOT NULL',
-				'TipID' => 'INT(3) NOT NULL',
-				'PRIMARY KEY (`SubjectID`, `TipID`)',
-				'INDEX `fk_ci_subject_tips_ci_ticket_subjects1_idx` (`SubjectID` ASC)',
-				'INDEX `fk_ci_subject_tips_ci_tips1_idx` (`TipID` ASC)',
+				'subjectid' => 'INT(3) NOT NULL',
+				'tipid' => 'INT(3) NOT NULL',
+				'PRIMARY KEY (`subjectid`, `tipid`)',
+				'INDEX `fk_ci_subject_tips_ci_ticket_subjects1_idx` (`subjectid` ASC)',
+				'INDEX `fk_ci_subject_tips_ci_tips1_idx` (`tipid` ASC)',
 				'CONSTRAINT `fk_ci_subject_tips_ci_ticket_subjects1`
-					FOREIGN KEY (`SubjectID` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`SubjectID` )
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_subject_tips_ci_tips1`
-					FOREIGN KEY (`TipID` )
-					REFERENCES `ci2`.`ci_tips` (`TipID` )
+					FOREIGN KEY (`tipid` )
+					REFERENCES `ci2`.`ci_tips` (`tipid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_computer_inventory', array(
-				'ComputerID' => 'INT(11) NOT NULL AUTO_INCREMENT',
-				'ComputerName' => 'VARCHAR(45) NOT NULL',
-				'UserID' => 'INT(11) NULL',
-				'Model' => 'VARCHAR(45) NOT NULL',
-				'InceptionDate' => 'DATE NULL',
-				'WarrantyEndDate' => 'DATE NULL',
-				'PRIMARY KEY (`ComputerID`)',
-				'UNIQUE INDEX `ComputerName_UNIQUE` (`ComputerName` ASC)',
-				'INDEX `fk_ci_computer_inventory_ci_user_info1_idx` (`UserID` ASC)',
+				'computerid' => 'INT(11) NOT NULL AUTO_INCREMENT',
+				'computername' => 'VARCHAR(45) NOT NULL',
+				'userid' => 'INT(11) NULL',
+				'model' => 'VARCHAR(45) NOT NULL',
+				'inceptiondate' => 'DATE NULL',
+				'warrantyenddate' => 'DATE NULL',
+				'PRIMARY KEY (`computerid`)',
+				'UNIQUE INDEX `ComputerName_UNIQUE` (`computername` ASC)',
+				'INDEX `fk_ci_computer_inventory_ci_user_info1_idx` (`userid` ASC)',
 				'CONSTRAINT `fk_ci_computer_inventory_ci_user_info1`
-					FOREIGN KEY (`UserID` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`userid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_evaluations', array(
-				'EvaluationID' => 'INT(11) NOT NULL',
-				'Employee' => 'INT(11) NOT NULL',
-				'Evaluator' => 'INT(11) NOT NULL',
-				'EvaluationDate' => 'DATE NULL',
-				'PRIMARY KEY (`EvaluationID`)',
-				'INDEX `fk_ci_evaluations_ci_user_info1_idx` (`Employee` ASC)',
-				'INDEX `fk_ci_evaluations_ci_user_info2_idx` (`Evaluator` ASC)',
+				'evaluationid' => 'INT(11) NOT NULL',
+				'employee' => 'INT(11) NOT NULL',
+				'evaluator' => 'INT(11) NOT NULL',
+				'evaluationdate' => 'DATE NULL',
+				'PRIMARY KEY (`evaluationid`)',
+				'INDEX `fk_ci_evaluations_ci_user_info1_idx` (`employee` ASC)',
+				'INDEX `fk_ci_evaluations_ci_user_info2_idx` (`evaluator` ASC)',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info1`
-					FOREIGN KEY (`Employee` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`employee` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info2`
-					FOREIGN KEY (`Evaluator` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`evaluator` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_evaluation_answers', array(
-				'EvaluationID' => 'INT(11) NOT NULL',
-				'QuestionID' => 'INT(4) NOT NULL',
-				'Score' => 'INT(2) NULL',
-				'Comments' => 'VARCHAR(500) NULL',
-				'PRIMARY KEY (`EvaluationID`, `QuestionID`)',
-				'INDEX `fk_ci_evaluation_answers_ci_evaluation_questions1_idx` (`QuestionID` ASC)',
+				'evaluationid' => 'INT(11) NOT NULL',
+				'questionid' => 'INT(4) NOT NULL',
+				'score' => 'INT(2) NULL',
+				'comments' => 'VARCHAR(500) NULL',
+				'PRIMARY KEY (`evaluationid`, `questionid`)',
+				'INDEX `fk_ci_evaluation_answers_ci_evaluation_questions1_idx` (`questionid` ASC)',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluations1`
-					FOREIGN KEY (`EvaluationID` )
-					REFERENCES `ci2`.`ci_evaluations` (`EvaluationID` )
+					FOREIGN KEY (`evaluationid` )
+					REFERENCES `ci2`.`ci_evaluations` (`evaluationid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluation_questions1`
-					FOREIGN KEY (`QuestionID` )
-					REFERENCES `ci2`.`ci_evaluation_questions` (`QuestionID` )
+					FOREIGN KEY (`questionid` )
+					REFERENCES `ci2`.`ci_evaluation_questions` (`questionid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_documents', array(
-				'DocumentID' => 'INT NOT NULL',
-				'Uploader' => 'INT(11) NOT NULL',
-				'DocumentName' => 'VARCHAR(45) NOT NULL',
-				'Path' => 'VARCHAR(100) NOT NULL',
-				'UploadDate' => 'DATE NULL',
-				'PRIMARY KEY (`DocumentID`)',
-				'INDEX `fk_ci_documents_ci_user_info1_idx` (`Uploader` ASC)',
+				'documentid' => 'INT NOT NULL',
+				'uploader' => 'INT(11) NOT NULL',
+				'documentName' => 'VARCHAR(45) NOT NULL',
+				'path' => 'VARCHAR(100) NOT NULL',
+				'uploadDate' => 'DATE NULL',
+				'PRIMARY KEY (`documentid`)',
+				'INDEX `fk_ci_documents_ci_user_info1_idx` (`uploader` ASC)',
 				'CONSTRAINT `fk_ci_documents_ci_user_info1`
-					FOREIGN KEY (`Uploader` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`uploader` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_message_documents', array(
-				'MessageID' => 'INT(11) NOT NULL',
-				'DocumentID' => 'INT NOT NULL',
-				'INDEX `fk_ci_message_documents_ci_messages1_idx` (`MessageID` ASC)',
-				'INDEX `fk_ci_message_documents_ci_documents1_idx` (`DocumentID` ASC)',
-				'PRIMARY KEY (`MessageID`, `DocumentID`)',
+				'messageid' => 'INT(11) NOT NULL',
+				'documentid' => 'INT NOT NULL',
+				'INDEX `fk_ci_message_documents_ci_messages1_idx` (`messageid` ASC)',
+				'INDEX `fk_ci_message_documents_ci_documents1_idx` (`documentid` ASC)',
+				'PRIMARY KEY (`messageid`, `documentid`)',
 				'CONSTRAINT `fk_ci_message_documents_ci_messages1`
-					FOREIGN KEY (`MessageID` )
-					REFERENCES `ci2`.`ci_messages` (`MessageID` )
+					FOREIGN KEY (`messageid` )
+					REFERENCES `ci2`.`ci_messages` (`messageid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_message_documents_ci_documents1`
-					FOREIGN KEY (`DocumentID` )
-					REFERENCES `ci2`.`ci_documents` (`DocumentID` )
+					FOREIGN KEY (`documentid` )
+					REFERENCES `ci2`.`ci_documents` (`documentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_document_processor', array(
-				'WarrantNumber' => 'VARCHAR(45) NOT NULL' ,
-				'DocumentID' => 'INT NOT NULL' ,
-				'DocumentTypeID' => 'INT(3) NOT NULL',
-				'CompletedBy' => 'INT(11) NULL',
-				'CompletionDate' => 'DATE NULL',
-				'PRIMARY KEY (`WarrantNumber`, `DocumentID`)',
-				'INDEX `fk_ci_document_processor_ci_user_info1_idx` (`CompletedBy` ASC)',
-				'INDEX `fk_ci_document_processor_ci_documents1_idx` (`DocumentID` ASC)',
-				'INDEX `fk_ci_document_processor_ci_document_type1_idx` (`DocumentTypeID` ASC)',
+				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
+				'documentid' => 'INT NOT NULL' ,
+				'documenttypeid' => 'INT(3) NOT NULL',
+				'completedby' => 'INT(11) NULL',
+				'completiondate' => 'DATE NULL',
+				'PRIMARY KEY (`warrantnumber`, `documentid`)',
+				'INDEX `fk_ci_document_processor_ci_user_info1_idx` (`completedby` ASC)',
+				'INDEX `fk_ci_document_processor_ci_documents1_idx` (`documentid` ASC)',
+				'INDEX `fk_ci_document_processor_ci_document_type1_idx` (`documenttypeid` ASC)',
 				'CONSTRAINT `fk_ci_document_processor_ci_user_info1`
-					FOREIGN KEY (`CompletedBy` )
-					REFERENCES `ci2`.`ci_user_info` (`UserID` )
+					FOREIGN KEY (`completedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_documents1`
-					FOREIGN KEY (`DocumentID` )
-					REFERENCES `ci2`.`ci_documents` (`DocumentID` )
+					FOREIGN KEY (`documentid` )
+					REFERENCES `ci2`.`ci_documents` (`documentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_document_type1`
-					FOREIGN KEY (`DocumentTypeID` )
-					REFERENCES `ci2`.`ci_document_type` (`TypeID` )
+					FOREIGN KEY (`documenttypeid` )
+					REFERENCES `ci2`.`ci_document_type` (`typeid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),

@@ -4,18 +4,18 @@
  * This is the model class for table "ci_user_info".
  *
  * The followings are the available columns in table 'ci_user_info':
- * @property integer $UserID
- * @property string $FirstName
- * @property string $LastName
- * @property string $MiddleName
- * @property string $Username
- * @property string $Password
- * @property string $Email
- * @property integer $PhoneExt
- * @property integer $DepartmentID
- * @property integer $RoleID
- * @property string $HireDate
- * @property integer $Active
+ * @property integer $userid
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $middlename
+ * @property string $username
+ * @property string $password
+ * @property string $email
+ * @property integer $phoneext
+ * @property integer $departmentid
+ * @property integer $roleid
+ * @property string $hiredate
+ * @property integer $active
  *
  * The followings are the available model relations:
  * @property ComputerInventory[] $computerInventories
@@ -54,17 +54,17 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('FirstName, LastName, Username, Password, Email, PhoneExt, HireDate, Active', 'required'),
-			array('PhoneExt, DepartmentID, RoleID, Active', 'numerical', 'integerOnly'=>true),
-			array('FirstName', 'length', 'max'=>30),
-			array('LastName', 'length', 'max'=>40),
-			array('MiddleName', 'length', 'max'=>45),
-			array('Username', 'length', 'max'=>41),
-			array('Password', 'length', 'max'=>128),
-			array('Email', 'length', 'max'=>100),
+			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required'),
+			array('phoneext, departmentid, roleid, active', 'numerical', 'integerOnly'=>true),
+			array('firstname', 'length', 'max'=>30),
+			array('lastname', 'length', 'max'=>40),
+			array('middlename', 'length', 'max'=>45),
+			array('username', 'length', 'max'=>41),
+			array('password', 'length', 'max'=>128),
+			array('email', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('UserID, FirstName, LastName, MiddleName, Username, Password, Email, PhoneExt, DepartmentID, RoleID, HireDate, Active', 'safe', 'on'=>'search'),
+			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, roleid, hiredate, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,13 +76,13 @@ class UserInfo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'UserID'),
-			'documentProcessors' => array(self::HAS_MANY, 'DocumentProcessor', 'CompletedBy'),
-			'documents' => array(self::HAS_MANY, 'Documents', 'Uploader'),
-			'evaluations' => array(self::HAS_MANY, 'Evaluations', 'Employee'),
-			'evaluations1' => array(self::HAS_MANY, 'Evaluations', 'Evaluator'),
-			'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'OpenedBy'),
-			'troubleTickets1' => array(self::HAS_MANY, 'TroubleTickets', 'ClosedByUserID'),
+			'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'userid'),
+			'documentProcessors' => array(self::HAS_MANY, 'DocumentProcessor', 'completedby'),
+			'documents' => array(self::HAS_MANY, 'Documents', 'uploader'),
+			'evaluations' => array(self::HAS_MANY, 'Evaluations', 'employee'),
+			'evaluations1' => array(self::HAS_MANY, 'Evaluations', 'evaluator'),
+			'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'openedby'),
+			'troubleTickets1' => array(self::HAS_MANY, 'TroubleTickets', 'closedbyuserid'),
 		);
 	}
 
@@ -92,16 +92,16 @@ class UserInfo extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'FirstName' => 'First Name',
-			'LastName' => 'Last Name',
-			'MiddleName' => 'Middle Name',
-			'Username' => 'Username',
-			'Password' => 'Password',
-			'Email' => 'Email',
-			'PhoneExt' => 'Phone Ext',
-			'DepartmentID' => 'Department',
-			'RoleID' => 'Role',
-			'HireDate' => 'Hire Date',
+			'firstName' => 'First Name',
+			'lastName' => 'Last Name',
+			'middleName' => 'Middle Name',
+			'username' => 'Username',
+			'password' => 'Password',
+			'email' => 'Email',
+			'phoneext' => 'Phone Ext',
+			'departmentid' => 'Department',
+			'roleid' => 'Role',
+			'hiredate' => 'Hire Date',
 		);
 	}
 

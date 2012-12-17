@@ -16,14 +16,14 @@ class UserIdentity extends CUserIdentity
     public function authenticate()
     {
 		// Search the database for the provided username.
-        $record=UserInfo::model()->findByAttributes(array('Username'=>$this->username));
+        $record=UserInfo::model()->findByAttributes(array('username'=>$this->username));
 		
         if($record===null)
 		{
 			// The username does not exist.
             $this->errorCode=self::ERROR_USERNAME_INVALID;
 		}
-        else if($record->Password!==sha1($this->password))
+        else if($record->password!==sha1($this->password))
 		{
 			// The password is invalid.
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
@@ -31,11 +31,11 @@ class UserIdentity extends CUserIdentity
         else
         {
 			// Search the Role table for a matching primary key inorder to get the name of the user's role.
-			$role = Roles::model()->findByPk($record->RoleID);
+			$role = Roles::model()->findByPk($record->roleid);
 			
-            $this->_id=$record->UserID;
+            $this->_id=$record->userid;
 
-            $this->setState('roles', $role->RoleName);
+            $this->setState('roles', $role->rolename);
             $this->errorCode=self::ERROR_NONE;
         }
         return !$this->errorCode;

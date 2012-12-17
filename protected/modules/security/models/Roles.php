@@ -4,8 +4,8 @@
  * This is the model class for table "ci_roles".
  *
  * The followings are the available columns in table 'ci_roles':
- * @property integer $RoleID
- * @property string $RoleName
+ * @property integer $roleid
+ * @property string $rolename
  *
  * The followings are the available model relations:
  * @property UserInfo[] $userInfos
@@ -38,11 +38,11 @@ class Roles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RoleName', 'required'),
-			array('RoleName', 'length', 'max'=>35),
+			array('rolename', 'required'),
+			array('rolename', 'length', 'max'=>35),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('RoleID, RoleName', 'safe', 'on'=>'search'),
+			array('roleid, rolename', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +54,7 @@ class Roles extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'userInfos' => array(self::HAS_MANY, 'UserInfo', 'RoleID'),
+			'userInfos' => array(self::HAS_MANY, 'UserInfo', 'roleid'),
 		);
 	}
 
@@ -64,8 +64,8 @@ class Roles extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'RoleID' => 'Role',
-			'RoleName' => 'Role Name',
+			'roleid' => 'Role',
+			'rolename' => 'Role Name',
 		);
 	}
 
@@ -80,8 +80,8 @@ class Roles extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('RoleID',$this->RoleID);
-		$criteria->compare('RoleName',$this->RoleName,true);
+		$criteria->compare('roleid',$this->roleid);
+		$criteria->compare('rolename',$this->rolename,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

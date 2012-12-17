@@ -5515,3 +5515,623 @@ in C:\wamp\www\CI20\index.php (13)
 2012/12/14 19:45:49 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
 in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
 in C:\wamp\www\CI20\index.php (13)
+2012/12/17 14:53:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/17 14:53:39 [error] [exception.CException] exception 'CException' with message 'Alias "modules.srbac.components.SDbAuthManager" is invalid. Make sure it points to an existing directory or file.' in C:\wamp\framework\YiiBase.php:343
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('modules.srbac.c...', true)
+#1 C:\wamp\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#2 C:\wamp\framework\base\CModule.php(104): CModule->getComponent('authManager')
+#3 C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php(244): CModule->__get('authManager')
+#4 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(43): SrbacModule->isInstalled()
+#5 C:\wamp\framework\web\CController.php(307): AuthitemController->beforeAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('frontpage')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/frontpage
+---
+2012/12/17 14:55:30 [error] [exception.CException] exception 'CException' with message 'Alias "modules.srbac.components.SDbAuthManager" is invalid. Make sure it points to an existing directory or file.' in C:\wamp\framework\YiiBase.php:343
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('modules.srbac.c...', true)
+#1 C:\wamp\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#2 C:\wamp\framework\base\CModule.php(104): CModule->getComponent('authManager')
+#3 C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php(244): CModule->__get('authManager')
+#4 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(43): SrbacModule->isInstalled()
+#5 C:\wamp\framework\web\CController.php(307): AuthitemController->beforeAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('frontpage')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/frontpage
+---
+2012/12/17 14:55:48 [error] [exception.CException] exception 'CException' with message 'Alias "modules.srbac.components.SDbAuthManager" is invalid. Make sure it points to an existing directory or file.' in C:\wamp\framework\YiiBase.php:343
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('modules.srbac.c...', true)
+#1 C:\wamp\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#2 C:\wamp\framework\base\CModule.php(104): CModule->getComponent('authManager')
+#3 C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php(244): CModule->__get('authManager')
+#4 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(43): SrbacModule->isInstalled()
+#5 C:\wamp\framework\web\CController.php(307): AuthitemController->beforeAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('frontpage')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/frontpage
+---
+2012/12/17 15:01:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:01:18 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:01:18 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php(277): spl_autoload_call()
+#1 C:\wamp\www\CI20\protected\modules\srbac\components\Helper.php(423): SrbacModule->getUserModel()
+#2 C:\wamp\www\CI20\protected\modules\srbac\views\authitem\install\install.php(103): checkInstall()
+#3 C:\wamp\framework\web\CBaseController.php(127): require()
+#4 C:\wamp\framework\web\CBaseController.php(96): AuthitemController->renderInternal()
+#5 C:\wamp\framework\web\CController.php(870): AuthitemController->renderFile()
+#6 C:\wamp\framework\web\CController.php(783): AuthitemController->renderPartial()
+#7 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(495): AuthitemController->render()
+#8 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionInstall()
+#9 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\wamp\framework\web\CController.php(287): AuthitemController->runAction()
+#11 C:\wamp\framework\web\CController.php(266): AuthitemController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): AuthitemController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/srbac/authitem/install
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (277)
+in C:\wamp\www\CI20\protected\modules\srbac\components\Helper.php (423)
+in C:\wamp\www\CI20\protected\modules\srbac\views\authitem\install\install.php (103)
+2012/12/17 15:02:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:04:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:06:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:06:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (43)
+2012/12/17 15:07:48 [error] [php] Undefined variable: valuesArray (C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php:571)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(287): AuthitemController->runAction()
+#1 C:\wamp\framework\web\CController.php(266): AuthitemController->runActionWithFilters()
+#2 C:\wamp\framework\web\CWebApplication.php(283): AuthitemController->run()
+#3 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/srbac/authitem/autocomplete?q=log&limit=10&timestamp=1355756867128
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (571)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 15:07:48 [error] [php] Undefined variable: valuesArray (C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php:571)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(287): AuthitemController->runAction()
+#1 C:\wamp\framework\web\CController.php(266): AuthitemController->runActionWithFilters()
+#2 C:\wamp\framework\web\CWebApplication.php(283): AuthitemController->run()
+#3 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/srbac/authitem/autocomplete?q=logi&limit=10&timestamp=1355756867596
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (571)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 15:07:49 [error] [php] Undefined variable: valuesArray (C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php:571)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(287): AuthitemController->runAction()
+#1 C:\wamp\framework\web\CController.php(266): AuthitemController->runActionWithFilters()
+#2 C:\wamp\framework\web\CWebApplication.php(283): AuthitemController->run()
+#3 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/srbac/authitem/autocomplete?q=login&limit=10&timestamp=1355756867924
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (571)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:00:50 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'IT-User Manager' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `itemchildren` (`parent`, `child`) VALUES (:parent, :child).
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (109)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php (198)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:00:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'IT-User Manager' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `itemchildren` (`parent`, `child`) VALUES (:parent, :child)' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1178): CDbCommand->execute(Array)
+#1 C:\wamp\framework\web\auth\CDbAuthManager.php(166): CDbCommand->insert('itemchildren', Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(109): CDbAuthManager->addItemChild('IT', 'User Manager')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(198): AuthitemController->_assignChild('IT', Array)
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAssign()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('assign')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/assign?assignTasks=1
+HTTP_REFERER=http://ci2/srbac/authitem/assign
+---
+2012/12/17 19:06:31 [warning] [application] Failed to set unsafe attribute "username" of "LoginForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (62)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:06:31 [warning] [application] Failed to set unsafe attribute "password" of "LoginForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (62)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:06:31 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.Username" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\validators\CRequiredValidator.php(52): CComponent->__get('Username')
+#1 C:\wamp\framework\validators\CValidator.php(214): CRequiredValidator->validateAttribute(Object(LoginForm), 'Username')
+#2 C:\wamp\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#3 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(64): CModel->validate()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('login')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/login/...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/security/login/login
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/17 19:08:27 [warning] [application] Failed to set unsafe attribute "username" of "LoginForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (62)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:08:27 [warning] [application] Failed to set unsafe attribute "password" of "LoginForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (62)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:08:27 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.Username" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\validators\CRequiredValidator.php(52): CComponent->__get('Username')
+#1 C:\wamp\framework\validators\CValidator.php(214): CRequiredValidator->validateAttribute(Object(LoginForm), 'Username')
+#2 C:\wamp\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#3 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(64): CModel->validate()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('login')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/login/...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/security/login/login
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/17 19:28:12 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'subjectud' doesn't exist in table. The SQL statement executed was: CREATE TABLE `ci_trouble_tickets` (
+	`ticketid` INT(10) NOT NULL AUTO_INCREMENT,
+	`openedby` INT(11) NOT NULL,
+	`opendate` DATE NOT NULL,
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	`closedByUserid` INT(11) NULL,
+	`closedate` DATE NULL,
+	PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`),
+	INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
+					FOREIGN KEY (`openedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
+					FOREIGN KEY (`closedbyuserid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectud` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:28:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'subjectud' doesn't exist in table. The SQL statement executed was: CREATE TABLE `ci_trouble_tickets` (
+	`ticketid` INT(10) NOT NULL AUTO_INCREMENT,
+	`openedby` INT(11) NOT NULL,
+	`opendate` DATE NOT NULL,
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	`closedByUserid` INT(11) NULL,
+	`closedate` DATE NULL,
+	PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`),
+	INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
+					FOREIGN KEY (`openedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
+					FOREIGN KEY (`closedbyuserid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectud` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_trouble_tick...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(187): CDbMigration->createTable('ci_trouble_tick...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:30:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_roles' already exists. The SQL statement executed was: CREATE TABLE `ci_roles` (
+	`roleid` INT(3) NOT NULL AUTO_INCREMENT,
+	`rolename` VARCHAR(35) NOT NULL,
+	PRIMARY KEY (`roleid`),
+	UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:30:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_roles' already exists. The SQL statement executed was: CREATE TABLE `ci_roles` (
+	`roleid` INT(3) NOT NULL AUTO_INCREMENT,
+	`rolename` VARCHAR(35) NOT NULL,
+	PRIMARY KEY (`roleid`),
+	UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_roles', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(30): CDbMigration->createTable('ci_roles', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:31:18 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_roles' already exists. The SQL statement executed was: CREATE TABLE `ci_roles` (
+	`roleid` INT(3) NOT NULL AUTO_INCREMENT,
+	`rolename` VARCHAR(35) NOT NULL,
+	PRIMARY KEY (`roleid`),
+	UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:31:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_roles' already exists. The SQL statement executed was: CREATE TABLE `ci_roles` (
+	`roleid` INT(3) NOT NULL AUTO_INCREMENT,
+	`rolename` VARCHAR(35) NOT NULL,
+	PRIMARY KEY (`roleid`),
+	UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_roles', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(30): CDbMigration->createTable('ci_roles', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:31:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'ci2.ci_category_subject_bridge' (errno: 150). The SQL statement executed was: CREATE TABLE `ci_category_subject_bridge` (
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	PRIMARY KEY (`categoryid`, `subjectid`),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`sategoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:31:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'ci2.ci_category_subject_bridge' (errno: 150). The SQL statement executed was: CREATE TABLE `ci_category_subject_bridge` (
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	PRIMARY KEY (`categoryid`, `subjectid`),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`sategoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_category_sub...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(207): CDbMigration->createTable('ci_category_sub...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:32:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_trouble_tickets' already exists. The SQL statement executed was: CREATE TABLE `ci_trouble_tickets` (
+	`ticketid` INT(10) NOT NULL AUTO_INCREMENT,
+	`openedby` INT(11) NOT NULL,
+	`opendate` DATE NOT NULL,
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	`closedByUserid` INT(11) NULL,
+	`closedate` DATE NULL,
+	PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`),
+	INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
+					FOREIGN KEY (`openedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
+					FOREIGN KEY (`closedbyuserid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:32:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_trouble_tickets' already exists. The SQL statement executed was: CREATE TABLE `ci_trouble_tickets` (
+	`ticketid` INT(10) NOT NULL AUTO_INCREMENT,
+	`openedby` INT(11) NOT NULL,
+	`opendate` DATE NOT NULL,
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	`closedByUserid` INT(11) NULL,
+	`closedate` DATE NULL,
+	PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`),
+	INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC),
+	INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
+					FOREIGN KEY (`openedby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
+					FOREIGN KEY (`closedbyuserid` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_trouble_tick...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(188): CDbMigration->createTable('ci_trouble_tick...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:33:18 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'ci2.ci_category_subject_bridge' (errno: 150). The SQL statement executed was: CREATE TABLE `ci_category_subject_bridge` (
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	PRIMARY KEY (`categoryid`, `subjectid`),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`sategoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/17 19:33:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'ci2.ci_category_subject_bridge' (errno: 150). The SQL statement executed was: CREATE TABLE `ci_category_subject_bridge` (
+	`categoryid` INT(3) NOT NULL,
+	`subjectid` INT(3) NOT NULL,
+	PRIMARY KEY (`categoryid`, `subjectid`),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC),
+	INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC),
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
+					FOREIGN KEY (`categoryid` )
+					REFERENCES `ci2`.`ci_ticket_categories` (`sategoryid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
+					FOREIGN KEY (`subjectid` )
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_category_sub...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(207): CDbMigration->createTable('ci_category_sub...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/17 19:38:18 [warning] [application] Failed to set unsafe attribute "MiddleName" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:38:18 [warning] [application] Failed to set unsafe attribute "HireDate" of "RegisterForm".
+in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (48)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/17 19:42:39 [error] [exception.CDbException] exception 'CDbException' with message 'Table "ci_user_info" does not have a column named "Username".' in C:\wamp\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1458): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\wamp\www\CI20\protected\modules\security\components\UserIdentity.php(19): CActiveRecord->findByAttributes(Array)
+#2 C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php(50): UserIdentity->authenticate()
+#3 C:\wamp\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#4 C:\wamp\framework\validators\CValidator.php(214): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 C:\wamp\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#6 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(64): CModel->validate()
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('login')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/login/...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/security/login/login
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/17 19:58:51 [error] [exception.CException] exception 'CException' with message 'Property "Departments.DepartmentID" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('DepartmentID')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('DepartmentID')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1772): CHtml::value(Object(Departments), 'DepartmentID')
+#3 C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php(65): CHtml::listData(Array, 'DepartmentID', 'DepartmentName')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): RegistrationController->actionRegister()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('register')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/regist...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/security/registration/register
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/17 20:02:35 [error] [exception.CException] exception 'CException' with message 'Property "RegisterForm.FirstName" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\web\helpers\CHtml.php(2158): CComponent->__get('FirstName')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1887): CHtml::resolveValue(Object(RegisterForm), 'FirstName')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1217): CHtml::activeInputField('text', Object(RegisterForm), 'FirstName', Array)
+#3 C:\wamp\framework\web\widgets\CActiveForm.php(658): CHtml::activeTextField(Object(RegisterForm), 'FirstName', Array)
+#4 C:\wamp\www\CI20\protected\modules\security\views\registration\register.php(20): CActiveForm->textField(Object(RegisterForm), 'FirstName')
+#5 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#6 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#7 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#8 C:\wamp\framework\web\CController.php(783): CController->renderPartial('register', Array, true)
+#9 C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php(67): CController->render('register', Array)
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): RegistrationController->actionRegister()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\wamp\framework\web\CWebApplication.php(283): CController->run('register')
+#20 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/regist...')
+#21 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/security/registration/register
+HTTP_REFERER=http://ci2/security/login/login
+---

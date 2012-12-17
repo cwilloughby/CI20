@@ -7,15 +7,15 @@
  */
 class AddUserForm extends CFormModel
 {
-	public $Username;
-	public $FirstName;
-	public $LastName;
-	public $MiddleName;
-	public $Email;
-	public $PhoneExt;
-	public $DepartmentID;
-	public $RoleID;
-	public $HireDate;
+	public $username;
+	public $firstname;
+	public $lastname;
+	public $middlename;
+	public $email;
+	public $phoneext;
+	public $departmentid;
+	public $roleid;
+	public $hiredate;
 	
 	private $_identity;
 
@@ -25,9 +25,9 @@ class AddUserForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('Username, FirstName, LastName, Email, PhoneExt, DepartmentID, RoleID', 'required'),
-			array('Email', 'email'),
-			array('PhoneExt', 'numerical', 'integerOnly'=>true),
+			array('username, firstname, lastname, email, phoneext, Departmentid, roleid', 'required'),
+			array('email', 'email'),
+			array('phoneext', 'numerical', 'integerOnly'=>true),
 		);
 	}
 
@@ -37,15 +37,15 @@ class AddUserForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'Username'=>'Username',
-			'FirstName'=>'First Name',
-			'LastName'=>'Last Name',
-			'MiddleName'=>'Middle Name',
-			'Email'=>'Email',
-			'PhoneExt'=>'Phone Ext',
-			'DepartmentID'=>'Department',
-			'RoleID'=>'Role',
-			'HireDate'=>'Hire Date',
+			'username'=>'Username',
+			'firstname'=>'First Name',
+			'lastname'=>'Last Name',
+			'middlename'=>'Middle Name',
+			'email'=>'Email',
+			'phoneext'=>'Phone Ext',
+			'departmentid'=>'Department',
+			'roleid'=>'Role',
+			'hiredate'=>'Hire Date',
 		);
 	}
 }

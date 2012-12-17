@@ -7,13 +7,13 @@
  */
 class RegisterForm extends CFormModel
 {
-	public $FirstName;
-	public $LastName;
-	public $MiddleName;
-	public $Email;
-	public $PhoneExt;
-	public $DepartmentID;
-	public $HireDate;
+	public $firstname;
+	public $lastname;
+	public $middlename;
+	public $email;
+	public $phoneext;
+	public $departmentid;
+	public $hiredate;
 	
 	private $_identity;
 
@@ -24,8 +24,8 @@ class RegisterForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('FirstName, LastName, Email, PhoneExt, DepartmentID', 'required'),
-			array('Email', 'email'),
+			array('firstname, lastname, email, phoneext, departmentid', 'required'),
+			array('email', 'email'),
 			array('PhoneExt', 'numerical', 'integerOnly'=>true),
 		);
 	}
@@ -36,13 +36,13 @@ class RegisterForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'FirstName'=>'First Name',
-			'LastName'=>'Last Name',
-			'MiddleName'=>'Middle Name',
-			'Email'=>'Email',
-			'PhoneExt'=>'Phone Ext',
-			'DepartmentID'=>'Department',
-			'HireDate'=> 'Hire Date',
+			'firstname'=>'First Name',
+			'lastname'=>'Last Name',
+			'middlename'=>'Middle Name',
+			'email'=>'Email',
+			'phoneext'=>'Phone Ext',
+			'departmentid'=>'Department',
+			'hiredate'=> 'Hire Date',
 		);
 	}
 }

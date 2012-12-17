@@ -51,18 +51,18 @@ class RegistrationController extends Controller
 				// Form inputs are valid.
 				// Redirect to the email controller's register email action in the email module.
 				$this->redirect(array('/email/email/registeremail',
-							'FirstName'=>$model->FirstName,
-							'LastName'=>$model->LastName,
-							'MiddleName'=>$model->MiddleName,
-							'Email'=>$model->Email,
-							'PhoneExt'=>$model->PhoneExt,
-							'DepartmentID'=>$model->DepartmentID,
-							'HireDate'=>$model->HireDate));
+							'firstname'=>$model->firstname,
+							'lastname'=>$model->lastname,
+							'middlename'=>$model->middlename,
+							'email'=>$model->email,
+							'phoneext'=>$model->phoneext,
+							'departmentid'=>$model->departmentid,
+							'hiredate'=>$model->hiredate));
 			}
 		}
 		
 		$departments=Departments::model()->findAll();
-		$departments = array_merge(array(""=>""),CHtml::listData($departments,'DepartmentID','DepartmentName'));
+		$departments = array_merge(array(""=>""),CHtml::listData($departments,'departmentid','departmentname'));
 		
 		$this->render('register',array('model'=>$model, 'departments'=>$departments));
 	}
@@ -80,13 +80,13 @@ class RegistrationController extends Controller
 				// Redirect to the email controller's add email action in the email module.
 				$this->redirect(
 						array('/email/email/addemail', 
-							'FirstName'=>$model->FirstName,
-							'LastName'=>$model->LastName,
-							'MiddleName'=>$model->MiddleName,
-							'Email'=>$model->Email,
-							'PhoneExt'=>$model->PhoneExt,
-							'DepartmentID'=>$model->DepartmentID,
-							'HireDate'=>$model->HireDate,
+							'firstname'=>$model->firstname,
+							'lastname'=>$model->lastname,
+							'middlename'=>$model->middlename,
+							'email'=>$model->email,
+							'phoneext'=>$model->phoneext,
+							'departmentid'=>$model->departmentid,
+							'hiredate'=>$model->hiredate,
 						));
 			}
 		}
@@ -94,8 +94,8 @@ class RegistrationController extends Controller
 		$departments=Departments::model()->findAll();
         $roles=Roles::model()->findAll();
 		
-		$roles = array_merge(array(""=>""),CHtml::listData($roles,'RoleID','RoleName'));
-		$departments = array_merge(array(""=>""),CHtml::listData($departments,'DepartmentID','DepartmentName'));
+		$roles = array_merge(array(""=>""),CHtml::listData($roles,'roleid','rolename'));
+		$departments = array_merge(array(""=>""),CHtml::listData($departments,'departmentid','departmentname'));
 		
 		$this->render('adduser',array('model'=>$model, 'roles'=>$roles, 'departments'=>$departments));
 	}

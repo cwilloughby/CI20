@@ -4,8 +4,8 @@
  * This is the model class for table "ci_department_tiers".
  *
  * The followings are the available columns in table 'ci_department_tiers':
- * @property integer $MainDepartmentID
- * @property integer $SubDepartmentID
+ * @property integer $maindepartmentid
+ * @property integer $subdepartmentid
  */
 class DepartmentTiers extends CActiveRecord
 {
@@ -35,11 +35,11 @@ class DepartmentTiers extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('MainDepartmentID, SubDepartmentID', 'required'),
-			array('MainDepartmentID, SubDepartmentID', 'numerical', 'integerOnly'=>true),
+			array('maindepartmentid, subdepartmentid', 'required'),
+			array('maindepartmentid, subdepartmentid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('MainDepartmentID, SubDepartmentID', 'safe', 'on'=>'search'),
+			array('maindepartmentid, subdepartmentid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,8 +60,8 @@ class DepartmentTiers extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'MainDepartmentID' => 'Main Department',
-			'SubDepartmentID' => 'Sub Department',
+			'maindepartmentid' => 'Main Department',
+			'subdepartmentid' => 'Sub Department',
 		);
 	}
 
@@ -76,8 +76,8 @@ class DepartmentTiers extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('MainDepartmentID',$this->MainDepartmentID);
-		$criteria->compare('SubDepartmentID',$this->SubDepartmentID);
+		$criteria->compare('maindepartmentid',$this->maindepartmentid);
+		$criteria->compare('subdepartmentid',$this->subdepartmentid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
