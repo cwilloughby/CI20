@@ -37,7 +37,7 @@
 					'visible'=>!Yii::app()->user->isGuest),
 				
 				array('label'=>'Register', 'url'=>array('/security/registration/register')),
-				array('label'=>'Add User', 'url'=>array('/security/registration/adduser')),
+				array('label'=>'Admin', 'url'=>array('/security/userinfo/index')),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
@@ -48,16 +48,6 @@
 	<?php endif?>
 
 	<?php 
-	/*
-	if(Yii::app()->user->checkAccess('IT'))
-	{
-		echo "<p>Pass</p>";
-	}
-	else
-	{
-		echo "<p>Fail</p>";	
-	}
-	*/
 	echo $content;
 	?>
 

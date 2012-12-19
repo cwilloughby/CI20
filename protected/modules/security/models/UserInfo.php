@@ -53,7 +53,7 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required'),
+			array('firstname, lastname, username, password, email, phoneext, active', 'required'),
 			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
