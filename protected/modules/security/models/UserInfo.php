@@ -13,7 +13,6 @@
  * @property string $email
  * @property integer $phoneext
  * @property integer $departmentid
- * @property integer $roleid
  * @property string $hiredate
  * @property integer $active
  *
@@ -55,7 +54,7 @@ class UserInfo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required'),
-			array('phoneext, departmentid, roleid, active', 'numerical', 'integerOnly'=>true),
+			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
 			array('middlename', 'length', 'max'=>45),
@@ -64,7 +63,7 @@ class UserInfo extends CActiveRecord
 			array('email', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, roleid, hiredate, active', 'safe', 'on'=>'search'),
+			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -100,7 +99,6 @@ class UserInfo extends CActiveRecord
 			'email' => 'Email',
 			'phoneext' => 'Phone Ext',
 			'departmentid' => 'Department',
-			'roleid' => 'Role',
 			'hiredate' => 'Hire Date',
 		);
 	}
@@ -116,18 +114,17 @@ class UserInfo extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('UserID',$this->UserID);
-		$criteria->compare('FirstName',$this->FirstName,true);
-		$criteria->compare('LastName',$this->LastName,true);
-		$criteria->compare('MiddleName',$this->MiddleName,true);
-		$criteria->compare('Username',$this->Username,true);
-		$criteria->compare('Password',$this->Password,true);
-		$criteria->compare('Email',$this->Email,true);
-		$criteria->compare('PhoneExt',$this->PhoneExt);
-		$criteria->compare('DepartmentID',$this->DepartmentID);
-		$criteria->compare('RoleID',$this->RoleID);
-		$criteria->compare('HireDate',$this->HireDate,true);
-		$criteria->compare('Active',$this->Active);
+		$criteria->compare('userid',$this->userid);
+		$criteria->compare('firstname',$this->firstname,true);
+		$criteria->compare('lastname',$this->lastname,true);
+		$criteria->compare('middlename',$this->middlename,true);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('phoneext',$this->phoneext);
+		$criteria->compare('departmentid',$this->departmentid);
+		$criteria->compare('hiredate',$this->hiredate,true);
+		$criteria->compare('active',$this->active);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -13,32 +13,6 @@ class RegistrationController extends Controller
 		);
 	}
 	
-	/*
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform the 'register' and 'mail' action
-				'actions'=>array('register', 'mail'),
-				'users'=>array('*'),
-				'deniedCallback'=>'/security/login/login',
-			),
-			array('allow', // Allow IT user to perform the 'adduser' action
-				'actions'=>array('adduser'),
-				'roles'=>array('IT'),
-				'message'=>'Access Denied.',
-			),
-			array('deny',  // Deny everything else.
-				'users'=>array('*'),
-				'message'=>'Access Denied.',
-			),
-			
-		);
-	}
-	
 	public function actionRegister()
 	{
 		$model = new RegisterForm();
@@ -76,27 +50,34 @@ class RegistrationController extends Controller
 			$model->attributes=$_POST['AddUserForm'];
 			if($model->validate())
 			{
+				$user=new UserInfo;
+				
+				$user->attributes = $model->attributes;
+				$user->departmentid += 1;
+				$user->password = sha1($model->username);
+				
+				if($user->save())
+					$this->redirect(array('view','id'=>$model->id));
+				else
+					echo "Something broke.";
+				
 				// form inputs are valid. 
 				// Redirect to the email controller's add email action in the email module.
 				$this->redirect(
-						array('/email/email/addemail', 
-							'firstname'=>$model->firstname,
-							'lastname'=>$model->lastname,
-							'middlename'=>$model->middlename,
-							'email'=>$model->email,
-							'phoneext'=>$model->phoneext,
-							'departmentid'=>$model->departmentid,
-							'hiredate'=>$model->hiredate,
-						));
+					array('/email/email/addemail', 
+						'firstname'=>$model->firstname,
+						'lastname'=>$model->lastname,
+						'middlename'=>$model->middlename,
+						'email'=>$model->email,
+						'phoneext'=>$model->phoneext,
+						'departmentid'=>$model->departmentid,
+						'hiredate'=>$model->hiredate,
+					));
 			}
 		}
 		
-		$departments=Departments::model()->findAll();
-        $roles=Roles::model()->findAll();
+		$departments=array_merge(array(""=>""),CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname'));
 		
-		$roles = array_merge(array(""=>""),CHtml::listData($roles,'roleid','rolename'));
-		$departments = array_merge(array(""=>""),CHtml::listData($departments,'departmentid','departmentname'));
-		
-		$this->render('adduser',array('model'=>$model, 'roles'=>$roles, 'departments'=>$departments));
+		$this->render('adduser',array('model'=>$model, 'departments'=>$departments));
 	}
 }

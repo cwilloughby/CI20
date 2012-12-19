@@ -21,14 +21,6 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 	
 	public function up()
 	{
-		$this->createTable('ci_roles', array(
-				'roleid' => 'INT(3) NOT NULL AUTO_INCREMENT',
-				'rolename' => 'VARCHAR(35) NOT NULL',
-				'PRIMARY KEY (`roleid`)',
-				'UNIQUE INDEX `rolename_UNIQUE` (`rolename` ASC)'
-			), 
-			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
-		
 		$this->createTable('ci_tips', array(	
 				'tipid' => 'INT(3) NOT NULL',
 				'tip' => 'VARCHAR(100) NULL',
@@ -37,11 +29,11 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_document_type', array(
-					'typeid' => 'INT(3) NOT NULL',
-					'typename' => 'VARCHAR(45) NULL',
-					'PRIMARY KEY (`typeID`)'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+				'typeid' => 'INT(3) NOT NULL',
+				'typename' => 'VARCHAR(45) NULL',
+				'PRIMARY KEY (`typeID`)'
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_messages', array(
 				'messageid' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -96,19 +88,12 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'email' => 'VARCHAR(100) NOT NULL',
 				'phoneext' => 'INT(5) NOT NULL',
 				'departmentid' => 'INT(2) NOT NULL',
-				'roleid' => 'INT(2) NOT NULL',
-				'hireDate' => 'DATE NULL',
+				'hiredate' => 'DATE NULL',
 				'active' => 'TINYINT(1) NULL',
 				'PRIMARY KEY (`userid`)',
 				'INDEX `rmail` (`email` ASC, `phoneext` ASC)',
 				'INDEX `username` (`username` ASC)',
-				'INDEX `fk_ci_user_info_ci_roles_idx` (`roleid` ASC)',
 				'INDEX `fk_ci_user_info_ci_departments1_idx` (`departmentid` ASC)',
-				'CONSTRAINT `fk_ci_user_info_ci_roles`
-					FOREIGN KEY (`roleid` )
-					REFERENCES `ci2`.`ci_roles` (`roleid` )
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_user_info_ci_departments1`
 					FOREIGN KEY (`departmentid` )
 					REFERENCES `ci2`.`ci_departments` (`departmentid` )
@@ -120,7 +105,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		$this->createTable('ci_departments', array(
 				'departmentid' => 'INT(2) NOT NULL AUTO_INCREMENT',
 				'departmentname' => 'VARCHAR(35) NOT NULL',
-				'supervisorid' => 'INT(11) NOT NULL',
+				'supervisorid' => 'INT(11)',
 				'PRIMARY KEY (`departmentid`)',
 				'INDEX `fk_ci_departments_ci_user_info1_idx` (`supervisorid` ASC)',
 				'CONSTRAINT `fk_ci_departments_ci_user_info1`
@@ -202,8 +187,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_subject_tips', array(
 				'subjectid' => 'INT(3) NOT NULL',
@@ -221,8 +206,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_tips` (`tipid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_computer_inventory', array(
 				'computerid' => 'INT(11) NOT NULL AUTO_INCREMENT',
@@ -239,8 +224,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_evaluations', array(
 				'evaluationid' => 'INT(11) NOT NULL',
@@ -260,8 +245,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_evaluation_answers', array(
 				'evaluationid' => 'INT(11) NOT NULL',
@@ -280,8 +265,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_evaluation_questions` (`questionid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_documents', array(
 				'documentid' => 'INT NOT NULL',
@@ -296,8 +281,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_user_info` (`userid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_message_documents', array(
 				'messageid' => 'INT(11) NOT NULL',
@@ -315,8 +300,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_documents` (`documentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_document_processor', array(
 				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
@@ -343,14 +328,13 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 					REFERENCES `ci2`.`ci_document_type` (`typeid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 	}
 
 	public function down()
 	{	
 		// Drop the tables.
-		$this->dropTable('ci_roles');
 		$this->dropTable('ci_user_info');
 		$this->dropTable('ci_departments');
 		$this->dropTable('ci_department_tiers');

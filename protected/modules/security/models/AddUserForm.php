@@ -14,10 +14,7 @@ class AddUserForm extends CFormModel
 	public $email;
 	public $phoneext;
 	public $departmentid;
-	public $roleid;
 	public $hiredate;
-	
-	private $_identity;
 
 	/**
 	 * Declares the validation rules.
@@ -25,7 +22,7 @@ class AddUserForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('username, firstname, lastname, email, phoneext, Departmentid, roleid', 'required'),
+			array('username, firstname, lastname, email, phoneext, departmentid', 'required'),
 			array('email', 'email'),
 			array('phoneext', 'numerical', 'integerOnly'=>true),
 		);
@@ -44,7 +41,6 @@ class AddUserForm extends CFormModel
 			'email'=>'Email',
 			'phoneext'=>'Phone Ext',
 			'departmentid'=>'Department',
-			'roleid'=>'Role',
 			'hiredate'=>'Hire Date',
 		);
 	}

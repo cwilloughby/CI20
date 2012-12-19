@@ -1,13 +1,13 @@
 <?php 
  return array(
-	'CommentIndex',
-	'PostView',
-	'PostIndex',
 	'SiteCaptcha',
 	'SitePage',
+	'SiteIndex',
 	'SiteError',
 	'SiteContact',
-	'SiteLogin',
-	'SiteLogout'
+	'security@LoginLogin',
+	'security@LoginLogout',
+	'security@RegistrationRegister',
+	'email@EmailRegisteremail'
 );
 ?>

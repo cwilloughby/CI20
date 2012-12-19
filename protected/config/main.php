@@ -46,7 +46,7 @@ return array(
 			//default: srbac.views.authitem.unauthorized, must be an existing alias
 			'notAuthorizedView'=>'srbac.views.authitem.unauthorized', 
 			'alwaysAllowed'=>array( //default: array()
-				'Login', 'Logout', 'SiteIndex', 'SiteAdmin', 'SiteError'
+				'SiteIndex', 'SiteAdmin', 'SiteError'
 			),
 			'userActions'=>array('Show', 'View', 'List'), //default: array()
 			'listBoxNumberOfLines'=>15, //default : 10
@@ -64,7 +64,7 @@ return array(
 	// application components
 	'components'=>array(
 		'user'=>array(
-			'class' => 'WebUser',
+			'class' => 'CWebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>false,
 			'loginUrl'=>array('/security/login/login'),

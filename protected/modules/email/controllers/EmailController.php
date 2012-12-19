@@ -12,33 +12,7 @@ class EmailController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-	
-	/*
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // Allow all users to perform the 'register' and 'mail' action.
-				'actions'=>array('registeremail', 'recoveryemail', 'helpopenemail'),
-				'users'=>array('*'),
-				'deniedCallback'=>'/security/login/login',
-			),
-			array('allow', // Allow IT users to perform the 'adduser' action.
-				'actions'=>array('addemail'),
-				'roles'=>array('IT'),
-				'message'=>'Access Denied.',
-			),
-			array('deny',  // Deny everything else.
-				'users'=>array('*'),
-				'message'=>'Access Denied.',
-			),
 		);
 	}
 	
@@ -81,6 +55,11 @@ class EmailController extends Controller
 	}
 
 	public function actionHelpopenemail()
+	{
+		
+	}
+	
+	public function actionHelpcloseemail()
 	{
 		
 	}

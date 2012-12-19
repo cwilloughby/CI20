@@ -30,12 +30,8 @@ class UserIdentity extends CUserIdentity
 		}
         else
         {
-			// Search the Role table for a matching primary key inorder to get the name of the user's role.
-			$role = Roles::model()->findByPk($record->roleid);
-			
             $this->_id=$record->userid;
 
-            $this->setState('roles', $role->rolename);
             $this->errorCode=self::ERROR_NONE;
         }
         return !$this->errorCode;

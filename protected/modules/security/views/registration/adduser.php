@@ -63,12 +63,6 @@
 		<?php echo $form->error($model,'departmentid'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'roleid'); ?>
-		<?php echo $form->dropDownList($model,'roleid', $roles); ?>
-		<?php echo $form->error($model,'roleid'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
