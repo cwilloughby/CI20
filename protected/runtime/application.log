@@ -6657,3 +6657,28 @@ in C:\wamp\www\CI20\index.php (13)
 2012/12/18 22:00:35 [warning] [application] Failed to set unsafe attribute "hiredate" of "AddUserForm".
 in C:\wamp\www\CI20\protected\modules\security\controllers\RegistrationController.php (50)
 in C:\wamp\www\CI20\index.php (13)
+2012/12/19 14:14:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1374f974/srbac.css".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1374f974...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1374f974/srbac.css
+HTTP_REFERER=http://ci2/
+---
+2012/12/19 14:14:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/19 14:14:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
