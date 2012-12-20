@@ -53,7 +53,7 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('firstname, lastname, username, password, email, phoneext, active', 'required'),
+			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required'),
 			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
@@ -61,6 +61,7 @@ class UserInfo extends CActiveRecord
 			array('username', 'length', 'max'=>41),
 			array('password', 'length', 'max'=>128),
 			array('email', 'length', 'max'=>100),
+			array('email', 'email'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),

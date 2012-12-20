@@ -88,7 +88,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'email' => 'VARCHAR(100) NOT NULL',
 				'phoneext' => 'INT(5) NOT NULL',
 				'departmentid' => 'INT(2) NOT NULL',
-				'hiredate' => 'DATE NULL',
+				'hiredate' => 'DATE NOT NULL',
 				'active' => 'TINYINT(1) NULL',
 				'PRIMARY KEY (`userid`)',
 				'INDEX `rmail` (`email` ASC, `phoneext` ASC)',
