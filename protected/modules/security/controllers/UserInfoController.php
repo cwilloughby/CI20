@@ -96,7 +96,7 @@ class UserInfoController extends Controller
 		if(isset($_POST['UserInfo']))
 		{
 			$model->attributes=$_POST['UserInfo'];
-			if($model->save())
+			if($model->update())
 				$this->redirect(array('view','id'=>$model->userid));
 		}
 		
@@ -114,7 +114,7 @@ class UserInfoController extends Controller
 		$model = $this->loadModel($id);
 		$model->active = 2;
 		
-		if($model->save())
+		if($model->update())
 			$this->redirect(array('view','id'=>$model->userid));
 	}
 
@@ -127,8 +127,12 @@ class UserInfoController extends Controller
 		$model = $this->loadModel($id);
 		$model->active = 1;
 		
-		if($model->save())
+		if($model->update())
 			$this->redirect(array('view','id'=>$model->userid));
+		else
+		{
+			echo "Something broke";
+		}
 	}
 	
 	/*

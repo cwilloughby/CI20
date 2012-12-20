@@ -42,3 +42,5 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+<a href="/../security/password/recoveryrequest">Forgot your password?</a>

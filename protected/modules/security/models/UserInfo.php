@@ -27,6 +27,9 @@
  */
 class UserInfo extends CActiveRecord
 {
+	public $oldpassword;
+	public $password_repeat;
+	
 	/*
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -53,17 +56,22 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required'),
+			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required', 'on'=>'insert'),
+			array('username', 'required', 'on'=>'request'),
+			array('oldpassword, password, password_repeat', 'required', 'on'=>'change'),
+			array('password, password_repeat', 'required', 'on'=>'recovery'),
+			array('oldpassword', 'checkOld', 'on'=>'change'),
 			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
 			array('middlename', 'length', 'max'=>45),
 			array('username', 'length', 'max'=>41),
-			array('username', 'usernameDoesNotExist'),
+			array('username', 'usernameDoesNotExist', 'on'=>'insert'),
 			array('password', 'length', 'max'=>128),
+			array('password', 'compare', 'on'=>'change'),
 			array('email', 'length', 'max'=>100),
 			array('email', 'email'),
-			array('email', 'emailDoesNotExist'),
+			array('email', 'emailDoesNotExist', 'on'=>'insert'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
@@ -83,6 +91,17 @@ class UserInfo extends CActiveRecord
 		if($this->find("username = '$this->username'"))
 		{
 			$this->addError($attribute, 'That username already exists.');
+		}
+	}
+	
+	public function checkOld($attribute, $params)
+	{
+		$user = Yii::app()->user->getName();
+		$userinfo = $this->find("username = '$user'");
+		
+		if($userinfo->password != sha1($this->oldpassword))
+		{
+			$this->addError($attribute, 'Old password is incorrect.');
 		}
 	}
 	

@@ -2,8 +2,8 @@
 
 /**
  * RegisterForm class.
- * RegisterForm is the data structure for keeping user login form data. 
- * It is used by the 'login' action of 'LoginController'.
+ * RegisterForm is the data structure for keeping register form data. 
+ * It is used by the 'register' action of 'RegistrationController'.
  */
 class RegisterForm extends CFormModel
 {

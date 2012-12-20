@@ -7,7 +7,10 @@
 	'SiteContact',
 	'security@LoginLogin',
 	'security@LoginLogout',
+	'security@PasswordRecoveryrequest',
+	'security@PasswordRecovery',
 	'security@RegistrationRegister',
-	'email@EmailRegisteremail'
+	'email@EmailRegisteremail',
+	'email@EmailRecoveryemail'
 );
 ?>
