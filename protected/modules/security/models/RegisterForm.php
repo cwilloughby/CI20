@@ -14,8 +14,6 @@ class RegisterForm extends CFormModel
 	public $phoneext;
 	public $departmentid;
 	public $hiredate;
-	
-	private $_identity;
 
 	/**
 	 * Declares the validation rules.
@@ -24,9 +22,10 @@ class RegisterForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('firstname, lastname, email, phoneext, departmentid', 'required'),
+			array('firstname, lastname, email, phoneext, departmentid, hiredate', 'required'),
 			array('email', 'email'),
-			array('PhoneExt', 'numerical', 'integerOnly'=>true),
+			array('email', 'doesNotExist'),
+			array('phoneext', 'numerical', 'integerOnly'=>true),
 		);
 	}
 
@@ -44,5 +43,13 @@ class RegisterForm extends CFormModel
 			'departmentid'=>'Department',
 			'hiredate'=> 'Hire Date',
 		);
+	}
+	
+	public function doesNotExist($attribute, $params)
+	{
+		if(UserInfo::model()->find("email = '$this->email'"))
+		{
+			$this->addError($attribute, 'That ' . $attribute . " already exists.");
+		}
 	}
 }

@@ -21,7 +21,7 @@ class RegistrationController extends Controller
 		{
 			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate())
-			{
+			{		
 				// Form inputs are valid.
 				// Redirect to the email controller's register email action in the email module.
 				$this->redirect(array('/email/email/registeremail',
@@ -31,7 +31,7 @@ class RegistrationController extends Controller
 							'email'=>$model->email,
 							'phoneext'=>$model->phoneext,
 							'departmentid'=>$model->departmentid,
-							'hiredate'=>$model->hiredate));
+							'hiredate'=>urlencode($model->hiredate)));
 			}
 		}
 		

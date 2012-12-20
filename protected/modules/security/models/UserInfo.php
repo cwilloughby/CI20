@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This is the model class for table "ci_user_info".
  *
  * The followings are the available columns in table 'ci_user_info':
@@ -27,7 +27,7 @@
  */
 class UserInfo extends CActiveRecord
 {
-	/**
+	/*
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return UserInfo the static model class
@@ -37,7 +37,7 @@ class UserInfo extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/**
+	/*
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -45,7 +45,7 @@ class UserInfo extends CActiveRecord
 		return 'ci_user_info';
 	}
 
-	/**
+	/*
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -59,16 +59,34 @@ class UserInfo extends CActiveRecord
 			array('lastname', 'length', 'max'=>40),
 			array('middlename', 'length', 'max'=>45),
 			array('username', 'length', 'max'=>41),
+			array('username', 'usernameDoesNotExist'),
 			array('password', 'length', 'max'=>128),
 			array('email', 'length', 'max'=>100),
 			array('email', 'email'),
+			array('email', 'emailDoesNotExist'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
 		);
 	}
-
-	/**
+	
+	public function emailDoesNotExist($attribute, $params)
+	{
+		if($this->find("email = '$this->email'"))
+		{
+			$this->addError($attribute, 'That email already exists.');
+		}
+	}
+	
+	public function usernameDoesNotExist($attribute, $params)
+	{
+		if($this->find("username = '$this->username'"))
+		{
+			$this->addError($attribute, 'That username already exists.');
+		}
+	}
+	
+	/*
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -86,7 +104,7 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/**
+	/*
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -104,7 +122,7 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/**
+	/*
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
@@ -112,7 +130,6 @@ class UserInfo extends CActiveRecord
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('userid',$this->userid);

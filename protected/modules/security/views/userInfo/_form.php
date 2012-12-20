@@ -63,7 +63,6 @@
 			array(
 				'model' => $model,
 				'attribute' => 'hiredate',
-				'language' => 'nl',
 				'options' => array(
 					'showAnim' => 'fold',
 					'dateFormat' => 'yy-mm-dd', 

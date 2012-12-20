@@ -37,9 +37,19 @@ class UserInfoController extends Controller
 	{
 		$model=new UserInfo;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		// Are there GET variables that need to be pulled into the form?
+		if(isset($_GET['firstname']))
+		{
+			$model->firstname = $_GET['firstname'];
+			$model->lastname = $_GET['lastname'];
+			$model->middlename = $_GET['middlename'];
+			$model->email = $_GET['email'];
+			$model->firstname = $_GET['firstname'];
+			$model->phoneext = $_GET['phoneext'];
+			$model->departmentid = $_GET['departmentid'];
+			$model->hiredate = $_GET['hiredate'];
+		}
+		
 		if(isset($_POST['UserInfo']))
 		{
 			$model->attributes=$_POST['UserInfo'];

@@ -28,14 +28,14 @@ class EmailController extends Controller
 		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
 		$this->mail->Subject = "Register Email";
 		
-		$link = "http://ci2/security/registration/adduser"				
-					. '?firstname=' . $_GET['FirstName']
-					. '&lastname=' . $_GET['LastName']
-					. '&middlename=' . $_GET['MiddleName']
-					. '&email=' . $_GET['Email']
-					. '&phone=' . $_GET['PhoneExt']
-					. '&department=' . $_GET['DepartmentID']
-					. '&hiredate=' . $_GET['HireDate'];
+		$link = "http://ci2/security/userinfo/create"				
+					. '?firstname=' . urlencode($_GET['firstname'])
+					. '&lastname=' . urlencode($_GET['lastname'])
+					. '&middlename=' . urlencode($_GET['middlename'])
+					. '&email=' . urlencode($_GET['email'])
+					. '&phoneext=' . urlencode($_GET['phoneext'])
+					. '&departmentid=' . urlencode($_GET['departmentid'])
+					. '&hiredate=' . urlencode($_GET['hiredate']);
 		
 		$this->mail->Body = "Link: " . $link;
 		
