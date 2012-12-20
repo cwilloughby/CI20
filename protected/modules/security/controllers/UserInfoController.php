@@ -48,7 +48,22 @@ class UserInfoController extends Controller
 			$model->active = true;
 			
 			if($model->save())
+			{
+				// Email alert to the new user. Commented out for now.
+				/*
+				$this->redirect(
+					array('/email/email/addemail', 
+						'firstname'=>$model->firstname,
+						'lastname'=>$model->lastname,
+						'middlename'=>$model->middlename,
+						'email'=>$model->email,
+						'phoneext'=>$model->phoneext,
+						'departmentid'=>$model->departmentid,
+						'hiredate'=>$model->hiredate,
+					));	
+				*/
 				$this->redirect(array('view','id'=>$model->userid));
+			}
 		}
 
 		$departments=array_merge(array(""=>""),CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname'));
