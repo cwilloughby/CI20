@@ -16,20 +16,20 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->labelEx($model,'oldpassword'); ?>
+		<?php echo $form->passwordField($model,'oldpassword'); ?>
+		<?php echo $form->error($model,'oldpassword'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->textField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'password_repeat'); ?>
-		<?php echo $form->passwordField($model,'password_repeat',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->passwordField($model,'password_repeat'); ?>
 		<?php echo $form->error($model,'password_repeat'); ?>
 	</div>
 

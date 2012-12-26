@@ -80,7 +80,7 @@ class PasswordController extends Controller
 	}
 	
 	/*
-	 * The password change form. Used when you can remember the password.
+	 * The password change form. Used when you can remember the current password.
 	 */
 	public function actionChange()
 	{
@@ -94,8 +94,13 @@ class PasswordController extends Controller
 			
 			if($model->validate('change'))
 			{
-				// form inputs are valid, do something here
-				return;
+				// Form inputs are valid. Hash the new password and save it in the database.
+				$user = Yii::app()->user->getName();
+				$data = $model->find("username = '$user'");
+				$data->password = sha1($model->password);
+
+				if($data->update())
+					$this->redirect(Yii::app()->homeUrl);
 			}
 		}
 		$this->render('change',array('model'=>$model));

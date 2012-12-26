@@ -35,7 +35,8 @@
 				array('label'=>'Login', 'url'=>array('/security/login/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/security/login/logout'), 
 					'visible'=>!Yii::app()->user->isGuest),
-				
+				array('label'=>'Change Password ('.Yii::app()->user->name.')', 'url'=>array('/security/password/change'), 
+					'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Register', 'url'=>array('/security/registration/register')),
 				array('label'=>'Admin', 'url'=>array('/security/userinfo/index')),
 			),

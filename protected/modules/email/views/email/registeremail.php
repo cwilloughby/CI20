@@ -1,14 +1,7 @@
 <?php
 /* @var $this EmailController */
-
-$this->breadcrumbs=array(
-	'Email'=>array('/email'),
-	'Registeremail',
-);
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
 <p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
+	Your registration form has been submitted. You will be contacted by IT when it is approved.
 </p>

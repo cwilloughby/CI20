@@ -25,8 +25,8 @@ class EmailController extends Controller
 
 		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 		
-		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
-		$this->mail->Subject = "Register Email";
+		$this->mail->AddAddress("ccc.helpdesk@nashville.gov");
+		$this->mail->Subject = "CI Registration Request";
 		
 		$link = "http://ci2/security/userinfo/create"				
 					. '?firstname=' . urlencode($_GET['firstname'])

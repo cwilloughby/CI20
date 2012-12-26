@@ -75,7 +75,7 @@ class UserInfo extends CActiveRecord
 			array('email', 'length', 'max'=>100),
 			array('email', 'email'),
 			array('email', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'email'),
-			array('password_repeat', 'safe'),
+			array('password_repeat, oldpassword', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
@@ -131,6 +131,7 @@ class UserInfo extends CActiveRecord
 			'middleName' => 'Middle Name',
 			'username' => 'Username',
 			'password' => 'Password',
+			'oldpassword' => 'Old Password',
 			'password_repeat' => 'Confirm Password',
 			'email' => 'Email',
 			'phoneext' => 'Phone Ext',
