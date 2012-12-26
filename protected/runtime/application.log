@@ -7622,3 +7622,261 @@ HTTP_REFERER=http://ci2/
 2012/12/20 20:56:48 [warning] [application] Failed to set unsafe attribute "hiredate" of "UserInfo".
 in C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php (55)
 in C:\wamp\www\CI20\index.php (13)
+2012/12/26 17:26:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/26 17:26:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/26 17:35:56 [error] [php] Non-static method CApplication::getSecurityManager() should not be called statically, assuming $this from incompatible context (C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php:27)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): PasswordController->runAction()
+#1 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(266): PasswordController->runActionWithFilters()
+#3 C:\wamp\framework\web\CWebApplication.php(283): PasswordController->run()
+#4 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/password/recoveryrequest
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (27)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 17:36:33 [error] [exception.CException] exception 'CException' with message 'PasswordController and its behaviors do not have a method or closure named "getSecurityManager".' in C:\wamp\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(27): CComponent->__call('getSecurityMana...', Array)
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(27): PasswordController->getSecurityManager()
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recoveryrequest')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/security/password/recoveryrequest
+HTTP_REFERER=http://ci2/security/password/recoveryrequest
+---
+2012/12/26 17:36:40 [error] [exception.CException] exception 'CException' with message 'PasswordController and its behaviors do not have a method or closure named "getSecurityManager".' in C:\wamp\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(27): CComponent->__call('getSecurityMana...', Array)
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(27): PasswordController->getSecurityManager()
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recoveryrequest')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/security/password/recoveryrequest
+HTTP_REFERER=http://ci2/security/password/recoveryrequest
+---
+2012/12/26 17:40:37 [error] [php] Non-static method CSecurityManager::hashData() should not be called statically, assuming $this from incompatible context (C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php:28)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): PasswordController->runAction()
+#1 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(266): PasswordController->runActionWithFilters()
+#3 C:\wamp\framework\web\CWebApplication.php(283): PasswordController->run()
+#4 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/password/recoveryrequest
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (28)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 17:42:29 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.CSecurityManager" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(106): CComponent->__get('CSecurityManage...')
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(28): CModule->__get('CSecurityManage...')
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recoveryrequest')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/security/password/recoveryrequest
+HTTP_REFERER=http://ci2/security/password/recoveryrequest
+---
+2012/12/26 17:48:06 [error] [exception.CException] exception 'CException' with message 'CSecurityManager and its behaviors do not have a method or closure named "computeHMAC".' in C:\wamp\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(28): CComponent->__call('computeHMAC', Array)
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(28): CSecurityManager->computeHMAC('cwilloughby')
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recoveryrequest')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/security/password/recoveryrequest
+HTTP_REFERER=http://ci2/security/password/recoveryrequest
+---
+2012/12/26 18:18:39 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:18:47 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:19:41 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:54:07 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:55:25 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:55:43 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:55:53 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:55:56 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:56:39 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 18:56:51 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:01:52 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:02:03 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:02:14 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:02:31 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:04:06 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:04:19 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:06:45 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:06:51 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:06:57 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:07:09 [warning] [application] Failed to set unsafe attribute "password_repeat" of "UserInfo".
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (52)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:17:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/26 19:28:37 [error] [php] mcrypt_generic(): An empty string was passed (C:\wamp\framework\base\CSecurityManager.php:193)
+Stack trace:
+#0 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#1 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\wamp\framework\web\filters\CFilterChain.php(134): PasswordController->runAction()
+#3 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#4 C:\wamp\framework\web\CController.php(266): PasswordController->runActionWithFilters()
+#5 C:\wamp\framework\web\CWebApplication.php(283): PasswordController->run()
+#6 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/password/recoveryrequest
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (29)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:34:53 [error] [php] mcrypt_generic(): An empty string was passed (C:\wamp\framework\base\CSecurityManager.php:193)
+Stack trace:
+#0 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#1 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\wamp\framework\web\filters\CFilterChain.php(134): PasswordController->runAction()
+#3 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#4 C:\wamp\framework\web\CController.php(266): PasswordController->runActionWithFilters()
+#5 C:\wamp\framework\web\CWebApplication.php(283): PasswordController->run()
+#6 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/password/recoveryrequest
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (29)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:55:59 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cwilloughby' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE username = cwilloughby LIMIT 1.
+in C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php (30)
+in C:\wamp\www\CI20\index.php (13)
+2012/12/26 19:55:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cwilloughby' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE username = cwilloughby LIMIT 1' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(30): CActiveRecord->find('username = cwil...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecoveryrequest()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recoveryrequest')
+#10 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#11 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/security/password/recoveryrequest
+HTTP_REFERER=http://ci2/security/password/recoveryrequest
+---
+2012/12/26 20:16:30 [error] [exception.CDbException] exception 'CDbException' with message 'The active record cannot be updated because it is new.' in C:\wamp\framework\db\ar\CActiveRecord.php:1058
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(68): CActiveRecord->update()
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecovery()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recovery')
+#7 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#8 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
+HTTP_REFERER=http://ci2/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
+---
+2012/12/26 20:17:54 [error] [exception.CDbException] exception 'CDbException' with message 'The active record cannot be updated because it is new.' in C:\wamp\framework\db\ar\CActiveRecord.php:1058
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\PasswordController.php(71): CActiveRecord->update()
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): PasswordController->actionRecovery()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\framework\web\CWebApplication.php(283): CController->run('recovery')
+#7 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/passwo...')
+#8 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
+HTTP_REFERER=http://ci2/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
+---

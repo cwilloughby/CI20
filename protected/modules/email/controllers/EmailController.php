@@ -51,16 +51,38 @@ class EmailController extends Controller
 
 	public function actionRecoveryemail()
 	{
+		$this->mail = new JPhpMailer();
+		$this->mail->IsSMTP();
+		$this->mail->Host = self::HOST;
+
+		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
+		
+		$sec = Yii::app()->getSecurityManager();
+		// Decrypt the email that was passed in the $_GET
+		$email = $sec->decrypt(urldecode($_GET["email"]));
+		
+		// Set the destination addess.
+		$this->mail->AddAddress($email);
+		
+		$this->mail->Subject = "CI Password Recovery";
+		
+		$link = "http://ci2/security/password/recovery"				
+					. '?username=' . urlencode($_GET['username']);
+		
+		$this->mail->Body = "Follow this link to recover your password: " . $link;
+		
+		$this->mail->Send();
+		
 		$this->render('recoveryemail');
 	}
 
 	public function actionHelpopenemail()
 	{
-		
+		$this->render('helpopenemail');
 	}
 	
 	public function actionHelpcloseemail()
 	{
-		
+		$this->render('helpcloseemail');
 	}
 }

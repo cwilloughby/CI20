@@ -12,6 +12,9 @@ class PasswordController extends Controller
 		);
 	}
 	
+	/*
+	 * The password recovery request form. Used when you can't remember the password.
+	 */
 	public function actionRecoveryrequest()
 	{
 		$model=new UserInfo;
@@ -24,33 +27,61 @@ class PasswordController extends Controller
 			
 			if($model->validate())
 			{
-				// Form inputs are valid.
+				$data = $model->find("username = '$model->username'");
+				
+				// Get the security manager so it can be used to encrypt the username and email in the url.
+				$sec = Yii::app()->getSecurityManager();
+				
 				// Redirect to the email controller's recovery email action in the email module.
-				$this->redirect(array('/email/email/recoveryemail', 'username'=>$model->username));
+				$this->redirect(array('/email/email/recoveryemail', 
+					'username'=>urlencode($sec->encrypt($data->username)), 
+					'email'=>urlencode($sec->encrypt($data->email))));
 			}
 		}
 		$this->render('recoveryrequest',array('model'=>$model));
 	}
 	
+	/*
+	 * The password recovery form 
+	 */
 	public function actionRecovery()
 	{
 		$model=new UserInfo;
 
-		if(isset($_POST['UserInfo']))
+		if(isset($_GET["username"]) || isset($_POST['username']))
 		{
-			$model->attributes=$_POST['UserInfo'];
-			// Use different validation rules.
-			$model->scenario = 'recovery';
-			
-			if($model->validate())
+			$sec = Yii::app()->getSecurityManager();
+			$data = $sec->decrypt(urldecode($_GET["username"]));
+			$model->username = $data;
+
+			if(isset($_POST['UserInfo']))
 			{
-				// form inputs are valid, do something here
-				return;
+				$model->attributes=$_POST['UserInfo'];
+				// Use different validation rules.
+				$model->scenario = 'recovery';
+
+				if($model->validate())
+				{
+					// Form inputs are valid. Hash the new password and save it in the database.
+					$data = $model->find("username = '$model->username'");
+					$data->password = sha1($model->password);
+					
+					if($data->update())
+						$this->redirect(Yii::app()->homeUrl);
+				}
 			}
+			$this->render('recovery',array('model'=>$model));
 		}
-		$this->render('recovery',array('model'=>$model));
+		else
+		{
+			// A username was not supplied, redirect back to the homepage.
+			$this->redirect(Yii::app()->homeUrl);
+		}
 	}
 	
+	/*
+	 * The password change form. Used when you can remember the password.
+	 */
 	public function actionChange()
 	{
 		$model=new UserInfo;

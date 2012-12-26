@@ -59,41 +59,38 @@ class UserInfo extends CActiveRecord
 			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required', 'on'=>'insert'),
 			array('username', 'required', 'on'=>'request'),
 			array('oldpassword, password, password_repeat', 'required', 'on'=>'change'),
-			array('password, password_repeat', 'required', 'on'=>'recovery'),
+			array('username, password, password_repeat', 'required', 'on'=>'recovery'),
+			array('username', 'exist', 'on'=>'recovery'),
+			array('username', 'exist', 'on'=>'request'),
 			array('oldpassword', 'checkOld', 'on'=>'change'),
 			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
 			array('middlename', 'length', 'max'=>45),
 			array('username', 'length', 'max'=>41),
-			array('username', 'usernameDoesNotExist', 'on'=>'insert'),
+			array('username', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'username'),
 			array('password', 'length', 'max'=>128),
 			array('password', 'compare', 'on'=>'change'),
+			array('password', 'compare', 'on'=>'recovery'),
 			array('email', 'length', 'max'=>100),
 			array('email', 'email'),
-			array('email', 'emailDoesNotExist', 'on'=>'insert'),
+			array('email', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'email'),
+			array('password_repeat', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
 		);
 	}
 	
-	public function emailDoesNotExist($attribute, $params)
+	public function dataDoesNotExist($attribute, $params)
 	{
-		if($this->find("email = '$this->email'"))
+		if(($params['col'] == 'email' && $this->find("$attribute = '$this->email'"))
+			|| ($params['col'] == 'username' && $this->find("$attribute = '$this->username'")))
 		{
-			$this->addError($attribute, 'That email already exists.');
+			$this->addError($attribute, 'That ' . $attribute . ' already exists.');
 		}
 	}
-	
-	public function usernameDoesNotExist($attribute, $params)
-	{
-		if($this->find("username = '$this->username'"))
-		{
-			$this->addError($attribute, 'That username already exists.');
-		}
-	}
-	
+
 	public function checkOld($attribute, $params)
 	{
 		$user = Yii::app()->user->getName();
@@ -134,6 +131,7 @@ class UserInfo extends CActiveRecord
 			'middleName' => 'Middle Name',
 			'username' => 'Username',
 			'password' => 'Password',
+			'password_repeat' => 'Confirm Password',
 			'email' => 'Email',
 			'phoneext' => 'Phone Ext',
 			'departmentid' => 'Department',

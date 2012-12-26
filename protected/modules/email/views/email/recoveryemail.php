@@ -6,9 +6,8 @@ $this->breadcrumbs=array(
 	'Recoveryemail',
 );
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+<h1>Password Recovery</h1>
 
 <p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
+	A link has been sent to your email. Follow the link to recover your password.
 </p>
