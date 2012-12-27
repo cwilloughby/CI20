@@ -7880,3 +7880,93 @@ Stack trace:
 REQUEST_URI=/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
 HTTP_REFERER=http://ci2/security/password/recovery?username=%25A1%2512D%257F%25F2%253B%2513%2B%25B3%255BC%2525%2592%2506%2586%25BC%2595%25B3%25D9%25E9%2593%2517%25DF%251F
 ---
+2012/12/27 14:22:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/12/27 15:07:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_auth_items' already exists. The SQL statement executed was: CREATE TABLE `ci_auth_items` (
+	`name` VARCHAR(64) NOT NULL,
+	`type` INT(11) NOT NULL,
+	`description` TEXT NULL DEFAULT NULL,
+	`bizrule` TEXT NULL DEFAULT NULL,
+	`data` TEXT NULL DEFAULT NULL,
+	PRIMARY KEY (`name`)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/27 15:07:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_auth_items' already exists. The SQL statement executed was: CREATE TABLE `ci_auth_items` (
+	`name` VARCHAR(64) NOT NULL,
+	`type` INT(11) NOT NULL,
+	`description` TEXT NULL DEFAULT NULL,
+	`bizrule` TEXT NULL DEFAULT NULL,
+	`data` TEXT NULL DEFAULT NULL,
+	PRIMARY KEY (`name`)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_auth_items', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121227_143855_create_srbac_tables.php(32): CDbMigration->createTable('ci_auth_items', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121227_143855_create_srbac_tables->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121227_143855_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/27 15:09:57 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'email' doesn't exist in table. The SQL statement executed was: CREATE TABLE `ci_auth_item_children` (
+	`parent` VARCHAR(64) NOT NULL,
+	`child` VARCHAR(64) NOT NULL,
+	PRIMARY KEY (`parent`, `child`),
+	INDEX `child` (`email` ASC, `phoneext` ASC),
+	CONSTRAINT `ci_auth_item_children_ibfk_1`
+					FOREIGN KEY (`parent` )
+					REFERENCES `ci2`.`ci_auth_items` (`name` )
+					ON DELETE CASCADE
+					ON UPDATE CASCADE,
+	CONSTRAINT `ci_auth_item_children_ibfk_2`
+					FOREIGN KEY (`child` )
+					REFERENCES `ci2`.`ci_auth_items` (`name` )
+					ON DELETE CASCADE
+					ON UPDATE CASCADE
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2012/12/27 15:09:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'email' doesn't exist in table. The SQL statement executed was: CREATE TABLE `ci_auth_item_children` (
+	`parent` VARCHAR(64) NOT NULL,
+	`child` VARCHAR(64) NOT NULL,
+	PRIMARY KEY (`parent`, `child`),
+	INDEX `child` (`email` ASC, `phoneext` ASC),
+	CONSTRAINT `ci_auth_item_children_ibfk_1`
+					FOREIGN KEY (`parent` )
+					REFERENCES `ci2`.`ci_auth_items` (`name` )
+					ON DELETE CASCADE
+					ON UPDATE CASCADE,
+	CONSTRAINT `ci_auth_item_children_ibfk_2`
+					FOREIGN KEY (`child` )
+					REFERENCES `ci2`.`ci_auth_items` (`name` )
+					ON DELETE CASCADE
+					ON UPDATE CASCADE
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_auth_item_ch...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121227_143855_create_srbac_tables.php(64): CDbMigration->createTable('ci_auth_item_ch...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121227_143855_create_srbac_tables->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121227_143855_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2012/12/27 15:12:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.ci_auth_items' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `ci_auth_items`.
+in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
+in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
+in C:\wamp\www\CI20\protected\modules\srbac\controllers\SBaseController.php (49)

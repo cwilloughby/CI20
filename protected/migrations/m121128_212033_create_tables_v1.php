@@ -91,7 +91,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'hiredate' => 'DATE NOT NULL',
 				'active' => 'TINYINT(1) NULL',
 				'PRIMARY KEY (`userid`)',
-				'INDEX `rmail` (`email` ASC, `phoneext` ASC)',
+				'INDEX `email` (`email` ASC, `phoneext` ASC)',
 				'INDEX `username` (`username` ASC)',
 				'INDEX `fk_ci_user_info_ci_departments1_idx` (`departmentid` ASC)',
 				'CONSTRAINT `fk_ci_user_info_ci_departments1`
