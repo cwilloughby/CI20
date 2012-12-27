@@ -1,15 +1,19 @@
 <?php
 
-/**
+/*
  * This is the model class for table "ci_department_tiers".
  *
  * The followings are the available columns in table 'ci_department_tiers':
  * @property integer $maindepartmentid
  * @property integer $subdepartmentid
+ *
+ * The followings are the available model relations:
+ * @property Departments $maindepartment
+ * @property Departments $subdepartment
  */
 class DepartmentTiers extends CActiveRecord
 {
-	/**
+	/*
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return DepartmentTiers the static model class
@@ -19,7 +23,7 @@ class DepartmentTiers extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/**
+	/*
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -27,7 +31,7 @@ class DepartmentTiers extends CActiveRecord
 		return 'ci_department_tiers';
 	}
 
-	/**
+	/*
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -43,7 +47,7 @@ class DepartmentTiers extends CActiveRecord
 		);
 	}
 
-	/**
+	/*
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -51,10 +55,12 @@ class DepartmentTiers extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'maindepartment' => array(self::BELONGS_TO, 'Departments', 'maindepartmentid'),
+			'subdepartment' => array(self::BELONGS_TO, 'Departments', 'subdepartmentid'),
 		);
 	}
 
-	/**
+	/*
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -65,7 +71,7 @@ class DepartmentTiers extends CActiveRecord
 		);
 	}
 
-	/**
+	/*
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */

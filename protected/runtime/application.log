@@ -7970,3 +7970,105 @@ Stack trace:
 in C:\wamp\www\CI20\protected\modules\srbac\models\AuthItem.php (40)
 in C:\wamp\www\CI20\protected\modules\srbac\SrbacModule.php (248)
 in C:\wamp\www\CI20\protected\modules\srbac\controllers\SBaseController.php (49)
+2012/12/27 17:31:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login/login".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('login/login')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/login/login
+HTTP_REFERER=http://ci2/security/registration/register
+---
+2012/12/27 17:43:36 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.departmentname" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('departmentname')
+#1 C:\wamp\www\CI20\protected\modules\security\views\userInfo\_view.php(36): CActiveRecord->__get('departmentname')
+#2 C:\wamp\framework\web\CBaseController.php(131): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, false)
+#4 C:\wamp\framework\zii\widgets\CListView.php(260): CBaseController->renderFile('C:\wamp\www\CI2...', Array)
+#5 C:\wamp\framework\zii\widgets\CBaseListView.php(161): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(144): preg_replace_callback('/{(\w+)}/', Array, '{summary}?{sort...')
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(129): CBaseListView->renderContent()
+#9 C:\wamp\framework\web\CBaseController.php(174): CBaseListView->run()
+#10 C:\wamp\www\CI20\protected\modules\security\views\userInfo\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php(138): CController->render('index', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): UserInfoController->actionIndex()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\wamp\framework\web\CWebApplication.php(283): CController->run('index')
+#22 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/userin...')
+#23 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/security/userinfo/index
+HTTP_REFERER=http://ci2/security/userinfo/index
+---
+2012/12/27 17:45:44 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.departments" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('departments')
+#1 C:\wamp\www\CI20\protected\modules\security\views\userInfo\_view.php(36): CActiveRecord->__get('departments')
+#2 C:\wamp\framework\web\CBaseController.php(131): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, false)
+#4 C:\wamp\framework\zii\widgets\CListView.php(260): CBaseController->renderFile('C:\wamp\www\CI2...', Array)
+#5 C:\wamp\framework\zii\widgets\CBaseListView.php(161): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(144): preg_replace_callback('/{(\w+)}/', Array, '{summary}?{sort...')
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(129): CBaseListView->renderContent()
+#9 C:\wamp\framework\web\CBaseController.php(174): CBaseListView->run()
+#10 C:\wamp\www\CI20\protected\modules\security\views\userInfo\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php(138): CController->render('index', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): UserInfoController->actionIndex()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\wamp\framework\web\CWebApplication.php(283): CController->run('index')
+#22 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/userin...')
+#23 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/security/userinfo/index
+HTTP_REFERER=http://ci2/security/login/login
+---
+2012/12/27 17:48:45 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.departments" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('departments')
+#1 C:\wamp\www\CI20\protected\modules\security\views\userInfo\_view.php(36): CActiveRecord->__get('departments')
+#2 C:\wamp\framework\web\CBaseController.php(131): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, false)
+#4 C:\wamp\framework\zii\widgets\CListView.php(260): CBaseController->renderFile('C:\wamp\www\CI2...', Array)
+#5 C:\wamp\framework\zii\widgets\CBaseListView.php(161): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(144): preg_replace_callback('/{(\w+)}/', Array, '{summary}?{sort...')
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(129): CBaseListView->renderContent()
+#9 C:\wamp\framework\web\CBaseController.php(174): CBaseListView->run()
+#10 C:\wamp\www\CI20\protected\modules\security\views\userInfo\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php(138): CController->render('index', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): UserInfoController->actionIndex()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\wamp\framework\web\CWebApplication.php(283): CController->run('index')
+#22 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/userin...')
+#23 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/security/userinfo/index
+HTTP_REFERER=http://ci2/
+---

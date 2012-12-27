@@ -72,9 +72,9 @@ class Departments extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'departmentid' => 'Department',
-			'departmentname' => 'Department Name',
-			'supervisorid' => 'Supervisor',
+			'departmentid' => 'Departmentid',
+			'departmentname' => 'Departmentname',
+			'supervisorid' => 'Supervisorid',
 		);
 	}
 

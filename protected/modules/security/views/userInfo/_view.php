@@ -5,8 +5,7 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('userid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->userid), array('view', 'id'=>$data->userid)); ?>
+	<?php echo CHtml::link("Edit", array('view', 'id'=>$data->userid)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('firstname')); ?>:</b>
@@ -25,21 +24,16 @@
 	<?php echo CHtml::encode($data->username); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
-	<?php echo CHtml::encode($data->password); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
 	<?php echo CHtml::encode($data->email); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('phoneext')); ?>:</b>
 	<?php echo CHtml::encode($data->phoneext); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:</b>
-	<?php echo CHtml::encode($data->departmentid); ?>
+	<?php echo CHtml::encode($data->department->find($data->departmentid)->departmentname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hiredate')); ?>:</b>
@@ -49,7 +43,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>
 	<?php echo CHtml::encode($data->active); ?>
 	<br />
-
-	*/ ?>
 
 </div>

@@ -2,7 +2,14 @@
 /* @var $this PasswordController */
 /* @var $model UserInfo */
 /* @var $form CActiveForm */
+
+$this->breadcrumbs=array(
+	'Login'=>array('/security/login/login'),
+	'Password Recovery',
+);
 ?>
+
+<h1>Password Recovery</h1>
 
 <div class="form">
 

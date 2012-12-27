@@ -110,13 +110,15 @@ class UserInfo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'userid'),
-			'documentProcessors' => array(self::HAS_MANY, 'DocumentProcessor', 'completedby'),
-			'documents' => array(self::HAS_MANY, 'Documents', 'uploader'),
-			'evaluations' => array(self::HAS_MANY, 'Evaluations', 'employee'),
-			'evaluations1' => array(self::HAS_MANY, 'Evaluations', 'evaluator'),
-			'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'openedby'),
-			'troubleTickets1' => array(self::HAS_MANY, 'TroubleTickets', 'closedbyuserid'),
+            'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'userid'),
+            'departments' => array(self::HAS_MANY, 'Departments', 'supervisorid'),
+            'documentProcessors' => array(self::HAS_MANY, 'DocumentProcessor', 'completedby'),
+            'documents' => array(self::HAS_MANY, 'Documents', 'uploader'),
+            'evaluations' => array(self::HAS_MANY, 'Evaluations', 'employee'),
+            'evaluations1' => array(self::HAS_MANY, 'Evaluations', 'evaluator'),
+            'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'openedby'),
+            'troubleTickets1' => array(self::HAS_MANY, 'TroubleTickets', 'closedbyuserid'),
+            'department' => array(self::BELONGS_TO, 'Departments', 'departmentid'),
 		);
 	}
 

@@ -5,5 +5,5 @@ return array (
   'tablePrefix' => 'ci_',
   'modelPath' => 'application.modules.security.models',
   'baseClass' => 'CActiveRecord',
-  'buildRelations' => '0',
+  'buildRelations' => '1',
 );

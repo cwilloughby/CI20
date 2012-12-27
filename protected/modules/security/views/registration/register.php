@@ -2,7 +2,14 @@
 /* @var $this RegistrationController */
 /* @var $model RegisterForm */
 /* @var $form CActiveForm */
+
+$this->breadcrumbs=array(
+	'Login'=>array('/security/login/login'),
+	'Register',
+);
 ?>
+
+<h1>Register</h1>
 
 <div class="form">
 
@@ -70,7 +77,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Register'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
