@@ -44,3 +44,5 @@ $this->breadcrumbs=array(
 </div><!-- form -->
 
 <a href="/../security/password/recoveryrequest">Forgot your password?</a>
+-
+<a href="/../security/registration/register">Register</a>
