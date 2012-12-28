@@ -21,15 +21,20 @@ class EmailController extends Controller
 	 */
 	public function actionRegisteremail()
 	{
+		$model = new Messages;
+		
 		// Create a mailer object, tell it to use SMTP and set the host.
 		$this->mail = new JPhpMailer();
 		$this->mail->IsSMTP();
 		$this->mail->Host = self::HOST;
 
-		// Set the sender, the recipient, and the subject.
-		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
+		// Set the recipient, the sender, and the subject.
 		$this->mail->AddAddress("ccc.helpdesk@nashville.gov");
+		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 		$this->mail->Subject = "CI Registration Request";
+		$model->to = urldecode($_GET['email']);
+		$model->from = $this->mail->From;
+		$model->subject = $this->mail->Subject;
 		
 		// Create the link to the user creation page that will go in the email.
 		// The $_GET variables will be used to autopopulate many of the form fields.
@@ -46,8 +51,13 @@ class EmailController extends Controller
 		$this->mail->Body = "A new user is requesting registration to the CI2.0 website. 
 			Follow the link to review their information: " . $link;
 		
+		$model->messagebody = $this->mail->Body;
+		$model->messagetype = "Registration Request";
+		
 		// Send the email.
 		$this->mail->Send();
+		// Save a record of the message in the ci_messages table.
+		$model->save();
 		
 		$this->render('registeremail');
 	}
@@ -58,15 +68,20 @@ class EmailController extends Controller
 	 */
 	public function actionAddemail()
 	{
+		$model = new Messages;
+		
 		// Create a mailer object, tell it to use SMTP and set the host.
 		$this->mail = new JPhpMailer();
 		$this->mail->IsSMTP();
 		$this->mail->Host = self::HOST;
 		
-		// Set the sender, the recipient, and the subject.
-		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
+		// Set the recipient, the sender, and the subject.
 		$this->mail->AddAddress(urldecode($_GET['email']));
+		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 		$this->mail->Subject = "CI Registration Request";
+		$model->to = urldecode($_GET['email']);
+		$model->from = $this->mail->From;
+		$model->subject = $this->mail->Subject;
 		
 		// Set the message's body.
 		$this->mail->Body = "Your CI2.0 registration has been approved. " 
@@ -74,8 +89,13 @@ class EmailController extends Controller
 					. "Username: " . $_GET['username'] . "\n"
 					. "Password: Same as your username";
 		
+		$model->messagebody = $this->mail->Body;
+		$model->messagetype = "New User";
+		
 		// Send the email.
 		$this->mail->Send();
+		// Save a record of the message in the ci_messages table.
+		$model->save();
 		
 		$this->render('addemail');
 	}
@@ -87,6 +107,8 @@ class EmailController extends Controller
 	 */
 	public function actionRecoveryemail()
 	{
+		$model = new Messages;
+		
 		// Create a mailer object, tell it to use SMTP and set the host.
 		$this->mail = new JPhpMailer();
 		$this->mail->IsSMTP();
@@ -96,10 +118,13 @@ class EmailController extends Controller
 		$sec = Yii::app()->getSecurityManager();
 		$email = $sec->decrypt(urldecode($_GET["email"]));
 		
-		// Set the sender, the recipient, and the subject.
-		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
+		// Set the recipient, the sender, and the subject.
 		$this->mail->AddAddress($email);
+		$this->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 		$this->mail->Subject = "CI Password Recovery";
+		$model->to = $email;
+		$model->from = $this->mail->From;
+		$model->subject = $this->mail->Subject;
 		
 		// Create the link to the password recovery page.
 		$link = "http://ci2/security/password/recovery"				
@@ -108,8 +133,13 @@ class EmailController extends Controller
 		// Set the message's body.
 		$this->mail->Body = "Follow this link to recover your password: " . $link;
 		
+		$model->messagebody = "Follow this link to recover your password: Link omited for security";
+		$model->messagetype = "Recovery";
+		
 		// Send the email.
 		$this->mail->Send();
+		// Save a record of the message in the ci_messages table.
+		$model->save();
 		
 		$this->render('recoveryemail');
 	}

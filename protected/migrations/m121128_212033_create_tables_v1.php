@@ -42,9 +42,8 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'subject' => 'VARCHAR(125) NOT NULL',
 				'messagebody' => 'VARCHAR(500) NULL',
 				'messagetype' => 'VARCHAR(45) NOT NULL',
-				'successfullysent' => 'TINYINT(1) NOT NULL',
-				'datesent' => 'DATE NULL' ,
-				'PRIMARY KEY (`MessageID`)'
+				'datesent' => 'DATETIME NOT NULL',
+				'PRIMARY KEY (`messageid`)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
@@ -271,9 +270,9 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		$this->createTable('ci_documents', array(
 				'documentid' => 'INT NOT NULL',
 				'uploader' => 'INT(11) NOT NULL',
-				'documentName' => 'VARCHAR(45) NOT NULL',
+				'documentname' => 'VARCHAR(45) NOT NULL',
 				'path' => 'VARCHAR(100) NOT NULL',
-				'uploadDate' => 'DATE NULL',
+				'uploaddate' => 'DATETIME NOT NULL',
 				'PRIMARY KEY (`documentid`)',
 				'INDEX `fk_ci_documents_ci_user_info1_idx` (`uploader` ASC)',
 				'CONSTRAINT `fk_ci_documents_ci_user_info1`
