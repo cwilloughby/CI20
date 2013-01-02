@@ -12,6 +12,11 @@ $this->menu=array(
 	array('label'=>'List Users', 'url'=>array('index')),
 	array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'View Users', 'url'=>array('view', 'id'=>$model->userid)),
+	($model->active == 2 
+		? array('label'=>'Enable User', 'url'=>'#', 
+			'linkOptions'=>array('submit'=>array('enable','id'=>$model->userid),'confirm'=>'Are you sure you want to enable this user?'))
+		: array('label'=>'Disable User', 'url'=>'#', 
+			'linkOptions'=>(array('submit'=>array('disable','id'=>$model->userid),'confirm'=>'Are you sure you want to disable this user?')))),
 	array('label'=>'Manage Users', 'url'=>array('admin')),
 );
 ?>

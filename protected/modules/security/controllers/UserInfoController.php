@@ -121,10 +121,6 @@ class UserInfoController extends Controller
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->userid));
-		else
-		{
-			echo "Something broke";
-		}
 	}
 	
 	/*
