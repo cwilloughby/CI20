@@ -8332,3 +8332,83 @@ REQUEST_URI=/security/userinfo/admin
 in C:\wamp\www\CI20\protected\modules\security\views\userInfo\admin.php (88)
 in C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php (153)
 in C:\wamp\www\CI20\index.php (13)
+2013/01/04 20:24:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/04 20:32:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php:161
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\controllers\UserInfoController.php(83): UserInfoController->loadModel('2')
+#1 [internal function]: UserInfoController->actionUpdate('2')
+#2 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(UserInfoController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(UserInfoController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('update')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/userin...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/security/userinfo/update?id=2
+---
+2013/01/04 21:14:47 [error] [php] Use of undefined constant result - assumed 'result' (C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php:51)
+Stack trace:
+#0 C:\wamp\framework\base\CModel.php(158): CInlineValidator->validate()
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(34): LoginForm->validate()
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): LoginController->runAction()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): LoginController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): LoginController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/login/login
+in C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php (51)
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (34)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/04 21:15:30 [error] [php] Use of undefined constant result - assumed 'result' (C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php:51)
+Stack trace:
+#0 C:\wamp\framework\base\CModel.php(158): CInlineValidator->validate()
+#1 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(34): LoginForm->validate()
+#2 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#3 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(134): LoginController->runAction()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): LoginController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): LoginController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/security/login/login
+in C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php (51)
+in C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php (34)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/04 21:35:30 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.errorCorde" is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\security\components\UserIdentity.php(34): CComponent->__set('errorCorde', 3)
+#1 C:\wamp\www\CI20\protected\modules\security\models\LoginForm.php(50): UserIdentity->authenticate()
+#2 C:\wamp\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 C:\wamp\framework\validators\CValidator.php(214): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\wamp\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 C:\wamp\www\CI20\protected\modules\security\controllers\LoginController.php(34): CModel->validate()
+#6 C:\wamp\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\web\CWebApplication.php(283): CController->run('login')
+#12 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('security/login/...')
+#13 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/security/login/login
+HTTP_REFERER=http://ci2/security/login/login
+---

@@ -37,7 +37,7 @@ return array(
 			'userid'=>'userid', //default: userid
 			'username'=>'username', //default:username
 			'delimeter'=>'@', //default:-
-			'debug'=>false, //default :false
+			'debug'=>true, //default :false
 			'pageSize'=>20, // default : 15
 			'superUser'=>'IT', //default: Authorizer
 			'css'=>'srbac.css', //default: srbac.css

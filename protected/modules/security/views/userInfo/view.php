@@ -30,7 +30,6 @@ $this->menu=array(
 		'lastname',
 		'middlename',
 		'username',
-		'password',
 		'email',
 		'phoneext',
 		'departmentid',

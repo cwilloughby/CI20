@@ -7,6 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	const ERROR_USERNAME_NOT_ACTIVE = 3;
 	private $_id;
 	
 	/**
@@ -22,6 +23,11 @@ class UserIdentity extends CUserIdentity
 		{
 			// The username does not exist.
             $this->errorCode=self::ERROR_USERNAME_INVALID;
+		}
+		else if($record->active == 2)
+		{
+			// That user account is disabled.
+			$this->errorCode=self::ERROR_USERNAME_NOT_ACTIVE;
 		}
         else if($record->password!==sha1($this->password))
 		{
