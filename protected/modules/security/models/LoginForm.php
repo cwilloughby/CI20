@@ -54,7 +54,7 @@ class LoginForm extends CFormModel
 
 	/**
 	 * Logs in the user using the given username and password in the model.
-	 * @return boolean whether login is successful
+	 * @return boolean whether the login is successful
 	 */
 	public function login()
 	{
