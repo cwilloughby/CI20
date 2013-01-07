@@ -8412,3 +8412,99 @@ Stack trace:
 REQUEST_URI=/security/login/login
 HTTP_REFERER=http://ci2/security/login/login
 ---
+2013/01/07 21:14:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO INCREMENT,
+	`content` TEXT NOT NULL,
+	`createdby` INT(11) NOT NULL,
+	`datec' at line 2. The SQL statement executed was: CREATE TABLE `ci_comments` (
+	`commentid` INT(11) NOT NULL AUTO INCREMENT,
+	`content` TEXT NOT NULL,
+	`createdby` INT(11) NOT NULL,
+	`datecreated` DATETIME NOT NULL,
+	PRIMARY KEY (`commentid`),
+	INDEX `fk_ci_comments_ci_ticket_comments1_idx` (`commentid` ASC) ,
+	INDEX `fk_ci_comments_ci_user_info1_idx` (`createdby` ASC) ,
+	CONSTRAINT `fk_ci_comments_ci_ticket_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_ticket_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_comments_ci_user_info1`
+					FOREIGN KEY (`createdby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2013/01/07 21:14:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO INCREMENT,
+	`content` TEXT NOT NULL,
+	`createdby` INT(11) NOT NULL,
+	`datec' at line 2. The SQL statement executed was: CREATE TABLE `ci_comments` (
+	`commentid` INT(11) NOT NULL AUTO INCREMENT,
+	`content` TEXT NOT NULL,
+	`createdby` INT(11) NOT NULL,
+	`datecreated` DATETIME NOT NULL,
+	PRIMARY KEY (`commentid`),
+	INDEX `fk_ci_comments_ci_ticket_comments1_idx` (`commentid` ASC) ,
+	INDEX `fk_ci_comments_ci_user_info1_idx` (`createdby` ASC) ,
+	CONSTRAINT `fk_ci_comments_ci_ticket_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_ticket_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_comments_ci_user_info1`
+					FOREIGN KEY (`createdby` )
+					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_comments', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m130107_204741_create_trouble_ticket_expansion.php(56): CDbMigration->createTable('ci_comments', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m130107_204741_create_trouble_ticket_expansion->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m130107_204741_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2013/01/07 21:17:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_ticket_comments' already exists. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`commentid` INT(11) NOT NULL,
+	`ticketid` INT(10) NOT NULL,
+	PRIMARY KEY (`commentid`, `ticketid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2013/01/07 21:17:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ci_ticket_comments' already exists. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`commentid` INT(11) NOT NULL,
+	`ticketid` INT(10) NOT NULL,
+	PRIMARY KEY (`commentid`, `ticketid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m130107_204741_create_trouble_ticket_expansion.php(35): CDbMigration->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m130107_204741_create_trouble_ticket_expansion->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m130107_204741_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
