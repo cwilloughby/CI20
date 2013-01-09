@@ -22,14 +22,14 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 	public function up()
 	{
 		$this->createTable('ci_tips', array(	
-				'tipid' => 'INT(3) NOT NULL',
+				'tipid' => 'INT(3) NOT NULL AUTO_INCREMENT',
 				'tip' => 'VARCHAR(100) NULL',
 				'PRIMARY KEY (`tipid`)'
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_document_type', array(
-				'typeid' => 'INT(3) NOT NULL',
+				'typeid' => 'INT(3) NOT NULL AUTO_INCREMENT',
 				'typename' => 'VARCHAR(45) NULL',
 				'PRIMARY KEY (`typeID`)'
 			),
@@ -71,7 +71,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_evaluation_questions', array(
-				'questionid' => 'INT(4) NOT NULL',
+				'questionid' => 'INT(4) NOT NULL AUTO_INCREMENT ',
 				'question' => 'VARCHAR(500) NOT NULL',
 				'PRIMARY KEY (`questionid`)'
 			),
@@ -229,7 +229,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_evaluations', array(
-				'evaluationid' => 'INT(11) NOT NULL',
+				'evaluationid' => 'INT(11) NOT NULL AUTO_INCREMENT',
 				'employee' => 'INT(11) NOT NULL',
 				'evaluator' => 'INT(11) NOT NULL',
 				'evaluationdate' => 'DATE NULL',
@@ -270,7 +270,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_documents', array(
-				'documentid' => 'INT NOT NULL',
+				'documentid' => 'INT NOT NULL AUTO_INCREMENT',
 				'uploader' => 'INT(11) NOT NULL',
 				'documentname' => 'VARCHAR(45) NOT NULL',
 				'path' => 'VARCHAR(100) NOT NULL',
@@ -305,7 +305,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_document_processor', array(
-				'id' => 'INT NOT NULL',
+				'id' => 'INT NOT NULL AUTO_INCREMENT',
 				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
 				'documentid' => 'INT NOT NULL' ,
 				'documenttypeid' => 'INT(3) NOT NULL',
