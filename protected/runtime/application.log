@@ -8508,3 +8508,13 @@ Stack trace:
 #11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
 #12 {main}
 ---
+2013/01/09 19:27:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "giicool".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('giicool')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/giicool
+---
+2013/01/09 20:01:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.ci_subject_tip' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `ci_subject_tip`.
+in C:\wamp\www\CI20\index.php (13)

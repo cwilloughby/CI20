@@ -144,7 +144,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'closedbyuserid' => 'INT(11) NULL',
 				'closedate' => 'DATETIME NULL',
 				'resolution'=> 'TEXT NULL',
-				'PRIMARY KEY (`ticketid`, `categoryid`, `subjectid`)',
+				'PRIMARY KEY (`ticketid`)',
 				'INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC)' ,
 				'INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC)' ,
 				'INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC)' ,
@@ -305,12 +305,13 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_document_processor', array(
+				'id' => 'INT NOT NULL',
 				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
 				'documentid' => 'INT NOT NULL' ,
 				'documenttypeid' => 'INT(3) NOT NULL',
 				'completedby' => 'INT(11) NULL',
 				'completiondate' => 'DATETIME NULL',
-				'PRIMARY KEY (`warrantnumber`, `documentid`)',
+				'PRIMARY KEY (`id`)',
 				'INDEX `fk_ci_document_processor_ci_user_info1_idx` (`completedby` ASC)',
 				'INDEX `fk_ci_document_processor_ci_documents1_idx` (`documentid` ASC)',
 				'INDEX `fk_ci_document_processor_ci_document_type1_idx` (`documenttypeid` ASC)',

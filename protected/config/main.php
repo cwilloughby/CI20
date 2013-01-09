@@ -32,6 +32,7 @@ return array(
 		),
 		'security',
 		'email',
+		'troubletickets',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
