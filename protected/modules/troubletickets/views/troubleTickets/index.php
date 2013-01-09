@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create TroubleTickets', 'url'=>array('create')),
-	array('label'=>'Manage TroubleTickets', 'url'=>array('admin')),
+	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
+	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>
 

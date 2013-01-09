@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List TroubleTickets', 'url'=>array('index')),
-	array('label'=>'Manage TroubleTickets', 'url'=>array('admin')),
+	array('label'=>'List Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create TroubleTickets</h1>
+<h1>Create Trouble Ticket</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

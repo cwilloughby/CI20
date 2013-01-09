@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List TroubleTickets', 'url'=>array('index')),
-	array('label'=>'Create TroubleTickets', 'url'=>array('create')),
-	array('label'=>'View TroubleTickets', 'url'=>array('view', 'id'=>$model->ticketid)),
-	array('label'=>'Manage TroubleTickets', 'url'=>array('admin')),
+	array('label'=>'List Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
+	array('label'=>'View Trouble Tickets', 'url'=>array('view', 'id'=>$model->ticketid)),
+	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update TroubleTickets <?php echo $model->ticketid; ?></h1>
+<h1>Update Trouble Ticket <?php echo $model->ticketid; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
