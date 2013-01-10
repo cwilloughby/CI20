@@ -1,6 +1,6 @@
 <?php
 
-class TroubleTicketsModule extends CWebModule
+class TicketsModule extends CWebModule
 {
 	public $defaultController = 'troubletickets';
 	
@@ -11,8 +11,8 @@ class TroubleTicketsModule extends CWebModule
 
 		// import the module-level models and components
 		$this->setImport(array(
-			'troubletickets.models.*',
-			'troubletickets.components.*',
+			'tickets.models.*',
+			'tickets.components.*',
 		));
 	}
 }

@@ -60,8 +60,8 @@ class CategorySubjectBridge extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'categoryid' => 'Categoryid',
-			'subjectid' => 'Subjectid',
+			'categoryid' => 'CategoryID',
+			'subjectid' => 'SubjectID',
 		);
 	}
 

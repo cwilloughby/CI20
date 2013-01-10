@@ -20,7 +20,7 @@
     <th>&nbsp;</th>
     <th><?php echo Helper::translate('srbac','Not Assigned Operations')?></th>
   </tr>
-  <tr><td width="45%">
+  <tr><td width="200">
       <?php echo SHtml::activeDropDownList($model,'name[revoke]',
       SHtml::listData(
       $data['taskAssignedOpers'], 'name', 'name'),
@@ -52,7 +52,7 @@
                   }');
       echo  SHtml::ajaxSubmitButton('>>',array('assign','revokeOpers'=>1),$ajax,$data['revoke']); ?>
     </td>
-    <td width="45%">
+    <td width="200">
       <?php echo SHtml::activeDropDownList($model,'name[assign]',
       SHtml::listData(
       $data['taskNotAssignedOpers'], 'name', 'name'),

@@ -1,6 +1,6 @@
 <?php
 
-class TroubleTicketsController extends Controller
+class CommentsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -16,32 +16,6 @@ class TroubleTicketsController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
 		);
 	}
 
@@ -62,16 +36,16 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new TroubleTickets;
+		$model=new Comments;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TroubleTickets']))
+		if(isset($_POST['Comments']))
 		{
-			$model->attributes=$_POST['TroubleTickets'];
+			$model->attributes=$_POST['Comments'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->ticketid));
+				$this->redirect(array('view','id'=>$model->commentid));
 		}
 
 		$this->render('create',array(
@@ -91,11 +65,11 @@ class TroubleTicketsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TroubleTickets']))
+		if(isset($_POST['Comments']))
 		{
-			$model->attributes=$_POST['TroubleTickets'];
+			$model->attributes=$_POST['Comments'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->ticketid));
+				$this->redirect(array('view','id'=>$model->commentid));
 		}
 
 		$this->render('update',array(
@@ -122,7 +96,7 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TroubleTickets');
+		$dataProvider=new CActiveDataProvider('Comments');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +107,10 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new TroubleTickets('search');
+		$model=new Comments('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['TroubleTickets']))
-			$model->attributes=$_GET['TroubleTickets'];
+		if(isset($_GET['Comments']))
+			$model->attributes=$_GET['Comments'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -150,7 +124,7 @@ class TroubleTicketsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=TroubleTickets::model()->findByPk($id);
+		$model=Comments::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -162,7 +136,7 @@ class TroubleTicketsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='trouble-tickets-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='comments-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

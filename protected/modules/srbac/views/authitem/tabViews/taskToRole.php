@@ -26,7 +26,7 @@ $criteria->order = "name";
   <table width="100%">
     <tr><th colspan="2"><?php echo Helper::translate('srbac','Assign Tasks to Roles') ?></th></tr>
     <tr>
-      <th width="50%">
+      <th width="25%">
       <?php echo SHtml::label(Helper::translate('srbac',"Role"),'role'); ?></th>
       <td width="50%" rowspan="2">
         <div id="tasks">

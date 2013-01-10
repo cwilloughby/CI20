@@ -38,8 +38,8 @@
 				array('label'=>'Change Password ('.Yii::app()->user->name.')', 'url'=>array('/security/password/change'), 
 					'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Admin', 'url'=>array('/security/userinfo/index')),
-				array('label'=>'Trouble', 'url'=>array('/troubletickets/troubletickets/index')),
-				array('label'=>'Comments', 'url'=>array('/troubletickets/comments/index')),
+				array('label'=>'Trouble', 'url'=>array('/tickets/troubletickets/index')),
+				array('label'=>'Comments', 'url'=>array('/tickets/comments/index')),
 			),
 		)); ?>
 	</div><!-- mainmenu -->

@@ -66,8 +66,8 @@ class Categories extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'categoryid' => 'Categoryid',
-			'categoryname' => 'Categoryname',
+			'categoryid' => 'CategoryID',
+			'categoryname' => 'Category Name',
 		);
 	}
 

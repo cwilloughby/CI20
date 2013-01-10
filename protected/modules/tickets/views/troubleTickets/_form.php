@@ -16,18 +16,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'openedby'); ?>
-		<?php echo $form->textField($model,'openedby'); ?>
-		<?php echo $form->error($model,'openedby'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'opendate'); ?>
-		<?php echo $form->textField($model,'opendate'); ?>
-		<?php echo $form->error($model,'opendate'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'categoryid'); ?>
 		<?php echo $form->textField($model,'categoryid'); ?>
 		<?php echo $form->error($model,'categoryid'); ?>
@@ -43,24 +31,6 @@
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'closedbyuserid'); ?>
-		<?php echo $form->textField($model,'closedbyuserid'); ?>
-		<?php echo $form->error($model,'closedbyuserid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'closedate'); ?>
-		<?php echo $form->textField($model,'closedate'); ?>
-		<?php echo $form->error($model,'closedate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'resolution'); ?>
-		<?php echo $form->textArea($model,'resolution',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'resolution'); ?>
 	</div>
 
 	<div class="row buttons">

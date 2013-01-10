@@ -8577,3 +8577,280 @@ Stack trace:
 REQUEST_URI=/troubletickets/troubletickets/admin
 HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
 ---
+2013/01/10 16:48:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/10 16:48:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/10 16:48:31 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 16:49:19 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 16:53:09 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 16:53:32 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 16:54:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 17:16:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 17:17:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/troubletickets/admin
+HTTP_REFERER=http://ci2/troubletickets/troubletickets/index
+---
+2013/01/10 17:19:02 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/troubletickets/comments/admin
+HTTP_REFERER=http://ci2/troubletickets/comments/create
+---
+2013/01/10 17:21:06 [error] [exception.CException] exception 'CException' with message 'Alias "troubletickets.TroubleticketsModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\framework\YiiBase.php:318
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('troubletickets....', true)
+#1 C:\wamp\framework\base\CModule.php(283): YiiBase::createComponent('troubletickets....', 'troubletickets', NULL, Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(933): CModule->getModule('troubletickets')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(915): AuthitemController->_getControllers()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAuto()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('auto')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/auto
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2013/01/10 17:21:09 [error] [exception.CException] exception 'CException' with message 'Alias "troubletickets.TroubleticketsModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\framework\YiiBase.php:318
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('troubletickets....', true)
+#1 C:\wamp\framework\base\CModule.php(283): YiiBase::createComponent('troubletickets....', 'troubletickets', NULL, Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(933): CModule->getModule('troubletickets')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(915): AuthitemController->_getControllers()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAuto()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('auto')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/auto
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2013/01/10 17:21:18 [error] [exception.CException] exception 'CException' with message 'Alias "troubletickets.TroubleticketsModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\framework\YiiBase.php:318
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('troubletickets....', true)
+#1 C:\wamp\framework\base\CModule.php(283): YiiBase::createComponent('troubletickets....', 'troubletickets', NULL, Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(933): CModule->getModule('troubletickets')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(915): AuthitemController->_getControllers()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAuto()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('auto')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/auto
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2013/01/10 17:21:20 [error] [exception.CException] exception 'CException' with message 'Alias "troubletickets.TroubleticketsModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\framework\YiiBase.php:318
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('troubletickets....', true)
+#1 C:\wamp\framework\base\CModule.php(283): YiiBase::createComponent('troubletickets....', 'troubletickets', NULL, Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(933): CModule->getModule('troubletickets')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(1012): AuthitemController->_getControllers()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionEditAllowed()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('editallowed')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/editAllowed
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2013/01/10 17:21:34 [error] [exception.CException] exception 'CException' with message 'Alias "troubletickets.TroubleticketsModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\framework\YiiBase.php:318
+Stack trace:
+#0 C:\wamp\framework\YiiBase.php(198): YiiBase::import('troubletickets....', true)
+#1 C:\wamp\framework\base\CModule.php(283): YiiBase::createComponent('troubletickets....', 'troubletickets', NULL, Array)
+#2 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(933): CModule->getModule('troubletickets')
+#3 C:\wamp\www\CI20\protected\modules\srbac\controllers\AuthitemController.php(915): AuthitemController->_getControllers()
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): AuthitemController->actionAuto()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\framework\web\CWebApplication.php(283): CController->run('auto')
+#9 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('srbac/authitem/...')
+#10 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/srbac/authitem/auto
+HTTP_REFERER=http://ci2/srbac/authitem/manage
+---
+2013/01/10 17:26:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "troubletickets/troubletickets/index".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/troubletickets/troubletickets/index
+HTTP_REFERER=http://ci2/
+---
+2013/01/10 17:26:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "troubletickets/troubletickets/index".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('troubletickets/...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/troubletickets/troubletickets/index
+HTTP_REFERER=http://ci2/
+---
+2013/01/10 17:26:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/tickets/troubletickets/admin
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
