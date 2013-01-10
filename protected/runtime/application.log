@@ -9002,3 +9002,836 @@ Stack trace:
 #11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
 #12 {main}
 ---
+2013/01/10 19:04:01 [error] [php] Undefined variable: categories (C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php:20)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#16 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+2013/01/10 19:13:41 [error] [php] include(TicketCategories.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(387): spl_autoload_call()
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(220): model()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree()
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(272): CActiveFinder->__construct()
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(142): TroubleTickets->getRelated()
+#5 C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php(159): TroubleTickets->__get()
+#6 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(20): TroubleTickets->getCategoryOptions()
+#7 C:\wamp\framework\web\CBaseController.php(127): require()
+#8 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#9 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#11 C:\wamp\framework\web\CBaseController.php(127): require()
+#12 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#13 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#14 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#25 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php (159)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+2013/01/10 19:17:26 [error] [php] Invalid argument supplied for foreach() (C:\wamp\framework\web\helpers\CHtml.php:1770)
+Stack trace:
+#0 C:\wamp\framework\web\CBaseController.php(127): require()
+#1 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#2 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#3 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#4 C:\wamp\framework\web\CBaseController.php(127): require()
+#5 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#6 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#7 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#8 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#18 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php (159)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+2013/01/10 19:31:33 [error] [php] Invalid argument supplied for foreach() (C:\wamp\framework\web\helpers\CHtml.php:1770)
+Stack trace:
+#0 C:\wamp\framework\web\CBaseController.php(127): require()
+#1 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#2 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#3 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#4 C:\wamp\framework\web\CBaseController.php(127): require()
+#5 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#6 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#7 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#8 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#18 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php (159)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+2013/01/10 19:34:39 [error] [php] Invalid argument supplied for foreach() (C:\wamp\framework\web\helpers\CHtml.php:1770)
+Stack trace:
+#0 C:\wamp\framework\web\CBaseController.php(127): require()
+#1 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#2 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#3 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#4 C:\wamp\framework\web\CBaseController.php(127): require()
+#5 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#6 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#7 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#8 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#18 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php (159)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+2013/01/10 19:58:57 [error] [php] include(Categories.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(387): spl_autoload_call()
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(220): model()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree()
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(272): CActiveFinder->__construct()
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(142): TroubleTickets->getRelated()
+#5 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(20): TroubleTickets->__get()
+#6 C:\wamp\framework\web\CBaseController.php(127): require()
+#7 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#8 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#9 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#10 C:\wamp\framework\web\CBaseController.php(127): require()
+#11 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#12 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#13 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#14 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(53): TroubleTicketsController->render()
+#15 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#16 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#17 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#18 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#19 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#20 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#21 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#22 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#23 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#24 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#25 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#26 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#27 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+2013/01/10 20:06:14 [error] [php] Undefined variable: categories (C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php:20)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): TroubleTicketsController->render()
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#16 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (58)
+2013/01/10 20:34:02 [error] [php] include(Worldareascountries.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(36): spl_autoload_call()
+#1 C:\wamp\framework\web\CBaseController.php(127): require()
+#2 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#3 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#4 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#5 C:\wamp\framework\web\CBaseController.php(127): require()
+#6 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#7 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#8 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#9 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): TroubleTicketsController->render()
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#13 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#15 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#16 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#17 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#19 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#20 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#21 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (36)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (58)
+2013/01/10 20:34:24 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria." is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\framework\db\schema\CDbCriteria.php(161): CComponent->__set('', '')
+#1 C:\wamp\framework\db\schema\CDbCommandBuilder.php(462): CDbCriteria->__construct(Array)
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1409): CDbCommandBuilder->createCriteria(Array, Array)
+#3 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(36): CActiveRecord->findAll(Array)
+#4 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#5 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#6 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#7 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): CController->renderPartial('_form', Array)
+#8 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#9 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#10 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#11 C:\wamp\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#12 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): CController->render('create', Array)
+#13 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#14 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#15 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#16 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#18 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#21 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#23 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#24 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#25 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/tickets/troubletickets/create
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/10 20:42:33 [error] [php] Object of class TroubleTickets could not be converted to string (C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php:38)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): TroubleTicketsController->render()
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#16 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (38)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (58)
+2013/01/10 20:49:45 [error] [php] include(Sources.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(33): spl_autoload_call()
+#1 C:\wamp\framework\web\CBaseController.php(127): require()
+#2 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#3 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#4 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#5 C:\wamp\framework\web\CBaseController.php(127): require()
+#6 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#7 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#8 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#9 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): TroubleTicketsController->render()
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#13 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#15 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#16 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#17 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#19 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#20 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#21 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (33)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (58)
+2013/01/10 20:50:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:50:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:50:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:52:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:52:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:52:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tickets/reservations/atest".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/reserva...')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tickets/reservations/atest
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:54:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:59:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 20:59:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:00:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:04:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:06:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:07:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:08:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:09:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:10:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dynamicsubjects".' in C:\wamp\framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(271): CController->missingAction('dynamicsubjects')
+#1 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#2 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#3 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+---
+2013/01/10 21:15:53 [error] [php] include(Location.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(153): spl_autoload_call()
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamicsubjects()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#4 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#7 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#10 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#11 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (153)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:16:48 [error] [php] Undefined index: subjectid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:17:21 [error] [php] Undefined index: subjectid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:19:14 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:20:00 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:20:57 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:22:30 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:24:44 [error] [php] Object of class TroubleTickets could not be converted to string (C:\wamp\framework\web\helpers\CHtml.php:1825)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(48): dropDownList()
+#1 C:\wamp\framework\web\CBaseController.php(127): require()
+#2 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#3 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#4 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(18): TroubleTicketsController->renderPartial()
+#5 C:\wamp\framework\web\CBaseController.php(127): require()
+#6 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#7 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#8 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#9 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(58): TroubleTicketsController->render()
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionCreate()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#13 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#15 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#16 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#17 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#19 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#20 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#21 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php (48)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php (18)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (58)
+2013/01/10 21:26:13 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:26:16 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:30:49 [error] [exception.CException] exception 'CException' with message 'Property "CategorySubjectBridge.subjectname" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('subjectname')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('subjectname')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(CategorySubjectBridge), 'subjectname')
+#3 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(155): CHtml::listData(Array, 'subjectid', 'subjectname')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamicsubjects()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamicsubjects')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/10 21:33:07 [error] [php] include(Location.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(153): spl_autoload_call()
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamicsubjects()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#4 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#7 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#10 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#11 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (153)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:33:14 [error] [php] include(Location.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(153): spl_autoload_call()
+#1 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamicsubjects()
+#2 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#4 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#7 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#10 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#11 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (153)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:50:26 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:54:04 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 21:54:18 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:154)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (154)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 22:11:32 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:156)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (156)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 22:11:36 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:156)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (156)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 22:12:45 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:156)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (156)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 22:12:50 [error] [php] Undefined index: categoryid (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:156)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (156)
+in C:\wamp\www\CI20\index.php (13)

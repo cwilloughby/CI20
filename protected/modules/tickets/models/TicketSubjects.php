@@ -12,12 +12,12 @@
  * @property Tips[] $ciTips
  * @property TroubleTickets[] $troubleTickets
  */
-class Subjects extends CActiveRecord
+class TicketSubjects extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Subjects the static model class
+	 * @return TicketSubjects the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

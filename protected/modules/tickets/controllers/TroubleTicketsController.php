@@ -47,9 +47,14 @@ class TroubleTicketsController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->ticketid));
 		}
-
+		
+		$categories=array_merge(array(""=>""),CHtml::listData(TicketCategories::model()->findAll(),'categoryid','categoryname'));
+		$subjects=array_merge(array(""=>""),CHtml::listData(TicketSubjects::model()->findAll(),'subjectid','subjectname'));
+		
 		$this->render('create',array(
 			'model'=>$model,
+			'categories'=>$categories,
+			'subjects'=>$subjects,
 		));
 	}
 
@@ -140,6 +145,17 @@ class TroubleTicketsController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+	
+	public function actionDynamicsubjects()
+	{
+		$data = TicketSubjects::model()->findAll();
+
+		$data = CHtml::listData($data, 'subjectid', 'subjectname');
+
+		foreach ($data as $value => $name) {
+			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
 		}
 	}
 }

@@ -11,12 +11,12 @@
  * @property TicketSubjects[] $ciTicketSubjects
  * @property TroubleTickets[] $troubleTickets
  */
-class Categories extends CActiveRecord
+class TicketCategories extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Categories the static model class
+	 * @return TicketCategories the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -66,8 +66,8 @@ class Categories extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'categoryid' => 'CategoryID',
-			'categoryname' => 'Category Name',
+			'categoryid' => 'Categoryid',
+			'categoryname' => 'Categoryname',
 		);
 	}
 
