@@ -57,7 +57,40 @@ class TroubleTickets extends CActiveRecord
 			array('ticketid, openedby, opendate, categoryid, subjectid, description, closedbyuserid, closedate, resolution', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/*
+	 * Attaches the timestamp behavior to auto set the opendate value
+	 * when a new ticket is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'opendate',
+				'setUpdateOnCreate' => true,
+			),
+		);
+	}
+	
+	/*
+	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
+	 */
+	protected function beforeSave()
+	{
+		if(null !== Yii::app()->user)
+			$id=Yii::app()->user->id;
+		else
+			$id=1;
 
+		if($this->isNewRecord)
+			$this->openedby=$id;
+
+		$this->closedbyuserid=$id;
+
+		return parent::beforeSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */

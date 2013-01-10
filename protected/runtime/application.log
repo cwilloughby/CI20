@@ -8854,3 +8854,151 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/admin
 HTTP_REFERER=http://ci2/tickets/troubletickets/index
 ---
+2013/01/10 18:25:38 [error] [php] Trying to get property of non-object (C:\wamp\framework\zii\behaviors\CTimestampBehavior.php:108)
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(830): Comments->raiseEvent()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(898): Comments->onBeforeSave()
+#2 C:\wamp\www\CI20\protected\modules\tickets\models\Comments.php(80): Comments->beforeSave()
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1011): Comments->beforeSave()
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(796): Comments->insert()
+#5 C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php(47): Comments->save()
+#6 C:\wamp\framework\web\actions\CInlineAction.php(50): CommentsController->actionCreate()
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CommentsController->runAction()
+#9 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(59): CommentsController->filterAccessControl()
+#12 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): CommentsController->runActionWithFilters()
+#15 C:\wamp\framework\web\CWebApplication.php(283): CommentsController->run()
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/comments/create
+in C:\wamp\www\CI20\protected\modules\tickets\models\Comments.php (80)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php (47)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 18:26:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_comments`, CONSTRAINT `fk_ci_comments_ci_ticket_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_ticket_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_comments` (`content`, `createdby`, `datecreated`) VALUES (:yp0, :yp1, NOW()).
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php (47)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/10 18:26:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_comments`, CONSTRAINT `fk_ci_comments_ci_ticket_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_ticket_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_comments` (`content`, `createdby`, `datecreated`) VALUES (:yp0, :yp1, NOW())' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(796): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php(47): CActiveRecord->save()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): CommentsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/comment...')
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/tickets/comments/create
+HTTP_REFERER=http://ci2/tickets/comments/create
+---
+2013/01/10 18:38:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE=InnoDB, COLLATE=utf8_general_ci' at line 17. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`ticketid` INT(10) NOT NULL,
+	`commentid` INT(11) NOT NULL,
+	PRIMARY KEY (`ticketid`, `commentid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	INDEX `fk_ci_ticket_comments_ci_comments1_idx` (`commentid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_ticket_comments_ci_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2013/01/10 18:38:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE=InnoDB, COLLATE=utf8_general_ci' at line 17. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`ticketid` INT(10) NOT NULL,
+	`commentid` INT(11) NOT NULL,
+	PRIMARY KEY (`ticketid`, `commentid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	INDEX `fk_ci_ticket_comments_ci_comments1_idx` (`commentid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_ticket_comments_ci_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m130107_204741_create_trouble_ticket_expansion.php(41): CDbMigration->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m130107_204741_create_trouble_ticket_expansion->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m130107_204741_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2013/01/10 18:39:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE=InnoDB, COLLATE=utf8_general_ci' at line 17. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`ticketid` INT(10) NOT NULL,
+	`commentid` INT(11) NOT NULL,
+	PRIMARY KEY (`ticketid`, `commentid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	INDEX `fk_ci_ticket_comments_ci_comments1_idx` (`commentid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_ticket_comments_ci_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2013/01/10 18:39:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE=InnoDB, COLLATE=utf8_general_ci' at line 17. The SQL statement executed was: CREATE TABLE `ci_ticket_comments` (
+	`ticketid` INT(10) NOT NULL,
+	`commentid` INT(11) NOT NULL,
+	PRIMARY KEY (`ticketid`, `commentid`),
+	INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC),
+	INDEX `fk_ci_ticket_comments_ci_comments1_idx` (`commentid` ASC),
+	CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
+					FOREIGN KEY (`ticketid` )
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION,
+	CONSTRAINT `fk_ci_ticket_comments_ci_comments1`
+					FOREIGN KEY (`commentid` )
+					REFERENCES `ci2`.`ci_comments` (`commentid` )
+					ON DELETE NO ACTION
+					ON UPDATE NO ACTION)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m130107_204741_create_trouble_ticket_expansion.php(41): CDbMigration->createTable('ci_ticket_comme...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m130107_204741_create_trouble_ticket_expansion->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m130107_204741_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---

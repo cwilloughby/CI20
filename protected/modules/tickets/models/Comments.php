@@ -10,8 +10,8 @@
  * @property string $datecreated
  *
  * The followings are the available model relations:
- * @property TicketComments $comment
  * @property UserInfo $createdby0
+ * @property TroubleTickets[] $ciTroubleTickets
  */
 class Comments extends CActiveRecord
 {
@@ -41,7 +41,7 @@ class Comments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('content, createdby, datecreated', 'required'),
+			array('content', 'required'),
 			array('createdby', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -57,11 +57,41 @@ class Comments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'comment' => array(self::BELONGS_TO, 'TicketComments', 'commentid'),
 			'createdby0' => array(self::BELONGS_TO, 'UserInfo', 'createdby'),
+			'ciTroubleTickets' => array(self::MANY_MANY, 'TroubleTickets', 'ci_ticket_comments(commentid, ticketid)'),
 		);
 	}
+	
+	/*
+	 * Attaches the timestamp behavior to auto set the datecreated value
+	 * when a new comment is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'datecreated',
+			),
+		);
+	}
+	
+	/*
+	 * Sets the createdby value to the person who made the comment.
+	 */
+	protected function beforeSave()
+	{
+		if(null !== Yii::app()->user)
+			$id=Yii::app()->user->id;
+		else
+			$id=1;
 
+		if($this->isNewRecord)
+			$this->createdby=$id;
+
+		return parent::beforeSave();
+	}
+	
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
