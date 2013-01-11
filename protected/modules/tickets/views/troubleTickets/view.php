@@ -22,12 +22,24 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'ticketid',
-		'openedby',
+		array(        
+			'name'=>'openedby',
+			'value'=>isset($model->openedby0)?CHtml::encode($model->openedby0->username):"Unknown"
+		),
 		'opendate',
-		'categoryid',
-		'subjectid',
+		array(        
+			'name'=>'categoryid',
+			'value'=>isset($model->category)?CHtml::encode($model->category->categoryname):"Unknown"
+		),
+		array(        
+			'name'=>'subjectid',
+			'value'=>isset($model->subject)?CHtml::encode($model->subject->subjectname):"Unknown"
+		),
 		'description',
-		'closedbyuserid',
+		array(        
+			'name'=>'closedbyuserid',
+			'value'=>isset($model->closedbyuser)?CHtml::encode($model->closedbyuser->username):"N\\A"
+		),
 		'closedate',
 		'resolution',
 	),

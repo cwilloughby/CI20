@@ -46,16 +46,28 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'ticketid',
-		'openedby',
+		array( 
+			'name'=>'openedby', 
+			'value'=>'$data->openedby0->username' 
+		),
 		'opendate',
-		'categoryid',
-		'subjectid',
+		array( 
+			'name'=>'category', 
+			'value'=>'$data->category->categoryname' 
+		),
+		array(
+			'name'=>'subject', 
+			'value'=>'$data->subject->subjectname' 
+		),
 		'description',
-		/*
-		'closedbyuserid',
+		array( 
+			'name'=>'closedbyuserid', 
+			'value'=>'(isset($data->closedbyuser->username)) 
+						? $data->closedbyuser->username 
+						: ""'
+		),
 		'closedate',
 		'resolution',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

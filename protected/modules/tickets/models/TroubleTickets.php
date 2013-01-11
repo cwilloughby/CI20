@@ -23,6 +23,11 @@
  */
 class TroubleTickets extends CActiveRecord
 {
+	public $subject_search;
+	public $category_search;
+	public $user_search;
+	public $closer_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -112,14 +117,14 @@ class TroubleTickets extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ticketid' => 'Ticketid',
-			'openedby' => 'Openedby',
-			'opendate' => 'Opendate',
+			'ticketid' => 'Ticket #',
+			'openedby' => 'Opened By',
+			'opendate' => 'Created On',
 			'categoryid' => 'Category',
 			'subjectid' => 'Subject',
 			'description' => 'Description',
-			'closedbyuserid' => 'Closedbyuserid',
-			'closedate' => 'Closedate',
+			'closedbyuserid' => 'Closed By',
+			'closedate' => 'Closed On',
 			'resolution' => 'Resolution',
 		);
 	}
@@ -136,17 +141,48 @@ class TroubleTickets extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('ticketid',$this->ticketid);
-		$criteria->compare('openedby',$this->openedby);
+		$criteria->compare('openedby',$this->user_search,true);
 		$criteria->compare('opendate',$this->opendate,true);
-		$criteria->compare('categoryid',$this->categoryid);
-		$criteria->compare('subjectid',$this->subjectid);
+		$criteria->compare('categoryid',$this->category_search,true);
+		$criteria->compare('subject.subjectname',$this->subject_search,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('closedbyuserid',$this->closedbyuserid);
+		$criteria->compare('closedbyuserid',$this->closer_search,true);
 		$criteria->compare('closedate',$this->closedate,true);
 		$criteria->compare('resolution',$this->resolution,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'user_search'=>array(
+						'asc'=>'openedby0.username',
+						'desc'=>'openedby0.username DESC',
+					),
+					'subject_search'=>array(
+						'asc'=>'subject.subjectname',
+						'desc'=>'subject.subjectname DESC',
+					),
+					'category_search'=>array(
+						'asc'=>'category.categoryname',
+						'desc'=>'category.categoryname DESC',
+					),
+					'closer_search'=>array(
+						'asc'=>'closedbyuser.username',
+						'desc'=>'closedbyuser.username DESC',
+					),
+					'*',
+				),
+			),
 		));
+	}
+	
+	/*
+	 * Adds a comment to this trouble ticket.
+	 * This is a place holder for now.
+	 */
+	public function addComment($comment)
+	{
+		//$comment->issue_id = $this->id;
+		//return $comment->save();
 	}
 }
