@@ -149,12 +149,13 @@ class TroubleTicketsController extends Controller
 	}
 	
 	public function actionDynamicsubjects()
-	{
-		$data = TicketSubjects::model()->findAll();
+	{	
+		$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
+                 array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
 
-		$data = CHtml::listData($data, 'subjectid', 'subjectname');
-
-		foreach ($data as $value => $name) {
+		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
+		
+		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
 		}
 	}

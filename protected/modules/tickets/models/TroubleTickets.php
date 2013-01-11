@@ -49,7 +49,7 @@ class TroubleTickets extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('openedby, opendate, categoryid, subjectid', 'required'),
+			array('categoryid, subjectid', 'required'),
 			array('openedby, categoryid, subjectid, closedbyuserid', 'numerical', 'integerOnly'=>true),
 			array('description, closedate, resolution', 'safe'),
 			// The following rule is used by search().
@@ -68,7 +68,6 @@ class TroubleTickets extends CActiveRecord
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
 				'createAttribute' => 'opendate',
-				'setUpdateOnCreate' => true,
 			),
 		);
 	}
@@ -86,7 +85,7 @@ class TroubleTickets extends CActiveRecord
 		if($this->isNewRecord)
 			$this->openedby=$id;
 
-		$this->closedbyuserid=$id;
+		//$this->closedbyuserid=$id;
 
 		return parent::beforeSave();
 	}
@@ -116,8 +115,8 @@ class TroubleTickets extends CActiveRecord
 			'ticketid' => 'Ticketid',
 			'openedby' => 'Openedby',
 			'opendate' => 'Opendate',
-			'categoryid' => 'Categoryid',
-			'subjectid' => 'Subjectid',
+			'categoryid' => 'Category',
+			'subjectid' => 'Subject',
 			'description' => 'Description',
 			'closedbyuserid' => 'Closedbyuserid',
 			'closedate' => 'Closedate',

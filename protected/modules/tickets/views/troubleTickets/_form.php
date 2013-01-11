@@ -14,28 +14,16 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php /*echo $form->labelEx($model,'categoryid'); */?>
-		<?php /*echo $form->dropDownList($model,'categoryid', $categories); */?>
-		<?php /*echo $form->error($model,'categoryid'); */?>
-	</div>
-
-	<div class="row">
-		<?php /*echo $form->labelEx($model,'subjectid'); */?>
-		<?php /*echo $form->dropDownList($model,'subjectid', $subjects); */?>
-		<?php /*echo $form->error($model,'subjectid'); */?>
-	</div>
 	
 	<div class="row">
 		<?php echo $form->labelEx($model, 'categoryid'); ?>
 		<?php
 		echo $form->dropDownList($model, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
-			array('empty' => 'Select Category','ajax' => 
+			array('empty' => 'Select a category','ajax' => 
 				array(
 					'type' => 'POST',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
-					'update' => '#subjectid'
+					'update' => '#' . CHtml::activeId($model, 'subjectid'),
 				)
 			)
 		);
@@ -45,7 +33,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model, 'subjectid'); ?>
-		<?php echo CHtml::dropDownList('subjectid', array(), array('prompt'=>'Select Subject')); ?>
+		<?php echo $form->dropdownList($model,'subjectid',array(),array('prompt'=>'Select a subject')); ?>
 		<?php echo $form->error($model, 'subjectid'); ?>
 	</div>
 	
