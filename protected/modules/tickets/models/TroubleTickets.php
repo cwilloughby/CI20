@@ -23,6 +23,8 @@
  */
 class TroubleTickets extends CActiveRecord
 {
+	public $tips;
+	
 	public $subject_search;
 	public $category_search;
 	public $user_search;
@@ -126,6 +128,7 @@ class TroubleTickets extends CActiveRecord
 			'closedbyuserid' => 'Closed By',
 			'closedate' => 'Closed On',
 			'resolution' => 'Resolution',
+			'tips' => 'Tips',
 		);
 	}
 

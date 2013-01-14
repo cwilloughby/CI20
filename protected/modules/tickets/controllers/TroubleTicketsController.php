@@ -173,12 +173,32 @@ class TroubleTicketsController extends Controller
 		}
 	}
 	
+	/*
+	 * Grab the subjects associated with the selected category.
+	 */
 	public function actionDynamicsubjects()
 	{	
 		$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
                  array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
 
-		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
+		$data = array_merge(array("0"=>"Select a subject"),CHtml::listData($subjects, 'subjectid', 'subjectname'));
+		
+		foreach($data as $value => $name) {
+			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
+		}
+	}
+	
+	/*
+	 * Grab the tips associated with the selected subject.
+	 */
+	public function actionDynamictips()
+	{	
+		$tips = Tips::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
+                 array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
+
+		$data = CHtml::listData($tips, 'tipid', 'tip');
+		
+		//echo CHtml::tag('div', array('style' => 'display:block'), CHtml::encode($name),true);
 		
 		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);

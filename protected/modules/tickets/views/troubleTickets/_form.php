@@ -33,8 +33,24 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model, 'subjectid'); ?>
-		<?php echo $form->dropdownList($model,'subjectid',array(),array('prompt'=>'Select a subject')); ?>
+		<?php
+		echo $form->dropDownList($model, 'subjectid', array(), 
+			array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
+				array(
+					'type' => 'POST',
+					'url' => CController::createUrl('troubletickets/dynamictips'),
+					'update' => '#' . CHtml::activeId($model, 'tips'),
+				)
+			)
+		);
+		?>
 		<?php echo $form->error($model, 'subjectid'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'tips'); ?>
+		<?php echo $form->listBox($model,'tips', array(), array('disabled'=>'true','style'=>'overflow:auto; border:none; width:100%; background-color:white; color:black')); ?>
+		<?php echo $form->error($model,'tips'); ?>
 	</div>
 	
 	<div class="row">
