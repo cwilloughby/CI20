@@ -26,10 +26,13 @@ class TroubleTicketsController extends Controller
 	public function actionView($id)
 	{
 		$ticket=$this->loadModel($id);
+		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
+                 array(':selected_id'=>$id));
 		$comment=$this->createComment($ticket);
 		
 		$this->render('view',array(
 			'model'=>$ticket,
+			'ticketComments'=>$ticketComments,
 			'comment'=>$comment,
 		));
 	}

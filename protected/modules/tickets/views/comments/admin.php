@@ -47,7 +47,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'commentid',
 		'content',
-		'createdby',
+		array( 
+			'name'=>'createdby', 
+			'value'=>'$data->createdby0->username' 
+		),
 		'datecreated',
 		array(
 			'class'=>'CButtonColumn',

@@ -182,7 +182,17 @@ class TroubleTickets extends CActiveRecord
 	 */
 	public function addComment($comment)
 	{
-		$comment->save();
-		return Yii::app()->db->lastInsertID;
+		// Save the new comment.
+		if($comment->save())
+		{
+			// Connect the new comment to the ticket on the bridge table.
+			$bridge = new TicketComments;
+			$bridge->commentid = $comment->commentid;
+			$bridge->ticketid = $this->ticketid;
+			$bridge->save();
+			return true;
+		}
+		else
+			return false;
 	}
 }

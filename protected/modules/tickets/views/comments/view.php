@@ -23,7 +23,10 @@ $this->menu=array(
 	'attributes'=>array(
 		'commentid',
 		'content',
-		'createdby',
+		array(        
+			'name'=>'createdby',
+			'value'=>isset($model->createdby0)?CHtml::encode($model->createdby0->username):"Unknown"
+		),
 		'datecreated',
 	),
 )); ?>

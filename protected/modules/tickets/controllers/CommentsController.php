@@ -84,8 +84,18 @@ class CommentsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		// To prevent integrity constraint violations, we have to see if the comment is connected to 
+		// a trouble ticket on the bridge table.
+		$bridge = TicketComments::model()->find('commentid=:selected_id',array(':selected_id'=>$id));
+		if($bridge)
+		{
+			// Delete the connection.
+			$bridge->delete();
+		}
+		
+		// Now we can delete the comment.
 		$this->loadModel($id)->delete();
-
+		
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

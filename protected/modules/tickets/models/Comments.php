@@ -15,6 +15,8 @@
  */
 class Comments extends CActiveRecord
 {
+	public $user_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -118,11 +120,20 @@ class Comments extends CActiveRecord
 
 		$criteria->compare('commentid',$this->commentid);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('createdby',$this->createdby);
+		$criteria->compare('createdby',$this->user_search,true);
 		$criteria->compare('datecreated',$this->datecreated,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'user_search'=>array(
+						'asc'=>'createdby0.username',
+						'desc'=>'createdby0.username DESC',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }

@@ -46,15 +46,11 @@ $this->menu=array(
 )); ?>
 
 <div id="comments">
-	<?php /*if($model->commentCount>=1): ?>
-		<h3>
-			<?php echo $model->commentCount>1 ? $model->commentCount . ' comments' : 'One comment'; ?>
-		</h3>
-
+	<?php if($ticketComments): ?>
 		<?php $this->renderPartial('_comments',array(
-		  'comments'=>$model->comments,
+			'comments'=>$ticketComments,
 		)); ?>
-	<?php endif; */?>
+	<?php endif; ?>
 
 	<br/><h3>Leave a Comment</h3>
 

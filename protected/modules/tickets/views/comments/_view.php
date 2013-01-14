@@ -14,7 +14,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('createdby')); ?>:</b>
-	<?php echo CHtml::encode($data->createdby); ?>
+	<?php echo CHtml::encode($data->createdby0->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('datecreated')); ?>:</b>

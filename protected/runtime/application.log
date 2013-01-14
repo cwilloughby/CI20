@@ -11803,3 +11803,292 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/view?id=1
 HTTP_REFERER=http://ci2/tickets/troubletickets/view?id=1
 ---
+2013/01/14 16:31:47 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_ticket_comments`, CONSTRAINT `fk_ci_ticket_comments_ci_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_ticket_comments` (`commentid`, `ticketid`) VALUES (:yp0, :yp1).
+in C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php (192)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (46)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (29)
+2013/01/14 16:31:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_ticket_comments`, CONSTRAINT `fk_ci_ticket_comments_ci_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_ticket_comments` (`commentid`, `ticketid`) VALUES (:yp0, :yp1)' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(796): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\CI20\protected\modules\tickets\models\TroubleTickets.php(192): CActiveRecord->save()
+#3 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(46): TroubleTickets->addComment(Object(Comments))
+#4 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(29): TroubleTicketsController->createComment(Object(TroubleTickets))
+#5 [internal function]: TroubleTicketsController->actionView('1')
+#6 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#7 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/view?id=1
+---
+2013/01/14 16:50:03 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ticketComments.commentid' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_ticket_comments` `t` WHERE ticketComments.commentid=:selected_id LIMIT 1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php (90)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/14 16:50:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ticketComments.commentid' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_ticket_comments` `t` WHERE ticketComments.commentid=:selected_id LIMIT 1' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php(90): CActiveRecord->find('ticketComments....', Array)
+#4 [internal function]: CommentsController->actionDelete('3')
+#5 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CommentsController), Array)
+#6 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CommentsController), Object(ReflectionMethod), Array)
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\CController.php(1117): CFilterChain->run()
+#10 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterPostOnly(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\framework\web\CWebApplication.php(283): CController->run('delete')
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/comment...')
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/tickets/comments/delete?id=3&ajax=comments-grid
+HTTP_REFERER=http://ci2/tickets/comments/admin
+---
+2013/01/14 16:50:57 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`ci2`.`ci_ticket_comments`, CONSTRAINT `fk_ci_ticket_comments_ci_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `ci_comments` WHERE `ci_comments`.`commentid`=13.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php (87)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/14 16:50:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`ci2`.`ci_ticket_comments`, CONSTRAINT `fk_ci_ticket_comments_ci_comments1` FOREIGN KEY (`commentid`) REFERENCES `ci_comments` (`commentid`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `ci_comments` WHERE `ci_comments`.`commentid`=13' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1739): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1162): CActiveRecord->deleteByPk('13')
+#2 C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php(87): CActiveRecord->delete()
+#3 [internal function]: CommentsController->actionDelete('13')
+#4 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CommentsController), Array)
+#5 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CommentsController), Object(ReflectionMethod), Array)
+#6 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\framework\web\CController.php(1117): CFilterChain->run()
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#16 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\wamp\framework\web\CWebApplication.php(283): CController->run('delete')
+#18 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/comment...')
+#19 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/tickets/comments/delete?id=13&ajax=comments-grid
+HTTP_REFERER=http://ci2/tickets/comments/admin
+---
+2013/01/14 16:52:20 [error] [exception.CDbException] exception 'CDbException' with message 'The active record cannot be deleted because it is new.' in C:\wamp\framework\db\ar\CActiveRecord.php:1170
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\controllers\CommentsController.php(91): CActiveRecord->delete()
+#1 [internal function]: CommentsController->actionDelete('13')
+#2 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CommentsController), Array)
+#3 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CommentsController), Object(ReflectionMethod), Array)
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\framework\web\CController.php(1117): CFilterChain->run()
+#7 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterPostOnly(Object(CFilterChain))
+#8 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\framework\web\CWebApplication.php(283): CController->run('delete')
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/comment...')
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/tickets/comments/delete?id=13&ajax=comments-grid
+HTTP_REFERER=http://ci2/tickets/comments/admin
+---
+2013/01/14 16:58:15 [error] [exception.CException] exception 'CException' with message 'Property "TroubleTickets.commentCount" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('commentCount')
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php(49): CActiveRecord->__get('commentCount')
+#2 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#5 C:\wamp\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(34): CController->render('view', Array)
+#7 [internal function]: TroubleTicketsController->actionView('1')
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/14 17:07:59 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "ticketComments" is not defined in active record class "TicketComments".' in C:\wamp\framework\db\ar\CActiveFinder.php:216
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveFinder.php(280): CActiveFinder->buildJoinTree(Object(CJoinElement), 'ticketComments')
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1295): CActiveFinder->__construct(Object(TicketComments), Array)
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#4 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(30): CActiveRecord->findAll('ticketComments....', Array)
+#5 [internal function]: TroubleTicketsController->actionView('1')
+#6 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#7 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/14 17:09:13 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ticketComments.ticketid' in 'where clause'. The SQL statement executed was: SELECT `t`.`commentid` AS `t0_c0`, `t`.`content` AS `t0_c1`, `t`.`createdby` AS `t0_c2`, `t`.`datecreated` AS `t0_c3`, `ciTroubleTickets`.`ticketid` AS `t1_c0`, `ciTroubleTickets`.`openedby` AS `t1_c1`, `ciTroubleTickets`.`opendate` AS `t1_c2`, `ciTroubleTickets`.`categoryid` AS `t1_c3`, `ciTroubleTickets`.`subjectid` AS `t1_c4`, `ciTroubleTickets`.`description` AS `t1_c5`, `ciTroubleTickets`.`closedbyuserid` AS `t1_c6`, `ciTroubleTickets`.`closedate` AS `t1_c7`, `ciTroubleTickets`.`resolution` AS `t1_c8` FROM `ci_comments` `t`  LEFT OUTER JOIN `ci_ticket_comments` `ciTroubleTickets_ciTroubleTickets` ON (`t`.`commentid`=`ciTroubleTickets_ciTroubleTickets`.`commentid`) LEFT OUTER JOIN `ci_trouble_tickets` `ciTroubleTickets` ON (`ciTroubleTickets`.`ticketid`=`ciTroubleTickets_ciTroubleTickets`.`ticketid`)  WHERE (ticketComments.ticketid=:selected_id).
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (30)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/14 17:09:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ticketComments.ticketid' in 'where clause'. The SQL statement executed was: SELECT `t`.`commentid` AS `t0_c0`, `t`.`content` AS `t0_c1`, `t`.`createdby` AS `t0_c2`, `t`.`datecreated` AS `t0_c3`, `ciTroubleTickets`.`ticketid` AS `t1_c0`, `ciTroubleTickets`.`openedby` AS `t1_c1`, `ciTroubleTickets`.`opendate` AS `t1_c2`, `ciTroubleTickets`.`categoryid` AS `t1_c3`, `ciTroubleTickets`.`subjectid` AS `t1_c4`, `ciTroubleTickets`.`description` AS `t1_c5`, `ciTroubleTickets`.`closedbyuserid` AS `t1_c6`, `ciTroubleTickets`.`closedate` AS `t1_c7`, `ciTroubleTickets`.`resolution` AS `t1_c8` FROM `ci_comments` `t`  LEFT OUTER JOIN `ci_ticket_comments` `ciTroubleTickets_ciTroubleTickets` ON (`t`.`commentid`=`ciTroubleTickets_ciTroubleTickets`.`commentid`) LEFT OUTER JOIN `ci_trouble_tickets` `ciTroubleTickets` ON (`ciTroubleTickets`.`ticketid`=`ciTroubleTickets_ciTroubleTickets`.`ticketid`)  WHERE (ticketComments.ticketid=:selected_id)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(30): CActiveRecord->findAll('ticketComments....', Array)
+#7 [internal function]: TroubleTicketsController->actionView('1')
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/14 17:11:36 [error] [exception.CException] exception 'CException' with message 'Property "Comments.author" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('author')
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_comments.php(4): CActiveRecord->__get('author')
+#2 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#5 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php(52): CController->renderPartial('_comments', Array)
+#6 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#7 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#8 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#9 C:\wamp\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#10 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(37): CController->render('view', Array)
+#11 [internal function]: TroubleTicketsController->actionView('1')
+#12 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#13 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#14 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#15 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#16 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#18 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#21 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#23 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#24 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#25 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/view?id=1
+---
+2013/01/14 17:13:01 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_comments.php:4)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php(52): TroubleTicketsController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(37): TroubleTicketsController->render()
+#7 unknown(0): TroubleTicketsController->actionView()
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#18 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/view?id=1
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_comments.php (4)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php (52)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (37)
+2013/01/14 17:29:57 [error] [php] Undefined variable: model (C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_comments.php:4)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php(52): TroubleTicketsController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): TroubleTicketsController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): TroubleTicketsController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): TroubleTicketsController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(37): TroubleTicketsController->render()
+#7 unknown(0): TroubleTicketsController->actionView()
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#18 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/view?id=1
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_comments.php (4)
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php (52)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (37)
