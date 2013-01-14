@@ -25,11 +25,33 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$ticket=$this->loadModel($id);
+		$comment=$this->createComment($ticket);
+		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$ticket,
+			'comment'=>$comment,
 		));
 	}
-
+	
+	/**
+	 * Creates a new comment on an issue
+	 */
+	protected function createComment($ticket)
+	{
+		$comment=new Comments;
+		if(isset($_POST['Comments']))
+		{
+			$comment->attributes=$_POST['Comments'];
+			if($ticket->addComment($comment))
+			{
+				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added." );
+				$this->refresh();
+			}
+		}
+		return $comment;
+	}
+	
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.

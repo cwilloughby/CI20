@@ -182,7 +182,7 @@ class TroubleTickets extends CActiveRecord
 	 */
 	public function addComment($comment)
 	{
-		//$comment->issue_id = $this->id;
-		//return $comment->save();
+		$comment->save();
+		return Yii::app()->db->lastInsertID;
 	}
 }
