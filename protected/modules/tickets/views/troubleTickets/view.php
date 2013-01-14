@@ -11,7 +11,7 @@ $this->menu=array(
 	array('label'=>'List Trouble Tickets', 'url'=>array('index')),
 	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 	array('label'=>'Update Trouble Tickets', 'url'=>array('update', 'id'=>$model->ticketid)),
-	array('label'=>'Delete Trouble Ticket', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticketid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Close Trouble Ticket', 'url'=>array('close', 'id'=>$model->ticketid)),
 	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>
@@ -26,7 +26,10 @@ $this->menu=array(
 			'name'=>'openedby',
 			'value'=>isset($model->openedby0)?CHtml::encode($model->openedby0->username):"Unknown"
 		),
-		'opendate',
+		array(        
+			'name'=>'opendate',
+			'value'=>isset($model->opendate)?CHtml::encode(date('g:i a Y-m-d', strtotime($model->opendate))):"N\\A"
+		),
 		array(        
 			'name'=>'categoryid',
 			'value'=>isset($model->category)?CHtml::encode($model->category->categoryname):"Unknown"
@@ -40,7 +43,10 @@ $this->menu=array(
 			'name'=>'closedbyuserid',
 			'value'=>isset($model->closedbyuser)?CHtml::encode($model->closedbyuser->username):"N\\A"
 		),
-		'closedate',
+		array(        
+			'name'=>'closedate',
+			'value'=>isset($model->closedate)?CHtml::encode(date('g:i a Y-m-d', strtotime($model->closedate))):"N\\A"
+		),
 		'resolution',
 	),
 )); ?>

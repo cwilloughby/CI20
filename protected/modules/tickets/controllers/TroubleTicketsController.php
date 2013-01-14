@@ -25,9 +25,12 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionView($id)
 	{
+		// Load the ticket.
 		$ticket=$this->loadModel($id);
+		// Load all comments on that ticket.
 		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
                  array(':selected_id'=>$id));
+		// Setup the new comment form.
 		$comment=$this->createComment($ticket);
 		
 		$this->render('view',array(
@@ -38,33 +41,12 @@ class TroubleTicketsController extends Controller
 	}
 	
 	/**
-	 * Creates a new comment on an issue
-	 */
-	protected function createComment($ticket)
-	{
-		$comment=new Comments;
-		if(isset($_POST['Comments']))
-		{
-			$comment->attributes=$_POST['Comments'];
-			if($ticket->addComment($comment))
-			{
-				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added." );
-				$this->refresh();
-			}
-		}
-		return $comment;
-	}
-	
-	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new TroubleTickets;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['TroubleTickets']))
 		{
@@ -73,13 +55,8 @@ class TroubleTicketsController extends Controller
 				$this->redirect(array('view','id'=>$model->ticketid));
 		}
 		
-		$categories=array_merge(array(""=>""),CHtml::listData(TicketCategories::model()->findAll(),'categoryid','categoryname'));
-		$subjects=array_merge(array(""=>""),CHtml::listData(TicketSubjects::model()->findAll(),'subjectid','subjectname'));
-		
 		$this->render('create',array(
 			'model'=>$model,
-			'categories'=>$categories,
-			'subjects'=>$subjects,
 		));
 	}
 
@@ -91,9 +68,6 @@ class TroubleTicketsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['TroubleTickets']))
 		{
@@ -108,17 +82,25 @@ class TroubleTicketsController extends Controller
 	}
 
 	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
+	 * Tickets are closed, instead of deleted. This function first calls the closeTicket form.
+	 * @param integer $id the ID of the model to be closed.
 	 */
-	public function actionDelete($id)
+	public function actionClose($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$model=$this->loadModel($id);
+		
+		if(isset($_POST['TroubleTickets']))
+		{
+			$model->attributes=$_POST['TroubleTickets'];
+			$model->closedbyuserid = Yii::app()->user->id;
+			
+			if($model->update())
+				$this->redirect(array('view','id'=>$model->ticketid));
+		}
+		
+		$this->render('close',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -203,5 +185,23 @@ class TroubleTicketsController extends Controller
 		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
 		}
+	}
+	
+	/**
+	 * Creates a new comment on an issue
+	 */
+	protected function createComment($ticket)
+	{
+		$comment=new Comments;
+		if(isset($_POST['Comments']))
+		{
+			$comment->attributes=$_POST['Comments'];
+			if($ticket->addComment($comment))
+			{
+				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added." );
+				$this->refresh();
+			}
+		}
+		return $comment;
 	}
 }

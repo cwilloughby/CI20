@@ -14,7 +14,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('opendate')); ?>:</b>
-	<?php echo CHtml::encode($data->opendate); ?>
+	<?php echo CHtml::encode(date('g:i a Y-m-d', strtotime($data->opendate))); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('categoryid')); ?>:</b>

@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Trouble Ticket</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model, 'categories'=>$categories, 'subjects'=>$subjects)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

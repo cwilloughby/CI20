@@ -75,6 +75,7 @@ class TroubleTickets extends CActiveRecord
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
 				'createAttribute' => 'opendate',
+				'updateAttribute' => 'closedate',
 			),
 		);
 	}
@@ -91,8 +92,6 @@ class TroubleTickets extends CActiveRecord
 
 		if($this->isNewRecord)
 			$this->openedby=$id;
-
-		//$this->closedbyuserid=$id;
 
 		return parent::beforeSave();
 	}
