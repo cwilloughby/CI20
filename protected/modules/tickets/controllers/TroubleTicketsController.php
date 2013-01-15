@@ -102,7 +102,21 @@ class TroubleTicketsController extends Controller
 			'model'=>$model,
 		));
 	}
-
+	
+	/**
+	 * This function will reopen a ticket.
+	 * @param integer $id the ID of the model to be closed.
+	 */
+	public function actionReopen($id)
+	{
+		$model = $this->loadModel($id);
+		$model->closedbyuserid = NULL;
+		$model->closedate = NULL;
+		
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->ticketid));
+	}
+	
 	/**
 	 * Lists all open trouble tickets.
 	 */

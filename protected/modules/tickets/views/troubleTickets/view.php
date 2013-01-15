@@ -8,10 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
 	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
-	array('label'=>'Update Trouble Tickets', 'url'=>array('update', 'id'=>$model->ticketid)),
-	array('label'=>'Close Trouble Ticket', 'url'=>array('close', 'id'=>$model->ticketid)),
+	array('label'=>'Update Trouble Ticket', 'url'=>array('update', 'id'=>$model->ticketid)),
+	($model->closedbyuserid == NULL 
+		? array('label'=>'Close Trouble Ticket', 'url'=>array('close', 'id'=>$model->ticketid))
+		: array('label'=>'Reopen Trouble Ticket', 'url'=>'#', 
+			'linkOptions'=>(array('submit'=>array('reopen','id'=>$model->ticketid),'confirm'=>'Are you sure you want to reopen this ticket?')))),
+	
 	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>

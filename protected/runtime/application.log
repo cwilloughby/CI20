@@ -63,3 +63,31 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/tickets/troubletickets/indexclosed
 ---
+2013/01/15 16:04:00 [error] [exception.CException] exception 'CException' with message 'Property "TroubleTickets.userid" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('userid')
+#1 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\view.php(17): CActiveRecord->__get('userid')
+#2 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#5 C:\wamp\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(40): CController->render('view', Array)
+#7 [internal function]: TroubleTicketsController->actionView('1')
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#19 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#20 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/tickets/troubletickets/view?id=1
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
