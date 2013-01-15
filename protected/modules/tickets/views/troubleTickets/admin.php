@@ -8,7 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
 	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 );
 

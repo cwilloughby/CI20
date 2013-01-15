@@ -104,16 +104,41 @@ class TroubleTicketsController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all open trouble tickets.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TroubleTickets');
+		$dataProvider=new CActiveDataProvider('TroubleTickets', 
+			array(
+				'criteria'=>array(
+					'condition'=>'closedbyuserid IS NULL'
+				)
+			)
+		);
+		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
-
+	
+	/**
+	 * Lists all closed trouble tickets.
+	 */
+	public function actionClosedIndex()
+	{
+		$dataProvider=new CActiveDataProvider('TroubleTickets', 
+			array(
+				'criteria'=>array(
+					'condition'=>'closedbyuserid IS NOT NULL'
+				)
+			)
+		);
+		
+		$this->render('closedIndex',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+	
 	/**
 	 * Manages all models.
 	 */

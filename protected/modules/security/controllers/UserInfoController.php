@@ -60,11 +60,13 @@ class UserInfoController extends Controller
 			if($model->save())
 			{
 				// Email alert to the new user.
+				/*
 				$this->redirect(
 					array('/email/email/addemail', 
 						'username'=>$model->username,
 						'email'=>urlencode($model->email),
-					));	
+					));
+				*/	
 			}
 		}
 

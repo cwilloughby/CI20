@@ -7,13 +7,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
 	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Open Trouble Tickets</h1>
+<h1>Closed Trouble Tickets</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
