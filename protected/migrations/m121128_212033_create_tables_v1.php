@@ -285,25 +285,6 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
-		$this->createTable('ci_message_documents', array(
-				'messageid' => 'INT(11) NOT NULL',
-				'documentid' => 'INT NOT NULL',
-				'INDEX `fk_ci_message_documents_ci_messages1_idx` (`messageid` ASC)',
-				'INDEX `fk_ci_message_documents_ci_documents1_idx` (`documentid` ASC)',
-				'PRIMARY KEY (`messageid`, `documentid`)',
-				'CONSTRAINT `fk_ci_message_documents_ci_messages1`
-					FOREIGN KEY (`messageid` )
-					REFERENCES `ci2`.`ci_messages` (`messageid` )
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
-				'CONSTRAINT `fk_ci_message_documents_ci_documents1`
-					FOREIGN KEY (`documentid` )
-					REFERENCES `ci2`.`ci_documents` (`documentid` )
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION'
-			),
-			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
-
 		$this->createTable('ci_document_processor', array(
 				'id' => 'INT NOT NULL AUTO_INCREMENT',
 				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
@@ -353,7 +334,6 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		$this->dropTable('ci_evaluation_questions');
 		$this->dropTable('ci_evaluation_answers');
 		$this->dropTable('ci_documents');
-		$this->dropTable('ci_message_documents');
 		$this->dropTable('ci_document_type');
 		$this->dropTable('ci_document_processor');
 	}
