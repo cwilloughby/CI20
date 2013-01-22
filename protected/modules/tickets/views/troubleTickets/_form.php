@@ -49,7 +49,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'tips'); ?>
-		<?php echo $form->listBox($model,'tips', array(), array('disabled'=>'true','style'=>'overflow:hidden; border:none; width:100%; background-color:white; color:black')); ?>
+		<?php echo $form->listBox($model,'tips', array(), array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black')); ?>
 		<?php echo $form->error($model,'tips'); ?>
 	</div>
 	

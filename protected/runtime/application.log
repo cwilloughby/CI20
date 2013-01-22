@@ -91,3 +91,113 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/view?id=1
 HTTP_REFERER=http://ci2/tickets/troubletickets/admin
 ---
+2013/01/22 16:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/22 16:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/22 17:08:25 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:218)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (218)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/22 17:13:37 [error] [php] Undefined variable: data (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:223)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (223)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/22 17:18:34 [error] [exception.CException] exception 'CException' with message 'Property "Tips.2" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('2')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('2')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(Tips), '2')
+#3 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(220): CHtml::listData(Array, 'tipid', '2')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamictips()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamictips')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/22 17:18:40 [error] [exception.CException] exception 'CException' with message 'Property "Tips.6" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('6')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('6')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(Tips), '6')
+#3 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(220): CHtml::listData(Array, 'tipid', '6')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionDynamictips()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('dynamictips')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+HTTP_REFERER=http://ci2/tickets/troubletickets/create
+---
+2013/01/22 17:33:23 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:203)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\framework\web\filters\CInlineFilter.php(59): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\framework\web\CController.php(266): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\web\CWebApplication.php(283): TroubleTicketsController->run()
+#8 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (203)
+in C:\wamp\www\CI20\index.php (13)

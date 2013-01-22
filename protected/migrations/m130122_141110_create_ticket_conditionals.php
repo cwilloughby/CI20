@@ -45,7 +45,7 @@ class m130122_141110_create_ticket_conditionals extends CDbMigration
 					REFERENCES `ci2`.`ci_ticket_conditionals` (`conditionalid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
-			), 
+			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 	}
 

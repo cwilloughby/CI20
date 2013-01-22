@@ -202,7 +202,7 @@ class TroubleTicketsController extends Controller
 		$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
                  array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
 
-		$data = array_merge(array("0"=>"Select a subject"),CHtml::listData($subjects, 'subjectid', 'subjectname'));
+		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
 		
 		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
@@ -218,8 +218,6 @@ class TroubleTicketsController extends Controller
                  array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
 
 		$data = CHtml::listData($tips, 'tipid', 'tip');
-		
-		//echo CHtml::tag('div', array('style' => 'display:block'), CHtml::encode($name),true);
 		
 		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
