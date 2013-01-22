@@ -1,24 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "ci_ticket_subjects".
+ * This is the model class for table "ci_subject_conditions".
  *
- * The followings are the available columns in table 'ci_ticket_subjects':
+ * The followings are the available columns in table 'ci_subject_conditions':
  * @property integer $subjectid
- * @property string $subjectname
- *
- * The followings are the available model relations:
- * @property TicketCategories[] $ciTicketCategories
- * @property TicketConditionals[] $ciTicketConditionals
- * @property Tips[] $ciTips
- * @property TroubleTickets[] $troubleTickets
+ * @property integer $conditionalid
  */
-class TicketSubjects extends CActiveRecord
+class SubjectConditions extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return TicketSubjects the static model class
+	 * @return SubjectConditions the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +24,7 @@ class TicketSubjects extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ci_ticket_subjects';
+		return 'ci_subject_conditions';
 	}
 
 	/**
@@ -41,11 +35,11 @@ class TicketSubjects extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('subjectname', 'required'),
-			array('subjectname', 'length', 'max'=>75),
+			array('subjectid, conditionalid', 'required'),
+			array('subjectid, conditionalid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('subjectid, subjectname', 'safe', 'on'=>'search'),
+			array('subjectid, conditionalid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,10 +51,6 @@ class TicketSubjects extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ciTicketCategories' => array(self::MANY_MANY, 'TicketCategories', 'ci_category_subject_bridge(subjectid, categoryid)'),
-			'ciTicketConditionals' => array(self::MANY_MANY, 'TicketConditionals', 'ci_subject_conditions(subjectid, conditionalid)'),
-			'ciTips' => array(self::MANY_MANY, 'Tips', 'ci_subject_tips(subjectid, tipid)'),
-			'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'subjectid'),
 		);
 	}
 
@@ -71,7 +61,7 @@ class TicketSubjects extends CActiveRecord
 	{
 		return array(
 			'subjectid' => 'Subjectid',
-			'subjectname' => 'Subjectname',
+			'conditionalid' => 'Conditionalid',
 		);
 	}
 
@@ -87,7 +77,7 @@ class TicketSubjects extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('subjectid',$this->subjectid);
-		$criteria->compare('subjectname',$this->subjectname,true);
+		$criteria->compare('conditionalid',$this->conditionalid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

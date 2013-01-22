@@ -39,7 +39,8 @@
 				array(
 					'type' => 'POST',
 					'url' => CController::createUrl('troubletickets/dynamictips'),
-					'update' => '#' . CHtml::activeId($model, 'tips'),
+					//'update' => '#' . CHtml::activeId($model, 'tips'),
+					'update' => '#dependant',
 				)
 			)
 		);
@@ -47,10 +48,12 @@
 		<?php echo $form->error($model, 'subjectid'); ?>
 	</div>
 	
-	<div class="row">
-		<?php echo $form->labelEx($model,'tips'); ?>
-		<?php echo $form->listBox($model,'tips', array(), array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black')); ?>
-		<?php echo $form->error($model,'tips'); ?>
+	<div id="dependant">
+		<div class="row">
+			<div id="conditionals">
+				
+			</div>
+		</div>
 	</div>
 	
 	<div class="row">

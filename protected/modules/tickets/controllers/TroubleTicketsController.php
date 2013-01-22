@@ -219,9 +219,10 @@ class TroubleTicketsController extends Controller
 
 		$data = CHtml::listData($tips, 'tipid', 'tip');
 		
-		foreach($data as $value => $name) {
-			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
-		}
+		echo CHtml::ListBox('tips', ' ', $data, array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
+		
+		echo CHtml::textField('Test','description');
+		echo CHtml::textField('Test','description');
 	}
 	
 	/**
