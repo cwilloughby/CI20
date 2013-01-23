@@ -151,6 +151,37 @@ class EmailController extends Controller
 	 */
 	public function actionHelpopenemail()
 	{
+		$model = new Messages;
+		
+		// Create a mailer object, tell it to use SMTP and set the host.
+		$this->mail = new JPhpMailer();
+		$this->mail->IsSMTP();
+		$this->mail->Host = self::HOST;
+		
+		$user = UserInfo::model()->findByPk(Yii::app()->user->id);
+		
+		// Set the recipient, the sender, and the subject.
+		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
+		$this->mail->SetFrom($user->email);
+		$this->mail->Subject = "CI Ticket";
+		$model->to = "CharlesWilloughby@jis.nashville.org";
+		$model->from = $user->email;
+		$model->subject = $this->mail->Subject;
+		
+		// Set the message's body.
+		$this->mail->Body = 'A new CI ticket was submitted by ' . Yii::app()->user->name . '\n\n'
+					. 'Category: ' . $_GET['category'] . '\n'
+					. 'Subject: ' . $_GET['subject'] . '\n'
+					. 'Description: ' . $_GET['description'] . '\n';
+		
+		$model->messagebody = $this->mail->Body;
+		$model->messagetype = "Trouble Ticket";
+		
+		// Send the email.
+		$this->mail->Send();
+		// Save a record of the message in the ci_messages table.
+		$model->save();
+		
 		$this->render('helpopenemail');
 	}
 	

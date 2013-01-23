@@ -52,17 +52,28 @@ class TroubleTicketsController extends Controller
 		{
 			$model->attributes=$_POST['TroubleTickets'];
 			
+			// Remove the first and last elements from the POST array.
 			array_shift($_POST);
 			array_pop($_POST);
+			
 			$model->description .= "<br><br>";
 			
+			// Grab all the data from the conditionals and put them in the description.
 			foreach($_POST as $key => $value) 
 			{
 				$model->description .= $key . ": " . $value . '<br>';
 			}
 			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->ticketid));
+			{
+				$this->redirect(
+					array('/email/email/helpopenemail', 
+						//'ticketnum',
+						'category' => $model->categoryid,
+						'subject' => $model->subjectid,
+						'description' =>$model->description,
+					));
+			}
 		}
 		
 		$this->render('create',array(
@@ -212,6 +223,14 @@ class TroubleTicketsController extends Controller
 		$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
                  array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
 
+		/*
+		$subjects = Yii::app()->db->createCommand()
+			->select('ci_ticket_subjects.subjectid, subjectname')
+			->from('ci_ticket_subjects')
+			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
+			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['TroubleTickets']['categoryid']))
+			->queryAll();
+		*/
 		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
 		
 		foreach($data as $value => $name) {

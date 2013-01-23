@@ -28,7 +28,7 @@
 			)
 		);
 		?>
-		<?php echo $form->error($model, 'categoryid'); ?>
+		<?php echo $form->error($model, 'categoryid');?>
 	</div>
 	
 	<div class="row">
