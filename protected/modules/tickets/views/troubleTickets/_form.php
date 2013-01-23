@@ -49,11 +49,7 @@
 	</div>
 	
 	<div id="dependant">
-		<div class="row">
-			<div id="conditionals">
-				
-			</div>
-		</div>
+
 	</div>
 	
 	<div class="row">

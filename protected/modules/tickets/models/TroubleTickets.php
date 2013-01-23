@@ -24,7 +24,7 @@
 class TroubleTickets extends CActiveRecord
 {
 	public $tips;
-	
+		
 	public $subject_search;
 	public $category_search;
 	public $user_search;

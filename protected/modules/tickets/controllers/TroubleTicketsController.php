@@ -51,6 +51,16 @@ class TroubleTicketsController extends Controller
 		if(isset($_POST['TroubleTickets']))
 		{
 			$model->attributes=$_POST['TroubleTickets'];
+			
+			array_shift($_POST);
+			array_pop($_POST);
+			$model->description .= "<br><br>";
+			
+			foreach($_POST as $key => $value) 
+			{
+				$model->description .= $key . ": " . $value . '<br>';
+			}
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->ticketid));
 		}
@@ -215,14 +225,21 @@ class TroubleTicketsController extends Controller
 	public function actionDynamictips()
 	{	
 		$tips = Tips::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
-                 array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
+				array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
 
 		$data = CHtml::listData($tips, 'tipid', 'tip');
 		
 		echo CHtml::ListBox('tips', ' ', $data, array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
 		
-		echo CHtml::textField('Test','description');
-		echo CHtml::textField('Test','description');
+		$conditionals = TicketConditionals::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
+				array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
+		
+		
+		foreach($conditionals as $key => $value)
+		{
+			echo CHtml::label($conditionals[$key]->label,$conditionals[$key]->label);
+			echo CHtml::textField($conditionals[$key]->label,'');
+		}
 	}
 	
 	/**
@@ -236,7 +253,7 @@ class TroubleTicketsController extends Controller
 			$comment->attributes=$_POST['Comments'];
 			if($ticket->addComment($comment))
 			{
-				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added." );
+				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added.");
 				$this->refresh();
 			}
 		}

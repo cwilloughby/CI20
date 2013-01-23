@@ -26,7 +26,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
+	<?php echo nl2br($data->description); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('closedbyuserid')); ?>:</b>
