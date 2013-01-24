@@ -162,26 +162,35 @@ class EmailController extends Controller
 		
 		// Set the recipient, the sender, and the subject.
 		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
+		$this->mail->AddCC($user->email);
 		$this->mail->SetFrom($user->email);
-		$this->mail->Subject = "CI Ticket";
+		$this->mail->Subject = "CI Ticket #" . $_GET['ticketid'];
 		$model->to = "CharlesWilloughby@jis.nashville.org";
 		$model->from = $user->email;
 		$model->subject = $this->mail->Subject;
 		
 		// Set the message's body.
-		$this->mail->Body = 'A new CI ticket was submitted by ' . Yii::app()->user->name . '\n\n'
-					. 'Category: ' . $_GET['category'] . '\n'
-					. 'Subject: ' . $_GET['subject'] . '\n'
-					. 'Description: ' . $_GET['description'] . '\n';
+		$this->mail->Body = 'A new CI ticket was submitted by ' . Yii::app()->user->name . "\n\n"
+					. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "\n"
+					. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "\n"
+					. "Description: " . $_GET['description'] . "\n";
 		
 		$model->messagebody = $this->mail->Body;
 		$model->messagetype = "Trouble Ticket";
 		
 		// Send the email.
 		$this->mail->Send();
-		// Save a record of the message in the ci_messages table.
-		$model->save();
 		
+		// Save a record of the message in the ci_messages table.
+		if($model->save())
+		{
+			// Connect the new message to the ticket on the bridge table.
+			$bridge = new TicketMessages;
+			$bridge->ticketid = $_GET['ticketid'];
+			$bridge->messageid = $model->messageid;
+			$bridge->save();
+		}
+
 		$this->render('helpopenemail');
 	}
 	

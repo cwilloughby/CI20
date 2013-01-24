@@ -56,12 +56,12 @@ class TroubleTicketsController extends Controller
 			array_shift($_POST);
 			array_pop($_POST);
 			
-			$model->description .= "<br><br>";
+			$model->description .= "\n\n";
 			
 			// Grab all the data from the conditionals and put them in the description.
 			foreach($_POST as $key => $value) 
 			{
-				$model->description .= $key . ": " . $value . '<br>';
+				$model->description .= $key . ": " . $value . "\n";
 			}
 			
 			if($model->save())
@@ -69,9 +69,10 @@ class TroubleTicketsController extends Controller
 				$this->redirect(
 					array('/email/email/helpopenemail', 
 						//'ticketnum',
+						'ticketid' => $model->ticketid,
 						'category' => $model->categoryid,
 						'subject' => $model->subjectid,
-						'description' =>$model->description,
+						'description' =>  $model->description,
 					));
 			}
 		}
