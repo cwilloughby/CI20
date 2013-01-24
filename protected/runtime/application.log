@@ -1203,3 +1203,238 @@ Stack trace:
 REQUEST_URI=/email/email/helpopenemail?ticketid=33&category=10&subject=30&description=Test3%0A%0AWarrant%2FCitation%2FCase_number%3A+Test1%0ADefendant_name%3A+Test2%0A
 in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (174)
 in C:\wamp\www\CI20\index.php (13)
+2013/01/24 16:37:55 [error] [exception.CException] exception 'CException' with message 'Property "TroubleTickets.createdby" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('createdby')
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(122): CActiveRecord->__get('createdby')
+#2 [internal function]: TroubleTicketsController->actionClose('32')
+#3 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(TroubleTicketsController), Array)
+#4 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(TroubleTicketsController), Object(ReflectionMethod), Array)
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('close')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/tickets/troubletickets/close?id=32
+HTTP_REFERER=http://ci2/tickets/troubletickets/close?id=32
+---
+2013/01/24 16:38:56 [error] [php] Undefined variable: user (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:216)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): EmailController->runAction()
+#1 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(266): EmailController->runActionWithFilters()
+#3 C:\wamp\framework\web\CWebApplication.php(283): EmailController->run()
+#4 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/helpcloseemail?creator=1&ticketid=33&category=10&subject=30&description=Test3%0A%0AWarrant%2FCitation%2FCase_number%3A+Test1%0ADefendant_name%3A+Test2%0A&resolution=
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (216)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 16:59:36 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/tickets/troubletickets/index
+HTTP_REFERER=http://ci2/tickets/troubletickets/close?id=35
+---
+2013/01/24 17:17:52 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/tickets/troubletickets/index
+HTTP_REFERER=http://ci2/tickets/troubletickets/close?id=35
+---
+2013/01/24 17:17:56 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/tickets/troubletickets/index
+HTTP_REFERER=http://ci2/tickets/troubletickets/close?id=35
+---
+2013/01/24 17:17:56 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/tickets/troubletickets/close?id=35
+HTTP_REFERER=http://ci2/tickets/troubletickets/view?id=35
+---
+2013/01/24 17:18:02 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/
+---
+2013/01/24 17:19:18 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/
+---
+2013/01/24 19:29:40 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 19:30:09 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 19:30:50 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 19:31:21 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 19:34:45 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 19:38:37 [error] [exception.CException] exception 'CException' with message 'Property "CFileValidator.0" is not defined.' in C:\wamp\framework\yiilite.php:624
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(9399): CComponent->__set('0', Array)
+#1 C:\wamp\framework\yiilite.php(6545): CValidator::createValidator('file', Object(TroubleTickets), 'attach', Array)
+#2 C:\wamp\framework\yiilite.php(6526): CModel->createValidators()
+#3 C:\wamp\framework\yiilite.php(6554): CModel->getValidators('categoryid')
+#4 C:\wamp\framework\yiilite.php(4961): CModel->isAttributeRequired('categoryid')
+#5 C:\wamp\framework\web\widgets\CActiveForm.php(563): CHtml::activeLabelEx(Object(TroubleTickets), 'categoryid', Array)
+#6 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_form.php(21): CActiveForm->labelEx(Object(TroubleTickets), 'categoryid')
+#7 C:\wamp\framework\yiilite.php(3173): require('C:\wamp\www\CI2...')
+#8 C:\wamp\framework\yiilite.php(3152): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#9 C:\wamp\framework\yiilite.php(3576): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\create.php(19): CController->renderPartial('_form', Array)
+#11 C:\wamp\framework\yiilite.php(3173): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\yiilite.php(3152): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\yiilite.php(3576): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\yiilite.php(3544): CController->renderPartial('create', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(81): CController->render('create', Array)
+#16 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionCreate()
+#17 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#20 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#24 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\yiilite.php(1699): CController->run('create')
+#26 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/create
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/24 19:39:15 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:33:09 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:35:35 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:41:29 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:46:19 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:55:15 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:55:15 [error] [php] Undefined variable: fileName (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:80)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (80)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 20:58:01 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (53)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 21:35:31 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 21:35:31 [error] [php] Undefined variable: path (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:74)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/create
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (74)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 21:41:56 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 21:55:31 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 22:00:39 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/24 22:04:17 [warning] [application] Failed to set unsafe attribute "attach" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)

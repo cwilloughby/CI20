@@ -83,12 +83,9 @@ return array(
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 			),
 		),
-		/*
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		'cache'=>array(
+			'class'=>'system.caching.CApcCache',
 		),
-		*/
-		// uncomment the following to use a MySQL database
 		'db'=>array(
 			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',
@@ -96,6 +93,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
+			'schemaCachingDuration'=>3600,
 		),
 		'authManager'=>array(
 			'class'=>'application.modules.srbac.components.SDbAuthManager',
@@ -115,12 +113,6 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
 			),
 		),
 	),

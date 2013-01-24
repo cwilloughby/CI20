@@ -7,7 +7,9 @@ class TroubleTicketsController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
-
+	
+	public $path='C:\\Users\\cwilloughby\\Desktop\\CI2Yii\\';
+	
 	/**
 	 * @return array action filters
 	 */
@@ -60,19 +62,29 @@ class TroubleTicketsController extends Controller
 			
 			// Grab all the data from the conditionals and put them in the description.
 			foreach($_POST as $key => $value) 
-			{
 				$model->description .= $key . ": " . $value . "\n";
+			
+			$model->attach=CUploadedFile::getInstance($model,'attach');
+			if(isset($model->attach))
+			{
+				$fileName = $model->attach->getName();
+				$model->description .= "Attachment: " . $this->path . $fileName;
 			}
+			else
+				$model->description .= "Attachment: None";
 			
 			if($model->save())
 			{
+				// Save the attachment if one was given.
+				if($fileName != "None")
+					$model->attach->saveAs($this->path . $fileName, 'true');
+				
 				$this->redirect(
 					array('/email/email/helpopenemail', 
-						//'ticketnum',
 						'ticketid' => $model->ticketid,
 						'category' => $model->categoryid,
 						'subject' => $model->subjectid,
-						'description' =>  $model->description,
+						'description' => $model->description,
 					));
 			}
 		}
@@ -117,7 +129,17 @@ class TroubleTicketsController extends Controller
 			$model->closedbyuserid = Yii::app()->user->id;
 			
 			if($model->update())
-				$this->redirect(array('view','id'=>$model->ticketid));
+			{
+				$this->redirect(
+					array('/email/email/helpcloseemail',
+						'creator' => $model->openedby,
+						'ticketid' => $model->ticketid,
+						'category' => $model->categoryid,
+						'subject' => $model->subjectid,
+						'description' => $model->description,
+						'resolution' => $model->resolution,
+					));
+			}
 		}
 		
 		$this->render('close',array(
@@ -201,19 +223,6 @@ class TroubleTicketsController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='trouble-tickets-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 	}
 	
 	/*

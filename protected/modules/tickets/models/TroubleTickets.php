@@ -22,9 +22,9 @@
  * @property TicketSubjects $subject
  */
 class TroubleTickets extends CActiveRecord
-{
-	public $tips;
-		
+{	
+	public $attach;
+	
 	public $subject_search;
 	public $category_search;
 	public $user_search;
@@ -59,6 +59,7 @@ class TroubleTickets extends CActiveRecord
 			array('categoryid, subjectid', 'required'),
 			array('openedby, categoryid, subjectid, closedbyuserid', 'numerical', 'integerOnly'=>true),
 			array('description, closedate, resolution', 'safe'),
+			array('attach', 'file', 'types'=>'jpg, gif, png, txt', 'maxSize'=>'2097152', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('ticketid, openedby, opendate, categoryid, subjectid, description, closedbyuserid, closedate, resolution', 'safe', 'on'=>'search'),
@@ -127,7 +128,7 @@ class TroubleTickets extends CActiveRecord
 			'closedbyuserid' => 'Closed By',
 			'closedate' => 'Closed On',
 			'resolution' => 'Resolution',
-			'tips' => 'Tips',
+			'attach' => 'Attachment',
 		);
 	}
 
