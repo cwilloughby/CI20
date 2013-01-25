@@ -76,8 +76,8 @@ class TroubleTicketsController extends Controller
 			if($model->save())
 			{
 				// Save the attachment if one was given.
-				if($fileName != "None")
-					$model->attach->saveAs($this->path . $fileName, 'true');
+				//if($fileName != "None")
+				//	$model->attach->saveAs($this->path . $fileName, 'true');
 				
 				$this->redirect(
 					array('/email/email/helpopenemail', 
@@ -166,14 +166,50 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TroubleTickets', 
-			array(
-				'criteria'=>array(
-					'condition'=>'closedbyuserid IS NULL'
+		// If the user has an IT role then they can see all open tickets.
+		if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'IT'"))
+		{
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=>'closedbyuserid IS NULL'
+					)
 				)
-			)
-		);
-		
+			);
+		}
+		else if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'Supervisor'"))
+		{
+			// If the user is a supervisor.
+			// Find that supervisor's department
+			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+
+			// Find all users in that department.
+			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
+					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
+			
+			// Find all the tickets for those users.
+			$stringed = join(',', $allUsers);
+			
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=> "closedbyuserid IS NULL AND openedby IN (" . $stringed . ")"
+					)
+				)
+			);
+		}
+		else 
+		{
+			// Only show tickets that this user has opened.
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
+					)
+				)
+			);
+		}
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -184,13 +220,49 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionClosedIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TroubleTickets', 
-			array(
-				'criteria'=>array(
-					'condition'=>'closedbyuserid IS NOT NULL'
+		// If the user has an IT role then they can see all closed tickets.
+		if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'IT'"))
+		{
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=>'closedbyuserid IS NOT NULL'
+					)
 				)
-			)
-		);
+			);
+		}
+		else if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'Supervisor'"))
+		{
+			// If the user is a supervisor.
+			// Find that supervisor's department
+			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+
+			// Find all users in that department.
+			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
+					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
+			
+			// Find all the tickets for those users.
+			$stringed = join(',', $allUsers);
+			
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=> "closedbyuserid IS NOT NULL AND openedby IN (" . $stringed . ")"
+					)
+				)
+			);
+		}
+		else 
+		{
+			// Only show tickets that this user has closed.
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'criteria'=>array(
+						'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
+					)
+				)
+			);
+		}
 		
 		$this->render('closedIndex',array(
 			'dataProvider'=>$dataProvider,
@@ -262,7 +334,6 @@ class TroubleTicketsController extends Controller
 		
 		$conditionals = TicketConditionals::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
 				array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
-		
 		
 		foreach($conditionals as $key => $value)
 		{

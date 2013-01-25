@@ -20,6 +20,7 @@ return array(
 		'application.modules.security.components.*',
 		'application.extensions.phpmailer.JPhpMailer',
 		'application.modules.srbac.controllers.SBaseController',
+		'application.modules.srbac.models.Assignments',
 		'application.modules.tickets.models.*',
 	),
 

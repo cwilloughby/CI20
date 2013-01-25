@@ -28,4 +28,10 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo nl2br($data->description); ?>
 	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('closedbyuserid')); ?>:</b>
+	<?php echo CHtml::encode((isset($data->closedbyuser->username)) 
+						? $data->closedbyuser->username 
+						: ""); ?>
+	<br />
 </div>
