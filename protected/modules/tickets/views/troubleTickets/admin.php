@@ -48,21 +48,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'ticketid',
 		array( 
-			'name'=>'openedby', 
+			'name'=>'user_search', 
 			'value'=>'$data->openedby0->username' 
 		),
 		'opendate',
 		array( 
-			'name'=>'category', 
+			'name'=>'category_search', 
 			'value'=>'$data->category->categoryname' 
 		),
 		array(
-			'name'=>'subject', 
+			'name'=>'subject_search', 
 			'value'=>'$data->subject->subjectname' 
 		),
 		'description',
 		array( 
-			'name'=>'closedbyuserid', 
+			'name'=>'closer_search', 
 			'value'=>'(isset($data->closedbyuser->username)) 
 						? $data->closedbyuser->username 
 						: ""'

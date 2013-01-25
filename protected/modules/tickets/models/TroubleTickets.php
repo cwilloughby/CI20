@@ -62,7 +62,7 @@ class TroubleTickets extends CActiveRecord
 			array('attach', 'file', 'types'=>'jpg, gif, png, txt', 'maxSize'=>'2097152', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ticketid, openedby, opendate, categoryid, subjectid, description, closedbyuserid, closedate, resolution', 'safe', 'on'=>'search'),
+			array('ticketid, user_search, opendate, category_search, subject_search, description, closer_search, closedate, resolution', 'safe', 'on'=>'search'),
 		);
 	}
 	
@@ -121,11 +121,15 @@ class TroubleTickets extends CActiveRecord
 		return array(
 			'ticketid' => 'Ticket #',
 			'openedby' => 'Opened By',
+			'user_search' => 'Opened By',
 			'opendate' => 'Created On',
 			'categoryid' => 'Category',
+			'category_search' => 'Category',
 			'subjectid' => 'Subject',
+			'subject_search' => 'Subject',
 			'description' => 'Description',
 			'closedbyuserid' => 'Closed By',
+			'closer_search' => 'Closed By',
 			'closedate' => 'Closed On',
 			'resolution' => 'Resolution',
 			'attach' => 'Attachment',
@@ -142,14 +146,15 @@ class TroubleTickets extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
+		$criteria->with = array('category', 'subject', 'openedby0', 'closedbyuser');
+		
 		$criteria->compare('ticketid',$this->ticketid);
-		$criteria->compare('openedby',$this->user_search,true);
+		$criteria->compare('openedby0.username',$this->user_search,true);
 		$criteria->compare('opendate',$this->opendate,true);
-		$criteria->compare('categoryid',$this->category_search,true);
+		$criteria->compare('category.categoryname',$this->category_search,true);
 		$criteria->compare('subject.subjectname',$this->subject_search,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('closedbyuserid',$this->closer_search,true);
+		$criteria->compare('closedbyuser.username',$this->closer_search,true);
 		$criteria->compare('closedate',$this->closedate,true);
 		$criteria->compare('resolution',$this->resolution,true);
 

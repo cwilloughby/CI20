@@ -1945,3 +1945,675 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/index
 HTTP_REFERER=http://ci2/security/userinfo/index
 ---
+2013/01/25 21:05:55 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:05:55 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:15:28 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:15:28 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:15:47 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:15:47 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:10 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:10 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:40 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:40 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:45 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:45 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:50 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:50 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:55 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:20:55 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:00 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:00 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:06 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:06 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:09 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:09 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:21:09 [error] [php] Trying to get property of non-object (C:\wamp\framework\yiilite.php(843) : eval()'d code:1)
+Stack trace:
+#0 C:\wamp\framework\zii\widgets\grid\CGridColumn.php(145): CDataColumn->renderDataCellContent()
+#1 C:\wamp\framework\zii\widgets\grid\CGridView.php(546): CDataColumn->renderDataCell()
+#2 C:\wamp\framework\zii\widgets\grid\CGridView.php(517): CGridView->renderTableRow()
+#3 C:\wamp\framework\zii\widgets\grid\CGridView.php(427): CGridView->renderTableBody()
+#4 C:\wamp\framework\zii\widgets\CBaseListView.php(161): CGridView->renderItems()
+#5 unknown(0): CGridView->renderSection()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(144): preg_replace_callback()
+#7 C:\wamp\framework\zii\widgets\CBaseListView.php(129): CGridView->renderContent()
+#8 C:\wamp\framework\yiilite.php(3198): CGridView->run()
+#9 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(75): TroubleTicketsController->widget()
+#10 C:\wamp\framework\yiilite.php(3173): require()
+#11 C:\wamp\framework\yiilite.php(3152): TroubleTicketsController->renderInternal()
+#12 C:\wamp\framework\yiilite.php(3576): TroubleTicketsController->renderFile()
+#13 C:\wamp\framework\yiilite.php(3544): TroubleTicketsController->renderPartial()
+#14 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): TroubleTicketsController->render()
+#15 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionAdmin()
+#16 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams()
+#17 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#18 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#19 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#20 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#21 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#22 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#23 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#24 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#25 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#26 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#27 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory%5D=&TroubleTickets%5Bsubject%5D=&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid&TroubleTickets_sort=ticketid.desc
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (75)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:18 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:18 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:23 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:23 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:26 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:26 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:28 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:28 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:35 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:22:35 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:21 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:21 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:25 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:25 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:27 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:27 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:34 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:34 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:37 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:23:37 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:06 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:06 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:08 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:08 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:15 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:15 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:17 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:17 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:21 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:21 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:26 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:26 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:28 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:28 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:29 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:29 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:24:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/25 21:25:13 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:25:13 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:25:44 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:25:44 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:30:54 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:30:54 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:36:48 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:44:22 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:44:33 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:44:44 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:44:48 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:44:51 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:46:18 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:46:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0.
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:46:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1540): CDbCommand->queryScalar()
+#2 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#5 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#7 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#8 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#9 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=Bond&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 21:48:32 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0.
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:48:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1540): CDbCommand->queryScalar()
+#2 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#5 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#7 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#8 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#9 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=1&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 21:50:16 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:50:16 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:50:22 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:50:22 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:56:16 [error] [exception.CException] exception 'CException' with message 'CApcCache requires PHP apc extension to be loaded.' in C:\wamp\framework\caching\CApcCache.php:36
+Stack trace:
+#0 C:\wamp\framework\base\CModule.php(388): CApcCache->init()
+#1 C:\wamp\framework\web\CUrlManager.php(217): CModule->getComponent('cache')
+#2 C:\wamp\framework\web\CUrlManager.php(207): CUrlManager->processRules()
+#3 C:\wamp\framework\base\CModule.php(388): CUrlManager->init()
+#4 C:\wamp\framework\base\CApplication.php(503): CModule->getComponent('urlManager')
+#5 C:\wamp\framework\web\CWebApplication.php(141): CApplication->getUrlManager()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/tickets/troubletickets/admin
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/25 21:56:54 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:56:54 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:56:58 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:56:58 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:57:05 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:57:05 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:28 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:28 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:36 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:36 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:47 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:47 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:57 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:58:57 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:05 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:05 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:16 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:16 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:22 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 21:59:22 [warning] [application] Failed to set unsafe attribute "subject" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:04:06 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:04:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0.
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:04:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1540): CDbCommand->queryScalar()
+#2 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#5 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#7 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#8 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#9 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory%5D=&TroubleTickets%5Bsubject_search%5D=Bond&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 22:04:57 [warning] [application] Failed to set unsafe attribute "category" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:08:26 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0.
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:08:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1540): CDbCommand->queryScalar()
+#2 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#5 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#7 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#8 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#9 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=Bond&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 22:09:07 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0.
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:09:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'subject.subjectname' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `ci_trouble_tickets` `t` WHERE subject.subjectname LIKE :ycp0' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1540): CDbCommand->queryScalar()
+#2 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#5 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#6 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#7 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#8 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#9 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#11 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#12 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#13 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#14 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#15 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#16 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#17 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#24 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#26 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#27 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=Data&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 22:09:32 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:15:13 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:15:13 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'categoryid' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`ticketid`) FROM `ci_trouble_tickets` `t`  LEFT OUTER JOIN `ci_ticket_categories` `category` ON (`t`.`categoryid`=`category`.`categoryid`)  LEFT OUTER JOIN `ci_ticket_subjects` `subject` ON (`t`.`subjectid`=`subject`.`subjectid`)  WHERE (categoryid LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:15:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'categoryid' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`ticketid`) FROM `ci_trouble_tickets` `t`  LEFT OUTER JOIN `ci_ticket_categories` `category` ON (`t`.`categoryid`=`category`.`categoryid`)  LEFT OUTER JOIN `ci_ticket_subjects` `subject` ON (`t`.`subjectid`=`subject`.`subjectid`)  WHERE (categoryid LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#26 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#28 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#29 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#30 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Bopenedby%5D=&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=ARMS&TroubleTickets%5Bsubject_search%5D=&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
+2013/01/25 22:16:09 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:16:15 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:16:23 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:16:44 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:16:48 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:09 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:12 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:15 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:17 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:19 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:23 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:25 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:17:28 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:18:44 [warning] [application] Failed to set unsafe attribute "subject_search" of "TroubleTickets".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (280)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:21:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'openedby0.username' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`ticketid`) FROM `ci_trouble_tickets` `t`  LEFT OUTER JOIN `ci_ticket_categories` `category` ON (`t`.`categoryid`=`category`.`categoryid`)  LEFT OUTER JOIN `ci_ticket_subjects` `subject` ON (`t`.`subjectid`=`subject`.`subjectid`)  WHERE (openedby0.username LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php (76)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (284)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/25 22:21:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'openedby0.username' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`ticketid`) FROM `ci_trouble_tickets` `t`  LEFT OUTER JOIN `ci_ticket_categories` `category` ON (`t`.`categoryid`=`category`.`categoryid`)  LEFT OUTER JOIN `ci_ticket_subjects` `subject` ON (`t`.`subjectid`=`subject`.`subjectid`)  WHERE (openedby0.username LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(284): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): TroubleTicketsController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#26 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#28 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('tickets/trouble...')
+#29 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#30 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Buser_search%5D=gsworker&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
+HTTP_REFERER=http://ci2/tickets/troubletickets/admin
+---
