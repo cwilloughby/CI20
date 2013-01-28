@@ -57,7 +57,7 @@ class TicketSubjects extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ciTicketCategories' => array(self::MANY_MANY, 'TicketCategories', 'ci_category_subject_bridge(subjectid, categoryid)'),
+			'ciTicketCategories' => array(self::MANY_MANY, 'TicketCategories', 'ci_category_subject_bridge(subjectid, categoryid)', 'together'=>true),
 			'ciTicketConditionals' => array(self::MANY_MANY, 'TicketConditionals', 'ci_subject_conditions(subjectid, conditionalid)'),
 			'ciTips' => array(self::MANY_MANY, 'Tips', 'ci_subject_tips(subjectid, tipid)'),
 			'troubleTickets' => array(self::HAS_MANY, 'TroubleTickets', 'subjectid'),

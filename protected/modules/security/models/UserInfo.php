@@ -17,13 +17,16 @@
  * @property integer $active
  *
  * The followings are the available model relations:
+ * @property Comments[] $comments
  * @property ComputerInventory[] $computerInventories
+ * @property Departments[] $departments
  * @property DocumentProcessor[] $documentProcessors
  * @property Documents[] $documents
  * @property Evaluations[] $evaluations
  * @property Evaluations[] $evaluations1
  * @property TroubleTickets[] $troubleTickets
  * @property TroubleTickets[] $troubleTickets1
+ * @property Departments $department
  */
 class UserInfo extends CActiveRecord
 {
@@ -110,6 +113,7 @@ class UserInfo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'comments' => array(self::HAS_MANY, 'Comments', 'createdby'),
             'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'userid'),
             'departments' => array(self::HAS_MANY, 'Departments', 'supervisorid'),
             'documentProcessors' => array(self::HAS_MANY, 'DocumentProcessor', 'completedby'),

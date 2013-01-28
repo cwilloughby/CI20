@@ -36,13 +36,13 @@ class m130122_141110_create_ticket_conditionals extends CDbMigration
 				'INDEX `fk_ci_subject_conditions_ci_ticket_subjects1_idx` (`subjectid` ASC)',
 				'INDEX `fk_ci_subject_conditions_ci_ticket_conditionals1_idx` (`conditionalid` ASC)',
 				'CONSTRAINT `fk_ci_subject_conditions_ci_ticket_subjects1`
-					FOREIGN KEY (`subjectid` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					FOREIGN KEY (`subjectid`)
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_subject_conditions_ci_ticket_conditionals1`
-					FOREIGN KEY (`conditionalid` )
-					REFERENCES `ci2`.`ci_ticket_conditionals` (`conditionalid` )
+					FOREIGN KEY (`conditionalid`)
+					REFERENCES `ci2`.`ci_ticket_conditionals` (`conditionalid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),

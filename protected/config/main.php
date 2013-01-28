@@ -22,6 +22,7 @@ return array(
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.tickets.models.*',
+		'application.modules.email.controllers.*',
 	),
 
 	'modules'=>array(

@@ -147,7 +147,6 @@ class EmailController extends Controller
 	/*
 	 * This action will be used to send an alert email to the helpdesk when a new
 	 * trouble ticket is made.
-	 * This is just a place holder until the trouble ticket system is done.
 	 */
 	public function actionHelpopenemail()
 	{
@@ -162,6 +161,7 @@ class EmailController extends Controller
 		
 		// Set the recipient, the sender, and the subject.
 		$this->mail->ContentType = "text/html";
+		// The address will later be changed to "ccc.helpdesk@nashville.gov"
 		$this->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
 		$this->mail->AddCC($user->email);
 		$this->mail->SetFrom($user->email);
@@ -198,11 +198,11 @@ class EmailController extends Controller
 	/*
 	 * This action will be used to send an alert email to the trouble ticket
 	 * creator when their ticket is closed.
-	 * This is just a place holder until the trouble ticket system is done.
 	 */
 	public function actionHelpcloseemail()
 	{
 		$model = new Messages;
+		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
 		// Create a mailer object, tell it to use SMTP and set the host.
 		$this->mail = new JPhpMailer();
@@ -210,10 +210,11 @@ class EmailController extends Controller
 		$this->mail->Host = self::HOST;
 		
 		// Set the recipient, the sender, and the subject.
-		$this->mail->AddAddress(UserInfo::model()->findByPk($_GET['creator'])->email);
+		$this->mail->AddAddress($email);
+		//$this->mail->AddCC("ccc.helpdesk@nashville.gov");
 		$this->mail->SetFrom("ccc.helpdesk@nashville.gov");
 		$this->mail->Subject = "Closing CI Ticket #" . $_GET['ticketid'];
-		$model->to = "CharlesWilloughby@jis.nashville.org";
+		$model->to = $email;
 		$model->from = "ccc.helpdesk@nashville.gov";
 		$model->subject = $this->mail->Subject;
 		
@@ -241,5 +242,50 @@ class EmailController extends Controller
 			}
 		}
 		$this->redirect(array('/tickets/troubletickets/index'));
+	}
+	
+	/*
+	 * This action will be used to send an alert email when a new comment is made.
+	 */
+	public function actionCommentEmail()
+	{
+		$model = new Messages;
+		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
+		
+		// Create a mailer object, tell it to use SMTP and set the host.
+		$this->mail = new JPhpMailer();
+		$this->mail->IsSMTP();
+		$this->mail->Host = self::HOST;
+		
+		// Set the recipient, the sender, and the subject.
+		$this->mail->AddAddress($email);
+		//$this->mail->AddCC("ccc.helpdesk@nashville.gov");
+		$this->mail->SetFrom("ccc.helpdesk@nashville.gov");
+		$this->mail->Subject = "A new comment was made on CI Ticket #" . $_GET['ticketid'];
+		$model->to = $email;
+		$model->from = "ccc.helpdesk@nashville.gov";
+		$model->subject = $this->mail->Subject;
+		
+		// Set the message's body.
+		$this->mail->Body = "A new comment on CI ticket #" . $_GET['ticketid'] . " was made by " . Yii::app()->user->name . "\n\n"
+					. "Content: " . $_GET['content']. "\n";
+		
+		$model->messagebody = $this->mail->Body;
+		$model->messagetype = "Comment";
+		
+		// Send the email.
+		if($this->mail->Send())
+		{
+			// Save a record of the message in the ci_messages table.
+			if($model->save())
+			{
+				// Connect the new message to the ticket on the bridge table.
+				$bridge = new TicketMessages;
+				$bridge->ticketid = $_GET['ticketid'];
+				$bridge->messageid = $model->messageid;
+				$bridge->save();
+			}
+		}
+		$this->redirect(array('/tickets/troubletickets/view?id=' . $_GET['ticketid']));
 	}
 }

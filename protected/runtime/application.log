@@ -2617,3 +2617,387 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/admin?TroubleTickets%5Bticketid%5D=&TroubleTickets%5Buser_search%5D=gsworker&TroubleTickets%5Bopendate%5D=&TroubleTickets%5Bcategory_search%5D=&TroubleTickets%5Bsubject_search%5D=&TroubleTickets%5Bdescription%5D=&TroubleTickets%5Bclosedbyuserid%5D=&TroubleTickets%5Bclosedate%5D=&TroubleTickets%5Bresolution%5D=&TroubleTickets_page=1&ajax=trouble-tickets-grid
 HTTP_REFERER=http://ci2/tickets/troubletickets/admin
 ---
+2013/01/28 14:23:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/28 14:23:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/28 14:33:00 [error] [php] include(EmailController.php): failed to open stream: No such file or directory (C:\wamp\framework\yiilite.php:238)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(356): spl_autoload_call()
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(36): TroubleTicketsController->createComment()
+#2 unknown(0): TroubleTicketsController->actionView()
+#3 C:\wamp\framework\yiilite.php(3793): ReflectionMethod->invokeArgs()
+#4 C:\wamp\framework\yiilite.php(3810): CInlineAction->runWithParamsInternal()
+#5 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams()
+#6 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#7 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#8 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#9 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#10 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#11 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#12 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#13 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#14 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#15 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/view?id=52
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (356)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (36)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 14:34:07 [error] [php] Non-static method EmailController::commentEmail() should not be called statically, assuming $this from incompatible context (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:356)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(3793): ReflectionMethod->invokeArgs()
+#1 C:\wamp\framework\yiilite.php(3810): CInlineAction->runWithParamsInternal()
+#2 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams()
+#3 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#4 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#5 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#6 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#7 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#8 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#9 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#10 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#11 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#12 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/view?id=52
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (356)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (36)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 14:36:00 [error] [php] Missing argument 1 for CController::__construct(), called in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php on line 356 and defined (C:\wamp\framework\yiilite.php:3266)
+Stack trace:
+#0 unknown(0): TroubleTicketsController->actionView()
+#1 C:\wamp\framework\yiilite.php(3793): ReflectionMethod->invokeArgs()
+#2 C:\wamp\framework\yiilite.php(3810): CInlineAction->runWithParamsInternal()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams()
+#4 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#7 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#11 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/view?id=52
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (356)
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (36)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 17:55:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "commentemail".' in C:\wamp\framework\yiilite.php:3422
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(3304): CController->missingAction('commentemail')
+#1 C:\wamp\framework\yiilite.php(1699): CController->run('commentemail')
+#2 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('email/email/com...')
+#3 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#4 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/email/email/commentemail?creator=5&ticketid=52&description=Test4
+HTTP_REFERER=http://ci2/tickets/troubletickets/view?id=52
+---
+2013/01/28 18:05:13 [error] [php] Undefined index: category (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:266)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): EmailController->runAction()
+#1 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3299): EmailController->runActionWithFilters()
+#3 C:\wamp\framework\yiilite.php(1699): EmailController->run()
+#4 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#5 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/commentemail?creator=8&ticketid=52&description=Test7
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (266)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 18:14:00 [error] [php] Undefined index: category (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:264)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): EmailController->runAction()
+#1 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3299): EmailController->runActionWithFilters()
+#3 C:\wamp\framework\yiilite.php(1699): EmailController->run()
+#4 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#5 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/commentemail?creator=8&ticketid=52&description=Test7
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (264)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 18:14:17 [error] [php] Undefined index: category (C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php:264)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): EmailController->runAction()
+#1 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3299): EmailController->runActionWithFilters()
+#3 C:\wamp\framework\yiilite.php(1699): EmailController->run()
+#4 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#5 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/email/email/commentemail?creator=2&ticketid=52&content=Test8
+in C:\wamp\www\CI20\protected\modules\email\controllers\EmailController.php (264)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 20:45:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1170 BLOB/TEXT column 'question' used in key specification without a key length. The SQL statement executed was: CREATE TABLE `ci_evaluation_questions` (
+	`questionid` INT(4) NOT NULL AUTO_INCREMENT ,
+	`question` TEXT NOT NULL,
+	PRIMARY KEY (`questionid`),
+	UNIQUE INDEX `question_UNIQUE` (`question` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci.
+2013/01/28 20:45:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1170 BLOB/TEXT column 'question' used in key specification without a key length. The SQL statement executed was: CREATE TABLE `ci_evaluation_questions` (
+	`questionid` INT(4) NOT NULL AUTO_INCREMENT ,
+	`question` TEXT NOT NULL,
+	PRIMARY KEY (`questionid`),
+	UNIQUE INDEX `question_UNIQUE` (`question` ASC)
+) ENGINE=InnoDB, COLLATE=utf8_general_ci' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(1251): CDbCommand->execute()
+#1 C:\wamp\framework\db\CDbMigration.php(229): CDbCommand->createTable('ci_evaluation_q...', Array, 'ENGINE=InnoDB, ...')
+#2 C:\wamp\www\CI20\protected\migrations\m121128_212033_create_tables_v1.php(81): CDbMigration->createTable('ci_evaluation_q...', Array, 'ENGINE=InnoDB, ...')
+#3 C:\wamp\framework\cli\commands\MigrateCommand.php(386): m121128_212033_create_tables_v1->up()
+#4 C:\wamp\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m121128_212033_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\wamp\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\wamp\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\wamp\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\wamp\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\wamp\framework\yiic.php(34): CApplication->run()
+#11 C:\wamp\www\CI20\protected\yiic.php(7): require_once('C:\wamp\framewo...')
+#12 {main}
+---
+2013/01/28 21:48:23 [error] [exception.CException] exception 'CException' with message 'Property "CBelongsToRelation.index" is not defined.' in C:\wamp\framework\yiilite.php:624
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(7613): CComponent->__set('index', 'categoryname')
+#1 C:\wamp\framework\yiilite.php(7817): CBaseActiveRelation->__construct('category', 'TicketCategorie...', 'categoryid', Array)
+#2 C:\wamp\framework\yiilite.php(7811): CActiveRecordMetaData->addRelation('category', Array)
+#3 C:\wamp\framework\yiilite.php(6895): CActiveRecordMetaData->__construct(Object(TroubleTickets))
+#4 C:\wamp\framework\yiilite.php(6905): CActiveRecord::model('TroubleTickets')
+#5 C:\wamp\framework\yiilite.php(6733): CActiveRecord->getMetaData()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(51): CActiveRecord->__construct()
+#7 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#15 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\yiilite.php(1699): CController->run('create')
+#17 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/create
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/28 21:48:47 [error] [exception.CException] exception 'CException' with message 'Property "CBelongsToRelation.index" is not defined.' in C:\wamp\framework\yiilite.php:624
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(7613): CComponent->__set('index', 'categoryid')
+#1 C:\wamp\framework\yiilite.php(7817): CBaseActiveRelation->__construct('category', 'TicketCategorie...', 'categoryid', Array)
+#2 C:\wamp\framework\yiilite.php(7811): CActiveRecordMetaData->addRelation('category', Array)
+#3 C:\wamp\framework\yiilite.php(6895): CActiveRecordMetaData->__construct(Object(TroubleTickets))
+#4 C:\wamp\framework\yiilite.php(6905): CActiveRecord::model('TroubleTickets')
+#5 C:\wamp\framework\yiilite.php(6733): CActiveRecord->getMetaData()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(51): CActiveRecord->__construct()
+#7 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#15 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\yiilite.php(1699): CController->run('create')
+#17 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/create
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/28 21:52:43 [error] [exception.CException] exception 'CException' with message 'Property "CBelongsToRelation.index" is not defined.' in C:\wamp\framework\yiilite.php:624
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(7613): CComponent->__set('index', 'subjectname')
+#1 C:\wamp\framework\yiilite.php(7817): CBaseActiveRelation->__construct('subject', 'TicketSubjects', 'subjectid', Array)
+#2 C:\wamp\framework\yiilite.php(7811): CActiveRecordMetaData->addRelation('subject', Array)
+#3 C:\wamp\framework\yiilite.php(6895): CActiveRecordMetaData->__construct(Object(TroubleTickets))
+#4 C:\wamp\framework\yiilite.php(6905): CActiveRecord::model('TroubleTickets')
+#5 C:\wamp\framework\yiilite.php(6733): CActiveRecord->getMetaData()
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(51): CActiveRecord->__construct()
+#7 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionCreate()
+#8 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#15 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\yiilite.php(1699): CController->run('create')
+#17 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/create
+HTTP_REFERER=http://ci2/tickets/troubletickets/index
+---
+2013/01/28 22:03:56 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:308)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (308)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:10:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ciTicketCategories.categoryid' in 'where clause'. The SQL statement executed was: SELECT `t`.`subjectid` AS `t0_c0`, `t`.`subjectname` AS `t0_c1` FROM `ci_ticket_subjects` `t`  WHERE (ciTicketCategories.categoryid=5).
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (307)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:10:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ciTicketCategories.categoryid' in 'where clause'. The SQL statement executed was: SELECT `t`.`subjectid` AS `t0_c0`, `t`.`subjectname` AS `t0_c1` FROM `ci_ticket_subjects` `t`  WHERE (ciTicketCategories.categoryid=5)' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\yiilite.php(7316): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\yiilite.php(7380): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(307): CActiveRecord->findAll('ciTicketCategor...')
+#7 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamicsubjects()
+#8 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#15 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\yiilite.php(1699): CController->run('dynamicsubjects')
+#17 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+---
+2013/01/28 22:15:27 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:337)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (337)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:17:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT `t`.`conditionalid` AS `t0_c0`, `t`.`label` AS `t0_c1`, `ciTicketSubjects`.`subjectid` AS `t1_c0`, `ciTicketSubjects`.`subjectname` AS `t1_c1` FROM `ci_ticket_conditionals` `t`  LEFT OUTER JOIN `ci_subject_conditions` `ciTicketSubjects_ciTicketSubjects` ON (`t`.`conditionalid`=`ciTicketSubjects_ciTicketSubjects`.`conditionalid`) LEFT OUTER JOIN `ci_ticket_subjects` `ciTicketSubjects` ON (`ciTicketSubjects`.`subjectid`=`ciTicketSubjects_ciTicketSubjects`.`subjectid`)  WHERE (ciTicketSubjects.subjectid=:7).
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:17:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT `t`.`conditionalid` AS `t0_c0`, `t`.`label` AS `t0_c1`, `ciTicketSubjects`.`subjectid` AS `t1_c0`, `ciTicketSubjects`.`subjectname` AS `t1_c1` FROM `ci_ticket_conditionals` `t`  LEFT OUTER JOIN `ci_subject_conditions` `ciTicketSubjects_ciTicketSubjects` ON (`t`.`conditionalid`=`ciTicketSubjects_ciTicketSubjects`.`conditionalid`) LEFT OUTER JOIN `ci_ticket_subjects` `ciTicketSubjects` ON (`ciTicketSubjects`.`subjectid`=`ciTicketSubjects_ciTicketSubjects`.`subjectid`)  WHERE (ciTicketSubjects.subjectid=:7)' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\yiilite.php(7316): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\yiilite.php(7380): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CActiveRecord->findAll('ciTicketSubject...')
+#7 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#8 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#15 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#17 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#18 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/28 22:18:22 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:329)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (329)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:18:41 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:306)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (306)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:23:34 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:308)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (308)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/28 22:25:16 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:312)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (312)
+in C:\wamp\www\CI20\index.php (13)

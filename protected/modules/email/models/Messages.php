@@ -62,7 +62,7 @@ class Messages extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ciDocuments' => array(self::MANY_MANY, 'Documents', 'ci_message_documents(messageid, documentid)'),
+			'ciTroubleTickets' => array(self::MANY_MANY, 'TroubleTickets', 'ci_ticket_messages(messageid, ticketid)'),
 		);
 	}
 

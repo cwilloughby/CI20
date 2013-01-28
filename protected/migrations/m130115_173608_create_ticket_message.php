@@ -27,13 +27,13 @@ class m130115_173608_create_ticket_message extends CDbMigration
 				'PRIMARY KEY (`ticketid`, `messageid`)',
 				'INDEX `fk_ci_ticket_messages_ci_messages1_idx` (`messageid` ASC)',
 				'CONSTRAINT `fk_ci_ticket_messages_ci_trouble_tickets1`
-					FOREIGN KEY (`ticketid` )
-					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					FOREIGN KEY (`ticketid`)
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_ticket_messages_ci_messages1`
-					FOREIGN KEY (`messageid` )
-					REFERENCES `ci2`.`ci_messages` (`messageid` )
+					FOREIGN KEY (`messageid`)
+					REFERENCES `ci2`.`ci_messages` (`messageid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 

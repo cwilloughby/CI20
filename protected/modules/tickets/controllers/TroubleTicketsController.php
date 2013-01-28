@@ -302,17 +302,16 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionDynamicsubjects()
 	{	
-		$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
-                 array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
+		//$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
+        //         array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
 
-		/*
 		$subjects = Yii::app()->db->createCommand()
 			->select('ci_ticket_subjects.subjectid, subjectname')
 			->from('ci_ticket_subjects')
 			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
 			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['TroubleTickets']['categoryid']))
 			->queryAll();
-		*/
+
 		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
 		
 		foreach($data as $value => $name) {
@@ -353,8 +352,12 @@ class TroubleTicketsController extends Controller
 			$comment->attributes=$_POST['Comments'];
 			if($ticket->addComment($comment))
 			{
-				Yii::app()->user->setFlash('commentSubmitted',"Your comment has been added.");
-				$this->refresh();
+				$this->redirect(
+					array('/email/email/commentemail',
+						'creator' => $ticket->openedby,
+						'ticketid' => $ticket->ticketid,
+						'content' => $comment->content,
+					));
 			}
 		}
 		return $comment;

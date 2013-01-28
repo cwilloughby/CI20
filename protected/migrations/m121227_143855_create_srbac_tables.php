@@ -21,6 +21,7 @@ class m121227_143855_create_srbac_tables extends CDbMigration
 	
 	public function up()
 	{
+		/*
 		$this->createTable('ci_auth_items', array(
 				'name' => 'VARCHAR(64) NOT NULL',
 				'type' => 'INT(11) NOT NULL',
@@ -62,13 +63,14 @@ class m121227_143855_create_srbac_tables extends CDbMigration
 					ON UPDATE CASCADE',
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+		*/
 	}
 
 	public function down()
 	{
 		// Drop the tables.
-		$this->dropTable('ci_auth_items');
-		$this->dropTable('ci_auth_assignments');
-		$this->dropTable('ci_auth_item_children');
+		//$this->dropTable('ci_auth_items');
+		//$this->dropTable('ci_auth_assignments');
+		//$this->dropTable('ci_auth_item_children');
 	}
 }

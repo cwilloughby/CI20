@@ -28,13 +28,13 @@ class m130107_204741_create_trouble_ticket_expansion extends CDbMigration
 				'INDEX `fk_ci_ticket_comments_ci_trouble_tickets1_idx` (`ticketid` ASC)',
 				'INDEX `fk_ci_ticket_comments_ci_comments1_idx` (`commentid` ASC)',
 				'CONSTRAINT `fk_ci_ticket_comments_ci_trouble_tickets1`
-					FOREIGN KEY (`ticketid` )
-					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid` )
+					FOREIGN KEY (`ticketid`)
+					REFERENCES `ci2`.`ci_trouble_tickets` (`ticketid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_ticket_comments_ci_comments1`
-					FOREIGN KEY (`commentid` )
-					REFERENCES `ci2`.`ci_comments` (`commentid` )
+					FOREIGN KEY (`commentid`)
+					REFERENCES `ci2`.`ci_comments` (`commentid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -43,7 +43,7 @@ class m130107_204741_create_trouble_ticket_expansion extends CDbMigration
 		$this->createTable('ci_comments', array(
 				'commentid' => 'INT(11) NOT NULL AUTO_INCREMENT',
 				'content' => 'TEXT NOT NULL',
-				'createdby' => 'INT(11) NOT NULL',
+				'createdby' => 'INT(4) NOT NULL',
 				'datecreated' => 'DATETIME NOT NULL',
 				'PRIMARY KEY (`commentid`)',
 				'INDEX `fk_ci_comments_ci_user_info1_idx` (`createdby` ASC)',

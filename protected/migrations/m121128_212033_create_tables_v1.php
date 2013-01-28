@@ -23,15 +23,17 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 	{
 		$this->createTable('ci_tips', array(	
 				'tipid' => 'INT(3) NOT NULL AUTO_INCREMENT',
-				'tip' => 'VARCHAR(100) NULL',
-				'PRIMARY KEY (`tipid`)'
+				'tip' => 'VARCHAR(100) NOT NULL',
+				'PRIMARY KEY (`tipid`)',
+				'UNIQUE INDEX `tip_UNIQUE` (`tip` ASC)',
 				),
 				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_document_type', array(
 				'typeid' => 'INT(3) NOT NULL AUTO_INCREMENT',
 				'typename' => 'VARCHAR(45) NULL',
-				'PRIMARY KEY (`typeID`)'
+				'PRIMARY KEY (`typeID`)',
+				'UNIQUE INDEX `typename_UNIQUE` (`typename` ASC)',
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
@@ -59,7 +61,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'subjectid' => 'INT(3) NOT NULL AUTO_INCREMENT',
 				'subjectname' => 'VARCHAR(75) NOT NULL',
 				'PRIMARY KEY (`subjectid`)',
-				'UNIQUE INDEX `subjectName_UNIQUE` (`subjectname` ASC)'
+				'UNIQUE INDEX `subjectname_UNIQUE` (`subjectname` ASC)'
 			), 
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
@@ -72,13 +74,14 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		
 		$this->createTable('ci_evaluation_questions', array(
 				'questionid' => 'INT(4) NOT NULL AUTO_INCREMENT ',
-				'question' => 'VARCHAR(500) NOT NULL',
-				'PRIMARY KEY (`questionid`)'
+				'question' => 'VARCHAR(100) NOT NULL',
+				'PRIMARY KEY (`questionid`)',
+				'UNIQUE INDEX `question_UNIQUE` (`question` ASC)',
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
 		$this->createTable('ci_user_info', array(
-				'userid' => 'INT(11) NOT NULL AUTO_INCREMENT',
+				'userid' => 'INT(4) NOT NULL AUTO_INCREMENT',
 				'firstname' => 'VARCHAR(30) NOT NULL',
 				'lastname' => 'VARCHAR(40) NOT NULL',
 				'middlename' => 'VARCHAR(45) NULL',
@@ -93,6 +96,7 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `email` (`email` ASC, `phoneext` ASC)',
 				'INDEX `username` (`username` ASC)',
 				'INDEX `fk_ci_user_info_ci_departments1_idx` (`departmentid` ASC)',
+				'UNIQUE INDEX `username_UNIQUE` (`username` ASC)',
 				'CONSTRAINT `fk_ci_user_info_ci_departments1`
 					FOREIGN KEY (`departmentid` )
 					REFERENCES `ci2`.`ci_departments` (`departmentid` )
@@ -104,9 +108,10 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		$this->createTable('ci_departments', array(
 				'departmentid' => 'INT(2) NOT NULL AUTO_INCREMENT',
 				'departmentname' => 'VARCHAR(35) NOT NULL',
-				'supervisorid' => 'INT(11)',
+				'supervisorid' => 'INT(4)',
 				'PRIMARY KEY (`departmentid`)',
 				'INDEX `fk_ci_departments_ci_user_info1_idx` (`supervisorid` ASC)',
+				'UNIQUE INDEX `departmentname_UNIQUE` (`departmentname` ASC)',
 				'CONSTRAINT `fk_ci_departments_ci_user_info1`
 					FOREIGN KEY (`supervisorid` )
 					REFERENCES `ci2`.`ci_user_info` (`userid` )
@@ -136,37 +141,37 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 		
 		$this->createTable('ci_trouble_tickets', array(
 				'ticketid' => 'INT(10) NOT NULL AUTO_INCREMENT',
-				'openedby' => 'INT(11) NOT NULL',
+				'openedby' => 'INT(4) NOT NULL',
 				'opendate' => 'DATETIME NOT NULL',
 				'categoryid' => 'INT(3) NOT NULL',
 				'subjectid' => 'INT(3) NOT NULL',
 				'description'=> 'TEXT NULL',
-				'closedbyuserid' => 'INT(11) NULL',
+				'closedbyuserid' => 'INT(4) NULL',
 				'closedate' => 'DATETIME NULL',
 				'resolution'=> 'TEXT NULL',
 				'PRIMARY KEY (`ticketid`)',
-				'INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedBy` ASC)' ,
+				'INDEX `fk_ci_trouble_tickets_ci_user_info1_idx` (`openedby` ASC)' ,
 				'INDEX `fk_ci_trouble_tickets_ci_ticket_categories1_idx` (`categoryid` ASC)' ,
 				'INDEX `fk_ci_trouble_tickets_ci_user_info2_idx` (`closedbyuserid` ASC)' ,
 				'INDEX `fk_ci_trouble_tickets_ci_ticket_subjects1_idx` (`subjectid` ASC)' ,
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info1`
-					FOREIGN KEY (`openedby` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`openedby`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_categories1`
-					FOREIGN KEY (`categoryid` )
-					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					FOREIGN KEY (`categoryid`)
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_user_info2`
-					FOREIGN KEY (`closedbyuserid` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`closedbyuserid`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_trouble_tickets_ci_ticket_subjects1`
-					FOREIGN KEY (`subjectid` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					FOREIGN KEY (`subjectid`)
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			), 
@@ -179,13 +184,13 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_category_subject_bridge_ci_ticket_categories1_idx` (`categoryid` ASC)',
 				'INDEX `fk_ci_category_subject_bridge_ci_ticket_subjects1_idx` (`subjectid` ASC)',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_categories1`
-					FOREIGN KEY (`categoryid` )
-					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid` )
+					FOREIGN KEY (`categoryid`)
+					REFERENCES `ci2`.`ci_ticket_categories` (`categoryid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_category_subject_bridge_ci_ticket_subjects1`
-					FOREIGN KEY (`subjectid` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					FOREIGN KEY (`subjectid`)
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
@@ -198,31 +203,31 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'INDEX `fk_ci_subject_tips_ci_ticket_subjects1_idx` (`subjectid` ASC)',
 				'INDEX `fk_ci_subject_tips_ci_tips1_idx` (`tipid` ASC)',
 				'CONSTRAINT `fk_ci_subject_tips_ci_ticket_subjects1`
-					FOREIGN KEY (`subjectid` )
-					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid` )
+					FOREIGN KEY (`subjectid`)
+					REFERENCES `ci2`.`ci_ticket_subjects` (`subjectid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_subject_tips_ci_tips1`
-					FOREIGN KEY (`tipid` )
-					REFERENCES `ci2`.`ci_tips` (`tipid` )
+					FOREIGN KEY (`tipid`)
+					REFERENCES `ci2`.`ci_tips` (`tipid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_computer_inventory', array(
-				'computerid' => 'INT(11) NOT NULL AUTO_INCREMENT',
+				'computerid' => 'INT(5) NOT NULL AUTO_INCREMENT',
 				'computername' => 'VARCHAR(45) NOT NULL',
-				'userid' => 'INT(11) NULL',
+				'userid' => 'INT(4) NULL',
 				'model' => 'VARCHAR(45) NOT NULL',
-				'inceptiondate' => 'DATE NULL',
-				'warrantyenddate' => 'DATE NULL',
+				'inceptiondate' => 'DATETIME NULL',
+				'warrantyenddate' => 'DATETIME NULL',
 				'PRIMARY KEY (`computerid`)',
-				'UNIQUE INDEX `ComputerName_UNIQUE` (`computername` ASC)',
+				'UNIQUE INDEX `computername_UNIQUE` (`computername` ASC)',
 				'INDEX `fk_ci_computer_inventory_ci_user_info1_idx` (`userid` ASC)',
 				'CONSTRAINT `fk_ci_computer_inventory_ci_user_info1`
-					FOREIGN KEY (`userid` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`userid`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
@@ -230,20 +235,20 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 
 		$this->createTable('ci_evaluations', array(
 				'evaluationid' => 'INT(11) NOT NULL AUTO_INCREMENT',
-				'employee' => 'INT(11) NOT NULL',
-				'evaluator' => 'INT(11) NOT NULL',
-				'evaluationdate' => 'DATE NULL',
+				'employee' => 'INT(4) NOT NULL',
+				'evaluator' => 'INT(4) NOT NULL',
+				'evaluationdate' => 'DATETIME NULL',
 				'PRIMARY KEY (`evaluationid`)',
 				'INDEX `fk_ci_evaluations_ci_user_info1_idx` (`employee` ASC)',
 				'INDEX `fk_ci_evaluations_ci_user_info2_idx` (`evaluator` ASC)',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info1`
-					FOREIGN KEY (`employee` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`employee`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluations_ci_user_info2`
-					FOREIGN KEY (`evaluator` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`evaluator`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
@@ -253,17 +258,17 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 				'evaluationid' => 'INT(11) NOT NULL',
 				'questionid' => 'INT(4) NOT NULL',
 				'score' => 'INT(2) NULL',
-				'comments' => 'VARCHAR(500) NULL',
+				'comments' => 'TEXT NULL',
 				'PRIMARY KEY (`evaluationid`, `questionid`)',
 				'INDEX `fk_ci_evaluation_answers_ci_evaluation_questions1_idx` (`questionid` ASC)',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluations1`
-					FOREIGN KEY (`evaluationid` )
-					REFERENCES `ci2`.`ci_evaluations` (`evaluationid` )
+					FOREIGN KEY (`evaluationid`)
+					REFERENCES `ci2`.`ci_evaluations` (`evaluationid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_evaluation_answers_ci_evaluation_questions1`
-					FOREIGN KEY (`questionid` )
-					REFERENCES `ci2`.`ci_evaluation_questions` (`questionid` )
+					FOREIGN KEY (`questionid`)
+					REFERENCES `ci2`.`ci_evaluation_questions` (`questionid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
@@ -271,44 +276,44 @@ class m121128_212033_create_tables_v1 extends CDbMigration
 
 		$this->createTable('ci_documents', array(
 				'documentid' => 'INT NOT NULL AUTO_INCREMENT',
-				'uploader' => 'INT(11) NOT NULL',
+				'uploader' => 'INT(4) NOT NULL',
 				'documentname' => 'VARCHAR(45) NOT NULL',
 				'path' => 'VARCHAR(100) NOT NULL',
 				'uploaddate' => 'DATETIME NOT NULL',
 				'PRIMARY KEY (`documentid`)',
 				'INDEX `fk_ci_documents_ci_user_info1_idx` (`uploader` ASC)',
 				'CONSTRAINT `fk_ci_documents_ci_user_info1`
-					FOREIGN KEY (`uploader` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`uploader`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 
 		$this->createTable('ci_document_processor', array(
-				'id' => 'INT NOT NULL AUTO_INCREMENT',
+				'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
 				'warrantnumber' => 'VARCHAR(45) NOT NULL' ,
-				'documentid' => 'INT NOT NULL' ,
+				'documentid' => 'INT(11) NOT NULL' ,
 				'documenttypeid' => 'INT(3) NOT NULL',
-				'completedby' => 'INT(11) NULL',
+				'completedby' => 'INT(4) NULL',
 				'completiondate' => 'DATETIME NULL',
 				'PRIMARY KEY (`id`)',
 				'INDEX `fk_ci_document_processor_ci_user_info1_idx` (`completedby` ASC)',
 				'INDEX `fk_ci_document_processor_ci_documents1_idx` (`documentid` ASC)',
 				'INDEX `fk_ci_document_processor_ci_document_type1_idx` (`documenttypeid` ASC)',
 				'CONSTRAINT `fk_ci_document_processor_ci_user_info1`
-					FOREIGN KEY (`completedby` )
-					REFERENCES `ci2`.`ci_user_info` (`userid` )
+					FOREIGN KEY (`completedby`)
+					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_documents1`
-					FOREIGN KEY (`documentid` )
-					REFERENCES `ci2`.`ci_documents` (`documentid` )
+					FOREIGN KEY (`documentid`)
+					REFERENCES `ci2`.`ci_documents` (`documentid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION',
 				'CONSTRAINT `fk_ci_document_processor_ci_document_type1`
-					FOREIGN KEY (`documenttypeid` )
-					REFERENCES `ci2`.`ci_document_type` (`typeid` )
+					FOREIGN KEY (`documenttypeid`)
+					REFERENCES `ci2`.`ci_document_type` (`typeid`)
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 			),

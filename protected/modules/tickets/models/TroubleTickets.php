@@ -16,6 +16,7 @@
  *
  * The followings are the available model relations:
  * @property TicketComments[] $ticketComments
+ * @property TicketMessages[] $ticketMessages
  * @property UserInfo $openedby0
  * @property TicketCategories $category
  * @property UserInfo $closedbyuser
@@ -106,6 +107,7 @@ class TroubleTickets extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'ticketComments' => array(self::HAS_MANY, 'TicketComments', 'ticketid'),
+			'ticketMessages' => array(self::HAS_MANY, 'TicketMessages', 'ticketid'),
 			'openedby0' => array(self::BELONGS_TO, 'UserInfo', 'openedby'),
 			'category' => array(self::BELONGS_TO, 'TicketCategories', 'categoryid'),
 			'closedbyuser' => array(self::BELONGS_TO, 'UserInfo', 'closedbyuserid'),
