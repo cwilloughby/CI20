@@ -3726,3 +3726,37 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/dynamicsubjects
 in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (314)
 in C:\wamp\www\CI20\index.php (13)
+2013/01/29 19:48:46 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\yiilite.php:6363
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6343): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\yiilite.php(6262): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\yiilite.php(1699): CController->run('admin')
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('hr/hrpolicy/adm...')
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hr/hrpolicy/admin
+HTTP_REFERER=http://ci2/hr/hrpolicy/create
+---
+2013/01/29 19:49:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\framework\yiilite.php:6363
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6343): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\framework\yiilite.php(6262): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\framework\yiilite.php(1699): CController->run('admin')
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('hr/hrpolicy/adm...')
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hr/hrpolicy/admin
+HTTP_REFERER=http://ci2/hr/hrpolicy/index
+---

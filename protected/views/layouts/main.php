@@ -40,6 +40,7 @@
 				array('label'=>'Admin', 'url'=>array('/security/userinfo/index')),
 				array('label'=>'Trouble', 'url'=>array('/tickets/troubletickets/index')),
 				array('label'=>'Comments', 'url'=>array('/tickets/comments/index')),
+				array('label'=>'HR', 'url'=>array('/hr/hrpolicy/index')),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
