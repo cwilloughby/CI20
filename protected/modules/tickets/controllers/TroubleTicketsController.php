@@ -324,20 +324,37 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionDynamictips()
 	{	
-		$tips = Tips::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
-				array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
+		//$tips = Tips::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
+		//		array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
 
+		$tips = Yii::app()->db->createCommand()
+			->select('ci_tips.tipid, tip')
+			->from('ci_tips')
+			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
+			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['TroubleTickets']['subjectid']))
+			->queryAll();
+		
 		$data = CHtml::listData($tips, 'tipid', 'tip');
 		
 		echo CHtml::ListBox('tips', ' ', $data, array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
 		
-		$conditionals = TicketConditionals::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
-				array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
+		//$conditionals = TicketConditionals::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
+		//		array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
 		
-		foreach($conditionals as $key => $value)
+		$conditionals = Yii::app()->db->createCommand()
+			->select('ci_ticket_conditionals.label')
+			->from('ci_ticket_conditionals')
+			->leftJoin('ci_subject_conditions','ci_subject_conditions.conditionalid = ci_ticket_conditionals.conditionalid')
+			->where('ci_subject_conditions.subjectid=:id', array(':id'=>$_POST['TroubleTickets']['subjectid']))
+			->queryAll();
+		
+		foreach($conditionals as $key1 => $value1)
 		{
-			echo CHtml::label($conditionals[$key]->label,$conditionals[$key]->label);
-			echo CHtml::textField($conditionals[$key]->label,'');
+			foreach($value1 as $key2 => $value2)
+			{
+				echo CHtml::label($value2,$value2);
+				echo CHtml::textField($value2,'');
+			}
 		}
 	}
 	

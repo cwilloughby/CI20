@@ -3001,3 +3001,728 @@ Stack trace:
 REQUEST_URI=/tickets/troubletickets/dynamicsubjects
 in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (312)
 in C:\wamp\www\CI20\index.php (13)
+2013/01/29 14:24:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\yiilite.php:1703
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/01/29 14:24:11 [error] [php] Object of class CDbCommand could not be converted to string (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:314)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (314)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:15:21 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:330)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (330)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:18:23 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:335)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (335)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:20:25 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:335)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (335)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:20:41 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:20:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:21:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'ci_subject_tips'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_subject_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:21:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'ci_subject_tips'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_subject_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:22:06 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:22:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:22:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:22:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:23:57 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_tips.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.tipid = ci_tips.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:23:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_tips.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.tipid = ci_tips.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:33:21 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:335)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (335)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:33:35 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:335)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (335)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:33:52 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:33:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_ticket_subjects`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:34:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_tips.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:34:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_tips.tipid' in 'field list'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_ticket_subjects`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:35:30 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1.
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (336)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:35:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci_ticket_subjects.subjectid' in 'on clause'. The SQL statement executed was: SELECT `ci_tips`.`tipid`, `tip`
+FROM `ci_tips`
+LEFT JOIN `ci_subject_tips` ON ci_subject_tips.subjectid = ci_ticket_subjects.subjectid
+WHERE ci_subject_tips.subjectid=1' in C:\wamp\framework\yiilite.php:8799
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(8723): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(336): CDbCommand->queryAll()
+#2 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#3 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams(Array)
+#4 C:\wamp\framework\yiilite.php(6255): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3702): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\framework\yiilite.php(6297): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#10 C:\wamp\framework\yiilite.php(3299): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\framework\yiilite.php(1699): CController->run('dynamictips')
+#12 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController('tickets/trouble...')
+#13 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#14 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/tickets/troubletickets/dynamictips
+---
+2013/01/29 16:40:14 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:333)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (333)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:40:32 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:351)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (351)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:41:02 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:351)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (351)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:44:33 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:346)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (346)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:44:41 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:346)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (346)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:44:46 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:346)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (346)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:49:24 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:353)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (353)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:52:06 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:350)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (350)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:53:51 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:334)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (334)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:54:46 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\wamp\framework\yiilite.php:4450)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(4473): renderAttributes()
+#1 C:\wamp\framework\yiilite.php(4659): tag()
+#2 C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php(353): label()
+#3 C:\wamp\framework\yiilite.php(3812): TroubleTicketsController->actionDynamictips()
+#4 C:\wamp\framework\yiilite.php(3324): CInlineAction->runWithParams()
+#5 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#6 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#7 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#8 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#9 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#10 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#11 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#12 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#13 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#14 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (353)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:55:55 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:353)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (353)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:56:33 [error] [php] Array to string conversion (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:353)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (353)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:59:07 [error] [php] Undefined offset: 10 (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 16:59:20 [error] [php] Undefined offset: 7 (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:00:15 [error] [php] Undefined offset: 1 (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:02:42 [error] [php] Undefined offset: 1 (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:04:30 [error] [php] Undefined index: Location (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:04:58 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:08:33 [error] [php] Trying to get property of non-object (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:356)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (356)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:10:18 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:334)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (334)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:12:10 [error] [php] Undefined offset: 10 (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:355)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamictips
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (355)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:30:55 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:312)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (312)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:56:17 [error] [php] Undefined index: TroubleTickets (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:312)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (312)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/29 17:56:31 [error] [php] Array to string conversion (C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php:314)
+Stack trace:
+#0 C:\wamp\framework\yiilite.php(6255): TroubleTicketsController->runAction()
+#1 C:\wamp\framework\yiilite.php(6264): CFilterChain->run()
+#2 C:\wamp\framework\yiilite.php(3702): CAccessControlFilter->filter()
+#3 C:\wamp\framework\yiilite.php(6297): TroubleTicketsController->filterAccessControl()
+#4 C:\wamp\framework\yiilite.php(6252): CInlineFilter->filter()
+#5 C:\wamp\framework\yiilite.php(3314): CFilterChain->run()
+#6 C:\wamp\framework\yiilite.php(3299): TroubleTicketsController->runActionWithFilters()
+#7 C:\wamp\framework\yiilite.php(1699): TroubleTicketsController->run()
+#8 C:\wamp\framework\yiilite.php(1619): CWebApplication->runController()
+#9 C:\wamp\framework\yiilite.php(1144): CWebApplication->processRequest()
+#10 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/tickets/troubletickets/dynamicsubjects
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (314)
+in C:\wamp\www\CI20\index.php (13)
