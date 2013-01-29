@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View HrPolicy #<?php echo $model->sectionid; ?></h1>
+<h1>View HR Section #<?php echo $model->sectionid; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

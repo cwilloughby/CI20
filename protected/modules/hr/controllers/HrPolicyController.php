@@ -95,9 +95,18 @@ class HrPolicyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('HrPolicy');
+		$sections = Yii::app()->db->createCommand()
+			->select('sectionid, section')
+			->from('ci_hr_policy')
+			->queryAll();
+
+		foreach($sections as $section)
+		{
+			$panels[$section['sectionid']] = $section['section'];
+		}
+		
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'panels'=>$panels,
 		));
 	}
 

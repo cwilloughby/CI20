@@ -12,9 +12,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Hr Policies</h1>
+<h1>HR Policy</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+<?php $this->widget('zii.widgets.Jui.CJuiAccordion', array(
+	'panels'=>$panels,
 )); ?>
