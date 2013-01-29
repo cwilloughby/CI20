@@ -99,10 +99,15 @@ class HrPolicyController extends Controller
 			->select('sectionid, section')
 			->from('ci_hr_policy')
 			->queryAll();
-
+		
+		$check = Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'IT'");
+		
 		foreach($sections as $section)
 		{
-			$panels[$section['sectionid']] = $section['section'];
+			if(isset($check))
+				$panels[$section['sectionid']] = CHtml::link('Edit',array('hrpolicy/update?id=' . $section['sectionid'])) . "<br/><br/>" . $section['section'];
+			else
+				$panels[$section['sectionid']] = $section['section'];
 		}
 		
 		$this->render('index',array(

@@ -16,4 +16,7 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.Jui.CJuiAccordion', array(
 	'panels'=>$panels,
+	'options'=>array(
+		'collapsible'=>true,
+	),
 )); ?>
