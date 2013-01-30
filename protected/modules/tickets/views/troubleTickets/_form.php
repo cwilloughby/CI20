@@ -24,8 +24,10 @@
 				array(
 					'type' => 'POST',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
+					'datatype'=>'json',
+					'data' => array('categoryid'=>'js:this.value'),
 					'update' => '#' . CHtml::activeId($model, 'subjectid'),
-				)
+				),
 			)
 		);
 		echo $form->error($model, 'categoryid');
@@ -40,7 +42,8 @@
 				array(
 					'type' => 'POST',
 					'url' => CController::createUrl('troubletickets/dynamictips'),
-					//'update' => '#' . CHtml::activeId($model, 'tips'),
+					'datatype'=>'json',
+					'data' => array('subjectid'=>'js:this.value'),
 					'update' => '#dependant',
 				)
 			)

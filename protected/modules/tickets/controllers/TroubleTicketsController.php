@@ -303,13 +303,13 @@ class TroubleTicketsController extends Controller
 	public function actionDynamicsubjects()
 	{	
 		//$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
-        //         array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
-
+        //        array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
+		
 		$subjects = Yii::app()->db->createCommand()
 			->select('ci_ticket_subjects.subjectid, subjectname')
 			->from('ci_ticket_subjects')
 			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
-			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['TroubleTickets']['categoryid']))
+			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['categoryid']))
 			->queryAll();
 
 		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
@@ -331,7 +331,7 @@ class TroubleTicketsController extends Controller
 			->select('ci_tips.tipid, tip')
 			->from('ci_tips')
 			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
-			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['TroubleTickets']['subjectid']))
+			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['subjectid']))
 			->queryAll();
 		
 		$data = CHtml::listData($tips, 'tipid', 'tip');
@@ -345,7 +345,7 @@ class TroubleTicketsController extends Controller
 			->select('ci_ticket_conditionals.label')
 			->from('ci_ticket_conditionals')
 			->leftJoin('ci_subject_conditions','ci_subject_conditions.conditionalid = ci_ticket_conditionals.conditionalid')
-			->where('ci_subject_conditions.subjectid=:id', array(':id'=>$_POST['TroubleTickets']['subjectid']))
+			->where('ci_subject_conditions.subjectid=:id', array(':id'=>$_POST['subjectid']))
 			->queryAll();
 		
 		foreach($conditionals as $key1 => $value1)
