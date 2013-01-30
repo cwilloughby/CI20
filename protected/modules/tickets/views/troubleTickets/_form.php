@@ -14,30 +14,30 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary(array($ticket, $file)); ?>
 	
 	<div class="row">
 		<?php
-		echo $form->labelEx($model, 'categoryid');
-		echo $form->dropDownList($model, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
+		echo $form->labelEx($ticket, 'categoryid');
+		echo $form->dropDownList($ticket, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
 			array('empty' => 'Select a category','ajax' => 
 				array(
 					'type' => 'POST',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
 					'datatype'=>'json',
 					'data' => array('categoryid'=>'js:this.value'),
-					'update' => '#' . CHtml::activeId($model, 'subjectid'),
+					'update' => '#' . CHtml::activeId($ticket, 'subjectid'),
 				),
 			)
 		);
-		echo $form->error($model, 'categoryid');
+		echo $form->error($ticket, 'categoryid');
 		?>
 	</div>
 	
 	<div class="row">
 		<?php 
-		echo $form->labelEx($model, 'subjectid');
-		echo $form->dropDownList($model, 'subjectid', array(), 
+		echo $form->labelEx($ticket, 'subjectid');
+		echo $form->dropDownList($ticket, 'subjectid', array(), 
 			array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
 				array(
 					'type' => 'POST',
@@ -48,7 +48,7 @@
 				)
 			)
 		);
-		echo $form->error($model, 'subjectid'); 
+		echo $form->error($ticket, 'subjectid'); 
 		?>
 	</div>
 	
@@ -58,22 +58,22 @@
 	
 	<div class="row">
 		<?php 
-		echo $form->labelEx($model,'description');
-		echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50));
-		echo $form->error($model,'description'); 
+		echo $form->labelEx($ticket,'description');
+		echo $form->textArea($ticket,'description',array('rows'=>6, 'cols'=>50));
+		echo $form->error($ticket,'description'); 
 		?>
 	</div>
 
 	<div class="row">
 		<?php
-		echo $form->labelEx($model, 'attach');
-		echo $form->fileField($model, 'attach');
-		echo $form->error($model, 'attach');
+		echo $form->labelEx($file, 'attachment');
+		echo $form->fileField($file, 'attachment');
+		echo $form->error($file, 'attachment');
 		?>
 	</div>
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($ticket->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

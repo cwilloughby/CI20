@@ -21,8 +21,9 @@ return array(
 		'application.extensions.phpmailer.JPhpMailer',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
-		'application.modules.tickets.models.*',
 		'application.modules.email.controllers.*',
+		'application.modules.tickets.models.*',
+		'application.modules.documents.models.*',
 	),
 
 	'modules'=>array(
@@ -37,6 +38,7 @@ return array(
 		'email',
 		'tickets',
 		'hr',
+		'documents',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid

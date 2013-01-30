@@ -24,8 +24,6 @@
  */
 class TroubleTickets extends CActiveRecord
 {	
-	public $attach;
-	
 	public $subject_search;
 	public $category_search;
 	public $user_search;
@@ -60,7 +58,6 @@ class TroubleTickets extends CActiveRecord
 			array('categoryid, subjectid', 'required'),
 			array('openedby, categoryid, subjectid, closedbyuserid', 'numerical', 'integerOnly'=>true),
 			array('description, closedate, resolution', 'safe'),
-			array('attach', 'file', 'types'=>'jpg, gif, png, txt', 'maxSize'=>'2097152', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('ticketid, user_search, opendate, category_search, subject_search, description, closer_search, closedate, resolution', 'safe', 'on'=>'search'),
@@ -134,7 +131,6 @@ class TroubleTickets extends CActiveRecord
 			'closer_search' => 'Closed By',
 			'closedate' => 'Closed On',
 			'resolution' => 'Resolution',
-			'attach' => 'Attachment',
 		);
 	}
 

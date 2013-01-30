@@ -8,8 +8,6 @@ class TroubleTicketsController extends Controller
 	 */
 	public $layout='//layouts/column2';
 	
-	public $path='C:\\Users\\cwilloughby\\Desktop\\CI2Yii\\';
-	
 	/**
 	 * @return array action filters
 	 */
@@ -48,49 +46,53 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new TroubleTickets;
-
+		$ticket=new TroubleTickets;
+		$file=new Documents;
+		
 		if(isset($_POST['TroubleTickets']))
 		{
-			$model->attributes=$_POST['TroubleTickets'];
+			$ticket->attributes=$_POST['TroubleTickets'];
+			$file->attributes=$_POST['Documents'];
 			
-			// Remove the first and last elements from the POST array.
-			array_shift($_POST);
-			array_pop($_POST);
-			
-			$model->description .= "\n\n";
-			
-			// Grab all the data from the conditionals and put them in the description.
-			foreach($_POST as $key => $value) 
-				$model->description .= $key . ": " . $value . "\n";
-			
-			$model->attach=CUploadedFile::getInstance($model,'attach');
-			if(isset($model->attach))
+			// validate BOTH $ticket and $file at the same time
+			$valid=$ticket->validate() && $file->validate();
+		
+			if($valid)
 			{
-				$fileName = $model->attach->getName();
-				$model->description .= "Attachment: " . $this->path . $fileName;
-			}
-			else
-				$model->description .= "Attachment: None";
+				$file->attachment=CUploadedFile::getInstance($file,'attachment');
 			
-			if($model->save())
-			{
-				// Save the attachment if one was given.
-				//if($fileName != "None")
-				//	$model->attach->saveAs($this->path . $fileName, 'true');
+				if(isset($file->attachment))
+				{
+					$file->save(false);
+					$ticket->description .= "\n\nAttachment: " . $file->path;
+				}
+				
+				// Remove the first and last elements from the POST array.
+				array_shift($_POST);
+				array_pop($_POST);
+				array_pop($_POST);
+
+				$ticket->description .= "\n\n";
+			
+				// Grab all the data from the conditionals and put them in the description.
+				foreach($_POST as $key => $value) 
+					$ticket->description .= $key . ": " . $value . "\n";
+				
+				$ticket->save(false);
 				
 				$this->redirect(
 					array('/email/email/helpopenemail', 
-						'ticketid' => $model->ticketid,
-						'category' => $model->categoryid,
-						'subject' => $model->subjectid,
-						'description' => $model->description,
+						'ticketid' => $ticket->ticketid,
+						'category' => $ticket->categoryid,
+						'subject' => $ticket->subjectid,
+						'description' => $ticket->description,
 					));
 			}
 		}
 		
 		$this->render('create',array(
-			'model'=>$model,
+			'ticket'=>$ticket,
+			'file'=>$file,
 		));
 	}
 
