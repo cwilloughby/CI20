@@ -64,7 +64,9 @@ class TroubleTicketsController extends Controller
 				if(isset($file->attachment))
 				{
 					$file->save(false);
-					$ticket->description .= "\n\nAttachment: " . $file->path;
+					$temp = CHtml::link($file->documentname,array('/../../../../assets/uploads/' . $file->uploaddate . '/' . $file->documentname)) . "\n\n";
+					$ticket->description .= "\n\nAttachment: " . $temp;
+					//$ticket->description .= "\n\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
 				}
 				
 				// Remove the first and last elements from the POST array.

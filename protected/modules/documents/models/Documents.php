@@ -64,11 +64,11 @@ class Documents extends CActiveRecord
 			// Set the uploader value to the current user.
 			$this->uploader = Yii::app()->user->id;
 			// Set the uploaddate.
-			$this->uploaddate = date('Y-m-d h-i-s');
+			$this->uploaddate = date('Y-m-d_h-i-s');
 			
-			if (!is_dir("C:\\Users\\cwilloughby\\Desktop\\CI2Yii\\" . $this->uploaddate . "\\"))
-				mkdir("C:\\Users\\cwilloughby\\Desktop\\CI2Yii\\" . $this->uploaddate . "\\");
-			$this->path = "C:\\Users\\cwilloughby\\Desktop\\CI2Yii\\" . $this->uploaddate . "\\" . $this->attachment->getName();
+			if (!is_dir("\\\\CRIM08017\\c$\\wamp\\www\\ci20\\assets\\uploads\\" . $this->uploaddate . "\\"))
+				mkdir("\\\\CRIM08017\\c$\\wamp\\www\\ci20\\assets\\uploads\\" . $this->uploaddate . "\\");
+			$this->path = "\\\\CRIM08017\\c$\\wamp\\www\\ci20\\assets\\uploads\\" . $this->uploaddate . "\\" . $this->attachment->getName();
 			$this->documentname = 'todo.txt';
 			
 			// Save the attachment in the server.
