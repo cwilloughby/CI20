@@ -4619,3 +4619,6 @@ in C:\wamp\www\CI20\index.php (13)
 2013/01/31 15:58:41 [warning] [application] Failed to set unsafe attribute "attachment" of "Documents".
 in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
 in C:\wamp\www\CI20\index.php (13)
+2013/01/31 16:40:08 [warning] [application] Failed to set unsafe attribute "attachment" of "Documents".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
