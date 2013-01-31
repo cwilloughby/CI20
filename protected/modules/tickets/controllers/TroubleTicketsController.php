@@ -84,6 +84,8 @@ class TroubleTicketsController extends Controller
 					// This description will only be used for the email so the link will work.
 					$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
 				}
+				else
+					$temp .= "\n";
 				
 				$ticket->save(false);
 				

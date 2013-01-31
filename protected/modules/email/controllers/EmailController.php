@@ -218,11 +218,16 @@ class EmailController extends Controller
 		$model->from = "ccc.helpdesk@nashville.gov";
 		$model->subject = $this->mail->Subject;
 		
+		// Remove the attachment from the description.
+		$body = explode("\n", $_GET['description']);
+		array_pop($body);
+		$body = implode("\n", $body);
+		
 		// Set the message's body.
 		$this->mail->Body = "CI ticket #" . $_GET['ticketid'] . " was closed by " . Yii::app()->user->name . "\n\n"
 					. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "\n"
 					. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "\n"
-					. "Description: " . $_GET['description'] . "\n"
+					. "Description: " . $body . "\n"
 					. "Resolution: " . $_GET['resolution'];
 		
 		$model->messagebody = $this->mail->Body;

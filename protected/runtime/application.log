@@ -4770,3 +4770,9 @@ REQUEST_URI=/tickets/troubletickets/update?id=27
 in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\_formUpdate.php (16)
 in C:\wamp\www\CI20\protected\modules\tickets\views\troubleTickets\update.php (22)
 in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (123)
+2013/01/31 20:55:42 [warning] [application] Failed to set unsafe attribute "attachment" of "Documents".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
+2013/01/31 21:04:15 [warning] [application] Failed to set unsafe attribute "attachment" of "Documents".
+in C:\wamp\www\CI20\protected\modules\tickets\controllers\TroubleTicketsController.php (55)
+in C:\wamp\www\CI20\index.php (13)
