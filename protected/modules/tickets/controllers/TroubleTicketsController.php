@@ -60,14 +60,6 @@ class TroubleTicketsController extends Controller
 			if($valid)
 			{
 				$file->attachment=CUploadedFile::getInstance($file,'attachment');
-			
-				if(isset($file->attachment))
-				{
-					$file->save(false);
-					$temp = CHtml::link($file->documentname,array('/../../../../assets/uploads/' . $file->uploaddate . '/' . $file->documentname)) . "\n\n";
-					$ticket->description .= "\n\nAttachment: " . $temp;
-					//$ticket->description .= "\n\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
-				}
 				
 				// Remove the first and last elements from the POST array.
 				array_shift($_POST);
@@ -80,6 +72,19 @@ class TroubleTicketsController extends Controller
 				foreach($_POST as $key => $value) 
 					$ticket->description .= $key . ": " . $value . "\n";
 				
+				$temp = $ticket->description;
+				
+				if(isset($file->attachment))
+				{
+					$file->save(false);
+					// This description will only allow the link to work on the website.
+					$ticket->description .= "\nAttachment: " 
+						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+							. $file->uploaddate . '/' . $file->documentname));
+					// This description will only be used for the email so the link will work.
+					$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+				}
+				
 				$ticket->save(false);
 				
 				$this->redirect(
@@ -87,7 +92,7 @@ class TroubleTicketsController extends Controller
 						'ticketid' => $ticket->ticketid,
 						'category' => $ticket->categoryid,
 						'subject' => $ticket->subjectid,
-						'description' => $ticket->description,
+						'description' => $temp,
 					));
 			}
 		}
