@@ -263,6 +263,7 @@ class EmailController extends Controller
 		$this->mail->Host = self::HOST;
 		
 		// Set the recipient, the sender, and the subject.
+		$this->mail->ContentType = "text/html";
 		$this->mail->AddAddress($email);
 		//$this->mail->AddCC("ccc.helpdesk@nashville.gov");
 		$this->mail->SetFrom("ccc.helpdesk@nashville.gov");
@@ -272,8 +273,8 @@ class EmailController extends Controller
 		$model->subject = $this->mail->Subject;
 		
 		// Set the message's body.
-		$this->mail->Body = "A new comment on CI ticket #" . $_GET['ticketid'] . " was made by " . Yii::app()->user->name . "\n\n"
-					. "Content: " . $_GET['content']. "\n";
+		$this->mail->Body = nl2br("A new comment on CI ticket #" . $_GET['ticketid'] . " was made by " . Yii::app()->user->name . "\n\n"
+					. "Content: " . $_GET['content'] . "\n");
 		
 		$model->messagebody = $this->mail->Body;
 		$model->messagetype = "Comment";

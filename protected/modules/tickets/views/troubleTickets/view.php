@@ -76,7 +76,8 @@ $this->menu=array(
 	</div>
 	<?php else: ?>
 		<?php $this->renderPartial('/comments/_form',array(
-			'model'=>$comment,
+			'model'=>$comment[0],
+			'file'=>$comment[1],
 		)); ?>
 	<?php endif; ?>
 

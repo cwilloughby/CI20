@@ -74,6 +74,7 @@ class Comments extends CActiveRecord
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
 				'createAttribute' => 'datecreated',
+				'updateAttribute' => null,
 			),
 		);
 	}

@@ -37,19 +37,43 @@ class CommentsController extends Controller
 	public function actionCreate()
 	{
 		$model=new Comments;
-
+		$file=new Documents;
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Comments']))
 		{
 			$model->attributes=$_POST['Comments'];
-			if($model->save())
+			$file->attributes=$_POST['Documents'];
+			
+			// validate BOTH $model and $file at the same time
+			$valid=$model->validate() && $file->validate();
+			
+			if($valid)
+			{
+				$file->attachment=CUploadedFile::getInstance($file,'attachment');
+				
+				$temp = $model->content;
+				
+				if(isset($file->attachment))
+				{
+					$file->save(false);
+					// This description will only allow the link to work on the website.
+					$model->content .= "\nAttachment: " 
+						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+							. $file->uploaddate . '/' . $file->documentname));
+					// This description will only be used for the email so the link will work.
+					$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+				}
+				
+				$model->save(false);
 				$this->redirect(array('view','id'=>$model->commentid));
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'file'=>$file
 		));
 	}
 

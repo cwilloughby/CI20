@@ -69,7 +69,7 @@ class Documents extends CActiveRecord
 			
 			// Create a folder with the uploaddate set as the name, unless it already exists.
 			$temp = "\\\\CRIM08017\\c$\\wamp\\www\\ci20\\assets\\uploads\\" . $this->uploaddate . "\\";
-			if (!is_dir($temp))
+			if(!is_dir($temp))
 				mkdir($temp);
 
 			// Set the path.

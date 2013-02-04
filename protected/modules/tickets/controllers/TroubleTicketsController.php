@@ -375,19 +375,42 @@ class TroubleTicketsController extends Controller
 	protected function createComment($ticket)
 	{
 		$comment=new Comments;
+		$file=new Documents;
+		
 		if(isset($_POST['Comments']))
 		{
 			$comment->attributes=$_POST['Comments'];
-			if($ticket->addComment($comment))
+			$file->attributes=$_POST['Documents'];
+			
+			// validate BOTH $comment and $file at the same time
+			$valid=$comment->validate() && $file->validate();
+			
+			if($valid)
 			{
+				$file->attachment=CUploadedFile::getInstance($file,'attachment');
+				$temp = $comment->content;
+				
+				if(isset($file->attachment))
+				{
+					$file->save(false);
+					// This description will only allow the link to work on the website.
+					$comment->content .= "\nAttachment: " 
+						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+							. $file->uploaddate . '/' . $file->documentname));
+					// This description will only be used for the email so the link will work.
+					$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
+				}
+					
+				$ticket->addComment($comment);
+				
 				$this->redirect(
 					array('/email/email/commentemail',
 						'creator' => $ticket->openedby,
 						'ticketid' => $ticket->ticketid,
-						'content' => $comment->content,
+						'content' => $temp,
 					));
 			}
 		}
-		return $comment;
+		return array($comment,$file);
 	}
 }

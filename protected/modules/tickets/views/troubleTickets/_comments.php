@@ -10,7 +10,7 @@
   </div>
 
   <div class="content">
-    <?php echo nl2br(CHtml::encode($comment->content)); ?>
+    <?php echo nl2br($comment->content); ?>
   </div>
      <hr>
 </div><!-- comment -->
