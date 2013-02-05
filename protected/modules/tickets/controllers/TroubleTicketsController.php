@@ -178,7 +178,7 @@ class TroubleTicketsController extends Controller
 	public function actionIndex()
 	{
 		// If the user has an IT role then they can see all open tickets.
-		if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'IT'"))
+		if(in_array("IT", Yii::app()->user->role))
 		{
 			$dataProvider=new CActiveDataProvider('TroubleTickets', 
 				array(
@@ -188,7 +188,7 @@ class TroubleTicketsController extends Controller
 				)
 			);
 		}
-		else if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'Supervisor'"))
+		else if(in_array("Supervisor", Yii::app()->user->role))
 		{
 			// If the user is a supervisor.
 			// Find that supervisor's department
@@ -232,7 +232,7 @@ class TroubleTicketsController extends Controller
 	public function actionClosedIndex()
 	{
 		// If the user has an IT role then they can see all closed tickets.
-		if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'IT'"))
+		if(in_array("IT", Yii::app()->user->role))
 		{
 			$dataProvider=new CActiveDataProvider('TroubleTickets', 
 				array(
@@ -242,7 +242,7 @@ class TroubleTicketsController extends Controller
 				)
 			);
 		}
-		else if(Assignments::model()->find("userid = " . Yii::app()->user->id . " AND itemname = 'Supervisor'"))
+		else if(in_array("Supervisor", Yii::app()->user->role))
 		{
 			// If the user is a supervisor.
 			// Find that supervisor's department

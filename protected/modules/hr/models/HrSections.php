@@ -1,18 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "ci_hr_policy".
+ * This is the model class for table "ci_hr_sections".
  *
- * The followings are the available columns in table 'ci_hr_policy':
+ * The followings are the available columns in table 'ci_hr_sections':
  * @property integer $sectionid
  * @property string $section
+ * @property string $datemade
+ *
+ * The followings are the available model relations:
+ * @property HrBridge[] $hrBridges
  */
-class HrPolicy extends CActiveRecord
+class HrSections extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return HrPolicy the static model class
+	 * @return HrSections the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -24,7 +28,7 @@ class HrPolicy extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ci_hr_policy';
+		return 'ci_hr_sections';
 	}
 
 	/**
@@ -35,10 +39,10 @@ class HrPolicy extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('section', 'required'),
+			array('section, datemade', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('sectionid, section', 'safe', 'on'=>'search'),
+			array('sectionid, section, datemade', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +54,7 @@ class HrPolicy extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'hrBridges' => array(self::HAS_MANY, 'HrBridge', 'sectionid'),
 		);
 	}
 
@@ -61,6 +66,7 @@ class HrPolicy extends CActiveRecord
 		return array(
 			'sectionid' => 'Sectionid',
 			'section' => 'Section',
+			'datemade' => 'Datemade',
 		);
 	}
 
@@ -77,6 +83,7 @@ class HrPolicy extends CActiveRecord
 
 		$criteria->compare('sectionid',$this->sectionid);
 		$criteria->compare('section',$this->section,true);
+		$criteria->compare('datemade',$this->datemade,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

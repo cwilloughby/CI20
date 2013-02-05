@@ -2,7 +2,7 @@
 
 class HrModule extends CWebModule
 {
-	public $defaultController = 'hrpolicy';
+	public $defaultController = 'hrsections';
 	public $allowAjax = true;
 	
 	public function init()

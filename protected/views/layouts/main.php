@@ -4,7 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
@@ -14,7 +15,8 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -26,21 +28,33 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<div id="mainmenu">
+	<div id="menu-top">
 		<?php $this->widget('zii.widgets.CMenu',array(
+			'activeCssClass'=>'active',
+			'activateParents'=>true,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/security/login/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/security/login/logout'), 
-					'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Change Password ('.Yii::app()->user->name.')', 'url'=>array('/security/password/change'), 
-					'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Admin', 'url'=>array('/security/userinfo/index')),
+				array(
+					'label'=>'Admin',
+					'visible'=>!Yii::app()->user->isGuest && in_array("IT", Yii::app()->user->role),
+					'items'=>array(
+						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
+						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
+					),
+				),
 				array('label'=>'Trouble', 'url'=>array('/tickets/troubletickets/index')),
-				array('label'=>'Comments', 'url'=>array('/tickets/comments/index')),
-				array('label'=>'HR', 'url'=>array('/hr/hrpolicy/index')),
+				array('label'=>'HR', 'url'=>array('/hr/hrsections/index')),
+				array(
+					'label'=>Yii::app()->user->name,
+					'visible'=>!Yii::app()->user->isGuest,
+					'items'=>array(
+						array('label'=>'Logout', 'url'=>array('/security/login/logout')),
+						array('label'=>'Change Password', 'url'=>array('/security/password/change')),
+					),
+				),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
@@ -51,6 +65,7 @@
 	<?php endif?>
 
 	<?php 
+	//print_r(Yii::app()->user->role);
 	echo $content;
 	?>
 
