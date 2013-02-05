@@ -1,6 +1,6 @@
 <?php
 
-class HrSectionsController extends Controller
+class HrPolicyController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -20,32 +20,6 @@ class HrSectionsController extends Controller
 	}
 
 	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
-
-	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
@@ -57,13 +31,37 @@ class HrSectionsController extends Controller
 	}
 
 	/**
-	 * Creates a new model.
+	 * Creates a policy.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreatePolicy()
+	{
+		$model=new HrPolicy;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['HrPolicy']))
+		{
+			$model->attributes=$_POST['HrPolicy'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->policyid));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+	
+	/**
+	 * Creates a new section in a policy.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionCreateSection()
 	{
 		$model=new HrSections;
-
+		$model->policyid = $_GET['policyid'];
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -71,14 +69,15 @@ class HrSectionsController extends Controller
 		{
 			$model->attributes=$_POST['HrSections'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->sectionid));
+				$this->redirect(array('view','id'=>$model->policyid));
 		}
 
-		$this->render('create',array(
+		$this->render('createSection',array(
 			'model'=>$model,
 		));
 	}
-
+	
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -91,11 +90,17 @@ class HrSectionsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['HrSections']))
+		if(isset($_POST['HrPolicy']))
 		{
-			$model->attributes=$_POST['HrSections'];
+			$model->attributes=$_POST['HrPolicy'];
+			
+			$model->sectionid = Yii::app()->db->createCommand()
+				->select('MAX(sectionid)')
+				->from('ci_hr_sections')
+				->query() + 1;
+			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->sectionid));
+				$this->redirect(array('view','id'=>$model->policyid));
 		}
 
 		$this->render('update',array(
@@ -117,51 +122,49 @@ class HrSectionsController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
+/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
 		$main = Yii::app()->db->createCommand()
-			->select('ci_hr_bridge.policyid')
-			->from('ci_hr_bridge')
-			->group('policyid')
+			->select('ci_hr_policy.policyid, ci_hr_policy.policy')
+			->from('ci_hr_policy')
 			->queryAll();
 		
 		$check = in_array("IT", Yii::app()->user->role);
-
+		
 		foreach($main as $policy)
 		{
 			$sub = Yii::app()->db->createCommand()
 				->select('ci_hr_sections.sectionid, ci_hr_sections.section, ci_hr_sections.datemade')
-				->from('ci_hr_bridge')
-				->leftJoin('ci_hr_sections','ci_hr_bridge.sectionid = ci_hr_sections.sectionid')
-				->where('ci_hr_bridge.policyid=:id', array(':id'=>$policy['policyid']))
+				->from('ci_hr_policy')
+				->leftJoin('ci_hr_sections','ci_hr_policy.policyid = ci_hr_sections.policyid')
+				->where('ci_hr_sections.policyid=:id', array(':id'=>$policy['policyid']))
 				->queryAll();
+			
+			if(isset($check))
+			{
+				$links[$policy['policy']] = CHtml::link('Create Section For ' 
+					. $policy['policy'], array('hrpolicy/createsection?policyid=' 
+						. $policy['policyid']));
+			}
 			
 			foreach($sub as $section)
 			{
 				if(isset($check))
-					$panels[$policy['policyid']][$section['datemade']] = CHtml::link('Edit',array('hrsections/update?id=' . $section['sectionid'])) . "<br/><br/>" . $section['section'];
+				{
+					$panels[$policy['policy']][$section['datemade']] = CHtml::link('Edit',
+							array('hrsections/update?id=' . $section['sectionid'])) . "<br/><br/>" . $section['section'];
+				}
 				else
-					$panels[$policy['policyid']][$section['datemade']] = $section['section'];
+					$panels[$policy['policy']][$section['datemade']] = $section['section'];
 			}
 		}
 		
-		//foreach($policies as $policy)
-		//{
-			//foreach($policy as $section)
-			//{
-	//			if(isset($check))
-	//				$panels[$policy['policyid']] = CHtml::link('Edit',array('hrsections/update?id=' . $policy['sectionid'])) . "<br/><br/>" . $policy['sectionid'];
-	//			else
-	//				$panels[$policy['policyid']] = $policy['sectionid'];
-			//}
-			//$panels[$value['policyid']][$key] = $value['section'];
-		//}
-
 		$this->render('index',array(
 			'panels'=>$panels,
+			'links'=>$links,
 		));
 	}
 
@@ -171,10 +174,10 @@ class HrSectionsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new HrSections('search');
+		$model=new HrPolicy('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['HrSections']))
-			$model->attributes=$_GET['HrSections'];
+		if(isset($_GET['HrPolicy']))
+			$model->attributes=$_GET['HrPolicy'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -188,7 +191,7 @@ class HrSectionsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=HrSections::model()->findByPk($id);
+		$model=HrPolicy::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -200,7 +203,7 @@ class HrSectionsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='hr-sections-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='hr-policy-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

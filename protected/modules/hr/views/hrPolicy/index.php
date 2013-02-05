@@ -16,17 +16,26 @@ $(function() {
 </script>
 <?php
 $this->breadcrumbs=array(
-	'Hr Sections',
+	'HR Sections',
 );
 
 $this->menu=array(
-	array('label'=>'Create HrSections', 'url'=>array('create')),
-	array('label'=>'Manage HrSections', 'url'=>array('admin')),
+	array('label'=>'Create HR Policy', 'url'=>array('createpolicy')),
+	array('label'=>'Manage HR Policies', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Hr Sections</h1>
+<h1>HR Policies</h1>
 
+<?php
+if(isset($links))
+{
+	foreach($links as $link)
+	{
+		echo $link . "<br/>";
+	}
+}
+?>
 <div class="accordion">
 	<?php
 	foreach($panels as $key1 => $value1)

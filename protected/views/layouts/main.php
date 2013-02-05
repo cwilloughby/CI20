@@ -46,7 +46,7 @@
 					),
 				),
 				array('label'=>'Trouble', 'url'=>array('/tickets/troubletickets/index')),
-				array('label'=>'HR', 'url'=>array('/hr/hrsections/index')),
+				array('label'=>'HR', 'url'=>array('/hr/hrpolicy/index')),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,

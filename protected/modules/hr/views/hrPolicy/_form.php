@@ -1,13 +1,13 @@
 <?php
-/* @var $this HrSectionsController */
-/* @var $model HrSections */
+/* @var $this HrPolicyController */
+/* @var $model HrPolicy */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'hr-sections-form',
+	'id'=>'hr-policy-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -16,15 +16,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'section'); ?>
-		<?php echo $form->textArea($model,'section',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'section'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'datemade'); ?>
-		<?php echo $form->textField($model,'datemade'); ?>
-		<?php echo $form->error($model,'datemade'); ?>
+		<?php echo $form->labelEx($model,'policy'); ?>
+		<?php echo $form->textField($model,'policy',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'policy'); ?>
 	</div>
 
 	<div class="row buttons">

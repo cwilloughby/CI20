@@ -4,12 +4,13 @@
  * This is the model class for table "ci_hr_sections".
  *
  * The followings are the available columns in table 'ci_hr_sections':
+ * @property integer $policyid
  * @property integer $sectionid
  * @property string $section
  * @property string $datemade
  *
  * The followings are the available model relations:
- * @property HrBridge[] $hrBridges
+ * @property HrPolicy $policy
  */
 class HrSections extends CActiveRecord
 {
@@ -39,13 +40,29 @@ class HrSections extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('section, datemade', 'required'),
+			array('policyid, section', 'required'),
+			array('policyid, sectionid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('sectionid, section, datemade', 'safe', 'on'=>'search'),
+			array('policyid, sectionid, section, datemade', 'safe', 'on'=>'search'),
 		);
 	}
-
+	
+	/*
+	 * Attaches the timestamp behavior to auto set the opendate value
+	 * when a new ticket is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'datemade',
+				'updateAttribute' => null,
+			),
+		);
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -54,7 +71,7 @@ class HrSections extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'hrBridges' => array(self::HAS_MANY, 'HrBridge', 'sectionid'),
+			'policy' => array(self::BELONGS_TO, 'HrPolicy', 'policyid'),
 		);
 	}
 
@@ -64,6 +81,7 @@ class HrSections extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'policyid' => 'Policyid',
 			'sectionid' => 'Sectionid',
 			'section' => 'Section',
 			'datemade' => 'Datemade',
@@ -81,6 +99,7 @@ class HrSections extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('policyid',$this->policyid);
 		$criteria->compare('sectionid',$this->sectionid);
 		$criteria->compare('section',$this->section,true);
 		$criteria->compare('datemade',$this->datemade,true);

@@ -1,21 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "ci_hr_bridge".
+ * This is the model class for table "ci_hr_policy".
  *
- * The followings are the available columns in table 'ci_hr_bridge':
- * @property string $policyid
- * @property integer $sectionid
- *
- * The followings are the available model relations:
- * @property HrSections $section
+ * The followings are the available columns in table 'ci_hr_policy':
+ * @property integer $policyid
+ * @property string $policy
  */
-class HrBridge extends CActiveRecord
+class HrPolicy extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return HrBridge the static model class
+	 * @return HrPolicy the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -27,7 +24,7 @@ class HrBridge extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ci_hr_bridge';
+		return 'ci_hr_policy';
 	}
 
 	/**
@@ -38,12 +35,11 @@ class HrBridge extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('policyid, sectionid', 'required'),
-			array('sectionid', 'numerical', 'integerOnly'=>true),
-			array('policyid', 'length', 'max'=>50),
+			array('policy', 'required'),
+			array('policy', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('policyid, sectionid', 'safe', 'on'=>'search'),
+			array('policyid, policy', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +51,6 @@ class HrBridge extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'section' => array(self::BELONGS_TO, 'HrSections', 'sectionid'),
 		);
 	}
 
@@ -66,7 +61,7 @@ class HrBridge extends CActiveRecord
 	{
 		return array(
 			'policyid' => 'Policyid',
-			'sectionid' => 'Sectionid',
+			'policy' => 'Policy',
 		);
 	}
 
@@ -81,8 +76,8 @@ class HrBridge extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('policyid',$this->policyid,true);
-		$criteria->compare('sectionid',$this->sectionid);
+		$criteria->compare('policyid',$this->policyid);
+		$criteria->compare('policy',$this->policy,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

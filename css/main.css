@@ -74,6 +74,14 @@ body
 	text-decoration:none;
 	padding:5px 8px; 
 }
+#menu-top ul li {
+	color:#ffffff;
+	background-color:transparent;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 8px; 
+}
 #menu-top ul li a:hover {
 	color: #6399cd;
 	background-color:#EFF4FA;
