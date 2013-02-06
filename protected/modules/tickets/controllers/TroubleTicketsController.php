@@ -310,62 +310,63 @@ class TroubleTicketsController extends Controller
 	
 	/*
 	 * Grab the subjects associated with the selected category.
+	 * This is only used by AJAX.
 	 */
 	public function actionDynamicsubjects()
 	{	
-		//$subjects = TicketSubjects::model()->with('ciTicketCategories')->findAll('ciTicketCategories.categoryid=:selected_id',
-        //        array(':selected_id'=>(int) $_POST['TroubleTickets']['categoryid']));
-		
+		// Grab all the subjects of the selected category.
 		$subjects = Yii::app()->db->createCommand()
 			->select('ci_ticket_subjects.subjectid, subjectname')
 			->from('ci_ticket_subjects')
 			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
 			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['categoryid']))
 			->queryAll();
-
+		
+		// Put the subjects into a list that is compatible with CHtml::tag
 		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
 		
+		// Put each subject into a dropdown box.
 		foreach($data as $value => $name) {
-			echo CHtml::tag('option', array('value' => $value), CHtml::encode($name),true);
+			echo CHtml::tag('option', array('value' => $value), $name,true);
 		}
 	}
 	
 	/*
-	 * Grab the tips associated with the selected subject.
+	 * Grab the tips and conditional textboxes associated with the selected subject.
+	 * This is only used by AJAX.
 	 */
 	public function actionDynamictips()
 	{	
-		//$tips = Tips::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
-		//		array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
-
-		$tips = Yii::app()->db->createCommand()
-			->select('ci_tips.tipid, tip')
+		// Grab all the tips and conditionals of the selected subject.
+		$tipsAndConditions = Yii::app()->db->createCommand()
+			->select('ci_tips.tipid, ci_tips.tip, ci_ticket_conditionals.label')
 			->from('ci_tips')
 			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
+			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
+			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
+			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
 			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['subjectid']))
 			->queryAll();
 		
-		$data = CHtml::listData($tips, 'tipid', 'tip');
+		// Put the tips into a list that is compatible with CHtml::ListBox
+		$data = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
+		// Output the tips in a list box.
+		echo CHtml::ListBox('tips', ' ', $data, 
+			array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
 		
-		echo CHtml::ListBox('tips', ' ', $data, array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
-		
-		//$conditionals = TicketConditionals::model()->with('ciTicketSubjects')->findAll('ciTicketSubjects.subjectid=:selected_id',
-		//		array(':selected_id'=>(int) $_POST['TroubleTickets']['subjectid']));
-		
-		$conditionals = Yii::app()->db->createCommand()
-			->select('ci_ticket_conditionals.label')
-			->from('ci_ticket_conditionals')
-			->leftJoin('ci_subject_conditions','ci_subject_conditions.conditionalid = ci_ticket_conditionals.conditionalid')
-			->where('ci_subject_conditions.subjectid=:id', array(':id'=>$_POST['subjectid']))
-			->queryAll();
-		
-		foreach($conditionals as $key1 => $value1)
+		// Output each conditional textbox and its label.
+		foreach($tipsAndConditions as $key => $value)
 		{
-			foreach($value1 as $key2 => $value2)
+			// Don't output a duplicate.
+			if(!isset($last) || $last != $value['label'])
 			{
-				echo CHtml::label($value2,$value2);
-				echo CHtml::textField($value2,'');
+				if(isset($value['label']))
+				{
+					echo CHtml::label($value['label'],$value['label']);
+					echo CHtml::textField($value['label'],'');
+				}
 			}
+			$last = $value['label'];
 		}
 	}
 	

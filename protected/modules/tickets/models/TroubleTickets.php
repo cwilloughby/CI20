@@ -56,12 +56,21 @@ class TroubleTickets extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('categoryid, subjectid', 'required'),
+			array('subjectid', 'notZero', 'skipOnError' => true),
 			array('openedby, categoryid, subjectid, closedbyuserid', 'numerical', 'integerOnly'=>true),
 			array('description, closedate, resolution', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('ticketid, user_search, opendate, category_search, subject_search, description, closer_search, closedate, resolution', 'safe', 'on'=>'search'),
 		);
+	}
+	
+	public function notZero($attribute,$params)
+	{
+		if($attribute != null && $attribute == 0)
+		{
+			$this->addError($attribute, 'Subject cannot be blank.');
+		}
 	}
 	
 	/*
