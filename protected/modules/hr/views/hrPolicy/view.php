@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List HR Policies', 'url'=>array('index')),
-	array('label'=>'Create HR Policy', 'url'=>array('createpolicy')),
 	array('label'=>'Update HR Policy', 'url'=>array('update', 'id'=>$model->policyid)),
 	array('label'=>'Delete HR Policy', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->policyid),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage HR Policies', 'url'=>array('admin')),

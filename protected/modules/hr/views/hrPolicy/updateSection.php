@@ -1,10 +1,11 @@
 <?php
 /* @var $this HrPolicyController */
-/* @var $model HrSection */
+/* @var $model HrSections */
 
 $this->breadcrumbs=array(
 	'HR Policies'=>array('index'),
-	'Create',
+	$model->policyid=>array('view','id'=>$model->policyid),
+	'Update',
 );
 
 $this->menu=array(
@@ -13,6 +14,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create HR Section</h1>
+<h1>Update HR Section <?php echo $model->policyid; ?></h1>
 
 <?php echo $this->renderPartial('_formSection', array('model'=>$model)); ?>

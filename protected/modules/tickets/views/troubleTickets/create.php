@@ -1,6 +1,7 @@
 <?php
 /* @var $this TroubleTicketsController */
-/* @var $model TroubleTickets */
+/* @var $ticket TroubleTickets */
+/* @var $file Documents */
 
 $this->breadcrumbs=array(
 	'Trouble Tickets'=>array('index'),
