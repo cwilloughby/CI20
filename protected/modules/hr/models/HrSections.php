@@ -81,10 +81,10 @@ class HrSections extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'policyid' => 'Policyid',
-			'sectionid' => 'Sectionid',
+			'policyid' => 'Policy ID',
+			'sectionid' => 'Section ID',
 			'section' => 'Section',
-			'datemade' => 'Datemade',
+			'datemade' => 'Date Made',
 		);
 	}
 

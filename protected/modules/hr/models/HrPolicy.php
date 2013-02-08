@@ -60,7 +60,7 @@ class HrPolicy extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'policyid' => 'Policyid',
+			'policyid' => 'Policy ID',
 			'policy' => 'Policy',
 		);
 	}
