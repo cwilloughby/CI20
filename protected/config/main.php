@@ -72,6 +72,7 @@ return array(
 	'components'=>array(
 		'user'=>array(
 			'class' => 'CWebUser',
+			'autoUpdateFlash' => false,
 			// enable cookie-based authentication
 			'allowAutoLogin'=>false,
 			'loginUrl'=>array('/security/login/login'),

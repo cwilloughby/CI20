@@ -37,11 +37,6 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id=$record->userid;
-			$this->setState('role',$this->flatten(Yii::app()->db->createCommand()
-					->select('itemname')
-					->from('ci_auth_assignments')
-					->where('userid=:id', array(':id'=>$this->_id))
-					->queryAll()));
             $this->errorCode=self::ERROR_NONE;
         }
         return !$this->errorCode;
@@ -50,12 +45,5 @@ class UserIdentity extends CUserIdentity
 	public function getId()
 	{
 		return $this->_id;
-	}
-	
-	public function flatten(array $array) 
-	{
-		$return = array();
-		array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
-		return $return;
 	}
 }

@@ -60,8 +60,8 @@ class MessageDocuments extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'messageid' => 'Messageid',
-			'documentid' => 'Documentid',
+			'messageid' => 'Message ID',
+			'documentid' => 'Document ID',
 		);
 	}
 

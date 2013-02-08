@@ -101,11 +101,11 @@ class Documents extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'documentid' => 'Documentid',
+			'documentid' => 'Document ID',
 			'uploader' => 'Uploader',
-			'documentname' => 'Documentname',
+			'documentname' => 'Document Name',
 			'path' => 'Path',
-			'uploaddate' => 'Uploaddate',
+			'uploaddate' => 'Upload Date',
 			'attachment' => 'Attachment',
 		);
 	}

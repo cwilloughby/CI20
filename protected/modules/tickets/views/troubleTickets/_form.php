@@ -9,7 +9,11 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'trouble-tickets-form',
-	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
+	'stateful'=>true, 
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 

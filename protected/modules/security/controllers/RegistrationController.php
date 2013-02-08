@@ -21,6 +21,9 @@ class RegistrationController extends Controller
 			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate())
 			{		
+				// Remove the flash message so the email will work again.
+				Yii::app()->user->getFlash('success');
+				
 				// Form inputs are valid.
 				// Redirect to the email controller's register email action in the email module.
 				$this->redirect(array('/email/email/registeremail',

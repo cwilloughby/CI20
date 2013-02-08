@@ -39,7 +39,7 @@
 				array('label'=>'Login', 'url'=>array('/security/login/login'), 'visible'=>Yii::app()->user->isGuest),
 				array(
 					'label'=>'Admin',
-					'visible'=>!Yii::app()->user->isGuest && in_array("IT", Yii::app()->user->role),
+					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 					'items'=>array(
 						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
 						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),

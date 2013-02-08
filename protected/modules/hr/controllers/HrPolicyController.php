@@ -152,10 +152,10 @@ class HrPolicyController extends Controller
 		$main = Yii::app()->db->createCommand()
 			->select('ci_hr_policy.policyid, ci_hr_policy.policy')
 			->from('ci_hr_policy')
-			->queryAll();
+			->queryAll(); 
 		
-		// Check if the user is IT and store a true or false value.
-		$check = in_array("IT", Yii::app()->user->role);
+		// Check if the user has access to edit the hr policy.
+		$check = Yii::app()->user->checkAccess('hr@HrEdit', Yii::app()->user->id);
 		
 		foreach($main as $policy)
 		{

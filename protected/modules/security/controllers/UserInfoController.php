@@ -59,6 +59,9 @@ class UserInfoController extends Controller
 			
 			if($model->save())
 			{
+				// Remove the flash message so the email will work again.
+				Yii::app()->user->getFlash('success');
+				
 				// Email alert to the new user.
 				/*
 				$this->redirect(

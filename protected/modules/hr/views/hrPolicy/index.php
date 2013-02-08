@@ -59,7 +59,7 @@ $this->menu=array(
 		</div>
 		<?php
 	}
-	if(in_array("IT", Yii::app()->user->role))
+	if(Yii::app()->user->checkAccess('hr@HrEdit', Yii::app()->user->id))
 	{
 		?>
 		<h3><?php echo "Create New Policy"; ?></h3>

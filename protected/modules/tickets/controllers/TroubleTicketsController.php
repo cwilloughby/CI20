@@ -49,6 +49,12 @@ class TroubleTicketsController extends Controller
 		$ticket=new TroubleTickets;
 		$file=new Documents;
 		
+		if(isset($_POST['ajax']) && $_POST['ajax']==='trouble-tickets-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+		
 		if(isset($_POST['TroubleTickets']))
 		{
 			$ticket->attributes=$_POST['TroubleTickets'];
@@ -61,13 +67,15 @@ class TroubleTicketsController extends Controller
 			{
 				$file->attachment=CUploadedFile::getInstance($file,'attachment');
 				
-				// Remove the first and last elements from the POST array.
+				// Remove the first two elements and the last two elements from the POST array
+				// to isolate the conditionals.
+				array_shift($_POST);
 				array_shift($_POST);
 				array_pop($_POST);
 				array_pop($_POST);
 
 				$ticket->description .= "\n\n";
-			
+				
 				// Grab all the data from the conditionals and put them in the description.
 				foreach($_POST as $key => $value) 
 					$ticket->description .= $key . ": " . $value . "\n";
@@ -88,6 +96,9 @@ class TroubleTicketsController extends Controller
 					$temp .= "\n";
 				
 				$ticket->save(false);
+				
+				// Remove the flash message so the email will work again.
+				Yii::app()->user->getFlash('success');
 				
 				$this->redirect(
 					array('/email/email/helpopenemail', 
@@ -178,7 +189,7 @@ class TroubleTicketsController extends Controller
 	public function actionIndex()
 	{
 		// If the user has an IT role then they can see all open tickets.
-		if(in_array("IT", Yii::app()->user->role))
+		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
 		{
 			$dataProvider=new CActiveDataProvider('TroubleTickets', 
 				array(
@@ -188,7 +199,7 @@ class TroubleTicketsController extends Controller
 				)
 			);
 		}
-		else if(in_array("Supervisor", Yii::app()->user->role))
+		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
 			// If the user is a supervisor.
 			// Find that supervisor's department
@@ -232,7 +243,7 @@ class TroubleTicketsController extends Controller
 	public function actionClosedIndex()
 	{
 		// If the user has an IT role then they can see all closed tickets.
-		if(in_array("IT", Yii::app()->user->role))
+		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
 		{
 			$dataProvider=new CActiveDataProvider('TroubleTickets', 
 				array(
@@ -242,7 +253,7 @@ class TroubleTicketsController extends Controller
 				)
 			);
 		}
-		else if(in_array("Supervisor", Yii::app()->user->role))
+		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
 			// If the user is a supervisor.
 			// Find that supervisor's department
@@ -323,7 +334,8 @@ class TroubleTicketsController extends Controller
 			->queryAll();
 		
 		// Put the subjects into a list that is compatible with CHtml::tag
-		$data = array("0"=>"Select a subject") + CHtml::listData($subjects, 'subjectid', 'subjectname');
+		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
+		echo CHtml::tag('option',array('value' => ''), CHtml::encode('Select a subject'),true);
 		
 		// Put each subject into a dropdown box.
 		foreach($data as $value => $name) {
@@ -341,32 +353,26 @@ class TroubleTicketsController extends Controller
 		$tipsAndConditions = Yii::app()->db->createCommand()
 			->select('ci_tips.tipid, ci_tips.tip, ci_ticket_conditionals.label')
 			->from('ci_tips')
-			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
-			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
-			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
-			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
+			->join('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
+			->join('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
+			->join('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
+			->join('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
 			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['subjectid']))
 			->queryAll();
-		
+
 		// Put the tips into a list that is compatible with CHtml::ListBox
-		$data = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
+		$tipsData = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
 		// Output the tips in a list box.
-		echo CHtml::ListBox('tips', ' ', $data, 
+		echo CHtml::ListBox('tips', ' ', $tipsData, 
 			array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
 		
+		// Put the conditionals into a list that is compatible with CHtml::label and CHtml::textField
+		$conditionalData = CHtml::listData($tipsAndConditions, 'label', 'label');
+		
 		// Output each conditional textbox and its label.
-		foreach($tipsAndConditions as $key => $value)
-		{
-			// Don't output a duplicate.
-			if(!isset($last) || $last != $value['label'])
-			{
-				if(isset($value['label']))
-				{
-					echo CHtml::label($value['label'],$value['label']);
-					echo CHtml::textField($value['label'],'');
-				}
-			}
-			$last = $value['label'];
+		foreach($conditionalData as $value => $name) {
+			echo CHtml::label($value,$name);
+			echo CHtml::textField($value,'');
 		}
 	}
 	

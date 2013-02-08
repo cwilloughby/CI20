@@ -17,6 +17,10 @@
  */
 class Messages extends CActiveRecord
 {
+	const HOST = "10.107.12.72";
+	
+	public $mail; 
+	
 	/*
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -27,6 +31,14 @@ class Messages extends CActiveRecord
 		return parent::model($className);
 	}
 
+	public function init()
+	{
+		// Create a mailer object, tell it to use SMTP and set the host.
+		$this->mail = new JPhpMailer();
+		$this->mail->IsSMTP();
+		$this->mail->Host = self::HOST;
+	}
+	
 	/*
 	 * @return string the associated database table name
 	 */
@@ -53,7 +65,21 @@ class Messages extends CActiveRecord
 			array('messageid, to, from, subject, messagebody, messagetype, datesent', 'safe', 'on'=>'search'),
 		);
 	}
-
+	
+	/*
+	 * Attaches the timestamp behavior to auto set the datesent value
+	 * when a new ticket is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'datesent',
+				'updateAttribute' => null,
+			),
+		);
+	}
 	/*
 	 * @return array relational rules.
 	 */
@@ -72,12 +98,12 @@ class Messages extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'messageid' => 'Messageid',
+			'messageid' => 'Message ID',
 			'to' => 'To',
 			'from' => 'From',
 			'subject' => 'Subject',
 			'messagebody' => 'Body',
-			'messagetype' => 'Messagetype',
+			'messagetype' => 'Message Type',
 			'datesent' => 'Date Sent',
 		);
 	}
@@ -104,16 +130,5 @@ class Messages extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}
-	
-	/*
-	 * Set the datesent value to the current date when a new record is made.
-	 */
-	public function beforeSave()
-	{
-		if($this->isNewRecord)
-			$this->datesent = new CDbExpression('NOW()');
-		
-		return parent::beforeSave();
 	}
 }

@@ -60,8 +60,8 @@ class TicketMessages extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ticketid' => 'Ticketid',
-			'messageid' => 'Messageid',
+			'ticketid' => 'Ticket ID',
+			'messageid' => 'Message ID',
 		);
 	}
 

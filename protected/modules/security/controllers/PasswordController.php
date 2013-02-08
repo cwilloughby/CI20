@@ -32,6 +32,9 @@ class PasswordController extends Controller
 				// Get the security manager so it can be used to encrypt the username and email in the url.
 				$sec = Yii::app()->getSecurityManager();
 				
+				// Remove the flash message so the email will work again.
+				Yii::app()->user->getFlash('success');
+				
 				// Redirect to the email controller's recovery email action in the email module.
 				$this->redirect(array('/email/email/recoveryemail', 
 					'username'=>urlencode($sec->encrypt($data->username)), 
