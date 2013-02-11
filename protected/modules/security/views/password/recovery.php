@@ -26,7 +26,7 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'password_repeat'); ?>
+		<?php echo CHtml::activeLabel($model,'password_repeat', array('required' => true)); ?>
 		<?php echo $form->passwordField($model,'password_repeat'); ?>
 		<?php echo $form->error($model,'password_repeat'); ?>
 	</div>
