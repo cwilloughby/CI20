@@ -45,6 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'trouble-tickets-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'ticketid',
 		array( 

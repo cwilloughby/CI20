@@ -44,6 +44,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'user-info-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'userid',
 		'firstname',
@@ -52,7 +53,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'username',
 		'email',
 		'phoneext',
-		'departmentid',
+		array( 
+			'name'=>'department_search', 
+			'value'=>'$data->department->departmentname' 
+		),
 		'hiredate',
 		'active',
 		array(

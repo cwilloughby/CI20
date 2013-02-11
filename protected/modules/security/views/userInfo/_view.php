@@ -5,7 +5,7 @@
 
 <div class="view">
 
-	<?php echo CHtml::link("Edit", array('view', 'id'=>$data->userid)); ?>
+	<?php echo CHtml::link("Edit", array('update', 'id'=>$data->userid)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('firstname')); ?>:</b>
@@ -41,7 +41,12 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>
-	<?php echo CHtml::encode($data->active); ?>
+	<?php
+	if($data->active == 1)
+		echo "Yes";
+	else
+		echo "No";
+	?>
 	<br />
 
 </div>

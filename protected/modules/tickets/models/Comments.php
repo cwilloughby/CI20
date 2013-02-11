@@ -101,10 +101,10 @@ class Comments extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'commentid' => 'Commentid',
+			'commentid' => 'Comment ID',
 			'content' => 'Content',
-			'createdby' => 'Createdby',
-			'datecreated' => 'Datecreated',
+			'createdby' => 'Created By',
+			'datecreated' => 'Date Created',
 		);
 	}
 

@@ -32,6 +32,7 @@ class UserInfo extends CActiveRecord
 {
 	public $oldpassword;
 	public $password_repeat;
+	public $department_search;
 	
 	/*
 	 * Returns the static model of the specified AR class.
@@ -81,7 +82,7 @@ class UserInfo extends CActiveRecord
 			array('password_repeat, oldpassword', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, hiredate, active', 'safe', 'on'=>'search'),
+			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, department_search, hiredate, active', 'safe', 'on'=>'search'),
 		);
 	}
 	
@@ -142,6 +143,7 @@ class UserInfo extends CActiveRecord
 			'email' => 'Email',
 			'phoneext' => 'Phone Ext',
 			'departmentid' => 'Department',
+			'department_search' => 'Department',
 			'hiredate' => 'Hire Date',
 		);
 	}
@@ -165,6 +167,7 @@ class UserInfo extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('phoneext',$this->phoneext);
 		$criteria->compare('departmentid',$this->departmentid);
+		$criteria->compare('department.department',$this->department_search,true);
 		$criteria->compare('hiredate',$this->hiredate,true);
 		$criteria->compare('active',$this->active);
 

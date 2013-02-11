@@ -17,4 +17,13 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
+	'sortableAttributes'=>array(
+		'firstname',
+		'lastname',
+		'username',
+		'phoneext',
+		'hiredate',
+		'active',
+	),
+	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
 )); ?>
