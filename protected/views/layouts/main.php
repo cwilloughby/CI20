@@ -15,8 +15,8 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>assets/images/favicon.ico" type="image/x-icon" />
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -44,10 +44,21 @@
 					'items'=>array(
 						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
 						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
+						array('label'=>'Modify User Privileges', 'url'=>array('/srbac')),
 					),
 				),
-				array('label'=>'Trouble', 'url'=>array('/tickets/troubletickets/index')),
-				array('label'=>'HR', 'url'=>array('/hr/hrpolicy/index')),
+				array(
+					'label'=>'Helpdesk',
+					'visible'=>!Yii::app()->user->isGuest,
+					'url'=>array('/tickets/troubletickets/create'),
+					'items'=>array(
+						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index')),
+						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex')),
+					),
+				),
+				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
@@ -60,13 +71,10 @@
 		)); ?>
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
+		<?php $this->widget('zii.widgets.CBreadcrumbs', array('links'=>$this->breadcrumbs,)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
 	<?php 
-	//print_r(Yii::app()->user->role);
 	echo $content;
 	?>
 

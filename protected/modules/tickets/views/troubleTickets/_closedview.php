@@ -4,9 +4,11 @@
 ?>
 
 <div class="view">
-
+	<?php echo CHtml::link('View Ticket', array('view', 'id'=>$data->ticketid)); ?>
+	<br /><br />
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ticketid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->ticketid), array('view', 'id'=>$data->ticketid)); ?>
+	<?php echo CHtml::encode($data->ticketid); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('openedby')); ?>:</b>

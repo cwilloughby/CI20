@@ -48,7 +48,9 @@ body
 }
 
 #menu-top { 
-	background:white url(bg.gif) repeat-x left top; 
+	background:white url(bg.gif) repeat-x left top;
+	position: relative; 
+	z-index: 10;
 }
 #menu-top ul { 
 	list-style: none; 
@@ -74,13 +76,15 @@ body
 	text-decoration:none;
 	padding:5px 8px; 
 }
-#menu-top ul li {
+#menu-top ul li span{
 	color:#ffffff;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px; 
+	padding:5px 8px;
+	cursor:hand;
+	cursor:pointer;
 }
 #menu-top ul li a:hover {
 	color: #6399cd;
@@ -100,6 +104,7 @@ body
 	padding: 4px 14px; 
 	display: block; 
 }
+
 #menu-top ul li ul li.active a,
 #menu-top ul li ul li{clear: left;}
 

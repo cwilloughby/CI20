@@ -17,7 +17,7 @@ $(function() {
 </script>
 <?php
 $this->breadcrumbs=array(
-	'HR Sections',
+	'HR Policy',
 );
 
 $this->menu=array(

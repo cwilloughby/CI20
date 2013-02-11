@@ -3,18 +3,25 @@
 class HrPolicyController extends Controller
 {
 	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 * @var string the default layout for the views.
 	 */
-	public $layout='//layouts/column2';
+	public $layout;
 
+	public function init()
+	{
+		// Don't show the side menu if the user doesn't have the ability to edit HR.
+		if(!Yii::app()->user->checkAccess('hr@HrEdit', Yii::app()->user->id))
+			$this->layout='//layouts/column1';
+		else
+			$this->layout='//layouts/column2';
+	}
+	
 	/**
 	 * @return array action filters
 	 */
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
