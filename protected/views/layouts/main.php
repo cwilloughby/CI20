@@ -35,18 +35,8 @@
 			'activateParents'=>true,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/security/login/login'), 'visible'=>Yii::app()->user->isGuest),
-				array(
-					'label'=>'Admin',
-					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
-					'items'=>array(
-						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
-						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
-						array('label'=>'Modify User Privileges', 'url'=>array('/srbac')),
-					),
-				),
+				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				array(
 					'label'=>'Helpdesk',
 					'visible'=>!Yii::app()->user->isGuest,
@@ -57,8 +47,16 @@
 						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex')),
 					),
 				),
-				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+				array(
+					'label'=>'Admin',
+					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
+					'items'=>array(
+						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
+						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
+						array('label'=>'Modify User Privileges', 'url'=>array('/srbac')),
+					),
+				),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
