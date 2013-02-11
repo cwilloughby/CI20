@@ -19,7 +19,7 @@ class Messages extends CActiveRecord
 {
 	const HOST = "10.107.12.72";
 	
-	public $mail; 
+	public $mail;
 	
 	/*
 	 * Returns the static model of the specified AR class.
