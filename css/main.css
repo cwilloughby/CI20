@@ -13,6 +13,8 @@ body
 	margin-bottom: 5px;
 	background: white;
 	border: 1px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
 
 #header
@@ -20,6 +22,8 @@ body
 	margin: 0;
 	padding: 0;
 	border-top: 3px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
 
 #content
@@ -161,6 +165,8 @@ div.view
 	padding: 10px;
 	margin: 10px 0;
 	border: 1px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
 
 div.breadcrumbs
