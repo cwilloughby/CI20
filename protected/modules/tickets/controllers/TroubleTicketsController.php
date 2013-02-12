@@ -371,8 +371,8 @@ class TroubleTicketsController extends Controller
 		
 		// Output each conditional textbox and its label.
 		foreach($conditionalData as $value => $name) {
-			echo CHtml::label($value,$name);
-			echo CHtml::textField($value,'');
+			echo CHtml::label($value,$name, array('required' => true));
+			echo CHtml::textField($value,'', array('required' => true));
 		}
 	}
 	
