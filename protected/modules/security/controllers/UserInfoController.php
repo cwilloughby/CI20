@@ -63,13 +63,11 @@ class UserInfoController extends Controller
 				Yii::app()->user->getFlash('success');
 				
 				// Email alert to the new user.
-				/*
 				$this->redirect(
 					array('/email/email/addemail', 
 						'username'=>$model->username,
 						'email'=>urlencode($model->email),
 					));
-				*/	
 			}
 		}
 

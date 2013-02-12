@@ -43,6 +43,6 @@ $this->breadcrumbs=array(
 <?php $this->endWidget(); ?>
 </div><!-- form -->
 
-<a href="/../security/password/recoveryrequest">Forgot your password?</a>
--
-<a href="/../security/registration/register">Register</a>
+<?php echo CHtml::link('Forgot your password?',array('password/recoveryrequest')); ?>
+ -
+<?php echo CHtml::link('Register',array('registration/register')); ?>
