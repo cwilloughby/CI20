@@ -121,8 +121,7 @@ class EmailController extends Controller
 			$model->subject = $model->mail->Subject;
 
 			// Create the link to the password recovery page.
-			$link = "http://ci2/security/password/recovery"				
-						. '?username=' . urlencode($_GET['username']);
+			$link = $this->createAbsoluteUrl('/security/password/recovery',array('username'=> $_GET['username']));
 
 			// Set the message's body.
 			$model->mail->Body = "Follow this link to recover your password: " . $link;
@@ -155,7 +154,7 @@ class EmailController extends Controller
 
 			// Set the recipient, the sender, and the subject.
 			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress("ccc.helpdesk@nashville.gov");
+			$model->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
 			$model->mail->AddCC($user->email);
 			$model->mail->SetFrom($user->email);
 			$model->mail->Subject = "Opening CI Ticket #" . $_GET['ticketid'];

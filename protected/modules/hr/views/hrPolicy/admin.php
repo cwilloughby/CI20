@@ -49,6 +49,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'policy',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view} {update} {delete}',
+			'buttons'=>array(
+				'update'=>array(
+					'url'=>'Yii::app()->createUrl("hr/hrpolicy/updatePolicy", array("id"=>$data->policyid))',
+				),
+			),
 		),
 	),
 )); ?>
