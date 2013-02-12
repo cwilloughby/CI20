@@ -353,10 +353,10 @@ class TroubleTicketsController extends Controller
 		$tipsAndConditions = Yii::app()->db->createCommand()
 			->select('ci_tips.tipid, ci_tips.tip, ci_ticket_conditionals.label')
 			->from('ci_tips')
-			->join('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
-			->join('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
-			->join('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
-			->join('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
+			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
+			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
+			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
+			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
 			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['subjectid']))
 			->queryAll();
 
@@ -372,9 +372,13 @@ class TroubleTicketsController extends Controller
 		$conditionalData = CHtml::listData($tipsAndConditions, 'label', 'label');
 		
 		// Output each conditional textbox and its label.
-		foreach($conditionalData as $value => $name) {
-			echo CHtml::label($value,$name, array('required' => true));
-			echo CHtml::textField($value,'', array('required' => true));
+		foreach($conditionalData as $value => $name)
+		{
+			if(isset($name))
+			{
+				echo CHtml::label($value,$name, array('required' => true));
+				echo CHtml::textField($value,'', array('required' => true));
+			}
 		}
 	}
 	
