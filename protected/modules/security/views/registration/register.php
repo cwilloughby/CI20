@@ -25,46 +25,59 @@ $this->breadcrumbs=array(
 	<table class="span-5">
 		<tr>
 			<td>
-				<?php echo $form->labelEx($model,'firstname'); ?>
-				<?php echo $form->textField($model,'firstname'); ?>
-				<?php echo $form->error($model,'firstname'); ?>
+				<?php 
+				echo $form->labelEx($model,'firstname');
+				echo $form->textField($model,'firstname');
+				echo $form->error($model,'firstname');
+				?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'lastname'); ?>
-				<?php echo $form->textField($model,'lastname'); ?>
-				<?php echo $form->error($model,'lastname'); ?>
+				<?php 
+				echo $form->labelEx($model,'lastname');
+				echo $form->textField($model,'lastname');
+				echo $form->error($model,'lastname'); 
+				?>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:center;">
-				<?php echo $form->labelEx($model,'middlename'); ?>
-				<?php echo $form->textField($model,'middlename'); ?>
-				<?php echo $form->error($model,'middlename'); ?>
+				<?php 
+				echo $form->labelEx($model,'middlename');
+				echo $form->textField($model,'middlename');
+				echo $form->error($model,'middlename'); 
+				?>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:center;">
-				<?php echo $form->labelEx($model,'email'); ?>
-				<?php echo $form->textField($model,'email', array('style'=>'width:100%')); ?>
-				<?php echo $form->error($model,'email'); ?>
+				<?php 
+				echo $form->labelEx($model,'email');
+				echo $form->textField($model,'email', array('style'=>'width:100%'));
+				echo $form->error($model,'email'); 
+				?>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<?php echo $form->labelEx($model,'phoneext'); ?>
-				<?php echo $form->textField($model,'phoneext'); ?>
-				<?php echo $form->error($model,'phoneext'); ?>
+				<?php 
+				echo $form->labelEx($model,'phoneext');
+				echo $form->textField($model,'phoneext');
+				echo $form->error($model,'phoneext'); 
+				?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'departmentid'); ?>
-				<?php echo $form->dropDownList($model,'departmentid', $departments); ?>
-				<?php echo $form->error($model,'departmentid'); ?>
+				<?php 
+				echo $form->labelEx($model,'departmentid');
+				echo $form->dropDownList($model,'departmentid', $departments);
+				echo $form->error($model,'departmentid'); 
+				?>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:center;">
-				<?php echo $form->labelEx($model,'hiredate'); ?>
-				<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				<?php 
+				echo $form->labelEx($model,'hiredate');
+				$this->widget('zii.widgets.jui.CJuiDatePicker', 
 					array(
 						'model' => $model,
 						'attribute' => 'hiredate',
@@ -76,8 +89,8 @@ $this->breadcrumbs=array(
 							'changeMonth' => true,
 						),
 					));
+				echo $form->error($model,'hiredate'); 
 				?>
-				<?php echo $form->error($model,'hiredate'); ?>
 			</td>
 		</tr>
 		<tr>

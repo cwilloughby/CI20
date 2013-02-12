@@ -15,69 +15,92 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'firstname'); ?>
-		<?php echo $form->textField($model,'firstname',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'firstname'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'lastname'); ?>
-		<?php echo $form->textField($model,'lastname',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'lastname'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'middlename'); ?>
-		<?php echo $form->textField($model,'middlename',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'middlename'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>41,'maxlength'=>41)); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'phoneext'); ?>
-		<?php echo $form->textField($model,'phoneext'); ?>
-		<?php echo $form->error($model,'phoneext'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'departmentid'); ?>
-		<?php echo $form->dropDownList($model,'departmentid', $departments); ?>
-		<?php echo $form->error($model,'departmentid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'hiredate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'hiredate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
-					'defaultDate' => $model->hiredate,
-					'changeYear' => true,
-					'changeMonth' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'hiredate'); ?>
-	</div>
-	
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	<table class="span-5">
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'username');
+				echo $form->textField($model,'username',array('maxlength'=>41));
+				echo $form->error($model,'username'); 
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<?php 
+				echo $form->labelEx($model,'firstname');
+				echo $form->textField($model,'firstname',array('maxlength'=>30));
+				echo $form->error($model,'firstname'); 
+				?>
+			</td>
+			<td>
+				<?php 
+				echo $form->labelEx($model,'lastname');
+				echo $form->textField($model,'lastname',array('maxlength'=>40));
+				echo $form->error($model,'lastname');
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'middlename');
+				echo $form->textField($model,'middlename',array('maxlength'=>45));
+				echo $form->error($model,'middlename'); 
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'email');
+				echo $form->textField($model,'email',array('maxlength'=>100));
+				echo $form->error($model,'email');
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'phoneext');
+				echo $form->textField($model,'phoneext');
+				echo $form->error($model,'phoneext'); 
+				?>
+			</td>
+			<td style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'departmentid');
+				echo $form->dropDownList($model,'departmentid', $departments);
+				echo $form->error($model,'departmentid');
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<?php 
+				echo $form->labelEx($model,'hiredate');
+				$this->widget('zii.widgets.jui.CJuiDatePicker', 
+					array(
+						'model' => $model,
+						'attribute' => 'hiredate',
+						'options' => array(
+							'showAnim' => 'fold',
+							'dateFormat' => 'yy-mm-dd', 
+							'defaultDate' => $model->hiredate,
+							'changeYear' => true,
+							'changeMonth' => true,
+						),
+					));
+				echo $form->error($model,'hiredate'); 
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+			</td>
+		</tr>
+	</table>
 
 <?php $this->endWidget(); ?>
 
