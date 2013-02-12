@@ -362,10 +362,12 @@ class TroubleTicketsController extends Controller
 
 		// Put the tips into a list that is compatible with CHtml::ListBox
 		$tipsData = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
-		// Output the tips in a list box.
-		echo CHtml::ListBox('tips', ' ', $tipsData, 
-			array('disabled'=>'true','style'=>'height:85px; border:none; width:100%; background-color:white; color:black'));
 		
+		// Output the tips.
+		foreach($tipsData as $tip)
+			echo CHtml::label($tip,$tip);
+
+		echo "<br/>";
 		// Put the conditionals into a list that is compatible with CHtml::label and CHtml::textField
 		$conditionalData = CHtml::listData($tipsAndConditions, 'label', 'label');
 		
