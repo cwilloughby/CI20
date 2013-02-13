@@ -27,7 +27,7 @@
 		echo $form->dropDownList($ticket, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
 			array('empty' => 'Select a category','ajax' => 
 				array(
-					'type' => 'POST',
+					'type' => 'GET',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
 					'datatype'=>'json',
 					'data' => array('categoryid'=>'js:this.value'),
@@ -45,7 +45,7 @@
 		echo $form->dropDownList($ticket, 'subjectid', array(), 
 			array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
 				array(
-					'type' => 'POST',
+					'type' => 'GET',
 					'url' => CController::createUrl('troubletickets/dynamictips'),
 					'datatype'=>'json',
 					'data' => array('subjectid'=>'js:this.value'),

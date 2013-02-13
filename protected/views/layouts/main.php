@@ -20,9 +20,10 @@
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
+	
+<?php flush(); ?>
+	
 <body>
-
 <div class="container" id="page">
 
 	<div id="header">

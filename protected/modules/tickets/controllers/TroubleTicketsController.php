@@ -330,7 +330,7 @@ class TroubleTicketsController extends Controller
 			->select('ci_ticket_subjects.subjectid, subjectname')
 			->from('ci_ticket_subjects')
 			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
-			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_POST['categoryid']))
+			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_GET['categoryid']))
 			->queryAll();
 		
 		// Put the subjects into a list that is compatible with CHtml::tag
@@ -357,7 +357,7 @@ class TroubleTicketsController extends Controller
 			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
 			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
 			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
-			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_POST['subjectid']))
+			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_GET['subjectid']))
 			->queryAll();
 
 		// Put the tips into a list that is compatible with CHtml::ListBox
