@@ -51,12 +51,12 @@
 				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 				array(
 					'label'=>'Admin',
-					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
+					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Admin', Yii::app()->user->id),
 					'items'=>array(
-						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
-						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
+						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						array('label'=>'News Controls', 'url'=>array('/news/news/index')),
-						array('label'=>'Modify User Privileges', 'url'=>array('/srbac')),
+						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 					),
 				),
 				array(

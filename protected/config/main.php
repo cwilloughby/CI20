@@ -24,6 +24,7 @@ return array(
 		'application.modules.email.controllers.*',
 		'application.modules.tickets.models.*',
 		'application.modules.documents.models.*',
+		'application.modules.news.models.*',
 	),
 
 	'modules'=>array(
