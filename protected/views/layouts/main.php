@@ -55,6 +55,7 @@
 					'items'=>array(
 						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index')),
 						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index')),
+						array('label'=>'News Controls', 'url'=>array('/news/news/index')),
 						array('label'=>'Modify User Privileges', 'url'=>array('/srbac')),
 					),
 				),

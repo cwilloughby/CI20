@@ -3,7 +3,7 @@ return array (
   'template' => 'default',
   'connectionId' => 'db',
   'tablePrefix' => 'ci_',
-  'modelPath' => 'application.modules.hr.models',
+  'modelPath' => 'application.modules.news.models',
   'baseClass' => 'CActiveRecord',
   'buildRelations' => '1',
 );
