@@ -32,31 +32,47 @@
 					'datatype'=>'json',
 					'data' => array('categoryid'=>'js:this.value'),
 					'update' => '#' . CHtml::activeId($ticket, 'subjectid'),
+					'beforeSend' => 'function(){
+						$("#test").hide();
+						$("#dependant").hide();
+						$("#button").hide();
+					}',
+					'complete' => 'function(){
+						$("#test").show();
+					}',
 				),
 			)
 		);
 		echo $form->error($ticket, 'categoryid');
 		?>
 	</div>
-	
-	<div class="row">
-		<?php 
-		echo $form->labelEx($ticket, 'subjectid');
-		echo $form->dropDownList($ticket, 'subjectid', array(), 
-			array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
-				array(
-					'type' => 'GET',
-					'url' => CController::createUrl('troubletickets/dynamictips'),
-					'datatype'=>'json',
-					'data' => array('subjectid'=>'js:this.value'),
-					'update' => '#dependant',
+	<div id="test" style="display:none">
+		<div class="row">
+			<?php 
+			echo $form->labelEx($ticket, 'subjectid');
+			echo $form->dropDownList($ticket, 'subjectid', array(), 
+				array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
+					array(
+						'type' => 'GET',
+						'url' => CController::createUrl('troubletickets/dynamictips'),
+						'datatype'=>'json',
+						'data' => array('subjectid'=>'js:this.value'),
+						'update' => '#dependant',
+						'beforeSend' => 'function(){
+							$("#dependant").hide();
+							$("#button").hide();
+						}',
+						'complete' => 'function(){
+							$("#dependant").show();
+							$("#button").show();
+						}',
+					)
 				)
-			)
-		);
-		echo $form->error($ticket, 'subjectid'); 
-		?>
+			);
+			echo $form->error($ticket, 'subjectid'); 
+			?>
+		</div>
 	</div>
-	
 	<div id="dependant">
 
 	</div>
@@ -77,7 +93,7 @@
 		?>
 	</div>
 	
-	<div class="row buttons">
+	<div id="button" class="row buttons" style="display:none">
 		<?php echo CHtml::submitButton($ticket->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
