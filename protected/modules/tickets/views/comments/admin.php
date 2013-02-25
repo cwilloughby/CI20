@@ -2,6 +2,8 @@
 /* @var $this CommentsController */
 /* @var $model Comments */
 
+$this->pageTitle = Yii::app()->name . ' - Manage Comments';
+
 $this->breadcrumbs=array(
 	'Comments'=>array('index'),
 	'Manage',
@@ -9,7 +11,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Comments', 'url'=>array('index')),
-	array('label'=>'Create Comment', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

@@ -2,6 +2,8 @@
 /* @var $this PasswordController */
 /* @var $model UserInfo */
 /* @var $form CActiveForm */
+
+$this->pageTitle = Yii::app()->name . ' - Change Password';
 ?>
 
 <div class="form">

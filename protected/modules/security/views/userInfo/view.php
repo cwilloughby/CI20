@@ -2,6 +2,8 @@
 /* @var $this UserInfoController */
 /* @var $model UserInfo */
 
+$this->pageTitle = Yii::app()->name . ' - View User';
+
 $this->breadcrumbs=array(
 	'User Management'=>array('index'),
 	$model->userid,
@@ -32,7 +34,10 @@ $this->menu=array(
 		'username',
 		'email',
 		'phoneext',
-		'departmentid',
+		array( 
+			'name'=>'department_search', 
+			'value'=>$model->department->departmentname 
+		),
 		'hiredate',
 		'active',
 	),

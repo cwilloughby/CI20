@@ -2,6 +2,8 @@
 /* @var $this UserInfoController */
 /* @var $model UserInfo */
 
+$this->pageTitle = Yii::app()->name . ' - Create User';
+
 $this->breadcrumbs=array(
 	'User Management'=>array('index'),
 	'Create',

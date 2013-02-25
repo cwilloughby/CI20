@@ -2,6 +2,8 @@
 /* @var $this HrPolicyController */
 /* @var $model HrSections */
 
+$this->pageTitle = Yii::app()->name . ' - Update HR Section';
+
 $this->breadcrumbs=array(
 	'HR Policies'=>array('index'),
 	$model->policyid=>array('view','id'=>$model->policyid),

@@ -2,6 +2,8 @@
 /* @var $this TroubleTicketsController */
 /* @var $model TroubleTickets */
 
+$this->pageTitle = Yii::app()->name . ' - View Trouble Ticket';
+
 $this->breadcrumbs=array(
 	'Trouble Tickets'=>array('index'),
 	$model->ticketid,
@@ -17,7 +19,7 @@ $this->menu=array(
 		: array('label'=>'Reopen Trouble Ticket', 'url'=>'#', 
 			'linkOptions'=>(array('submit'=>array('reopen','id'=>$model->ticketid),'confirm'=>'Are you sure you want to reopen this ticket?')))),
 	
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
+	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 

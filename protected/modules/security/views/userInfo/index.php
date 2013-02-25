@@ -2,6 +2,8 @@
 /* @var $this UserInfoController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - User List';
+
 $this->breadcrumbs=array(
 	'User Management',
 );

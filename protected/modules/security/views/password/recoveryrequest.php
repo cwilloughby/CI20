@@ -3,6 +3,8 @@
 /* @var $model UserInfo */
 /* @var $form CActiveForm */
 
+$this->pageTitle = Yii::app()->name . ' - Recover Password';
+
 $this->breadcrumbs=array(
 	'Login'=>array('/security/login/login'),
 	'Password Recovery',

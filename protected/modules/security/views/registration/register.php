@@ -3,6 +3,8 @@
 /* @var $model RegisterForm */
 /* @var $form CActiveForm */
 
+$this->pageTitle = Yii::app()->name . ' - Register';
+
 $this->breadcrumbs=array(
 	'Login'=>array('/security/login/login'),
 	'Register',

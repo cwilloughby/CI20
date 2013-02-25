@@ -2,6 +2,8 @@
 /* @var $this HrPolicyController */
 /* @var $model HrPolicy */
 
+$this->pageTitle = Yii::app()->name . ' - Manage HR Policies';
+
 $this->breadcrumbs=array(
 	'HR Policies'=>array('index'),
 	'Manage',

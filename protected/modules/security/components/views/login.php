@@ -38,6 +38,6 @@
 <?php $this->endWidget(); ?>
 </div><!-- form -->
 
-<?php echo CHtml::link('Forgot your password?',array('password/recoveryrequest')); ?>
+<?php echo CHtml::link('Forgot your password?',array('security/password/recoveryrequest')); ?>
  -
-<?php echo CHtml::link('Register',array('registration/register')); ?>
+<?php echo CHtml::link('Register',array('security/registration/register')); ?>

@@ -2,6 +2,8 @@
 /* @var $this HrPolicyController */
 /* @var $model HrSection */
 
+$this->pageTitle = Yii::app()->name . ' - Create HR Section';
+
 $this->breadcrumbs=array(
 	'HR Policies'=>array('index'),
 	'Create',

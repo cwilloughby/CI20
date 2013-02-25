@@ -2,6 +2,8 @@
 /* @var $this CommentsController */
 /* @var $model Comments */
 
+$this->pageTitle = Yii::app()->name . ' - Update Comment';
+
 $this->breadcrumbs=array(
 	'Comments'=>array('index'),
 	$model->commentid=>array('view','id'=>$model->commentid),
@@ -10,7 +12,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Comments', 'url'=>array('index')),
-	array('label'=>'Create Comment', 'url'=>array('create')),
 	array('label'=>'View Comment', 'url'=>array('view', 'id'=>$model->commentid)),
 	array('label'=>'Manage Comments', 'url'=>array('admin')),
 );

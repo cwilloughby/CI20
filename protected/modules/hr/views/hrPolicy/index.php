@@ -16,6 +16,8 @@ $(function() {
 });
 </script>
 <?php
+$this->pageTitle = Yii::app()->name . ' - HR Policy';
+
 $this->breadcrumbs=array(
 	'HR Policy',
 );

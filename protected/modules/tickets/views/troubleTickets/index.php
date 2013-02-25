@@ -2,6 +2,8 @@
 /* @var $this TroubleTicketsController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Open Trouble Tickets';
+
 $this->breadcrumbs=array(
 	'Trouble Tickets',
 );
@@ -9,7 +11,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
 	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin')),
+	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 

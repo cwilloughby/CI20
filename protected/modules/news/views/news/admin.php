@@ -2,14 +2,16 @@
 /* @var $this NewsController */
 /* @var $model News */
 
+$this->pageTitle = Yii::app()->name . ' - Manage News Posts';
+
 $this->breadcrumbs=array(
 	'News'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Create News', 'url'=>array('create')),
+	array('label'=>'List News Posts', 'url'=>array('index')),
+	array('label'=>'Create News Post', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
