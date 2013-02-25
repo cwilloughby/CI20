@@ -36,7 +36,6 @@
 			'activateParents'=>true,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Login', 'url'=>array('/security/login/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				array(
 					'label'=>'Helpdesk',
@@ -83,7 +82,7 @@
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		Powered by the Yii Framework
 	</div><!-- footer -->
 
 </div><!-- page -->
