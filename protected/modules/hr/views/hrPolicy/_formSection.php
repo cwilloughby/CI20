@@ -20,7 +20,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'section'); ?>
-		<?php echo $form->textArea($model,'section',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textArea($model,'section'); ?>
 		<?php echo $form->error($model,'section'); ?>
 	</div>
 

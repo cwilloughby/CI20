@@ -44,7 +44,7 @@ $this->menu=array(
 				{
 					?>
 					<h3><?php echo $key2; ?></h3>
-					<div><?php echo $value2; ?></div>
+					<div><?php echo nl2br($value2); ?></div>
 					<?php
 				}
 			}
