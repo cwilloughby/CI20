@@ -154,7 +154,7 @@ class EmailController extends Controller
 
 			// Set the recipient, the sender, and the subject.
 			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress("CharlesWilloughby@jis.nashville.org");
+			$model->mail->AddAddress("ccc.helpdesk@nashville.gov");
 			$model->mail->AddCC($user->email);
 			$model->mail->SetFrom($user->email);
 			$model->mail->Subject = "Opening CI Ticket #" . $_GET['ticketid'];
@@ -250,7 +250,7 @@ class EmailController extends Controller
 		// Set the recipient, the sender, and the subject.
 		$model->mail->ContentType = "text/html";
 		$model->mail->AddAddress($email);
-		//$model->mail->AddCC("ccc.helpdesk@nashville.gov");
+		$model->mail->AddCC("ccc.helpdesk@nashville.gov");
 		$model->mail->SetFrom("ccc.helpdesk@nashville.gov");
 		$model->mail->Subject = "A new comment was made on CI Ticket #" . $_GET['ticketid'];
 		$model->to = $email;

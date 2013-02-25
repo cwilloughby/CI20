@@ -47,7 +47,7 @@ class Documents extends CActiveRecord
 			array('uploader', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
-			array('attachment', 'file', 'types'=>'jpg, gif, png, txt', 'maxSize'=>'2097152', 'allowEmpty'=>true),
+			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc', 'maxSize'=>'2097152', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('documentid, uploader, documentname, path, uploaddate', 'safe', 'on'=>'search'),
@@ -68,7 +68,7 @@ class Documents extends CActiveRecord
 			$this->documentname = $this->attachment->getName();
 			
 			// Create a folder with the uploaddate set as the name, unless it already exists.
-			$temp = "\\\\CRIM08017\\c$\\wamp\\www\\ci20\\assets\\uploads\\" . $this->uploaddate . "\\";
+			$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
 			if(!is_dir($temp))
 				mkdir($temp);
 
