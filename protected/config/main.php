@@ -25,6 +25,7 @@ return array(
 		'application.modules.tickets.models.*',
 		'application.modules.documents.models.*',
 		'application.modules.news.models.*',
+		'zii.widgets.CPortlet'
 	),
 
 	'modules'=>array(
@@ -90,9 +91,9 @@ return array(
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 			),
 		),
-		'cache'=>array(
-			'class'=>'system.caching.CApcCache',
-		),
+		//'cache'=>array(
+		//	'class'=>'system.caching.CApcCache',
+		//),
 		'db'=>array(
 			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',
