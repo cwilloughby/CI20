@@ -6417,3 +6417,36 @@ Stack trace:
 REQUEST_URI=/hr/hrsections/index
 in C:\wamp\www\CI20\protected\modules\hr\controllers\HrSectionsController.php (145)
 in C:\wamp\www\CI20\index.php (13)
+2013/02/26 15:48:05 [error] [php] A non well formed numeric value encountered (C:\wamp\www\CI20\protected\modules\hr\controllers\HrPolicyController.php:190)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 C:\wamp\framework\web\filters\CFilterChain.php(134): HrPolicyController->runAction()
+#2 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#3 C:\wamp\framework\web\CController.php(266): HrPolicyController->runActionWithFilters()
+#4 C:\wamp\framework\web\CWebApplication.php(283): HrPolicyController->run()
+#5 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#6 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/hr/hrpolicy/index
+in C:\wamp\www\CI20\protected\modules\hr\controllers\HrPolicyController.php (190)
+in C:\wamp\www\CI20\index.php (13)
+2013/02/26 15:48:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/02/26 16:01:30 [error] [php] Undefined variable: subkey (C:\wamp\www\CI20\protected\modules\hr\controllers\HrPolicyController.php:194)
+Stack trace:
+#0 C:\wamp\framework\web\filters\CFilterChain.php(134): HrPolicyController->runAction()
+#1 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#2 C:\wamp\framework\web\CController.php(266): HrPolicyController->runActionWithFilters()
+#3 C:\wamp\framework\web\CWebApplication.php(283): HrPolicyController->run()
+#4 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/hr/hrpolicy/index
+in C:\wamp\www\CI20\protected\modules\hr\controllers\HrPolicyController.php (194)
+in C:\wamp\www\CI20\index.php (13)

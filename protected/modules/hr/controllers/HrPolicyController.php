@@ -172,20 +172,31 @@ class HrPolicyController extends Controller
 				->from('ci_hr_policy')
 				->leftJoin('ci_hr_sections','ci_hr_policy.policyid = ci_hr_sections.policyid')
 				->where('ci_hr_sections.policyid=:id', array(':id'=>$policy['policyid']))
+				->order('ci_hr_sections.datemade DESC')
 				->queryAll();
+			
+			$first = 0;
 			
 			foreach($sub as $section)
 			{
+				if($first == 0)
+				{
+					$subKey = date('M d, Y', strtotime($section['datemade'])) . " Current";
+					$first = 1;
+				}
+				else
+					$subKey = date('M d, Y', strtotime($section['datemade'])) . " Old";
+				
 				// Is the user IT?
 				if($check)
 				{
 					// Add an edit link to the sub panel.
-					$panels[$policy['policy']][$section['datemade']] = CHtml::link('Edit',
+					$panels[$policy['policy']][$subKey] = CHtml::link('Edit',
 						array('hrpolicy/updatesection?id1=' . $policy['policyid'] 
 							. "&id2=" .$section['sectionid'])) . "<br/><br/>" . $section['section'];
 				}
 				else
-					$panels[$policy['policy']][$section['datemade']] = $section['section'];
+					$panels[$policy['policy']][$subKey] = $section['section'];
 			}
 			
 			// Is the user IT?
