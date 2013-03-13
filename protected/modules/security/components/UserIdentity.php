@@ -28,11 +28,17 @@ class UserIdentity extends CUserIdentity
 		{
 			// That user account is disabled.
 			$this->errorCode=self::ERROR_USERNAME_NOT_ACTIVE;
+			
+			// Record the failed login event.
+			$this->recordLoginEvent($record, 'Login Failed, Decativated User');
 		}
         else if($record->password!==sha1($this->password))
 		{
 			// The password is invalid.
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
+			
+			// Record the failed login event.
+			$this->recordLoginEvent($record, 'Login Failed, Incorrect Password');
 		}
         else
         {
@@ -45,5 +51,16 @@ class UserIdentity extends CUserIdentity
 	public function getId()
 	{
 		return $this->_id;
+	}
+	
+	private function recordLoginEvent($record, $event)
+	{
+		// Record the login event.
+		$log = new Log;
+		$log->tablename = 'ci_user_info';
+		$log->event = $event;
+		$log->userid = $record->userid;
+		$log->tablerow = $log->userid;
+		$log->save(false);
 	}
 }

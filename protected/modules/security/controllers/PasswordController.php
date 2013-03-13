@@ -70,7 +70,17 @@ class PasswordController extends Controller
 					$data->password = sha1($model->password);
 					
 					if($data->update())
+					{
+						// Record the password change event.
+						$log = new Log;
+						$log->tablename = 'ci_user_info';
+						$log->event = 'Password Recovered';
+						$log->userid = $data->userid;
+						$log->tablerow = $log->userid;
+						$log->save(false);
+						
 						$this->redirect(Yii::app()->homeUrl);
+					}
 				}
 			}
 			$this->render('recovery',array('model'=>$model));
@@ -103,7 +113,17 @@ class PasswordController extends Controller
 				$data->password = sha1($model->password);
 
 				if($data->update())
+				{
+					// Record the password change event.
+					$log = new Log;
+					$log->tablename = 'ci_user_info';
+					$log->event = 'Password Changed';
+					$log->userid = Yii::app()->user->getId();
+					$log->tablerow = $log->userid;
+					$log->save(false);
+					
 					$this->redirect(Yii::app()->homeUrl);
+				}
 			}
 		}
 		$this->render('change',array('model'=>$model));

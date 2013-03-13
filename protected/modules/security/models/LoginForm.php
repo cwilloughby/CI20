@@ -66,9 +66,24 @@ class LoginForm extends CFormModel
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			Yii::app()->user->login($this->_identity);
+			
+			// Record the successful login event.
+			$this->recordLoginEvent('Login Succeeded');
+			
 			return true;
 		}
 		else
 			return false;
+	}
+	
+	private function recordLoginEvent($event)
+	{
+		// Record the login event.
+		$log = new Log;
+		$log->tablename = 'ci_user_info';
+		$log->event = $event;
+		$log->userid = $this->_identity->getId();
+		$log->tablerow = $log->userid;
+		$log->save(false);
 	}
 }
