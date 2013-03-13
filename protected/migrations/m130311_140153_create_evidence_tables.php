@@ -109,6 +109,8 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'caseno' => 'VARCHAR(50) NOT NULL',
 				'exhibitno' => 'VARCHAR(20) NOT NULL',
 				'evidencename' => 'VARCHAR(1000) NULL DEFAULT NULL',
+				'comment' => 'VARCHAR(100) NULL DEFAULT NULL',
+				'dateadded' => 'TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP',
 				'PRIMARY KEY (`evidenceid`)',
 				'INDEX `fk_ci_evidence_ci_crt_case1_idx1` (`caseno` ASC)',
 				'CONSTRAINT `fk_ci_evidence_ci_crt_case1`
