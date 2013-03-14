@@ -42,6 +42,7 @@ return array(
 		'hr',
 		'documents',
 		'news',
+		'evidence',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
