@@ -60,7 +60,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'value'=>'$data->department->departmentname' 
 		),
 		'hiredate',
-		'active',
+		array(        
+			'name'=>'active',
+			'value'=>'($data->active == 1)?"Yes":"No"',
+		),
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view} {update}',

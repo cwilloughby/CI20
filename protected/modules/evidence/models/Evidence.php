@@ -87,13 +87,16 @@ class Evidence extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($caseno = null)
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
+		if(!is_null($caseno))
+		{
+			$criteria->condition = "caseno=:caseno";
+			$criteria->params = array(":caseno" => $caseno);
+		}
+		
 		$criteria->compare('evidenceid',$this->evidenceid);
 		$criteria->compare('caseno',$this->caseno,true);
 		$criteria->compare('exhibitno',$this->exhibitno,true);

@@ -12,11 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'summaryid'); ?>
-		<?php echo $form->textField($model,'summaryid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'defid'); ?>
 		<?php echo $form->textField($model,'defid'); ?>
 	</div>
@@ -80,37 +75,38 @@
 		<?php echo $form->label($model,'comment'); ?>
 		<?php echo $form->textField($model,'comment',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'dna'); ?>
-		<?php echo $form->textField($model,'dna'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'bio'); ?>
-		<?php echo $form->textField($model,'bio'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'drug'); ?>
-		<?php echo $form->textField($model,'drug'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'firearm'); ?>
-		<?php echo $form->textField($model,'firearm'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'money'); ?>
-		<?php echo $form->textField($model,'money'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'other'); ?>
-		<?php echo $form->textField($model,'other'); ?>
-	</div>
-
+	<table style="width:62%">
+		<tr>
+			<?php echo '<td>' . $form->label($model,'dna') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'dna', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+		<tr>
+			<?php echo '<td>' . $form->label($model,'bio') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'bio', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+		<tr>
+			<?php echo '<td>' . $form->label($model, 'drug') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'drug', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+		<tr>
+			<?php echo '<td>' . $form->label($model, 'firearm') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'firearm', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+		<tr>
+			<?php echo '<td>' . $form->label($model, 'money') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'money', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+		<tr>
+			<?php echo '<td>' . $form->label($model, 'other') . "</td>"; ?>
+			<?php echo $form->radioButtonList($model, 'other', array(1=>'Yes', 0=>'No', 2=>'N/A'), 
+				array('separator' => '', 'template' => '<td>{label}{input}</td>')); ?>
+		</tr>
+	</table>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

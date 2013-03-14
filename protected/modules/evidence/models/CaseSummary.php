@@ -32,6 +32,11 @@
  */
 class CaseSummary extends CActiveRecord
 {
+	public $def_search1;
+	public $def_search2;
+	public $div_search;
+	public $complaint_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -67,7 +72,7 @@ class CaseSummary extends CActiveRecord
 			array('dispodate, hearingdate, indate, outdate, destructiondate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('summaryid, defid, caseno, location, dispodate, hearingdate, hearingtype, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
+			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, hearingdate, hearingtype, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -92,20 +97,24 @@ class CaseSummary extends CActiveRecord
 	{
 		return array(
 			'summaryid' => 'Summaryid',
-			'defid' => 'Defid',
-			'caseno' => 'Caseno',
+			'defid' => 'Defendant',
+			'def_search1' => 'Defendant First Name',
+			'def_search2' => 'Defendant Last Name',
+			'caseno' => 'Case Number',
+			'div_search' => 'Court Division',
+			'complaint_search' => 'Complaint Number',
 			'location' => 'Location',
-			'dispodate' => 'Dispodate',
-			'hearingdate' => 'Hearingdate',
-			'hearingtype' => 'Hearingtype',
+			'dispodate' => 'Disposition Date',
+			'hearingdate' => 'Hearing Date',
+			'hearingtype' => 'Hearing Type',
 			'page' => 'Page',
 			'sentence' => 'Sentence',
 			'indate' => 'Indate',
 			'outdate' => 'Outdate',
-			'destructiondate' => 'Destructiondate',
+			'destructiondate' => 'Destruction Date',
 			'recip' => 'Recip',
-			'comment' => 'Comment',
-			'dna' => 'Dna',
+			'comment' => 'Comments',
+			'dna' => 'DNA',
 			'bio' => 'Bio',
 			'drug' => 'Drug',
 			'firearm' => 'Firearm',
@@ -120,13 +129,15 @@ class CaseSummary extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
+		$criteria->with = array('def');
 
 		$criteria->compare('summaryid',$this->summaryid);
 		$criteria->compare('defid',$this->defid);
+		$criteria->compare('def.fname',$this->def_search1,true);
+		$criteria->compare('def.lname',$this->def_search2,true);
+		$criteria->compare('caseno0.crtdiv',$this->div_search,true);
+		$criteria->compare('caseno0.cptno',$this->complaint_search,true);
 		$criteria->compare('caseno',$this->caseno,true);
 		$criteria->compare('location',$this->location,true);
 		$criteria->compare('dispodate',$this->dispodate,true);
@@ -148,6 +159,19 @@ class CaseSummary extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'def_search1'=>array(
+						'asc'=>'def.fname',
+						'desc'=>'def.fname DESC',
+					),
+					'def_search2'=>array(
+						'asc'=>'def.lname',
+						'desc'=>'def.lname DESC',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }

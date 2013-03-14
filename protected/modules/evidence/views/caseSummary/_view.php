@@ -5,24 +5,16 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('summaryid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->summaryid), array('view', 'id'=>$data->summaryid)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('defid')); ?>:</b>
-	<?php echo CHtml::encode($data->defid); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('caseno')); ?>:</b>
-	<?php echo CHtml::encode($data->caseno); ?>
+	<?php echo CHtml::link(CHtml::encode($data->caseno), array('view', 'id'=>$data->summaryid)); ?>
+	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('defid')); ?>:</b>
+	<?php echo CHtml::encode($data->def->fname . ' ' . $data->def->lname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('location')); ?>:</b>
 	<?php echo CHtml::encode($data->location); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('dispodate')); ?>:</b>
-	<?php echo CHtml::encode($data->dispodate); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hearingdate')); ?>:</b>

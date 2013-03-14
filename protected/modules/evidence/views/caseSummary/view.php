@@ -1,29 +1,39 @@
 <?php
 /* @var $this CaseSummaryController */
-/* @var $model CaseSummary */
+/* @var $case CaseSummary */
+/* @var $evidence Evidence */
 
 $this->breadcrumbs=array(
-	'Case Summaries'=>array('index'),
-	$model->summaryid,
+	'Cases'=>array('index'),
+	$case->caseno,
 );
 
 $this->menu=array(
-	array('label'=>'List CaseSummary', 'url'=>array('index')),
-	array('label'=>'Create CaseSummary', 'url'=>array('create')),
-	array('label'=>'Update CaseSummary', 'url'=>array('update', 'id'=>$model->summaryid)),
-	array('label'=>'Delete CaseSummary', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage CaseSummary', 'url'=>array('admin')),
+	array('label'=>'List Cases', 'url'=>array('index')),
+	array('label'=>'Create Case', 'url'=>array('create')),
+	array('label'=>'Update Case', 'url'=>array('update', 'id'=>$case->summaryid)),
+	array('label'=>'Delete Case', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Cases', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View CaseSummary #<?php echo $model->summaryid; ?></h1>
+<h1>View Case <?php echo $case->caseno; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
+	'data'=>$case,
 	'attributes'=>array(
-		'summaryid',
-		'defid',
-		'caseno',
+		array(        
+			'name'=>'defid',
+			'value'=>isset($case->def)?CHtml::encode($case->def->fname . ' ' . $case->def->lname):"Unknown"
+		),
+		array(        
+			'name'=>'div_search',
+			'value'=>isset($case->def)?CHtml::encode($case->caseno0->crtdiv):"N/A"
+		),
+		array(        
+			'name'=>'complaint_search',
+			'value'=>isset($case->def)?CHtml::encode($case->caseno0->cptno):"N/A"
+		),
 		'location',
 		'dispodate',
 		'hearingdate',
@@ -35,11 +45,47 @@ $this->menu=array(
 		'destructiondate',
 		'recip',
 		'comment',
-		'dna',
-		'bio',
-		'drug',
-		'firearm',
-		'money',
-		'other',
+		array(        
+			'name'=>'dna',
+			'value'=>($case->dna == 0)?"No":(($case->dna == 1)?"Yes":"N/A"),
+		),
+		array(        
+			'name'=>'bio',
+			'value'=>($case->bio == 0)?"No":(($case->bio == 1)?"Yes":"N/A"),
+		),
+		array(        
+			'name'=>'drug',
+			'value'=>($case->drug == 0)?"No":(($case->drug == 1)?"Yes":"N/A"),
+		),
+		array(        
+			'name'=>'firearm',
+			'value'=>($case->firearm == 0)?"No":(($case->firearm == 1)?"Yes":"N/A"),
+		),
+		array(        
+			'name'=>'money',
+			'value'=>($case->money == 0)?"No":(($case->money == 1)?"Yes":"N/A"),
+		),
+		array(        
+			'name'=>'other',
+			'value'=>($case->other == 0)?"No":(($case->other == 1)?"Yes":"N/A"),
+		),
+	),
+));
+
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'evidence-grid',
+	'dataProvider'=>$evidence->search($case->caseno),
+	'filter'=>$evidence,
+	'columns'=>array(
+		'exhibitlist',
+		'caseno',
+		'exhibitno',
+		'evidencename',
+		'comment',
+		'dateadded',
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
+		),
 	),
 )); ?>

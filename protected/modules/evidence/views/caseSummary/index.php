@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Case Summaries',
+	'Cases',
 );
 
 $this->menu=array(
-	array('label'=>'Create CaseSummary', 'url'=>array('create')),
-	array('label'=>'Manage CaseSummary', 'url'=>array('admin')),
+	array('label'=>'Create Case', 'url'=>array('create')),
+	array('label'=>'Manage Cases', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Case Summaries</h1>
+<h1>Cases</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

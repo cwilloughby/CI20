@@ -3,13 +3,13 @@
 /* @var $model CaseSummary */
 
 $this->breadcrumbs=array(
-	'Case Summaries'=>array('index'),
+	'Cases'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List CaseSummary', 'url'=>array('index')),
-	array('label'=>'Create CaseSummary', 'url'=>array('create')),
+	array('label'=>'List Cases', 'url'=>array('index')),
+	array('label'=>'Create Case', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Case Summaries</h1>
+<h1>Manage Cases</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -45,30 +45,47 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'summaryid',
-		'defid',
+		array( 
+			'name'=>'def_search1', 
+			'value'=>'$data->def->fname' 
+		),
+		array( 
+			'name'=>'def_search2', 
+			'value'=>'$data->def->lname' 
+		),
 		'caseno',
 		'location',
-		'dispodate',
 		'hearingdate',
-		/*
 		'hearingtype',
-		'page',
 		'sentence',
-		'indate',
-		'outdate',
-		'destructiondate',
-		'recip',
 		'comment',
-		'dna',
-		'bio',
-		'drug',
-		'firearm',
-		'money',
-		'other',
-		*/
+		array(        
+			'name'=>'dna',
+			'value'=>'($data->dna == 0)?"No":(($data->dna == 1)?"Yes":"N/A")',
+		),
+		array(        
+			'name'=>'bio',
+			'value'=>'($data->bio == 0)?"No":(($data->bio == 1)?"Yes":"N/A")',
+		),
+		array(        
+			'name'=>'drug',
+			'value'=>'($data->drug == 0)?"No":(($data->drug == 1)?"Yes":"N/A")',
+		),
+		array(        
+			'name'=>'firearm',
+			'value'=>'($data->firearm == 0)?"No":(($data->firearm == 1)?"Yes":"N/A")',
+		),
+		array(        
+			'name'=>'money',
+			'value'=>'($data->money == 0)?"No":(($data->money == 1)?"Yes":"N/A")',
+		),
+		array(        
+			'name'=>'other',
+			'value'=>'($data->other == 0)?"No":(($data->other == 1)?"Yes":"N/A")',
+		),
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}',
 		),
 	),
 )); ?>

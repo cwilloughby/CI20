@@ -95,37 +95,37 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'dna'); ?>
-		<?php echo $form->textField($model,'dna'); ?>
+		<?php echo $form->checkBox($model,'dna'); ?>
 		<?php echo $form->error($model,'dna'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'bio'); ?>
-		<?php echo $form->textField($model,'bio'); ?>
+		<?php echo $form->checkBox($model,'bio'); ?>
 		<?php echo $form->error($model,'bio'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'drug'); ?>
-		<?php echo $form->textField($model,'drug'); ?>
+		<?php echo $form->checkBox($model,'drug'); ?>
 		<?php echo $form->error($model,'drug'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'firearm'); ?>
-		<?php echo $form->textField($model,'firearm'); ?>
+		<?php echo $form->checkBox($model,'firearm'); ?>
 		<?php echo $form->error($model,'firearm'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'money'); ?>
-		<?php echo $form->textField($model,'money'); ?>
+		<?php echo $form->checkBox($model,'money'); ?>
 		<?php echo $form->error($model,'money'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'other'); ?>
-		<?php echo $form->textField($model,'other'); ?>
+		<?php echo $form->checkBox($model,'other'); ?>
 		<?php echo $form->error($model,'other'); ?>
 	</div>
 
