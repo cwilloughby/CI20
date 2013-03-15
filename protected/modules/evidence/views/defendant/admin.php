@@ -2,6 +2,8 @@
 /* @var $this DefendantController */
 /* @var $model Defendant */
 
+$this->pageTitle = Yii::app()->name . ' - Defendants';
+
 $this->breadcrumbs=array(
 	'Defendants'=>array('index'),
 	'Manage',
@@ -50,6 +52,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'oca',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

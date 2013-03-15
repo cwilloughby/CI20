@@ -2,6 +2,8 @@
 /* @var $this DefendantController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Defendants';
+
 $this->breadcrumbs=array(
 	'Defendants',
 );

@@ -2,6 +2,8 @@
 /* @var $this DefendantController */
 /* @var $model Defendant */
 
+$this->pageTitle = Yii::app()->name . ' - Defendants';
+
 $this->breadcrumbs=array(
 	'Defendant'=>array('index'),
 	$model->defid=>array('view','id'=>$model->defid),

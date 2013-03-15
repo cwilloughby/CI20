@@ -2,6 +2,8 @@
 /* @var $this AttorneyController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Attorneys';
+
 $this->breadcrumbs=array(
 	'Attorneys',
 );

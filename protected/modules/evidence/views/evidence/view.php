@@ -2,6 +2,8 @@
 /* @var $this EvidenceController */
 /* @var $model Evidence */
 
+$this->pageTitle = Yii::app()->name . ' - Evidence';
+
 $this->breadcrumbs=array(
 	'Evidence'=>array('index'),
 	$model->evidenceid,
@@ -25,7 +27,11 @@ $this->menu=array(
 		'exhibitno',
 		'evidencename',
 		'comment',
-		'dateadded',
+		array(
+			'name' => 'dateadded',
+			'value' => (isset($case->dateadded) && ((int)$case->dateadded))
+				?CHtml::encode(date("m/d/Y", strtotime($case->dateadded))):"N/A",
+		),
 		'exhibitlist',
 	),
 ));
@@ -46,7 +52,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value'=>'$data->def->lname' 
 		),
 		'caseno',
-		'hearingdate',
+		array(
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+		),
 		'hearingtype',
 		'sentence',
 		'comment',

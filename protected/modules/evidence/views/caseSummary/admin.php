@@ -2,6 +2,8 @@
 /* @var $this CaseSummaryController */
 /* @var $model CaseSummary */
 
+$this->pageTitle = Yii::app()->name . ' - Case Files';
+
 $this->breadcrumbs=array(
 	'Case Files'=>array('index'),
 	'Manage',
@@ -55,7 +57,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		'caseno',
 		'location',
-		'hearingdate',
+		array(
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+		),
 		'hearingtype',
 		'sentence',
 		'comment',

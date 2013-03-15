@@ -2,6 +2,8 @@
 /* @var $this CrtCaseController */
 /* @var $model CrtCase */
 
+$this->pageTitle = Yii::app()->name . ' - Court Cases';
+
 $this->breadcrumbs=array(
 	'Court Case'=>array('index'),
 	$model->caseno=>array('view','id'=>$model->caseno),

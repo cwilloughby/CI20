@@ -2,6 +2,8 @@
 /* @var $this AttorneyController */
 /* @var $model Attorney */
 
+$this->pageTitle = Yii::app()->name . ' - Attorneys';
+
 $this->breadcrumbs=array(
 	'Attorney'=>array('index'),
 	'Create',

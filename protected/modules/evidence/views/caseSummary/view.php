@@ -3,6 +3,8 @@
 /* @var $case CaseSummary */
 /* @var $evidence Evidence */
 
+$this->pageTitle = Yii::app()->name . ' - Case Files';
+
 $this->breadcrumbs=array(
 	'Case File'=>array('index'),
 	$case->caseno,
@@ -35,14 +37,34 @@ $this->menu=array(
 			'value'=>isset($case->def)?CHtml::encode($case->caseno0->cptno):"N/A"
 		),
 		'location',
-		'dispodate',
-		'hearingdate',
+		array(
+			'name' => 'dispodate',
+			'value' => (isset($case->dispodate) && ((int)$case->dispodate))
+				?CHtml::encode(date("m/d/Y", strtotime($case->dispodate))):"N/A",
+		),
+		array(
+			'name' => 'hearingdate',
+			'value' => (isset($case->hearingdate) && ((int)$case->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($case->hearingdate))):"N/A",
+		),
 		'hearingtype',
 		'page',
 		'sentence',
-		'indate',
-		'outdate',
-		'destructiondate',
+		array(
+			'name' => 'indate',
+			'value' => (isset($case->indate) && ((int)$case->indate))
+				?CHtml::encode(date("m/d/Y", strtotime($case->indate))):"N/A",
+		),
+		array(
+			'name' => 'outdate',
+			'value' => (isset($case->outdate) && ((int)$case->outdate))
+				?CHtml::encode(date("m/d/Y", strtotime($case->outdate))):"N/A",
+		),
+		array(
+			'name' => 'destructiondate',
+			'value' => (isset($case->destructiondate) && ((int)$case->destructiondate))
+				?CHtml::encode(date("m/d/Y", strtotime($case->destructiondate))):"N/A",
+		),
 		'recip',
 		'comment',
 		array(        
@@ -82,7 +104,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'exhibitno',
 		'evidencename',
 		'comment',
-		'dateadded',
+		array(
+			'name' => 'dateadded',
+			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
+				?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"',
+		),
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}{update}',

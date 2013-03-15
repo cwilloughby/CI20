@@ -2,6 +2,8 @@
 /* @var $this CrtCaseController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Court Cases';
+
 $this->breadcrumbs=array(
 	'Court Cases',
 );

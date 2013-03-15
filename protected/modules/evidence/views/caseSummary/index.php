@@ -2,6 +2,8 @@
 /* @var $this CaseSummaryController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Case Files';
+
 $this->breadcrumbs=array(
 	'Case Files',
 );

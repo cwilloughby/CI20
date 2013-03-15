@@ -2,6 +2,8 @@
 /* @var $this CrtCaseController */
 /* @var $model CrtCase */
 
+$this->pageTitle = Yii::app()->name . ' - Court Cases';
+
 $this->breadcrumbs=array(
 	'Court Cases'=>array('index'),
 	'Manage',
@@ -50,6 +52,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'cptno',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

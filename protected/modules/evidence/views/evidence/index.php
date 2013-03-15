@@ -2,6 +2,8 @@
 /* @var $this EvidenceController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - Evidence';
+
 $this->breadcrumbs=array(
 	'Evidence',
 );

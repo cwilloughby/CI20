@@ -26,7 +26,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('dateadded')); ?>:</b>
-	<?php echo CHtml::encode($data->dateadded); ?>
+	<?php echo ((int)$data->dateadded)?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"; ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('exhibitlist')); ?>:</b>

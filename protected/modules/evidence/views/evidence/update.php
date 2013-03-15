@@ -2,6 +2,8 @@
 /* @var $this EvidenceController */
 /* @var $model Evidence */
 
+$this->pageTitle = Yii::app()->name . ' - Evidence';
+
 $this->breadcrumbs=array(
 	'Evidence'=>array('index'),
 	$model->evidenceid=>array('view','id'=>$model->evidenceid),

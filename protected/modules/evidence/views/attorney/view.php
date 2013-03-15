@@ -3,6 +3,8 @@
 /* @var $model Attorney */
 /* @var $cases CaseSummary */
 
+$this->pageTitle = Yii::app()->name . ' - Attorneys';
+
 $this->breadcrumbs=array(
 	'Attorney'=>array('index'),
 	$model->attyid,
@@ -45,7 +47,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value'=>'$data->def->lname' 
 		),
 		'caseno',
-		'hearingdate',
+		array(
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+		),
 		'hearingtype',
 		'sentence',
 		'comment',

@@ -2,6 +2,8 @@
 /* @var $this CrtCaseController */
 /* @var $model CrtCase */
 
+$this->pageTitle = Yii::app()->name . ' - Court Cases';
+
 $this->breadcrumbs=array(
 	'Court Case'=>array('index'),
 	$model->caseno,
@@ -42,7 +44,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'def_search2', 
 			'value'=>'$data->def->lname' 
 		),
-		'hearingdate',
+		array(
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+		),
 		'hearingtype',
 		'sentence',
 		'comment',
