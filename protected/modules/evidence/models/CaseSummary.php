@@ -174,4 +174,109 @@ class CaseSummary extends CActiveRecord
 			),
 		));
 	}
+	
+	/*
+	 * Find all the cases for a specific attorney.
+	 */
+	public function attorneySearch($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->with = array('def');
+		$criteria->join = "LEFT JOIN ci_case_attorneys ON ci_case_attorneys.summaryid = t.summaryid";
+		$criteria->condition = "ci_case_attorneys.attyid = " . $id;
+		
+		$criteria->compare('def.fname',$this->def_search1,true);
+		$criteria->compare('def.lname',$this->def_search2,true);
+		$criteria->compare('caseno',$this->caseno,true);
+		$criteria->compare('hearingdate',$this->hearingdate,true);
+		$criteria->compare('hearingtype',$this->hearingtype,true);
+		$criteria->compare('sentence',$this->sentence,true);
+		$criteria->compare('comment',$this->comment,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'def_search1'=>array(
+						'asc'=>'def.fname',
+						'desc'=>'def.fname DESC',
+					),
+					'def_search2'=>array(
+						'asc'=>'def.lname',
+						'desc'=>'def.lname DESC',
+					),
+					'*',
+				),
+			),
+		));
+	}
+	
+	/*
+	 * Find all the cases for a specific defendant.
+	 */
+	public function defendantSearch($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->with = array('def');
+		$criteria->join = "LEFT JOIN ci_defendant ON ci_defendant.defid = t.defid";
+		$criteria->condition = "ci_defendant.defid = " . $id;
+		
+		$criteria->compare('caseno',$this->caseno,true);
+		$criteria->compare('hearingdate',$this->hearingdate,true);
+		$criteria->compare('hearingtype',$this->hearingtype,true);
+		$criteria->compare('sentence',$this->sentence,true);
+		$criteria->compare('comment',$this->comment,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	/*
+	 * Find all the case files for a specific piece of evidence.
+	 */
+	public function evidenceSearch($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->with = array('def');
+		$criteria->join = "LEFT JOIN ci_evidence ON ci_evidence.caseno = t.caseno";
+		$criteria->condition = "ci_evidence.caseno = :id";
+		$criteria->params = array(":id"=>$id);
+		
+		$criteria->compare('def.fname',$this->def_search1,true);
+		$criteria->compare('def.lname',$this->def_search2,true);
+		$criteria->compare('caseno',$this->caseno,true);
+		$criteria->compare('hearingdate',$this->hearingdate,true);
+		$criteria->compare('hearingtype',$this->hearingtype,true);
+		$criteria->compare('sentence',$this->sentence,true);
+		$criteria->compare('comment',$this->comment,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	/*
+	 * Find all the case files for a specific case
+	 */
+	public function caseSearch($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->with = array('def');
+		$criteria->join = "LEFT JOIN ci_crt_case ON ci_crt_case.caseno = t.caseno";
+		$criteria->condition = "ci_crt_case.caseno = :id";
+		$criteria->params = array(":id"=>$id);
+		
+		$criteria->compare('def.fname',$this->def_search1,true);
+		$criteria->compare('def.lname',$this->def_search2,true);
+		$criteria->compare('caseno',$this->caseno,true);
+		$criteria->compare('hearingdate',$this->hearingdate,true);
+		$criteria->compare('hearingtype',$this->hearingtype,true);
+		$criteria->compare('sentence',$this->sentence,true);
+		$criteria->compare('comment',$this->comment,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 }

@@ -25,12 +25,10 @@ class AttorneyController extends Controller
 	public function actionView($id)
 	{
 		// Grab all the case files for this attorney.
-		$cases = Yii::app()->db->createCommand()
-			->select('ci_case_summary.summaryid, ci_case_summary.caseno, ci_case_summary.hearingdate')
-			->from('ci_case_summary')
-			->leftJoin('ci_case_attorneys','ci_case_attorneys.summaryid = ci_case_summary.summaryid')
-			->where('ci_case_attorneys.attyid=:id', array(':id'=>$id))
-			->queryAll();
+		$cases=new CaseSummary('search');
+		$cases->unsetAttributes();  // clear any default values
+		if(isset($_GET['CaseSummary']))
+			$cases->attributes=$_GET['CaseSummary'];
 		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),

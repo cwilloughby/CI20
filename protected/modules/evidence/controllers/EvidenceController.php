@@ -24,8 +24,15 @@ class EvidenceController extends Controller
 	 */
 	public function actionView($id)
 	{
+		// Grab all the case files for this piece of evidence.
+		$cases=new CaseSummary('search');
+		$cases->unsetAttributes();  // clear any default values
+		if(isset($_GET['CaseSummary']))
+			$cases->attributes=$_GET['CaseSummary'];
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'cases'=>$cases,
 		));
 	}
 
@@ -36,9 +43,6 @@ class EvidenceController extends Controller
 	public function actionCreate()
 	{
 		$model=new Evidence;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Evidence']))
 		{

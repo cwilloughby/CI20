@@ -86,6 +86,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}{update}',
+			'buttons'=>array(
+				'view'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/view", array("id"=>$data->evidenceid))'
+				),
+				'update'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/update", array("id"=>$data->evidenceid))'
+				),
+			),
 		),
 	),
 )); ?>

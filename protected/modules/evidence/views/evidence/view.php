@@ -21,12 +21,43 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'evidenceid',
 		'caseno',
 		'exhibitno',
 		'evidencename',
 		'comment',
 		'dateadded',
 		'exhibitlist',
+	),
+));
+
+echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
+// Output a list of all the cases that this defendant has been in with hyperlinks to each case's summary page.
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'case-summary-grid',
+	'dataProvider'=>$cases->evidenceSearch($model->caseno),
+	'filter'=>$cases,
+	'columns'=>array(
+		array( 
+			'name'=>'def_search1', 
+			'value'=>'$data->def->fname' 
+		),
+		array( 
+			'name'=>'def_search2', 
+			'value'=>'$data->def->lname' 
+		),
+		'caseno',
+		'hearingdate',
+		'hearingtype',
+		'sentence',
+		'comment',
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{view}',
+			'buttons'=>array(
+				'view'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/casesummary/view", array("id"=>$data->summaryid))'
+				),
+			),
+		),
 	),
 )); ?>

@@ -24,8 +24,15 @@ class CrtCaseController extends Controller
 	 */
 	public function actionView($id)
 	{
+		// Grab all the case files for this case.
+		$cases=new CaseSummary('search');
+		$cases->unsetAttributes();  // clear any default values
+		if(isset($_GET['CaseSummary']))
+			$cases->attributes=$_GET['CaseSummary'];
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'cases'=>$cases,
 		));
 	}
 

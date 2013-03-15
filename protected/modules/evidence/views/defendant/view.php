@@ -27,11 +27,27 @@ $this->menu=array(
 		'oca',
 	),
 )); 
-echo "<br/><h4>" . CHtml::encode('Cases') . "</h4>";
+
+echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
 // Output a list of all the cases that this defendant has been in with hyperlinks to each case's summary page.
-foreach($cases as $key => $case)
-{
-	echo CHtml::link(CHtml::encode($case->caseno . ' ' . date("m/d/Y", strtotime($case->hearingdate))), 
-		array('/evidence/caseSummary/view', 'id'=>$case->summaryid)) . "<br/>";
-}
-?>
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'case-summary-grid',
+	'dataProvider'=>$cases->defendantSearch($model->defid),
+	'filter'=>$cases,
+	'columns'=>array(
+		'caseno',
+		'hearingdate',
+		'hearingtype',
+		'sentence',
+		'comment',
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{view}',
+			'buttons'=>array(
+				'view'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/casesummary/view", array("id"=>$data->summaryid))'
+				),
+			),
+		),
+	),
+)); ?>

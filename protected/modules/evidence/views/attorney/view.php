@@ -1,7 +1,7 @@
 <?php
 /* @var $this AttorneyController */
 /* @var $model Attorney */
-/* @var $cases Array */
+/* @var $cases CaseSummary */
 
 $this->breadcrumbs=array(
 	'Attorney'=>array('index'),
@@ -29,11 +29,34 @@ $this->menu=array(
 	),
 )); 
 
-echo "<br/><h4>" . CHtml::encode('Cases') . "</h4>";
-// Output a list of all the cases that the attorney has worked on with hyperlinks to each case's summary page.
-foreach($cases as $key => $case)
-{
-	echo CHtml::link(CHtml::encode($case['caseno'] . ' ' . date("m/d/Y", strtotime($case['hearingdate']))), 
-		array('/evidence/caseSummary/view', 'id'=>$case['summaryid'])) . "<br/>";
-}
-?>
+echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
+// Output a list of all the cases that the attorney has worked on.
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'case-summary-grid',
+	'dataProvider'=>$cases->attorneySearch($model->attyid),
+	'filter'=>$cases,
+	'columns'=>array(
+		array( 
+			'name'=>'def_search1', 
+			'value'=>'$data->def->fname' 
+		),
+		array( 
+			'name'=>'def_search2', 
+			'value'=>'$data->def->lname' 
+		),
+		'caseno',
+		'hearingdate',
+		'hearingtype',
+		'sentence',
+		'comment',
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{view}',
+			'buttons'=>array(
+				'view'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/casesummary/view", array("id"=>$data->summaryid))'
+				),
+			),
+		),
+	),
+)); ?>
