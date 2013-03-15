@@ -69,11 +69,11 @@ class Attorney extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'attyid' => 'Attyid',
-			'lname' => 'Lname',
-			'fname' => 'Fname',
+			'attyid' => 'Attorney ID',
+			'lname' => 'Last Name',
+			'fname' => 'First Name',
 			'type' => 'Type',
-			'barid' => 'Barid',
+			'barid' => 'Bar ID',
 		);
 	}
 

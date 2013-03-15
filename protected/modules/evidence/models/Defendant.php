@@ -67,10 +67,10 @@ class Defendant extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'defid' => 'Defid',
-			'lname' => 'Lname',
-			'fname' => 'Fname',
-			'oca' => 'Oca',
+			'defid' => 'Defendant ID',
+			'lname' => 'Last Name',
+			'fname' => 'First Name',
+			'oca' => 'OCA',
 		);
 	}
 

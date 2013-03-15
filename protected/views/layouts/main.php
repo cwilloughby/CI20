@@ -51,11 +51,11 @@
 					'label'=>'Evidence',
 					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Admin', Yii::app()->user->id),
 					'items'=>array(
-						array('label'=>'Case Controls', 'url'=>array('/evidence/casesummary/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Evidence Controls', 'url'=>array('/evidence/evidence/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'Case File Controls', 'url'=>array('/evidence/casesummary/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						array('label'=>'Defendant Controls', 'url'=>array('/evidence/defendant/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'Evidence Controls', 'url'=>array('/evidence/evidence/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'Case Controls', 'url'=>array('/evidence/crtcase/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						array('label'=>'Attorney Controls', 'url'=>array('/evidence/attorney/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Lone Case Controls', 'url'=>array('/evidence/crtcase/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 					),
 				),
 				array(

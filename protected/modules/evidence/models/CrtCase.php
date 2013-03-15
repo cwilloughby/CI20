@@ -68,9 +68,9 @@ class CrtCase extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'caseno' => 'Caseno',
-			'crtdiv' => 'Crtdiv',
-			'cptno' => 'Cptno',
+			'caseno' => 'Case Number',
+			'crtdiv' => 'Court Division',
+			'cptno' => 'Complaint Number',
 		);
 	}
 

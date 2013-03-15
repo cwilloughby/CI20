@@ -3,13 +3,13 @@
 /* @var $model Attorney */
 
 $this->breadcrumbs=array(
-	'Attorneys'=>array('index'),
+	'Attorney'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Attorney', 'url'=>array('index')),
-	array('label'=>'Manage Attorney', 'url'=>array('admin')),
+	array('label'=>'List Attorneys', 'url'=>array('index')),
+	array('label'=>'Manage Attorneys', 'url'=>array('admin')),
 );
 ?>
 

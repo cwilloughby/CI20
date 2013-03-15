@@ -3,7 +3,7 @@
 /* @var $model Evidence */
 
 $this->breadcrumbs=array(
-	'Evidences'=>array('index'),
+	'Evidence'=>array('index'),
 	$model->evidenceid,
 );
 

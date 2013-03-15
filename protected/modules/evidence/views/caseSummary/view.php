@@ -4,20 +4,20 @@
 /* @var $evidence Evidence */
 
 $this->breadcrumbs=array(
-	'Cases'=>array('index'),
+	'Case File'=>array('index'),
 	$case->caseno,
 );
 
 $this->menu=array(
-	array('label'=>'List Cases', 'url'=>array('index')),
-	array('label'=>'Create Case', 'url'=>array('create')),
-	array('label'=>'Update Case', 'url'=>array('update', 'id'=>$case->summaryid)),
-	array('label'=>'Delete Case', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Cases', 'url'=>array('admin')),
+	array('label'=>'List Case Files', 'url'=>array('index')),
+	array('label'=>'Create Case File', 'url'=>array('create')),
+	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
+	array('label'=>'Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Case <?php echo $case->caseno; ?></h1>
+<h1>View Case File <?php echo $case->caseno; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$case,

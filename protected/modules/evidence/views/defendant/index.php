@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Defendant', 'url'=>array('create')),
-	array('label'=>'Manage Defendant', 'url'=>array('admin')),
+	array('label'=>'Create Defendants', 'url'=>array('create')),
+	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );
 ?>
 

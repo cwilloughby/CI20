@@ -24,8 +24,12 @@ class DefendantController extends Controller
 	 */
 	public function actionView($id)
 	{
+		// Grab all the case files for this defendant.
+		$cases = CaseSummary::model()->findAll('defid=:def', array(':def'=>$id));
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'cases'=>$cases,
 		));
 	}
 

@@ -3,16 +3,16 @@
 /* @var $model Attorney */
 
 $this->breadcrumbs=array(
-	'Attorneys'=>array('index'),
+	'Attorney'=>array('index'),
 	$model->attyid=>array('view','id'=>$model->attyid),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Attorney', 'url'=>array('index')),
+	array('label'=>'List Attorneys', 'url'=>array('index')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
 	array('label'=>'View Attorney', 'url'=>array('view', 'id'=>$model->attyid)),
-	array('label'=>'Manage Attorney', 'url'=>array('admin')),
+	array('label'=>'Manage Attorneys', 'url'=>array('admin')),
 );
 ?>
 

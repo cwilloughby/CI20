@@ -3,13 +3,13 @@
 /* @var $model Defendant */
 
 $this->breadcrumbs=array(
-	'Defendants'=>array('index'),
+	'Defendant'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Defendant', 'url'=>array('index')),
-	array('label'=>'Manage Defendant', 'url'=>array('admin')),
+	array('label'=>'List Defendants', 'url'=>array('index')),
+	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );
 ?>
 

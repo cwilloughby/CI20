@@ -3,7 +3,7 @@
 /* @var $model Evidence */
 
 $this->breadcrumbs=array(
-	'Evidences'=>array('index'),
+	'Evidence'=>array('index'),
 	'Manage',
 );
 
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Evidences</h1>
+<h1>Manage Evidence</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

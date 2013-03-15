@@ -3,16 +3,16 @@
 /* @var $model Defendant */
 
 $this->breadcrumbs=array(
-	'Defendants'=>array('index'),
+	'Defendant'=>array('index'),
 	$model->defid=>array('view','id'=>$model->defid),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Defendant', 'url'=>array('index')),
+	array('label'=>'List Defendants', 'url'=>array('index')),
 	array('label'=>'Create Defendant', 'url'=>array('create')),
 	array('label'=>'View Defendant', 'url'=>array('view', 'id'=>$model->defid)),
-	array('label'=>'Manage Defendant', 'url'=>array('admin')),
+	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );
 ?>
 

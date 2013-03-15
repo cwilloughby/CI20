@@ -9,12 +9,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->attyid), array('view', 'id'=>$data->attyid)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('lname')); ?>:</b>
-	<?php echo CHtml::encode($data->lname); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fname')); ?>:</b>
-	<?php echo CHtml::encode($data->fname); ?>
+	<b><?php echo CHtml::encode('Name'); ?>:</b>
+	<?php echo CHtml::encode($data->fname . ' ' . $data->lname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>

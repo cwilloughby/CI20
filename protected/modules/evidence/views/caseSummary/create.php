@@ -3,16 +3,16 @@
 /* @var $model CaseSummary */
 
 $this->breadcrumbs=array(
-	'Cases'=>array('index'),
+	'Case File'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Cases', 'url'=>array('index')),
-	array('label'=>'Manage Cases', 'url'=>array('admin')),
+	array('label'=>'List Case Files', 'url'=>array('index')),
+	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Case</h1>
+<h1>Create Case File</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -73,13 +73,13 @@ class Evidence extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'evidenceid' => 'Evidenceid',
-			'caseno' => 'Caseno',
-			'exhibitno' => 'Exhibitno',
-			'evidencename' => 'Evidencename',
+			'evidenceid' => 'Evidence ID',
+			'caseno' => 'Case Number',
+			'exhibitno' => 'Exhibit Number',
+			'evidencename' => 'Evidence Name',
 			'comment' => 'Comment',
-			'dateadded' => 'Dateadded',
-			'exhibitlist' => 'Exhibitlist',
+			'dateadded' => 'Date Added',
+			'exhibitlist' => 'Exhibit List',
 		);
 	}
 

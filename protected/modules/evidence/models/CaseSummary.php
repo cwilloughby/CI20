@@ -96,7 +96,7 @@ class CaseSummary extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'summaryid' => 'Summaryid',
+			'summaryid' => 'Summary ID',
 			'defid' => 'Defendant',
 			'def_search1' => 'Defendant First Name',
 			'def_search2' => 'Defendant Last Name',

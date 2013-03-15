@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Crt Cases',
+	'Court Cases',
 );
 
 $this->menu=array(
-	array('label'=>'Create CrtCase', 'url'=>array('create')),
-	array('label'=>'Manage CrtCase', 'url'=>array('admin')),
+	array('label'=>'Create Court Case', 'url'=>array('create')),
+	array('label'=>'Manage Court Cases', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Crt Cases</h1>
+<h1>Court Cases</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

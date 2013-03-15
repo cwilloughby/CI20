@@ -60,8 +60,8 @@ class CaseAttorneys extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'summaryid' => 'Summaryid',
-			'attyid' => 'Attyid',
+			'summaryid' => 'Summary ID',
+			'attyid' => 'Attorney ID',
 		);
 	}
 
