@@ -75,13 +75,13 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'CONSTRAINT `fk_ci_case_summary_ci_crt_case1`
 					FOREIGN KEY (`caseno`)
 					REFERENCES `ci2`.`ci_crt_case` (`caseno`)
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON DELETE CASCADE
+					ON UPDATE CASCADE',
 				'CONSTRAINT `fk_ci_case_summary_ci_defendant1`
 					FOREIGN KEY (`defid`)
 					REFERENCES `ci2`.`ci_defendant` (`defid`)
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON DELETE CASCADE
+					ON UPDATE CASCADE',
 			),
 			'ENGINE=InnoDB, AUTO_INCREMENT = 1470, COLLATE=utf8_general_ci');
 		
@@ -94,13 +94,13 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'CONSTRAINT `fk_ci_case_attorneys_ci_case_summary1`
 					FOREIGN KEY (`summaryid`)
 					REFERENCES `ci2`.`ci_case_summary` (`summaryid`)
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON DELETE CASCADE
+					ON UPDATE CASCADE',
 				'CONSTRAINT `fk_ci_case_attorneys_ci_attorney1`
 					FOREIGN KEY (`attyid`)
 					REFERENCES `ci2`.`ci_attorney` (`attyid`)
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON DELETE CASCADE
+					ON UPDATE CASCADE',
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 		
@@ -117,8 +117,8 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'CONSTRAINT `fk_ci_evidence_ci_crt_case1`
 					FOREIGN KEY (`caseno`)
 					REFERENCES `ci2`.`ci_crt_case` (`caseno`)
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON DELETE CASCADE
+					ON UPDATE CASCADE',
 			),
 		'ENGINE=InnoDB, AUTO_INCREMENT = 11547, COLLATE=utf8_general_ci');
 		
@@ -135,7 +135,7 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 					FOREIGN KEY (`userid`)
 					REFERENCES `ci2`.`ci_user_info` (`userid`)
 					ON DELETE NO ACTION
-					ON UPDATE NO ACTION',
+					ON UPDATE CASCADE',
 			),
 			'ENGINE=InnoDB, AUTO_INCREMENT = 17737, COLLATE=utf8_general_ci');
 	}

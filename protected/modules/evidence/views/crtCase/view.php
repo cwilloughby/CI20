@@ -63,7 +63,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				'options' => array(
 					'showAnim' => 'fold',
 					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $model->hearingdate,
+					'defaultDate' => $cases->hearingdate,
 					'changeYear' => true,
 					'changeMonth' => true,
 					'showButtonPanel' => true,
