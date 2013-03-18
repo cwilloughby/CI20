@@ -279,4 +279,29 @@ class CaseSummary extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/*
+	 * This function is used to translate the 0, 1, and 2's of the 
+	 * dna, bio, dug, firearm, money, and other columns
+	 */
+	public function getYesNo($yesNo = null)
+	{
+		if(is_null($yesNo))
+		{
+			return array(
+				array('id'=>'1', 'title'=>'Yes'),
+				array('id'=>'0', 'title'=>'No'),
+				array('id'=>'2', 'title'=>'N/A'),
+			);
+		}
+		else 
+		{
+			if($yesNo == 0) 
+				return 'No';
+			else if($yesNo == 1)
+				return 'Yes';
+			else 
+				return 'N/A';
+		}
+	}
 }

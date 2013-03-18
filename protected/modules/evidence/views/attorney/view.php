@@ -19,7 +19,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Attorney #<?php echo $model->attyid; ?></h1>
+<h1>View Attorney <?php echo $model->fname . " " . $model->lname; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -37,6 +37,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$cases->attorneySearch($model->attyid),
 	'filter'=>$cases,
+	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
+		'dateFormat': 'yy-mm-dd',
+		'showAnim':'fold',
+		'changeYear':true,
+		'changeMonth':true,
+		'showButtonPanel':true})}",
 	'columns'=>array(
 		array( 
 			'name'=>'def_search1', 
@@ -51,6 +57,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'hearingdate',
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
 				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$cases, 
+				'attribute'=>'hearingdate', 
+				'htmlOptions' => array('id' => 'hearing_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $cases->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		'hearingtype',
 		'sentence',

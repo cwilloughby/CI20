@@ -46,6 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'evidence-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'afterAjaxUpdate'=>"function(){jQuery('#date_added_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
 		'exhibitlist',
 		'caseno',
@@ -56,6 +57,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'name' => 'dateadded',
 			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
 				?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model, 
+				'attribute'=>'dateadded', 
+				'htmlOptions' => array('id' => 'date_added_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->dateadded,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		array(
 			'class'=>'CButtonColumn',

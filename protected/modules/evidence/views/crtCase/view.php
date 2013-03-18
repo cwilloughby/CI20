@@ -1,6 +1,7 @@
 <?php
 /* @var $this CrtCaseController */
 /* @var $model CrtCase */
+/* @var $cases CaseSummary */
 
 $this->pageTitle = Yii::app()->name . ' - Court Cases';
 
@@ -35,6 +36,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$cases->caseSearch($model->caseno),
 	'filter'=>$cases,
+	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
+		'dateFormat': 'yy-mm-dd',
+		'showAnim':'fold',
+		'changeYear':true,
+		'changeMonth':true,
+		'showButtonPanel':true})}",
 	'columns'=>array(
 		array( 
 			'name'=>'def_search1', 
@@ -48,6 +55,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'hearingdate',
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
 				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$cases, 
+				'attribute'=>'hearingdate', 
+				'htmlOptions' => array('id' => 'hearing_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		'hearingtype',
 		'sentence',

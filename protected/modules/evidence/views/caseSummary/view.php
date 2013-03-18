@@ -98,6 +98,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
 	'filter'=>$evidence,
+	'afterAjaxUpdate'=>"function(){jQuery('#date_added_search').datepicker({
+		'dateFormat': 'yy-mm-dd',
+		'showAnim':'fold',
+		'changeYear':true,
+		'changeMonth':true,
+		'showButtonPanel':true})}",
 	'columns'=>array(
 		'exhibitlist',
 		'caseno',
@@ -108,6 +114,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'dateadded',
 			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
 				?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$evidence, 
+				'attribute'=>'dateadded', 
+				'htmlOptions' => array('id' => 'date_added_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $evidence->dateadded,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		array(
 			'class'=>'CButtonColumn',

@@ -12,11 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'evidenceid'); ?>
-		<?php echo $form->textField($model,'evidenceid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'caseno'); ?>
 		<?php echo $form->textField($model,'caseno',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
@@ -38,7 +33,22 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'dateadded'); ?>
-		<?php echo $form->textField($model,'dateadded'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'dateadded',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd', 
+					'defaultDate' => $model->dateadded,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">

@@ -27,13 +27,23 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'dispodate'); ?>
-		<?php echo $form->textField($model,'dispodate'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'hearingdate'); ?>
-		<?php echo $form->textField($model,'hearingdate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'hearingdate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">
@@ -45,7 +55,27 @@
 		<?php echo $form->label($model,'page'); ?>
 		<?php echo $form->textField($model,'page',array('size'=>6,'maxlength'=>6)); ?>
 	</div>
-
+	
+	<div class="row">
+		<?php echo $form->label($model,'dispodate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'dispodate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd', 
+					'defaultDate' => $model->dispodate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
+	</div>
+	
 	<div class="row">
 		<?php echo $form->label($model,'sentence'); ?>
 		<?php echo $form->textField($model,'sentence',array('size'=>60,'maxlength'=>100)); ?>
@@ -53,17 +83,62 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'indate'); ?>
-		<?php echo $form->textField($model,'indate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'indate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd', 
+					'defaultDate' => $model->indate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'outdate'); ?>
-		<?php echo $form->textField($model,'outdate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'outdate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd', 
+					'defaultDate' => $model->outdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'destructiondate'); ?>
-		<?php echo $form->textField($model,'destructiondate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'destructiondate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd', 
+					'defaultDate' => $model->destructiondate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">

@@ -46,6 +46,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
+		'dateFormat': 'yy-mm-dd',
+		'showAnim':'fold',
+		'changeYear':true,
+		'changeMonth':true,
+		'showButtonPanel':true})}",
 	'columns'=>array(
 		array( 
 			'name'=>'def_search1', 
@@ -58,40 +64,68 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'caseno',
 		'location',
 		array(
-			'name' => 'hearingdate',
+			'name' => 'hearingdate', 
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
 				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model, 
+				'attribute'=>'hearingdate', 
+				'htmlOptions' => array('id' => 'hearing_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		'hearingtype',
 		'sentence',
 		'comment',
 		array(        
 			'name'=>'dna',
-			'value'=>'($data->dna == 0)?"No":(($data->dna == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->dna)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(        
 			'name'=>'bio',
-			'value'=>'($data->bio == 0)?"No":(($data->bio == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->bio)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(        
 			'name'=>'drug',
-			'value'=>'($data->drug == 0)?"No":(($data->drug == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->drug)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(        
 			'name'=>'firearm',
-			'value'=>'($data->firearm == 0)?"No":(($data->firearm == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->firearm)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(        
 			'name'=>'money',
-			'value'=>'($data->money == 0)?"No":(($data->money == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->money)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(        
 			'name'=>'other',
-			'value'=>'($data->other == 0)?"No":(($data->other == 1)?"Yes":"N/A")',
+			'value'=>'$data->getYesNo($data->other)',
+			'filter'=>CHtml::listData($model->getYesNo(), 'id', 'title'),
+			'htmlOptions' => array('width'=>50),
 		),
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}',
+			'htmlOptions' => array('style'=>'width:15px'),
+			'headerHtmlOptions'=>array('style'=>'width:15px;'),
 		),
 	),
 )); ?>
