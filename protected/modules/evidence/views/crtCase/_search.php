@@ -13,17 +13,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'caseno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'crtdiv'); ?>
-		<?php echo $form->textField($model,'crtdiv',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->textField($model,'crtdiv'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'cptno'); ?>
-		<?php echo $form->textField($model,'cptno',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'cptno'); ?>
 	</div>
 
 	<div class="row buttons">

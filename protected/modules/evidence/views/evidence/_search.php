@@ -13,22 +13,22 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'caseno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'exhibitno'); ?>
-		<?php echo $form->textField($model,'exhibitno',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'exhibitno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'evidencename'); ?>
-		<?php echo $form->textField($model,'evidencename',array('size'=>60,'maxlength'=>1000)); ?>
+		<?php echo $form->textField($model,'evidencename'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'comment'); ?>
-		<?php echo $form->textField($model,'comment',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textArea($model,'comment'); ?>
 	</div>
 
 	<div class="row">

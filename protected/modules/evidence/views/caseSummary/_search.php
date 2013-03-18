@@ -18,12 +18,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'caseno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'location'); ?>
-		<?php echo $form->textField($model,'location',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'location'); ?>
 	</div>
 
 	<div class="row">
@@ -48,12 +48,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'hearingtype'); ?>
-		<?php echo $form->textField($model,'hearingtype',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'hearingtype'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'page'); ?>
-		<?php echo $form->textField($model,'page',array('size'=>6,'maxlength'=>6)); ?>
+		<?php echo $form->textField($model,'page'); ?>
 	</div>
 	
 	<div class="row">
@@ -78,7 +78,7 @@
 	
 	<div class="row">
 		<?php echo $form->label($model,'sentence'); ?>
-		<?php echo $form->textField($model,'sentence',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'sentence'); ?>
 	</div>
 
 	<div class="row">
@@ -143,12 +143,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'recip'); ?>
-		<?php echo $form->textField($model,'recip',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'recip'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'comment'); ?>
-		<?php echo $form->textField($model,'comment',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textArea($model,'comment'); ?>
 	</div>
 	<table style="width:62%">
 		<tr>

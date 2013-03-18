@@ -43,7 +43,7 @@ class Evidence extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('caseno, exhibitno, dateadded', 'required'),
+			array('caseno, exhibitno', 'required'),
 			array('exhibitlist', 'numerical', 'integerOnly'=>true),
 			array('caseno', 'length', 'max'=>50),
 			array('exhibitno', 'length', 'max'=>20),

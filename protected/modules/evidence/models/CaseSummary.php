@@ -69,6 +69,7 @@ class CaseSummary extends CActiveRecord
 			array('location, sentence', 'length', 'max'=>100),
 			array('page', 'length', 'max'=>6),
 			array('comment', 'length', 'max'=>255),
+			array('dispodate, hearingdate, indate, outdate, destructiondate', 'type', 'type'=>'date', 'message'=>'{attribute} must be formatted as yyyy-mm-dd', 'dateFormat' => 'yyyy-mm-dd'),
 			array('dispodate, hearingdate, indate, outdate, destructiondate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

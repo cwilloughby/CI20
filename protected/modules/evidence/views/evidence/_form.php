@@ -17,32 +17,26 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'caseno'); ?>
 		<?php echo $form->error($model,'caseno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'exhibitno'); ?>
-		<?php echo $form->textField($model,'exhibitno',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'exhibitno'); ?>
 		<?php echo $form->error($model,'exhibitno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'evidencename'); ?>
-		<?php echo $form->textField($model,'evidencename',array('size'=>60,'maxlength'=>1000)); ?>
+		<?php echo $form->textField($model,'evidencename'); ?>
 		<?php echo $form->error($model,'evidencename'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'comment'); ?>
-		<?php echo $form->textField($model,'comment',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textArea($model,'comment'); ?>
 		<?php echo $form->error($model,'comment'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'dateadded'); ?>
-		<?php echo $form->textField($model,'dateadded'); ?>
-		<?php echo $form->error($model,'dateadded'); ?>
 	</div>
 
 	<div class="row">

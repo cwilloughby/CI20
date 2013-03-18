@@ -51,6 +51,8 @@ class CaseSummaryController extends Controller
 		if(isset($_POST['CaseSummary']))
 		{
 			$model->attributes=$_POST['CaseSummary'];
+			
+			echo $model->dispodate;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->summaryid));
 		}
