@@ -35,7 +35,7 @@ echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
 // Output a list of all the cases that the attorney has worked on.
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
-	'dataProvider'=>$cases->attorneySearch($model->attyid),
+	'dataProvider'=>$cases->advancedSearch($model->attyid, 1),
 	'filter'=>$cases,
 	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
 		'dateFormat': 'yy-mm-dd',

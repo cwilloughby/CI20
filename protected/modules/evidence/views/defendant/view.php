@@ -34,7 +34,7 @@ echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
 // Output a list of all the cases that this defendant has been in with hyperlinks to each case's summary page.
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
-	'dataProvider'=>$cases->defendantSearch($model->defid),
+	'dataProvider'=>$cases->advancedSearch($model->defid, 3),
 	'filter'=>$cases,
 	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
 		'dateFormat': 'yy-mm-dd',

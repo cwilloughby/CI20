@@ -37,10 +37,10 @@ $this->menu=array(
 ));
 
 echo "<br/><b>" . CHtml::encode('Case Files') . "</b>";
-// Output a list of all the cases that this defendant has been in with hyperlinks to each case's summary page.
+// Output the case file that this specific piece of evidence is in.
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
-	'dataProvider'=>$cases->evidenceSearch($model->caseno),
+	'dataProvider'=>$cases->advancedSearch($model->caseno, 2),
 	'filter'=>$cases,
 	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
 		'dateFormat': 'yy-mm-dd',
