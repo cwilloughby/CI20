@@ -108,6 +108,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}',
+			'buttons'=>array(
+				'view'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/attorney/view", array("id"=>$data->attyid))'
+				),
+			),
 		),
 	),
 ));
