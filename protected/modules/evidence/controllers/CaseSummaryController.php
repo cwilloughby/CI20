@@ -26,14 +26,20 @@ class CaseSummaryController extends Controller
 	{
 		$case = $this->loadModel($id);
 		
+		$attorneys = new Attorney('search');
+		$attorneys->unsetAttributes();  // clear any default values
+		if(isset($_GET['Attorney']))
+			$attorneys->attributes=$_GET['Attorney'];
+		
 		$evidence=new Evidence('search');
 		$evidence->unsetAttributes();  // clear any default values
 		if(isset($_GET['Evidence']))
 			$evidence->attributes=$_GET['Evidence'];
 		
 		$this->render('view',array(
-			'case'=>$case,
-			'evidence'=>$evidence,
+			'case' => $case,
+			'attorneys' => $attorneys,
+			'evidence' => $evidence,
 		));
 	}
 

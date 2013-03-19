@@ -81,13 +81,18 @@ class Attorney extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($summaryid = null)
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
-
+		
+		if(!is_null($summaryid))
+		{
+			$criteria->join = "LEFT JOIN ci_case_attorneys ON ci_case_attorneys.attyid = t.attyid";
+			$criteria->condition = "ci_case_attorneys.summaryid = :id";
+			$criteria->params = array(":id" => $summaryid);
+			$criteria->together = true;
+		}
+		
 		$criteria->compare('attyid',$this->attyid);
 		$criteria->compare('lname',$this->lname,true);
 		$criteria->compare('fname',$this->fname,true);

@@ -94,6 +94,26 @@ $this->menu=array(
 	),
 ));
 
+echo "<br/><h3>Attorneys</h3>";
+
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'attorney-grid',
+	'dataProvider'=>$attorneys->search($case->summaryid),
+	'filter'=>$attorneys,
+	'columns'=>array(
+		'fname',
+		'lname',
+		'type',
+		'barid',
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{view}',
+		),
+	),
+));
+
+echo "<br/><h3>Evidence</h3>";
+
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
@@ -131,13 +151,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{view}{update}',
+			'template'=>'{view}',
 			'buttons'=>array(
 				'view'=>array(
 					'url'=>'Yii::app()->createUrl("/evidence/evidence/view", array("id"=>$data->evidenceid))'
-				),
-				'update'=>array(
-					'url'=>'Yii::app()->createUrl("/evidence/evidence/update", array("id"=>$data->evidenceid))'
 				),
 			),
 		),
