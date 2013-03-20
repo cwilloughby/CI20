@@ -131,8 +131,8 @@ class CaseSummary extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
-		$criteria->with = array('def');
-
+		$criteria->with = array('def', 'caseno0');
+		
 		$criteria->compare('summaryid',$this->summaryid);
 		$criteria->compare('defid',$this->defid);
 		$criteria->compare('def.fname',$this->def_search1,true);
@@ -169,6 +169,14 @@ class CaseSummary extends CActiveRecord
 					'def_search2'=>array(
 						'asc'=>'def.lname',
 						'desc'=>'def.lname DESC',
+					),
+					'div_search'=>array(
+						'asc'=>'caseno0.crtdiv',
+						'desc'=>'caseno0.crtdiv DESC',
+					),
+					'complaint_search'=>array(
+						'asc'=>'caseno0.cptno',
+						'desc'=>'caseno0.cptno DESC',
 					),
 					'*',
 				),

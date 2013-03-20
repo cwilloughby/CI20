@@ -4,21 +4,36 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="wide form">
+<div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
+	
 	<div class="row">
-		<?php echo $form->label($model,'defid'); ?>
-		<?php echo $form->textField($model,'defid'); ?>
+		<?php echo $form->label($model, 'def_search1'); ?>
+		<?php echo $form->textField($model, 'def_search1'); ?>
 	</div>
-
+	
+	<div class="row">
+		<?php echo $form->label($model, 'def_search2'); ?>
+		<?php echo $form->textField($model, 'def_search2'); ?>
+	</div>
+	
 	<div class="row">
 		<?php echo $form->label($model,'caseno'); ?>
 		<?php echo $form->textField($model,'caseno'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->label($model,'div_search'); ?>
+		<?php echo $form->textField($model,'div_search'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->label($model,'complaint_search'); ?>
+		<?php echo $form->textField($model,'complaint_search'); ?>
 	</div>
 
 	<div class="row">
