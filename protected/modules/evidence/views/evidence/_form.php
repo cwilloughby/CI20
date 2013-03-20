@@ -8,43 +8,72 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'evidence-form',
-	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno'); ?>
-		<?php echo $form->error($model,'caseno'); ?>
-	</div>
+	<?php $this->widget('ext.jqrelcopy.JQRelcopy',array(
+		//the id of the 'Copy' link in the view, see below.
+		'id' => 'copylink',
+		 //leave empty to disable removing
+		'removeText' => 'Remove',
+		//htmlOptions of the remove link
+		'removeHtmlOptions' => array('style'=>'color:red'),
+		//options of the plugin, see http://www.andresvidal.com/labs/relcopy.html
+		'options' => array(
+			//A class to attach to each copy
+			'copyClass'=>'newcopy',
+			// The number of allowed copies. Default: 0 is unlimited
+			'limit'=>100,
+			//Option to clear each copies text input fields or textarea
+			'clearInputs'=>true,
+			//A jQuery selector used to exclude an element and its children
+			'excludeSelector'=>'.skipcopy',
+			//Additional HTML to attach at the end of each copy.
+			'append'=>CHtml::tag('span',array('class'=>'hint'),'You can remove this line'),
+		)
+	))?>
+ 
+	<table>
+		<tr>
+			<th><?php echo $form->labelEx($model,'exhibitlist');?></th>
+			<th><?php echo $form->labelEx($model,'caseno');?></th>
+			<th><?php echo $form->labelEx($model,'exhibitno');?></th>
+			<th><?php echo $form->labelEx($model,'evidencename');?></th>
+			<th><?php echo $form->labelEx($model,'comment');?></th>
+		</tr>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'exhibitno'); ?>
-		<?php echo $form->textField($model,'exhibitno'); ?>
-		<?php echo $form->error($model,'exhibitno'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'evidencename'); ?>
-		<?php echo $form->textField($model,'evidencename'); ?>
-		<?php echo $form->error($model,'evidencename'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'comment'); ?>
-		<?php echo $form->textArea($model,'comment'); ?>
-		<?php echo $form->error($model,'comment'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'exhibitlist'); ?>
-		<?php echo $form->textField($model,'exhibitlist'); ?>
-		<?php echo $form->error($model,'exhibitlist'); ?>
-	</div>
-
+		<tr class="row copy">
+			<td>
+			<?php echo $form->textField($model,'exhibitlist[]'); ?>
+			<?php echo $form->error($model,'exhibitlist[]'); ?>
+			</td>
+			<td>
+			<?php echo $form->textField($model,'caseno[]', array('required' => true)); ?>
+			<?php echo $form->error($model,'caseno[]'); ?>
+			</td>
+			<td>
+			<?php echo $form->textField($model,'exhibitno[]', array('required' => true)); ?>
+			<?php echo $form->error($model,'exhibitno[]'); ?>
+			</td>
+			<td>
+			<?php echo $form->textField($model,'evidencename[]', array('required' => true)); ?>
+			<?php echo $form->error($model,'evidencename[]'); ?>
+			</td>
+			<td>
+			<?php echo $form->textField($model,'comment[]'); ?>
+			<?php echo $form->error($model,'comment[]'); ?>
+			</td>
+		</tr>
+	</table>
+	<a id="copylink" href="#" rel=".copy">Add More Evidence</a>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

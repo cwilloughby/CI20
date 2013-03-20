@@ -37,23 +37,56 @@ class EvidenceController extends Controller
 	}
 
 	/**
-	 * Creates a new model.
+	 * Creates a new model or models.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Evidence;
-
 		if(isset($_POST['Evidence']))
 		{
-			$model->attributes=$_POST['Evidence'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->evidenceid));
+			if($this->saveEvidence($_POST['Evidence']))
+			{
+				$this->redirect(array('admin'));
+			}
 		}
+
+		$model = new Evidence;
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+	
+	/*
+	 * actionCreate returns an array, but model->save() can only save one model at a time.
+	 * So this function is used to split the array into individual models.
+	 * @param array $formData contains all the rows from the form in an array.
+	 */
+	protected function saveEvidence($formData)
+	{
+		if(empty($formData))
+			return false;
+
+		$idx = 0;
+
+		// Loop through the array, splitting it into individual models and saving those models. 
+		foreach($formData['exhibitno'] as $ex)
+		{
+			$model = new Evidence;
+
+			// The attributes can be found at the same postion in the formData.
+			$model->caseno = $formData['caseno'][$idx];
+			$model->exhibitno = $ex;
+			$model->evidencename = $formData['evidencename'][$idx];
+			$model->comment = $formData['comment'][$idx];
+			$model->exhibitlist = $formData['exhibitlist'][$idx];
+			
+			if(!$model->save())
+				return false;
+			
+			$idx++;
+		}
+		return true;
 	}
 
 	/**

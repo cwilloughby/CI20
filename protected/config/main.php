@@ -19,6 +19,7 @@ return array(
 		'application.modules.security.models.*',
 		'application.modules.security.components.*',
 		'application.extensions.phpmailer.JPhpMailer',
+		'application.extensions.phpmailer.jqrelcopy',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
