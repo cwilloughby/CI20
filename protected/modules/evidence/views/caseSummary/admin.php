@@ -62,7 +62,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'value'=>'$data->def->lname' 
 		),
 		'caseno',
-		'location',
+		array( 
+			'name'=>'div_search', 
+			'value'=>'$data->caseno0->crtdiv' 
+		),
+		array( 
+			'name'=>'complaint_search', 
+			'value'=>'$data->caseno0->cptno' 
+		),
 		array(
 			'name' => 'hearingdate', 
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
@@ -71,7 +78,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
 				'model'=>$model, 
 				'attribute'=>'hearingdate', 
-				'htmlOptions' => array('id' => 'hearing_date_search'), 
+				'htmlOptions' => array('id' => 'hearing_date_search'),
 				'options' => array(
 					'showAnim' => 'fold',
 					'dateFormat' => 'yy-mm-dd',
@@ -82,7 +89,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				)
 			), true)
 		),
-		'hearingtype',
 		'sentence',
 		'comment',
 		array(        

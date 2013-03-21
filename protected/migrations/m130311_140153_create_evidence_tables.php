@@ -54,8 +54,6 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'caseno' => 'VARCHAR(50) NOT NULL',
 				'location' => 'VARCHAR(100) NULL DEFAULT NULL',
 				'dispodate' => 'DATE NULL DEFAULT NULL',
-				'hearingdate' => 'DATE NULL',
-				'hearingtype' => 'VARCHAR(40) NULL DEFAULT NULL', 
 				'page' => 'VARCHAR(6) NULL DEFAULT "N/A"',
 				'sentence' => 'VARCHAR(100) NULL DEFAULT NULL',
 				'indate' => 'DATE NULL DEFAULT NULL',
@@ -112,6 +110,8 @@ class m130311_140153_create_evidence_tables extends CDbMigration
 				'comment' => 'VARCHAR(100) NULL DEFAULT NULL',
 				'dateadded' => 'TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP',
 				'exhibitlist' => 'VARCHAR(10) NULL DEFAULT NULL',
+				'hearingdate' => 'DATE NULL',
+				'hearingtype' => 'VARCHAR(40) NULL DEFAULT NULL', 
 				'PRIMARY KEY (`evidenceid`)',
 				'INDEX `fk_ci_evidence_ci_crt_case1_idx1` (`caseno` ASC)',
 				'CONSTRAINT `fk_ci_evidence_ci_crt_case1`

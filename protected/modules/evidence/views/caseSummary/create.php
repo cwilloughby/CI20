@@ -1,6 +1,9 @@
 <?php
 /* @var $this CaseSummaryController */
-/* @var $model CaseSummary */
+/* @var $summary CaseSummary */
+/* @var $defendant Defendant */
+/* @var $case CrtCase */
+/* @var $attorney Attorney */
 
 $this->pageTitle = Yii::app()->name . ' - Case Files';
 
@@ -17,4 +20,8 @@ $this->menu=array(
 
 <h1>Create Case File</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array(
+	'summary' => $summary, 
+	'defendant' => $defendant, 
+	'case' => $case, 
+	'attorney' => $attorney)); ?>

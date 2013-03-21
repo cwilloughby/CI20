@@ -41,6 +41,7 @@ class Attorney extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('lname, fname', 'required'),
 			array('barid', 'numerical', 'integerOnly'=>true),
 			array('lname', 'length', 'max'=>40),
 			array('fname', 'length', 'max'=>25),
@@ -70,8 +71,8 @@ class Attorney extends CActiveRecord
 	{
 		return array(
 			'attyid' => 'Attorney ID',
-			'lname' => 'Last Name',
-			'fname' => 'First Name',
+			'lname' => "Attorney's Last Name",
+			'fname' => "Attorney's First Name",
 			'type' => 'Type',
 			'barid' => 'Bar ID',
 		);

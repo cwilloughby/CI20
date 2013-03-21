@@ -1,6 +1,9 @@
 <?php
 /* @var $this CaseSummaryController */
-/* @var $model CaseSummary */
+/* @var $summary CaseSummary */
+/* @var $defendant Defendant */
+/* @var $case CrtCase */
+/* @var $attorney Attorney */
 /* @var $form CActiveForm */
 ?>
 
@@ -12,193 +15,303 @@
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'defid'); ?>
-		<?php echo $form->textField($model,'defid'); ?>
-		<?php echo $form->error($model,'defid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'caseno'); ?>
-		<?php echo $form->textField($model,'caseno'); ?>
-		<?php echo $form->error($model,'caseno'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'location'); ?>
-		<?php echo $form->textField($model,'location'); ?>
-		<?php echo $form->error($model,'location'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'dispodate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'dispodate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'formatDate' => 'yy-mm-dd',
-					'defaultDate' => $model->dispodate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'dispodate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'hearingdate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'hearingdate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'formatDate' => 'yy-mm-dd',
-					'defaultDate' => $model->hearingdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'hearingdate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'hearingtype'); ?>
-		<?php echo $form->textField($model,'hearingtype'); ?>
-		<?php echo $form->error($model,'hearingtype'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'page'); ?>
-		<?php echo $form->textField($model,'page'); ?>
-		<?php echo $form->error($model,'page'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'sentence'); ?>
-		<?php echo $form->textField($model,'sentence'); ?>
-		<?php echo $form->error($model,'sentence'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'indate'); ?>
-				<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'indate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'formatDate' => 'yy-mm-dd',
-					'defaultDate' => $model->indate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'indate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'outdate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'outdate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'formatDate' => 'yy-mm-dd',
-					'defaultDate' => $model->outdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'outdate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'destructiondate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'destructiondate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'formatDate' => 'yy-mm-dd',
-					'defaultDate' => $model->destructiondate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'destructiondate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'recip'); ?>
-		<?php echo $form->textField($model,'recip'); ?>
-		<?php echo $form->error($model,'recip'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'comment'); ?>
-		<?php echo $form->textArea($model,'comment'); ?>
-		<?php echo $form->error($model,'comment'); ?>
-	</div>
+	<p class="note">If the defendant is a company and not a person,
+		just put the company's name in for the last name and leave the first name and oca blank.</p>
+	
+	<?php echo $form->errorSummary(array($summary, $defendant, $case, $attorney)); ?>
 
 	<table>
 		<tr>
 			<td>
-				<?php echo $form->labelEx($model,'dna'); ?>
-				<?php echo $form->checkBox($model,'dna'); ?>
-				<?php echo $form->error($model,'dna'); ?>
+			<table>
+				<tr>
+					<td>
+					<?php echo $form->labelEx($defendant,'fname'); ?>
+					<?php echo $form->textField($defendant,'fname'); ?>
+					<?php echo $form->error($defendant,'fname'); ?>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<?php echo $form->labelEx($defendant,'lname', array('required' => true)); ?>
+					<?php echo $form->textField($defendant,'lname'); ?>
+					<?php echo $form->error($defendant,'lname'); ?>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<?php echo $form->labelEx($defendant,'oca'); ?>
+					<?php echo $form->textField($defendant,'oca'); ?>
+					<?php echo $form->error($defendant,'oca'); ?>
+					</td>
+				</tr>
+			</table>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'bio'); ?>
-				<?php echo $form->checkBox($model,'bio'); ?>
-				<?php echo $form->error($model,'bio'); ?>
+			<table>
+				<tr>
+					<td>
+					<?php echo $form->labelEx($case,'caseno', array('required' => true)); ?>
+					<?php echo $form->textField($case,'caseno'); ?>
+					<?php echo $form->error($case,'caseno'); ?>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<?php echo $form->labelEx($case,'crtdiv'); ?>
+					<?php echo $form->textField($case,'crtdiv'); ?>
+					<?php echo $form->error($case,'crtdiv'); ?>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<?php echo $form->labelEx($case,'cptno'); ?>
+					<?php echo $form->textField($case,'cptno'); ?>
+					<?php echo $form->error($case,'cptno'); ?>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+	
+	<hr>
+	
+	<?php $this->widget('ext.jqrelcopy.JQRelcopy',array(
+		'id' => 'copylink',
+		'removeText' => 'Remove',
+		'removeHtmlOptions' => array('style'=>'color:red'),
+		'options' => array(
+			'copyClass'=>'newcopy',
+			'limit'=>20,
+			'clearInputs'=>true,
+			'excludeSelector'=>'.skipcopy',
+			'append'=>CHtml::tag('span',array('class'=>'hint'),'You can remove this line'),
+		)
+	))?>
+ 
+	<table>
+		<tr>
+			<th><?php echo $form->labelEx($attorney,'fname');?></th>
+			<th><?php echo $form->labelEx($attorney,'lname');?></th>
+			<th><?php echo $form->labelEx($attorney,'barid');?></th>
+		</tr>
+
+		<tr class="row copy">
+			<td>
+			<?php echo $form->textField($attorney,'fname[]', array('required' => true)); ?>
+			<?php echo $form->error($attorney,'fname[]'); ?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'drug'); ?>
-				<?php echo $form->checkBox($model,'drug'); ?>
-				<?php echo $form->error($model,'drug'); ?>
+			<?php echo $form->textField($attorney,'lname[]', array('required' => true)); ?>
+			<?php echo $form->error($attorney,'lname[]'); ?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'firearm'); ?>
-				<?php echo $form->checkBox($model,'firearm'); ?>
-				<?php echo $form->error($model,'firearm'); ?>
+			<?php echo $form->textField($attorney,'barid[]'); ?>
+			<?php echo $form->error($attorney,'barid[]'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<a id="copylink" href="#" rel=".copy">Add More Attorneys To The Case</a>
+			</td>
+		</tr>
+	</table>
+	
+	<hr>
+	
+	<table>
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'location'); ?>
+			<?php echo $form->textField($summary,'location'); ?>
+			<?php echo $form->error($summary,'location'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'dispodate'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				array(
+					'model' => $summary,
+					'attribute' => 'dispodate',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd',
+						'formatDate' => 'yy-mm-dd',
+						'defaultDate' => $summary->dispodate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				));
+			?>
+			<?php echo $form->error($summary,'dispodate'); ?>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'hearingtype'); ?>
+			<?php echo $form->textField($summary,'hearingtype'); ?>
+			<?php echo $form->error($summary,'hearingtype'); ?>
+			</td>
+		
+			<td>
+			<?php echo $form->labelEx($summary,'hearingdate'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				array(
+					'model' => $summary,
+					'attribute' => 'hearingdate',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd',
+						'formatDate' => 'yy-mm-dd',
+						'defaultDate' => $summary->hearingdate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				));
+			?>
+			<?php echo $form->error($summary,'hearingdate'); ?>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'page'); ?>
+			<?php echo $form->textField($summary,'page'); ?>
+			<?php echo $form->error($summary,'page'); ?>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'sentence'); ?>
+			<?php echo $form->textField($summary,'sentence'); ?>
+			<?php echo $form->error($summary,'sentence'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'indate'); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				array(
+					'model' => $summary,
+					'attribute' => 'indate',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd',
+						'formatDate' => 'yy-mm-dd',
+						'defaultDate' => $summary->indate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				));
+			?>
+			<?php echo $form->error($summary,'indate'); ?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'money'); ?>
-				<?php echo $form->checkBox($model,'money'); ?>
-				<?php echo $form->error($model,'money'); ?>
+			<?php echo $form->labelEx($summary,'outdate'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				array(
+					'model' => $summary,
+					'attribute' => 'outdate',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd',
+						'formatDate' => 'yy-mm-dd',
+						'defaultDate' => $summary->outdate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				));
+			?>
+			<?php echo $form->error($summary,'outdate'); ?>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'destructiondate'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+				array(
+					'model' => $summary,
+					'attribute' => 'destructiondate',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd',
+						'formatDate' => 'yy-mm-dd',
+						'defaultDate' => $summary->destructiondate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				));
+			?>
+			<?php echo $form->error($summary,'destructiondate'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'recip'); ?>
+			<?php echo $form->textField($summary,'recip'); ?>
+			<?php echo $form->error($summary,'recip'); ?>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+			<?php echo $form->labelEx($summary,'comment'); ?>
+			<?php echo $form->textArea($summary,'comment'); ?>
+			<?php echo $form->error($summary,'comment'); ?>
+			</td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td>
+				<?php echo $form->labelEx($summary,'dna'); ?>
+				<?php echo $form->checkBox($summary,'dna'); ?>
+				<?php echo $form->error($summary,'dna'); ?>
 			</td>
 			<td>
-				<?php echo $form->labelEx($model,'other'); ?>
-				<?php echo $form->checkBox($model,'other'); ?>
-				<?php echo $form->error($model,'other'); ?>
+				<?php echo $form->labelEx($summary,'bio'); ?>
+				<?php echo $form->checkBox($summary,'bio'); ?>
+				<?php echo $form->error($summary,'bio'); ?>
+			</td>
+			<td>
+				<?php echo $form->labelEx($summary,'drug'); ?>
+				<?php echo $form->checkBox($summary,'drug'); ?>
+				<?php echo $form->error($summary,'drug'); ?>
+			</td>
+			<td>
+				<?php echo $form->labelEx($summary,'firearm'); ?>
+				<?php echo $form->checkBox($summary,'firearm'); ?>
+				<?php echo $form->error($summary,'firearm'); ?>
+			</td>
+			<td>
+				<?php echo $form->labelEx($summary,'money'); ?>
+				<?php echo $form->checkBox($summary,'money'); ?>
+				<?php echo $form->error($summary,'money'); ?>
+			</td>
+			<td>
+				<?php echo $form->labelEx($summary,'other'); ?>
+				<?php echo $form->checkBox($summary,'other'); ?>
+				<?php echo $form->error($summary,'other'); ?>
 			</td>
 		</tr>
 	</table>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($summary->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

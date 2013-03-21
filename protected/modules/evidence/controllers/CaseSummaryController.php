@@ -49,22 +49,28 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new CaseSummary;
+		$summary = new CaseSummary;
+		$defendant = new Defendant;
+		$case = new CrtCase;
+		$attorney = new Attorney;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['CaseSummary']))
 		{
-			$model->attributes=$_POST['CaseSummary'];
+			$summary->attributes=$_POST['CaseSummary'];
 			
-			echo $model->dispodate;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->summaryid));
+			echo $summary->dispodate;
+			if($summary->save())
+				$this->redirect(array('view','id' => $summary->summaryid));
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
+		$this->render('create', array(
+			'summary' => $summary,
+			'defendant' => $defendant,
+			'case' => $case,
+			'attorney' => $attorney
 		));
 	}
 

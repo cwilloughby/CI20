@@ -40,6 +40,7 @@ class Defendant extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('lname', 'required'),
 			array('oca', 'numerical', 'integerOnly'=>true),
 			array('lname', 'length', 'max'=>40),
 			array('fname', 'length', 'max'=>25),
@@ -68,8 +69,8 @@ class Defendant extends CActiveRecord
 	{
 		return array(
 			'defid' => 'Defendant ID',
-			'lname' => 'Last Name',
-			'fname' => 'First Name',
+			'lname' => "Defendant's Last Name",
+			'fname' => "Defendant's First Name",
 			'oca' => 'OCA',
 		);
 	}
