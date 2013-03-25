@@ -32,7 +32,7 @@ class EmailController extends Controller
 
 			// Create the link to the user creation page that will go in the email.
 			// The $_GET variables will be used to autopopulate many of the form fields.
-			$link = "http://ci2/security/userinfo/create"				
+			$link = "http://jis18822/security/userinfo/create"				
 						. '?firstname=' . urlencode($_GET['firstname'])
 						. '&lastname=' . urlencode($_GET['lastname'])
 						. '&middlename=' . urlencode($_GET['middlename'])
