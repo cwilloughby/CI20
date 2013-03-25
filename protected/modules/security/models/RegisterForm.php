@@ -41,7 +41,7 @@ class RegisterForm extends CFormModel
 			'email'=>'Email',
 			'phoneext'=>'Phone Ext',
 			'departmentid'=>'Department',
-			'hiredate'=> 'Hire Date',
+			'hiredate'=> 'Hire Date (mm/dd/yyyy)',
 		);
 	}
 	
