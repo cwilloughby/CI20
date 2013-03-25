@@ -36,7 +36,6 @@
 			'activateParents'=>true,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				array(
 					'label'=>'Helpdesk',
 					'visible'=>!Yii::app()->user->isGuest,
@@ -69,7 +68,6 @@
 						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 					),
 				),
-				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,

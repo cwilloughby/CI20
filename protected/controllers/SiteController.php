@@ -2,13 +2,15 @@
 
 class SiteController extends Controller
 {
+	public $layout='//layouts/column2home';
+	
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionIndex()
 	{
-		// Find all of the news types
+		// Find all of the news types.
 		$types = CHtml::listData(NewsType::model()->findAll(), 'typeid', 'type');
 		
 		// Grab the most recent news for each type of news.
