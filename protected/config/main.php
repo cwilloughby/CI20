@@ -44,6 +44,7 @@ return array(
 		'documents',
 		'news',
 		'evidence',
+		'timelog',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
