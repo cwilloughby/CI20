@@ -69,6 +69,10 @@
 						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
+				array('label'=>'Vital Chek', 'url'=>'https://agency.vitalchek.com/vpsweb/', 'linkOptions'=>array('class'=>'toplink'), 
+					'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id) 
+								|| Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
+								|| Yii::app()->user->checkAccess('Accountant', Yii::app()->user->id))),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
