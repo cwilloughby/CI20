@@ -32,48 +32,50 @@
 
 	<div id="menu-top">
 		<?php $this->widget('zii.widgets.CMenu',array(
-			'activeCssClass'=>'active',
 			'activateParents'=>true,
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'Home', 'url'=>array('/site/index'), 'linkOptions'=>array('class'=>'toplink')),
 				array(
 					'label'=>'Helpdesk',
 					'visible'=>!Yii::app()->user->isGuest,
-					'url'=>array('/tickets/troubletickets/create'),
+					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
-						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
-						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index')),
-						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex')),
+						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex'), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
 				array(
 					'label'=>'Evidence',
 					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Admin', Yii::app()->user->id),
+					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
-						array('label'=>'Case File Controls', 'url'=>array('/evidence/casesummary/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Defendant Controls', 'url'=>array('/evidence/defendant/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Evidence Controls', 'url'=>array('/evidence/evidence/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Case Controls', 'url'=>array('/evidence/crtcase/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Attorney Controls', 'url'=>array('/evidence/attorney/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'Case File Controls', 'url'=>array('/evidence/casesummary/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Defendant Controls', 'url'=>array('/evidence/defendant/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Evidence Controls', 'url'=>array('/evidence/evidence/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Case Controls', 'url'=>array('/evidence/crtcase/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Attorney Controls', 'url'=>array('/evidence/attorney/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
 				array(
 					'label'=>'Admin',
 					'visible'=>!Yii::app()->user->isGuest && Yii::app()->user->checkAccess('Admin', Yii::app()->user->id),
+					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
-						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-						array('label'=>'News Controls', 'url'=>array('/news/news/index')),
-						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'News Controls', 'url'=>array('/news/news/index'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
-						array('label'=>'Logout', 'url'=>array('/security/login/logout')),
-						array('label'=>'Change Password', 'url'=>array('/security/password/change')),
+						array('label'=>'Logout', 'url'=>array('/security/login/logout'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Change Password', 'url'=>array('/security/password/change'), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
 			),

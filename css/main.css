@@ -51,17 +51,17 @@ body
 	font-size: 200%;
 }
 
-#menu-top { 
-	background:white url(bg.gif) repeat-x left top;
+#menu-top 
+{ 
+	/* Size & position */
 	position: relative; 
-	z-index: 10;
-}
-#menu-top ul { 
-	list-style: none; 
-	margin: 0; 
-	padding:6px 10px 5px 20px;
-	position: relative; 
-	height: 30px; 
+    margin: 0 auto;
+    padding: 12px 15px;
+ 
+    /* Styles */
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
 }
 #menu-top ul li { 
 	list-style: none; 
@@ -69,20 +69,33 @@ body
 	float: left; 
 	overflow: visible; 
 }
-#menu-top ul li:hover > ul { 
+#menu-top ul li.dropdown:hover > ul{ 
 	display: block; 
+	text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e8ea;
+}
+#menu-top a.toplink {
+	padding-bottom: 18px;
+}
+#menu-top a.toplink:hover{
+	border-radius: 5px 5px 0 0;
+	text-decoration: none;
+	color: white;
+    background: #4cbeff;
+	transition: all 0.3s ease-out;
 }
 #menu-top ul li a {
-	color:#ffffff;
-	background-color:transparent;
+	color:black;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px; 
+	padding:5px 8px;
 }
 #menu-top ul li span{
-	color:#ffffff;
 	background-color:transparent;
+	color:black;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
@@ -90,23 +103,34 @@ body
 	cursor:hand;
 	cursor:pointer;
 }
-#menu-top ul li a:hover {
-	color: #6399cd;
-	background-color:#EFF4FA;
-	text-decoration:none;
+#menu-top ul li.dropdown span:hover {
+    border-radius: 5px 5px 0 0;
+    background: #4cbeff;
+    box-shadow: none;
+    border-bottom: none;
+    color: white;
+	transition: all 0.3s ease-out;
 }
-#menu-top ul li ul { 
+#menu-top ul li.dropdown:hover {
+    border-radius: 5px 5px 0 0;
+    background: #4cbeff;
+    box-shadow: none;
+    border-bottom: none;
+    color: white;
+	transition: all 0.3s ease-out;
+}
+#menu-top ul li.dropdown a:hover {
+    border-radius: 5px 5px 0 0;
+    box-shadow: none;
+    border-bottom: none;
+    color: blue;
+}
+#menu-top ul li.dropdown ul { 
 	display: none; 
 	position: absolute; 
 	top: 100%;
-	background: #000; 
-	color: #fff; 
+	background: whitesmoke; 
 	height: auto;
-}
-#menu-top ul li ul li a { 
-	color: #ccc; 
-	padding: 4px 14px; 
-	display: block; 
 }
 
 #menu-top ul li ul li.active a,
