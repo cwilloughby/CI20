@@ -3,13 +3,12 @@
 /* @var $model GsTimeLog */
 
 $this->breadcrumbs=array(
-	'Gs Time Logs'=>array('index'),
+	'GS Time Logs'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List GsTimeLog', 'url'=>array('index')),
-	array('label'=>'Create GsTimeLog', 'url'=>array('create')),
+	array('label'=>'List GS Time Log', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +17,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('gs-time-log-grid', {
+	$.fn.yiiGridView.update('time-log-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +25,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Gs Time Logs</h1>
+<h1>Manage GS Time Logs</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -44,15 +43,37 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'gs-time-log-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'afterAjaxUpdate'=>"function(){jQuery('#event_date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
-		'id',
 		'username',
 		'computername',
+		array(
+			'name' => 'eventdate',
+			'value' => '(isset($data->eventdate) && ((int)$data->eventdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->eventdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model,
+				'attribute'=>'eventdate', 
+				'htmlOptions' => array('id' => 'event_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->eventdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
+		),
 		'eventtype',
-		'eventtime',
-		'eventdate',
+		array(
+			'name' => 'eventtime',
+			'value' => 'DATE("g:i:s a", STRTOTIME("$data->eventtime"))',
+		),
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}',
 		),
 	),
 )); ?>

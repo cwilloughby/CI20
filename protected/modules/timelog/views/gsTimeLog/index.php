@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Gs Time Logs',
+	'GS Time Logs',
 );
 
 $this->menu=array(
-	array('label'=>'Create GsTimeLog', 'url'=>array('create')),
-	array('label'=>'Manage GsTimeLog', 'url'=>array('admin')),
+	array('label'=>'Create GS Time Log', 'url'=>array('create')),
+	array('label'=>'Manage GS Time Log', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Gs Time Logs</h1>
+<h1>GS Time Logs</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -13,6 +13,10 @@
  */
 class TimeLog extends CActiveRecord
 {
+	// These two variables are for date range searches.
+	public $from_date;
+	public $to_date;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -47,7 +51,7 @@ class TimeLog extends CActiveRecord
 			array('eventtime, eventdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, computername, eventtype, eventtime, eventdate', 'safe', 'on'=>'search'),
+			array('id, username, computername, eventtype, eventtime, eventdate, from_date, to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,9 +75,9 @@ class TimeLog extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'Username',
 			'computername' => 'Computername',
-			'eventtype' => 'Eventtype',
-			'eventtime' => 'Eventtime',
-			'eventdate' => 'Eventdate',
+			'eventtype' => 'Event Type',
+			'eventtime' => 'Event Time',
+			'eventdate' => 'Event Date',
 		);
 	}
 
@@ -83,11 +87,22 @@ class TimeLog extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+			// date is database date column field
+            $criteria->condition = "eventdate >= '$this->from_date'";  
+        }
+		else if(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->condition = "eventdate <= '$this->to_date'";
+        }
+		else if(!empty($this->to_date) && !empty($this->from_date))
+        {
+            $criteria->condition = "eventdate  >= '$this->from_date' and eventdate <= '$this->to_date'";
+        }
+		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('computername',$this->computername,true);

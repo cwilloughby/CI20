@@ -7,10 +7,6 @@
 
 	<?php echo CHtml::link('View News', array('view', 'id'=>$data->newsid)); ?>
 	<br />
-	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('newsid')); ?>:</b>
-	<?php echo CHtml::encode($data->newsid); ?>
-	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('typeid')); ?>:</b>
 	<?php echo CHtml::encode($data->type->type); ?>
@@ -21,7 +17,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-	<?php echo CHtml::encode($data->date); ?>
+	<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->date))); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('news')); ?>:</b>

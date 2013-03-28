@@ -35,7 +35,7 @@ $this->menu=array(
 		),
 		array(        
 			'name'=>'opendate',
-			'value'=>isset($model->opendate)?CHtml::encode(date('g:i a Y-m-d', strtotime($model->opendate))):"N\\A"
+			'value'=>isset($model->opendate)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->opendate))):"N\\A"
 		),
 		array(        
 			'name'=>'categoryid',
@@ -56,7 +56,7 @@ $this->menu=array(
 		),
 		array(        
 			'name'=>'closedate',
-			'value'=>isset($model->closedate)?CHtml::encode(date('g:i a Y-m-d', strtotime($model->closedate))):"N\\A"
+			'value'=>isset($model->closedate)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->closedate))):"N\\A"
 		),
 		'resolution',
 	),

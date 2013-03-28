@@ -131,7 +131,26 @@ class CaseSummaryController extends Controller
 		$model=new CaseSummary('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['CaseSummary']))
+		{
 			$model->attributes=$_GET['CaseSummary'];
+			
+			if((int)$model->dispodate)
+			{
+				$model->dispodate = date('Y-m-d', strtotime($model->dispodate));
+			}
+			if((int)$model->indate)
+			{
+				$model->indate = date('Y-m-d', strtotime($model->indate));
+			}
+			if((int)$model->outdate)
+			{
+				$model->outdate = date('Y-m-d', strtotime($model->outdate));
+			}
+			if((int)$model->destructiondate)
+			{
+				$model->destructiondate = date('Y-m-d', strtotime($model->destructiondate));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

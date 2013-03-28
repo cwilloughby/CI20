@@ -16,9 +16,9 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('createdby')); ?>:</b>
 	<?php echo CHtml::encode($data->createdby0->username); ?>
 	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('datecreated')); ?>:</b>
-	<?php echo CHtml::encode($data->datecreated); ?>
+	<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->datecreated))); ?>
 	<br />
 
 

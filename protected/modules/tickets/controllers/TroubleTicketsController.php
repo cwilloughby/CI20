@@ -299,7 +299,18 @@ class TroubleTicketsController extends Controller
 		$model=new TroubleTickets('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['TroubleTickets']))
+		{
 			$model->attributes=$_GET['TroubleTickets'];
+			
+			if((int)$model->opendate)
+			{
+				$model->opendate = date('Y-m-d', strtotime($model->opendate));
+			}
+			if((int)$model->closedate)
+			{
+				$model->closedate = date('Y-m-d', strtotime($model->closedate));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

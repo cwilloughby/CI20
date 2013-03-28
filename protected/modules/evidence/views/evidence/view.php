@@ -30,7 +30,7 @@ $this->menu=array(
 		array(
 			'name' => 'dateadded',
 			'value' => (isset($case->dateadded) && ((int)$case->dateadded))
-				?CHtml::encode(date("m/d/Y", strtotime($case->dateadded))):"N/A",
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->dateadded))):"N/A",
 		),
 		'exhibitlist',
 	),
@@ -58,26 +58,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value'=>'$data->def->lname' 
 		),
 		'caseno',
-		array(
-			'name' => 'hearingdate',
-			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
-				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$cases, 
-				'attribute'=>'hearingdate', 
-				'htmlOptions' => array('id' => 'hearing_date_search'), 
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $cases->hearingdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
-		),
-		'hearingtype',
 		'sentence',
 		'comment',
 		array(

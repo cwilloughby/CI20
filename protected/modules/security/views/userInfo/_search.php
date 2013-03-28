@@ -53,7 +53,22 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'hiredate'); ?>
-		<?php echo $form->textField($model,'hiredate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'hiredate',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->hiredate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">

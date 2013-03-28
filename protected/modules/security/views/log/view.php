@@ -18,11 +18,16 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'eventid',
-		'userid',
+		array(        
+			'name'=>'user_search',
+			'value'=>isset($model->user)?CHtml::encode($model->user->username):"Unknown"
+		),
 		'tablename',
 		'tablerow',
-		'eventdate',
+		array(        
+			'name'=>'eventdate',
+			'value'=>isset($model->eventdate)?CHtml::encode(date('g:i:s a Y-m-d', strtotime($model->eventdate))):"N\\A"
+		),
 		'event',
 	),
 )); ?>

@@ -144,7 +144,14 @@ class CommentsController extends Controller
 		$model=new Comments('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Comments']))
+		{
 			$model->attributes=$_GET['Comments'];
+			
+			if((int)$model->datecreated)
+			{
+				$model->datecreated = date('Y-m-d', strtotime($model->datecreated));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

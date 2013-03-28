@@ -47,6 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'afterAjaxUpdate'=>"function(){jQuery('#hire_date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
 		'userid',
 		'firstname',
@@ -59,7 +60,25 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'name'=>'department_search', 
 			'value'=>'$data->department->departmentname' 
 		),
-		'hiredate',
+		array(
+			'name' => 'hiredate',
+			'value' => '(isset($data->hiredate) && ((int)$data->hiredate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hiredate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model,
+				'attribute'=>'hiredate', 
+				'htmlOptions' => array('id' => 'hire_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->hiredate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
+		),
 		array(        
 			'name'=>'active',
 			'value'=>'($data->active == 1)?"Yes":"No"',

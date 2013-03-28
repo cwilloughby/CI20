@@ -21,7 +21,6 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'newsid',
 		array(        
 			'name'=>'typeid',
 			'value'=>isset($model->type)?CHtml::encode($model->type->type):"Unknown"
@@ -30,7 +29,10 @@ $this->menu=array(
 			'name'=>'postedby',
 			'value'=>isset($model->postedby0)?CHtml::encode($model->postedby0->username):"Unknown"
 		),
-		'date',
+		array(        
+			'name'=>'date',
+			'value'=>isset($model->date)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->date))):"N\\A"
+		),
 		'news',
 	),
 )); ?>

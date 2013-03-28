@@ -20,32 +20,6 @@ class TimeLogController extends Controller
 	}
 
 	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
-
-	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
@@ -80,44 +54,6 @@ class TimeLogController extends Controller
 	}
 
 	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['TimeLog']))
-		{
-			$model->attributes=$_POST['TimeLog'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
@@ -133,10 +69,31 @@ class TimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new TimeLog('search');
+		// First unset the cookies for dates.
+		unset(Yii::app()->request->cookies['from_date']);  
+		unset(Yii::app()->request->cookies['to_date']);
+
+		$model = new TimeLog('search');  // your model
 		$model->unsetAttributes();  // clear any default values
+
 		if(isset($_GET['TimeLog']))
+		{
 			$model->attributes=$_GET['TimeLog'];
+			
+			Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
+			Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
+			$model->from_date = $_GET['from_date'];
+			$model->to_date = $_GET['to_date'];
+			
+			if((int)$model->from_date)
+			{
+				$model->from_date = date('Y-m-d', strtotime($model->from_date));
+			}
+			if((int)$model->to_date)
+			{
+				$model->to_date = date('Y-m-d', strtotime($model->to_date));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

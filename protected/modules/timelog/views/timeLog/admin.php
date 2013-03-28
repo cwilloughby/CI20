@@ -8,8 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List TimeLog', 'url'=>array('index')),
-	array('label'=>'Create TimeLog', 'url'=>array('create')),
+	array('label'=>'List Time Logs', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -44,15 +43,37 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'time-log-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'afterAjaxUpdate'=>"function(){jQuery('#event_date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
-		'id',
 		'username',
 		'computername',
+		array(
+			'name' => 'eventdate',
+			'value' => '(isset($data->eventdate) && ((int)$data->eventdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->eventdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model,
+				'attribute'=>'eventdate', 
+				'htmlOptions' => array('id' => 'event_date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->eventdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
+		),
 		'eventtype',
-		'eventtime',
-		'eventdate',
+		array(
+			'name' => 'eventtime',
+			'value' => 'DATE("g:i:s a", STRTOTIME("$data->eventtime"))',
+		),
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}',
 		),
 	),
 )); ?>

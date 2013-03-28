@@ -146,7 +146,14 @@ class EvidenceController extends Controller
 		$model=new Evidence('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Evidence']))
+		{
 			$model->attributes=$_GET['Evidence'];
+			
+			if((int)$model->dateadded)
+			{
+				$model->dateadded = date('Y-m-d', strtotime($model->dateadded));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

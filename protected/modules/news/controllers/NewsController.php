@@ -104,7 +104,14 @@ class NewsController extends Controller
 		$model=new News('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['News']))
+		{
 			$model->attributes=$_GET['News'];
+			
+			if((int)$model->date)
+			{
+				$model->date = date('Y-m-d', strtotime($model->date));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

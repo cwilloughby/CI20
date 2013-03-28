@@ -56,21 +56,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		array(
 			'name' => 'dateadded',
 			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
-				?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$model, 
-				'attribute'=>'dateadded', 
-				'htmlOptions' => array('id' => 'date_added_search'), 
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $model->dateadded,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
+				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->dateadded))):"N/A"',
 		),
 		array(
 			'class'=>'CButtonColumn',

@@ -52,7 +52,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'name'=>'user_search', 
 			'value'=>'$data->openedby0->username' 
 		),
-		'opendate',
+		array(
+			'name' => 'opendate',
+			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->opendate"))',
+		),
 		array( 
 			'name'=>'category_search', 
 			'value'=>'$data->category->categoryname' 
@@ -68,10 +71,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						? $data->closedbyuser->username 
 						: ""'
 		),
-		'closedate',
+		array(
+			'name' => 'closedate',
+			'value' => '(isset($data->closedate) && ((int)$data->closedate))
+				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->closedate))):"N/A"',
+		),
 		'resolution',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

@@ -47,13 +47,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'commentid',
-		'content',
 		array( 
-			'name'=>'createdby', 
+			'name'=>'user_search', 
 			'value'=>'$data->createdby0->username' 
 		),
-		'datecreated',
+		array(
+			'name' => 'datecreated',
+			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->datecreated"))',
+		),
+		'content',
 		array(
 			'class'=>'CButtonColumn',
 		),

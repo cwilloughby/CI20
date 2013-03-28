@@ -66,7 +66,14 @@ class LogController extends Controller
 		$model=new Log('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Log']))
+		{
 			$model->attributes=$_GET['Log'];
+			
+			if((int)$model->eventdate)
+			{
+				$model->eventdate = date('Y-m-d', strtotime($model->eventdate));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

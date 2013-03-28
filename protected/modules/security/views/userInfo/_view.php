@@ -37,7 +37,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hiredate')); ?>:</b>
-	<?php echo CHtml::encode($data->hiredate); ?>
+	<?php echo CHtml::encode(date('m/d/Y', strtotime($data->hiredate))); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>

@@ -42,31 +42,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'hearingdate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'hearingdate',
-				'language' => 'en',
-				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $model->hearingdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				),
-			));
-		?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'hearingtype'); ?>
-		<?php echo $form->textField($model,'hearingtype'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'page'); ?>
 		<?php echo $form->textField($model,'page'); ?>
 	</div>
@@ -81,7 +56,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->dispodate,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -95,7 +70,7 @@
 		<?php echo $form->label($model,'sentence'); ?>
 		<?php echo $form->textField($model,'sentence'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'indate'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
@@ -106,7 +81,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->indate,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -115,7 +90,7 @@
 			));
 		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'outdate'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
@@ -126,7 +101,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->outdate,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -135,7 +110,7 @@
 			));
 		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'destructiondate'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
@@ -146,7 +121,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->destructiondate,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -155,7 +130,7 @@
 			));
 		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'recip'); ?>
 		<?php echo $form->textField($model,'recip'); ?>

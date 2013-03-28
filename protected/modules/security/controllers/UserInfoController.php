@@ -145,7 +145,14 @@ class UserInfoController extends Controller
 		$model=new UserInfo('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['UserInfo']))
+		{
 			$model->attributes=$_GET['UserInfo'];
+			
+			if((int)$model->hiredate)
+			{
+				$model->hiredate = date('Y-m-d', strtotime($model->hiredate));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

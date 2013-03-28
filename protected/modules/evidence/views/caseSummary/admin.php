@@ -70,25 +70,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'name'=>'complaint_search', 
 			'value'=>'$data->caseno0->cptno' 
 		),
-		array(
-			'name' => 'hearingdate', 
-			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
-				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$model, 
-				'attribute'=>'hearingdate', 
-				'htmlOptions' => array('id' => 'hearing_date_search'),
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $model->hearingdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
-		),
 		'sentence',
 		'comment',
 		array(        

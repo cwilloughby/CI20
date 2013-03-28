@@ -7,8 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create TimeLog', 'url'=>array('create')),
-	array('label'=>'Manage TimeLog', 'url'=>array('admin')),
+	array('label'=>'Manage Time Logs', 'url'=>array('admin')),
 );
 ?>
 

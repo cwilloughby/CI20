@@ -40,30 +40,24 @@ $this->menu=array(
 		array(
 			'name' => 'dispodate',
 			'value' => (isset($case->dispodate) && ((int)$case->dispodate))
-				?CHtml::encode(date("m/d/Y", strtotime($case->dispodate))):"N/A",
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->dispodate))):"N/A",
 		),
-		array(
-			'name' => 'hearingdate',
-			'value' => (isset($case->hearingdate) && ((int)$case->hearingdate))
-				?CHtml::encode(date("m/d/Y", strtotime($case->hearingdate))):"N/A",
-		),
-		'hearingtype',
 		'page',
 		'sentence',
 		array(
 			'name' => 'indate',
 			'value' => (isset($case->indate) && ((int)$case->indate))
-				?CHtml::encode(date("m/d/Y", strtotime($case->indate))):"N/A",
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->indate))):"N/A",
 		),
 		array(
 			'name' => 'outdate',
 			'value' => (isset($case->outdate) && ((int)$case->outdate))
-				?CHtml::encode(date("m/d/Y", strtotime($case->outdate))):"N/A",
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->outdate))):"N/A",
 		),
 		array(
 			'name' => 'destructiondate',
 			'value' => (isset($case->destructiondate) && ((int)$case->destructiondate))
-				?CHtml::encode(date("m/d/Y", strtotime($case->destructiondate))):"N/A",
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->destructiondate))):"N/A",
 		),
 		'recip',
 		'comment',
@@ -138,21 +132,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'name' => 'dateadded',
 			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
-				?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$evidence, 
-				'attribute'=>'dateadded', 
-				'htmlOptions' => array('id' => 'date_added_search'), 
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $evidence->dateadded,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
+				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->dateadded))):"N/A"',
 		),
 		array(
 			'class'=>'CButtonColumn',

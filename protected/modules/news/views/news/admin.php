@@ -56,10 +56,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'name'=>'user_search', 
 			'value'=>'$data->postedby0->username' 
 		),
-		'date',
+		array(
+			'name' => 'date',
+			'value' => '(isset($data->date) && ((int)$data->date))
+				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->date))):"N/A"',
+		),
 		'news',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

@@ -12,11 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'newsid'); ?>
-		<?php echo $form->textField($model,'newsid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'typeid'); ?>
 		<?php echo $form->textField($model,'typeid'); ?>
 	</div>
@@ -28,7 +23,22 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'date'); ?>
-		<?php echo $form->textField($model,'date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'date',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->date,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">

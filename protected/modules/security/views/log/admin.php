@@ -45,14 +45,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'eventid',
 		array( 
 			'name'=>'user_search', 
 			'value'=>'$data->user->username' 
 		),
 		'tablename',
 		'tablerow',
-		'eventdate',
+		array(
+			'name' => 'eventdate',
+			'value' => '(isset($data->eventdate) && ((int)$data->eventdate))
+				?CHtml::encode(date("m/d/Y g:i:s a", strtotime($data->eventdate))):"N/A"',
+		),
 		'event',
 		array(
 			'class'=>'CButtonColumn',

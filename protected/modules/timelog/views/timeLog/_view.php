@@ -22,11 +22,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('eventtime')); ?>:</b>
-	<?php echo CHtml::encode($data->eventtime); ?>
+	<?php echo CHtml::encode(date('g:i a', strtotime($data->eventtime))); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('eventdate')); ?>:</b>
-	<?php echo CHtml::encode($data->eventdate); ?>
+	<?php echo CHtml::encode(date('m/d/Y', strtotime($data->eventdate))); ?>
 	<br />
 
 

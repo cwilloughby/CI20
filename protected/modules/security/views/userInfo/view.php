@@ -38,7 +38,10 @@ $this->menu=array(
 			'name'=>'department_search', 
 			'value'=>$model->department->departmentname 
 		),
-		'hiredate',
+		array(        
+			'name'=>'hiredate',
+			'value'=>isset($model->hiredate)?CHtml::encode(date('m/d/Y', strtotime($model->hiredate))):"N\\A"
+		),
 		'active',
 	),
 )); ?>

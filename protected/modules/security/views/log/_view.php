@@ -20,11 +20,11 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('tablerow')); ?>:</b>
 	<?php echo CHtml::encode($data->tablerow); ?>
 	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('eventdate')); ?>:</b>
-	<?php echo CHtml::encode($data->eventdate); ?>
+	<?php echo CHtml::encode(date('g:i:s a m/d/Y', strtotime($data->eventdate))); ?>
 	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('event')); ?>:</b>
 	<?php echo CHtml::encode($data->event); ?>
 	<br />

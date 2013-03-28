@@ -47,7 +47,7 @@ class Comments extends CActiveRecord
 			array('createdby', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('commentid, content, createdby, datecreated', 'safe', 'on'=>'search'),
+			array('commentid, content, createdby, datecreated, user_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -105,6 +105,7 @@ class Comments extends CActiveRecord
 			'content' => 'Content',
 			'createdby' => 'Created By',
 			'datecreated' => 'Date Created',
+			'user_search' => 'Created By',
 		);
 	}
 
@@ -114,14 +115,12 @@ class Comments extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
-
+		$criteria->with = array('createdby0');
+			
 		$criteria->compare('commentid',$this->commentid);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('createdby',$this->user_search,true);
+		$criteria->compare('createdby0.username',$this->user_search,true);
 		$criteria->compare('datecreated',$this->datecreated,true);
 
 		return new CActiveDataProvider($this, array(
