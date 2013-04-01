@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	'Court Cases',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Create Court Case', 'url'=>array('create')),
 	array('label'=>'Manage Court Cases', 'url'=>array('admin')),
 );

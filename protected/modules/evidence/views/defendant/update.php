@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Defendants', 'url'=>array('index')),
 	array('label'=>'Create Defendant', 'url'=>array('create')),
 	array('label'=>'View Defendant', 'url'=>array('view', 'id'=>$model->defid)),

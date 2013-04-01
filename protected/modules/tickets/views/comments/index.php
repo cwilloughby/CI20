@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Comments',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Manage Comments', 'url'=>array('admin')),
 );
 ?>

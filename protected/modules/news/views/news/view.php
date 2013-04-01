@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	$model->newsid,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List News Posts', 'url'=>array('index')),
 	array('label'=>'Create News Post', 'url'=>array('create')),
 	array('label'=>'Update News Post', 'url'=>array('update', 'id'=>$model->newsid)),

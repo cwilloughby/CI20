@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Comments', 'url'=>array('index')),
 	array('label'=>'View Comment', 'url'=>array('view', 'id'=>$model->commentid)),
 	array('label'=>'Manage Comments', 'url'=>array('admin')),

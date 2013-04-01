@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	$case->caseno,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Case Files', 'url'=>array('index')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),

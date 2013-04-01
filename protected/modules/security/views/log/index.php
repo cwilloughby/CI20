@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Logs',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Manage Logs', 'url'=>array('admin')),
 );
 ?>

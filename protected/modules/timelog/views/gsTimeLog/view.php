@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List GsTimeLog', 'url'=>array('index')),
 	array('label'=>'Manage GsTimeLog', 'url'=>array('admin')),
 );

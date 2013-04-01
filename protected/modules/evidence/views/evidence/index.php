@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	'Evidence',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'Manage Evidence', 'url'=>array('admin')),
 );

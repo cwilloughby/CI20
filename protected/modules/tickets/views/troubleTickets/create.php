@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
 	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
 	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),

@@ -9,7 +9,7 @@
 			$this->widget('UserLogin');
 		else
 		{
-			$this->menu=array(
+			$this->menu1=array(
 				// The link to the trouble ticket form.
 				array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 				// The link to the hr policy page.
@@ -21,7 +21,7 @@
 				'title'=>'Menu',
 			));
 			$this->widget('zii.widgets.CMenu', array(
-				'items'=>$this->menu,
+				'items'=>$this->menu1,
 				'htmlOptions'=>array('class'=>'operations'),
 			));
 			$this->endWidget();

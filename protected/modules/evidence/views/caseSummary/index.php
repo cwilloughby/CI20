@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	'Case Files',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Create Case File', 'url'=>array('create')),
 	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );

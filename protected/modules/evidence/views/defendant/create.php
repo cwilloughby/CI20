@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Defendants', 'url'=>array('index')),
 	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );

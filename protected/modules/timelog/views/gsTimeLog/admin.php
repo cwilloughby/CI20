@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List GS Time Log', 'url'=>array('index')),
 );
 

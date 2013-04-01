@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 	$model->evidenceid,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Evidence', 'url'=>array('index')),
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'Update Evidence', 'url'=>array('update', 'id'=>$model->evidenceid)),

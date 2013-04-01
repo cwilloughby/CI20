@@ -22,7 +22,7 @@ $this->breadcrumbs=array(
 	'HR Policy',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Create HR Policy', 'url'=>array('createpolicy')),
 	array('label'=>'Manage HR Policies', 'url'=>array('admin')),
 );

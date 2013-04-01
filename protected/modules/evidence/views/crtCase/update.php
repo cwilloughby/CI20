@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Court Cases', 'url'=>array('index')),
 	array('label'=>'Create Court Case', 'url'=>array('create')),
 	array('label'=>'View Court Case', 'url'=>array('view', 'id'=>$model->caseno)),

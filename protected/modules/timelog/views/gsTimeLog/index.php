@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'GS Time Logs',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Create GS Time Log', 'url'=>array('create')),
 	array('label'=>'Manage GS Time Log', 'url'=>array('admin')),
 );

@@ -7,10 +7,9 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
 	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
-	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

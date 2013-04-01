@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Evidence', 'url'=>array('index')),
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'View Evidence', 'url'=>array('view', 'id'=>$model->evidenceid)),

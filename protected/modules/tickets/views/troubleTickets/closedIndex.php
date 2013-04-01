@@ -8,9 +8,8 @@ $this->breadcrumbs=array(
 	'Trouble Tickets',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>

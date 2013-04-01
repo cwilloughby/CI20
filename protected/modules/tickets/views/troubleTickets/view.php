@@ -9,10 +9,9 @@ $this->breadcrumbs=array(
 	$model->ticketid,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
 	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
-	array('label'=>'Create Trouble Ticket', 'url'=>array('create')),
 	array('label'=>'Update Trouble Ticket', 'url'=>array('update', 'id'=>$model->ticketid)),
 	($model->closedbyuserid == NULL 
 		? array('label'=>'Close Trouble Ticket', 'url'=>array('close', 'id'=>$model->ticketid))

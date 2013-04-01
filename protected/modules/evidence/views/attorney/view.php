@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	$model->attyid,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Attorneys', 'url'=>array('index')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
 	array('label'=>'Update Attorney', 'url'=>array('update', 'id'=>$model->attyid)),

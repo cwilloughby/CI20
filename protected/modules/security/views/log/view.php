@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	$model->eventid,
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'List Logs', 'url'=>array('index')),
 	array('label'=>'Manage Logs', 'url'=>array('admin')),
 );
