@@ -144,6 +144,18 @@ body
 	padding-right: 15px;
 }
 
+fieldset.news{
+	border-style:outset;
+	border-width:5px;
+	border-bottom-color: #FF9966;
+	border-right-color: #FF9966;
+	border-left-color: #FFAA77;
+	border-top-color: #FFAA77;
+}
+fieldset.news legend{
+	font-weight: bold;
+	font-size: 18px;
+}
 #menu-top ul li ul li.active a,
 #menu-top ul li ul li{clear: left;}
 

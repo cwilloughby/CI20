@@ -18,7 +18,9 @@ Site functions are disabled until you have logged in.</p>
 <?php 
 foreach($news as $key => $value)
 {
-	echo "<h3>" . $key . "</h3>";
-	echo "<p>" . $value . "</p>";
+	echo "<fieldset class='news'>";
+	echo "<legend>" . $key . "</legend>";
+	echo "<br/><p>" . $value . "</p>";
+	echo "</fieldset>";
 }
 ?>

@@ -47,7 +47,7 @@ class UserInfoController extends Controller
 			$model->firstname = $_GET['firstname'];
 			$model->phoneext = $_GET['phoneext'];
 			$model->departmentid = $_GET['departmentid'];
-			$model->hiredate = $_GET['hiredate'];
+			$model->hiredate = urldecode($_GET['hiredate']);
 		}
 		
 		if(isset($_POST['UserInfo']))
