@@ -139,6 +139,11 @@ body
 	border-top-color: #FFAA77;
 }
 
+#menu-top ul li.dropdown.last {
+	float:right;
+	padding-right: 15px;
+}
+
 #menu-top ul li ul li.active a,
 #menu-top ul li ul li{clear: left;}
 

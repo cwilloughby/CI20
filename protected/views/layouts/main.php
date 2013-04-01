@@ -33,6 +33,7 @@
 	<div id="menu-top">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'activateParents'=>true,
+			'lastItemCssClass'=>'last',
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index'), 'linkOptions'=>array('class'=>'toplink')),
 				array(
