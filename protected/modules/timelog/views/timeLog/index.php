@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Time Logs',
 );
 
-$this->menu=array(
+$this->menu2=array(
 	array('label'=>'Manage Time Logs', 'url'=>array('admin')),
 );
 ?>
