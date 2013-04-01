@@ -60,7 +60,7 @@ class TroubleTicketsController extends Controller
 			$ticket->attributes=$_POST['TroubleTickets'];
 			$file->attributes=$_POST['Documents'];
 			
-			// validate BOTH $ticket and $file at the same time
+			// Validate BOTH $ticket and $file at the same time.
 			$valid=$ticket->validate() && $file->validate();
 		
 			if($valid)

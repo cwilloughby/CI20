@@ -62,9 +62,13 @@ class UserInfoController extends Controller
 				// Remove the flash message so the email will work again.
 				Yii::app()->user->getFlash('success');
 				
+				// Assign the default role.
+				$auth = Yii::app()->authManager;
+				$auth->assign("Default", $model->userid, "", 's:0:"";');
+				
 				// Email alert to the new user.
 				$this->redirect(
-					array('/email/email/addemail', 
+					array('/email/email/addemail',
 						'username'=>$model->username,
 						'email'=>urlencode($model->email),
 					));
