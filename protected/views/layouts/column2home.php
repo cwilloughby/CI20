@@ -18,7 +18,7 @@
 				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 			);
 			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'Menu',
+				'title'=>'Quick Links',
 			));
 			$this->widget('zii.widgets.CMenu', array(
 				'items'=>$this->menu1,
