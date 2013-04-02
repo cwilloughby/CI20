@@ -56,6 +56,7 @@ class UserInfoController extends Controller
 			$model->password = sha1($model->username);
 			$model->departmentid += 1;
 			$model->active = true;
+			$model->hiredate = date('Y-m-d', strtotime($model->hiredate));
 			
 			if($model->save())
 			{

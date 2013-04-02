@@ -80,7 +80,6 @@ class UserInfo extends CActiveRecord
 			array('email', 'email'),
 			array('email', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'email'),
 			array('password_repeat, oldpassword', 'safe'),
-			array('hiredate', 'type', 'type'=>'date', 'message'=>'{attribute} must be formatted as yyyy-mm-dd', 'dateFormat' => 'yyyy-mm-dd'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('userid, firstname, lastname, middlename, username, password, email, phoneext, departmentid, department_search, hiredate, active', 'safe', 'on'=>'search'),

@@ -65,7 +65,7 @@
 				'attribute' => 'hiredate',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd', 
+					'dateFormat' => 'mm/dd/yy',  
 					'defaultDate' => $model->hiredate,
 					'changeYear' => true,
 					'changeMonth' => true,
