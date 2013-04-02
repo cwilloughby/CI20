@@ -2,7 +2,6 @@
 /* @var $this EmailController */
 
 $this->breadcrumbs=array(
-	'Email'=>array('/email'),
 	'Recoveryemail',
 );
 ?>
