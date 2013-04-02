@@ -168,7 +168,7 @@ class UserInfo extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('phoneext',$this->phoneext);
 		$criteria->compare('departmentid',$this->departmentid);
-		$criteria->compare('department.department',$this->department_search,true);
+		$criteria->compare('department.departmentname',$this->department_search,true);
 		$criteria->compare('hiredate',$this->hiredate,true);
 		$criteria->compare('active',$this->active);
 

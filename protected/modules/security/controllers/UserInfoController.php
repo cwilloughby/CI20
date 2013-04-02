@@ -99,7 +99,7 @@ class UserInfoController extends Controller
 				$this->redirect(array('view','id'=>$model->userid));
 		}
 		
-		$departments=array_merge(array(""=>""),CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname'));
+		$departments=CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname');
 		
 		$this->render('update',array('model'=>$model, 'departments'=>$departments));
 	}

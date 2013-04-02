@@ -33,7 +33,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:</b>
-	<?php echo CHtml::encode($data->department->find($data->departmentid)->departmentname); ?>
+	<?php echo CHtml::encode($data->department->departmentname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('hiredate')); ?>:</b>
