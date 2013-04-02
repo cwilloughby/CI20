@@ -20,6 +20,7 @@ $this->menu2=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_closedview',
 	'sortableAttributes'=>array(
+		'ticketid',
 		'opendate',
 		'closedate',
 	),

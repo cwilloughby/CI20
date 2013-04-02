@@ -20,6 +20,7 @@ $this->menu2=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'sortableAttributes'=>array(
+		'ticketid',
 		'opendate',
 	),
 	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
