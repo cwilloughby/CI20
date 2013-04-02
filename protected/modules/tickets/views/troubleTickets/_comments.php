@@ -1,17 +1,13 @@
 <?php foreach($comments as $comment): ?>
 <br/>
-<div class="comment">
-      <div class="author">
-    <?php echo CHtml::encode($comment->createdby0->username); ?>:
-  </div>
+<fieldset class="news">
+	<legend>
+		<?php echo CHtml::encode($comment->createdby0->username) . " on " 
+			. date('F j, Y \a\t h:i a',strtotime($comment->datecreated)); ?>
+	</legend>
 
-  <div class="time">
-    on <?php echo date('F j, Y \a\t h:i a',strtotime($comment->datecreated)); ?>
-  </div>
-
-  <div class="content">
-    <?php echo nl2br($comment->content); ?>
-  </div>
-     <hr>
-</div><!-- comment -->
+	<p>
+		<?php echo nl2br($comment->content); ?>
+	</p>
+</fieldset><!-- comment -->
 <?php endforeach; ?>
