@@ -23,9 +23,10 @@ class EmailController extends Controller
 			$model = new Messages;
 
 			// Set the recipient, the sender, and the subject.
+			$model->mail->ContentType = "text/html";
 			$model->mail->AddAddress("ccc.helpdesk@nashville.gov");
 			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
-			$model->mail->Subject = "CI Registration Request";
+			$model->mail->Subject = "CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'];
 			$model->to = urldecode($_GET['email']);
 			$model->from = $model->mail->From;
 			$model->subject = $model->mail->Subject;
@@ -42,8 +43,8 @@ class EmailController extends Controller
 						. '&hiredate=' . urlencode($_GET['hiredate']);
 
 			// Set the message's body.
-			$model->mail->Body = "A new user is requesting registration to the CI2.0 website. 
-				Follow the link to review their information: " . $link;
+			$model->mail->Body = $_GET['firstname'] . " " .  $_GET['lastname'] 
+				. " is requesting registration to the CI2.0 website.<br/><br/>Follow the link to review their information: " . $link;
 
 			$model->messagebody = $model->mail->Body;
 			$model->messagetype = "Registration Request";
@@ -70,6 +71,7 @@ class EmailController extends Controller
 			$model = new Messages;
 
 			// Set the recipient, the sender, and the subject.
+			$model->mail->ContentType = "text/html";
 			$model->mail->AddAddress(urldecode($_GET['email']));
 			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 			$model->mail->Subject = "CI Registration Request";
@@ -113,6 +115,7 @@ class EmailController extends Controller
 			$email = $sec->decrypt(urldecode($_GET["email"]));
 
 			// Set the recipient, the sender, and the subject.
+			$model->mail->ContentType = "text/html";
 			$model->mail->AddAddress($email);
 			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
 			$model->mail->Subject = "CI Password Recovery";
@@ -199,6 +202,7 @@ class EmailController extends Controller
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
 		// Set the recipient, the sender, and the subject.
+		$model->mail->ContentType = "text/html";
 		$model->mail->AddAddress($email);
 		$model->mail->AddCC("ccc.helpdesk@nashville.gov");
 		$model->mail->SetFrom("ccc.helpdesk@nashville.gov");
