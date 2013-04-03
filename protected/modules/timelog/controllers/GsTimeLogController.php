@@ -107,10 +107,34 @@ class GsTimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new GsTimeLog('search');
+		// First unset the cookies for dates.
+		unset(Yii::app()->request->cookies['from_date']);  
+		unset(Yii::app()->request->cookies['to_date']);
+
+		$model = new GsTimeLog('search');  // your model
 		$model->unsetAttributes();  // clear any default values
+
 		if(isset($_GET['GsTimeLog']))
+		{
 			$model->attributes=$_GET['GsTimeLog'];
+			
+			if(isset($_GET['from_date']) || isset($_GET['to_date']))
+			{
+				Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
+				Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
+				$model->from_date = $_GET['from_date'];
+				$model->to_date = $_GET['to_date'];
+
+				if((int)$model->from_date)
+				{
+					$model->from_date = date('Y-m-d', strtotime($model->from_date));
+				}
+				if((int)$model->to_date)
+				{
+					$model->to_date = date('Y-m-d', strtotime($model->to_date));
+				}
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

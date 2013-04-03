@@ -80,18 +80,21 @@ class TimeLogController extends Controller
 		{
 			$model->attributes=$_GET['TimeLog'];
 			
-			Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
-			Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
-			$model->from_date = $_GET['from_date'];
-			$model->to_date = $_GET['to_date'];
-			
-			if((int)$model->from_date)
+			if(isset($_GET['from_date']) || isset($_GET['to_date']))
 			{
-				$model->from_date = date('Y-m-d', strtotime($model->from_date));
-			}
-			if((int)$model->to_date)
-			{
-				$model->to_date = date('Y-m-d', strtotime($model->to_date));
+				Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
+				Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
+				$model->from_date = $_GET['from_date'];
+				$model->to_date = $_GET['to_date'];
+
+				if((int)$model->from_date)
+				{
+					$model->from_date = date('Y-m-d', strtotime($model->from_date));
+				}
+				if((int)$model->to_date)
+				{
+					$model->to_date = date('Y-m-d', strtotime($model->to_date));
+				}
 			}
 		}
 
