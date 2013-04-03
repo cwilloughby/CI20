@@ -21,7 +21,7 @@
 		echo $form->dropDownList($model, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
 			array('empty' => 'Select a category','ajax' => 
 				array(
-					'type' => 'POST',
+					'type' => 'GET',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
 					'datatype'=>'json',
 					'data' => array('categoryid'=>'js:this.value'),
@@ -36,17 +36,12 @@
 	<div class="row">
 		<?php 
 		echo $form->labelEx($model, 'subjectid');
-		echo $form->dropDownList($model, 'subjectid', array(), 
-			array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
-				array(
-					'type' => 'POST',
-					'url' => CController::createUrl('troubletickets/dynamictips'),
-					'datatype'=>'json',
-					'data' => array('subjectid'=>'js:this.value'),
-					'update' => '#dependant',
-				)
-			)
-		);
+		echo $form->dropDownList($model, 'subjectid', CHtml::listData(Yii::app()->db->createCommand()
+			->select('ci_ticket_subjects.subjectid, subjectname')
+			->from('ci_ticket_subjects')
+			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
+			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$model->categoryid))
+			->queryAll(), 'subjectid', 'subjectname'));
 		echo $form->error($model, 'subjectid'); 
 		?>
 	</div>
