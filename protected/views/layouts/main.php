@@ -98,9 +98,8 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by Office of the Criminal Court Clerk of Davidson County.<br/>
 		All Rights Reserved.<br/>
-		Powered by the Yii Framework
 	</div><!-- footer -->
 
 </div><!-- page -->
