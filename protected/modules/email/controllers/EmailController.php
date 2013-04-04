@@ -217,10 +217,10 @@ class EmailController extends Controller
 		$body = implode("\n", $body);
 		
 		// Set the message's body.
-		$model->mail->Body = "CI ticket #" . $_GET['ticketid'] . " was closed by " . Yii::app()->user->name . "\n\n"
-					. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "\n"
-					. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "\n"
-					. "Description: " . $body . "\n"
+		$model->mail->Body = "CI ticket #" . $_GET['ticketid'] . " was closed by " . Yii::app()->user->name . "<br/><br/>"
+					. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "<br/>"
+					. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "<br/>"
+					. "Description: " . $body . "<br/><br/>"
 					. "Resolution: " . $_GET['resolution'];
 		
 		$model->messagebody = $model->mail->Body;

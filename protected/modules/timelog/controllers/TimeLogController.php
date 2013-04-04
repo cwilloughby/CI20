@@ -8,6 +8,8 @@ class TimeLogController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
+	private $gpoFile = "C:/Users/cwilloughby/Desktop/In/Logon.txt";
+	
 	/**
 	 * @return array action filters
 	 */
@@ -29,30 +31,51 @@ class TimeLogController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
-
+	
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new TimeLog;
+		$transaction = Yii::app()->db->beginTransaction();
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['TimeLog']))
+		try
 		{
-			$model->attributes=$_POST['TimeLog'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$sql = "LOAD DATA INFILE '" . $this->getGpoFile() . "' INTO TABLE ci_time_log
+				FIELDS TERMINATED BY ','
+				(@uName, @cName, @eType, @eTime, @date)
+				SET username = trim(@uName),
+				computername = trim(@cName),
+				eventtype = trim(@eType),
+				eventtime = trim(@eTime),
+				eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
+
+			$command=Yii::app()->db->createCommand($sql);
+
+			if($command->execute())
+			{
+				// Commit the transaction.
+				$transaction->commit();
+				// It is now safe to remove those events from the text file.
+				// Delete the lines from the text file so they won't be read in the next time the script is run.
+				$handle = fopen($this->getGpoFile(), "w");
+				fclose($handle);
+			}
+			else
+			{
+				// The command failed to execute. Throw an exception.
+				throw new Exception('Fail');
+			}
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		catch(Exception $e)
+		{
+			// If an error occured, nothing is inserted into the database and the text file is left alone. 
+			$transaction->rollback();
+		}
+		return;
 	}
-
+	
 	/**
 	 * Lists all models.
 	 */
@@ -69,6 +92,9 @@ class TimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		// Auto import any new events in the text file to the database.
+		//$this->actionCreate();
+		
 		// First unset the cookies for dates.
 		unset(Yii::app()->request->cookies['from_date']);  
 		unset(Yii::app()->request->cookies['to_date']);
@@ -115,17 +141,12 @@ class TimeLogController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
+	
+	/*
+	 * This function returns the path to the file that the GPO writes to.
 	 */
-	protected function performAjaxValidation($model)
+	private function getGpoFile()
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='time-log-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
+		return $this->gpoFile;
 	}
 }

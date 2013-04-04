@@ -88,7 +88,8 @@ class TimeLog extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
-
+		$criteria->group = 'username, computername, eventdate, eventtype, eventtime';
+		
 		if(!empty($this->from_date) && empty($this->to_date))
         {
 			// date is database date column field
@@ -112,6 +113,32 @@ class TimeLog extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder' => 'username, computername, eventdate, eventtime',
+				'attributes'=>array(
+					'username'=>array(
+						'asc'=>'username, computername, eventdate, eventtime',
+						'desc'=>'username DESC, computername, eventdate, eventtime',
+					),
+					'computername'=>array(
+						'asc'=>'computername, username, eventdate, eventtime',
+						'desc'=>'computername DESC, username, eventdate, eventtime',
+					),
+					'eventdate'=>array(
+						'asc'=>'eventdate, username, computername, eventtime',
+						'desc'=>'eventdate DESC, username, computername, eventtime',
+					),
+					'eventtype'=>array(
+						'asc'=>'eventtype, username, computername, eventdate, eventtime',
+						'desc'=>'eventtype DESC, username, computername, eventdate, eventtime',
+					),
+					'eventtime'=>array(
+						'asc'=>'eventtime, username, computername, eventdate',
+						'desc'=>'eventtime DESC, username, computername, eventdate',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }
