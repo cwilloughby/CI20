@@ -77,7 +77,7 @@ class TimeLog extends CActiveRecord
 			'computername' => 'Computername',
 			'eventtype' => 'Event Type',
 			'eventtime' => 'Event Time',
-			'eventdate' => 'Event Date',
+			'eventdate' => 'Event Date (MM/DD/YYYY)',
 		);
 	}
 
@@ -87,7 +87,7 @@ class TimeLog extends CActiveRecord
 	 */
 	public function search()
 	{
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 		$criteria->group = 'username, computername, eventdate, eventtype, eventtime';
 		
 		if(!empty($this->from_date) && empty($this->to_date))
@@ -102,6 +102,9 @@ class TimeLog extends CActiveRecord
         {
             $criteria->condition = "eventdate  >= '$this->from_date' and eventdate <= '$this->to_date'";
         }
+		
+		// Omit the supervisors.
+		$criteria->addCondition("username NOT IN ('tbradley', 'hgentry', 'sdothard', 'ntucker', 'eragan', 'deffler', 'pclayton')");
 		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
@@ -125,27 +128,27 @@ class TimeLog extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'sort'=>array(
-				'defaultOrder' => 'username, eventdate, computername, eventtime',
+				'defaultOrder' => 'username, eventdate DESC, computername, eventtime',
 				'attributes'=>array(
 					'username'=>array(
-						'asc'=>'username, computername, eventdate, eventtime',
-						'desc'=>'username DESC, computername, eventdate, eventtime',
+						'asc'=>'username, computername, eventdate DESC, eventtime',
+						'desc'=>'username DESC, computername, eventdate DESC, eventtime',
 					),
 					'computername'=>array(
-						'asc'=>'computername, username, eventdate, eventtime',
-						'desc'=>'computername DESC, username, eventdate, eventtime',
+						'asc'=>'computername, username, eventdate DESC, eventtime',
+						'desc'=>'computername DESC, username, eventdate DESC, eventtime',
 					),
 					'eventdate'=>array(
 						'asc'=>'eventdate, username, computername, eventtime',
 						'desc'=>'eventdate DESC, username, computername, eventtime',
 					),
 					'eventtype'=>array(
-						'asc'=>'eventtype, username, computername, eventdate, eventtime',
-						'desc'=>'eventtype DESC, username, computername, eventdate, eventtime',
+						'asc'=>'eventtype, username, computername, eventdate DESC, eventtime',
+						'desc'=>'eventtype DESC, username, computername, eventdate DESC, eventtime',
 					),
 					'eventtime'=>array(
-						'asc'=>'eventtime, username, computername, eventdate',
-						'desc'=>'eventtime DESC, username, computername, eventdate',
+						'asc'=>'eventtime, username, computername, eventdate DESC',
+						'desc'=>'eventtime DESC, username, computername, eventdate DESC',
 					),
 					'*',
 				),

@@ -2,6 +2,8 @@
 /* @var $this GsTimeLogController */
 /* @var $model GsTimeLog */
 
+$this->pageTitle = Yii::app()->name . " - GS Time Log";
+
 $this->breadcrumbs=array(
 	'GS Time Logs'=>array('index'),
 	'Manage',
@@ -43,7 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'gs-time-log-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'afterAjaxUpdate'=>"function(){jQuery('#event_date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
+	'afterAjaxUpdate'=>"function(){jQuery('#event_date_search').datepicker({'dateFormat': 'mm/dd/yy'})}",
 	'columns'=>array(
 		'username',
 		'computername',
@@ -58,7 +60,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				'htmlOptions' => array('id' => 'event_date_search'), 
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->eventdate,
 					'changeYear' => true,
 					'changeMonth' => true,

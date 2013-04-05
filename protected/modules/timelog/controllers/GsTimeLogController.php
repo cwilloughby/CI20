@@ -7,7 +7,15 @@ class GsTimeLogController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
-
+	
+	// Store the locations of the Logon.csv and Logoff.csv files.
+	private $log1 = array(1 => 'C:/Users/cwilloughby/Desktop/In/logon.csv', 
+						  2 => 'C:/Users/cwilloughby/Desktop/In/Logoff.csv');
+	
+	// Store the locations of the Logon_Probation.csv and Logoff_Probation.csv files.
+	private $log2 = array(1 => 'C:/Users/cwilloughby/Desktop/In/Logon_Probation.csv',
+						  2 => 'C:/Users/cwilloughby/Desktop/In/Logoff_Probation.csv');
+	
 	/**
 	 * @return array action filters
 	 */
@@ -29,28 +37,81 @@ class GsTimeLogController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
-
+	
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 * Imports the events in the text files into the database.
 	 */
 	public function actionCreate()
 	{
-		$model=new GsTimeLog;
+		// Create a transaction so the sql can be rolled back if something goes wrong.
+		$transaction = Yii::app()->db->beginTransaction();
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['GsTimeLog']))
+		try
 		{
-			$model->attributes=$_POST['GsTimeLog'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			$i = 0;
+			$commands = array();
+			
+			// Prepare the queries for the regular logs.
+			foreach($this->getLog1() as $value)
+			{
+				$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
+					FIELDS TERMINATED BY ','
+					(@eType, @cName, @uName, @date, @eTime)
+					SET username = trim(@uName),
+					computername = trim(@cName),
+					eventtype = trim(@eType),
+					eventtime = trim(@eTime),
+					eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
+		
+				$commands[$i] = Yii::app()->db->createCommand($sql);
+				$i++;
+			}
+			foreach($this->getLog2() as $value)
+			{
+				$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
+					FIELDS TERMINATED BY ','
+					(@eType, @uName, @cName, @date, @eTime)
+					SET username = trim(@uName),
+					computername = trim(@cName),
+					eventtype = trim(@eType),
+					eventtime = trim(@eTime),
+					eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+				$commands[$i] = Yii::app()->db->createCommand($sql);
+				$i++;
+			}
+			
+			foreach($commands as $command)
+			{
+				if(!$command->execute())
+				{
+					// The command failed to execute. Throw an exception.
+					throw new Exception('Fail');
+				}
+			}
+			
+			// Commit the transaction.
+			$transaction->commit();
+			
+			// It is now safe to remove those events from the text files.
+			// Delete the lines from the text files so they won't be read in the next time the script is run.
+			foreach($this->getLog1() as $value)
+			{
+				$handle = fopen($value, "w");
+				fclose($handle);
+			}
+			foreach($this->getLog2() as $value)
+			{
+				$handle = fopen($value, "w");
+				fclose($handle);
+			}
+		}
+		catch(Exception $e)
+		{
+			// If an error occured, nothing is inserted into the database and the text files are left alone. 
+			$transaction->rollback();
+		}
+		return;
 	}
 
 	/**
@@ -107,6 +168,9 @@ class GsTimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		// Auto import any new events in the text file to the database.
+		$this->actionCreate();
+
 		// First unset the cookies for dates.
 		unset(Yii::app()->request->cookies['from_date']);  
 		unset(Yii::app()->request->cookies['to_date']);
@@ -125,10 +189,12 @@ class GsTimeLogController extends Controller
 				$model->from_date = $_GET['from_date'];
 				$model->to_date = $_GET['to_date'];
 
+				// If the from_date is set.
 				if((int)$model->from_date)
 				{
 					$model->from_date = date('Y-m-d', strtotime($model->from_date));
 				}
+				// If the to_date is set.
 				if((int)$model->to_date)
 				{
 					$model->to_date = date('Y-m-d', strtotime($model->to_date));
@@ -153,17 +219,14 @@ class GsTimeLogController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
+	
+	private function getLog1()
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='gs-time-log-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
+		return $this->log1;	
+	}
+	
+	private function getLog2()
+	{
+		return $this->log2;
 	}
 }

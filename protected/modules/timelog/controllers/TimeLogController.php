@@ -33,8 +33,7 @@ class TimeLogController extends Controller
 	}
 	
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 * Imports the events in the text file into the database.
 	 */
 	public function actionCreate()
 	{

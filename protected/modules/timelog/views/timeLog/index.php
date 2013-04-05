@@ -2,6 +2,8 @@
 /* @var $this TimeLogController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . " - Time Log";
+
 $this->breadcrumbs=array(
 	'Time Logs',
 );

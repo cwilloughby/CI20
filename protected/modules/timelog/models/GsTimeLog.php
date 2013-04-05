@@ -77,7 +77,7 @@ class GsTimeLog extends CActiveRecord
 			'computername' => 'Computername',
 			'eventtype' => 'Event Type',
 			'eventtime' => 'Event Time',
-			'eventdate' => 'Event Date',
+			'eventdate' => 'Event Date (MM/DD/YYYY)',
 		);
 	}
 
@@ -87,7 +87,8 @@ class GsTimeLog extends CActiveRecord
 	 */
 	public function search()
 	{
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
+		$criteria->group = 'username, computername, eventdate, eventtype, eventtime';
 		
 		if(!empty($this->from_date) && empty($this->to_date))
         {
@@ -108,10 +109,46 @@ class GsTimeLog extends CActiveRecord
 		$criteria->compare('computername',$this->computername,true);
 		$criteria->compare('eventtype',$this->eventtype,true);
 		$criteria->compare('eventtime',$this->eventtime,true);
-		$criteria->compare('eventdate',$this->eventdate,true);
-
+		
+		// If the regular event date was set.
+		if((int)$this->eventdate)
+		{
+			// Change the date's format so the database will recognize it.
+			$criteria->compare('eventdate', date('Y-m-d', strtotime($this->eventdate)), true);
+		}
+		else
+		{
+			$criteria->compare('eventdate',$this->eventdate,true);
+		}
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder' => 'username, eventdate DESC, computername, eventtime',
+				'attributes'=>array(
+					'username'=>array(
+						'asc'=>'username, computername, eventdate DESC, eventtime',
+						'desc'=>'username DESC, computername, eventdate DESC, eventtime',
+					),
+					'computername'=>array(
+						'asc'=>'computername, username, eventdate DESC, eventtime',
+						'desc'=>'computername DESC, username, eventdate DESC, eventtime',
+					),
+					'eventdate'=>array(
+						'asc'=>'eventdate, username, computername, eventtime',
+						'desc'=>'eventdate DESC, username, computername, eventtime',
+					),
+					'eventtype'=>array(
+						'asc'=>'eventtype, username, computername, eventdate DESC, eventtime',
+						'desc'=>'eventtype DESC, username, computername, eventdate DESC, eventtime',
+					),
+					'eventtime'=>array(
+						'asc'=>'eventtime, username, computername, eventdate DESC',
+						'desc'=>'eventtime DESC, username, computername, eventdate DESC',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }
