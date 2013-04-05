@@ -40,7 +40,7 @@ class LoginController extends Controller
 	}
 
 	/**
-	 * Logs out the current user and redirect to homepage.
+	 * Logs out the current user and redirect to the homepage.
 	 */
 	public function actionLogout()
 	{

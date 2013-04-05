@@ -92,7 +92,6 @@ class TimeLog extends CActiveRecord
 		
 		if(!empty($this->from_date) && empty($this->to_date))
         {
-			// date is database date column field
             $criteria->condition = "eventdate >= '$this->from_date'";  
         }
 		else if(!empty($this->to_date) && empty($this->from_date))
@@ -109,12 +108,24 @@ class TimeLog extends CActiveRecord
 		$criteria->compare('computername',$this->computername,true);
 		$criteria->compare('eventtype',$this->eventtype,true);
 		$criteria->compare('eventtime',$this->eventtime,true);
-		$criteria->compare('eventdate',$this->eventdate,true);
-
+		
+		// If the regular event date was set.
+		if((int)$this->eventdate)
+		{
+			// Change the date's format so the database will recognize it.
+			$criteria->compare('eventdate', date('Y-m-d', strtotime($this->eventdate)), true);
+		}
+		else
+		{
+			$criteria->compare('eventdate',$this->eventdate,true);
+		}
+		
+		// The extensive use of GROUP BY and ORDER BY will help to pair up each login
+		// event with it's logoff event on the next row.
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'sort'=>array(
-				'defaultOrder' => 'username, computername, eventdate, eventtime',
+				'defaultOrder' => 'username, eventdate, computername, eventtime',
 				'attributes'=>array(
 					'username'=>array(
 						'asc'=>'username, computername, eventdate, eventtime',

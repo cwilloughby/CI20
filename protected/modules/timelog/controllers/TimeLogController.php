@@ -38,6 +38,7 @@ class TimeLogController extends Controller
 	 */
 	public function actionCreate()
 	{
+		// Create a transaction so the sql can be rolled back if something goes wrong.
 		$transaction = Yii::app()->db->beginTransaction();
 
 		try
@@ -99,8 +100,8 @@ class TimeLogController extends Controller
 		unset(Yii::app()->request->cookies['from_date']);  
 		unset(Yii::app()->request->cookies['to_date']);
 
-		$model = new TimeLog('search');  // your model
-		$model->unsetAttributes();  // clear any default values
+		$model = new TimeLog('search');
+		$model->unsetAttributes();  // Clear any default values.
 
 		if(isset($_GET['TimeLog']))
 		{
@@ -113,12 +114,16 @@ class TimeLogController extends Controller
 				$model->from_date = $_GET['from_date'];
 				$model->to_date = $_GET['to_date'];
 
+				// If the from_date is set.
 				if((int)$model->from_date)
 				{
+					// Convert the date format to the same format that is used in the database.
 					$model->from_date = date('Y-m-d', strtotime($model->from_date));
 				}
+				// If the to_date is set.
 				if((int)$model->to_date)
 				{
+					// Convert the date format to the same format that is used in the database.
 					$model->to_date = date('Y-m-d', strtotime($model->to_date));
 				}
 			}
