@@ -25,6 +25,21 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+
+Yii::app()->clientScript->registerScript('export', "
+$('#export-button').on('click',function() {
+    $.fn.yiiGridView.export();
+});
+$.fn.yiiGridView.export = function() {
+    $.fn.yiiGridView.update('time-log-grid',{
+        success: function() {
+            $('#time-log-grid').removeClass('grid-view-loading');
+            window.location = '". $this->createUrl('exportFile')  . "';
+        },
+        data: $('.search-form form').serialize() + '&export=true'
+    });
+}
+");
 ?>
 
 <h1>Manage Time Logs</h1>

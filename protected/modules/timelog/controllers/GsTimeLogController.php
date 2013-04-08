@@ -171,6 +171,12 @@ class GsTimeLogController extends Controller
 		// Auto import any new events in the text file to the database.
 		$this->actionCreate();
 
+		if(Yii::app()->request->getParam('export'))
+		{
+			$this->actionExport();
+			Yii::app()->end();
+		}
+		
 		// First unset the cookies for dates.
 		unset(Yii::app()->request->cookies['from_date']);  
 		unset(Yii::app()->request->cookies['to_date']);
@@ -206,7 +212,90 @@ class GsTimeLogController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	public function actionExport()
+	{
+		$fp = fopen('php://temp', 'w');
 
+		/* 
+		 * Write a header of csv file
+		 */
+		$headers = array(
+			'username',
+			'computername',
+			'eventdate',
+			'eventtype',
+			'eventtime',
+		);
+		$row = array();
+		foreach($headers as $header) {
+			$row[] = GsTimeLog::model()->getAttributeLabel($header);
+		}
+		fputcsv($fp,$row);
+
+		/*
+		 * Init dataProvider for first page.
+		 */
+		$model = new GsTimeLog('search');
+		$model->unsetAttributes();  // Clear any default values.
+		
+		if(isset($_GET['GsTimeLog']))
+		{
+			$model->attributes=$_GET['GsTimeLog'];
+			
+			if(isset($_GET['from_date']) || isset($_GET['to_date']))
+			{
+				Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
+				Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
+				$model->from_date = $_GET['from_date'];
+				$model->to_date = $_GET['to_date'];
+				
+				// If the from_date is set.
+				if((int)$model->from_date)
+				{
+					// Convert the date format to the same format that is used in the database.
+					$model->from_date = date('Y-m-d', strtotime($model->from_date));
+				}
+				// If the to_date is set.
+				if((int)$model->to_date)
+				{
+					// Convert the date format to the same format that is used in the database.
+					$model->to_date = date('Y-m-d', strtotime($model->to_date));
+				}
+			}
+		}
+		
+		$dp = $model->search();
+		$dp->setPagination(false);
+
+		/*
+		 * Get models, write to a file
+		 */
+		$models = $dp->getData();
+		foreach($models as $model)
+		{
+			$row = array();
+			foreach($headers as $head)
+			{
+				$row[] = CHtml::value($model,$head);
+			}
+			fputcsv($fp,$row);
+		}
+
+		/*
+		 * Save csv content to a session.
+		 */
+		rewind($fp);
+		Yii::app()->user->setState('export',stream_get_contents($fp));
+		fclose($fp);
+	}
+	
+	public function actionExportFile()
+	{
+		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
+		Yii::app()->user->clearState('export');
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

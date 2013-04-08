@@ -101,7 +101,7 @@ class GsTimeLog extends CActiveRecord
         }
 		else if(!empty($this->to_date) && !empty($this->from_date))
         {
-            $criteria->condition = "eventdate  >= '$this->from_date' and eventdate <= '$this->to_date'";
+            $criteria->condition = "eventdate >= '$this->from_date' and eventdate <= '$this->to_date'";
         }
 		
 		$criteria->compare('id',$this->id);

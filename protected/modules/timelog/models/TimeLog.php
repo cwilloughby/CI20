@@ -100,7 +100,7 @@ class TimeLog extends CActiveRecord
         }
 		else if(!empty($this->to_date) && !empty($this->from_date))
         {
-            $criteria->condition = "eventdate  >= '$this->from_date' and eventdate <= '$this->to_date'";
+            $criteria->condition = "eventdate >= '$this->from_date' and eventdate <= '$this->to_date'";
         }
 		
 		// Omit the supervisors.

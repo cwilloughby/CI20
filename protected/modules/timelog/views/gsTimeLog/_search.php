@@ -78,6 +78,7 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton('Export', array('id'=>'export-button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

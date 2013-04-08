@@ -19,11 +19,26 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('time-log-grid', {
+	$.fn.yiiGridView.update('gs-time-log-grid', {
 		data: $(this).serialize()
 	});
 	return false;
 });
+");
+
+Yii::app()->clientScript->registerScript('export', "
+$('#export-button').on('click',function() {
+    $.fn.yiiGridView.export();
+});
+$.fn.yiiGridView.export = function() {
+    $.fn.yiiGridView.update('gs-time-log-grid',{
+        success: function() {
+            $('#gs-time-log-grid').removeClass('grid-view-loading');
+            window.location = '". $this->createUrl('exportFile')  . "';
+        },
+        data: $('.search-form form').serialize() + '&export=true'
+    });
+}
 ");
 ?>
 

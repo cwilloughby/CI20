@@ -88,8 +88,8 @@
 						|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
 					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
-						array('label'=>'Time Log', 'url'=>array('/timelog/timelog/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
-						array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/index'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
+						array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 							|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)), 'itemOptions'=>array('class'=>'sub')),
 					),
 				),
