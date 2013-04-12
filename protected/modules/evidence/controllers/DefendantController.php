@@ -51,7 +51,19 @@ class DefendantController extends Controller
 		{
 			$model->attributes=$_POST['Defendant'];
 			if($model->save())
+			{
+				// Record the defendant create event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_defendant';
+				$log->event = 'Defendant Created';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->defid));
+			}
 		}
 
 		$this->render('create',array(
@@ -75,7 +87,19 @@ class DefendantController extends Controller
 		{
 			$model->attributes=$_POST['Defendant'];
 			if($model->save())
+			{
+				// Record the defendant update event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_defendant';
+				$log->event = 'Defendant Updated';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->defid));
+			}
 		}
 
 		$this->render('update',array(

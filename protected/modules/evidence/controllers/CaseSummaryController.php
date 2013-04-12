@@ -63,7 +63,19 @@ class CaseSummaryController extends Controller
 			
 			echo $summary->dispodate;
 			if($summary->save())
+			{
+				// Record the case summary create event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Created';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $summary->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id' => $summary->summaryid));
+			}
 		}
 
 		$this->render('create', array(
@@ -90,7 +102,19 @@ class CaseSummaryController extends Controller
 		{
 			$model->attributes=$_POST['CaseSummary'];
 			if($model->save())
+			{
+				// Record the case summary update event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Updated';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->summaryid));
+			}
 		}
 
 		$this->render('update',array(

@@ -51,7 +51,19 @@ class CrtCaseController extends Controller
 		{
 			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
+			{
+				// Record the court case create event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_crt_case';
+				$log->event = 'Court Case Created';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->caseno));
+			}
 		}
 
 		$this->render('create',array(
@@ -75,7 +87,19 @@ class CrtCaseController extends Controller
 		{
 			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
+			{
+				// Record the court case update event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_crt_case';
+				$log->event = 'Court Case Updated';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->caseno));
+			}
 		}
 
 		$this->render('update',array(

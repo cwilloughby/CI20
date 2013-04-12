@@ -86,6 +86,16 @@ class EvidenceController extends Controller
 			if(!$model->save())
 				return false;
 			
+			// Record the evidence create event. Commented out for testing.
+			/*
+			$log = new Log;
+			$log->tablename = 'ci_evidence';
+			$log->event = 'Evidence Created';
+			$log->userid = Yii::app()->user->getId();
+			$log->tablerow = $model->getPrimaryKey();
+			$log->save(false);
+			*/
+			
 			$idx++;
 		}
 		return true;
@@ -111,7 +121,19 @@ class EvidenceController extends Controller
 			}
 			
 			if($model->save())
+			{
+				// Record the evidence update event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_evidence';
+				$log->event = 'Evidence Updated';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				*/
+				
 				$this->redirect(array('view','id'=>$model->evidenceid));
+			}
 		}
 		
 		$model->hearingdate = date('m/d/Y', strtotime($model->hearingdate));
