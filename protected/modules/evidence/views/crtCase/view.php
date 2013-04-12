@@ -51,26 +51,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name'=>'def_search2', 
 			'value'=>'$data->def->lname' 
 		),
-		array(
-			'name' => 'hearingdate',
-			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
-				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$cases, 
-				'attribute'=>'hearingdate', 
-				'htmlOptions' => array('id' => 'hearing_date_search'), 
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $cases->hearingdate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
-		),
-		'hearingtype',
 		'sentence',
 		'comment',
 		array(

@@ -70,8 +70,7 @@
 				array(
 					'label'=>'Admin',
 					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
-						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
-						|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
+						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 					'itemOptions'=>array('class'=>'dropdown'),
 					'items'=>array(
 						array('label'=>'User Controls', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),

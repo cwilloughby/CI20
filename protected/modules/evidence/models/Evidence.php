@@ -6,6 +6,8 @@
  * The followings are the available columns in table 'ci_evidence':
  * @property integer $evidenceid
  * @property string $caseno
+ * @property string $hearingtype
+ * @property string $hearingdate
  * @property string $exhibitno
  * @property string $evidencename
  * @property string $comment
@@ -43,14 +45,16 @@ class Evidence extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('caseno, exhibitno, evidencename', 'required'),
+			array('caseno, hearingdate, hearingtype, exhibitno, evidencename', 'required'),
 			array('caseno', 'length', 'max'=>50),
+			array('hearingtype', 'length', 'max'=>45),
 			array('exhibitno', 'length', 'max'=>20),
 			array('evidencename', 'length', 'max'=>1000),
 			array('comment', 'length', 'max'=>100),
+			array('hearingdate, dateadded', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('evidenceid, caseno, exhibitno, evidencename, comment, dateadded, exhibitlist', 'safe', 'on'=>'search'),
+			array('evidenceid, caseno, exhibitno, evidencename, comment, dateadded, exhibitlist, hearingdate, hearingtype,', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,10 +78,12 @@ class Evidence extends CActiveRecord
 		return array(
 			'evidenceid' => 'Evidence ID',
 			'caseno' => 'Case Number',
-			'exhibitno' => 'Exhibit Number',
+			'exhibitno' => 'Exhibit #',
 			'evidencename' => 'Evidence Name',
 			'comment' => 'Comment',
 			'dateadded' => 'Date Added',
+			'hearingdate' => 'Hearing Date',
+			'hearingtype' => 'Hearing Type',
 			'exhibitlist' => 'Exhibit List',
 		);
 	}
@@ -102,6 +108,8 @@ class Evidence extends CActiveRecord
 		$criteria->compare('evidencename',$this->evidencename,true);
 		$criteria->compare('comment',$this->comment,true);
 		$criteria->compare('dateadded',$this->dateadded,true);
+		$criteria->compare('hearingdate',$this->hearingdate,true);
+		$criteria->compare('hearingtype',$this->hearingtype,true);
 		$criteria->compare('exhibitlist',$this->exhibitlist);
 
 		return new CActiveDataProvider($this, array(

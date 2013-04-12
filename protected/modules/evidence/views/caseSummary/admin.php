@@ -46,12 +46,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'afterAjaxUpdate'=>"function(){jQuery('#hearing_date_search').datepicker({
-		'dateFormat': 'yy-mm-dd',
-		'showAnim':'fold',
-		'changeYear':true,
-		'changeMonth':true,
-		'showButtonPanel':true})}",
 	'columns'=>array(
 		array( 
 			'name'=>'def_search1', 

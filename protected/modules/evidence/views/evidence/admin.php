@@ -46,10 +46,30 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'evidence-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'afterAjaxUpdate'=>"function(){jQuery('#date_added_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
+	'afterAjaxUpdate'=>"function(){jQuery('#date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
 		'exhibitlist',
 		'caseno',
+		'hearingtype',
+		array(
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$model, 
+				'attribute'=>'hearingdate', 
+				'htmlOptions' => array('id' => 'date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $model->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
+		),
 		'exhibitno',
 		'evidencename',
 		'comment',

@@ -76,6 +76,8 @@ class EvidenceController extends Controller
 
 			// The attributes can be found at the same postion in the formData.
 			$model->caseno = $formData['caseno'][$idx];
+			$model->hearingtype = $formData['hearingtype'][$idx];
+			$model->hearingdate = date('Y-m-d', strtotime($formData['hearingdate'][$idx]));
 			$model->exhibitno = $ex;
 			$model->evidencename = $formData['evidencename'][$idx];
 			$model->comment = $formData['comment'][$idx];
@@ -91,23 +93,29 @@ class EvidenceController extends Controller
 
 	/**
 	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * If the update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Evidence']))
 		{
 			$model->attributes=$_POST['Evidence'];
+			$model->exhibitlist = $_POST['Evidence']['exhibitlist'];
+			
+			if((int)$model->hearingdate)
+			{
+				$model->hearingdate = date('Y-m-d', strtotime($model->hearingdate));
+			}
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->evidenceid));
 		}
-
+		
+		$model->hearingdate = date('m/d/Y', strtotime($model->hearingdate));
+		
 		$this->render('update',array(
 			'model'=>$model,
 		));

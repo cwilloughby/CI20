@@ -169,7 +169,7 @@ class GsTimeLogController extends Controller
 	public function actionAdmin()
 	{
 		// Auto import any new events in the text file to the database.
-		$this->actionCreate();
+		//$this->actionCreate();
 
 		if(Yii::app()->request->getParam('export'))
 		{

@@ -20,4 +20,4 @@ $this->menu2=array(
 
 <h1>Update Evidence <?php echo $model->evidenceid; ?></h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_updateForm', array('model'=>$model)); ?>

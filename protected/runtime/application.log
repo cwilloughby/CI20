@@ -6490,3 +6490,572 @@ REQUEST_URI=/evidence/crtcase/view?id=08-A-813
 in C:\wamp\www\CI20\protected\modules\evidence\views\crtCase\view.php (34)
 in C:\wamp\www\CI20\protected\modules\evidence\controllers\CrtCaseController.php (35)
 in C:\wamp\www\CI20\index.php (13)
+2013/04/12 14:59:34 [error] [exception.CException] exception 'CException' with message 'Property "CaseSummary.hearingdate" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hearingdate')
+#1 C:\wamp\www\CI20\protected\modules\evidence\views\crtCase\view.php(66): CActiveRecord->__get('hearingdate')
+#2 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#5 C:\wamp\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\wamp\www\CI20\protected\modules\evidence\controllers\CrtCaseController.php(36): CController->render('view', Array)
+#7 [internal function]: CrtCaseController->actionView('2000-A-121')
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CrtCaseController), Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CrtCaseController), Object(ReflectionMethod), Array)
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#15 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/crtcas...')
+#16 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/evidence/crtcase/view?id=2000-A-121
+HTTP_REFERER=http://ci2/evidence/crtcase/index
+---
+2013/04/12 15:00:31 [error] [exception.CException] exception 'CException' with message 'Property "CaseSummary.hearingdate" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hearingdate')
+#1 C:\wamp\www\CI20\protected\modules\evidence\views\defendant\view.php(59): CActiveRecord->__get('hearingdate')
+#2 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#3 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#5 C:\wamp\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\wamp\www\CI20\protected\modules\evidence\controllers\DefendantController.php(36): CController->render('view', Array)
+#7 [internal function]: DefendantController->actionView('1')
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DefendantController), Array)
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DefendantController), Object(ReflectionMethod), Array)
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\framework\web\CWebApplication.php(283): CController->run('view')
+#15 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/defend...')
+#16 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/evidence/defendant/view?id=1
+HTTP_REFERER=http://ci2/evidence/defendant/index
+---
+2013/04/12 15:04:44 [error] [php] Undefined variable: summary (C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php:70)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php(23): EvidenceController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): EvidenceController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(113): EvidenceController->render()
+#7 unknown(0): EvidenceController->actionUpdate()
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#12 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#14 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#15 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#16 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/update?id=1
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php (70)
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php (23)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (113)
+2013/04/12 15:04:58 [error] [php] Undefined variable: summary (C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php:83)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#1 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php(23): EvidenceController->renderPartial()
+#2 C:\wamp\framework\web\CBaseController.php(127): require()
+#3 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#4 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#5 C:\wamp\framework\web\CController.php(783): EvidenceController->renderPartial()
+#6 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(113): EvidenceController->render()
+#7 unknown(0): EvidenceController->actionUpdate()
+#8 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#9 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#11 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#12 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#14 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#15 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#16 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/update?id=1
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php (83)
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php (23)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (113)
+2013/04/12 15:18:21 [error] [exception.CException] exception 'CException' with message 'Property "CJuiDatePicker.style" is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\framework\web\CWidgetFactory.php(162): CComponent->__set('style', 'width:70px')
+#1 C:\wamp\framework\web\CBaseController.php(147): CWidgetFactory->createWidget(Object(EvidenceController), 'zii.widgets.jui...', Array)
+#2 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.jui...', Array)
+#3 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php(84): CBaseController->widget('zii.widgets.jui...', Array)
+#4 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#5 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#6 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#7 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php(23): CController->renderPartial('_form', Array)
+#8 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#9 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#10 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#11 C:\wamp\framework\web\CController.php(783): CController->renderPartial('update', Array, true)
+#12 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(113): CController->render('update', Array)
+#13 [internal function]: EvidenceController->actionUpdate('1')
+#14 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EvidenceController), Array)
+#15 C:\wamp\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EvidenceController), Object(ReflectionMethod), Array)
+#16 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#17 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#18 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#19 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\framework\web\CWebApplication.php(283): CController->run('update')
+#21 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/eviden...')
+#22 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/evidence/evidence/update?id=1
+HTTP_REFERER=http://ci2/evidence/evidence/view?id=1
+---
+2013/04/12 15:29:18 [error] [php] include(JQRelcopy.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php(47): spl_autoload_call()
+#1 C:\wamp\framework\web\CBaseController.php(127): require()
+#2 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#3 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#4 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\create.php(20): EvidenceController->renderPartial()
+#5 C:\wamp\framework\web\CBaseController.php(127): require()
+#6 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#7 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#8 C:\wamp\framework\web\CController.php(783): EvidenceController->renderPartial()
+#9 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(57): EvidenceController->render()
+#10 C:\wamp\framework\web\actions\CInlineAction.php(50): EvidenceController->actionCreate()
+#11 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#12 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#15 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/create
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php (47)
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\create.php (20)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (57)
+2013/04/12 15:29:25 [error] [php] include(JQRelcopy.php): failed to open stream: No such file or directory (C:\wamp\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php(47): spl_autoload_call()
+#1 C:\wamp\framework\web\CBaseController.php(127): require()
+#2 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#3 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#4 C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php(23): EvidenceController->renderPartial()
+#5 C:\wamp\framework\web\CBaseController.php(127): require()
+#6 C:\wamp\framework\web\CBaseController.php(96): EvidenceController->renderInternal()
+#7 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#8 C:\wamp\framework\web\CController.php(783): EvidenceController->renderPartial()
+#9 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(113): EvidenceController->render()
+#10 unknown(0): EvidenceController->actionUpdate()
+#11 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#12 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#13 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#14 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#15 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#16 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#17 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#18 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#19 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/update?id=1
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\_form.php (47)
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\update.php (23)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (113)
+2013/04/12 15:46:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_evidence`, CONSTRAINT `fk_ci_evidence_ci_crt_case1` FOREIGN KEY (`caseno`) REFERENCES `ci_crt_case` (`caseno`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_evidence` (`caseno`, `hearingtype`, `hearingdate`, `exhibitno`, `evidencename`, `comment`, `exhibitlist`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6).
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (86)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (47)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 15:46:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`ci2`.`ci_evidence`, CONSTRAINT `fk_ci_evidence_ci_crt_case1` FOREIGN KEY (`caseno`) REFERENCES `ci_crt_case` (`caseno`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ci_evidence` (`caseno`, `hearingtype`, `hearingdate`, `exhibitno`, `evidencename`, `comment`, `exhibitlist`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6)' in C:\wamp\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(796): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(86): CActiveRecord->save()
+#3 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(47): EvidenceController->saveEvidence(Array)
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvidenceController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#10 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/eviden...')
+#11 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/evidence/evidence/create
+HTTP_REFERER=http://ci2/evidence/evidence/create
+---
+2013/04/12 15:48:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php (118)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php (157)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 15:48:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php(118): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php(157): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): CaseSummaryController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#24 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/casesu...')
+#25 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#26 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/evidence/casesummary/admin?CaseSummary%5Bdef_search1%5D=&CaseSummary%5Bdef_search2%5D=&CaseSummary%5Bcaseno%5D=2000-A-121&CaseSummary%5Bdiv_search%5D=&CaseSummary%5Bcomplaint_search%5D=&CaseSummary%5Blocation%5D=&CaseSummary%5Bpage%5D=&CaseSummary%5Bdispodate%5D=&CaseSummary%5Bsentence%5D=&CaseSummary%5Bindate%5D=&CaseSummary%5Boutdate%5D=&CaseSummary%5Bdestructiondate%5D=&CaseSummary%5Brecip%5D=&CaseSummary%5Bcomment%5D=&CaseSummary%5Bdna%5D=&CaseSummary%5Bbio%5D=&CaseSummary%5Bdrug%5D=&CaseSummary%5Bfirearm%5D=&CaseSummary%5Bmoney%5D=&CaseSummary%5Bother%5D=&ajax=case-summary-grid
+HTTP_REFERER=http://ci2/evidence/casesummary/admin
+---
+2013/04/12 15:48:52 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php (118)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php (157)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 15:48:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php(118): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php(157): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): CaseSummaryController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#24 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/casesu...')
+#25 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#26 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/evidence/casesummary/admin?CaseSummary%5Bdef_search1%5D=&CaseSummary%5Bdef_search2%5D=&CaseSummary%5Bcaseno%5D=2000-A-121&CaseSummary%5Bdiv_search%5D=&CaseSummary%5Bcomplaint_search%5D=&CaseSummary%5Bsentence%5D=&CaseSummary%5Bcomment%5D=&CaseSummary%5Bdna%5D=&CaseSummary%5Bbio%5D=&CaseSummary%5Bdrug%5D=&CaseSummary%5Bfirearm%5D=&CaseSummary%5Bmoney%5D=&CaseSummary%5Bother%5D=&CaseSummary_page=1&ajax=case-summary-grid
+HTTP_REFERER=http://ci2/evidence/casesummary/admin
+---
+2013/04/12 15:52:49 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php (112)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php (157)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 15:52:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php(112): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php(157): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): CaseSummaryController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#24 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/casesu...')
+#25 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#26 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/evidence/casesummary/admin?CaseSummary%5Bdef_search1%5D=&CaseSummary%5Bdef_search2%5D=&CaseSummary%5Bcaseno%5D=2000-A-121&CaseSummary%5Bdiv_search%5D=&CaseSummary%5Bcomplaint_search%5D=&CaseSummary%5Bsentence%5D=&CaseSummary%5Bcomment%5D=&CaseSummary%5Bdna%5D=&CaseSummary%5Bbio%5D=&CaseSummary%5Bdrug%5D=&CaseSummary%5Bfirearm%5D=&CaseSummary%5Bmoney%5D=&CaseSummary%5Bother%5D=&CaseSummary_page=1&ajax=case-summary-grid
+HTTP_REFERER=http://ci2/evidence/casesummary/admin
+---
+2013/04/12 15:54:28 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0).
+in C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php (112)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php (157)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 15:54:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'caseno' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`summaryid`) FROM `ci_case_summary` `t`  LEFT OUTER JOIN `ci_defendant` `def` ON (`t`.`defid`=`def`.`defid`)  LEFT OUTER JOIN `ci_crt_case` `caseno0` ON (`t`.`caseno`=`caseno0`.`caseno`)  WHERE (caseno LIKE :ycp0)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(728): CDbCommand->queryScalar()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(155): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\framework\db\ar\CActiveRecord.php(1544): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\framework\web\CActiveDataProvider.php(129): CDataProvider->getTotalItemCount()
+#7 C:\wamp\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#8 C:\wamp\framework\zii\widgets\CBaseListView.php(108): CDataProvider->getData()
+#9 C:\wamp\framework\zii\widgets\grid\CGridView.php(289): CBaseListView->init()
+#10 C:\wamp\framework\web\CBaseController.php(148): CGridView->init()
+#11 C:\wamp\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 C:\wamp\www\CI20\protected\modules\evidence\views\caseSummary\admin.php(112): CBaseController->widget('zii.widgets.gri...', Array)
+#13 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#14 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#15 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#16 C:\wamp\framework\web\CController.php(783): CController->renderPartial('admin', Array, true)
+#17 C:\wamp\www\CI20\protected\modules\evidence\controllers\CaseSummaryController.php(157): CController->render('admin', Array)
+#18 C:\wamp\framework\web\actions\CInlineAction.php(50): CaseSummaryController->actionAdmin()
+#19 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#20 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#22 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\framework\web\CWebApplication.php(283): CController->run('admin')
+#24 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evidence/casesu...')
+#25 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#26 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/evidence/casesummary/admin?CaseSummary%5Bdef_search1%5D=&CaseSummary%5Bdef_search2%5D=&CaseSummary%5Bcaseno%5D=2000-A-121&CaseSummary%5Bdiv_search%5D=&CaseSummary%5Bcomplaint_search%5D=&CaseSummary%5Bsentence%5D=&CaseSummary%5Bcomment%5D=&CaseSummary%5Bdna%5D=&CaseSummary%5Bbio%5D=&CaseSummary%5Bdrug%5D=&CaseSummary%5Bfirearm%5D=&CaseSummary%5Bmoney%5D=&CaseSummary%5Bother%5D=&CaseSummary_page=1&ajax=case-summary-grid
+HTTP_REFERER=http://ci2/evidence/casesummary/admin
+---
+2013/04/12 16:14:45 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:14:45 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:14:45 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:15:05 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:15:05 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:15:05 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:18:24 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:18:24 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:18:24 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:17 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:17 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:17 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:25 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:25 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:25 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:33 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:33 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:33 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:38 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:38 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:23:38 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:24:53 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:24:53 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:24:53 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:03 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:03 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:03 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:39 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:39 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:25:39 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:26:03 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:26:03 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:26:03 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:27:20 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:27:20 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:27:20 [warning] [application] Failed to set unsafe attribute "hearingdate" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:29:52 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:29:52 [warning] [application] Failed to set unsafe attribute "hearingtype" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:30:35 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:30:41 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:36:05 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:37:21 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:38:26 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:44:28 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:49:20 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:49:20 [error] [php] Array to string conversion (C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php:116)
+Stack trace:
+#0 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#3 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#4 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#5 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#6 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#7 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/update?id=2
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (116)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:49:44 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:49:51 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (106)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:50:32 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:50:48 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:51:06 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:51:16 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:52:55 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:53:01 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:54:00 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:56:33 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:57:05 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:57:11 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:57:41 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:58:59 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 16:59:38 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 17:00:11 [error] [php] Undefined variable: case (C:\wamp\www\CI20\protected\modules\evidence\views\evidence\view.php:32)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvidenceController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvidenceController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php(36): EvidenceController->render()
+#3 unknown(0): EvidenceController->actionView()
+#4 C:\wamp\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 C:\wamp\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 C:\wamp\framework\web\filters\CFilterChain.php(134): EvidenceController->runAction()
+#8 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\framework\web\CController.php(266): EvidenceController->runActionWithFilters()
+#10 C:\wamp\framework\web\CWebApplication.php(283): EvidenceController->run()
+#11 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evidence/evidence/view?id=2
+in C:\wamp\www\CI20\protected\modules\evidence\views\evidence\view.php (32)
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (36)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 17:01:02 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)
+2013/04/12 17:01:19 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
+in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
+in C:\wamp\www\CI20\index.php (13)

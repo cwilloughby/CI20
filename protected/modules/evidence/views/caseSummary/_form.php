@@ -153,34 +153,6 @@
 			<?php echo $form->error($summary,'dispodate'); ?>
 			</td>
 		</tr>
-		
-		<tr>
-			<td>
-			<?php echo $form->labelEx($summary,'hearingtype'); ?>
-			<?php echo $form->textField($summary,'hearingtype'); ?>
-			<?php echo $form->error($summary,'hearingtype'); ?>
-			</td>
-		
-			<td>
-			<?php echo $form->labelEx($summary,'hearingdate'); ?>
-			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-				array(
-					'model' => $summary,
-					'attribute' => 'hearingdate',
-					'options' => array(
-						'showAnim' => 'fold',
-						'dateFormat' => 'yy-mm-dd',
-						'formatDate' => 'yy-mm-dd',
-						'defaultDate' => $summary->hearingdate,
-						'changeYear' => true,
-						'changeMonth' => true,
-						'showButtonPanel' => true,
-					),
-				));
-			?>
-			<?php echo $form->error($summary,'hearingdate'); ?>
-			</td>
-		</tr>
 
 		<tr>
 			<td>

@@ -44,6 +44,8 @@
 		<tr>
 			<th><?php echo $form->labelEx($model,'exhibitlist');?></th>
 			<th><?php echo $form->labelEx($model,'caseno');?></th>
+			<th><?php echo $form->labelEx($model,'hearingtype');?></th>
+			<th><?php echo $form->labelEx($model,'hearingdate');?></th>
 			<th><?php echo $form->labelEx($model,'exhibitno');?></th>
 			<th><?php echo $form->labelEx($model,'evidencename');?></th>
 			<th><?php echo $form->labelEx($model,'comment');?></th>
@@ -51,13 +53,25 @@
 
 		<tr class="row copy">
 			<td>
-			<?php echo $form->textField($model,'exhibitlist[]'); ?>
+			<?php echo $form->textField($model,'exhibitlist[]', array("style"=>'width:70px')); ?>
 			<?php echo $form->error($model,'exhibitlist[]'); ?>
 			</td>
+			
 			<td>
-			<?php echo $form->textField($model,'caseno[]', array('required' => true)); ?>
+			<?php echo $form->textField($model,'caseno[]', array('required' => true, "style"=>'width:80px')); ?>
 			<?php echo $form->error($model,'caseno[]'); ?>
 			</td>
+			
+			<td>
+			<?php echo $form->textField($model,'hearingtype[]'); ?>
+			<?php echo $form->error($model,'hearingtype[]'); ?>
+			</td>
+			
+			<td>
+			<?php echo $form->textField($model,'hearingdate[]', array("style"=>'width:70px')); ?>
+			<?php echo $form->error($model,'hearingdate[]'); ?>
+			</td>
+			
 			<td>
 			<?php echo $form->textField($model,'exhibitno[]', array('required' => true)); ?>
 			<?php echo $form->error($model,'exhibitno[]'); ?>

@@ -29,8 +29,8 @@ $this->menu2=array(
 		'comment',
 		array(
 			'name' => 'dateadded',
-			'value' => (isset($case->dateadded) && ((int)$case->dateadded))
-				?CHtml::encode(date('g:i a Y-m-d', strtotime($case->dateadded))):"N/A",
+			'value' => (isset($model->dateadded) && ((int)$model->dateadded))
+				?CHtml::encode(date('g:i a Y-m-d', strtotime($model->dateadded))):"N/A",
 		),
 		'exhibitlist',
 	),

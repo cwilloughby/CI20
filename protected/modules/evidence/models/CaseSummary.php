@@ -69,11 +69,11 @@ class CaseSummary extends CActiveRecord
 			array('location, sentence', 'length', 'max'=>100),
 			array('page', 'length', 'max'=>6),
 			array('comment', 'length', 'max'=>255),
-			array('dispodate, hearingdate, indate, outdate, destructiondate', 'type', 'type'=>'date', 'message'=>'{attribute} must be formatted as yyyy-mm-dd', 'dateFormat' => 'yyyy-mm-dd'),
-			array('dispodate, hearingdate, indate, outdate, destructiondate', 'safe'),
+			array('dispodate, indate, outdate, destructiondate', 'type', 'type'=>'date', 'message'=>'{attribute} must be formatted as yyyy-mm-dd', 'dateFormat' => 'yyyy-mm-dd'),
+			array('dispodate, indate, outdate, destructiondate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, hearingdate, hearingtype, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
+			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -106,8 +106,6 @@ class CaseSummary extends CActiveRecord
 			'complaint_search' => 'Complaint Number',
 			'location' => 'Location',
 			'dispodate' => 'Disposition Date',
-			'hearingdate' => 'Hearing Date',
-			'hearingtype' => 'Hearing Type',
 			'page' => 'Page',
 			'sentence' => 'Sentence',
 			'indate' => 'Indate',
@@ -139,11 +137,9 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('def.lname',$this->def_search2,true);
 		$criteria->compare('caseno0.crtdiv',$this->div_search,true);
 		$criteria->compare('caseno0.cptno',$this->complaint_search,true);
-		$criteria->compare('caseno',$this->caseno,true);
+		$criteria->compare('caseno0.caseno',$this->caseno,true);
 		$criteria->compare('location',$this->location,true);
 		$criteria->compare('dispodate',$this->dispodate,true);
-		$criteria->compare('hearingdate',$this->hearingdate,true);
-		$criteria->compare('hearingtype',$this->hearingtype,true);
 		$criteria->compare('page',$this->page,true);
 		$criteria->compare('sentence',$this->sentence,true);
 		$criteria->compare('indate',$this->indate,true);
@@ -222,8 +218,6 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('def.fname',$this->def_search1,true);
 		$criteria->compare('def.lname',$this->def_search2,true);
 		$criteria->compare('caseno',$this->caseno,true);
-		$criteria->compare('hearingdate',$this->hearingdate,true);
-		$criteria->compare('hearingtype',$this->hearingtype,true);
 		$criteria->compare('sentence',$this->sentence,true);
 		$criteria->compare('comment',$this->comment,true);
 
