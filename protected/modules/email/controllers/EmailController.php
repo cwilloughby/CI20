@@ -43,9 +43,13 @@ class EmailController extends Controller
 						. '&hiredate=' . urlencode($_GET['hiredate']);
 
 			// Set the message's body.
-			$model->mail->Body = $_GET['firstname'] . " " .  $_GET['lastname'] 
-				. " is requesting registration to the CI2.0 website.<br/><br/>Follow the link to review their information: " . $link;
-
+			$model->mail->Body = $this->renderPartial('registeremailbody', 
+					array(
+						'firstName' => $_GET['firstname'],
+						'lastName' => $_GET['lastname'] ,
+						'link' => $link,
+					), true);
+			
 			$model->messagebody = $model->mail->Body;
 			$model->messagetype = "Registration Request";
 
@@ -80,11 +84,11 @@ class EmailController extends Controller
 			$model->subject = $model->mail->Subject;
 
 			// Set the message's body.
-			$model->mail->Body = "Your CI2.0 registration has been approved. " 
-						. "Your credentials are below. Please change your password as soon as you login.\n\n" 
-						. "Username: " . $_GET['username'] . "\n"
-						. "Password: Same as your username";
-
+			$model->mail->Body = $this->renderPartial('addemailbody', 
+					array(
+						'userName' => $_GET['username'],
+					), true);
+			
 			$model->messagebody = $model->mail->Body;
 			$model->messagetype = "New User";
 
@@ -127,8 +131,11 @@ class EmailController extends Controller
 			$link = $this->createAbsoluteUrl('/security/password/recovery',array('username'=> $_GET['username']));
 
 			// Set the message's body.
-			$model->mail->Body = "Follow this link to recover your password: " . $link;
-
+			$model->mail->Body = $this->renderPartial('recoveryemailbody', 
+					array(
+						'link' => $link,
+					), true);
+			
 			$model->messagebody = "Follow this link to recover your password: Link omited for security";
 			$model->messagetype = "Recovery";
 
@@ -166,11 +173,15 @@ class EmailController extends Controller
 			$model->subject = $model->mail->Subject;
 
 			// Set the message's body.
-			$model->mail->Body = 'A new CI ticket was submitted by ' . Yii::app()->user->name . "<br/><br/>"
-						. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "<br/>"
-						. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "<br/>"
-						. "Description: " . nl2br($_GET['description']);
-
+			$model->mail->Body = $this->renderPartial('helpopenemailbody', 
+					array(
+						'ticketID' => $_GET['ticketid'],
+						'user' => Yii::app()->user->name,
+						'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
+						'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
+						'description' => nl2br($_GET['description'])
+					), true);
+			
 			$model->messagebody = $model->mail->Body;
 			$model->messagetype = "Trouble Ticket";
 
@@ -217,11 +228,15 @@ class EmailController extends Controller
 		$body = implode("\n", $body);
 		
 		// Set the message's body.
-		$model->mail->Body = "CI ticket #" . $_GET['ticketid'] . " was closed by " . Yii::app()->user->name . "<br/><br/>"
-					. "Category: " . TicketCategories::model()->findByPk($_GET['category'])->categoryname . "<br/>"
-					. "Subject: " . TicketSubjects::model()->findByPk($_GET['subject'])->subjectname . "<br/>"
-					. "Description: " . $body . "<br/><br/>"
-					. "Resolution: " . $_GET['resolution'];
+		$model->mail->Body = $this->renderPartial('helpcloseemailbody', 
+				array(
+					'ticketID' => $_GET['ticketid'],
+					'user' => Yii::app()->user->name,
+					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
+					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
+					'description' => $body,
+					'resolution' => $_GET['resolution'],
+				), true);
 		
 		$model->messagebody = $model->mail->Body;
 		$model->messagetype = "Trouble Ticket";
@@ -262,8 +277,12 @@ class EmailController extends Controller
 		$model->subject = $model->mail->Subject;
 		
 		// Set the message's body.
-		$model->mail->Body = nl2br("A new comment on CI ticket #" . $_GET['ticketid'] . " was made by " . Yii::app()->user->name . "\n\n"
-					. "Content: " . $_GET['content'] . "\n");
+		$model->mail->Body = $this->renderPartial('commentemailbody', 
+				array(
+					'ticketID' => $_GET['ticketid'],
+					'user' => Yii::app()->user->name,
+					'content' => $_GET['content'],
+				), true);
 		
 		$model->messagebody = $model->mail->Body;
 		$model->messagetype = "Comment";
