@@ -28,9 +28,9 @@ $this->menu2=array(
 		'evidencename',
 		'comment',
 		array(
-			'name' => 'dateadded',
-			'value' => (isset($model->dateadded) && ((int)$model->dateadded))
-				?CHtml::encode(date('g:i a Y-m-d', strtotime($model->dateadded))):"N/A",
+			'name' => 'hearingdate',
+			'value' => (isset($model->hearingdate) && ((int)$model->hearingdate))
+				?CHtml::encode(date('m/d/Y', strtotime($model->hearingdate))):"N/A",
 		),
 		'exhibitlist',
 	),

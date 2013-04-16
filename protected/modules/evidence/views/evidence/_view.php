@@ -21,13 +21,12 @@
 	<?php echo CHtml::encode($data->comment); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('dateadded')); ?>:</b>
-	<?php echo ((int)$data->dateadded)?CHtml::encode(date("m/d/Y", strtotime($data->dateadded))):"N/A"; ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('hearingdate')); ?>:</b>
+	<?php echo ((int)$data->hearingdate)?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"; ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('exhibitlist')); ?>:</b>
 	<?php echo CHtml::encode($data->exhibitlist); ?>
 	<br />
-
 
 </div>

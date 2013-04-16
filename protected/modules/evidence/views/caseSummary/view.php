@@ -130,9 +130,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'evidencename',
 		'comment',
 		array(
-			'name' => 'dateadded',
-			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
-				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->dateadded))):"N/A"',
+			'name' => 'hearingdate',
+			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
+				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
 		),
 		array(
 			'class'=>'CButtonColumn',
