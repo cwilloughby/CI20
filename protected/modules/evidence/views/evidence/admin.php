@@ -74,11 +74,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'evidencename',
 		'comment',
 		array(
-			'name' => 'dateadded',
-			'value' => '(isset($data->dateadded) && ((int)$data->dateadded))
-				?CHtml::encode(date("m/d/Y g:i a", strtotime($data->dateadded))):"N/A"',
-		),
-		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}{update}',
 		),

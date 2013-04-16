@@ -1,7 +1,11 @@
 <?php
 
 // change the following paths if necessary
+<<<<<<< HEAD
 $yii=dirname(__FILE__).'/../../fw/yii/framework/yii.php';
+=======
+$yii=dirname(__FILE__).'/../fw/yii/framework/yii.php';
+>>>>>>> origin/cwDev
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode

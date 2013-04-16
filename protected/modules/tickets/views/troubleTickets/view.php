@@ -1,6 +1,7 @@
 <?php
 /* @var $this TroubleTicketsController */
 /* @var $model TroubleTickets */
+/* @var $ticketComments TicketComments */
 
 $this->pageTitle = Yii::app()->name . ' - View Trouble Ticket';
 

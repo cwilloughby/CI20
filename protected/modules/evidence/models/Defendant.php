@@ -95,4 +95,50 @@ class Defendant extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/*
+	 * Check to see if the defendant already exists in the defendant table.
+	 * It it does, return the defid, otherwise create the defendant and return the new defid.
+	 */
+	public function saveDefendant($def)
+	{
+		if($def->oca)
+		{
+			$defCheck = Defendant::model()->find(array(
+				'select' => 'defid',
+				'condition' => 'fname = :fname AND lname = :lname AND oca = :oca',
+				'params' => array(':fname' => $def->fname, ':lname' => $def->lname, ':oca' => $def->oca)
+			));
+		}
+		else
+		{
+			$defCheck = Defendant::model()->find(array(
+				'select' => 'defid',
+				'condition' => 'fname = :fname AND lname = :lname',
+				'params' => array(':fname' => $def->fname, ':lname' => $def->lname)
+			));
+		}
+		
+		// If the defendant does not already exists in the database.
+		if(!isset($defCheck['defid']))
+		{
+			if($def->save())
+			{
+				$defCheck['defid'] = $def->attyid;
+
+				// Record the defendant create event. Commented out for testing.
+				/*
+				$log = new Log;
+				$log->tablename = 'ci_defendant';
+				$log->event = 'Defendant Created';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $def->getPrimaryKey();
+				$log->save(false);
+				*/
+			}
+		}
+
+		// Return the defendant's id.
+		return $defCheck['defid'];
+	}
 }

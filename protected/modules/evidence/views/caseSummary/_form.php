@@ -27,31 +27,17 @@
 				<tr>
 					<td>
 					<?php echo $form->labelEx($defendant,'fname'); ?>
-					<?php echo $form->textField($defendant,'fname'); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+						'model' => $defendant,
+						'attribute' => 'fname',
+						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantFirstNameLookup'),
+						'options' => array(
+							'minLength' => '1',
+						),
+					));
+					?>
 					<?php echo $form->error($defendant,'fname'); ?>
 					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($defendant,'lname', array('required' => true)); ?>
-					<?php echo $form->textField($defendant,'lname'); ?>
-					<?php echo $form->error($defendant,'lname'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($defendant,'oca'); ?>
-					<?php echo $form->textField($defendant,'oca'); ?>
-					<?php echo $form->error($defendant,'oca'); ?>
-					</td>
-				</tr>
-			</table>
-			</td>
-			<td>
-			<table>
-				<tr>
 					<td>
 					<?php echo $form->labelEx($case,'caseno', array('required' => true)); ?>
 					<?php echo $form->textField($case,'caseno'); ?>
@@ -61,17 +47,25 @@
 
 				<tr>
 					<td>
-					<?php echo $form->labelEx($case,'crtdiv'); ?>
-					<?php echo $form->textField($case,'crtdiv'); ?>
-					<?php echo $form->error($case,'crtdiv'); ?>
+					<?php echo $form->labelEx($defendant,'lname', array('required' => true)); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+						'model' => $defendant,
+						'attribute' => 'lname',
+						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantLastNameLookup'),
+						'options' => array(
+							'minLength' => '1',
+						),
+					));
+					?>
+					<?php echo $form->error($defendant,'lname'); ?>
 					</td>
 				</tr>
 
 				<tr>
 					<td>
-					<?php echo $form->labelEx($case,'cptno'); ?>
-					<?php echo $form->textField($case,'cptno'); ?>
-					<?php echo $form->error($case,'cptno'); ?>
+					<?php echo $form->labelEx($defendant,'oca'); ?>
+					<?php echo $form->textField($defendant,'oca'); ?>
+					<?php echo $form->error($defendant,'oca'); ?>
 					</td>
 				</tr>
 			</table>

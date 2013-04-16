@@ -147,6 +147,48 @@ class DefendantController extends Controller
 		));
 	}
 
+	/*
+	 * This is used by the autocomplete for the defendant's first name. 
+	 */
+	public function actionDefendantFirstNameLookup($term)
+	{
+        //the $term parameter is what the user typed in on the control
+        //send back an array of data:
+        $criteria = new CDbCriteria;
+        $criteria->compare('fname', $term, true);
+		$criteria->limit = 10;
+		$criteria->group = 'fname';
+        $model = Defendant::model()->findAll($criteria);
+
+        foreach($model as $value) 
+		{
+            $array[] = array('value' => trim($value->fname), 'label' => trim($value->fname));
+        }
+
+        echo CJSON::encode($array);
+    }
+
+	/*
+	 * This is used by the autocomplete for the defendant's last name. 
+	 */
+	public function actionDefendantLastNameLookup($term)
+	{
+        //the $term parameter is what the user typed in on the control
+        //send back an array of data:
+        $criteria = new CDbCriteria;
+        $criteria->compare('lname', $term, true);
+		$criteria->limit = 10;
+		$criteria->group = 'lname';
+        $model = Defendant::model()->findAll($criteria);
+
+        foreach($model as $value) 
+		{
+            $array[] = array('value' => trim($value->lname), 'label' => trim($value->lname));
+        }
+
+        echo CJSON::encode($array);
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

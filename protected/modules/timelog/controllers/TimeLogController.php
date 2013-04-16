@@ -8,7 +8,7 @@ class TimeLogController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
-	private $gpoFile = "C:/Users/cwilloughby/Desktop/In/Logon.txt";
+	private $gpoFile = "//crim10048/TimeLogIn$/Logon.txt";
 	
 	/**
 	 * @return array action filters
