@@ -1,6 +1,7 @@
 <?php
 /* @var $this TroubleTicketsController */
 /* @var $model TroubleTickets */
+/* @var $ticketComments TicketComments */
 
 $this->pageTitle = Yii::app()->name . ' - Close Trouble Ticket';
 
@@ -26,7 +27,10 @@ $this->menu2=array(
 			'name'=>'openedby',
 			'value'=>isset($model->openedby0)?CHtml::encode($model->openedby0->username):"Unknown"
 		),
-		'opendate',
+		array(        
+			'name'=>'opendate',
+			'value'=>isset($model->opendate)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->opendate))):"N\\A"
+		),
 		array(        
 			'name'=>'categoryid',
 			'value'=>isset($model->category)?CHtml::encode($model->category->categoryname):"Unknown"
@@ -38,6 +42,14 @@ $this->menu2=array(
 		'description',
 	),
 )); ?>
+
+<div id="comments">
+	<?php if($ticketComments): ?>
+		<?php $this->renderPartial('_comments',array(
+			'comments'=>$ticketComments,
+		)); ?>
+	<?php endif; ?>
+</div>
 
 <?php $this->renderPartial('_closeTicket',array(
 	'model'=>$model,

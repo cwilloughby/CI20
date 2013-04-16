@@ -144,6 +144,9 @@ class TroubleTicketsController extends Controller
 	public function actionClose($id)
 	{
 		$model=$this->loadModel($id);
+		// Load all comments on that ticket.
+		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
+                 array(':selected_id'=>$id));
 		
 		if(isset($_POST['TroubleTickets']))
 		{
@@ -166,6 +169,7 @@ class TroubleTicketsController extends Controller
 		
 		$this->render('close',array(
 			'model'=>$model,
+			'ticketComments'=>$ticketComments
 		));
 	}
 	
