@@ -17,13 +17,27 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fname'); ?>
-		<?php echo $form->textField($model,'fname'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			'model' => $model,
+			'attribute' => 'fname',
+			'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantFirstNameLookup'),
+			'options' => array(
+				'minLength' => '1',
+			),
+		));?>
 		<?php echo $form->error($model,'fname'); ?>
 	</div>
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'lname'); ?>
-		<?php echo $form->textField($model,'lname'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			'model' => $model,
+			'attribute' => 'lname',
+			'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantLastNameLookup'),
+			'options' => array(
+				'minLength' => '1',
+			),
+		));?>
 		<?php echo $form->error($model,'lname'); ?>
 	</div>
 

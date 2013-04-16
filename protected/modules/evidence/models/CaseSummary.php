@@ -9,8 +9,6 @@
  * @property string $caseno
  * @property string $location
  * @property string $dispodate
- * @property string $hearingdate
- * @property string $hearingtype
  * @property string $page
  * @property string $sentence
  * @property string $indate
@@ -65,7 +63,7 @@ class CaseSummary extends CActiveRecord
 		return array(
 			array('defid, caseno', 'required'),
 			array('defid, dna, bio, drug, firearm, money, other', 'numerical', 'integerOnly'=>true),
-			array('caseno, hearingtype, recip', 'length', 'max'=>50),
+			array('caseno, recip', 'length', 'max'=>50),
 			array('location, sentence', 'length', 'max'=>100),
 			array('page', 'length', 'max'=>6),
 			array('comment', 'length', 'max'=>255),

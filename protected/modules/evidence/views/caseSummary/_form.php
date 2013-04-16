@@ -27,7 +27,15 @@
 				<tr>
 					<td>
 					<?php echo $form->labelEx($defendant,'fname'); ?>
-					<?php echo $form->textField($defendant,'fname'); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+						'model' => $defendant,
+						'attribute' => 'fname',
+						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantFirstNameLookup'),
+						'options' => array(
+							'minLength' => '1',
+						),
+					));
+					?>
 					<?php echo $form->error($defendant,'fname'); ?>
 					</td>
 				</tr>
@@ -35,7 +43,15 @@
 				<tr>
 					<td>
 					<?php echo $form->labelEx($defendant,'lname', array('required' => true)); ?>
-					<?php echo $form->textField($defendant,'lname'); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+						'model' => $defendant,
+						'attribute' => 'lname',
+						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantLastNameLookup'),
+						'options' => array(
+							'minLength' => '1',
+						),
+					));
+					?>
 					<?php echo $form->error($defendant,'lname'); ?>
 					</td>
 				</tr>
