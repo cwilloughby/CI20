@@ -38,6 +38,11 @@
 					?>
 					<?php echo $form->error($defendant,'fname'); ?>
 					</td>
+					<td>
+					<?php echo $form->labelEx($case,'caseno', array('required' => true)); ?>
+					<?php echo $form->textField($case,'caseno'); ?>
+					<?php echo $form->error($case,'caseno'); ?>
+					</td>
 				</tr>
 
 				<tr>
@@ -61,33 +66,6 @@
 					<?php echo $form->labelEx($defendant,'oca'); ?>
 					<?php echo $form->textField($defendant,'oca'); ?>
 					<?php echo $form->error($defendant,'oca'); ?>
-					</td>
-				</tr>
-			</table>
-			</td>
-			<td>
-			<table>
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'caseno', array('required' => true)); ?>
-					<?php echo $form->textField($case,'caseno'); ?>
-					<?php echo $form->error($case,'caseno'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'crtdiv'); ?>
-					<?php echo $form->textField($case,'crtdiv'); ?>
-					<?php echo $form->error($case,'crtdiv'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'cptno'); ?>
-					<?php echo $form->textField($case,'cptno'); ?>
-					<?php echo $form->error($case,'cptno'); ?>
 					</td>
 				</tr>
 			</table>

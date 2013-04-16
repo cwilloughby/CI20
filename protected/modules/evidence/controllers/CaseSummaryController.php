@@ -53,15 +53,20 @@ class CaseSummaryController extends Controller
 		$defendant = new Defendant;
 		$case = new CrtCase;
 		$attorney = new Attorney;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['CaseSummary']))
 		{
-			$summary->attributes=$_POST['CaseSummary'];
+			$summary->attributes = $_POST['CaseSummary'];
+			$defendant->attributes = $_POST['Defendant'];
+			$case->attributes = $_POST['CrtCase'];
+			$attorney->attributes = $_POST['Attorney'];
 			
-			echo $summary->dispodate;
+			// Save the defendant and the case in their corresponding tables if they do not exist and return
+			// the defid and the caseno for the summary validation.
+			$summary->defid = $defendant->saveDefendant($defendant);
+			$summary->caseno = $case->saveCase($case);
+			
+			/*
 			if($summary->save())
 			{
 				// Record the case summary create event. Commented out for testing.
@@ -73,9 +78,12 @@ class CaseSummaryController extends Controller
 				$log->tablerow = $summary->getPrimaryKey();
 				$log->save(false);
 				*/
-				
-				$this->redirect(array('view','id' => $summary->summaryid));
-			}
+
+				// Add the attorneys to the database if they don't already exist and associate them to the new case summary.
+				//$attorney->saveAttorneys($formData, $summary->summaryid);
+
+				//$this->redirect(array('view','id' => $summary->summaryid));
+			//}
 		}
 
 		$this->render('create', array(
@@ -85,7 +93,7 @@ class CaseSummaryController extends Controller
 			'attorney' => $attorney
 		));
 	}
-
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -94,9 +102,6 @@ class CaseSummaryController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['CaseSummary']))
 		{
