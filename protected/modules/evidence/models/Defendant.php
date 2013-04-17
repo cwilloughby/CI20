@@ -44,6 +44,7 @@ class Defendant extends CActiveRecord
 			array('oca', 'numerical', 'integerOnly'=>true),
 			array('lname', 'length', 'max'=>40),
 			array('fname', 'length', 'max'=>25),
+			array('oca', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('defid, lname, fname, oca', 'safe', 'on'=>'search'),
@@ -124,17 +125,15 @@ class Defendant extends CActiveRecord
 		{
 			if($def->save())
 			{
-				$defCheck['defid'] = $def->attyid;
+				$defCheck['defid'] = $def->defid;
 
 				// Record the defendant create event. Commented out for testing.
-				/*
 				$log = new Log;
 				$log->tablename = 'ci_defendant';
 				$log->event = 'Defendant Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $def->getPrimaryKey();
 				$log->save(false);
-				*/
 			}
 		}
 

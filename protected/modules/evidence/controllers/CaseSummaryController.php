@@ -59,31 +59,46 @@ class CaseSummaryController extends Controller
 			$summary->attributes = $_POST['CaseSummary'];
 			$defendant->attributes = $_POST['Defendant'];
 			$case->attributes = $_POST['CrtCase'];
-			$attorney->attributes = $_POST['Attorney'];
 			
-			// Save the defendant and the case in their corresponding tables if they do not exist and return
-			// the defid and the caseno for the summary validation.
-			$summary->defid = $defendant->saveDefendant($defendant);
-			$summary->caseno = $case->saveCase($case);
+			$valid = $defendant->validate(); 
+			$valid = $case->validate() && $valid;
 			
-			/*
-			if($summary->save())
+			$idx = 0;
+
+			// Loop through the array, splitting it into individual models and validate those models. 
+			foreach($_POST['Attorney']['fname'] as $ex)
 			{
-				// Record the case summary create event. Commented out for testing.
-				/*
-				$log = new Log;
-				$log->tablename = 'ci_case_summary';
-				$log->event = 'Case Summary Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $summary->getPrimaryKey();
-				$log->save(false);
-				*/
+				$attorney->fname = $_POST['Attorney']['fname'][$idx];
+				$attorney->lname = $_POST['Attorney']['lname'][$idx];
+				$attorney->barid = $_POST['Attorney']['barid'][$idx];
+				
+				$valid = $attorney->validate() && $valid;
+			}
+			
+			if($valid)
+			{
+				// Save the defendant and the case in their corresponding tables if they do not exist and return
+				// the defid and the caseno for the summary validation. If they already exist, then these functions
+				// will just return the existing defid and caseno.
+				$summary->defid = $defendant->saveDefendant($defendant);
+				$summary->caseno = $case->saveCase($case);
 
-				// Add the attorneys to the database if they don't already exist and associate them to the new case summary.
-				//$attorney->saveAttorneys($formData, $summary->summaryid);
+				if($summary->save())
+				{
+					// Record the case summary create event. Commented out for testing.
+					$log = new Log;
+					$log->tablename = 'ci_case_summary';
+					$log->event = 'Case Summary Created';
+					$log->userid = Yii::app()->user->getId();
+					$log->tablerow = $summary->getPrimaryKey();
+					$log->save(false);
 
-				//$this->redirect(array('view','id' => $summary->summaryid));
-			//}
+					// Add the attorneys to the database if they don't already exist and associate them to the new case summary.
+					$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
+
+					$this->redirect(array('view','id' => $summary->summaryid));
+				}
+			}
 		}
 
 		$this->render('create', array(
@@ -101,7 +116,7 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$summary = $this->loadModel($id);
 
 		if(isset($_POST['CaseSummary']))
 		{
@@ -109,21 +124,19 @@ class CaseSummaryController extends Controller
 			if($model->save())
 			{
 				// Record the case summary update event. Commented out for testing.
-				/*
 				$log = new Log;
 				$log->tablename = 'ci_case_summary';
 				$log->event = 'Case Summary Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->summaryid));
 			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'summary'=>$summary,
 		));
 	}
 

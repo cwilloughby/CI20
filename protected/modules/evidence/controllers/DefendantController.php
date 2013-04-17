@@ -44,9 +44,6 @@ class DefendantController extends Controller
 	{
 		$model=new Defendant;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Defendant']))
 		{
 			$model->attributes=$_POST['Defendant'];

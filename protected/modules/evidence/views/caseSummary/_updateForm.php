@@ -1,9 +1,6 @@
 <?php
 /* @var $this CaseSummaryController */
 /* @var $summary CaseSummary */
-/* @var $defendant Defendant */
-/* @var $case CrtCase */
-/* @var $attorney Attorney */
 /* @var $form CActiveForm */
 ?>
 
@@ -15,129 +12,6 @@
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-	<p class="note">If the defendant is a company and not a person,
-		just put the company's name in for the last name and leave the first name and oca blank.</p>
-	
-	<?php echo $form->errorSummary(array($summary, $defendant, $case, $attorney)); ?>
-
-	<table>
-		<tr>
-			<td>
-			<table>
-				<tr>
-					<td>
-					<?php echo $form->labelEx($defendant,'fname'); ?>
-					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-						'model' => $defendant,
-						'attribute' => 'fname',
-						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantFirstNameLookup'),
-						'options' => array(
-							'minLength' => '1',
-						),
-					));
-					?>
-					<?php echo $form->error($defendant,'fname'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<?php echo $form->labelEx($defendant,'lname', array('required' => true)); ?>
-					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-						'model' => $defendant,
-						'attribute' => 'lname',
-						'sourceUrl' => Yii::app()->createUrl('evidence/defendant/DefendantLastNameLookup'),
-						'options' => array(
-							'minLength' => '1',
-						),
-					));
-					?>
-					<?php echo $form->error($defendant,'lname'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($defendant,'oca'); ?>
-					<?php echo $form->textField($defendant,'oca'); ?>
-					<?php echo $form->error($defendant,'oca'); ?>
-					</td>
-				</tr>
- 			</table>
- 			</td>
-			<td>
-			<table>
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'caseno', array('required' => true)); ?>
-					<?php echo $form->textField($case,'caseno'); ?>
-					<?php echo $form->error($case,'caseno'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'crtdiv'); ?>
-					<?php echo $form->textField($case,'crtdiv'); ?>
-					<?php echo $form->error($case,'crtdiv'); ?>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<?php echo $form->labelEx($case,'cptno'); ?>
-					<?php echo $form->textField($case,'cptno'); ?>
-					<?php echo $form->error($case,'cptno'); ?>
-					</td>
-				</tr>
-			</table>
-			</td>
- 		</tr>
- 	</table>
-	
-	<hr>
-	
-	<?php $this->widget('ext.jqrelcopy.JQRelcopy',array(
-		'id' => 'copylink',
-		'removeText' => 'Remove',
-		'removeHtmlOptions' => array('style'=>'color:red'),
-		'options' => array(
-			'copyClass'=>'newcopy',
-			'limit'=>20,
-			'clearInputs'=>true,
-			'excludeSelector'=>'.skipcopy',
-			'append'=>CHtml::tag('span',array('class'=>'hint'),'You can remove this line'),
-		)
-	))?>
- 
-	<table>
-		<tr>
-			<th><?php echo $form->labelEx($attorney,'fname');?></th>
-			<th><?php echo $form->labelEx($attorney,'lname');?></th>
-			<th><?php echo $form->labelEx($attorney,'barid');?></th>
-		</tr>
-
-		<tr class="row copy">
-			<td>
-			<?php echo $form->textField($attorney,'fname[]', array('required' => true)); ?>
-			<?php echo $form->error($attorney,'fname[]'); ?>
-			</td>
-			<td>
-			<?php echo $form->textField($attorney,'lname[]', array('required' => true)); ?>
-			<?php echo $form->error($attorney,'lname[]'); ?>
-			</td>
-			<td>
-			<?php echo $form->textField($attorney,'barid[]'); ?>
-			<?php echo $form->error($attorney,'barid[]'); ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<a id="copylink" href="#" rel=".copy">Add More Attorneys To The Case</a>
-			</td>
-		</tr>
-	</table>
-	
-	<hr>
 	
 	<table>
 		<tr>
@@ -300,7 +174,7 @@
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($summary->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
-
-<?php $this->endWidget(); ?>
-
+	
+	<?php $this->endWidget(); ?>
+	
 </div><!-- form -->

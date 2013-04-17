@@ -43,6 +43,8 @@ class CrtCase extends CActiveRecord
 			array('caseno', 'required'),
 			array('caseno, cptno', 'length', 'max'=>50),
 			array('crtdiv', 'length', 'max'=>25),
+			array('crtdiv', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('cptno', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('caseno, crtdiv, cptno', 'safe', 'on'=>'search'),
@@ -100,35 +102,51 @@ class CrtCase extends CActiveRecord
 	 */
 	public function saveCase($case)
 	{
-		if($case->caseno)
-		{
-			$caseCheck = CrtCase::model()->find(array(
-				'select' => 'caseno',
-				'condition' => 'caseno = :caseno',
-				'params' => array(':caseno' => $case->caseno)
-			));
-		}
+		$caseCheck = CrtCase::model()->find(array(
+			'select' => 'caseno',
+			'condition' => 'caseno = :caseno',
+			'params' => array(':caseno' => $case->caseno)
+		));
 		
 		// If the defendant does not already exists in the database.
 		if(!isset($caseCheck['caseno']))
 		{
+			$caseCheck['caseno'] = $case->caseno;
+			
 			if($case->save())
 			{
 				$caseCheck['caseno'] = $case->caseno;
 
 				// Record the court case create event. Commented out for testing.
-				/*
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $case->getPrimaryKey();
 				$log->save(false);
-				*/
 			}
 		}
-
-		echo "Save Case Number: " . $caseCheck['caseno'] . "<br/>";
+		else
+		{
+			$div = $case->crtdiv;
+			$cpt = $case->cptno;
+			
+			$case = CrtCase::model()->findByPk($case->caseno);
+			$case->crtdiv = $div;
+			$case->cptno = $cpt;
+			
+			if($case->save())
+			{
+				// Record the court case create event. Commented out for testing.
+				$log = new Log;
+				$log->tablename = 'ci_crt_case';
+				$log->event = 'Court Case Updated';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $case->getPrimaryKey();
+				$log->save(false);
+			}
+		}
+		
 		// Return the case number.
 		return $caseCheck['caseno'];
 	}
