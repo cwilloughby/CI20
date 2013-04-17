@@ -14,6 +14,9 @@ $this->menu2=array(
 	array('label'=>'List Case Files', 'url'=>array('index')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
+	array('label'=>'Update Defendant', 'url'=>array('changeDefendant', 'id'=>$case->summaryid)),
+	array('label'=>'Update Court Case', 'url'=>array('changeCourtCase', 'id'=>$case->summaryid)),
+	array('label'=>'Update Attorneys', 'url'=>array('changeAttorneys', 'id'=>$case->summaryid)),
 	array('label'=>'Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );

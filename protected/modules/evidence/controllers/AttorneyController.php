@@ -49,15 +49,13 @@ class AttorneyController extends Controller
 			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
-				// Record the attorney create event. Commented out for testing.
-				/*
+				// Record the attorney create event.
 				$log = new Log;
 				$log->tablename = 'ci_attorney';
 				$log->event = 'Attorney Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->attyid));
 			}
@@ -77,23 +75,18 @@ class AttorneyController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Attorney']))
 		{
 			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
-				// Record the attorney update event. Commented out for testing.
-				/*
+				// Record the attorney update event.
 				$log = new Log;
 				$log->tablename = 'ci_attorney';
 				$log->event = 'Attorney Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->attyid));
 			}

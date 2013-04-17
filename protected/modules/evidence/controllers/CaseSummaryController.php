@@ -85,7 +85,7 @@ class CaseSummaryController extends Controller
 
 				if($summary->save())
 				{
-					// Record the case summary create event. Commented out for testing.
+					// Record the case summary create event.
 					$log = new Log;
 					$log->tablename = 'ci_case_summary';
 					$log->event = 'Case Summary Created';
@@ -120,18 +120,18 @@ class CaseSummaryController extends Controller
 
 		if(isset($_POST['CaseSummary']))
 		{
-			$model->attributes=$_POST['CaseSummary'];
-			if($model->save())
+			$summary->attributes = $_POST['CaseSummary'];
+			if($summary->save())
 			{
-				// Record the case summary update event. Commented out for testing.
+				// Record the case summary update event.
 				$log = new Log;
 				$log->tablename = 'ci_case_summary';
 				$log->event = 'Case Summary Updated';
 				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
+				$log->tablerow = $summary->getPrimaryKey();
 				$log->save(false);
 				
-				$this->redirect(array('view','id'=>$model->summaryid));
+				$this->redirect(array('view','id'=>$summary->summaryid));
 			}
 		}
 
@@ -147,9 +147,18 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		// Delete all records on the attorney bridge table that have this summary id.
+		CaseAttorneys::model()->deleteAll('summaryid =' . $id);
 		$this->loadModel($id)->delete();
+		
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_summary';
+		$log->event = 'Case Summary Deleted';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $id;
+		$log->save(false);
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
@@ -196,6 +205,89 @@ class CaseSummaryController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+		));
+	}
+	
+	/*
+	 * This function is used to change an existing case file's defendant.
+	 */
+	public function actionChangeDefendant($id)
+	{
+		$summary = $this->loadModel($id);
+		
+		if(isset($_POST['Defendant']))
+		{
+			$defendant = new Defendant;
+			$defendant->attributes = $_POST['Defendant'];
+			
+			// Check to see if the new defendant exists in the defendant table already.
+			// If it does, return it's defid, otherwise create the defendant and then return the new defid.
+			$summary->defid = $defendant->saveDefendant($defendant);
+			
+			// Save the changed to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Defendant Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$defendant = Defendant::model()->findByPk($summary->defid);
+		}
+
+		$this->render('changeDefendant',array(
+			'summary' => $summary,
+			'defendant' => $defendant
+		));
+	}
+	
+	/*
+	 * This function is used to change an existing case file's defendant.
+	 */
+	public function actionChangeCourtCase($id)
+	{
+		$summary = $this->loadModel($id);
+		
+		if(isset($_POST['CrtCase']))
+		{
+			echo "Test 1";
+			$case = new CrtCase;
+			$case->attributes = $_POST['CrtCase'];
+			
+			// Check to see if the new case exists in the crtcase table already.
+			// If it does, return it's caseno, otherwise create the case and then return the new caseno.
+			$summary->caseno = $case->saveCase($case);
+			
+			// Save the changed to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Case Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$case = CrtCase::model()->findByPk($summary->caseno);
+		}
+
+		$this->render('changeCourtCase',array(
+			'summary' => $summary,
+			'case' => $case
 		));
 	}
 	
