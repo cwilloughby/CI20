@@ -258,7 +258,6 @@ class CaseSummaryController extends Controller
 		
 		if(isset($_POST['CrtCase']))
 		{
-			echo "Test 1";
 			$case = new CrtCase;
 			$case->attributes = $_POST['CrtCase'];
 			
@@ -289,6 +288,50 @@ class CaseSummaryController extends Controller
 			'summary' => $summary,
 			'case' => $case
 		));
+	}
+	
+	/*
+	 * This function allows the user to change or add attorneys to a case.
+	 * @param integer $id the summary ID
+	 */
+	public function actionChangeAttorneys($id)
+	{
+		$summary = $this->loadModel($id);
+		$attorney = new Attorney;
+		
+		if(isset($_POST['Attorney']))
+		{
+			// Add the attorneys to the database if they don't already exist 
+			// and associate them to the case summary.
+			// If they already exist, then just associate it to the case summary.
+			$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
+				
+			$this->redirect(array('view','id'=>$summary->summaryid));
+		}
+
+		$this->render('changeAttorneys',array(
+			'summary' => $summary,
+			'attorney' => $attorney
+		));
+	}
+	
+	/**
+	 * Removes a particular attorney from a case summary.
+	 * @param integer $sid the summary ID
+	 * @param integer $aid the attorney ID
+	 */
+	public function actionDeleteAttorneyFromCase($sid, $aid)
+	{
+		// Delete the record on the attorney bridge table that has this summaryid and attyid.
+		CaseAttorneys::model()->deleteByPk(array('summaryid' => $sid, 'attyid' => $aid));
+		
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_attorneys';
+		$log->event = 'Attorney Removed From Case';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $sid . ", " . $aid;
+		$log->save(false);
 	}
 	
 	/**
