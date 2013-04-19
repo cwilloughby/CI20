@@ -14,7 +14,7 @@ $this->menu2=array(
 	array('label'=>'List Defendants', 'url'=>array('index')),
 	array('label'=>'Create Defendant', 'url'=>array('create')),
 	array('label'=>'Update Defendant', 'url'=>array('update', 'id'=>$model->defid)),
-	array('label'=>'Delete Defendant', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->defid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Defendant', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->defid),'confirm'=>'Are you sure you want to delete this defendant?')),
 	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );
 ?>

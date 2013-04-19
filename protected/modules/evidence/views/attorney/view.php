@@ -14,7 +14,7 @@ $this->menu2=array(
 	array('label'=>'List Attorneys', 'url'=>array('index')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
 	array('label'=>'Update Attorney', 'url'=>array('update', 'id'=>$model->attyid)),
-	array('label'=>'Delete Attorney', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->attyid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Attorney', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->attyid),'confirm'=>'Are you sure you want to delete this attorney?')),
 	array('label'=>'Manage Attorneys', 'url'=>array('admin')),
 );
 ?>

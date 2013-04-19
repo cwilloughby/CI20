@@ -14,10 +14,11 @@ $this->menu2=array(
 	array('label'=>'List Case Files', 'url'=>array('index')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
-	array('label'=>'Update Defendant', 'url'=>array('changeDefendant', 'id'=>$case->summaryid)),
-	array('label'=>'Update Court Case', 'url'=>array('changeCourtCase', 'id'=>$case->summaryid)),
-	array('label'=>'Update Attorneys', 'url'=>array('changeAttorneys', 'id'=>$case->summaryid)),
-	array('label'=>'Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Update Defendant', 'url'=>array('/evidence/defendant/changeDefendant', 'id'=>$case->summaryid)),
+	array('label'=>'Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$case->summaryid)),
+	array('label'=>'Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),
+		'confirm'=>'Are you sure you want to delete this case file?
+This will NOT delete the defendant, case, attorneys, or evidence.')),
 	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );
 ?>
@@ -89,11 +90,11 @@ $this->menu2=array(
 			'value'=>($case->other == 0)?"No":(($case->other == 1)?"Yes":"N/A"),
 		),
 	),
-));
+));?>
 
-echo "<br/><h3>Attorneys</h3>";
+<br/><h3>Attorneys</h3>
 
-$this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'attorney-grid',
 	'dataProvider'=>$attorneys->search($case->summaryid),
 	'filter'=>$attorneys,
@@ -104,19 +105,41 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'barid',
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{view}',
+			'template'=>'{view}{delete}',
+			'deleteConfirmation'=>"js:'Are you sure you want to remove this attorney from the case?'",
 			'buttons'=>array(
 				'view'=>array(
 					'url'=>'Yii::app()->createUrl("/evidence/attorney/view", array("id"=>$data->attyid))'
+				),
+				'delete'=>array(
+					'label'=>'Remove Attorney',
+					'url'=>'Yii::app()->createUrl("/evidence/casesummary/deleteAttorneyFromCase", 
+						array("sid"=>' . $case->summaryid . ', "aid"=>$data->attyid))'
 				),
 			),
 		),
 	),
 ));
 
-echo "<br/><h3>Evidence</h3>";
+Yii::app()->clientScript->registerScript('addAttorney', "
+$('.attorney-button').click(function(){
+	$('.add-attorneys').toggle();
+	return false;
+});");
 
-$this->widget('zii.widgets.grid.CGridView', array(
+echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
+<div class="add-attorneys" style="display:none">
+<?php $this->renderPartial('../attorney/_changeAttorneyForm',array(
+	'attorney' => $attorneys, 'summary' => $case
+)); ?>
+</div><!-- changeAttorneyForm -->
+
+<br/><br/>
+<hr>
+
+<?php echo "<br/><h3>Evidence</h3>"; ?>
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
 	'filter'=>$evidence,
@@ -128,10 +151,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'showButtonPanel':true})}",
 	'columns'=>array(
 		'exhibitlist',
-		'caseno',
 		'exhibitno',
 		'evidencename',
 		'comment',
+		'hearingtype',
 		array(
 			'name' => 'hearingdate',
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
@@ -139,12 +162,32 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{view}',
+			'template'=>'{view}{update}{delete}',
+			'deleteConfirmation'=>"js:'Are you sure you want to delete this evidence?'",
 			'buttons'=>array(
 				'view'=>array(
 					'url'=>'Yii::app()->createUrl("/evidence/evidence/view", array("id"=>$data->evidenceid))'
 				),
+				'update'=>array(
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/update", array("id"=>$data->evidenceid))'
+				),
+				'delete'=>array(
+					'label'=>'Delete Evidence',
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/delete", 
+						array("id"=>$data->evidenceid))'
+				),
 			),
 		),
 	),
-)); ?>
+)); 
+
+Yii::app()->clientScript->registerScript('addEvidence', "
+$('.evidence-button').click(function(){
+	$('.add-evidence').toggle();
+	return false;
+});");
+
+echo CHtml::link('Add Evidence','#',array('class'=>'evidence-button')); ?>
+<div class="add-evidence" style="display:none">
+<?php $this->renderPartial('../evidence/_changeEvidenceForm',array('summary'=>$case, 'evidence'=>$evidence)); ?>
+</div><!-- changeEvidenceForm -->

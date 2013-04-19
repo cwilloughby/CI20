@@ -26,6 +26,15 @@ class CaseSummaryController extends Controller
 	{
 		$case = $this->loadModel($id);
 		
+		if(isset($_POST['Attorney']))
+		{
+			$this->forward('changeAttorneys');
+		}
+		else if(isset($_POST['Evidence']))
+		{
+			$this->forward('changeEvidence');
+		}
+		
 		$attorneys = new Attorney('search');
 		$attorneys->unsetAttributes();  // clear any default values
 		if(isset($_GET['Attorney']))
@@ -209,84 +218,25 @@ class CaseSummaryController extends Controller
 	}
 	
 	/*
-	 * This function is used to change an existing case file's defendant.
+	 * This function allows the user to change or add evidence to a case.
+	 * @param integer $id the summary ID
 	 */
-	public function actionChangeDefendant($id)
+	public function actionChangeEvidence($id)
 	{
 		$summary = $this->loadModel($id);
+		$evidence = new Evidence;
 		
-		if(isset($_POST['Defendant']))
+		if(isset($_POST['Evidence']))
 		{
-			$defendant = new Defendant;
-			$defendant->attributes = $_POST['Defendant'];
-			
-			// Check to see if the new defendant exists in the defendant table already.
-			// If it does, return it's defid, otherwise create the defendant and then return the new defid.
-			$summary->defid = $defendant->saveDefendant($defendant);
-			
-			// Save the changed to the case summary
-			if($summary->save())
-			{
-				// Record the case summary update event.
-				$log = new Log;
-				$log->tablename = 'ci_case_summary';
-				$log->event = 'Case Summary Defendant Changed';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $id;
-				$log->save(false);
+			// Add the evidence to the database.
+			$evidence->saveEvidence($_POST['Evidence']);
 				
-				$this->redirect(array('view','id'=>$summary->summaryid));
-			}
-		}
-		else
-		{
-			$defendant = Defendant::model()->findByPk($summary->defid);
+			$this->redirect(array('view','id'=>$summary->summaryid));
 		}
 
-		$this->render('changeDefendant',array(
+		$this->render('changeEvidence',array(
 			'summary' => $summary,
-			'defendant' => $defendant
-		));
-	}
-	
-	/*
-	 * This function is used to change an existing case file's defendant.
-	 */
-	public function actionChangeCourtCase($id)
-	{
-		$summary = $this->loadModel($id);
-		
-		if(isset($_POST['CrtCase']))
-		{
-			$case = new CrtCase;
-			$case->attributes = $_POST['CrtCase'];
-			
-			// Check to see if the new case exists in the crtcase table already.
-			// If it does, return it's caseno, otherwise create the case and then return the new caseno.
-			$summary->caseno = $case->saveCase($case);
-			
-			// Save the changed to the case summary
-			if($summary->save())
-			{
-				// Record the case summary update event.
-				$log = new Log;
-				$log->tablename = 'ci_case_summary';
-				$log->event = 'Case Summary Case Changed';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $id;
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$summary->summaryid));
-			}
-		}
-		else
-		{
-			$case = CrtCase::model()->findByPk($summary->caseno);
-		}
-
-		$this->render('changeCourtCase',array(
-			'summary' => $summary,
-			'case' => $case
+			'evidence' => $evidence
 		));
 	}
 	
@@ -308,11 +258,6 @@ class CaseSummaryController extends Controller
 				
 			$this->redirect(array('view','id'=>$summary->summaryid));
 		}
-
-		$this->render('changeAttorneys',array(
-			'summary' => $summary,
-			'attorney' => $attorney
-		));
 	}
 	
 	/**

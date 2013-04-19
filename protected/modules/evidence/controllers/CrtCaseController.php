@@ -139,7 +139,48 @@ class CrtCaseController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	/*
+	 * This function is used to change an existing case file's defendant.
+	 */
+	public function actionChangeCourtCase($id)
+	{
+		$summary = CaseSummary::model()->findByPk($id);
+		
+		if(isset($_POST['CrtCase']))
+		{
+			$case = new CrtCase;
+			$case->attributes = $_POST['CrtCase'];
+			
+			// Check to see if the new case exists in the crtcase table already.
+			// If it does, return it's caseno, otherwise create the case and then return the new caseno.
+			$summary->caseno = $case->saveCase($case);
+			
+			// Save the changed to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Case Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('/evidence/casesummary/view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$case = $this->loadModel($summary->caseno);
+		}
 
+		$this->render('changeCourtCase',array(
+			'summary' => $summary,
+			'case' => $case
+		));
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

@@ -5,36 +5,9 @@
 /* @var $form CActiveForm */
 ?>
 
-<h1>Remove Attorneys</h1>
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'attorney-grid',
-	'dataProvider'=>$attorney->search($summary->summaryid),
-	'filter'=>$attorney,
-	'columns'=>array(
-		'fname',
-		'lname',
-		'type',
-		'barid',
-		array(
-			'class'=>'CButtonColumn',
-			'template'=>'{delete}',
-			'deleteConfirmation'=>"js:'Are you sure you want to remove this attorney from the case?'",
-			'buttons'=>array(
-				'delete'=>array(
-					'label'=>'Remove Attorney',
-					'url'=>'Yii::app()->createUrl("/evidence/casesummary/deleteAttorneyFromCase", 
-						array("sid"=>' . $summary->summaryid . ', "aid"=>$data->attyid))'
-				),
-			),
-		),
-	),
-));?>
-
-<h1>Add Attorneys</h1>
-
+<div class="search-form">
 <div class="form">
-
+	
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'add-attorney-form',
 	'enableAjaxValidation'=>false,
@@ -88,5 +61,5 @@
 	</div>
 
 <?php $this->endWidget(); ?>
-
+</div>
 </div><!-- form -->

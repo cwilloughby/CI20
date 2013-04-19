@@ -182,6 +182,47 @@ class DefendantController extends Controller
         echo CJSON::encode($array);
 	}
 	
+	/*
+	 * This function is used to change an existing case file's defendant.
+	 */
+	public function actionChangeDefendant($id)
+	{
+		$summary = CaseSummary::model()->findByPk($id);
+		
+		if(isset($_POST['Defendant']))
+		{
+			$defendant = new Defendant;
+			$defendant->attributes = $_POST['Defendant'];
+			
+			// Check to see if the new defendant exists in the defendant table already.
+			// If it does, return it's defid, otherwise create the defendant and then return the new defid.
+			$summary->defid = $defendant->saveDefendant($defendant);
+			
+			// Save the change to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Defendant Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('/evidence/casesummary/view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$defendant = $this->loadModel($summary->defid);
+		}
+
+		$this->render('changeDefendant',array(
+			'summary' => $summary,
+			'defendant' => $defendant
+		));
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
