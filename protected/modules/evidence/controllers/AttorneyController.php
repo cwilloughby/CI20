@@ -104,8 +104,14 @@ class AttorneyController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		try
+		{
+			$this->loadModel($id)->delete();
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException('the attorney cannot be deleted, because it is still assigned to a case.');
+		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

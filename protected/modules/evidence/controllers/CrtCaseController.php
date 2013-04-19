@@ -107,7 +107,14 @@ class CrtCaseController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		try
+		{
+			$this->loadModel($id)->delete();
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException('the case cannot be deleted, because it still has evidence assigned to it.');
+		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
