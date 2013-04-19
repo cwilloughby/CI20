@@ -113,7 +113,7 @@ class DefendantController extends Controller
 		}
 		catch(Exception $ex)
 		{
-			throw new CHttpException('the defendant cannot be deleted, because it still assigned to a case file.');
+			throw new CHttpException('the defendant cannot be deleted, because it is still assigned to a case file.');
 		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
