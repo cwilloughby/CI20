@@ -113,7 +113,12 @@
 fieldset.news{
 	border-style:solid;
 	border-width:1px;
-	border-color: black;
+	border: 1px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+fieldset{
+	padding: 10px;
 }
 fieldset.news legend{
 	font-size: 18px;
