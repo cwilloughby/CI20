@@ -65,7 +65,7 @@ class Tips extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tipid' => 'Tipid',
+			'tipid' => 'Tip ID',
 			'tip' => 'Tip',
 		);
 	}
@@ -76,9 +76,6 @@ class Tips extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('tipid',$this->tipid);

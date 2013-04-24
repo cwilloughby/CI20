@@ -144,8 +144,7 @@ class HrPolicyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// If the user posted the policy or section form, 
-		// forward to the createpolicy or createsection actions
+		// If the user posted the policy or section form, forward to the createpolicy or createsection actions
 		if(isset($_POST['HrPolicy']))
 			$this->forward('createPolicy');
 		else if(isset($_POST['HrSections']))
@@ -187,7 +186,7 @@ class HrPolicyController extends Controller
 				else
 					$subKey = date('M d, Y', strtotime($section['datemade'])) . " Old";
 				
-				// Is the user IT?
+				// If the user has the rights to edit the hr policy.
 				if($check)
 				{
 					// Add an edit link to the sub panel.
@@ -199,7 +198,7 @@ class HrPolicyController extends Controller
 					$panels[$policy['policy']][$subKey] = $section['section'];
 			}
 			
-			// Is the user IT?
+			// If the user has the rights to edit the hr policy.
 			if($check)
 			{
 				// Take the create policy form and put it into the last main panel.

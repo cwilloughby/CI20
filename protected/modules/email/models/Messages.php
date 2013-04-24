@@ -148,6 +148,7 @@ class Messages extends CActiveRecord
 		$this->mail->SetFrom($fromAddress);
 		$this->from = $fromAddress;
 		
+		// Set the cc address if it was provided.
 		if(!is_null($ccAddress))
 		{
 			$this->mail->AddCC($ccAddress);

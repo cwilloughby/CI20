@@ -44,9 +44,6 @@ class CrtCaseController extends Controller
 	{
 		$model=new CrtCase;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['CrtCase']))
 		{
 			$model->attributes=$_POST['CrtCase'];

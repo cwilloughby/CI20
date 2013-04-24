@@ -194,6 +194,7 @@ class CaseSummaryController extends Controller
 		{
 			$model->attributes=$_GET['CaseSummary'];
 			
+			// Convert any provided date into a format that the database understands.
 			if((int)$model->dispodate)
 			{
 				$model->dispodate = date('Y-m-d', strtotime($model->dispodate));

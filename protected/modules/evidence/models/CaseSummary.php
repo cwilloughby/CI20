@@ -78,7 +78,6 @@ class CaseSummary extends CActiveRecord
 			array('sentence', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('recip', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('page', 'default', 'setOnEmpty' => true, 'value' => 'N/A'),
-
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),

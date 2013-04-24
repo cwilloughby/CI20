@@ -171,6 +171,7 @@ class GsTimeLogController extends Controller
 		// Auto import any new events in the text file to the database.
 		//$this->actionCreate();
 
+		// If the export button on the search form was clicked.
 		if(Yii::app()->request->getParam('export'))
 		{
 			$this->actionExport();
@@ -285,6 +286,9 @@ class GsTimeLogController extends Controller
 		fclose($fp);
 	}
 	
+	/**
+	 * Pull the csv from the session and send it to the user.
+	 */
 	public function actionExportFile()
 	{
 		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));

@@ -90,9 +90,6 @@ class UserInfoController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['UserInfo']))
 		{
 			$model->attributes=$_POST['UserInfo'];

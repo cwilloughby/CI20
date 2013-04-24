@@ -60,8 +60,8 @@ class SubjectConditions extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'subjectid' => 'Subjectid',
-			'conditionalid' => 'Conditionalid',
+			'subjectid' => 'Subject ID',
+			'conditionalid' => 'Conditional ID',
 		);
 	}
 
@@ -71,9 +71,6 @@ class SubjectConditions extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('subjectid',$this->subjectid);
