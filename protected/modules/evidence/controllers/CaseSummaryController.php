@@ -217,7 +217,7 @@ class CaseSummaryController extends Controller
 		));
 	}
 	
-	/*
+	/**
 	 * This function allows the user to change or add evidence to a case.
 	 * @param integer $id the summary ID
 	 */
@@ -240,7 +240,7 @@ class CaseSummaryController extends Controller
 		));
 	}
 	
-	/*
+	/**
 	 * This function allows the user to change or add attorneys to a case.
 	 * @param integer $id the summary ID
 	 */

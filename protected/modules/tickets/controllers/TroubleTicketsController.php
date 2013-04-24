@@ -334,7 +334,7 @@ class TroubleTicketsController extends Controller
 		return $model;
 	}
 	
-	/*
+	/**
 	 * Grab the subjects associated with the selected category.
 	 * This is only used by AJAX.
 	 */
@@ -358,7 +358,7 @@ class TroubleTicketsController extends Controller
 		}
 	}
 	
-	/*
+	/**
 	 * Grab the tips and conditional textboxes associated with the selected subject.
 	 * This is only used by AJAX.
 	 */

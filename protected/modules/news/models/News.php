@@ -53,7 +53,7 @@ class News extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the date value
 	 * when a news post is made.
 	 */
@@ -68,7 +68,7 @@ class News extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Sets the postedby value to the person who created the news post.
 	 */
 	protected function beforeSave()

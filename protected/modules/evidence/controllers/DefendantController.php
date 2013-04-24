@@ -147,8 +147,9 @@ class DefendantController extends Controller
 		));
 	}
 
-	/*
-	 * This is used by the autocomplete for the defendant's first name. 
+	/**
+	 * This is used by the autocomplete for the defendant's first name.
+	 * @param string $term the letters that have been typed into the textbox
 	 */
 	public function actionDefendantFirstNameLookup($term)
 	{
@@ -168,8 +169,9 @@ class DefendantController extends Controller
         echo CJSON::encode($array);
     }
 
-	/*
-	 * This is used by the autocomplete for the defendant's last name. 
+	/**
+	 * This is used by the autocomplete for the defendant's last name.
+	 * @param string $term the letters that have been typed into the textbox
 	 */
 	public function actionDefendantLastNameLookup($term)
 	{
@@ -189,8 +191,9 @@ class DefendantController extends Controller
         echo CJSON::encode($array);
 	}
 	
-	/*
+	/**
 	 * This function is used to change an existing case file's defendant.
+	 * @param integer $id the id of the summary
 	 */
 	public function actionChangeDefendant($id)
 	{

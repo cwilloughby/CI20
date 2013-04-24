@@ -106,7 +106,7 @@ class Attorney extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * actionCreate returns an array for the attorneys, but model->save() can only save one model at a time.
 	 * So this function is used to split the array into individual models.
 	 * @param array $formData contains all the rows from the form in an array.

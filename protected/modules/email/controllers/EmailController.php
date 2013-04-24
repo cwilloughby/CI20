@@ -2,7 +2,7 @@
 
 class EmailController extends Controller
 {
-	/*
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -12,7 +12,7 @@ class EmailController extends Controller
 		);
 	}
 	
-	/*
+	/**
 	 * This action sends an email to the helpdesk, letting them know that someone is trying to register.
 	 */
 	public function actionRegisteremail()
@@ -21,15 +21,6 @@ class EmailController extends Controller
 		if(!Yii::app()->user->hasFlash('success'))
 		{
 			$model = new Messages;
-
-			// Set the recipient, the sender, and the subject.
-			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress("ccc.helpdesk@nashville.gov");
-			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
-			$model->mail->Subject = "CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'];
-			$model->to = urldecode($_GET['email']);
-			$model->from = $model->mail->From;
-			$model->subject = $model->mail->Subject;
 
 			// Create the link to the user creation page that will go in the email.
 			// The $_GET variables will be used to autopopulate many of the form fields.
@@ -41,17 +32,20 @@ class EmailController extends Controller
 						. '&phoneext=' . urlencode($_GET['phoneext'])
 						. '&departmentid=' . urlencode($_GET['departmentid'])
 						. '&hiredate=' . urlencode($_GET['hiredate']);
-
-			// Set the message's body.
-			$model->mail->Body = $this->renderPartial('registeremailbody', 
-					array(
-						'firstName' => $_GET['firstname'],
-						'lastName' => $_GET['lastname'] ,
-						'link' => $link,
-					), true);
 			
-			$model->messagebody = $model->mail->Body;
-			$model->messagetype = "Registration Request";
+			// Set the sender, the recipient, the subject, the body, and the message type.
+			$model->setEmail(
+				"ccc.helpdesk@nashville.gov", 
+				"ccc.helpdesk@nashville.gov",
+				"CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'],
+				$this->renderPartial('registeremailbody', 
+					array(
+						'firstname' => $_GET['firstname'],
+						'lastname' => $_GET['lastname'] ,
+						'link' => $link,
+					), true),
+				"Registration Request"
+			);
 
 			// Send the email.
 			$model->mail->Send();
@@ -63,7 +57,7 @@ class EmailController extends Controller
 		$this->render('registeremail');
 	}
 	
-	/*
+	/**
 	 * After an IT user adds a new user, this action sends that new user an 
 	 * email letting them know that they can now use the website.
 	 */
@@ -74,24 +68,18 @@ class EmailController extends Controller
 		{
 			$model = new Messages;
 
-			// Set the recipient, the sender, and the subject.
-			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress(urldecode($_GET['email']));
-			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
-			$model->mail->Subject = "CI Registration Request";
-			$model->to = urldecode($_GET['email']);
-			$model->from = $model->mail->From;
-			$model->subject = $model->mail->Subject;
-
-			// Set the message's body.
-			$model->mail->Body = $this->renderPartial('addemailbody', 
+			// Set the sender, the recipient, the subject, the body, and the message type.
+			$model->setEmail(
+				urldecode($_GET['email']), 
+				"ccc.helpdesk@nashville.gov",
+				"CI Registration Request",
+				$this->renderPartial('addemailbody', 
 					array(
-						'userName' => $_GET['username'],
-					), true);
+						'username' => $_GET['username'],
+					), true),
+				"New User"
+			);
 			
-			$model->messagebody = $model->mail->Body;
-			$model->messagetype = "New User";
-
 			// Send the email.
 			$model->mail->Send();
 			// Save a record of the message in the ci_messages table.
@@ -102,7 +90,7 @@ class EmailController extends Controller
 		$this->render('addemail');
 	}
 
-	/*
+	/**
 	 * This action sends an email to a registered user that can't remember their password.
 	 * The email contains a link with the username encrypted in the url. The link
 	 * will take the user to the password recovery form where they can change their password.
@@ -113,32 +101,25 @@ class EmailController extends Controller
 		if(!Yii::app()->user->hasFlash('success'))
 		{
 			$model = new Messages;
-
+			
 			// Decrypt the email that was passed in the $_GET
 			$sec = Yii::app()->getSecurityManager();
 			$email = $sec->decrypt(urldecode($_GET["email"]));
-
-			// Set the recipient, the sender, and the subject.
-			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress($email);
-			$model->mail->SetFrom("ccc.helpdesk@nashville.gov", "CCC Helpdesk");
-			$model->mail->Subject = "CI Password Recovery";
-			$model->to = $email;
-			$model->from = $model->mail->From;
-			$model->subject = $model->mail->Subject;
-
 			// Create the link to the password recovery page.
 			$link = $this->createAbsoluteUrl('/security/password/recovery',array('username'=> $_GET['username']));
-
-			// Set the message's body.
-			$model->mail->Body = $this->renderPartial('recoveryemailbody', 
+			
+			// Set the sender, the recipient, the subject, the body, and the message type.
+			$model->setEmail(
+				$email, 
+				"ccc.helpdesk@nashville.gov",
+				"CI Password Recovery",
+				$this->renderPartial('recoveryemailbody', 
 					array(
 						'link' => $link,
-					), true);
+					), true),
+				"Recovery"
+			);
 			
-			$model->messagebody = "Follow this link to recover your password: Link omited for security";
-			$model->messagetype = "Recovery";
-
 			// Send the email.
 			$model->mail->Send();
 			// Save a record of the message in the ci_messages table.
@@ -149,7 +130,7 @@ class EmailController extends Controller
 		$this->render('recoveryemail');
 	}
 
-	/*
+	/**
 	 * This action will be used to send an alert email to the helpdesk when a new
 	 * trouble ticket is made.
 	 */
@@ -159,32 +140,25 @@ class EmailController extends Controller
 		if(!Yii::app()->user->hasFlash('success'))
 		{
 			$model = new Messages;
-
 			$user = UserInfo::model()->findByPk(Yii::app()->user->id);
 
-			// Set the recipient, the sender, and the subject.
-			$model->mail->ContentType = "text/html";
-			$model->mail->AddAddress("ccc.helpdesk@nashville.gov");
-			$model->mail->AddCC($user->email);
-			$model->mail->SetFrom($user->email);
-			$model->mail->Subject = "Opening CI Ticket #" . $_GET['ticketid'];
-			$model->to = "CharlesWilloughby@jis.nashville.org";
-			$model->from = $user->email;
-			$model->subject = $model->mail->Subject;
-
-			// Set the message's body.
-			$model->mail->Body = $this->renderPartial('helpopenemailbody', 
+			// Set the sender, the recipient, the subject, the body, and the message type.
+			$model->setEmail(
+				"ccc.helpdesk@nashville.gov", 
+				$user->email,
+				"Opening CI Ticket #" . $_GET['ticketid'],
+				$this->renderPartial('helpopenemailbody', 
 					array(
 						'ticketID' => $_GET['ticketid'],
 						'user' => Yii::app()->user->name,
 						'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
 						'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
 						'description' => nl2br($_GET['description'])
-					), true);
+					), true),
+				"Trouble Ticket",
+				$user->email
+			);
 			
-			$model->messagebody = $model->mail->Body;
-			$model->messagetype = "Trouble Ticket";
-
 			// Send the email.
 			$model->mail->Send();
 
@@ -203,7 +177,7 @@ class EmailController extends Controller
 		$this->render('helpopenemail');
 	}
 	
-	/*
+	/**
 	 * This action will be used to send an alert email to the trouble ticket
 	 * creator when their ticket is closed.
 	 */
@@ -212,23 +186,16 @@ class EmailController extends Controller
 		$model = new Messages;
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
-		// Set the recipient, the sender, and the subject.
-		$model->mail->ContentType = "text/html";
-		$model->mail->AddAddress($email);
-		$model->mail->AddCC("ccc.helpdesk@nashville.gov");
-		$model->mail->SetFrom("ccc.helpdesk@nashville.gov");
-		$model->mail->Subject = "Closing CI Ticket #" . $_GET['ticketid'];
-		$model->to = $email;
-		$model->from = "ccc.helpdesk@nashville.gov";
-		$model->subject = $model->mail->Subject;
-		
-		// Remove the attachment from the description.
 		$body = explode("\n", $_GET['description']);
 		array_pop($body);
 		$body = implode("\n", $body);
 		
-		// Set the message's body.
-		$model->mail->Body = $this->renderPartial('helpcloseemailbody', 
+		// Set the sender, the recipient, the subject, the body, and the message type.
+		$model->setEmail(
+			$email, 
+			"ccc.helpdesk@nashville.gov",
+			"Closing CI Ticket #" . $_GET['ticketid'],
+			$this->renderPartial('helpcloseemailbody', 
 				array(
 					'ticketID' => $_GET['ticketid'],
 					'user' => Yii::app()->user->name,
@@ -236,11 +203,11 @@ class EmailController extends Controller
 					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
 					'description' => $body,
 					'resolution' => $_GET['resolution'],
-				), true);
-		
-		$model->messagebody = $model->mail->Body;
-		$model->messagetype = "Trouble Ticket";
-		
+				), true),
+			"Trouble Ticket",
+			"ccc.helpdesk@nashville.gov"
+		);
+
 		// Send the email.
 		if($model->mail->Send())
 		{
@@ -258,7 +225,7 @@ class EmailController extends Controller
 		$this->redirect(array('/tickets/troubletickets/index'));
 	}
 	
-	/*
+	/**
 	 * This action will be used to send an alert email when a new comment is made.
 	 */
 	public function actionCommentEmail()
@@ -266,26 +233,20 @@ class EmailController extends Controller
 		$model = new Messages;
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
-		// Set the recipient, the sender, and the subject.
-		$model->mail->ContentType = "text/html";
-		$model->mail->AddAddress($email);
-		$model->mail->AddCC("ccc.helpdesk@nashville.gov");
-		$model->mail->SetFrom("ccc.helpdesk@nashville.gov");
-		$model->mail->Subject = "A new comment was made on CI Ticket #" . $_GET['ticketid'];
-		$model->to = $email;
-		$model->from = "ccc.helpdesk@nashville.gov";
-		$model->subject = $model->mail->Subject;
-		
-		// Set the message's body.
-		$model->mail->Body = $this->renderPartial('commentemailbody', 
+		// Set the sender, the recipient, the subject, the body, and the message type.
+		$model->setEmail(
+			$email, 
+			"ccc.helpdesk@nashville.gov",
+			"A new comment was made on CI Ticket #" . $_GET['ticketid'],
+			$this->renderPartial('commentemailbody', 
 				array(
 					'ticketID' => $_GET['ticketid'],
 					'user' => Yii::app()->user->name,
 					'content' => $_GET['content'],
-				), true);
-		
-		$model->messagebody = $model->mail->Body;
-		$model->messagetype = "Comment";
+				), true),
+			"Comment",
+			"ccc.helpdesk@nashville.gov"
+		);
 		
 		// Send the email.
 		if($model->mail->Send())

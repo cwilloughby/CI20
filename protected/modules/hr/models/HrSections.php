@@ -48,7 +48,7 @@ class HrSections extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the opendate value
 	 * when a new ticket is made.
 	 */

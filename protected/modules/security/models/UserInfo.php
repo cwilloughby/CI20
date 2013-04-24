@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This is the model class for table "ci_user_info".
  *
  * The followings are the available columns in table 'ci_user_info':
@@ -34,7 +34,7 @@ class UserInfo extends CActiveRecord
 	public $password_repeat;
 	public $department_search;
 	
-	/*
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return UserInfo the static model class
@@ -44,7 +44,7 @@ class UserInfo extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/*
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -52,7 +52,7 @@ class UserInfo extends CActiveRecord
 		return 'ci_user_info';
 	}
 
-	/*
+	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -86,6 +86,9 @@ class UserInfo extends CActiveRecord
 		);
 	}
 	
+	/**
+	 * This function is used to make sure that the username and the email do not already exist.
+	 */
 	public function dataDoesNotExist($attribute, $params)
 	{
 		if(($params['col'] == 'email' && $this->find("$attribute = '$this->email'"))
@@ -95,6 +98,9 @@ class UserInfo extends CActiveRecord
 		}
 	}
 
+	/**
+	 * This function makes sure that the old password that was provided is correct.
+	 */
 	public function checkOld($attribute, $params)
 	{
 		$user = Yii::app()->user->getName();
@@ -106,7 +112,7 @@ class UserInfo extends CActiveRecord
 		}
 	}
 	
-	/*
+	/**
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -127,7 +133,7 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -148,14 +154,12 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('userid',$this->userid);

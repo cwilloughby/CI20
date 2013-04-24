@@ -64,7 +64,7 @@ class TroubleTickets extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the opendate value
 	 * when a new ticket is made.
 	 */
@@ -79,7 +79,7 @@ class TroubleTickets extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
 	 */
 	protected function beforeSave()
@@ -179,9 +179,8 @@ class TroubleTickets extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * Adds a comment to this trouble ticket.
-	 * This is a place holder for now.
 	 */
 	public function addComment($comment)
 	{

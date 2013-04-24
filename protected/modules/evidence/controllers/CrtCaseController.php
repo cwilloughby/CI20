@@ -147,8 +147,9 @@ class CrtCaseController extends Controller
 		));
 	}
 	
-	/*
+	/**
 	 * This function is used to change an existing case file's defendant.
+	 * @param integer $id the id of the summary
 	 */
 	public function actionChangeCourtCase($id)
 	{

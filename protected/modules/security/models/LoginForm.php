@@ -75,7 +75,10 @@ class LoginForm extends CFormModel
 		else
 			return false;
 	}
-	
+	/**
+	 * This function will record the login event.
+	 * @param string $event
+	 */
 	private function recordLoginEvent($event)
 	{
 		// Record the login event.

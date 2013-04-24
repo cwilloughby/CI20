@@ -96,7 +96,7 @@ class CrtCase extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * Check to see if the case already exists in the court cases table.
 	 * It it does, return the caseno, otherwise create the case and return the new caseno.
 	 */

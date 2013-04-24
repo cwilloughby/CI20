@@ -188,7 +188,7 @@ class CaseSummary extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * This function is for matching together infomation for several of the gridviews.
 	 * @param various $id the value of a foreign key.
 	 * @return CActiveDataProvider
@@ -247,7 +247,7 @@ class CaseSummary extends CActiveRecord
 		));
 	}
 
-	/*
+	/**
 	 * This function is used to translate the 0's, 1's, and 2's of the 
 	 * dna, bio, dug, firearm, other, and money columns
 	 */

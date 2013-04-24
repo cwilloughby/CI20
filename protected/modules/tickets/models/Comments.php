@@ -64,7 +64,7 @@ class Comments extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the datecreated value
 	 * when a new comment is made.
 	 */
@@ -79,7 +79,7 @@ class Comments extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Sets the createdby value to the person who made the comment.
 	 */
 	protected function beforeSave()

@@ -97,7 +97,7 @@ class Defendant extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * Check to see if the defendant already exists in the defendant table.
 	 * It it does, return the defid, otherwise create the defendant and return the new defid.
 	 */
