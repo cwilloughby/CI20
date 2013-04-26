@@ -26,6 +26,8 @@ return array(
 		'application.modules.tickets.models.*',
 		'application.modules.documents.models.*',
 		'application.modules.news.models.*',
+		'application.modules.weather.models.*',
+		'application.modules.weather.components.*',
 		'zii.widgets.CPortlet'
 	),
 
@@ -45,6 +47,7 @@ return array(
 		'news',
 		'evidence',
 		'timelog',
+		'weather',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
@@ -94,9 +97,10 @@ return array(
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 			),
 		),
-		//'cache'=>array(
-		//	'class'=>'system.caching.CApcCache',
-		//),
+		'cache'=>array(
+			//'class'=>'system.caching.CApcCache',
+			'class'=>'system.caching.CDbCache'
+		),
 		'db'=>array(
 			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',
