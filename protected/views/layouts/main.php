@@ -46,7 +46,6 @@
 			'lastItemCssClass'=>'last',
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index'), 'linkOptions'=>array('class'=>'toplink')),
-				array('label'=>'Weather', 'url'=>array('/weather/weather/report'), 'linkOptions'=>array('class'=>'toplink')),
 				array(
 					'label'=>'Helpdesk',
 					'visible'=>!Yii::app()->user->isGuest,
