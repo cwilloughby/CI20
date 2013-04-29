@@ -92,8 +92,13 @@ class TimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		// Auto import any new events in the text file to the database.
-		//$this->actionCreate();
+		// Do not import the events if this code is being run locally. Otherwise 
+		// the events could be imported into the wrong database.
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+		{
+			// Auto import any new events in the text file to the database.
+			$this->actionCreate();
+		}
 		
 		// If the export button on the search form was clicked.
 		if(Yii::app()->request->getParam('export'))
