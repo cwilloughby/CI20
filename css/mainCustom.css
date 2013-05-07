@@ -134,3 +134,8 @@ div.view
 .container {width:90%;margin:0 auto;}
 .span-5 {width:17%;}
 .span-19 {width:80%;}
+
+div.centriod
+{
+	background: #ffff99;
+}

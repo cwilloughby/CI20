@@ -48,6 +48,7 @@ return array(
 		'evidence',
 		'timelog',
 		'weather',
+		'centriod',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
