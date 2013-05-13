@@ -9,10 +9,12 @@ $(function() {
 	$("div.accordion").accordion({
 		collapsible: true,
 		heightStyle: "content",
-		clearStyle: "true"
+		clearStyle: "true",
+		icons: false
 	});
 });
 </script>
+
 <?php
 $this->pageTitle = Yii::app()->name . ' - HR Policy';
 

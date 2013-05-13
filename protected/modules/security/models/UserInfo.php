@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This is the model class for table "ci_user_info".
  *
  * The followings are the available columns in table 'ci_user_info':
@@ -34,7 +34,7 @@ class UserInfo extends CActiveRecord
 	public $password_repeat;
 	public $department_search;
 	
-	/*
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return UserInfo the static model class
@@ -44,7 +44,7 @@ class UserInfo extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/*
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -52,7 +52,7 @@ class UserInfo extends CActiveRecord
 		return 'ci_user_info';
 	}
 
-	/*
+	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -60,24 +60,32 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			// These fields are only required when creating a new user.
 			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required', 'on'=>'insert'),
+			// Only a username is required when requesting a password recovery email.
 			array('username', 'required', 'on'=>'request'),
+			// Only the old password, the new password, and the new password repeated are required on the password change form.
 			array('oldpassword, password, password_repeat', 'required', 'on'=>'change'),
+			// Only the username, new password, and the new password repeated are required on the password recovery form.
 			array('username, password, password_repeat', 'required', 'on'=>'recovery'),
+			// On the password recovery forms, the provided username must exist in the database.
 			array('username', 'exist', 'on'=>'recovery'),
 			array('username', 'exist', 'on'=>'request'),
+			// The old password that was provided must be correct.
 			array('oldpassword', 'checkOld', 'on'=>'change'),
 			array('phoneext, departmentid, active', 'numerical', 'integerOnly'=>true),
 			array('firstname', 'length', 'max'=>30),
 			array('lastname', 'length', 'max'=>40),
 			array('middlename', 'length', 'max'=>45),
 			array('username', 'length', 'max'=>41),
+			// When creating a new user, the username must not already be in the database.
 			array('username', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'username'),
 			array('password', 'length', 'max'=>128),
 			array('password', 'compare', 'on'=>'change'),
 			array('password', 'compare', 'on'=>'recovery'),
 			array('email', 'length', 'max'=>100),
 			array('email', 'email'),
+			// When creating a new user, the email must not already be in the database.
 			array('email', 'dataDoesNotExist', 'on'=>'insert', 'col'=>'email'),
 			array('password_repeat, oldpassword', 'safe'),
 			// The following rule is used by search().
@@ -86,6 +94,9 @@ class UserInfo extends CActiveRecord
 		);
 	}
 	
+	/**
+	 * This function is used to make sure that the username and the email do not already exist.
+	 */
 	public function dataDoesNotExist($attribute, $params)
 	{
 		if(($params['col'] == 'email' && $this->find("$attribute = '$this->email'"))
@@ -95,6 +106,9 @@ class UserInfo extends CActiveRecord
 		}
 	}
 
+	/**
+	 * This function makes sure that the old password that was provided is correct.
+	 */
 	public function checkOld($attribute, $params)
 	{
 		$user = Yii::app()->user->getName();
@@ -106,7 +120,7 @@ class UserInfo extends CActiveRecord
 		}
 	}
 	
-	/*
+	/**
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -127,7 +141,7 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -148,14 +162,12 @@ class UserInfo extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('userid',$this->userid);

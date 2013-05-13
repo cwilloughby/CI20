@@ -171,6 +171,7 @@ class GsTimeLogController extends Controller
 		// Auto import any new events in the text file to the database.
 		//$this->actionCreate();
 
+		// If the export button on the search form was clicked.
 		if(Yii::app()->request->getParam('export'))
 		{
 			$this->actionExport();
@@ -213,13 +214,14 @@ class GsTimeLogController extends Controller
 		));
 	}
 	
+	/**
+	 * Export the gridview to a csv file.
+	 */
 	public function actionExport()
 	{
 		$fp = fopen('php://temp', 'w');
 
-		/* 
-		 * Write a header of csv file
-		 */
+		// Write a header of csv file
 		$headers = array(
 			'username',
 			'computername',
@@ -233,9 +235,7 @@ class GsTimeLogController extends Controller
 		}
 		fputcsv($fp,$row);
 
-		/*
-		 * Init dataProvider for first page.
-		 */
+		// Init dataProvider for first page.
 		$model = new GsTimeLog('search');
 		$model->unsetAttributes();  // Clear any default values.
 		
@@ -268,9 +268,7 @@ class GsTimeLogController extends Controller
 		$dp = $model->search();
 		$dp->setPagination(false);
 
-		/*
-		 * Get models, write to a file
-		 */
+		//Get models, write to a file
 		$models = $dp->getData();
 		foreach($models as $model)
 		{
@@ -282,14 +280,15 @@ class GsTimeLogController extends Controller
 			fputcsv($fp,$row);
 		}
 
-		/*
-		 * Save csv content to a session.
-		 */
+		// Save csv content to a session.
 		rewind($fp);
 		Yii::app()->user->setState('export',stream_get_contents($fp));
 		fclose($fp);
 	}
 	
+	/**
+	 * Pull the csv from the session and send it to the user.
+	 */
 	public function actionExportFile()
 	{
 		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
@@ -309,11 +308,19 @@ class GsTimeLogController extends Controller
 		return $model;
 	}
 	
+	/**
+	 * This function returns the array that contains the path to the files
+	 * that the GPO writes to for the basic logon and logoff events.
+	 */
 	private function getLog1()
 	{
 		return $this->log1;	
 	}
 	
+	/**
+	 * This function returns the array that contains the path to the files
+	 * that the GPO writes to for the probation logon and logoff events.
+	 */
 	private function getLog2()
 	{
 		return $this->log2;

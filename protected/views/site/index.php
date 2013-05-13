@@ -23,4 +23,6 @@ foreach($news as $key => $value)
 	echo "<br/><p>" . $value . "</p>";
 	echo "</fieldset>";
 }
+
+$this->widget('WeatherReport');
 ?>

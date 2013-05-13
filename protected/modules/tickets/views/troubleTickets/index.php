@@ -16,12 +16,13 @@ $this->menu2=array(
 
 <h1>Open Trouble Tickets</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-	'sortableAttributes'=>array(
-		'ticketid',
-		'opendate',
-	),
-	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
-)); ?>
+	<?php $this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$dataProvider,
+		'itemView'=>'_view',
+		'sortableAttributes'=>array(
+			'ticketid',
+			'opendate',
+		),
+		'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
+	)); ?>
+

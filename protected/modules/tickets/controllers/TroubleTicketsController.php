@@ -259,8 +259,7 @@ class TroubleTicketsController extends Controller
 		}
 		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
-			// If the user is a supervisor.
-			// Find that supervisor's department
+			// If the user is a supervisor, find that supervisor's department.
 			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
 
 			// Find all users in that department.
@@ -334,7 +333,7 @@ class TroubleTicketsController extends Controller
 		return $model;
 	}
 	
-	/*
+	/**
 	 * Grab the subjects associated with the selected category.
 	 * This is only used by AJAX.
 	 */
@@ -352,13 +351,13 @@ class TroubleTicketsController extends Controller
 		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
 		echo CHtml::tag('option',array('value' => ''), CHtml::encode('Select a subject'),true);
 		
-		// Put each subject into a dropdown box.
+		// Put each subject into the dropdown box.
 		foreach($data as $value => $name) {
 			echo CHtml::tag('option', array('value' => $value), $name,true);
 		}
 	}
 	
-	/*
+	/**
 	 * Grab the tips and conditional textboxes associated with the selected subject.
 	 * This is only used by AJAX.
 	 */

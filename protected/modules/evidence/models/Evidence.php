@@ -116,4 +116,46 @@ class Evidence extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/**
+	 * actionCreate returns an array, but model->save() can only save one model at a time.
+	 * So this function is used to split the array into individual models.
+	 * @param array $formData contains all the rows from the form in an array.
+	 */
+	public function saveEvidence($formData)
+	{
+		if(empty($formData))
+			return false;
+
+		$idx = 0;
+
+		// Loop through the array, splitting it into individual models and saving those models. 
+		foreach($formData['exhibitno'] as $ex)
+		{
+			$model = new Evidence;
+
+			// The attributes can be found at the same postion in the formData.
+			$model->caseno = $formData['caseno'][$idx];
+			$model->hearingtype = $formData['hearingtype'][$idx];
+			$model->hearingdate = date('Y-m-d', strtotime($formData['hearingdate'][$idx]));
+			$model->exhibitno = $ex;
+			$model->evidencename = $formData['evidencename'][$idx];
+			$model->comment = $formData['comment'][$idx];
+			$model->exhibitlist = $formData['exhibitlist'][$idx];
+			
+			if(!$model->save())
+				return false;
+			
+			// Record the evidence create event.
+			$log = new Log;
+			$log->tablename = 'ci_evidence';
+			$log->event = 'Evidence Created';
+			$log->userid = Yii::app()->user->getId();
+			$log->tablerow = $model->getPrimaryKey();
+			$log->save(false);
+			
+			$idx++;
+		}
+		return true;
+	}
 }

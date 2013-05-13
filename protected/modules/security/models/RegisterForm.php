@@ -45,6 +45,9 @@ class RegisterForm extends CFormModel
 		);
 	}
 	
+	/**
+	 * This function makes sure that the email does not already exist.
+	 */
 	public function doesNotExist($attribute, $params)
 	{
 		if(UserInfo::model()->find("email = '$this->email'"))

@@ -13,12 +13,12 @@ $this->menu2=array(
 	array('label'=>'List Evidence', 'url'=>array('index')),
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'Update Evidence', 'url'=>array('update', 'id'=>$model->evidenceid)),
-	array('label'=>'Delete Evidence', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->evidenceid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Evidence', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->evidenceid),'confirm'=>'Are you sure you want to delete this piece of evidence?')),
 	array('label'=>'Manage Evidence', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Evidence <?php echo $model->exhibitno; ?></h1>
+<h1>View Evidence</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -27,6 +27,7 @@ $this->menu2=array(
 		'exhibitno',
 		'evidencename',
 		'comment',
+		'hearingtype',
 		array(
 			'name' => 'hearingdate',
 			'value' => (isset($model->hearingdate) && ((int)$model->hearingdate))

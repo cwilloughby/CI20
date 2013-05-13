@@ -2,7 +2,7 @@
 
 class LoginController extends Controller
 {
-	/*
+	/**
 	 * @return array action filters
 	 */
 	public function filters()

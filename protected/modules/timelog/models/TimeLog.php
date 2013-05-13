@@ -90,6 +90,7 @@ class TimeLog extends CActiveRecord
 		$criteria = new CDbCriteria;
 		$criteria->group = 'username, computername, eventdate, eventtype, eventtime';
 		
+		// These will add different conditions based on the date range fields.
 		if(!empty($this->from_date) && empty($this->to_date))
         {
             $criteria->condition = "eventdate >= '$this->from_date'";  

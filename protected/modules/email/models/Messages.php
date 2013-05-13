@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This is the model class for table "ci_messages".
  *
  * The followings are the available columns in table 'ci_messages':
@@ -17,11 +17,12 @@
  */
 class Messages extends CActiveRecord
 {
+	// This is the smtp host address.
 	const HOST = "10.107.12.72";
 	
 	public $mail;
 	
-	/*
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return Messages the static model class
@@ -37,9 +38,10 @@ class Messages extends CActiveRecord
 		$this->mail = new JPhpMailer();
 		$this->mail->IsSMTP();
 		$this->mail->Host = self::HOST;
+		$this->mail->ContentType = "text/html";
 	}
 	
-	/*
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -47,7 +49,7 @@ class Messages extends CActiveRecord
 		return 'ci_messages';
 	}
 
-	/*
+	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -66,7 +68,7 @@ class Messages extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the datesent value
 	 * when a new ticket is made.
 	 */
@@ -80,7 +82,7 @@ class Messages extends CActiveRecord
 			),
 		);
 	}
-	/*
+	/**
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -92,7 +94,7 @@ class Messages extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -108,15 +110,12 @@ class Messages extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('messageid',$this->messageid);
@@ -130,5 +129,43 @@ class Messages extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * Set all the details of the email.
+	 * @param string $toAddress the email address that the message will be sent to.
+	 * @param string $fromAddress the email address that the message comes from.
+	 * @param string $subject the email's subject.
+	 * @param string $body the email's body.
+	 * @param string $type the type of message.
+	 * @param string $ccAddress an additional email address that the message will be sent to.
+	 */
+	public function setEmail($toAddress, $fromAddress, $subject, $body, $type, $ccAddress = null)
+	{
+		$this->mail->AddAddress($toAddress);
+		$this->to = $toAddress;
+		
+		$this->mail->SetFrom($fromAddress);
+		$this->from = $fromAddress;
+		
+		// Set the cc address if it was provided.
+		if(!is_null($ccAddress))
+		{
+			$this->mail->AddCC($ccAddress);
+		}
+		
+		$this->mail->Subject = $subject;
+		$this->subject = $subject;
+		
+		$this->messagetype = $type;
+		
+		// Set the message's body.
+		$this->mail->Body = $body;
+		
+		// The link to the recovery email page needs to be ommited from the log for security.
+		if($type == "Recovery")
+			$this->messagebody = "Follow this link to recover your password: Link omited for security";
+		else
+			$this->messagebody = $this->mail->Body;
 	}
 }

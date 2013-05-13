@@ -49,15 +49,13 @@ class AttorneyController extends Controller
 			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
-				// Record the attorney create event. Commented out for testing.
-				/*
+				// Record the attorney create event.
 				$log = new Log;
 				$log->tablename = 'ci_attorney';
 				$log->event = 'Attorney Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->attyid));
 			}
@@ -77,23 +75,18 @@ class AttorneyController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Attorney']))
 		{
 			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
-				// Record the attorney update event. Commented out for testing.
-				/*
+				// Record the attorney update event.
 				$log = new Log;
 				$log->tablename = 'ci_attorney';
 				$log->event = 'Attorney Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->attyid));
 			}
@@ -111,8 +104,14 @@ class AttorneyController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		try
+		{
+			$this->loadModel($id)->delete();
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException('the attorney cannot be deleted, because it is still assigned to a case.');
+		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));

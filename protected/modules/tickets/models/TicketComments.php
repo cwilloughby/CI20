@@ -60,8 +60,8 @@ class TicketComments extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ticketid' => 'Ticketid',
-			'commentid' => 'Commentid',
+			'ticketid' => 'Ticket ID',
+			'commentid' => 'Comment ID',
 		);
 	}
 
@@ -71,9 +71,6 @@ class TicketComments extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('ticketid',$this->ticketid);

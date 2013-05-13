@@ -48,6 +48,10 @@ class UserIdentity extends CUserIdentity
         return !$this->errorCode;
     }
 	
+	/**
+	 * Retrieve a user's id.
+	 * @return integer $_id.
+	 */
 	public function getId()
 	{
 		return $this->_id;

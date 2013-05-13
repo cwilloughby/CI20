@@ -1,9 +1,15 @@
 <?php
-
+/**
+ * This class is for the user login porlet. 
+ * This allows the login form to be displayed in the side menu.
+ */
 class UserLogin extends CPortlet
 {
 	public $pageTitle='Login';
 	
+	/**
+	 * This function renders the login form.
+	 */
 	protected function renderContent()
 	{
 		$form=new LoginForm;

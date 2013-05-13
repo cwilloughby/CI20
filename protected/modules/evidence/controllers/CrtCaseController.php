@@ -44,23 +44,18 @@ class CrtCaseController extends Controller
 	{
 		$model=new CrtCase;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['CrtCase']))
 		{
 			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
 			{
-				// Record the court case create event. Commented out for testing.
-				/*
+				// Record the court case create event.
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->caseno));
 			}
@@ -80,23 +75,18 @@ class CrtCaseController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['CrtCase']))
 		{
 			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
 			{
-				// Record the court case update event. Commented out for testing.
-				/*
+				// Record the court case update event.
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->caseno));
 			}
@@ -114,7 +104,14 @@ class CrtCaseController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		try
+		{
+			$this->loadModel($id)->delete();
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException('the case cannot be deleted, because it still has evidence assigned to it.');
+		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -146,7 +143,49 @@ class CrtCaseController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	/**
+	 * This function is used to change an existing case file's defendant.
+	 * @param integer $id the id of the summary
+	 */
+	public function actionChangeCourtCase($id)
+	{
+		$summary = CaseSummary::model()->findByPk($id);
+		
+		if(isset($_POST['CrtCase']))
+		{
+			$case = new CrtCase;
+			$case->attributes = $_POST['CrtCase'];
+			
+			// Check to see if the new case exists in the crtcase table already.
+			// If it does, return it's caseno, otherwise create the case and then return the new caseno.
+			$summary->caseno = $case->saveCase($case);
+			
+			// Save the changed to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Case Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('/evidence/casesummary/view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$case = $this->loadModel($summary->caseno);
+		}
 
+		$this->render('changeCourtCase',array(
+			'summary' => $summary,
+			'case' => $case
+		));
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

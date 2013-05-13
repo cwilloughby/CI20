@@ -14,7 +14,7 @@ $this->menu2=array(
 	array('label'=>'List Court Cases', 'url'=>array('index')),
 	array('label'=>'Create Court Case', 'url'=>array('create')),
 	array('label'=>'Update Court Case', 'url'=>array('update', 'id'=>$model->caseno)),
-	array('label'=>'Delete Court Case', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->caseno),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Court Case', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->caseno),'confirm'=>'Are you sure you want to delete this case?')),
 	array('label'=>'Manage Court Cases', 'url'=>array('admin')),
 );
 ?>
