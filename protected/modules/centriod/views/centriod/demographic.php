@@ -24,6 +24,7 @@ if($demographic != "The demographic file does not exist!")
 		</tr>
 
 	<?php 
+	// Remove the location information from the array, then loop through the demographic information.
 	foreach(array_slice($demographic, 1) as $demog)
 	{
 		?>

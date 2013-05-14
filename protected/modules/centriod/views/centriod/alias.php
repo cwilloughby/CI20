@@ -5,7 +5,8 @@
 if($aliases != "This arrest has no alias file.")
 {
 	echo "<h4>Location: " . $aliases['Location'] . "</h4>";
-
+	
+	// Remove the location information from the array, then loop through each alias.
 	foreach(array_slice($aliases, 1) as $alias)
 	{
 		echo "Last Name: " . $alias['Alias Last Name'] . "<br/>";

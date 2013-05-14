@@ -5,7 +5,8 @@
 if($warrant != "The warrant file does not exist!")
 {
 	echo "<h4>Location: " . $warrant['Location'] . "</h4>";
-
+	
+	// Remove the location information from the array, then loop through each charge.
 	foreach(array_slice($warrant, 1) as $charge)
 	{
 		echo "<table>"
