@@ -8,11 +8,13 @@ if($warrant != "The warrant file does not exist!")
 
 	foreach(array_slice($warrant, 1) as $charge)
 	{
-		echo "Warrant Type: " . $charge['CJIS Warrant Type'] . "<br/>";
-		echo "Warrant Number: " . $charge['Warrant Number'] . "<br/>";
-		echo "Incident Number: " . $charge['Incident Number'] . "<br/>";
-		echo "NCIC: " . $charge['NCIC'] . "<br/>";
-		echo "TCA Code: " . $charge['TCA Code'] . "<br/><br/>";
+		echo "<table>"
+			. "<tr><td>Warrant Type</td><td>" . $charge['CJIS Warrant Type'] . "</td></tr>"
+			. "<tr><td>Warrant Number</td><td>" . $charge['Warrant Number'] . "</td></tr>"
+			. "<tr><td>Incident Number</td><td>" . $charge['Incident Number'] . "</td></tr>"
+			. "<tr><td>NCIC</td><td>" . $charge['NCIC'] . "</td></tr>"
+			. "<tr><td>TCA Code</td><td>" . $charge['TCA Code'] . "</td></tr>"
+		. "</table><hr>";
 	}
 }
 else

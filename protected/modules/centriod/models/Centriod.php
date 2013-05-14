@@ -5,8 +5,8 @@
 class Centriod extends CModel
 {
 	// This is the path to the folders where the flat files are.
-	const SUCCESS = '\\\\jis18828\\DATA\FTP\Courts2\Success\Arrest\Final\\';
-	const FAILED = '\\\\jis18828\\DATA\FTP\Courts2\\Failed\Arrest\Final\\';
+	const SUCCESS = 'C:/Users/cwilloughby/Desktop/';
+	const FAILED = '\\\\jis18828\\DATA\\FTP\\Courts2\\Failed\\Arrest\\Final\\';
 	
 	public $arrestnumber;
 	
@@ -170,7 +170,7 @@ class Centriod extends CModel
 		{
 			$handle = @fopen($files['Warrant'], 'r');
 
-			if($handle) 
+			if($handle)
 			{
 				$row = 0;
 				$parsedFiles['Warrant']['Location'] = $files['Warrant'];
@@ -186,7 +186,7 @@ class Centriod extends CModel
 						for($element = 0; $element < $count; $element++)
 						{
 							$parsedFiles['Warrant']['Charge' . ($row + 1)][$this->warrant[$element]['Arrest Element']] 
-									= trim(substr($buffer, $this->warrant[$element]['Start Point'], $this->warrant[$element]['Length']));
+								= trim(substr($buffer, $this->warrant[$element]['Start Point'], $this->warrant[$element]['Length']));
 						}
 					}
 					$row++;
@@ -275,6 +275,7 @@ class Centriod extends CModel
 		}
 		if($array['Warrant'] != "The warrant file does not exist!")
 		{
+			$array['Warrant'] = $this->checkWarrantValues($array['Warrant']);
 			$array['Warrant'] = $this->checkBlankWarrant($array['Warrant']);
 		}
 		
@@ -304,7 +305,7 @@ class Centriod extends CModel
 	}
 	
 	/**
-	 * This function will make sure that critical demographic numbers are valid.
+	 * This function will make sure that number related demographic values are valid.
 	 * @param array $demographic
 	 * @return array
 	 */
@@ -327,11 +328,65 @@ class Centriod extends CModel
 		{
 			$demographic['Element28']['Value'] = "<div class = 'centriod'><b>" . $demographic['Element28']['Value'] . "</b></div>";
 		}
+		
+		// The suffix should not contain a number.
+		if(!preg_match('/^(\D)*$/', $demographic['Element10']['Value']))
+		{
+			$demographic['Element10']['Value'] = "<div class = 'centriod'><b>" . $demographic['Element10']['Value'] . "</b></div>";
+		}
+		
 		return $demographic;
 	}
 	
 	/**
-	 * This function checks to see if any critical values are blank in the warrant.
+	 * This function finds any blank values in the demographic.
+	 * @param type $array
+	 */
+	private function checkBlankDemographic($demographic)
+	{
+		// Check the demographic file for blanks and highlight them.
+		foreach(array_slice($demographic, 1) as $element => $sub)
+		{
+			if($sub['Value'] == "")
+			{
+				$demographic[$element]['Value'] = "<div class = 'centriod'>&nbsp</div>";
+			}
+		}
+		return $demographic;
+	}
+	
+	/**
+	 * Warrant files are so small, that all the warrant value checks will be done here..
+	 * @param array $warrant
+	 * @return array
+	 */
+	private function checkWarrantValues($warrant)
+	{
+		foreach(array_slice($warrant, 1) as $charge => $sub)
+		{
+			// The CJIS Warrant Type should contain exactly 1 letter.
+			if(!preg_match('/^([A-Z]{1})$/', $warrant[$charge]['CJIS Warrant Type']))
+			{
+				$warrant[$charge]['CJIS Warrant Type'] = "<div class = 'centriod'><b>" . $warrant[$charge]['CJIS Warrant Type'] . "</b></div>";
+			}
+			
+			// The Warrant Number should contain 2 or 3 letters followed by numbers.
+			if(!preg_match('/^(([A-Z]{2}|[A-Z]{3}))\d+$/', $warrant[$charge]['Warrant Number']))
+			{
+				$warrant[$charge]['Warrant Number'] = "<div class = 'centriod'><b>" . $warrant[$charge]['Warrant Number'] . "</b></div>";
+			}
+			
+			// The NCIC number should contain only numbers and be exactly 4 numbers long.
+			if(!preg_match('/^([0-9]{4})$/', $warrant[$charge]['NCIC']))
+			{
+				$warrant[$charge]['NCIC'] = "<div class = 'centriod'><b>" . $warrant[$charge]['NCIC'] . "</b></div>";
+			}
+		}
+		return $warrant;
+	}
+	
+	/**
+	 * This function finds any blank values in the warrant.
 	 * @param type $array
 	 */
 	private function checkBlankWarrant($warrant)
@@ -348,22 +403,5 @@ class Centriod extends CModel
 			}
 		}
 		return $warrant;
-	}
-	
-	/**
-	 * This function checks to see if any critical values are blank in the demographic.
-	 * @param type $array
-	 */
-	private function checkBlankDemographic($demographic)
-	{
-		// Check the demographic file for blanks and highlight them.
-		foreach(array_slice($demographic, 1) as $element => $sub)
-		{
-			if($sub['Value'] == "")
-			{
-				$demographic[$element]['Value'] = "<div class = 'centriod'>&nbsp</div>";
-			}
-		}
-		return $demographic;
 	}
 }
