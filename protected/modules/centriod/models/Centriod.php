@@ -4,7 +4,7 @@
  */
 class Centriod extends CModel
 {
-	// This is the path to the folders where the flat files are.
+	// These are the paths to the folders where the flat files are.
 	const SUCCESS = '\\\\jis18828\\DATA\\FTP\\Courts2\\Success\\Arrest\\Final\\';
 	const FAILED = '\\\\jis18828\\DATA\\FTP\\Courts2\\Failed\\Arrest\\Final\\';
 	
@@ -356,7 +356,7 @@ class Centriod extends CModel
 	}
 	
 	/**
-	 * Warrant files are so small, that all the warrant value checks will be done here..
+	 * Warrant files are so small, that all the warrant value checks will be done here.
 	 * @param array $warrant
 	 * @return array
 	 */
