@@ -14,7 +14,7 @@ URL address type "ci" and hit "enter".</p>
 <p>Please create an account under the login if you have not already done so.
 You must be a Criminal Court Clerk employee to create an account. 
 Site functions are disabled until you have logged in.</p>
-
+Test
 <?php 
 foreach($news as $key => $value)
 {
