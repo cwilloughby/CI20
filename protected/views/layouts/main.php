@@ -95,6 +95,14 @@
 					),
 				),
 				array(
+					'label'=>'Links',
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'dropdown'),
+					'items'=>array(
+						array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
 					'itemOptions'=>array('class'=>'dropdown'),
