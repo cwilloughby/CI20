@@ -16,6 +16,9 @@
  */
 class Evaluations extends CActiveRecord
 {
+	public $employee_search;
+	public $evaluator_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -47,7 +50,7 @@ class Evaluations extends CActiveRecord
 			array('evaluationdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('evaluationid, employee, evaluator, evaluationdate', 'safe', 'on'=>'search'),
+			array('evaluationid, employee, evaluator, evaluationdate, employee_search, evaluator_search', 'safe', 'on'=>'search'),
 		);
 	}
 	
@@ -102,10 +105,12 @@ class Evaluations extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'evaluationid' => 'Evaluationid',
+			'evaluationid' => 'Evaluation ID',
 			'employee' => 'Employee',
 			'evaluator' => 'Evaluator',
-			'evaluationdate' => 'Evaluationdate',
+			'evaluationdate' => 'Evaluation Date',
+			'employee_search' => 'Employee',
+			'evaluator_search' => 'Evaluator',
 		);
 	}
 
@@ -115,18 +120,31 @@ class Evaluations extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
-
+		$criteria->with = array('employee0', 'evaluator0');
+		
 		$criteria->compare('evaluationid',$this->evaluationid);
 		$criteria->compare('employee',$this->employee);
 		$criteria->compare('evaluator',$this->evaluator);
 		$criteria->compare('evaluationdate',$this->evaluationdate,true);
-
+		$criteria->compare('employee0.username',$this->employee_search,true);
+		$criteria->compare('evaluator0.username',$this->evaluator_search,true);
+				
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'employee_search'=>array(
+						'asc'=>'employee0.username',
+						'desc'=>'employee0.username DESC',
+					),
+					'evaluator_search'=>array(
+						'asc'=>'evaluator0.username',
+						'desc'=>'evaluator0.username DESC',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }

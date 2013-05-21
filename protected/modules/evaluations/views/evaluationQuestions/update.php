@@ -2,6 +2,8 @@
 /* @var $this EvaluationQuestionsController */
 /* @var $model EvaluationQuestions */
 
+$this->pageTitle = Yii::app()->name . ' - Update Evaluation Question';
+
 $this->breadcrumbs=array(
 	'Evaluation Question'=>array('index'),
 	$model->questionid=>array('view','id'=>$model->questionid),

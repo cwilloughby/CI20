@@ -54,6 +54,7 @@ class EvaluationAnswers extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'question' => array(self::BELONGS_TO, 'EvaluationQuestions', 'questionid'),
 		);
 	}
 
@@ -63,8 +64,8 @@ class EvaluationAnswers extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'evaluationid' => 'Evaluationid',
-			'questionid' => 'Questionid',
+			'evaluationid' => 'Evaluation ID',
+			'questionid' => 'Question ID',
 			'score' => 'Score',
 			'comments' => 'Comments',
 		);

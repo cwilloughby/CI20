@@ -2,6 +2,8 @@
 /* @var $this EvaluationsController */
 /* @var $model Evaluations */
 
+$this->pageTitle = Yii::app()->name . ' - Manage Evaluations';
+
 $this->breadcrumbs=array(
 	'Evaluations'=>array('index'),
 	'Manage',
@@ -45,10 +47,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'evaluationid',
-		'employee',
-		'evaluator',
-		'evaluationdate',
+		array( 
+			'name'=>'employee_search', 
+			'value'=>'$data->employee0->username' 
+		),
+		array( 
+			'name'=>'evaluator_search', 
+			'value'=>'$data->evaluator0->username' 
+		),
+		array(
+			'name' => 'evaluationdate',
+			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->evaluationdate"))',
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),

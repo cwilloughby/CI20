@@ -2,6 +2,8 @@
 /* @var $this EvaluationQuestionsController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle = Yii::app()->name . ' - List Evaluation Questions';
+
 $this->breadcrumbs=array(
 	'Evaluation Questions',
 );

@@ -1,6 +1,9 @@
 <?php
 /* @var $this EvaluationQuestionsController */
 /* @var $model EvaluationQuestions */
+/* @var $departments array */
+
+$this->pageTitle = Yii::app()->name . ' - Create Evaluation Question';
 
 $this->breadcrumbs=array(
 	'Evaluation Question'=>array('index'),
@@ -15,4 +18,4 @@ $this->menu2=array(
 
 <h1>Create Evaluation Question</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model, 'departments'=>$departments)); ?>

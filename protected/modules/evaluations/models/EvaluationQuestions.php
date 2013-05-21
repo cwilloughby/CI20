@@ -7,6 +7,7 @@
  * @property integer $questionid
  * @property integer $departmentid
  * @property string $question
+ * @property integer $active
  *
  * The followings are the available model relations:
  * @property Evaluations[] $ciEvaluations
@@ -14,6 +15,8 @@
  */
 class EvaluationQuestions extends CActiveRecord
 {
+	public $department_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -41,11 +44,10 @@ class EvaluationQuestions extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('departmentid, question', 'required'),
-			array('departmentid', 'numerical', 'integerOnly'=>true),
-			array('question', 'length', 'max'=>100),
+			array('departmentid, active', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('questionid, departmentid, question', 'safe', 'on'=>'search'),
+			array('questionid, departmentid, question, active, department_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,9 +70,11 @@ class EvaluationQuestions extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'questionid' => 'Questionid',
-			'departmentid' => 'Departmentid',
+			'questionid' => 'Question ID',
+			'departmentid' => 'Department',
 			'question' => 'Question',
+			'active' => 'Active',
+			'department_search' => 'Department',
 		);
 	}
 
@@ -80,17 +84,29 @@ class EvaluationQuestions extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
-
+		$criteria->with = array('department');
+		
 		$criteria->compare('questionid',$this->questionid);
 		$criteria->compare('departmentid',$this->departmentid);
 		$criteria->compare('question',$this->question,true);
-
+		$criteria->compare('active',$this->active);
+		$criteria->compare('department.departmentname',$this->department_search,true);
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'Pagination' => array (
+				'PageSize' => 8
+			),
+			'sort'=>array(
+				'attributes'=>array(
+					'department_search'=>array(
+						'asc'=>'department.username',
+						'desc'=>'department.username DESC',
+					),
+					'*',
+				),
+			),
 		));
 	}
 }

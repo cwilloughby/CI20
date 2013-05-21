@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'employee'); ?>
-		<?php echo $form->dropDownList($model,'employee', $allUsers); ?>
+		<?php echo $form->dropDownList($model,'employee', $allUsers, array('empty' => 'Select an Employee')); ?>
 		<?php echo $form->error($model,'employee'); ?>
 	</div>
 

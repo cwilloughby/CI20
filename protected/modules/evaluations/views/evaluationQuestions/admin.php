@@ -2,6 +2,8 @@
 /* @var $this EvaluationQuestionsController */
 /* @var $model EvaluationQuestions */
 
+$this->pageTitle = Yii::app()->name . ' - Manage Evaluation Questions';
+
 $this->breadcrumbs=array(
 	'Evaluation Questions'=>array('index'),
 	'Manage',
@@ -45,8 +47,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'questionid',
-		'departmentid',
+		array( 
+			'name'=>'department_search', 
+			'value'=>'$data->department->departmentname' 
+		),
 		'question',
 		array(
 			'class'=>'CButtonColumn',

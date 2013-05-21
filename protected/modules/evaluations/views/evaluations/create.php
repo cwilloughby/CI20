@@ -3,6 +3,8 @@
 /* @var $model Evaluations */
 /* @var $allUsers array */
 
+$this->pageTitle = Yii::app()->name . ' - Create Evaluation';
+
 $this->breadcrumbs=array(
 	'Evaluation'=>array('index'),
 	'Create',

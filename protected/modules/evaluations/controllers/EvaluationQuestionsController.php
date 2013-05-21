@@ -38,9 +38,8 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model=new EvaluationQuestions;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$departments = CHtml::ListData(Departments::model()->findAll(), 'departmentid', 'departmentname');
+		
 		if(isset($_POST['EvaluationQuestions']))
 		{
 			$model->attributes=$_POST['EvaluationQuestions'];
@@ -50,6 +49,7 @@ class EvaluationQuestionsController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'departments'=>$departments,
 		));
 	}
 
@@ -61,9 +61,6 @@ class EvaluationQuestionsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['EvaluationQuestions']))
 		{
@@ -128,18 +125,5 @@ class EvaluationQuestionsController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='evaluation-questions-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 	}
 }

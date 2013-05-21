@@ -12,11 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'questionid'); ?>
-		<?php echo $form->textField($model,'questionid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'departmentid'); ?>
 		<?php echo $form->textField($model,'departmentid'); ?>
 	</div>
