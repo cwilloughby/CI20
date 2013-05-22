@@ -48,8 +48,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'ticketid',
 		array( 
-			'name'=>'user_search', 
-			'value'=>'$data->openedby0->username' 
+			'name'=>'user_search',
+			'value'=>'$data->openedby0->username',
 		),
 		array(
 			'name' => 'opendate',
@@ -57,18 +57,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		array( 
 			'name'=>'category_search', 
-			'value'=>'$data->category->categoryname' 
+			'value'=>'$data->category->categoryname',
 		),
 		array(
 			'name'=>'subject_search', 
-			'value'=>'$data->subject->subjectname' 
+			'value'=>'$data->subject->subjectname',
 		),
 		'description',
 		array( 
 			'name'=>'closer_search', 
 			'value'=>'(isset($data->closedbyuser->username)) 
 						? $data->closedbyuser->username 
-						: ""'
+						: ""',
 		),
 		array(
 			'name' => 'closedate',

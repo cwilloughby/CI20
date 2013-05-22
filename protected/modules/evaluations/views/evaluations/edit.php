@@ -12,11 +12,10 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'List Evaluations', 'url'=>array('index')),
-	array('label'=>'Manage Evaluations', 'url'=>array('admin')),
-	array('label'=>'Create Evaluation', 'url'=>array('create')),
+	array('label'=>'Manage Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'Create Evaluation', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
 	array('label'=>'View Evaluation', 'url'=>array('view', 'id'=>$model->evaluationid)),
 	array('label'=>'Change Employee', 'url'=>array('update', 'id'=>$model->evaluationid)),
-	array('label'=>'Delete Evaluation', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->evaluationid),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 

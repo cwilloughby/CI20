@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:</b>
-	<?php echo CHtml::encode($data->departmentid); ?>
+	<?php echo CHtml::encode($data->department->departmentname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('question')); ?>:</b>

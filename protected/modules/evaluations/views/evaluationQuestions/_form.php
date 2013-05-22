@@ -16,12 +16,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'departmentid'); ?>
-		<?php echo $form->dropDownList($model,'departmentid', $departments, array('empty' => 'Select a Department')); ?>
-		<?php echo $form->error($model,'departmentid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'question'); ?>
 		<?php echo $form->textArea($model,'question'); ?>
 		<?php echo $form->error($model,'question'); ?>

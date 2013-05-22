@@ -150,20 +150,6 @@ class EvaluationsController extends Controller
 			'answersDataProvider'=>$dataProvider,
 		));
 	}
-	
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
 
 	/**
 	 * Lists all models.
@@ -213,8 +199,17 @@ class EvaluationsController extends Controller
 	{
 		$model=new Evaluations('search');
 		$model->unsetAttributes();  // clear any default values
+		// If the search form was posted.
 		if(isset($_GET['Evaluations']))
+		{
 			$model->attributes=$_GET['Evaluations'];
+			
+			if((int)$model->evaluationdate)
+			{
+				// If the date was posted, convert it to the format that the database recognizes.
+				$model->evaluationdate = date('Y-m-d', strtotime($model->evaluationdate));
+			}
+		}
 
 		$this->render('admin',array(
 			'model'=>$model,

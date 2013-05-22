@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Create Evaluation', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
-	array('label'=>'Manage Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
+	array('label'=>'Manage Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 

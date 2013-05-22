@@ -37,19 +37,20 @@ class EvaluationQuestionsController extends Controller
 	public function actionCreate()
 	{
 		$model=new EvaluationQuestions;
-
-		$departments = CHtml::ListData(Departments::model()->findAll(), 'departmentid', 'departmentname');
 		
 		if(isset($_POST['EvaluationQuestions']))
 		{
+			// Find the user's department.
+			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
 			$model->attributes=$_POST['EvaluationQuestions'];
+			$model->departmentid = $department->departmentid;
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->questionid));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-			'departments'=>$departments,
 		));
 	}
 
@@ -75,17 +76,29 @@ class EvaluationQuestionsController extends Controller
 	}
 
 	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
+	 * Questions are never deleted, just disabled.
+	 * @param integer $id the ID of the model to be disabled
 	 */
-	public function actionDelete($id)
+	public function actionDisable($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		$model->active = 2;
+		
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->questionid));
+	}
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	/**
+	 * Enable a previously disabled question.
+	 * @param integer $id the ID of the model to be enabled
+	 */
+	public function actionEnable($id)
+	{
+		$model = $this->loadModel($id);
+		$model->active = 1;
+		
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->questionid));
 	}
 
 	/**
