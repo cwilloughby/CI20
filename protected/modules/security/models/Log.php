@@ -98,6 +98,9 @@ class Log extends CActiveRecord
 		$criteria->compare('event',$this->event,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(

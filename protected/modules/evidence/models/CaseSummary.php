@@ -162,6 +162,9 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('other',$this->other);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(
@@ -229,6 +232,9 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('comment',$this->comment,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(

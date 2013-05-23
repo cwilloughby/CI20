@@ -10,8 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Defendants', 'url'=>array('index')),
-	array('label'=>'Manage Defendants', 'url'=>array('admin')),
+	array('label'=>'Search Defendants', 'url'=>array('admin')),
 );
 ?>
 

@@ -10,11 +10,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Evidence', 'url'=>array('index')),
+	array('label'=>'Search Evidence', 'url'=>array('admin')),
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'Update Evidence', 'url'=>array('update', 'id'=>$model->evidenceid)),
 	array('label'=>'Delete Evidence', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->evidenceid),'confirm'=>'Are you sure you want to delete this piece of evidence?')),
-	array('label'=>'Manage Evidence', 'url'=>array('admin')),
 );
 ?>
 

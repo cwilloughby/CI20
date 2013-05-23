@@ -10,8 +10,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Evaluation Questions', 'url'=>array('admin')),
 	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
-	array('label'=>'Manage Evaluation Questions', 'url'=>array('admin')),
 );
 ?>
 

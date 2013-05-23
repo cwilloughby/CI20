@@ -11,8 +11,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search HR Policies', 'url'=>array('admin')),
 	array('label'=>'List HR Policies', 'url'=>array('index')),
-	array('label'=>'Manage HR Policies', 'url'=>array('admin')),
 );
 ?>
 

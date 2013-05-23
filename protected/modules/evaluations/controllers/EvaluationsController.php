@@ -72,7 +72,7 @@ class EvaluationsController extends Controller
 					$answer->save();
 				}
 				
-				$this->redirect(array('view','id'=>$model->evaluationid));
+				$this->redirect(array('edit','id'=>$model->evaluationid));
 			}
 		}
 
@@ -199,6 +199,14 @@ class EvaluationsController extends Controller
 	{
 		$model=new Evaluations('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		// If the search form was posted.
 		if(isset($_GET['Evaluations']))
 		{

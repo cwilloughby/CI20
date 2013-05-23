@@ -10,10 +10,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Comments', 'url'=>array('admin')),
 	array('label'=>'List Comments', 'url'=>array('index')),
 	array('label'=>'Update Comment', 'url'=>array('update', 'id'=>$model->commentid)),
 	array('label'=>'Delete Comment', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->commentid),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Comments', 'url'=>array('admin')),
 );
 ?>
 

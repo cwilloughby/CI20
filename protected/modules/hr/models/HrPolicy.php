@@ -77,6 +77,9 @@ class HrPolicy extends CActiveRecord
 		$criteria->compare('policy',$this->policy,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

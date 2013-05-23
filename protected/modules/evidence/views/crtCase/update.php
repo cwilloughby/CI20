@@ -11,10 +11,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Court Cases', 'url'=>array('index')),
+	array('label'=>'Search Court Cases', 'url'=>array('admin')),
 	array('label'=>'Create Court Case', 'url'=>array('create')),
 	array('label'=>'View Court Case', 'url'=>array('view', 'id'=>$model->caseno)),
-	array('label'=>'Manage Court Cases', 'url'=>array('admin')),
 );
 ?>
 

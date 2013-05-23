@@ -90,7 +90,13 @@ class NewsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('News');
+		$dataProvider=new CActiveDataProvider('News', array(			
+			'sort'=>array(
+				'defaultOrder'=>array(
+					'date'=>CSort::SORT_DESC,
+				),
+			),
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -103,6 +109,14 @@ class NewsController extends Controller
 	{
 		$model=new News('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['News']))
 		{
 			$model->attributes=$_GET['News'];

@@ -130,7 +130,15 @@ class News extends CActiveRecord
 		$criteria->compare('news',$this->news,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>array(
+					'date'=>CSort::SORT_DESC,
+				),
+			),
 		));
 	}
 }

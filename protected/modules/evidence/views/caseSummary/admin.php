@@ -6,11 +6,10 @@ $this->pageTitle = Yii::app()->name . ' - Case Files';
 
 $this->breadcrumbs=array(
 	'Case Files'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'List Case Files', 'url'=>array('index')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 );
 
@@ -28,7 +27,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Case Files</h1>
+<h1>Search Case Files</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,10 +41,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		array( 
 			'name'=>'def_search1', 
@@ -104,6 +107,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('case-summary-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}',
 			'htmlOptions' => array('style'=>'width:15px'),
 			'headerHtmlOptions'=>array('style'=>'width:15px;'),

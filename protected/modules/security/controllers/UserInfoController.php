@@ -146,6 +146,14 @@ class UserInfoController extends Controller
 	{
 		$model=new UserInfo('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['UserInfo']))
 		{
 			$model->attributes=$_GET['UserInfo'];

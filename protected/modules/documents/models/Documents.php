@@ -125,6 +125,9 @@ class Documents extends CActiveRecord
 		$criteria->compare('uploaddate',$this->uploaddate,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

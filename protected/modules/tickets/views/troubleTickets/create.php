@@ -11,9 +11,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
 );
 ?>
 
