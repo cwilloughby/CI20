@@ -18,26 +18,15 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($evidence); ?>
-
 	<?php $this->widget('ext.jqrelcopy.JQRelcopy',array(
-		//the id of the 'Copy' link in the view, see below.
 		'id' => 'copylink',
-		 //leave empty to disable removing
 		'removeText' => 'Remove',
-		//htmlOptions of the remove link
 		'removeHtmlOptions' => array('style'=>'color:red'),
-		//options of the plugin, see http://www.andresvidal.com/labs/relcopy.html
 		'options' => array(
-			//A class to attach to each copy
 			'copyClass'=>'newcopy',
-			// The number of allowed copies. Default: 0 is unlimited
-			'limit'=>100,
-			//Option to clear each copies text input fields or textarea
+			'limit'=>20,
 			'clearInputs'=>true,
-			//A jQuery selector used to exclude an element and its children
 			'excludeSelector'=>'.skipcopy',
-			//Additional HTML to attach at the end of each copy.
 			'append'=>CHtml::tag('span',array('class'=>'hint'),'You can remove this line'),
 		)
 	))?>
@@ -85,8 +74,12 @@
 			<?php echo $form->error($evidence,'comment[]'); ?>
 			</td>
 		</tr>
+		<tr>
+			<td>
+			<a id="copylink" href="#" rel=".copy">Add More Evidence</a>
+			</td>
+		</tr>
 	</table>
-	<a id="copylink" href="#" rel=".copy">Add More Evidence</a>
 	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($evidence->isNewRecord ? 'Create' : 'Save'); ?>

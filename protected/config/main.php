@@ -50,6 +50,7 @@ return array(
 		'weather',
 		'centriod',
 		'links',
+		'evaluations',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid

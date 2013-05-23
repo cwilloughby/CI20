@@ -120,7 +120,7 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 		),
 	),
 ));
-
+/*
 Yii::app()->clientScript->registerScript('addAttorney', "
 $('.attorney-button').click(function(){
 	$('.add-attorneys').toggle();
@@ -133,7 +133,8 @@ echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
 	'attorney' => $attorneys, 'summary' => $case
 )); ?>
 </div><!-- changeAttorneyForm -->
-
+*/
+?>
 <br/><br/>
 <hr>
 
