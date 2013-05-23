@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 
@@ -21,7 +21,6 @@ $this->menu2=array(
 	'itemView'=>'_closedview',
 	'sortableAttributes'=>array(
 		'ticketid',
-		'opendate',
 		'closedate',
 	),
 	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
