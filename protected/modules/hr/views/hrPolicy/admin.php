@@ -6,12 +6,12 @@ $this->pageTitle = Yii::app()->name . ' - Manage HR Policies';
 
 $this->breadcrumbs=array(
 	'HR Policies'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'List HR Policies', 'url'=>array('index')),
 	array('label'=>'Create HR Policy', 'url'=>array('createpolicy')),
+	array('label'=>'List HR Policies', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage HR Policies</h1>
+<h1>Search HR Policies</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,15 +42,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'hr-policy-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'policyid',
 		'policy',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('hr-policy-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view} {update} {delete}',
 			'buttons'=>array(
 				'update'=>array(

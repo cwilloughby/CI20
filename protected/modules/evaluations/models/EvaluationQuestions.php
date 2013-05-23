@@ -95,8 +95,8 @@ class EvaluationQuestions extends CActiveRecord
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'Pagination' => array (
-				'PageSize' => 8
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
 			),
 			'sort'=>array(
 				'attributes'=>array(

@@ -199,7 +199,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=>'closedbyuserid IS NULL'
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -220,7 +225,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=> "closedbyuserid IS NULL AND openedby IN (" . $stringed . ")"
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -231,7 +241,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -253,7 +268,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=>'closedbyuserid IS NOT NULL'
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -273,7 +293,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=> "closedbyuserid IS NOT NULL AND openedby IN (" . $stringed . ")"
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -284,7 +309,12 @@ class TroubleTicketsController extends Controller
 				array(
 					'criteria'=>array(
 						'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
-					)
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
 				)
 			);
 		}
@@ -301,6 +331,14 @@ class TroubleTicketsController extends Controller
 	{
 		$model=new TroubleTickets('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['TroubleTickets']))
 		{
 			$model->attributes=$_GET['TroubleTickets'];

@@ -89,6 +89,9 @@ class CrtCase extends CActiveRecord
 		$criteria->compare('cptno',$this->cptno,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>'Search Documents', 'url'=>array('admin')),
 	array('label'=>'Create Documents', 'url'=>array('create')),
-	array('label'=>'Manage Documents', 'url'=>array('admin')),
 );
 ?>
 
@@ -17,4 +17,5 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 )); ?>

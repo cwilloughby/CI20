@@ -184,6 +184,9 @@ class UserInfo extends CActiveRecord
 		$criteria->compare('active',$this->active);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

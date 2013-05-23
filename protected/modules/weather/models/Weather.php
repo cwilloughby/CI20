@@ -38,12 +38,19 @@ class Weather
 	{
 		$xml = simplexml_load_string($xml);
 		
-		$weather = array(
-			'minTemp' => (string)$xml->data->parameters->temperature[1]->value,
-			'maxTemp' => (string)$xml->data->parameters->temperature[0]->value,
-			'rainChance' => (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0],
-			'summary' => (string)$xml->data->parameters->weather->{'weather-conditions'}->attributes()->{'weather-summary'}[0]
-		);
+		if(isset($xml->data->parameters->temperature[1]->value))
+		{
+			$weather = array(
+				'minTemp' => (string)$xml->data->parameters->temperature[1]->value,
+				'maxTemp' => (string)$xml->data->parameters->temperature[0]->value,
+				'rainChance' => (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0],
+				'summary' => (string)$xml->data->parameters->weather->{'weather-conditions'}->attributes()->{'weather-summary'}[0]
+			);
+		}
+		else 
+		{
+			$weather = null;
+		}
 		
 		return $weather;
 	}

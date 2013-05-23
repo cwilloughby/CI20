@@ -102,6 +102,9 @@ class Attorney extends CActiveRecord
 		$criteria->compare('barid',$this->barid);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

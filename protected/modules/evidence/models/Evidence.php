@@ -113,6 +113,9 @@ class Evidence extends CActiveRecord
 		$criteria->compare('exhibitlist',$this->exhibitlist);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

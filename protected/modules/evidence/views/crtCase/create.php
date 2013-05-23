@@ -10,8 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Court Cases', 'url'=>array('index')),
-	array('label'=>'Manage Court Cases', 'url'=>array('admin')),
+	array('label'=>'Search Court Cases', 'url'=>array('admin')),
 );
 ?>
 

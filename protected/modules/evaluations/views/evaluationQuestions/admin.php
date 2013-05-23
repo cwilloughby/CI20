@@ -6,12 +6,12 @@ $this->pageTitle = Yii::app()->name . ' - Manage Evaluation Questions';
 
 $this->breadcrumbs=array(
 	'Evaluation Questions'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
 	array('label'=>'Create Evaluation Question', 'url'=>array('create')),
+	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Evaluation Questions</h1>
+<h1>Search Evaluation Questions</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,10 +42,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'evaluation-questions-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		array( 
 			'name'=>'department_search', 
@@ -54,6 +58,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'question',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(8=>8,16=>16,24=>24),array(
+				'onchange'=>"$.fn.yiiGridView.update('evaluation-questions-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view} {update}',
 		),
 	),

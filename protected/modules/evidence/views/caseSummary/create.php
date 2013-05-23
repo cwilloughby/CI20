@@ -13,8 +13,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Case Files', 'url'=>array('index')),
-	array('label'=>'Manage Case Files', 'url'=>array('admin')),
+	array('label'=>'Search Case Files', 'url'=>array('admin')),
 );
 ?>
 

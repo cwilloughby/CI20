@@ -154,8 +154,14 @@ class TroubleTickets extends CActiveRecord
 		$criteria->compare('resolution',$this->resolution,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
+				'defaultOrder'=>array(
+					'ticketid'=>CSort::SORT_DESC,
+				),
 				'attributes'=>array(
 					'user_search'=>array(
 						'asc'=>'openedby0.username',

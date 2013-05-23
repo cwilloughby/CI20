@@ -127,6 +127,9 @@ class TimeLog extends CActiveRecord
 		// The extensive use of GROUP BY and ORDER BY will help to pair up each login
 		// event with it's logoff event on the next row.
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'defaultOrder' => 'username, eventdate DESC, computername, eventtime',

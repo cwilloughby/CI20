@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Case Files', 'url'=>array('index')),
+	array('label'=>'Search Case Files', 'url'=>array('admin')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
 	array('label'=>'Update Defendant', 'url'=>array('/evidence/defendant/changeDefendant', 'id'=>$case->summaryid)),
@@ -19,7 +19,6 @@ $this->menu2=array(
 	array('label'=>'Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),
 		'confirm'=>'Are you sure you want to delete this case file?
 This will NOT delete the defendant, case, attorneys, or evidence.')),
-	array('label'=>'Manage Case Files', 'url'=>array('admin')),
 );
 ?>
 

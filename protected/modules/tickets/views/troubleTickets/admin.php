@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Trouble Tickets'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Trouble Tickets</h1>
+<h1>Search Trouble Tickets</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,7 +40,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'trouble-tickets-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -78,6 +81,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'resolution',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('trouble-tickets-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}{update}',
 		),
 	),
