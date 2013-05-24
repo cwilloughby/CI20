@@ -25,7 +25,7 @@ class EvaluationsController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$dataProvider=new CActiveDataProvider('EvaluationAnswers');
+		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array('criteria'=>array('condition'=>'evaluationid=' . $id)));
 		if(isset($_POST['EvaluationAnswers']))
 		{
 			// An answer was posted, record it.
@@ -56,6 +56,14 @@ class EvaluationsController extends Controller
 			$model->attributes=$_POST['Evaluations'];
 			if($model->save())
 			{
+				// Record the evaluation create event.
+				$log = new Log;
+				$log->tablename = 'ci_evaluations';
+				$log->event = 'Evaluation Created';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $model->getPrimaryKey();
+				$log->save(false);
+				
 				// Find all questions for the department.
 				$questions = CHtml::ListData(EvaluationQuestions::model()->findAll(
 						'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid');
@@ -133,7 +141,8 @@ class EvaluationsController extends Controller
 	public function actionEdit($id)
 	{
 		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
-				'pagination'=>array('pageSize'=>1)));
+			'criteria'=>array('condition'=>'evaluationid=' . $id),
+			'pagination'=>array('pageSize'=>1)));
 		
 		if(isset($_POST['EvaluationAnswers']))
 		{
@@ -141,6 +150,14 @@ class EvaluationsController extends Controller
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
+			
+			// Record the evaluation create event.
+			$log = new Log;
+			$log->tablename = 'ci_evaluation_answers';
+			$log->event = 'Evaluation Answer Updated';
+			$log->userid = Yii::app()->user->getId();
+			$log->tablerow = $model->evaluationid . ", " . $model->questionid;
+			$log->save(false);
 			
 			Yii::app()->user->setFlash('success', "Answer saved");
 		}
