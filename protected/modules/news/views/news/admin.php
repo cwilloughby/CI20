@@ -6,12 +6,12 @@ $this->pageTitle = Yii::app()->name . ' - Manage News Posts';
 
 $this->breadcrumbs=array(
 	'News'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'List News Posts', 'url'=>array('index')),
 	array('label'=>'Create News Post', 'url'=>array('create')),
+	array('label'=>'List News Posts', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage News</h1>
+<h1>Search News</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,10 +42,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'news-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'newsid',
 		array( 
@@ -64,6 +68,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'news',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('news-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}{update}',
 		),
 	),

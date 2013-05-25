@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search News Posts', 'url'=>array('admin')),
 	array('label'=>'Create News Post', 'url'=>array('create')),
-	array('label'=>'Manage News Posts', 'url'=>array('admin')),
 );
 ?>
 
@@ -17,9 +17,8 @@ $this->menu2=array(
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-		'sortableAttributes'=>array(
+	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}",
+	'sortableAttributes'=>array(
 		'date',
-		'news',
 	),
-	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
 )); ?>

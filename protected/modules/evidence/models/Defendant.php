@@ -90,6 +90,9 @@ class Defendant extends CActiveRecord
 		$criteria->compare('oca',$this->oca);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

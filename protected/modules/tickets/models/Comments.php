@@ -124,6 +124,9 @@ class Comments extends CActiveRecord
 		$criteria->compare('datecreated',$this->datecreated,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(

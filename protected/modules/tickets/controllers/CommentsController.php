@@ -143,6 +143,14 @@ class CommentsController extends Controller
 	{
 		$model=new Comments('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['Comments']))
 		{
 			$model->attributes=$_GET['Comments'];

@@ -103,6 +103,14 @@ class DocumentsController extends Controller
 	{
 		$model=new Documents('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['Documents']))
 			$model->attributes=$_GET['Documents'];
 

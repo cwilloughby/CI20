@@ -6,7 +6,7 @@ $this->pageTitle = Yii::app()->name . " - Time Log";
 
 $this->breadcrumbs=array(
 	'Time Logs'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
@@ -42,7 +42,7 @@ $.fn.yiiGridView.export = function() {
 ");
 ?>
 
-<h1>Manage Time Logs</h1>
+<h1>Search Time Logs</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -56,10 +56,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'time-log-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'afterAjaxUpdate'=>"function(){jQuery('#event_date_search').datepicker({'dateFormat': 'mm/dd/yy'})}",
 	'columns'=>array(
 		'username',
@@ -90,6 +94,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('time-log-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}',
 		),
 	),

@@ -11,15 +11,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Evaluations', 'url'=>array('index')),
-	array('label'=>'Manage Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'Search Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'Create Evaluation', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
+	array('label'=>'List Evaluations', 'url'=>array('index')),
 	array('label'=>'View Evaluation', 'url'=>array('view', 'id'=>$model->evaluationid)),
 	array('label'=>'Change Employee', 'url'=>array('update', 'id'=>$model->evaluationid)),
 );
 ?>
 
-<h1>Edit Evaluation #<?php echo $model->evaluationid; ?></h1>
+<h1>Evaluation #<?php echo $model->evaluationid; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

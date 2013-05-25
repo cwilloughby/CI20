@@ -119,6 +119,14 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model=new EvaluationQuestions('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['EvaluationQuestions']))
 			$model->attributes=$_GET['EvaluationQuestions'];
 

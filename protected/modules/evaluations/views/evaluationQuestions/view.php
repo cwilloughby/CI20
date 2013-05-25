@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
+	array('label'=>'Search Evaluation Questions', 'url'=>array('admin')),
 	array('label'=>'Create Evaluation Question', 'url'=>array('create')),
+	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
 	array('label'=>'Update Evaluation Question', 'url'=>array('update', 'id'=>$model->questionid)),
 	($model->active == 2 
 			? array('label'=>'Enable Question', 'url'=>'#', 
 				'linkOptions'=>array('submit'=>array('enable','id'=>$model->questionid),'confirm'=>'Are you sure you want to enable this question?'))
 			: array('label'=>'Disable Question', 'url'=>'#', 
 				'linkOptions'=>(array('submit'=>array('disable','id'=>$model->questionid),'confirm'=>'Are you sure you want to disable this question?')))),
-	array('label'=>'Manage Evaluation Questions', 'url'=>array('admin')),
 );
 ?>
 

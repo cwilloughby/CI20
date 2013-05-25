@@ -11,10 +11,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Defendants', 'url'=>array('index')),
+	array('label'=>'Search Defendants', 'url'=>array('admin')),
 	array('label'=>'Create Defendant', 'url'=>array('create')),
 	array('label'=>'View Defendant', 'url'=>array('view', 'id'=>$model->defid)),
-	array('label'=>'Manage Defendants', 'url'=>array('admin')),
 );
 ?>
 

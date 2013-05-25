@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List News Posts', 'url'=>array('index')),
+	array('label'=>'Search News Posts', 'url'=>array('admin')),
 	array('label'=>'Create News Post', 'url'=>array('create')),
+	array('label'=>'List News Posts', 'url'=>array('index')),
 	array('label'=>'Update News Post', 'url'=>array('update', 'id'=>$model->newsid)),
 	array('label'=>'Delete News Post', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->newsid),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage News Posts', 'url'=>array('admin')),
 );
 ?>
 

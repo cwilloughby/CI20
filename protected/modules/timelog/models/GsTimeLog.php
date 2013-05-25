@@ -122,6 +122,9 @@ class GsTimeLog extends CActiveRecord
 		}
 		
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'defaultOrder' => 'username, eventdate DESC, computername, eventtime',

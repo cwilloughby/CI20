@@ -222,6 +222,14 @@ class HrPolicyController extends Controller
 	{
 		$model=new HrPolicy('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['HrPolicy']))
 			$model->attributes=$_GET['HrPolicy'];
 
