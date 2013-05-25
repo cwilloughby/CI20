@@ -13,7 +13,7 @@
  */
 class DepartmentTiers extends CActiveRecord
 {
-	/*
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return DepartmentTiers the static model class
@@ -23,7 +23,7 @@ class DepartmentTiers extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/*
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -31,7 +31,7 @@ class DepartmentTiers extends CActiveRecord
 		return 'ci_department_tiers';
 	}
 
-	/*
+	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -47,7 +47,7 @@ class DepartmentTiers extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -60,7 +60,7 @@ class DepartmentTiers extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -71,15 +71,12 @@ class DepartmentTiers extends CActiveRecord
 		);
 	}
 
-	/*
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('maindepartmentid',$this->maindepartmentid);

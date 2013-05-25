@@ -90,9 +90,9 @@ class GsTimeLog extends CActiveRecord
 		$criteria = new CDbCriteria;
 		$criteria->group = 'username, computername, eventdate, eventtype, eventtime';
 		
+		// This will add different conditions based on the date range fields.
 		if(!empty($this->from_date) && empty($this->to_date))
         {
-			// date is database date column field
             $criteria->condition = "eventdate >= '$this->from_date'";  
         }
 		else if(!empty($this->to_date) && empty($this->from_date))
@@ -122,6 +122,9 @@ class GsTimeLog extends CActiveRecord
 		}
 		
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'defaultOrder' => 'username, eventdate DESC, computername, eventtime',

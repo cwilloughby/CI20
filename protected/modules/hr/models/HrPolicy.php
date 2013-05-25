@@ -71,15 +71,15 @@ class HrPolicy extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('policyid',$this->policyid);
 		$criteria->compare('policy',$this->policy,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

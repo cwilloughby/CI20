@@ -26,6 +26,15 @@ class CaseSummaryController extends Controller
 	{
 		$case = $this->loadModel($id);
 		
+		if(isset($_POST['Attorney']))
+		{
+			$this->forward('changeAttorneys');
+		}
+		else if(isset($_POST['Evidence']))
+		{
+			$this->forward('changeEvidence');
+		}
+		
 		$attorneys = new Attorney('search');
 		$attorneys->unsetAttributes();  // clear any default values
 		if(isset($_GET['Attorney']))
@@ -59,31 +68,46 @@ class CaseSummaryController extends Controller
 			$summary->attributes = $_POST['CaseSummary'];
 			$defendant->attributes = $_POST['Defendant'];
 			$case->attributes = $_POST['CrtCase'];
-			$attorney->attributes = $_POST['Attorney'];
 			
-			// Save the defendant and the case in their corresponding tables if they do not exist and return
-			// the defid and the caseno for the summary validation.
-			$summary->defid = $defendant->saveDefendant($defendant);
-			$summary->caseno = $case->saveCase($case);
+			$valid = $defendant->validate(); 
+			$valid = $case->validate() && $valid;
 			
-			/*
-			if($summary->save())
+			$idx = 0;
+
+			// Loop through the array, splitting it into individual models and validate those models. 
+			foreach($_POST['Attorney']['fname'] as $ex)
 			{
-				// Record the case summary create event. Commented out for testing.
-				/*
-				$log = new Log;
-				$log->tablename = 'ci_case_summary';
-				$log->event = 'Case Summary Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $summary->getPrimaryKey();
-				$log->save(false);
-				*/
+				$attorney->fname = $_POST['Attorney']['fname'][$idx];
+				$attorney->lname = $_POST['Attorney']['lname'][$idx];
+				$attorney->barid = $_POST['Attorney']['barid'][$idx];
+				
+				$valid = $attorney->validate() && $valid;
+			}
+			
+			if($valid)
+			{
+				// Save the defendant and the case in their corresponding tables if they do not exist and return
+				// the defid and the caseno for the summary validation. If they already exist, then these functions
+				// will just return the existing defid and caseno.
+				$summary->defid = $defendant->saveDefendant($defendant);
+				$summary->caseno = $case->saveCase($case);
 
-				// Add the attorneys to the database if they don't already exist and associate them to the new case summary.
-				//$attorney->saveAttorneys($formData, $summary->summaryid);
+				if($summary->save())
+				{
+					// Record the case summary create event.
+					$log = new Log;
+					$log->tablename = 'ci_case_summary';
+					$log->event = 'Case Summary Created';
+					$log->userid = Yii::app()->user->getId();
+					$log->tablerow = $summary->getPrimaryKey();
+					$log->save(false);
 
-				//$this->redirect(array('view','id' => $summary->summaryid));
-			//}
+					// Add the attorneys to the database if they don't already exist and associate them to the new case summary.
+					$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
+
+					$this->redirect(array('view','id' => $summary->summaryid));
+				}
+			}
 		}
 
 		$this->render('create', array(
@@ -101,29 +125,27 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$summary = $this->loadModel($id);
 
 		if(isset($_POST['CaseSummary']))
 		{
-			$model->attributes=$_POST['CaseSummary'];
-			if($model->save())
+			$summary->attributes = $_POST['CaseSummary'];
+			if($summary->save())
 			{
-				// Record the case summary update event. Commented out for testing.
-				/*
+				// Record the case summary update event.
 				$log = new Log;
 				$log->tablename = 'ci_case_summary';
 				$log->event = 'Case Summary Updated';
 				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
+				$log->tablerow = $summary->getPrimaryKey();
 				$log->save(false);
-				*/
 				
-				$this->redirect(array('view','id'=>$model->summaryid));
+				$this->redirect(array('view','id'=>$summary->summaryid));
 			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'summary'=>$summary,
 		));
 	}
 
@@ -134,22 +156,20 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		// Delete all records on the attorney bridge table that have this summary id.
+		CaseAttorneys::model()->deleteAll('summaryid =' . $id);
 		$this->loadModel($id)->delete();
+		
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_summary';
+		$log->event = 'Case Summary Deleted';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $id;
+		$log->save(false);
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('CaseSummary');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**
@@ -159,10 +179,19 @@ class CaseSummaryController extends Controller
 	{
 		$model=new CaseSummary('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['CaseSummary']))
 		{
 			$model->attributes=$_GET['CaseSummary'];
 			
+			// Convert any provided date into a format that the database understands.
 			if((int)$model->dispodate)
 			{
 				$model->dispodate = date('Y-m-d', strtotime($model->dispodate));
@@ -184,6 +213,68 @@ class CaseSummaryController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+	
+	/**
+	 * This function allows the user to change or add evidence to a case.
+	 * @param integer $id the summary ID
+	 */
+	public function actionChangeEvidence($id)
+	{
+		$summary = $this->loadModel($id);
+		$evidence = new Evidence;
+		
+		if(isset($_POST['Evidence']))
+		{
+			// Add the evidence to the database.
+			$evidence->saveEvidence($_POST['Evidence']);
+				
+			$this->redirect(array('view','id'=>$summary->summaryid));
+		}
+
+		$this->render('changeEvidence',array(
+			'summary' => $summary,
+			'evidence' => $evidence
+		));
+	}
+	
+	/**
+	 * This function allows the user to change or add attorneys to a case.
+	 * @param integer $id the summary ID
+	 */
+	public function actionChangeAttorneys($id)
+	{
+		$summary = $this->loadModel($id);
+		$attorney = new Attorney;
+		
+		if(isset($_POST['Attorney']))
+		{
+			// Add the attorneys to the database if they don't already exist 
+			// and associate them to the case summary.
+			// If they already exist, then just associate it to the case summary.
+			$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
+				
+			$this->redirect(array('view','id'=>$summary->summaryid));
+		}
+	}
+	
+	/**
+	 * Removes a particular attorney from a case summary.
+	 * @param integer $sid the summary ID
+	 * @param integer $aid the attorney ID
+	 */
+	public function actionDeleteAttorneyFromCase($sid, $aid)
+	{
+		// Delete the record on the attorney bridge table that has this summaryid and attyid.
+		CaseAttorneys::model()->deleteByPk(array('summaryid' => $sid, 'attyid' => $aid));
+		
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_attorneys';
+		$log->event = 'Attorney Removed From Case';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $sid . ", " . $aid;
+		$log->save(false);
 	}
 	
 	/**

@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 
@@ -19,9 +19,8 @@ $this->menu2=array(
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
+	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}",
 	'sortableAttributes'=>array(
 		'ticketid',
-		'opendate',
 	),
-	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}"
 )); ?>

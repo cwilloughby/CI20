@@ -11,10 +11,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Attorneys', 'url'=>array('index')),
+	array('label'=>'Search Attorneys', 'url'=>array('admin')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
 	array('label'=>'View Attorney', 'url'=>array('view', 'id'=>$model->attyid)),
-	array('label'=>'Manage Attorneys', 'url'=>array('admin')),
 );
 ?>
 

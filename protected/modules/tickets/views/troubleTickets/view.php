@@ -11,15 +11,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
 	array('label'=>'Update Trouble Ticket', 'url'=>array('update', 'id'=>$model->ticketid)),
 	($model->closedbyuserid == NULL 
 		? array('label'=>'Close Trouble Ticket', 'url'=>array('close', 'id'=>$model->ticketid))
 		: array('label'=>'Reopen Trouble Ticket', 'url'=>'#', 
 			'linkOptions'=>(array('submit'=>array('reopen','id'=>$model->ticketid),'confirm'=>'Are you sure you want to reopen this ticket?')))),
-	
-	array('label'=>'Manage Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 );
 ?>
 

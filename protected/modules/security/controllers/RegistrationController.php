@@ -2,7 +2,7 @@
 
 class RegistrationController extends Controller
 {
-	/*
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -12,6 +12,9 @@ class RegistrationController extends Controller
 		);
 	}
 	
+	/**
+	 * The registration form.
+	 */
 	public function actionRegister()
 	{
 		$model = new RegisterForm();

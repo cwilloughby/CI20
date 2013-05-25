@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Manage Comments', 'url'=>array('admin')),
+	array('label'=>'Search Comments', 'url'=>array('admin')),
 );
 ?>
 

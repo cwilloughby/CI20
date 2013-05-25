@@ -46,6 +46,7 @@ class Attorney extends CActiveRecord
 			array('lname', 'length', 'max'=>40),
 			array('fname', 'length', 'max'=>25),
 			array('type', 'length', 'max'=>20),
+			array('barid', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('attyid, lname, fname, type, barid', 'safe', 'on'=>'search'),
@@ -101,11 +102,14 @@ class Attorney extends CActiveRecord
 		$criteria->compare('barid',$this->barid);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}
 	
-	/*
+	/**
 	 * actionCreate returns an array for the attorneys, but model->save() can only save one model at a time.
 	 * So this function is used to split the array into individual models.
 	 * @param array $formData contains all the rows from the form in an array.
@@ -123,8 +127,8 @@ class Attorney extends CActiveRecord
 			$model = new Attorney;
 
 			// The attributes can be found at the same postion in the formData.
-			$model->lname = $formData['fname'][$idx];
-			$model->fname = $formData['lname'][$idx];
+			$model->lname = $formData['lname'][$idx];
+			$model->fname = $formData['fname'][$idx];
 			$model->barid = $formData['barid'][$idx];
 			
 			if($model->barid)
@@ -152,14 +156,12 @@ class Attorney extends CActiveRecord
 					$attyCheck['attyid'] = $model->attyid;
 					
 					// Record the attorney create event. Commented out for testing.
-					/*
 					$log = new Log;
 					$log->tablename = 'ci_attorney';
 					$log->event = 'Attorney Created';
 					$log->userid = Yii::app()->user->getId();
 					$log->tablerow = $model->getPrimaryKey();
 					$log->save(false);
-					*/
 				}
 			}
 			
@@ -167,16 +169,15 @@ class Attorney extends CActiveRecord
 			$caseAttorney = new CaseAttorneys;
 			$caseAttorney->attyid = $attyCheck['attyid'];
 			$caseAttorney->summaryid = $summaryid;
+			$caseAttorney->save();
 			
 			// Record the case attorney create event. Commented out for testing.
-			/*
 			$log = new Log;
 			$log->tablename = 'ci_case_attorney';
 			$log->event = 'Attorney Added To Case';
 			$log->userid = Yii::app()->user->getId();
 			$log->tablerow = $caseAttorney->summaryid . ", " . $caseAttorney->attyid;
 			$log->save(false);
-			*/
 			
 			$idx++;
 		}

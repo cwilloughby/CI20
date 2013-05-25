@@ -64,7 +64,7 @@ class TroubleTickets extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the opendate value
 	 * when a new ticket is made.
 	 */
@@ -79,7 +79,7 @@ class TroubleTickets extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
 	 */
 	protected function beforeSave()
@@ -154,8 +154,14 @@ class TroubleTickets extends CActiveRecord
 		$criteria->compare('resolution',$this->resolution,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
+				'defaultOrder'=>array(
+					'ticketid'=>CSort::SORT_DESC,
+				),
 				'attributes'=>array(
 					'user_search'=>array(
 						'asc'=>'openedby0.username',
@@ -179,9 +185,8 @@ class TroubleTickets extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * Adds a comment to this trouble ticket.
-	 * This is a place holder for now.
 	 */
 	public function addComment($comment)
 	{

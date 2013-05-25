@@ -1,0 +1,161 @@
+/* 
+    Document   : mainCustom.css
+    Created on : Apr 18, 2013, 9:48:57 AM
+    Author     : cwilloughby
+*/
+
+#page
+{
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+#header
+{
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+#menu-top 
+{ 
+	/* Size & position */
+	position: relative; 
+    margin: 0 auto;
+    padding-bottom: 18px;
+	padding-top: 12px;
+	z-index: 10;
+	background: #0066AA;
+    /* Styles */
+    border-radius: 5px;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+	color:#FFAA77;
+}
+#menu-top li { 
+	border-radius: 5px 5px 0 0;
+	padding-top: 5px;
+	list-style: none; 
+	height: 36px;
+	float: left; 
+	overflow: visible; 
+}
+#menu-top li.dropdown span:after{
+	content: "▼";
+}
+#menu-top ul li.dropdown:hover > ul{ 
+	display: block; 
+	text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+}
+#menu-top a.toplink {
+	padding-bottom: 18px;
+}
+#menu-top a.toplink:hover{
+	border-radius: 5px 5px 0 0;
+	text-decoration: none;
+	color: #0066AA;
+    background: #FFAA77;
+	transition: all 0.3s ease-out;
+}
+#menu-top ul li a {
+	color:#FFAA77;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 8px;
+}
+#menu-top ul li.dropdown span {
+	background-color:transparent;
+ 	font-size:12px;
+ 	font-weight:bold;
+ 	text-decoration:none;
+ 	padding:5px 8px;
+	cursor:hand;
+	cursor:pointer;
+}
+#menu-top ul li.dropdown span:hover {
+	border-radius: 5px 5px 0 0;
+	background: #FFAA77;
+	box-shadow: none;
+	transition: all 0.3s ease-out;
+}
+#menu-top ul li.dropdown:hover {
+    background: #FFAA77;
+    box-shadow: none;
+    color: #0066AA;
+}
+#menu-top ul li.dropdown a:hover {
+    box-shadow: none;
+    color: white;
+}
+#menu-top ul li.dropdown ul { 
+	display: none; 
+	position: absolute; 
+	top: 100%;
+	background: #336699;
+	height: auto;
+	border-style:outset;
+	border-width:5px;
+	border-bottom-color: #FF9966;
+	border-right-color: #FF9966;
+	border-left-color: #FFAA77;
+	border-top-color: #FFAA77;
+}
+#menu-top ul li.dropdown.last {
+	float:right;
+	padding-right: 15px;
+}
+#menu-top ul li ul li.active a,
+#menu-top ul li ul li{clear: left;}
+
+#menu-top li.separator a{
+	border-top: solid #FFAA77;
+	border-top-width: 1px;
+}
+
+fieldset.news{
+	border-style:solid;
+	border-width:1px;
+	border: 1px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+fieldset{
+	padding: 10px;
+}
+fieldset.news legend{
+	font-size: 18px;
+}
+fieldset.news p {
+	padding: 5px;
+}
+div.view
+{
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.container {width:90%;margin:0 auto;}
+.span-5 {width:17%;}
+.span-19 {width:80%;}
+
+div.centriod
+{
+	background: #ffff99;
+}
+
+#logo1
+{
+	text-decoration: none;
+	color: black;
+}
+
+/**
+ * Override the css that keeps the "first" and "last" buttons from showing on the pager controls.
+ */
+#page ul.yiiPager .first,
+#page ul.yiiPager .last
+{
+	display:inline;
+}

@@ -92,9 +92,15 @@ class TimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		// Auto import any new events in the text file to the database.
-		//$this->actionCreate();
+		// Do not import the events if this code is being run locally. Otherwise 
+		// the events could be imported into the wrong database.
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+		{
+			// Auto import any new events in the text file to the database.
+			$this->actionCreate();
+		}
 		
+		// If the export button on the search form was clicked.
 		if(Yii::app()->request->getParam('export'))
 		{
 			$this->actionExport();
@@ -108,6 +114,13 @@ class TimeLogController extends Controller
 		$model = new TimeLog('search');
 		$model->unsetAttributes();  // Clear any default values.
 
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['TimeLog']))
 		{
 			$model->attributes=$_GET['TimeLog'];
@@ -139,13 +152,14 @@ class TimeLogController extends Controller
 		));
 	}
 	
+	/**
+	 * Export the gridview to a csv file.
+	 */
 	public function actionExport()
 	{
 		$fp = fopen('php://temp', 'w');
 
-		/* 
-		 * Write a header of csv file
-		 */
+		// Write a header of csv file
 		$headers = array(
 			'username',
 			'computername',
@@ -159,9 +173,7 @@ class TimeLogController extends Controller
 		}
 		fputcsv($fp,$row);
 
-		/*
-		 * Init dataProvider for first page.
-		 */
+		// Init dataProvider for first page.
 		$model = new TimeLog('search');
 		$model->unsetAttributes();  // Clear any default values.
 		
@@ -194,9 +206,7 @@ class TimeLogController extends Controller
 		$dp = $model->search();
 		$dp->setPagination(false);
 
-		/*
-		 * Get models, write to a file
-		 */
+		// Get models, write to a file
 		$models = $dp->getData();
 		foreach($models as $model)
 		{
@@ -208,14 +218,15 @@ class TimeLogController extends Controller
 			fputcsv($fp,$row);
 		}
 
-		/*
-		 * Save csv content to a session.
-		 */
+		// Save csv content to a session.
 		rewind($fp);
 		Yii::app()->user->setState('export',stream_get_contents($fp));
 		fclose($fp);
 	}
 	
+	/**
+	 * Pull the csv from the session and send it to the user.
+	 */
 	public function actionExportFile()
 	{
 		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
@@ -235,7 +246,7 @@ class TimeLogController extends Controller
 		return $model;
 	}
 	
-	/*
+	/**
 	 * This function returns the path to the file that the GPO writes to.
 	 */
 	private function getGpoFile()

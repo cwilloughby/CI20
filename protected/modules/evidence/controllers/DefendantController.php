@@ -44,23 +44,18 @@ class DefendantController extends Controller
 	{
 		$model=new Defendant;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Defendant']))
 		{
 			$model->attributes=$_POST['Defendant'];
 			if($model->save())
 			{
-				// Record the defendant create event. Commented out for testing.
-				/*
+				// Record the defendant create event.
 				$log = new Log;
 				$log->tablename = 'ci_defendant';
 				$log->event = 'Defendant Created';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->defid));
 			}
@@ -88,15 +83,13 @@ class DefendantController extends Controller
 			$model->attributes=$_POST['Defendant'];
 			if($model->save())
 			{
-				// Record the defendant update event. Commented out for testing.
-				/*
+				// Record the defendant update event.
 				$log = new Log;
 				$log->tablename = 'ci_defendant';
 				$log->event = 'Defendant Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->defid));
 			}
@@ -114,22 +107,18 @@ class DefendantController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		try
+		{
+			$this->loadModel($id)->delete();
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException('the defendant cannot be deleted, because it is still assigned to a case file.');
+		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Defendant');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**
@@ -139,6 +128,14 @@ class DefendantController extends Controller
 	{
 		$model=new Defendant('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['Defendant']))
 			$model->attributes=$_GET['Defendant'];
 
@@ -147,8 +144,9 @@ class DefendantController extends Controller
 		));
 	}
 
-	/*
-	 * This is used by the autocomplete for the defendant's first name. 
+	/**
+	 * This is used by the autocomplete for the defendant's first name.
+	 * @param string $term the letters that have been typed into the textbox
 	 */
 	public function actionDefendantFirstNameLookup($term)
 	{
@@ -168,8 +166,9 @@ class DefendantController extends Controller
         echo CJSON::encode($array);
     }
 
-	/*
-	 * This is used by the autocomplete for the defendant's last name. 
+	/**
+	 * This is used by the autocomplete for the defendant's last name.
+	 * @param string $term the letters that have been typed into the textbox
 	 */
 	public function actionDefendantLastNameLookup($term)
 	{
@@ -187,6 +186,48 @@ class DefendantController extends Controller
         }
 
         echo CJSON::encode($array);
+	}
+	
+	/**
+	 * This function is used to change an existing case file's defendant.
+	 * @param integer $id the id of the summary
+	 */
+	public function actionChangeDefendant($id)
+	{
+		$summary = CaseSummary::model()->findByPk($id);
+		
+		if(isset($_POST['Defendant']))
+		{
+			$defendant = new Defendant;
+			$defendant->attributes = $_POST['Defendant'];
+			
+			// Check to see if the new defendant exists in the defendant table already.
+			// If it does, return it's defid, otherwise create the defendant and then return the new defid.
+			$summary->defid = $defendant->saveDefendant($defendant);
+			
+			// Save the change to the case summary
+			if($summary->save())
+			{
+				// Record the case summary update event.
+				$log = new Log;
+				$log->tablename = 'ci_case_summary';
+				$log->event = 'Case Summary Defendant Changed';
+				$log->userid = Yii::app()->user->getId();
+				$log->tablerow = $id;
+				$log->save(false);
+				
+				$this->redirect(array('/evidence/casesummary/view','id'=>$summary->summaryid));
+			}
+		}
+		else
+		{
+			$defendant = $this->loadModel($summary->defid);
+		}
+
+		$this->render('changeDefendant',array(
+			'summary' => $summary,
+			'defendant' => $defendant
+		));
 	}
 	
 	/**

@@ -42,63 +42,19 @@ class EvidenceController extends Controller
 	 */
 	public function actionCreate()
 	{
+		$model = new Evidence;
+		
 		if(isset($_POST['Evidence']))
 		{
-			if($this->saveEvidence($_POST['Evidence']))
+			if($model->saveEvidence($_POST['Evidence']))
 			{
 				$this->redirect(array('admin'));
 			}
 		}
 
-		$model = new Evidence;
-
 		$this->render('create',array(
 			'model'=>$model,
 		));
-	}
-	
-	/*
-	 * actionCreate returns an array, but model->save() can only save one model at a time.
-	 * So this function is used to split the array into individual models.
-	 * @param array $formData contains all the rows from the form in an array.
-	 */
-	protected function saveEvidence($formData)
-	{
-		if(empty($formData))
-			return false;
-
-		$idx = 0;
-
-		// Loop through the array, splitting it into individual models and saving those models. 
-		foreach($formData['exhibitno'] as $ex)
-		{
-			$model = new Evidence;
-
-			// The attributes can be found at the same postion in the formData.
-			$model->caseno = $formData['caseno'][$idx];
-			$model->hearingtype = $formData['hearingtype'][$idx];
-			$model->hearingdate = date('Y-m-d', strtotime($formData['hearingdate'][$idx]));
-			$model->exhibitno = $ex;
-			$model->evidencename = $formData['evidencename'][$idx];
-			$model->comment = $formData['comment'][$idx];
-			$model->exhibitlist = $formData['exhibitlist'][$idx];
-			
-			if(!$model->save())
-				return false;
-			
-			// Record the evidence create event. Commented out for testing.
-			/*
-			$log = new Log;
-			$log->tablename = 'ci_evidence';
-			$log->event = 'Evidence Created';
-			$log->userid = Yii::app()->user->getId();
-			$log->tablerow = $model->getPrimaryKey();
-			$log->save(false);
-			*/
-			
-			$idx++;
-		}
-		return true;
 	}
 
 	/**
@@ -122,15 +78,13 @@ class EvidenceController extends Controller
 			
 			if($model->save())
 			{
-				// Record the evidence update event. Commented out for testing.
-				/*
+				// Record the evidence update event.
 				$log = new Log;
 				$log->tablename = 'ci_evidence';
 				$log->event = 'Evidence Updated';
 				$log->userid = Yii::app()->user->getId();
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
-				*/
 				
 				$this->redirect(array('view','id'=>$model->evidenceid));
 			}
@@ -158,23 +112,20 @@ class EvidenceController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Evidence');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
 		$model=new Evidence('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['Evidence']))
 		{
 			$model->attributes=$_GET['Evidence'];

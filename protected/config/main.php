@@ -19,13 +19,15 @@ return array(
 		'application.modules.security.models.*',
 		'application.modules.security.components.*',
 		'application.extensions.phpmailer.JPhpMailer',
-		'application.extensions.phpmailer.jqrelcopy',
+		'application.extensions.jqrelcopy.JQRelcopy',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
 		'application.modules.tickets.models.*',
 		'application.modules.documents.models.*',
 		'application.modules.news.models.*',
+		'application.modules.weather.models.*',
+		'application.modules.weather.components.*',
 		'zii.widgets.CPortlet'
 	),
 
@@ -45,6 +47,10 @@ return array(
 		'news',
 		'evidence',
 		'timelog',
+		'weather',
+		'centriod',
+		'links',
+		'evaluations',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
@@ -94,9 +100,10 @@ return array(
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 			),
 		),
-		//'cache'=>array(
-		//	'class'=>'system.caching.CApcCache',
-		//),
+		'cache'=>array(
+			//'class'=>'system.caching.CApcCache',
+			'class'=>'system.caching.CDbCache'
+		),
 		'db'=>array(
 			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',

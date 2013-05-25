@@ -7059,3 +7059,513 @@ in C:\wamp\www\CI20\index.php (13)
 2013/04/12 17:01:19 [warning] [application] Failed to set unsafe attribute "exhibitlist" of "Evidence".
 in C:\wamp\www\CI20\protected\modules\evidence\controllers\EvidenceController.php (105)
 in C:\wamp\www\CI20\index.php (13)
+2013/05/20 14:30:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\wamp\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/05/20 14:32:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ci2.ci_evaluation' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `ci_evaluation`.
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 14:43:58 [error] [exception.CException] exception 'CException' with message 'Property "EvaluationsController.menu" is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\index.php(9): CComponent->__set('menu', Array)
+#1 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#2 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#3 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#5 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(128): CController->render('index', Array)
+#6 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionIndex()
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\framework\web\CWebApplication.php(283): CController->run('index')
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/evaluations/evaluations/index
+HTTP_REFERER=http://ci2/site/index
+---
+2013/05/20 14:44:33 [error] [exception.CException] exception 'CException' with message 'Property "EvaluationsController.menu" is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\index.php(9): CComponent->__set('menu', Array)
+#1 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#2 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#3 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#5 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(102): CController->render('index', Array)
+#6 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionIndex()
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\framework\web\CWebApplication.php(283): CController->run('index')
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/evaluations/evaluations/index
+HTTP_REFERER=http://ci2/site/index
+---
+2013/05/20 14:48:49 [error] [exception.CException] exception 'CException' with message 'Property "EvaluationsController.menu" is not defined.' in C:\wamp\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php(10): CComponent->__set('menu', Array)
+#1 C:\wamp\framework\web\CBaseController.php(127): require('C:\wamp\www\CI2...')
+#2 C:\wamp\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\wamp\www\CI2...', Array, true)
+#3 C:\wamp\framework\web\CController.php(870): CBaseController->renderFile('C:\wamp\www\CI2...', Array, true)
+#4 C:\wamp\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#5 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(53): CController->render('create', Array)
+#6 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#7 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#16 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#17 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/index
+---
+2013/05/20 15:10:35 [error] [php] Missing argument 3 for CActiveForm::dropDownList(), called in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\_form.php on line 20 and defined (C:\wamp\framework\web\widgets\CActiveForm.php:762)
+Stack trace:
+#0 C:\wamp\framework\web\CBaseController.php(96): EvaluationsController->renderInternal()
+#1 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php(18): EvaluationsController->renderPartial()
+#3 C:\wamp\framework\web\CBaseController.php(127): require()
+#4 C:\wamp\framework\web\CBaseController.php(96): EvaluationsController->renderInternal()
+#5 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#6 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#7 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(53): EvaluationsController->render()
+#8 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#9 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#11 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#13 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#14 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#15 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#16 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#17 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#18 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#19 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\_form.php (20)
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (18)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (53)
+2013/05/20 15:25:51 [error] [php] Undefined variable: allUsers (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:18)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (18)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:26:56 [error] [php] Undefined variable: allUsers (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:19)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (19)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:27:04 [error] [php] Undefined variable: allUsers (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:19)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (19)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:29:27 [error] [php] Undefined variable: allUsers (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:24)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (24)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:30:00 [error] [php] Undefined variable: users (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:24)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (24)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:30:14 [error] [php] Undefined variable: users (C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php:24)
+Stack trace:
+#0 C:\wamp\framework\web\CController.php(870): EvaluationsController->renderFile()
+#1 C:\wamp\framework\web\CController.php(783): EvaluationsController->renderPartial()
+#2 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(57): EvaluationsController->render()
+#3 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#4 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\framework\web\filters\CFilterChain.php(134): EvaluationsController->runAction()
+#6 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\framework\web\filters\CInlineFilter.php(59): EvaluationsController->filterAccessControl()
+#9 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(266): EvaluationsController->runActionWithFilters()
+#12 C:\wamp\framework\web\CWebApplication.php(283): EvaluationsController->run()
+#13 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\CI20\index.php(13): CWebApplication->run()
+REQUEST_URI=/evaluations/evaluations/create
+in C:\wamp\www\CI20\protected\modules\evaluations\views\evaluations\create.php (24)
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (57)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:35:31 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active != 2).
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:35:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active != 2)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:35:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't.active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND t.active != 2).
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:35:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't.active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND t.active != 2)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:36:09 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active != 2).
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:36:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active != 2)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:36:39 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'userInfos.active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND userInfos.active != 2).
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:36:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'userInfos.active != 2)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND userInfos.active != 2)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:37:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active = 1)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active = 1).
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:37:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active = 1)' at line 1. The SQL statement executed was: SELECT `t`.`userid` AS `t0_c0`, `t`.`firstname` AS `t0_c1`, `t`.`lastname` AS `t0_c2`, `t`.`middlename` AS `t0_c3`, `t`.`username` AS `t0_c4`, `t`.`password` AS `t0_c5`, `t`.`email` AS `t0_c6`, `t`.`phoneext` AS `t0_c7`, `t`.`departmentid` AS `t0_c8`, `t`.`hiredate` AS `t0_c9`, `t`.`active` AS `t0_c10`, `department`.`departmentid` AS `t1_c0`, `department`.`departmentname` AS `t1_c1`, `department`.`supervisorid` AS `t1_c2` FROM `ci_user_info` `t`  LEFT OUTER JOIN `ci_departments` `department` ON (`t`.`departmentid`=`department`.`departmentid`)  WHERE (department.departmentid=1AND active = 1)' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\wamp\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\wamp\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#7 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#8 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#17 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#18 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:41:19 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active = 1' at line 1. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE department.departmentid=1AND active = 1.
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:41:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'active = 1' at line 1. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE department.departmentid=1AND active = 1' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:41:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department.departmentid' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE department.departmentid=1 AND active = 1.
+in C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php (46)
+in C:\wamp\www\CI20\index.php (13)
+2013/05/20 15:41:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department.departmentid' in 'where clause'. The SQL statement executed was: SELECT * FROM `ci_user_info` `t` WHERE department.departmentid=1 AND active = 1' in C:\wamp\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryAll()
+#2 C:\wamp\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(46): CActiveRecord->findAll('department.depa...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:48:47 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.firstname lastname" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('firstname lastn...')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('firstname lastn...')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(UserInfo), 'firstname lastn...')
+#3 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(53): CHtml::listData(Array, 'userid', 'firstname lastn...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:49:08 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.firstname lastname" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('firstname lastn...')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('firstname lastn...')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(UserInfo), 'firstname lastn...')
+#3 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(53): CHtml::listData(Array, 'userid', 'firstname lastn...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---
+2013/05/20 15:49:20 [error] [exception.CException] exception 'CException' with message 'Property "UserInfo.firstnamelastname" is not defined.' in C:\wamp\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\framework\db\ar\CActiveRecord.php(144): CComponent->__get('firstnamelastna...')
+#1 C:\wamp\framework\web\helpers\CHtml.php(1809): CActiveRecord->__get('firstnamelastna...')
+#2 C:\wamp\framework\web\helpers\CHtml.php(1773): CHtml::value(Object(UserInfo), 'firstnamelastna...')
+#3 C:\wamp\www\CI20\protected\modules\evaluations\controllers\EvaluationsController.php(53): CHtml::listData(Array, 'userid', 'firstnamelastna...')
+#4 C:\wamp\framework\web\actions\CInlineAction.php(50): EvaluationsController->actionCreate()
+#5 C:\wamp\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\framework\web\CWebApplication.php(142): CWebApplication->runController('evaluations/eva...')
+#15 C:\wamp\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/evaluations/evaluations/create
+HTTP_REFERER=http://ci2/evaluations/evaluations/admin
+---

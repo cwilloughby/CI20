@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Documents', 'url'=>array('index')),
+	array('label'=>'Search Documents', 'url'=>array('admin')),
 	array('label'=>'Create Documents', 'url'=>array('create')),
+	array('label'=>'List Documents', 'url'=>array('index')),
 	array('label'=>'Update Documents', 'url'=>array('update', 'id'=>$model->documentid)),
 	array('label'=>'Delete Documents', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->documentid),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Documents', 'url'=>array('admin')),
 );
 ?>
 

@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Trouble Tickets'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
 	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Trouble Tickets</h1>
+<h1>Search Trouble Tickets</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,7 +40,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'trouble-tickets-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -48,8 +51,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'ticketid',
 		array( 
-			'name'=>'user_search', 
-			'value'=>'$data->openedby0->username' 
+			'name'=>'user_search',
+			'value'=>'$data->openedby0->username',
 		),
 		array(
 			'name' => 'opendate',
@@ -57,18 +60,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		array( 
 			'name'=>'category_search', 
-			'value'=>'$data->category->categoryname' 
+			'value'=>'$data->category->categoryname',
 		),
 		array(
 			'name'=>'subject_search', 
-			'value'=>'$data->subject->subjectname' 
+			'value'=>'$data->subject->subjectname',
 		),
 		'description',
 		array( 
 			'name'=>'closer_search', 
 			'value'=>'(isset($data->closedbyuser->username)) 
 						? $data->closedbyuser->username 
-						: ""'
+						: ""',
 		),
 		array(
 			'name' => 'closedate',
@@ -78,6 +81,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'resolution',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('trouble-tickets-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}{update}',
 		),
 	),

@@ -20,9 +20,9 @@ class LoginForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			// username and password are required
+			// username and password are required.
 			array('username, password', 'required'),
-			// password needs to be authenticated
+			// password needs to be authenticated.
 			array('password', 'authenticate'),
 		);
 	}
@@ -76,6 +76,10 @@ class LoginForm extends CFormModel
 			return false;
 	}
 	
+	/**
+	 * This function will record the login event.
+	 * @param string $event
+	 */
 	private function recordLoginEvent($event)
 	{
 		// Record the login event.

@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>'Search Documents', 'url'=>array('admin')),
 	array('label'=>'List Documents', 'url'=>array('index')),
-	array('label'=>'Manage Documents', 'url'=>array('admin')),
 );
 ?>
 

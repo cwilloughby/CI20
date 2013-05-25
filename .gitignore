@@ -5,3 +5,6 @@ protected/modules/srbac/views/authitem/install/el_gr/
 assests/uploads/
 protected/runtime/application.log
 protected/runtime/application.log.1
+index.php
+!/protected/modules/evaluations/views/evaluationQuestions/index.php
+!/protected/modules/evaluations/views/evaluations/index.php

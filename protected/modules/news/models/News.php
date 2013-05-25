@@ -53,7 +53,7 @@ class News extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Attaches the timestamp behavior to auto set the date value
 	 * when a news post is made.
 	 */
@@ -68,7 +68,7 @@ class News extends CActiveRecord
 		);
 	}
 	
-	/*
+	/**
 	 * Sets the postedby value to the person who created the news post.
 	 */
 	protected function beforeSave()
@@ -119,9 +119,6 @@ class News extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('newsid',$this->newsid);
@@ -133,7 +130,15 @@ class News extends CActiveRecord
 		$criteria->compare('news',$this->news,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>array(
+					'date'=>CSort::SORT_DESC,
+				),
+			),
 		));
 	}
 }

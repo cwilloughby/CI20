@@ -64,7 +64,7 @@ class TicketConditionals extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'conditionalid' => 'Conditionalid',
+			'conditionalid' => 'Conditional ID',
 			'label' => 'Label',
 		);
 	}
@@ -75,9 +75,6 @@ class TicketConditionals extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('conditionalid',$this->conditionalid);

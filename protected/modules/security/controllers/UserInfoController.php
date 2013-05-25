@@ -8,7 +8,7 @@ class UserInfoController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
-	/*
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -18,7 +18,7 @@ class UserInfoController extends Controller
 		);
 	}
 
-	/*
+	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
@@ -29,9 +29,9 @@ class UserInfoController extends Controller
 		));
 	}
 
-	/*
+	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 * If creation is successful, the browser will be redirected to the email page.
 	 */
 	public function actionCreate()
 	{
@@ -81,7 +81,7 @@ class UserInfoController extends Controller
 		$this->render('create',array('model'=>$model, 'departments'=>$departments));
 	}
 
-	/*
+	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
@@ -89,9 +89,6 @@ class UserInfoController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['UserInfo']))
 		{
@@ -105,7 +102,7 @@ class UserInfoController extends Controller
 		$this->render('update',array('model'=>$model, 'departments'=>$departments));
 	}
 
-	/*
+	/**
 	 * Users are never deleted. Their accounts are just disabled
 	 * @param integer $id the ID of the model to be disabled
 	 */
@@ -118,7 +115,7 @@ class UserInfoController extends Controller
 			$this->redirect(array('view','id'=>$model->userid));
 	}
 
-	/*
+	/**
 	 * Enable a user's account.
 	 * @param integer $id the ID of the model to be enabled
 	 */
@@ -131,7 +128,7 @@ class UserInfoController extends Controller
 			$this->redirect(array('view','id'=>$model->userid));
 	}
 	
-	/*
+	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
@@ -142,13 +139,21 @@ class UserInfoController extends Controller
 		));
 	}
 
-	/*
+	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
 		$model=new UserInfo('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['UserInfo']))
 		{
 			$model->attributes=$_GET['UserInfo'];
@@ -164,7 +169,7 @@ class UserInfoController extends Controller
 		));
 	}
 
-	/*
+	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
@@ -177,7 +182,7 @@ class UserInfoController extends Controller
 		return $model;
 	}
 
-	/*
+	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */

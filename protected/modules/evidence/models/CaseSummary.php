@@ -69,6 +69,15 @@ class CaseSummary extends CActiveRecord
 			array('comment', 'length', 'max'=>255),
 			array('dispodate, indate, outdate, destructiondate', 'type', 'type'=>'date', 'message'=>'{attribute} must be formatted as yyyy-mm-dd', 'dateFormat' => 'yyyy-mm-dd'),
 			array('dispodate, indate, outdate, destructiondate', 'safe'),
+			array('dispodate', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('indate', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('outdate', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('destructiondate', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('comment', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('location', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('sentence', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('recip', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('page', 'default', 'setOnEmpty' => true, 'value' => 'N/A'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
@@ -153,6 +162,9 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('other',$this->other);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(
@@ -178,7 +190,7 @@ class CaseSummary extends CActiveRecord
 		));
 	}
 	
-	/*
+	/**
 	 * This function is for matching together infomation for several of the gridviews.
 	 * @param various $id the value of a foreign key.
 	 * @return CActiveDataProvider
@@ -220,6 +232,9 @@ class CaseSummary extends CActiveRecord
 		$criteria->compare('comment',$this->comment,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(
@@ -237,7 +252,7 @@ class CaseSummary extends CActiveRecord
 		));
 	}
 
-	/*
+	/**
 	 * This function is used to translate the 0's, 1's, and 2's of the 
 	 * dna, bio, dug, firearm, other, and money columns
 	 */

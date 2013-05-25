@@ -2,7 +2,7 @@
 
 class PasswordController extends Controller
 {
-	/*
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -12,7 +12,7 @@ class PasswordController extends Controller
 		);
 	}
 	
-	/*
+	/**
 	 * The password recovery request form. Used when you can't remember the password.
 	 */
 	public function actionRecoveryrequest()
@@ -44,7 +44,7 @@ class PasswordController extends Controller
 		$this->render('recoveryrequest',array('model'=>$model));
 	}
 	
-	/*
+	/**
 	 * The password recovery form 
 	 */
 	public function actionRecovery()
@@ -92,7 +92,7 @@ class PasswordController extends Controller
 		}
 	}
 	
-	/*
+	/**
 	 * The password change form. Used when you can remember the current password.
 	 */
 	public function actionChange()

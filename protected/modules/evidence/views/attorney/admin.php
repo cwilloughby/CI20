@@ -4,11 +4,10 @@
 
 $this->breadcrumbs=array(
 	'Attorneys'=>array('index'),
-	'Manage',
+	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'List Attorneys', 'url'=>array('index')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
 );
 
@@ -26,7 +25,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Attorneys</h1>
+<h1>Search Attorneys</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,10 +39,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'attorney-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'attyid',
 		'lname',
@@ -52,6 +55,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'barid',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('attorney-grid',{ data:{pageSize: $(this).val() }})",
+			)),
 			'template'=>'{view}{update}',
 		),
 	),
