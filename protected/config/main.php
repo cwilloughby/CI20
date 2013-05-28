@@ -20,6 +20,7 @@ return array(
 		'application.modules.security.components.*',
 		'application.extensions.phpmailer.JPhpMailer',
 		'application.extensions.jqrelcopy.JQRelcopy',
+		'application.extensions.smp.StrobeMediaPlayback',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
