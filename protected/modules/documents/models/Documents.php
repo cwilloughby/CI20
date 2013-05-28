@@ -47,7 +47,7 @@ class Documents extends CActiveRecord
 			array('uploader', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
-			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc', 'maxSize'=>'2097152', 'allowEmpty'=>true),
+			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc, mp4', 'maxSize'=>'2097152', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('documentid, uploader, documentname, path, uploaddate', 'safe', 'on'=>'search'),

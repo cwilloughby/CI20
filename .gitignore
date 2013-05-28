@@ -8,3 +8,4 @@ protected/runtime/application.log.1
 index.php
 !/protected/modules/evaluations/views/evaluationQuestions/index.php
 !/protected/modules/evaluations/views/evaluations/index.php
+!/protected/modules/videos/views/videos/index.php

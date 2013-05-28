@@ -52,6 +52,7 @@ return array(
 		'centriod',
 		'links',
 		'evaluations',
+		'videos',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
