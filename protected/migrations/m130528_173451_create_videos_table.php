@@ -10,10 +10,10 @@ class m130528_173451_create_videos_table extends CDbMigration
 				'title' => 'VARCHAR(100) NULL',
 				'type' => 'VARCHAR(45) NOT NULL',
 				'PRIMARY KEY (`videoid`)',
-				'INDEX `fk_ci_videos_ci_document_processor1_idx` (`documentid` ASC)',
-				'CONSTRAINT `fk_ci_videos_ci_document_processor1`
+				'INDEX `fk_ci_videos_ci_documents1_idx` (`documentid` ASC)',
+				'CONSTRAINT `fk_ci_videos_ci_documents1`
 					FOREIGN KEY (`documentid` )
-					REFERENCES `ci2`.`ci_document_processor` (`id` )
+					REFERENCES `ci2`.`ci_documents` (`documentid` )
 					ON DELETE NO ACTION
 					ON UPDATE NO ACTION'
 				),

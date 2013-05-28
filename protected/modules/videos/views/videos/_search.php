@@ -12,16 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'videoid'); ?>
-		<?php echo $form->textField($model,'videoid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'documentid'); ?>
-		<?php echo $form->textField($model,'documentid'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'title'); ?>
 		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
 	</div>

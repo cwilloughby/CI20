@@ -9,6 +9,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'Search Videos', 'url'=>array('admin')),
 	array('label'=>'Upload Video', 'url'=>array('create')),
+	array('label'=>'List Videos', 'url'=>array('index')),
 );
 ?>
 

@@ -36,20 +36,36 @@ class VideosController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Videos;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$video = new Videos;
+		$file = new Documents;
+		
+		$file->scenario = 'video';
+		
 		if(isset($_POST['Videos']))
 		{
-			$model->attributes=$_POST['Videos'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->videoid));
+			$video->attributes=$_POST['Videos'];
+			$file->video = CUploadedFile::getInstance($file,'video');
+			
+			// Validate both $video and $file at the same time.
+			$videoCheck = $video->validate();
+			$fileCheck = $file->validate();
+			$valid = $videoCheck && $fileCheck;
+		
+			if($valid)
+			{
+				if($file->save(false))
+				{
+					$video->documentid = $file->primaryKey;
+					echo $video->documentid;
+					if($video->save())
+						$this->redirect(array('view','id'=>$video->videoid));
+				}
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'video'=>$video,
+			'file'=>$file,
 		));
 	}
 
@@ -61,9 +77,6 @@ class VideosController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Videos']))
 		{
@@ -109,6 +122,14 @@ class VideosController extends Controller
 	{
 		$model=new Videos('search');
 		$model->unsetAttributes();  // clear any default values
+		
+		// If the pager number was changed.
+		if(isset($_GET['pageSize'])) 
+		{
+			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			unset($_GET['pageSize']);
+		}
+		
 		if(isset($_GET['Videos']))
 			$model->attributes=$_GET['Videos'];
 
@@ -128,18 +149,5 @@ class VideosController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='videos-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 	}
 }

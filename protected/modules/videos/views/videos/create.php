@@ -1,18 +1,20 @@
 <?php
 /* @var $this VideosController */
-/* @var $model Videos */
+/* @var $video Videos */
+/* @var $file Documents */
 
 $this->breadcrumbs=array(
-	'Videoses'=>array('index'),
-	'Create',
+	'Videos'=>array('index'),
+	'Upload',
 );
 
 $this->menu2=array(
+	array('label'=>'Search Videos', 'url'=>array('admin')),
+	array('label'=>'Upload Video', 'url'=>array('create')),
 	array('label'=>'List Videos', 'url'=>array('index')),
-	array('label'=>'Manage Videos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Videos</h1>
+<h1>Upload Video</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('video'=>$video, 'file'=>$file)); ?>

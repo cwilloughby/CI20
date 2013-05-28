@@ -40,7 +40,7 @@ class Videos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('documentid, type', 'required'),
+			array('title, type', 'required'),
 			array('documentid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
 			array('type', 'length', 'max'=>45),
@@ -58,7 +58,7 @@ class Videos extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'document' => array(self::BELONGS_TO, 'DocumentProcessor', 'documentid'),
+			'document' => array(self::BELONGS_TO, 'Documents', 'documentid'),
 		);
 	}
 
@@ -92,6 +92,9 @@ class Videos extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

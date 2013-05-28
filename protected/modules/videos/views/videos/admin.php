@@ -3,13 +3,14 @@
 /* @var $model Videos */
 
 $this->breadcrumbs=array(
-	'Videoses'=>array('index'),
-	'Manage',
+	'Videos'=>array('index'),
+	'Search',
 );
 
 $this->menu2=array(
+	array('label'=>'Search Videos', 'url'=>array('admin')),
+	array('label'=>'Upload Video', 'url'=>array('create')),
 	array('label'=>'List Videos', 'url'=>array('index')),
-	array('label'=>'Create Videos', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +27,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Videoses</h1>
+<h1>Search Videos</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,17 +41,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'videos-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'videoid',
-		'documentid',
 		'title',
 		'type',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('news-grid',{ data:{pageSize: $(this).val() }})",
+			)),
+			'template'=>'{view}{update}{delete}',
 		),
 	),
 )); ?>

@@ -17,6 +17,7 @@
 class Documents extends CActiveRecord
 {
 	public $attachment;
+	public $video;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -47,7 +48,9 @@ class Documents extends CActiveRecord
 			array('uploader', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
-			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc, mp4', 'maxSize'=>'2097152', 'allowEmpty'=>true),
+			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc', 'maxSize'=>'2097152', 'allowEmpty'=>true),
+			array('video', 'file', 'types'=>'mp4', 'maxSize'=>'4097152', 'allowEmpty'=>true),
+			array('video', 'required', 'on'=>'video'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('documentid, uploader, documentname, path, uploaddate', 'safe', 'on'=>'search'),
@@ -65,18 +68,37 @@ class Documents extends CActiveRecord
 			$this->uploader = Yii::app()->user->id;
 			// Set the uploaddate and the document name.
 			$this->uploaddate = date('Y-m-d_h-i-s');
-			$this->documentname = $this->attachment->getName();
 			
-			// Create a folder with the uploaddate set as the name, unless it already exists.
-			$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
-			if(!is_dir($temp))
-				mkdir($temp);
+			if(isset($this->attachment))
+			{
+				$this->documentname = $this->attachment->getName();
 
-			// Set the path.
-			$this->path = $temp . $this->documentname;
-			
-			// Save the attachment in the server.
-			$this->attachment->saveAs($this->path, 'false');
+				// Create a folder with the uploaddate set as the name, unless it already exists.
+				$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
+				if(!is_dir($temp))
+					mkdir($temp);
+
+				// Set the path.
+				$this->path = $temp . $this->documentname;
+
+				// Save the attachment in the server.
+				$this->attachment->saveAs($this->path, 'false');
+			}
+			else if(isset($this->video))
+			{
+				$this->documentname = $this->video->getName();
+
+				// Create a folder with the uploaddate set as the name, unless it already exists.
+				$temp = "C:/wamp/www/CI20/assets/videos/" . $this->uploaddate . "/";
+				if(!is_dir($temp))
+					mkdir($temp);
+
+				// Set the path.
+				$this->path = $temp . $this->documentname;
+
+				// Save the attachment in the server.
+				$this->video->saveAs($this->path, 'false');
+			}
 		}
 		// Now save a record of the file upload in the database.
 		return parent::beforeSave();
@@ -107,6 +129,7 @@ class Documents extends CActiveRecord
 			'path' => 'Path',
 			'uploaddate' => 'Upload Date',
 			'attachment' => 'Attachment',
+			'video' => 'Video',
 		);
 	}
 
