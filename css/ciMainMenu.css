@@ -1,0 +1,149 @@
+/* 
+    Document   : ciMainMenu.css
+    Created on : May 26, 2013
+    Author     : sdothard
+
+
+   General settings */
+/*body, ul, li, a{
+	font-family: verdana,geneva,arial,helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+}
+body{
+	background:black;
+}
+#container{
+	width:900px;
+	margin:0 auto;
+	background: white;
+	height: 1070px;
+}
+#content{
+	position:relative;
+	float:left;
+	width: 700px;
+}
+#content p{
+	padding:10px;
+	font-weight: normal;
+}
+#header img{
+	width:900px;
+	height: 300px;
+}*/
+
+/* HORIZONTAL */
+
+.shadowblockmenu {
+    border: 0 none;
+	
+}
+.shadowblockmenu p {
+    clear: left;
+}
+.shadowblockmenu #current {
+    color: #FFFFFF;
+}
+.shadowblockmenu ul {
+	background: white;
+	width:900px;
+    height: 40px;
+	list-style: none;
+	border: 1px solid #BBB;
+	border-width: 1px 0; /*Show only top and bottom border for main menu container */
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	
+}
+.shadowblockmenu ul a{
+	box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4);
+	
+
+}
+.shadowblockmenu ul a:hover{
+	box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6 blue);
+
+}
+.shadowblockmenu ul li{
+	box-shadow: inset -7px 0 10px rgba(114,114,114, 0.4);
+	display: inline;
+	width: 85px;
+	height: 35px;
+	background: url(../assets/images/icons/home.png) 1px center no-repeat; /* Add icon */
+	background-size:25px 25px;
+}
+
+.shadowblockmenu ul li a:hover{
+	color: black;
+	-moz-box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6); /* Add 2 inset shadows to each menu item  */
+	-webkit-box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6);
+	box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6);
+
+}
+.shadowblockmenu li {
+	border: 1px solid #DFDFDF;
+    float: left;
+    padding: 10px;
+}
+.shadowblockmenu li a {
+	color: #666666;
+	text-align: center;
+	text-decoration: none;
+	background-color: #FFF;	
+}
+.shadowblockmenu li a:hover {
+    color: #444444;
+    text-decoration: none;
+}
+.shadowblockmenu li ul {
+    background: none repeat scroll 0 0 #E0E0E0;
+    margin-left:-10px;
+    margin-top:10px;
+    display: none;
+    height: auto;
+    position: absolute;
+    width: 225px;
+    z-index: 200;
+}
+.shadowblockmenu li:hover ul {
+    display: block;
+}
+.shadowblockmenu li li {
+    display: block;
+    float: none;
+    padding: 0;
+    width: 225px;
+	box-shadow: none;
+	border-right: 1px solid #BBB; /*right border between menu items*/
+}
+.shadowblockmenu span {
+	height:32px;
+}
+.shadowblockmenu li ul a {
+    display: block;
+    padding:10px;
+    text-align: left;
+	box-shadow: none;
+	border-right: 1px solid #BBB; /*right border between menu items*/
+}
+.shadowblockmenu li ul a:hover {
+    background: none repeat scroll 0 0 #949494;
+    color: #000000;
+    opacity: 1;
+}
+.shadowblockmenu li:nth-of-type(1) a{ /* Extra style for first menu link */
+border-left: 1px solid #BBB; /* add border to left side of first menu link */
+padding-left:25px;
+
+}
+
+.shadowblockmenu li:nth-of-type(2) a{ /* Extra style for 2nd menu link */
+padding-left:25px;
+background: url(../assets/images/icons/lightbulb.png) 1px center no-repeat; /* Add icon */
+background-size:25px 25px;
+}
