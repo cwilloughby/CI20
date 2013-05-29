@@ -76,17 +76,34 @@ class VideosController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+		$video = $this->loadModel($id);
+		$file = Documents::model()->findByPk($video->documentid);
+		
 		if(isset($_POST['Videos']))
 		{
-			$model->attributes=$_POST['Videos'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->videoid));
+			$video->attributes=$_POST['Videos'];
+			$file->video = CUploadedFile::getInstance($file,'video');
+			
+			// Validate both $video and $file at the same time.
+			$videoCheck = $video->validate();
+			$fileCheck = $file->validate();
+			$valid = $videoCheck && $fileCheck;
+		
+			if($valid)
+			{
+				if($file->save(false))
+				{
+					$video->documentid = $file->primaryKey;
+					echo $video->documentid;
+					if($video->save())
+						$this->redirect(array('view','id'=>$video->videoid));
+				}
+			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'video'=>$video,
+			'file'=>$file,
 		));
 	}
 

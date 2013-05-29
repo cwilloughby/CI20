@@ -11,9 +11,9 @@ $this->menu2=array(
 	array('label'=>'Search Videos', 'url'=>array('admin')),
 	array('label'=>'Upload Video', 'url'=>array('create')),
 	array('label'=>'List Videos', 'url'=>array('index')),
-	array('label'=>'View Videos', 'url'=>array('view', 'id'=>$model->videoid)),
-	array('label'=>'Update Videos', 'url'=>array('update', 'id'=>$model->videoid)),
-	array('label'=>'Delete Videos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'View Video', 'url'=>array('view', 'id'=>$model->videoid)),
+	array('label'=>'Update Video', 'url'=>array('update', 'id'=>$model->videoid)),
+	array('label'=>'Delete Video', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 
@@ -23,7 +23,10 @@ $this->menu2=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'videoid',
-		'documentid',
+		array(        
+			'name'=>'documentid',
+			'value'=>isset($model->document)?CHtml::encode($model->document->path):"Unknown"
+		),
 		'title',
 		'type',
 	),
