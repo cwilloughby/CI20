@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Case Files', 'url'=>array('admin')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
 );
 
@@ -68,7 +69,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value'=>'$data->caseno0->cptno' 
 		),
 		'sentence',
-		'comment',
 		array(        
 			'name'=>'dna',
 			'value'=>'$data->getYesNo($data->dna)',

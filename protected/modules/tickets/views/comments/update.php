@@ -14,6 +14,7 @@ $this->menu2=array(
 	array('label'=>'Search Comments', 'url'=>array('admin')),
 	array('label'=>'List Comments', 'url'=>array('index')),
 	array('label'=>'View Comment', 'url'=>array('view', 'id'=>$model->commentid)),
+	array('label'=>'Update Comment', 'url'=>array('update', 'id'=>$model->commentid)),
 );
 ?>
 

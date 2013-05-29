@@ -14,6 +14,7 @@ $this->menu2=array(
 	array('label'=>'Search Defendants', 'url'=>array('admin')),
 	array('label'=>'Create Defendant', 'url'=>array('create')),
 	array('label'=>'View Defendant', 'url'=>array('view', 'id'=>$model->defid)),
+	array('label'=>'Update Defendant', 'url'=>array('update', 'id'=>$model->defid)),
 );
 ?>
 

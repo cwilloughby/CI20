@@ -14,6 +14,7 @@ $this->menu2=array(
 	array('label'=>'Search Evidence', 'url'=>array('admin')),
 	array('label'=>'Create Evidence', 'url'=>array('create')),
 	array('label'=>'View Evidence', 'url'=>array('view', 'id'=>$model->evidenceid)),
+	array('label'=>'Update Evidence', 'url'=>array('update', 'id'=>$model->evidenceid)),
 );
 ?>
 

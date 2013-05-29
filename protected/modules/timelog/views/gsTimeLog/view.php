@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'Search GS Time Logs', 'url'=>array('admin')),
 	array('label'=>'List GS Time Logs', 'url'=>array('index')),
+	array('label'=>'View GS Time Log', 'url'=>array('view')),
 );
 ?>
 
