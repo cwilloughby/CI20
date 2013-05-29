@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'Search Case Files', 'url'=>array('admin')),
 	array('label'=>'Create Case File', 'url'=>array('create')),
-	array('label'=>'View Case File', 'url'=>array('view', 'id'=>$summary->summaryid)),
+	array('label'=>'View Case File', 'url'=>array('view', 'id'=>$case->summaryid)),
 	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
 	array('label'=>'Update Defendant', 'url'=>array('/evidence/defendant/changeDefendant', 'id'=>$case->summaryid)),
 	array('label'=>'Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$case->summaryid)),
