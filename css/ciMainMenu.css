@@ -1,0 +1,297 @@
+
+/*    Document   : ciMainMenu.css
+    Created on : May 26, 2013
+    Author     : sdothard*/
+
+
+   /* General settings */
+body, ul, li, a{
+    font-family: verdana,geneva,arial,helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+}
+fieldset.news{
+	border-style:solid;
+	border-width:1px;
+	border: 1px solid #C9E0ED;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+fieldset{
+	padding: 10px;
+}
+fieldset.news legend{
+	font-size: 18px;
+}
+fieldset.news p {
+	padding: 5px;
+}
+div.view
+{
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+div.centriod
+{
+	background: #ffff99;
+}
+
+#logo1
+{
+	text-decoration: none;
+	color: black;
+}
+
+/**
+ * Override the css that keeps the "first" and "last" buttons from showing on the pager controls.
+ */
+#page ul.yiiPager .first,
+#page ul.yiiPager .last
+{
+	display:inline;
+}
+li.separator a{
+	border-top: solid #fff;
+	border-top-width: 1px;
+}
+#container{
+	width:80%;
+	margin:0 auto;
+	background: white;
+	height: 1070px;
+}
+/*#content{
+	position:relative;
+	float:left;
+	width: 90%;
+}*/
+#content p{
+	padding:10px;
+	font-weight: normal;
+}
+#header img{
+	width:900px;
+	height: 300px;
+}
+/*Attach images to menu icons*/
+.menu-icon-helpdesk {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left: 18px;
+    background:url("../assets/images/icons/receptionist.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+    
+}
+.menu-icon-home{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/home.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}  
+.menu-icon-evidence {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/evidence.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}
+.menu-icon-admin{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/calendar.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}  
+.menu-icon-it {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/tools.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}
+.menu-icon-timelog{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/timelog.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+    
+}  
+.menu-icon-evaluation {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/folder.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}
+.menu-icon-link {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/link.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}
+.menu-icon-user{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    background:url("../assets/images/icons/person.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:padding-box;
+}  
+/* HORIZONTAL */
+
+.menu-icon-user.last {
+	float:right;
+	padding-right: 15px;
+}
+.menu-horizontal {
+    border: 0 none;
+}
+.menu-horizontal p {
+    clear: left;
+}
+.menu-horizontal #current {
+    color: #FFFFFF;
+}
+/*.menu-horizontal ul li:nth-child(1) {
+    border-left: 1px solid #BBB;  
+    padding-left:25px;
+    background:url("../assets/images/icons/home.png")1px center no-repeat;
+    background-size:20px 20px;
+}*/
+.menu-horizontal ul {
+    background: #fff;
+    width:100%;
+    height: 40px;
+    box-shadow: inset -0px 0 10px rgba(114,114,114, 0.4);
+}
+.menu-horizontal li:hover {
+    
+    box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6);
+}
+.menu-horizontal li span {
+    padding-left: 20px;   
+    background-position-x: 5px;
+}
+.menu-horizontal li {
+    float: left;
+    padding: 10px;   
+    
+}
+.menu-horizontal li a {
+    padding-left: 18px;
+    color: #666666;
+    text-align: center;
+    text-decoration: none;
+}
+.menu-horizontal li a:hover {
+    color: #666666;
+    text-decoration: none;    
+}
+.menu-horizontal li ul {
+    background: rgba(60,162,221, 0.6);
+    margin-left:-10px;
+    margin-top:10px;
+    display: none;
+    height: auto;
+    position: absolute;
+    width: 225px;
+    z-index: 200;    
+}
+.menu-horizontal li:hover ul {
+    display: block;
+}
+.menu-horizontal li li:hover{
+    box-shadow: none;
+}
+.menu-horizontal li li {
+    background-color: #80CFFF;
+    display: block;
+    float: none;
+    padding: 0;
+    width: 225px;
+    border-color: #fff;    
+}
+.menu-horizontal li ul a {
+    color: #003366;
+    display: block;
+    padding:10px;
+    text-align: left;
+}
+.menu-horizontal li ul a:hover {
+    color: #fff;    
+}
+/*.menu-horizontal ul:nth-of-type(1) a{  Extra style for first menu link 
+border-left: 1px solid #BBB;  add border to left side of first menu link 
+padding-left:25px;
+background:url("../assets/images/icons/home.png")1px center no-repeat;
+background-size:25px 25px;
+}
+
+.menu-horizontal ul:nth-of-type(2) a{  Extra style for 2nd menu link 
+padding-left:25px;
+background: url("../assets/images/icons/request.png") 1px center no-repeat;  Add icon 
+background-size:25px 25px;
+}*/
+
+/* VERTICAL */
+
+.menu-vertical {
+	position:relative;
+    border: 0 none;
+
+    height: 770px;
+    float:left;
+    width: 200px;
+}
+.menu-vertical p {
+    clear: left;
+}
+.menu-vertical #current {
+    color: #FFFFFF;
+}
+.menu-vertical ul {
+	background: #d1d1d1;
+	height: 100%;
+        width: inherit;
+}
+.menu-vertical li {
+	border: 1px solid #DFDFDF;
+    float: left;
+    padding: 10px;
+    width:178px;
+    position: relative;
+}
+.menu-vertical li a {
+    color: #666666;
+    text-align: center;
+    text-decoration: none;
+}
+.menu-vertical li a:hover {
+    color: #444444;
+}
+.menu-vertical li ul {
+    background: none repeat scroll 0 0 #E0E0E0;
+    display: none;
+    position: absolute;
+    top:0;
+    left:200px;
+    width: 200px;;
+    z-index: 200;
+    height: auto;
+}
+.menu-vertical li:hover ul {
+    display: block;
+}
+.menu-vertical li li {
+    display: block;
+    float: none;
+    width: 198px;
+    padding:0;
+}
+.menu-vertical li ul a {
+    display: block;
+    padding:10px;
+    text-align: left;
+}
+.menu-vertical li ul a:hover {
+    background: none repeat scroll 0 0 #949494;
+    color: #000000;
+    opacity: 1;
+}
