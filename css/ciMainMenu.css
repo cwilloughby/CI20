@@ -58,10 +58,10 @@ li.separator a{
 	border-top-width: 1px;
 }
 #container{
-	width:80%;
+	width:90%;
 	margin:0 auto;
 	background: white;
-	height: 1070px;
+	height:1070px;
 }
 /*#content{
 	position:relative;
@@ -72,10 +72,10 @@ li.separator a{
 	padding:10px;
 	font-weight: normal;
 }
-#header img{
+/*#header img{
 	width:900px;
 	height: 300px;
-}
+}*/
 /*Attach images to menu icons*/
 .menu-icon-helpdesk {    
     border-left: 1px solid #BBB; /* add border to left side of first menu link */
@@ -294,4 +294,79 @@ background-size:25px 25px;
     background: none repeat scroll 0 0 #949494;
     color: #000000;
     opacity: 1;
+}
+/*portlet class for widgets*/
+.portlet
+{
+
+}
+
+.portlet-decoration
+{
+	padding: 3px 8px;
+	background: #B7D6E7;
+	border-left: 5px solid #6FACCF;
+}
+
+.portlet-title
+{
+	font-size: 12px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	color: #298dcd;
+}
+
+.portlet-content
+{
+	font-size:0.9em;
+	margin: 0 0 15px 0;
+	padding: 5px 8px;
+	background:#EFFDFF;       
+}
+
+.portlet-content ul
+{
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+}
+
+.portlet-content li
+{
+	padding: 2px 0 4px 0px;
+        
+}
+.operations
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.operations li
+{
+	padding-bottom: 2px;
+}
+
+.operations li a
+{
+	font: bold 12px Arial;
+	color: #0066A4;
+	display: block;
+	padding: 2px 0 2px 8px;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.operations li a:visited
+{
+	color: #0066A4;
+}
+
+.operations li a:hover
+{
+	background: #80CFFF;
 }

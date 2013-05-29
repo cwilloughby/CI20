@@ -19,7 +19,17 @@ body
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+/*	border-top: 3px solid #C9E0ED;*/
+        position: relative;
+        width: 100%;
+        /*height: 80px;*/
+        background: url("../assets/images/header_div_bg.jpg") repeat-x;
+        background-size:100px, 50px;
+	-moz-border-top-left-radius: border-top-left-radius: 15px;
+        -moz-border-top-right-radius: border-top-right-radius: 15px;
+	border-top-left-radius:15px;
+        border-top-right-radius:15px;
+        
 }
 
 #content
