@@ -31,3 +31,15 @@ $this->menu2=array(
 		'type',
 	),
 )); ?>
+
+<br/>
+
+<?php $this->widget('application.extensions.smp.StrobeMediaPlayback',array(
+	'srcRelative'=>'/videos/' . $model->document->documentname,
+	'width'=>'320',
+	'height'=>'240',
+	'src_title'=>$model->title,
+	'allowFullScreen'=>'true',
+	'playButtonOverlay'=>true,
+	'scaleMode'=>'stretch',
+));?>
