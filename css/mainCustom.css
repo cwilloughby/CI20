@@ -9,7 +9,9 @@
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 }
-
+.container{
+    width: 80%;
+}
 #header
 {
 	-moz-border-radius: 15px;
