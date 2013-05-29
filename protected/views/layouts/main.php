@@ -40,16 +40,16 @@
 		<div id="logo"><a id ="logo1" href="/site/index"><?php echo CHtml::encode(Yii::app()->name); ?></a></div>
 	</div><!-- header -->
 
-	<div class="shadowblockmenu">
+	<div class="menu-horizontal">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'activateParents'=>true,
 			'lastItemCssClass'=>'last',
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index'), 'linkOptions'=>array('class'=>'toplink')),
+				array('label'=>'Home', 'url'=>array('/site/index'), 'itemOptions'=>array('class'=>'menu-icon-home')),
 				array(
-					'label'=>'Helpdesk',
+					'label'=>'Helpdesk', //'linkOptions'=>array('class'=>'menu-icon-helpdesk'),
 					'visible'=>!Yii::app()->user->isGuest,
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-helpdesk'),
 					'items'=>array(
 						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create'), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index'), 'itemOptions'=>array('class'=>'sub')),
@@ -59,7 +59,7 @@
 				array(
 					'label'=>'Evidence',
 					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-evidence'),
 					'items'=>array(
 						array('label'=>'Search Case Files', 'url'=>array('/evidence/casesummary/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'Create Case File', 'url'=>array('/evidence/casesummary/create'),'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
@@ -73,7 +73,7 @@
 					'label'=>'Admin Tools',
 					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
 						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-admin'),
 					'items'=>array(
 						array('label'=>'News Controls', 'url'=>array('/news/news/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 					),
@@ -81,7 +81,7 @@
 				array(
 					'label'=>'IT Tools',
 					'visible'=>!Yii::app()->user->isGuest,
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-it'),
 					'items'=>array(
 						array('label'=>'Manage Users', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
@@ -96,7 +96,7 @@
 					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
 						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 						|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-timelog'),
 					'items'=>array(
 						array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
@@ -106,7 +106,7 @@
 				array(
 					'label'=>'Evaluations',
 					'visible'=>!Yii::app()->user->isGuest,
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-evaluation'),
 					'items'=>array(
 						array('label'=>'Evaluations', 'url'=>array('/evaluations/evaluations/index'), 'visible'=>!Yii::app()->user->isGuest, 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'Evaluation Questions', 'url'=>array('/evaluations/evaluationquestions/index'), 'visible'=>Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
@@ -115,7 +115,7 @@
 				array(
 					'label'=>'Links',
 					'visible'=>!Yii::app()->user->isGuest,
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-link'),
 					'items'=>array(
 						array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
 					),
@@ -123,7 +123,7 @@
 				array(
 					'label'=>Yii::app()->user->name,
 					'visible'=>!Yii::app()->user->isGuest,
-					'itemOptions'=>array('class'=>'dropdown'),
+					'itemOptions'=>array('class'=>'menu-icon-user'),
 					'items'=>array(
 						array('label'=>'Logout', 'url'=>array('/security/login/logout'), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'Change Password', 'url'=>array('/security/password/change'), 'itemOptions'=>array('class'=>'sub')),

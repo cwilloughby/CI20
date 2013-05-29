@@ -33,39 +33,108 @@ body, ul, li, a{
 	width:900px;
 	height: 300px;
 }
-
+/*Attach images to menu icons*/
+.menu-icon-helpdesk {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/receptionist.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}
+.menu-icon-home{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/home.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}  
+.menu-icon-evidence {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/evidence.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}
+.menu-icon-admin{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/calendar.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}  
+.menu-icon-it {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/tools.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}
+.menu-icon-timelog{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/timelog.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}  
+.menu-icon-evaluation {    
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/folder.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}
+.menu-icon-user{
+    border-left: 1px solid #BBB; /* add border to left side of first menu link */
+    padding-left:25px;
+    background:url("../assets/images/icons/person.png")1px center no-repeat;
+    background-size:25px 25px;
+    background-origin:border-box;
+}  
 /* HORIZONTAL */
 
-.shadowblockmenu {
+.menu-horizontal {
     border: 0 none;
 }
-.shadowblockmenu p {
+.menu-horizontal p {
     clear: left;
 }
-.shadowblockmenu #current {
+.menu-horizontal #current {
     color: #FFFFFF;
 }
-.shadowblockmenu ul {
-	background: #d1d1d1;
-	width:900px;
+/*.menu-horizontal ul li:nth-child(1) {
+    border-left: 1px solid #BBB;  
+    padding-left:25px;
+    background:url("../assets/images/icons/home.png")1px center no-repeat;
+    background-size:20px 20px;
+}*/
+.menu-horizontal ul {
+    background: #fff;
+    width:900px;
     height: 40px;
+    box-shadow: inset -7px 0 10px rgba(114,114,114, 0.4);
 }
-.shadowblockmenu li {
-	border: 1px solid #DFDFDF;
+.menu-horizontal li:hover {
+    
+    box-shadow: inset -7px 0 10px rgba(60,162,221, 0.4), inset 0 0 12px rgba(60,162,221, 0.6);
+}
+.menu-horizontal li {
+    border: 1px solid #DFDFDF;
     float: left;
     padding: 10px;
+    
 }
-.shadowblockmenu li a {
+.menu-horizontal li a {
     color: #666666;
     text-align: center;
     text-decoration: none;
 }
-.shadowblockmenu li a:hover {
-    color: #444444;
+.menu-horizontal li a:hover {
+    color: #fff;
     text-decoration: none;
+    
 }
-.shadowblockmenu li ul {
-    background: none repeat scroll 0 0 #E0E0E0;
+.menu-horizontal li ul {
+    background: rgba(60,162,221, 0.6);
     margin-left:-10px;
     margin-top:10px;
     display: none;
@@ -74,25 +143,42 @@ body, ul, li, a{
     width: 225px;
     z-index: 200;
 }
-.shadowblockmenu li:hover ul {
+.menu-horizontal li:hover ul {
     display: block;
 }
-.shadowblockmenu li li {
+.menu-horizontal li li:hover{
+    box-shadow: none;
+}
+.menu-horizontal li li {
+    background-color: #94ADD3;
     display: block;
     float: none;
     padding: 0;
     width: 225px;
+    border-color: #fff;
+    
 }
-.shadowblockmenu li ul a {
+.menu-horizontal li ul a {
+    color: #003366;
     display: block;
     padding:10px;
     text-align: left;
 }
-.shadowblockmenu li ul a:hover {
-    background: none repeat scroll 0 0 #949494;
-    color: #000000;
-    opacity: 1;
+.menu-horizontal li ul a:hover {
+    color: #fff;    
 }
+/*.menu-horizontal ul:nth-of-type(1) a{  Extra style for first menu link 
+border-left: 1px solid #BBB;  add border to left side of first menu link 
+padding-left:25px;
+background:url("../assets/images/icons/home.png")1px center no-repeat;
+background-size:25px 25px;
+}
+
+.menu-horizontal ul:nth-of-type(2) a{  Extra style for 2nd menu link 
+padding-left:25px;
+background: url("../assets/images/icons/request.png") 1px center no-repeat;  Add icon 
+background-size:25px 25px;
+}*/
 
 /* VERTICAL */
 
@@ -113,7 +199,7 @@ body, ul, li, a{
 .menu-vertical ul {
 	background: #d1d1d1;
 	height: 100%;
-    width: inherit;
+        width: inherit;
 }
 .menu-vertical li {
 	border: 1px solid #DFDFDF;
