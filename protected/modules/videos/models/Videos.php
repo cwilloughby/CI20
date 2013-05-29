@@ -69,7 +69,7 @@ class Videos extends CActiveRecord
 	{
 		return array(
 			'videoid' => 'Video ID',
-			'documentid' => 'Document ID',
+			'documentid' => 'Document',
 			'title' => 'Title',
 			'type' => 'Type',
 		);

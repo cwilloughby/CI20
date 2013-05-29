@@ -72,9 +72,21 @@ class Documents extends CActiveRecord
 			if(isset($this->attachment))
 			{
 				$this->documentname = $this->attachment->getName();
-
-				// Create a folder with the uploaddate set as the name, unless it already exists.
-				$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
+				
+				// The path used depends on if the code is local (test) or not.
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+				{
+					// If it is not local.
+					// Create a folder with the uploaddate set as the name, unless it already exists.
+					$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
+				}
+				else
+				{
+					// If it is local.
+					// Create a folder with the uploaddate set as the name, unless it already exists.
+					$temp = "/../../../../assets/uploads/" . $this->uploaddate . "/";
+				}
+				
 				if(!is_dir($temp))
 					mkdir($temp);
 
@@ -88,8 +100,20 @@ class Documents extends CActiveRecord
 			{
 				$this->documentname = $this->video->getName();
 
-				// Create a folder with the uploaddate set as the name, unless it already exists.
-				$temp = "C:/wamp/www/CI20/assets/videos/" . $this->uploaddate . "/";
+				// The path used depends on if the code is local (test) or not.
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+				{
+					// If it is not local.
+					// Create a folder with the uploaddate set as the name, unless it already exists.
+					$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\videos\\";
+				}
+				else
+				{
+					// If it is local.
+					// Create a folder with the uploaddate set as the name, unless it already exists.
+					$temp = "C:/wamp/www/CI20/assets/videos/";
+				}
+
 				if(!is_dir($temp))
 					mkdir($temp);
 
