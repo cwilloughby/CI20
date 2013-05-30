@@ -53,6 +53,7 @@ return array(
 		'links',
 		'evaluations',
 		'videos',
+		'training',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid
