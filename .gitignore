@@ -11,3 +11,5 @@ index.php
 !/protected/modules/evaluations/views/evaluations/index.php
 !/protected/modules/videos/views/videos/index.php
 /assets/videos/
+protected/runtime/cache-1.1.12.db
+protected/runtime/application.log

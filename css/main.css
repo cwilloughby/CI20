@@ -38,10 +38,7 @@ body
     width: 100%;
 }
 
-#sidebar
-{
-	padding: 20px 20px 20px 0;
-}
+
 
 #footer
 {
@@ -172,8 +169,8 @@ div.search-form
 .portlet-decoration
 {
 	padding: 3px 8px;
-	background: #B7D6E7;
-	border-left: 5px solid #6FACCF;
+	background: #CAC5AE;
+	border-left: 5px solid #CAC5AE;
 }
 
 .portlet-title
@@ -189,8 +186,8 @@ div.search-form
 {
 	font-size:0.9em;
 	margin: 0 0 15px 0;
-	padding: 5px 8px;
-	background:#EFFDFF;
+	padding: 5px 8px; 
+	
 }
 
 .portlet-content ul
@@ -200,6 +197,7 @@ div.search-form
 	list-style-type:none;
 	margin: 0;
 	padding: 0;
+        background:#F0E3A3;
 }
 
 .portlet-content li
