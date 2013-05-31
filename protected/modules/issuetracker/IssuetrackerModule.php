@@ -1,14 +1,14 @@
 <?php
 
-class BugTrakerModule extends CWebModule
+class IssuetrackerModule extends CWebModule
 {
-	public $defaultController = 'bugtracker';
+	public $defaultController = 'issuetracker';
 	
 	public function init()
 	{
 		// import the module-level models and components
 		$this->setImport(array(
-			'bugtracker.models.*',
+			'issuetracker.models.*',
 		));
 	}
 }

@@ -22,6 +22,7 @@ class m130531_143859_create_issue_tables extends CDbMigration
 	public function up()
 	{
 		$this->createTable('ci_issue_tracker', array(
+			'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
 			'key' => 'VARCHAR(10) NOT NULL',
 			'type' => 'VARCHAR(45) NOT NULL',
 			'created' => 'DATETIME NOT NULL',
@@ -34,7 +35,8 @@ class m130531_143859_create_issue_tables extends CDbMigration
 			'remainingestimate' => 'INT(20) NULL',
 			'timespent' => 'INT(20) NULL',
 			'resolution' => 'VARCHAR(45) NOT NULL',
-			'PRIMARY KEY (`key`)',
+			'priority' => 'INT(10) NULL',
+			'PRIMARY KEY (`id`)',
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 	}

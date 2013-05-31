@@ -3,7 +3,7 @@ return array (
   'template' => 'default',
   'connectionId' => 'db',
   'tablePrefix' => 'ci_',
-  'modelPath' => 'application.modules.bugtracker.models',
+  'modelPath' => 'application.modules.issuetracker.models',
   'baseClass' => 'CActiveRecord',
   'buildRelations' => '1',
 );

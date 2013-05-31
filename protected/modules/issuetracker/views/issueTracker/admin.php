@@ -3,13 +3,15 @@
 /* @var $model IssueTracker */
 
 $this->breadcrumbs=array(
-	'Issue Trackers'=>array('index'),
-	'Manage',
+	'Issue Tracker'=>array('index'),
+	'Search',
 );
 
-$this->menu=array(
-	array('label'=>'List IssueTracker', 'url'=>array('index')),
-	array('label'=>'Create IssueTracker', 'url'=>array('create')),
+$this->menu2=array(
+	array('label'=>'Search CJIS Issues', 'url'=>array('admin')),
+	array('label'=>'Create CJIS Issue', 'url'=>array('create')),
+	array('label'=>'List CJIS Issues', 'url'=>array('index')),
+	array('label'=>'Change Priority Order', 'url'=>array('changepriorities')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +28,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Issue Trackers</h1>
+<h1>Search CJIS Issues</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,17 +42,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'issue-tracker-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'key',
 		'type',
 		'created',
-		'reporter',
 		'summary',
-		'description',
 		/*
 		'assigned',
 		'updated',
@@ -58,9 +62,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'remainingestimate',
 		'timespent',
 		'resolution',
+		'priority',
 		*/
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('issue-tracker-grid',{ data:{pageSize: $(this).val() }})",
+			)),
+			'template'=>'{view} {update}',
 		),
 	),
 )); ?>

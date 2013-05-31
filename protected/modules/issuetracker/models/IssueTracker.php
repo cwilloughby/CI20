@@ -4,6 +4,7 @@
  * This is the model class for table "ci_issue_tracker".
  *
  * The followings are the available columns in table 'ci_issue_tracker':
+ * @property integer $id
  * @property string $key
  * @property string $type
  * @property string $created
@@ -16,6 +17,7 @@
  * @property integer $remainingestimate
  * @property integer $timespent
  * @property string $resolution
+ * @property integer $priority
  */
 class IssueTracker extends CActiveRecord
 {
@@ -46,13 +48,13 @@ class IssueTracker extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('key, type, created, resolution', 'required'),
-			array('originalestimate, remainingestimate, timespent', 'numerical', 'integerOnly'=>true),
+			array('originalestimate, remainingestimate, timespent, priority', 'numerical', 'integerOnly'=>true),
 			array('key', 'length', 'max'=>10),
 			array('type, reporter, assigned, resolution', 'length', 'max'=>45),
 			array('summary, description, updated', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('key, type, created, reporter, summary, description, assigned, updated, originalestimate, remainingestimate, timespent, resolution', 'safe', 'on'=>'search'),
+			array('id, key, type, created, reporter, summary, description, assigned, updated, originalestimate, remainingestimate, timespent, resolution, priority', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +75,7 @@ class IssueTracker extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'key' => 'Key',
 			'type' => 'Type',
 			'created' => 'Created',
@@ -85,6 +88,7 @@ class IssueTracker extends CActiveRecord
 			'remainingestimate' => 'Remainingestimate',
 			'timespent' => 'Timespent',
 			'resolution' => 'Resolution',
+			'priority' => 'Priority',
 		);
 	}
 
@@ -99,6 +103,7 @@ class IssueTracker extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id);
 		$criteria->compare('key',$this->key,true);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('created',$this->created,true);
@@ -111,6 +116,7 @@ class IssueTracker extends CActiveRecord
 		$criteria->compare('remainingestimate',$this->remainingestimate);
 		$criteria->compare('timespent',$this->timespent);
 		$criteria->compare('resolution',$this->resolution,true);
+		$criteria->compare('priority',$this->priority);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

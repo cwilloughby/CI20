@@ -55,3 +55,13 @@
 	position: relative; 
 	z-index: 1; 
 }
+
+.priOrder li{
+	border-width:1px;
+	border-style: solid;
+	margin: 3px;
+	padding: 3px;
+	width: 200px;
+	height: auto;
+	
+}
