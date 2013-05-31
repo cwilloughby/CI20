@@ -54,6 +54,7 @@ return array(
 		'evaluations',
 		'videos',
 		'training',
+		'bugtracker',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid

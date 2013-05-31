@@ -1,6 +1,6 @@
 <?php
 
-class m130528_173451_create_videos_table extends CDbMigration
+class m130531_143859_create_issue_tables extends CDbMigration
 {
 	public function __construct()
 	{
@@ -21,25 +21,27 @@ class m130528_173451_create_videos_table extends CDbMigration
 	
 	public function up()
 	{
-		$this->createTable('ci_videos', array(
-				'videoid' => 'INT(11) NOT NULL AUTO_INCREMENT',
-				'documentid' => 'INT(11) NOT NULL',
-				'title' => 'VARCHAR(100) NULL',
-				'type' => 'VARCHAR(45) NOT NULL',
-				'PRIMARY KEY (`videoid`)',
-				'INDEX `fk_ci_videos_ci_documents1_idx` (`documentid` ASC)',
-				'CONSTRAINT `fk_ci_videos_ci_documents1`
-					FOREIGN KEY (`documentid` )
-					REFERENCES `ci2`.`ci_documents` (`documentid` )
-					ON DELETE NO ACTION
-					ON UPDATE NO ACTION'
-				),
-				'ENGINE=InnoDB, COLLATE=utf8_general_ci');
+		$this->createTable('ci_issue_tracker', array(
+			'key' => 'VARCHAR(10) NOT NULL',
+			'type' => 'VARCHAR(45) NOT NULL',
+			'created' => 'DATETIME NOT NULL',
+			'reporter' => 'VARCHAR(45) NULL',
+			'summary' => 'TEXT NULL',
+			'description' => 'TEXT NULL',
+			'assigned' => 'VARCHAR(45) NULL',
+			'updated' => 'DATETIME NULL',
+			'originalestimate' => 'INT(20) NULL',
+			'remainingestimate' => 'INT(20) NULL',
+			'timespent' => 'INT(20) NULL',
+			'resolution' => 'VARCHAR(45) NOT NULL',
+			'PRIMARY KEY (`key`)',
+			),
+			'ENGINE=InnoDB, COLLATE=utf8_general_ci');
 	}
 
 	public function down()
 	{
 		// Drop the tables.
-		$this->dropTable('ci_videos');
+		$this->dropTable('ci_issue_tracker');
 	}
 }
