@@ -56,12 +56,14 @@
 	z-index: 1; 
 }
 
-.priOrder li{
-	border-width:1px;
-	border-style: solid;
-	margin: 3px;
-	padding: 3px;
-	width: 200px;
-	height: auto;
-	
+.tooltip {
+	border-bottom: 1px dotted #000000;
+	color: #000000; outline: none;
+	cursor: help; text-decoration: none;
+	position: relative;
+	transition: 5s position;
+}
+.tooltip span {
+	margin-left: -999em;
+	position: absolute;
 }

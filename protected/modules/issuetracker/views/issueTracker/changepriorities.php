@@ -19,12 +19,22 @@ $this->menu2=array(
 
 <?php
 // Organize the dataProvider data into a Zii-friendly array
-$items = CHtml::listData($dataProvider->getData(), 'id', 'summary');
+$priority = CHtml::listData($dataProvider->getData(), 'id', 'priority');
+$summary = CHtml::listData($dataProvider->getData(), 'id', 'summary');
+$desc = CHtml::listData($dataProvider->getData(), 'id', 'description');
+
+foreach($summary as $id=>$content)
+{
+     $sortableItems[$id] = '<a class="tooltip" href="#" title="To increase the priority of this item, click and drag it upwards. To decrease the priority of this item, click and drag it downwards.">'
+			. '<div class="portlet-decoration"><div class="portlet-title">' . 'Summary: ' . $content . '</div></div>'
+			. '<div class="portlet-content">' . $desc[$id] . '</div>'
+			. '</a>';
+}
 
 // Implement the JUI Sortable plugin
 $this->widget('zii.widgets.jui.CJuiSortable', array(
 	'id' => 'priorityList',
-	'items' => $items,
+	'items' => $sortableItems,
 	'htmlOptions' => array('class' => 'priOrder'),
 	'options' => array(
 		'update'=>'js:function(event,ui){
