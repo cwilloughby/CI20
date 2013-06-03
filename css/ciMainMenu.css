@@ -286,27 +286,27 @@ li.separator a{
 #sidebar
 {
 	padding: 20px 20px 20px 0;
-        background-color: #CAC5AE;
+        background-color: #F0E3A3;
         
 }
-sidebar.portlet {
+sidebar, portlet {
     background:#F0E3A3;
 }
-#sidebar.portlet-content {
+#sidebar, portlet-content {
     /*background-color: #F0E3A3;*/
     font-size:0.9em;
     margin: 0 0 15px 0;
     padding: 5px 8px; 
 }
 
-#sidebar.portlet-decoration
+#sidebar, portlet-decoration
 {
 	padding: 3px 8px;
 /*	background: #fff;
 	border-left: 5px solid #fff;*/
 }
 
-#sidebar.portlet-title
+#sidebar, portlet-title
 {
 	font-size: 12px;
 	font-weight: bold;
@@ -315,7 +315,7 @@ sidebar.portlet {
 /*	color: #298dcd;*/
 }
 
-#sidebar.portlet-content ul
+#sidebar, portlet-content ul
 {
 	list-style-image:none;
 	list-style-position:outside;
@@ -325,23 +325,23 @@ sidebar.portlet {
         /*background:#F0E3A3;*/
 }
 
-#sidebar.portlet-content li
+#sidebar, portlet-content li
 {
 	padding: 2px 0 4px 0px;
 }
-#sidebar.operations
+#sidebar, operations
 {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-#sidebar.operations li
+#sidebar, operations li
 {
 	padding-bottom: 2px;
 }
 
-#sidebar.operations li a
+#sidebar, operations li a
 {
 	font: bold 12px Arial;
 	color: #0066A4;
@@ -351,12 +351,12 @@ sidebar.portlet {
 	text-decoration: none;
 }
 
-#sidebar.operations li a:visited
+#sidebar, operations li a:visited
 {
 	color: #0066A4;
 }
 
-#sidebar.operations li a:hover
+#sidebar, operations li a:hover
 {
 	background: #80CFFF;
 }
