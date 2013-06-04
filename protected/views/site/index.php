@@ -5,7 +5,11 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<div class="non-semantic-protector">
+	<h1 class="ribbon">
+		<strong class="ribbon-content">Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></strong>
+	</h1>
+</div>
 
 <p>This is an Intranet website and can only be accessed from a computer 
 inside the Metro/JIS Domain, just open an internet window and in the

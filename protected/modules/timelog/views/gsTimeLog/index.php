@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Search GS Time Log', 'url'=>array('admin')),
+	array('label'=>'List GS Time Log', 'url'=>array('index')),
 );
 ?>
 

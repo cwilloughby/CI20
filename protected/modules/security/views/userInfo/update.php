@@ -15,6 +15,7 @@ $this->menu2=array(
 	array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'List Users', 'url'=>array('index')),
 	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->userid)),
+	array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->userid)),
 	($model->active == 2 
 		? array('label'=>'Enable User', 'url'=>'#', 
 			'linkOptions'=>array('submit'=>array('enable','id'=>$model->userid),'confirm'=>'Are you sure you want to enable this user?'))

@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'Search Attorneys', 'url'=>array('admin')),
 	array('label'=>'Create Attorney', 'url'=>array('create')),
+	array('label'=>'View Attorney', 'url'=>array('view', 'id'=>$model->attyid)),
 	array('label'=>'Update Attorney', 'url'=>array('update', 'id'=>$model->attyid)),
 	array('label'=>'Delete Attorney', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->attyid),'confirm'=>'Are you sure you want to delete this attorney?')),
 );

@@ -12,7 +12,9 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Search HR Policies', 'url'=>array('admin')),
+	array('label'=>'Create HR Policy', 'url'=>array('createpolicy')),
 	array('label'=>'List HR Policies', 'url'=>array('index')),
+	array('label'=>'Update HR Policy', 'url'=>array('updatePolicy', 'id'=>$model->policyid)),
 );
 ?>
 

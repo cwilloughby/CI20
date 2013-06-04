@@ -4,6 +4,7 @@
     Author     : cwilloughby
 */
 
+<<<<<<< HEAD
 #page
 {
 	-moz-border-radius: 15px;
@@ -111,53 +112,68 @@
 }
 #menu-top ul li ul li.active a,
 #menu-top ul li ul li{clear: left;}
-
-#menu-top li.separator a{
-	border-top: solid #FFAA77;
-	border-top-width: 1px;
-}
-
-fieldset.news{
-	border-style:solid;
-	border-width:1px;
-	border: 1px solid #C9E0ED;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-}
-fieldset{
-	padding: 10px;
-}
-fieldset.news legend{
-	font-size: 18px;
-}
-fieldset.news p {
-	padding: 5px;
-}
-div.view
-{
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-}
+=======
 .container {width:90%;margin:0 auto;}
-.span-5 {width:17%;}
-.span-19 {width:80%;}
+>>>>>>> origin/cwDev
 
-div.centriod
-{
-	background: #ffff99;
+.ribbon {
+	font-size: 16px !important;
+	width: 50%;
+	position: relative;
+	background: #6FACCF;
+	color: #fff;
+	text-align: center;
+	padding: 1em 2em;
+	margin: 0em auto 1em;
+}
+.ribbon:before, .ribbon:after {
+	content: "";
+	position: absolute;
+	display: block;
+	bottom: -1em;
+	border: 1.5em solid #6699FF;
+	z-index: -1;
+}
+.ribbon:before {
+	left: -2em;
+	border-right-width: 1.5em;
+	border-left-color: transparent;
+}
+.ribbon:after {
+	right: -2em;
+	border-left-width: 1.5em;
+	border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+	content: "";
+	position: absolute;
+	display: block;
+	border-style: solid;
+	border-color: #298dcd transparent transparent transparent;
+	bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+	left: 0;
+	border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+	right: 0;
+	border-width: 1em 1em 0 0;
 }
 
-#logo1
-{
-	text-decoration: none;
-	color: black;
+.non-semantic-protector { 
+	position: relative; 
+	z-index: 1; 
 }
 
-/**
- * Override the css that keeps the "first" and "last" buttons from showing on the pager controls.
- */
-#page ul.yiiPager .first,
-#page ul.yiiPager .last
-{
-	display:inline;
+.tooltip {
+	border-bottom: 1px dotted #000000;
+	color: #000000; outline: none;
+	cursor: help; text-decoration: none;
+	position: relative;
+	transition: 5s position;
+}
+.tooltip span {
+	margin-left: -999em;
+	position: absolute;
 }

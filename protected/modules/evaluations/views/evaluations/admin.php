@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'Create Evaluation', 'url'=>array('create')),
 	array('label'=>'List Evaluations', 'url'=>array('index')),
 );

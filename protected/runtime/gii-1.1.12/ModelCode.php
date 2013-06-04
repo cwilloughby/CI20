@@ -3,7 +3,7 @@ return array (
   'template' => 'default',
   'connectionId' => 'db',
   'tablePrefix' => 'ci_',
-  'modelPath' => 'application.modules.videos.models',
+  'modelPath' => 'application.modules.issuetracker.models',
   'baseClass' => 'CActiveRecord',
   'buildRelations' => '1',
 );
