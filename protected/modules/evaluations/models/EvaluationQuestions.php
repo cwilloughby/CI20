@@ -44,7 +44,7 @@ class EvaluationQuestions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('departmentid, question', 'required'),
+			array('question', 'required'),
 			array('departmentid, active, type', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
