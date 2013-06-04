@@ -64,9 +64,15 @@ class EvaluationsController extends Controller
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
 				
-				// Find all questions for the department.
+				// Find all general questions.
 				$questions = CHtml::ListData(EvaluationQuestions::model()->findAll(
+						'departmentid IS NULL'), 'questionid', 'questionid');
+				
+				// Find all questions for the department.
+				$questions2 = CHtml::ListData(EvaluationQuestions::model()->findAll(
 						'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid');
+				
+				$questions = array_merge($questions, $questions2);
 				
 				foreach($questions as $question)
 				{

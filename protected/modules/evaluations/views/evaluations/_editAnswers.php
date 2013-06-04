@@ -29,15 +29,32 @@
 		?>
 
 		<div class="row">
-			<?php echo $form->labelEx($model,'score'); ?>
-			<?php echo $form->radioButtonList($model, 'score', array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5), 
-					array(
-						'separator'=>'&nbsp;',
-						'labelOptions'=>array(
-							'style'=>'display: inline; margin-right: 10px; font-weight: normal;'
-						)
-					)); ?>
-			<?php echo $form->error($model,'score'); ?>
+			<?php
+			if($data->question->type == 1)
+			{
+				echo $form->labelEx($model,'score');
+				echo $form->radioButtonList($model, 'score', array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 'N/A' => 'N/A'), 
+						array(
+							'separator'=>'&nbsp;',
+							'labelOptions'=>array(
+								'style'=>'display: inline; margin-right: 10px; font-weight: normal;'
+							)
+						));
+				echo $form->error($model,'score');
+			}
+			else
+			{
+				echo $form->labelEx($model,'score');
+				echo $form->radioButtonList($model, 'score', array(0 => "Unacceptable", 1 => "Acceptable",), 
+						array(
+							'separator'=>'&nbsp;',
+							'labelOptions'=>array(
+								'style'=>'display: inline; margin-right: 10px; font-weight: normal;'
+							)
+						));
+				echo $form->error($model,'score');
+			}
+			?>
 		</div>
 
 		<div class="row">

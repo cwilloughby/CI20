@@ -67,3 +67,9 @@
 	margin-left: -999em;
 	position: absolute;
 }
+
+ul.instructions li {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    list-style-position: inside;
+}

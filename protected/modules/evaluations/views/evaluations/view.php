@@ -46,3 +46,5 @@ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$answersDataProvider,
 	'itemView'=>'_viewAnswers',
 )); ?>
+
+<?php echo $this->renderPartial('_instructions'); ?>
