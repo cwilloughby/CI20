@@ -13,6 +13,7 @@ $this->menu=array(
 	array('label'=>'Create Documents', 'url'=>array('create')),
 	array('label'=>'List Documents', 'url'=>array('index')),
 	array('label'=>'View Documents', 'url'=>array('view', 'id'=>$model->documentid)),
+	array('label'=>'Update Documents', 'url'=>array('update', 'id'=>$model->documentid)),
 );
 ?>
 

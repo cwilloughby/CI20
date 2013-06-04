@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Users', 'url'=>array('admin')),
 	array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'List Users', 'url'=>array('index')),
 );

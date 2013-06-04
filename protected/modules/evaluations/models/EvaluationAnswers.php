@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'ci_evaluation_answers':
  * @property integer $evaluationid
  * @property integer $questionid
- * @property integer $score
+ * @property string $score
  * @property string $comments
  */
 class EvaluationAnswers extends CActiveRecord
@@ -38,8 +38,8 @@ class EvaluationAnswers extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('evaluationid, questionid', 'required'),
-			array('evaluationid, questionid, score', 'numerical', 'integerOnly'=>true),
-			array('comments', 'safe'),
+			array('evaluationid, questionid', 'numerical', 'integerOnly'=>true),
+			array('comments, score', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('evaluationid, questionid, score, comments', 'safe', 'on'=>'search'),

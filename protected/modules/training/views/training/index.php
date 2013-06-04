@@ -1,20 +1,20 @@
 <?php
-/* @var $this CrtCaseController */
+/* @var $this TrainingController */
 /* @var $dataProvider CActiveDataProvider */
-
-$this->pageTitle = Yii::app()->name . ' - Court Cases';
+$this->pageTitle = Yii::app()->name . ' - List Training Videos';
 
 $this->breadcrumbs=array(
-	'Court Cases',
+	'Training',
 );
 
 $this->menu2=array(
-	array('label'=>'Search Court Cases', 'url'=>array('admin')),
-	array('label'=>'Create Court Case', 'url'=>array('create')),
+	array('label'=>'List Training Videos', 'url'=>array('index')),
 );
 ?>
 
-<h1>Court Cases</h1>
+<h1>Training Resources</h1>
+<br/>
+<h3>Videos</h3>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

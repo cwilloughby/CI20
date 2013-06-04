@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'Search Time Logs', 'url'=>array('admin')),
 	array('label'=>'List Time Logs', 'url'=>array('index')),
 );
 

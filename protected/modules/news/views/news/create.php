@@ -9,6 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Search News Posts', 'url'=>array('admin')),
+	array('label'=>'Create News Post', 'url'=>array('create')),
 	array('label'=>'List News Posts', 'url'=>array('index')),
 );
 ?>

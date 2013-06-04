@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'Search Court Cases', 'url'=>array('admin')),
 	array('label'=>'Create Court Case', 'url'=>array('create')),
+	array('label'=>'View Court Case', 'url'=>array('view', 'id'=>$model->caseno)),
 	array('label'=>'Update Court Case', 'url'=>array('update', 'id'=>$model->caseno)),
 	array('label'=>'Delete Court Case', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->caseno),'confirm'=>'Are you sure you want to delete this case?')),
 );

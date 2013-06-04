@@ -13,6 +13,7 @@ $this->menu2=array(
 	array('label'=>'Search Users', 'url'=>array('admin')),
 	array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'List Users', 'url'=>array('index')),
+	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->userid)),
 	array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->userid)),
 	($model->active == 2 
 		? array('label'=>'Enable User', 'url'=>'#', 

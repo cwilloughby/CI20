@@ -29,7 +29,7 @@
 	?>
 	</div><!-- sidebar -->
 </div>
-<div class="span-19">
+<div class="span-23">
 	<div id="content">
 		<?php echo $content; ?>
 	</div><!-- content -->
