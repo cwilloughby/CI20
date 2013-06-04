@@ -15,7 +15,7 @@ $this->menu2=array(
 	array('label'=>'Create Evaluation', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
 	array('label'=>'List Evaluations', 'url'=>array('index')),
 	array('label'=>'View Evaluation', 'url'=>array('view', 'id'=>$model->evaluationid)),
-	array('label'=>'Fill Out Evaluation', 'url'=>array('edit', 'id'=>$model->evaluationid), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
+	array('label'=>'Fill Out Evaluation', 'url'=>array('edit', 'id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1), 'visible' => Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
 	array('label'=>'Change Employee', 'url'=>array('update', 'id'=>$model->evaluationid)),
 );
 ?>
@@ -51,11 +51,6 @@ Yii::app()->clientScript->registerScript(
 );
 ?>
 
-<?php if(Yii::app()->user->hasFlash('success')):?>
-    <div class="flash-success">
-        <?php echo Yii::app()->user->getFlash('success'); ?>
-    </div>
-<?php endif; ?>
 <?php
 $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$answersDataProvider,
