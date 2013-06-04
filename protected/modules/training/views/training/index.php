@@ -1,14 +1,14 @@
 <?php
 /* @var $this TrainingController */
 /* @var $dataProvider CActiveDataProvider */
-$this->pageTitle = Yii::app()->name . ' - List Training Videos';
+$this->pageTitle = Yii::app()->name . ' - List Training Resources';
 
 $this->breadcrumbs=array(
 	'Training',
 );
 
 $this->menu2=array(
-	array('label'=>'List Training Videos', 'url'=>array('index')),
+	array('label'=>'List Training Resources', 'url'=>array('index')),
 );
 ?>
 

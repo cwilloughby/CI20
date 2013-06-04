@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Training Videos', 'url'=>array('index')),
+	array('label'=>'List Training Resources', 'url'=>array('index')),
 );
 ?>
 
