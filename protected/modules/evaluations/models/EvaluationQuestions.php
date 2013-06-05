@@ -8,6 +8,7 @@
  * @property integer $departmentid
  * @property string $question
  * @property integer $active
+ * @property integer $type
  *
  * The followings are the available model relations:
  * @property Evaluations[] $ciEvaluations
@@ -43,11 +44,11 @@ class EvaluationQuestions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('departmentid, question', 'required'),
-			array('departmentid, active', 'numerical', 'integerOnly'=>true),
+			array('question', 'required'),
+			array('departmentid, active, type', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('questionid, departmentid, question, active, department_search', 'safe', 'on'=>'search'),
+			array('questionid, departmentid, question, active, type, department_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +76,7 @@ class EvaluationQuestions extends CActiveRecord
 			'question' => 'Question',
 			'active' => 'Active',
 			'department_search' => 'Department',
+			'type' => 'Type of Question',
 		);
 	}
 

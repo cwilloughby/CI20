@@ -10,7 +10,12 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:</b>
-	<?php echo CHtml::encode($data->department->departmentname); ?>
+	<?php 
+	if(is_null($data->departmentid))
+		echo "General Question";
+	else
+		echo CHtml::encode($data->department->departmentname); 
+	?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('question')); ?>:</b>

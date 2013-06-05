@@ -16,6 +16,18 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->radioButtonList($model, 'type', array(1 => "1 out of 4", 2 => "1 out of 2",), 
+				array(
+					'separator'=>'&nbsp;',
+					'labelOptions'=>array(
+						'style'=>'display: inline; margin-right: 10px; font-weight: normal;'
+					)
+				));?>
+		<?php echo $form->error($model,'question'); ?>
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'question'); ?>
 		<?php echo $form->textArea($model,'question'); ?>
 		<?php echo $form->error($model,'question'); ?>

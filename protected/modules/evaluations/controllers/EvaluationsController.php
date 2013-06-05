@@ -64,9 +64,15 @@ class EvaluationsController extends Controller
 				$log->tablerow = $model->getPrimaryKey();
 				$log->save(false);
 				
-				// Find all questions for the department.
+				// Find all general questions.
 				$questions = CHtml::ListData(EvaluationQuestions::model()->findAll(
+						'departmentid IS NULL'), 'questionid', 'questionid');
+				
+				// Find all questions for the department.
+				$questions2 = CHtml::ListData(EvaluationQuestions::model()->findAll(
 						'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid');
+				
+				$questions = array_merge($questions, $questions2);
 				
 				foreach($questions as $question)
 				{
@@ -79,8 +85,7 @@ class EvaluationsController extends Controller
 					
 					$answer->save();
 				}
-				
-				$this->redirect(array('edit','id'=>$model->evaluationid));
+				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 			}
 		}
 
@@ -142,7 +147,9 @@ class EvaluationsController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
 			'criteria'=>array('condition'=>'evaluationid=' . $id),
-			'pagination'=>array('pageSize'=>1)));
+			'pagination'=>array(
+				'pageSize'=>1,
+			)));
 		
 		if(isset($_POST['EvaluationAnswers']))
 		{
@@ -158,10 +165,20 @@ class EvaluationsController extends Controller
 			$log->userid = Yii::app()->user->getId();
 			$log->tablerow = $model->evaluationid . ", " . $model->questionid;
 			$log->save(false);
-			
-			Yii::app()->user->setFlash('success', "Answer saved");
+
+			$page = $_GET['EvaluationAnswers_page'] + 1;
+			if($page <= $dataProvider->totalItemCount)
+			{
+				// Redirect to the next question in the list.
+				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
+			}
+			else
+			{
+				// All questions have been answered, redirect to the view page.
+				$this->redirect(array('view','id'=>$model->evaluationid));
+			}
 		}
-		
+
 		$this->render('edit',array(
 			'model'=>$this->loadModel($id),
 			'answersDataProvider'=>$dataProvider,

@@ -20,13 +20,14 @@ $this->menu2=array(
 <?php
 // Organize the dataProvider data into a Zii-friendly array
 $priority = CHtml::listData($dataProvider->getData(), 'id', 'priority');
+$key = CHtml::listData($dataProvider->getData(), 'id', 'key');
 $summary = CHtml::listData($dataProvider->getData(), 'id', 'summary');
 $desc = CHtml::listData($dataProvider->getData(), 'id', 'description');
 
 foreach($summary as $id=>$content)
 {
      $sortableItems[$id] = '<a class="tooltip" href="#" title="To increase the priority of this item, click and drag it upwards. To decrease the priority of this item, click and drag it downwards.">'
-			. '<div class="portlet-decoration"><div class="portlet-title">' . 'Summary: ' . $content . '</div></div>'
+			. '<div class="portlet-decoration"><div class="portlet-title">' . $key[$id] . ' Summary: ' . $content . '</div></div>'
 			. '<div class="portlet-content">' . $desc[$id] . '</div>'
 			. '</a>';
 }
