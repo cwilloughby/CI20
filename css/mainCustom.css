@@ -4,15 +4,12 @@
     Author     : cwilloughby
 */
 
-<<<<<<< HEAD
 #page
 {
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 }
-.container{
-    width: 80%;
-}
+
 #header
 {
 	-moz-border-radius: 15px;
@@ -112,9 +109,6 @@
 }
 #menu-top ul li ul li.active a,
 #menu-top ul li ul li{clear: left;}
-=======
-.container {width:90%;margin:0 auto;}
->>>>>>> origin/cwDev
 
 .ribbon {
 	font-size: 16px !important;
