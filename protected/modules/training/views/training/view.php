@@ -5,12 +5,13 @@
 $this->pageTitle = Yii::app()->name . ' - Training Video';
 
 $this->breadcrumbs=array(
-	'Training'=>array('index'),
+	'Training'=>array('typeindex'),
+	$type=>array('resourceindex', 'type'=>$video->type),
 	$video->videoid,
 );
 
 $this->menu2=array(
-	array('label'=>'List Training Resources', 'url'=>array('index')),
+	array('label'=>'List Training Resources', 'url'=>array('typeIndex')),
 );
 ?>
 
