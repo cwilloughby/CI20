@@ -24,8 +24,14 @@ class TrainingController extends Controller
 	 */
 	public function actionView($id, $type)
 	{
+		$models=Videos::model()->findAll(array(
+			'select'=>'type',
+			'distinct'=>true,
+		));
+		$types=CHtml::listData($models,'type','type');
 		$this->render('view',array(
 			'video'=>$this->loadModel($id),
+			'types'=>$types,
 			'type'=>$type
 		));
 	}
