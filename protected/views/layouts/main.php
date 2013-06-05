@@ -57,7 +57,7 @@
 						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create'), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index'), 'itemOptions'=>array('class'=>'sub')),
 						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex'), 'itemOptions'=>array('class'=>'sub')),
-						array('label'=>'Training Resources', 'url'=>array('/training/training/index'), 'itemOptions'=>array('class'=>'separator')),
+						array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex'), 'itemOptions'=>array('class'=>'separator')),
 					),
 				),
 				array(
