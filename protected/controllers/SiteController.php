@@ -2,7 +2,7 @@
 
 class SiteController extends Controller
 {
-	public $layout='//layouts/column2home';
+	public $layout='//layouts/column1';
 	
 	/**
 	 * This is the default 'index' action that is invoked
