@@ -28,12 +28,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
-		<?php echo $form->error($model,'created'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'reporter'); ?>
 		<?php echo $form->textField($model,'reporter',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'reporter'); ?>
@@ -55,12 +49,6 @@
 		<?php echo $form->labelEx($model,'assigned'); ?>
 		<?php echo $form->textField($model,'assigned',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'assigned'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated'); ?>
-		<?php echo $form->textField($model,'updated'); ?>
-		<?php echo $form->error($model,'updated'); ?>
 	</div>
 
 	<div class="row">
