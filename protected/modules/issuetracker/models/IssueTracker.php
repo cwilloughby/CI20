@@ -130,9 +130,6 @@ class IssueTracker extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
@@ -151,6 +148,9 @@ class IssueTracker extends CActiveRecord
 		$criteria->compare('priority',$this->priority);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}
