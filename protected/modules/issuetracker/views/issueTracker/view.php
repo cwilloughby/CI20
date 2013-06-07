@@ -2,6 +2,8 @@
 /* @var $this IssueTrackerController */
 /* @var $model IssueTracker */
 
+$this->pageTitle = Yii::app()->name . ' - Issue Tracker';
+
 $this->breadcrumbs=array(
 	'Issue Tracker'=>array('index'),
 	$model->key,
