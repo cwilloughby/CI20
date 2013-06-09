@@ -14,8 +14,9 @@
 	<![endif]-->
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ciMainMenu.css" />
-	<!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/sass.scss" />-->
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ciMainMenu.css" />
+<!--	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/tngov13-index.css" />-->
+<!--	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/tngov13.css" />-->
       
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/favicon.ico" />
@@ -23,11 +24,18 @@
 	
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <script language="javascript" type="text/javascript" src="/ci20/scripts/ciMainMenu.js"></script>
 	<script>
 	if (!window.jQuery) {
 		document.write('<script src="/../../../../../assets/jquery/jquery.js"><\/script>');
 		document.write('<script src="/../../../../../assets/jquery/jqueryui.js"><\/script>');
 	}
+        $(document).ready(function() {
+	$(".col-1-4, .col-1-2, .col-2-3, .col-1-3").equalHeights(400, 400);
+        $("[class*='module']").equalHeights(370, 370);
+	$("[class*='half_mod']").equalHeights(188, 188);
+	$(".col-1-8").equalHeights(191, 191);
+});
 	</script>
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
