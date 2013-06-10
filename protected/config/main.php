@@ -29,6 +29,7 @@ return array(
 		'application.modules.news.models.*',
 		'application.modules.weather.models.*',
 		'application.modules.weather.components.*',
+		'application.modules.news.components.*',
 		'zii.widgets.CPortlet'
 	),
 
