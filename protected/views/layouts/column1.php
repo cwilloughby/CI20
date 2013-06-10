@@ -45,13 +45,38 @@
 				<p>3Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>	
      </div>-->
      <div class="half_mod_top">
-     		<h3>1/3</h3>
-				<p>4Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>	
-     </div>
+     		<?php if(isset($this->breadcrumbs)):?>
+		<?php $this->widget('zii.widgets.CBreadcrumbs', array('links'=>$this->breadcrumbs,)); ?><!-- breadcrumbs -->
+	<?php endif?>  </div>
        <div class="half_mod_bottom">
-     		<h3>1/3</h3>
-				<p>4Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>	
+     		     <div class="module1 mod1_image">  
+     <div class="menu-vertical"> 
+        <?php
+		if(!isset(Yii::app()->user->id))
+			$this->widget('UserLogin');
+		else
+		{
+			$this->menu1=array(
+				// The link to the trouble ticket form.
+				array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+				// The link to the hr policy page.
+				array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+				// The link to the emergency response plan.
+				array('label'=>'Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+			);
+			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'Quick Links',
+			));
+			$this->widget('zii.widgets.CMenu', array(
+				'items'=>$this->menu1,
+				'htmlOptions'=>array('class'=>'operations'),
+			));
+			$this->endWidget();
+		}
+	?>
      </div>
+         <!--<img src="/ci20/assets/images/main/education.jpg" />-->
+     </div>   </div>
    </div>
    <div class="col-1-4">
        <div class="module3">
@@ -74,12 +99,16 @@
 				<p>4Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>	
      </div>
    </div>-->
-<br>
    <div class="col-1-4">
      <div class="module4">
-     		<h3>1/8</h3>
-                <p>5Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-     </div>
+$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'Quick Links',
+			));
+			$this->widget('zii.widgets.CMenu', array(
+				'items'=>$this->menu1,
+				'htmlOptions'=>array('class'=>'operations'),
+			));
+			$this->endWidget();    </div>
    </div>
    <div class="col-1-4">
      <div class="module5">
@@ -101,29 +130,98 @@
    </div>
   <div class="col-2-3">
      <div class="module8">
-     		<div class="group" id="footer-boxes">
-      <a href="http://digwp.com" id="f-diw" class="footer-box">
-      <h5>DigWP</h5>
-      <p>
-          A book and blog co-authored by Jeff Starr and myself about the World's most popular publishing platform.
-      </p>
-      </a><a href="http://quotesondesign.com" id="f-qod" class="footer-box">
-      <h5>Quotes on Design</h5>
-      <p>
-          Design, like Art, can be an elusive word to define and an awfully fun thing to have opinions about.
-      </p>
-      </a><a href="http://html-ipsum.com" id="f-htmlipsum" class="footer-box">
-      <h5>HTML-Ipsum</h5>
-      <p>
-          One-click copy to clipboard access to <em>Lorem Ipsum</em> text that comes wrapped in a variety of HTML.
-      </p>
-      </a><a href="/bookshelf/" id="f-bookshelf" class="footer-box last">
-      <h5>Bookshelf</h5>
-      <p>
-          Hey Chris, what books do you recommend? These, young fertile mind, these.
-      </p>
-      </a>
-  </div> </div>
+     		<?php $this->widget('zii.widgets.CMenu',array(
+			'activateParents'=>true,
+			'lastItemCssClass'=>'last',
+			'items'=>array(
+				array('label'=>'Home', 'url'=>array('/site/index'), 'itemOptions'=>array('class'=>'menu-icon-home')),
+				array(
+					'label'=>'Helpdesk', //'linkOptions'=>array('class'=>'menu-icon-helpdesk'),
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'menu-icon-helpdesk'),
+					'items'=>array(
+						array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Training Resources', 'url'=>array('/training/training/index'), 'itemOptions'=>array('class'=>'separator')),
+					),
+				),
+				array(
+					'label'=>'Evidence',
+					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
+					'itemOptions'=>array('class'=>'menu-icon-evidence'),
+					'items'=>array(
+						array('label'=>'Search Case Files', 'url'=>array('/evidence/casesummary/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Create Case File', 'url'=>array('/evidence/casesummary/create'),'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Defendant Controls', 'url'=>array('/evidence/defendant/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'separator')),
+						array('label'=>'Evidence Controls', 'url'=>array('/evidence/evidence/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Case Controls', 'url'=>array('/evidence/crtcase/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Attorney Controls', 'url'=>array('/evidence/attorney/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>'Admin Tools',
+					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
+						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+					'itemOptions'=>array('class'=>'menu-icon-admin'),
+					'items'=>array(
+						array('label'=>'News Controls', 'url'=>array('/news/news/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'CJIS Issue Tracker', 'url'=>array('/issuetracker/issuetracker/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>'IT Tools',
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'menu-icon-it'),
+					'items'=>array(
+						array('label'=>'Manage Users', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Comment Controls', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Upload Videos', 'url'=>array('/videos/videos/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>'Time Log',
+					'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
+						|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
+						|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
+					'itemOptions'=>array('class'=>'menu-icon-timelog'),
+					'items'=>array(
+						array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
+							|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>'Evaluations',
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'menu-icon-evaluation'),
+					'items'=>array(
+						array('label'=>'Evaluations', 'url'=>array('/evaluations/evaluations/index'), 'visible'=>!Yii::app()->user->isGuest, 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Evaluation Questions', 'url'=>array('/evaluations/evaluationquestions/index'), 'visible'=>Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>'Links',
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'menu-icon-link'),
+					'items'=>array(
+						array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+				array(
+					'label'=>Yii::app()->user->name,
+					'visible'=>!Yii::app()->user->isGuest,
+					'itemOptions'=>array('class'=>'menu-icon-user'),
+					'items'=>array(
+						array('label'=>'Logout', 'url'=>array('/security/login/logout'), 'itemOptions'=>array('class'=>'sub')),
+						array('label'=>'Change Password', 'url'=>array('/security/password/change'), 'itemOptions'=>array('class'=>'sub')),
+					),
+				),
+			),
+		)); ?> </div>
    </div>
 <!--  <div class="col-1-4">
      <div class="module9">

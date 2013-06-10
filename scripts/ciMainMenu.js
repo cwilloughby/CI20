@@ -21,7 +21,9 @@
  * than 300 pixels tall. Elements with too much content will gain a scrollbar.
  * 
  */
-
+ $(document).ready(function(){
+     
+ 
 (function($) {
 	$.fn.equalHeights = function(minHeight, maxHeight) {
 		tallest = (minHeight) ? minHeight : 0;
@@ -64,7 +66,6 @@ $(function() {
 //  How to Make a Smooth Animated Menu with jQuery
 //http://buildinternet.com/2009/01/how-to-make-a-smooth-animated-menu-with-jquery/
 //div# 2
-  $(document).ready(function(){
 
     //When mouse rolls over
     $("li").mouseover(function(){
@@ -76,5 +77,16 @@ $(function() {
 //        $(this).stop().animate({height:'50px'},{queue:false, duration:600, easing: 'easeOutBounce'})
     });
 
+
+
+// jquery fade to function. Just add element you want faded and speed and opacity
+
+  $("module1").hover(function(){
+    $("mod1_image").fadeTo("slow",0.15);
+//    $("#div2").fadeTo("slow",0.4);
+//    $("#div3").fadeTo("slow",0.7);
+  });
 });
+
+
   

@@ -408,7 +408,7 @@ sidebar, portlet {
 [class*='module'] {
     display: block;
     content: "";  
-    border-style: dashed;
+    /*border-style: dashed;*/
     border-color: #e1e4d2;
     border-width: 1px;
     margin-right: 5px;
@@ -420,6 +420,8 @@ sidebar, portlet {
     padding-bottom: 5px;
     padding-top: 5px;
     position: relative;
+ /*2px 2px 4px #abaca5;*/ 
+    box-shadow: 10px 10px 5px #888888;
 }
 [class*='module'] ul {
     display: block;
