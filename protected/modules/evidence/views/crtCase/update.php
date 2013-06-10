@@ -5,7 +5,8 @@
 $this->pageTitle = Yii::app()->name . ' - Court Cases';
 
 $this->breadcrumbs=array(
-	'Court Case'=>array('index'),
+	'Advanced Tools'=>array('/evidence/casesummary/evidencemanager'),
+	'Search Court Cases'=>array('admin'),
 	$model->caseno=>array('view','id'=>$model->caseno),
 	'Update',
 );

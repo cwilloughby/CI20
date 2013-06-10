@@ -9,9 +9,9 @@ class HrPolicyController extends Controller
 
 	public function init()
 	{
-		// Don't show the side menu if the user doesn't have the ability to edit HR.
+		// Don't show the page menu if the user doesn't have the ability to edit HR.
 		if(!Yii::app()->user->checkAccess('hr@HrEdit', Yii::app()->user->id))
-			$this->layout='//layouts/column1';
+			$this->layout='//layouts/column2home';
 		else
 			$this->layout='//layouts/column2';
 	}

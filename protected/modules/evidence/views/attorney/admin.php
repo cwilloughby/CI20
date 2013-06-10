@@ -2,9 +2,11 @@
 /* @var $this AttorneyController */
 /* @var $model Attorney */
 
+$this->pageTitle = Yii::app()->name . ' - Attorneys';
+
 $this->breadcrumbs=array(
-	'Attorneys'=>array('index'),
-	'Search',
+	'Advanced Tools'=>array('/evidence/casesummary/evidencemanager'),
+	'Search Attorneys',
 );
 
 $this->menu2=array(

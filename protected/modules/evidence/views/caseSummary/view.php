@@ -6,7 +6,7 @@
 $this->pageTitle = Yii::app()->name . ' - Case Files';
 
 $this->breadcrumbs=array(
-	'Case File'=>array('index'),
+	'Search Case Files'=>array('admin'),
 	$case->caseno,
 );
 

@@ -47,7 +47,7 @@ class IssueTracker extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('key, type, created, resolution', 'required'),
+			array('key, type, resolution', 'required'),
 			array('originalestimate, remainingestimate, timespent, priority', 'numerical', 'integerOnly'=>true),
 			array('key', 'length', 'max'=>10),
 			array('type, reporter, assigned, resolution', 'length', 'max'=>45),
@@ -58,6 +58,38 @@ class IssueTracker extends CActiveRecord
 		);
 	}
 
+	/**
+	 * Attaches the timestamp behavior to auto set the opendate value
+	 * when a new ticket is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created',
+				'updateAttribute' => 'updated',
+			),
+		);
+	}
+	
+		/**
+	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
+	 */
+	protected function beforeSave()
+	{
+		if(is_null($this->priority))
+		{
+			// First we need to find the largest number in the priority column.
+			$criteria = new CDbCriteria;
+			$criteria->select = 'max(priority) AS priority';
+			$row = IssueTracker::model()->find($criteria);
+			$this->priority = $row->priority + 1;
+		}
+		
+		return parent::beforeSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -84,9 +116,9 @@ class IssueTracker extends CActiveRecord
 			'description' => 'Description',
 			'assigned' => 'Assigned',
 			'updated' => 'Updated',
-			'originalestimate' => 'Originalestimate',
-			'remainingestimate' => 'Remainingestimate',
-			'timespent' => 'Timespent',
+			'originalestimate' => 'Original Estimate',
+			'remainingestimate' => 'Remaining Estimate',
+			'timespent' => 'Time Spent',
 			'resolution' => 'Resolution',
 			'priority' => 'Priority',
 		);
@@ -98,9 +130,6 @@ class IssueTracker extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
@@ -119,6 +148,9 @@ class IssueTracker extends CActiveRecord
 		$criteria->compare('priority',$this->priority);
 
 		return new CActiveDataProvider($this, array(
+			'pagination'=>array(
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+			),
 			'criteria'=>$criteria,
 		));
 	}

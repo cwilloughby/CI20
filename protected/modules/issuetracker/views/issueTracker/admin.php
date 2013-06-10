@@ -2,6 +2,8 @@
 /* @var $this IssueTrackerController */
 /* @var $model IssueTracker */
 
+$this->pageTitle = Yii::app()->name . ' - Issue Tracker';
+
 $this->breadcrumbs=array(
 	'Issue Tracker'=>array('index'),
 	'Search',
@@ -53,17 +55,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 		'key',
 		'type',
-		'created',
+		array(
+			'name' => 'created',
+			'value' => 'DATE("m/d/Y", STRTOTIME("$data->created"))',
+		),
 		'summary',
-		/*
-		'assigned',
-		'updated',
-		'originalestimate',
-		'remainingestimate',
-		'timespent',
-		'resolution',
-		'priority',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(

@@ -5,7 +5,8 @@
 $this->pageTitle = Yii::app()->name . ' - Attorneys';
 
 $this->breadcrumbs=array(
-	'Attorney'=>array('index'),
+	'Advanced Tools'=>array('/evidence/casesummary/evidencemanager'),
+	'Search Attorneys'=>array('admin'),
 	'Create',
 );
 
