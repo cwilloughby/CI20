@@ -49,7 +49,7 @@
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array('links'=>$this->breadcrumbs,)); ?><!-- breadcrumbs -->
 	<?php endif?>  </div>
        <div class="half_mod_bottom">
-     		     <div class="module1 mod1_image">  
+     		      
      <div class="menu-vertical"> 
         <?php
 		if(!isset(Yii::app()->user->id))
@@ -76,7 +76,7 @@
 	?>
      </div>
          <!--<img src="/ci20/assets/images/main/education.jpg" />-->
-     </div>   </div>
+       </div>
    </div>
    <div class="col-1-4">
        <div class="module3">

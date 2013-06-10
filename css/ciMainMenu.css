@@ -408,7 +408,7 @@ sidebar, portlet {
 [class*='module'] {
     display: block;
     content: "";  
-    /*border-style: dashed;*/
+    border-style: solid;
     border-color: #e1e4d2;
     border-width: 1px;
     margin-right: 5px;
@@ -421,7 +421,8 @@ sidebar, portlet {
     padding-top: 5px;
     position: relative;
  /*2px 2px 4px #abaca5;*/ 
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 5px 5px 5px #888888;
+    overflow: hidden;
 }
 [class*='module'] ul {
     display: block;
@@ -441,8 +442,10 @@ div.mod1_image {
 }
 [class*='half_mod'] {
     display: block;
+    overflow: hidden;
     content: "";  
-    border-style: dashed;
+    box-shadow: 10px 10px 5px #888888;
+    border-style: solid;
     border-color: #e1e4d2;
     border-width: 1px;
     margin-right: 5px;
@@ -455,16 +458,18 @@ div.mod1_image {
     padding-top: 5px;*/
 }
 .half_mod_top {
-    margin-bottom: 0px;
-    margin-top: 5px;
-/*    padding-bottom: 0px;
-    padding-top: 5px;*/
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
 }
 .half_mod_bottom {
-/*    padding-bottom: 5px;
-    padding-top: 0px;*/
-    margin-bottom: 5px;
-    margin-top: 0px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: block;
+    background-size:100%;
+    background-image: url("../assets/images/main/education.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
 }
 
 .menu1-img {
