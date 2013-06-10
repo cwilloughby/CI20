@@ -12,11 +12,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-<<<<<<< HEAD
-	array('label'=>'List Training Resources', 'url'=>array('index')),
-=======
 	array('label'=>'List Training Resources', 'url'=>array('typeIndex')),
->>>>>>> refs/heads/cwDev
 );
 
 $count = 1;
