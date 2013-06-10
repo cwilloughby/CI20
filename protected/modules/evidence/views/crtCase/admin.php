@@ -5,8 +5,8 @@
 $this->pageTitle = Yii::app()->name . ' - Court Cases';
 
 $this->breadcrumbs=array(
-	'Court Cases'=>array('index'),
-	'Search',
+	'Advanced Tools'=>array('/evidence/casesummary/evidencemanager'),
+	'Search Court Cases',
 );
 
 $this->menu2=array(

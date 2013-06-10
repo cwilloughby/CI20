@@ -277,6 +277,11 @@ class CaseSummaryController extends Controller
 		$log->save(false);
 	}
 	
+	public function actionEvidenceManager()
+	{
+		$this->render('advanced');
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

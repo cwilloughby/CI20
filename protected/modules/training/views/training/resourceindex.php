@@ -32,6 +32,6 @@ $this->widget('VideoList', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_viewResource',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-	'columnCount'=>3
-)); 
+	'columnCount'=>2
+));
 ?>

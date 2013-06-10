@@ -17,20 +17,20 @@ class VideoList extends CListView
 		{
 			$owner=$this->getOwner();
 			$viewFile=$owner->getViewFile($this->itemView);
-			$j=0;
+			$column = 0;
 			foreach($data as $i=>$item)
 			{
-				if($j == 0)
+				if($column == 0)
 					echo CHtml::openTag('tr');
 				$data=$this->viewData;
 				$data['index']=$i;
 				$data['data']=$item;
 				$data['widget']=$this;
 				$owner->renderFile($viewFile,$data);
-				$j++;
-				if($j == $this->columnCount)
+				$column++;
+				if($column == $this->columnCount)
 				{
-					$j = 0;
+					$column = 0;
 					echo CHtml::closeTag('tr');
 				}
 			}
