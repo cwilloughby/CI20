@@ -101,20 +101,18 @@
    </div>-->
    <div class="col-1-4">
      <div class="module4">
-$this->beginWidget('zii.widgets.CPortlet', array(
+<?php $this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'Quick Links',
 			));
 			$this->widget('zii.widgets.CMenu', array(
 				'items'=>$this->menu1,
 				'htmlOptions'=>array('class'=>'operations'),
 			));
-			$this->endWidget();    </div>
+			$this->endWidget();  ?>  </div>
    </div>
    <div class="col-1-4">
      <div class="module5">
-     		<h3>1/8</h3>
-                <p>6Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-     </div>
+     		<?php $this->widget('WeatherReport');?> </div>
    </div>
   <div class="col-1-4">
      <div class="module6">
