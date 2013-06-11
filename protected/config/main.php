@@ -28,8 +28,10 @@ return array(
 		'application.modules.documents.models.*',
 		'application.modules.news.models.*',
 		'application.modules.weather.models.*',
+		'application.modules.videos.models.*',
 		'application.modules.weather.components.*',
 		'application.modules.news.components.*',
+		'application.modules.training.components.*',
 		'zii.widgets.CPortlet'
 	),
 

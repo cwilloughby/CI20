@@ -1,7 +1,6 @@
 <?php
-Yii::import('zii.widgets.CListView');
 
-class VideoList extends CListView
+class VideoList extends CustomListView
 {
 	public $columnCount = 2;
 

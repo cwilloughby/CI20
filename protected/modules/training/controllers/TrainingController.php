@@ -41,6 +41,10 @@ class TrainingController extends Controller
 	 */
 	public function actionTypeIndex()
 	{
+		// We need to count the number of distinct types to get around a yii pager bug.
+		$sql = "SELECT COUNT(DISTINCT type) FROM ci_videos";
+		$num = Yii::app()->db->createCommand($sql)->queryScalar();
+		
 		$models=Videos::model()->findAll(array(
 			'select'=>'type',
 			'distinct'=>true,
@@ -51,7 +55,8 @@ class TrainingController extends Controller
 					'criteria'=>array(
 						'select'=>'type',
 						'distinct' => true
-					)
+					),
+					'totalItemCount'=>$num,
 				));
 		$this->render('typeindex',array(
 			'dataProvider'=>$dataProvider,

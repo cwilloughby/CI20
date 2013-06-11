@@ -26,19 +26,11 @@
      </div>
     
    </div>
-   <div class="col-1-4">
-     <div class="module2" >  
-        
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Submit</a></li>
-        <li><a href="#">Terms</a></li>
-    </ul>
-
+<div class="col-1-4">
+	<div class="module2" >  
+        <?php $this->widget('Training');?>
+	</div>
 </div>
-   </div>
    <div class="col-1-4">
 <!--     <div class="module">
      		<h3>2/3 (Opt-in Outside Padding)</h3>
