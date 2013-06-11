@@ -18,7 +18,7 @@ $this->menu2=array(
 
 <h1>Open Trouble Tickets</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'template'=>"{summary}\n{sorter}\n{pager}\n{items}\n{pager}",

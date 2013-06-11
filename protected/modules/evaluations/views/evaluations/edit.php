@@ -52,7 +52,7 @@ Yii::app()->clientScript->registerScript(
 ?>
 
 <?php
-$this->widget('zii.widgets.CListView', array(
+$this->widget('CustomListView', array(
 	'dataProvider'=>$answersDataProvider,
 	'itemView'=>'_editAnswers',
 )); ?>

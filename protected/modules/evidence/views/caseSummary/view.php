@@ -94,7 +94,7 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 
 <br/><h3>Attorneys</h3>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('CustomGridView', array(
 	'id'=>'attorney-grid',
 	'dataProvider'=>$attorneys->search($case->summaryid),
 	'filter'=>$attorneys,
@@ -140,7 +140,7 @@ echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
 
 <?php echo "<br/><h3>Evidence</h3>"; ?>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('CustomGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
 	'filter'=>$evidence,

@@ -14,7 +14,7 @@ $this->menu2=array(
 
 <h1>Comments</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'sortableAttributes'=>array(

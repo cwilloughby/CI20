@@ -45,7 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php 
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 
-$this->widget('zii.widgets.grid.CGridView', array(
+$this->widget('CustomGridView', array(
 	'id'=>'crt-case-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,

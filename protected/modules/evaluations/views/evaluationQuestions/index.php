@@ -16,7 +16,7 @@ $this->menu2=array(
 
 <h1>Evaluation Questions</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
