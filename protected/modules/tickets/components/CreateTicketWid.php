@@ -5,7 +5,7 @@
  */
 class CreateTicketWid extends CPortlet
 {
-	public $pageTitle = 'Training';
+	public $pageTitle = 'Create Ticket';
 	
 	/**
 	 * This function renders the training resources widget.

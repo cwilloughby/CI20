@@ -93,14 +93,8 @@
    </div>-->
    <div class="col-1-4">
      <div class="module4">
-<?php $this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'Quick Links',
-			));
-			$this->widget('zii.widgets.CMenu', array(
-				'items'=>$this->menu1,
-				'htmlOptions'=>array('class'=>'operations'),
-			));
-			$this->endWidget();  ?>  </div>
+		<?php $this->widget('MyTickets', array('status'=>"Closed"));?>
+	 </div>
    </div>
    <div class="col-1-4">
      <div class="module5">
