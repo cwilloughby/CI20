@@ -1,13 +1,14 @@
 <?php
 /**
- * This class is for the create ticket porlet. 
+ * This class is for the weather porlet. 
+ * This allows the login form to be displayed on the home page.
  */
 class CreateTicketWid extends CPortlet
 {
 	public $pageTitle = 'Create Ticket';
 	
 	/**
-	 * This function renders the create ticket widget.
+	 * This function renders the training resources widget.
 	 */
 	protected function renderContent()
 	{

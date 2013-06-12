@@ -93,7 +93,7 @@
    </div>-->
    <div class="col-1-4">
      <div class="module4">
-		<?php $this->widget('MyTickets', array('status'=>"Closed"));?>
+		<?php $this->widget('MyTickets');?>
 	 </div>
    </div>
    <div class="col-1-4">
@@ -222,6 +222,13 @@
 			<?php $this->widget('CreateTicketWid');?>
      </div>
    </div>
+
+   <div class="col-1-4">
+     <div class="module11">
+     		<h3>1/4</h3>
+     </div>
+   </div>
+
 </div>
 <!--</div>-->
 
@@ -243,6 +250,5 @@
    </div>
 </div>
 </div>-->
-
 
 <?php $this->endContent(); ?>

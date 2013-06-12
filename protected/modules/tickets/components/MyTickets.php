@@ -1,7 +1,6 @@
 <?php
 /**
- * This class is for the weather porlet. 
- * This allows the login form to be displayed on the home page.
+ * This class is for the my tickets porlet.
  */
 class MyTickets extends CPortlet
 {
@@ -10,50 +9,53 @@ class MyTickets extends CPortlet
 	public $status = "Open";
 	
 	/**
-	 * This function renders the training resources widget.
+	 * This function renders the tickets widget.
 	 */
 	protected function renderContent()
 	{
-		if($this->status == "Open")
+		if(isset(Yii::app()->user->id))
 		{
-			// Only show tickets that this user has open.
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
+			if($this->status == "Open")
+			{
+				// Only show tickets that this user has open.
+				$dataProvider=new CActiveDataProvider('TroubleTickets', 
+					array(
+						'criteria'=>array(
+							'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
 						),
-					),
-				)
-			);
-		}
-		else
-		{
-			// Only show tickets that this user has closed.
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'pagination'=>array(
-						'pageSize'=>2
-					),
-					'criteria'=>array(
-						'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
+						'sort'=>array(
+							'defaultOrder'=>array(
+								'ticketid'=>CSort::SORT_ASC,
+							),
 						),
-					),
-				)
-			);
+					)
+				);
+			}
+			else
+			{
+				// Only show tickets that this user has closed.
+				$dataProvider=new CActiveDataProvider('TroubleTickets', 
+					array(
+						'pagination'=>array(
+							'pageSize'=>2
+						),
+						'criteria'=>array(
+							'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
+						),
+						'sort'=>array(
+							'defaultOrder'=>array(
+								'ticketid'=>CSort::SORT_ASC,
+							),
+						),
+					)
+				);
+			}
+
+			$this->render('mytickets',array(
+				'dataProvider'=>$dataProvider,
+				'status'=>$this->status
+			));
 		}
-		
-		$this->render('mytickets',array(
-			'dataProvider'=>$dataProvider,
-			'status'=>$this->status
-		));
 	}
 	
 	/**
