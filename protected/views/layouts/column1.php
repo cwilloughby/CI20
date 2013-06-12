@@ -225,8 +225,7 @@
    </div>-->
   <div class="col-1-3">
      <div class="module11">
-     		<h3>1/8</h3>
-                <p>12Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			<?php $this->widget('CreateTicketWid');?>
      </div>
    </div>
 </div>

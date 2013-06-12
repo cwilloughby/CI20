@@ -32,6 +32,7 @@ return array(
 		'application.modules.weather.components.*',
 		'application.modules.news.components.*',
 		'application.modules.training.components.*',
+		'application.modules.tickets.components.*',
 		'zii.widgets.CPortlet'
 	),
 
