@@ -21,6 +21,8 @@
  */
 class IssueTracker extends CActiveRecord
 {
+	public $search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -47,14 +49,15 @@ class IssueTracker extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('key, type, resolution', 'required'),
+			array('key, type, resolution', 'required', 'on'=>'insert'),
+			array('search', 'required', 'on'=>'search'),
 			array('originalestimate, remainingestimate, timespent, priority', 'numerical', 'integerOnly'=>true),
 			array('key', 'length', 'max'=>10),
 			array('type, reporter, assigned, resolution', 'length', 'max'=>45),
-			array('summary, description, updated', 'safe'),
+			array('summary, description, updated, search', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, key, type, created, reporter, summary, description, assigned, updated, originalestimate, remainingestimate, timespent, resolution, priority', 'safe', 'on'=>'search'),
+			array('id, key, type, created, reporter, summary, description, assigned, updated, originalestimate, remainingestimate, timespent, resolution, priority, search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,7 +76,7 @@ class IssueTracker extends CActiveRecord
 		);
 	}
 	
-		/**
+	/**
 	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
 	 */
 	protected function beforeSave()
@@ -121,6 +124,7 @@ class IssueTracker extends CActiveRecord
 			'timespent' => 'Time Spent',
 			'resolution' => 'Resolution',
 			'priority' => 'Priority',
+			'search' => 'Search',
 		);
 	}
 
@@ -146,7 +150,12 @@ class IssueTracker extends CActiveRecord
 		$criteria->compare('timespent',$this->timespent);
 		$criteria->compare('resolution',$this->resolution,true);
 		$criteria->compare('priority',$this->priority);
-
+		if(isset($this->search))
+		{
+			$criteria->compare('t.key', $this->search, true, 'OR');
+			$criteria->compare('t.description', $this->search, true, 'OR');
+		}
+		
 		return new CActiveDataProvider($this, array(
 			'pagination'=>array(
 				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),

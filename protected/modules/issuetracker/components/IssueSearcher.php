@@ -1,85 +1,53 @@
 <?php
 /**
- * This class is for the weather porlet. 
- * This allows the login form to be displayed on the home page.
+ * This class is for the issue searcher porlet. 
  */
-class CreateTicketWid extends CPortlet
+class IssueSearcher extends CPortlet
 {
-	public $pageTitle = 'Create Ticket';
+	public $pageTitle = 'Search Issues';
 	
 	/**
-	 * This function renders the training resources widget.
+	 * This function renders the issue searcher widget.
 	 */
 	protected function renderContent()
 	{
-		$ticket=new TroubleTickets;
-		$file=new Documents;
+		$tracker = new IssueTracker;
 		
-		if(isset($_POST['ajax']) && $_POST['ajax']==='trouble-tickets-form')
+		if(isset($_GET['IssueTracker']))
 		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-		
-		if(isset($_POST['TroubleTickets']))
-		{
-			$ticket->attributes=$_POST['TroubleTickets'];
-			$file->attributes=$_POST['Documents'];
+			$tracker->attributes=$_GET['IssueTracker'];
+			$tracker->scenario = 'search';
 			
-			// Validate BOTH $ticket and $file at the same time.
-			$valid=$ticket->validate() && $file->validate();
-		
-			if($valid)
+			if($tracker->validate())
 			{
-				$file->attachment=CUploadedFile::getInstance($file,'attachment');
+				$criteria=new CDbCriteria;
+				$criteria->compare('t.key', $tracker->search, true, 'OR');
+				$criteria->compare('t.type', $tracker->search, true, 'OR');
+				$criteria->compare('t.summary', $tracker->search, true, 'OR');
+				$criteria->compare('t.description', $tracker->search, true, 'OR');
 				
-				// Remove the first two elements and the last two elements from the POST array
-				// to isolate the conditionals.
-				array_shift($_POST);
-				array_shift($_POST);
-				array_pop($_POST);
-				array_pop($_POST);
-
-				$ticket->description .= "\n\n";
-				
-				// Grab all the data from the conditionals and put them in the description.
-				foreach($_POST as $key => $value) 
-					$ticket->description .= $key . ": " . $value . "\n";
-				
-				$temp = $ticket->description;
-				
-				if(isset($file->attachment))
-				{
-					$file->save(false);
-					// This description will only allow the link to work on the website.
-					$ticket->description .= "\nAttachment: " 
-						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
-							. $file->uploaddate . '/' . $file->documentname));
-					// This description will only be used for the email so the link will work.
-					$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
-				}
-				else
-					$temp .= "\n";
-				
-				$ticket->save(false);
-				
-				// Remove the flash message so the email will work again.
-				Yii::app()->user->getFlash('success');
-				
-				$this->controller->redirect(
-					array('/email/email/helpopenemail', 
-						'ticketid' => $ticket->ticketid,
-						'category' => $ticket->categoryid,
-						'subject' => $ticket->subjectid,
-						'description' => $temp,
-					));
+				$dataProvider = new CActiveDataProvider('IssueTracker', array(
+					'pagination'=>array(
+						'pageSize'=> 3,
+					),
+					'criteria'=>$criteria,
+				));
 			}
+			else
+				$dataProvider = null;
 		}
-		
-		$this->render('_form',array(
-			'ticket'=>$ticket,
-			'file'=>$file,
+		else
+			$dataProvider = null;
+
+		$this->render('issuesearcher',array(
+			'tracker'=>$tracker,
 		));
+		if(!is_null($dataProvider))
+		{
+			$this->render('indexissues',array(
+				'dataProvider'=>$dataProvider
+			));
+		}
 	}
 	
 	/**
@@ -90,14 +58,11 @@ class CreateTicketWid extends CPortlet
 	 * @param Integer $length
 	 * @return Array
 	 */
-	private function customTruncate($text, $length)
+	public function customTruncate($text, $length)
 	{
-		foreach($text as $key => $value)
-		{
-			$length = abs((int)$length);
-			if(strlen($text[$key]) > $length) {
-				$text[$key] = preg_replace("/^(.{1,$length})(\s.*|$)/s", '\\1...', $text[$key]);
-			}
+		$length = abs((int)$length);
+		if(strlen($text) > $length) {
+			$text = preg_replace("/^(.{1,$length})(\s.*|$)/s", '\\1...', $text);
 		}
 		return $text;
 	}

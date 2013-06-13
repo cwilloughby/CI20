@@ -20,6 +20,9 @@ class MyTickets extends CPortlet
 				// Only show tickets that this user has open.
 				$dataProvider=new CActiveDataProvider('TroubleTickets', 
 					array(
+						'pagination'=>array(
+							'pageSize'=>2
+						),
 						'criteria'=>array(
 							'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
 						),

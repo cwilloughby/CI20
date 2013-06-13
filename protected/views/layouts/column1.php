@@ -93,7 +93,7 @@
    </div>-->
    <div class="col-1-4">
      <div class="module4">
-		<?php $this->widget('MyTickets');?>
+		<?php $this->widget('IssueSearcher');?>
 	 </div>
    </div>
    <div class="col-1-4">
@@ -223,9 +223,9 @@
      </div>
    </div>
 
-   <div class="col-1-4">
+   <div class="col-2-3">
      <div class="module11">
-     		<h3>1/4</h3>
+		<?php $this->widget('MyTickets');?>
      </div>
    </div>
 

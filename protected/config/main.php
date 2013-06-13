@@ -29,10 +29,12 @@ return array(
 		'application.modules.news.models.*',
 		'application.modules.weather.models.*',
 		'application.modules.videos.models.*',
+		'application.modules.issuetracker.models.*',
 		'application.modules.weather.components.*',
 		'application.modules.news.components.*',
 		'application.modules.training.components.*',
 		'application.modules.tickets.components.*',
+		'application.modules.issuetracker.components.*',
 		'zii.widgets.CPortlet'
 	),
 

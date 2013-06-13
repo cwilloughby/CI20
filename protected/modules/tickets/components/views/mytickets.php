@@ -4,7 +4,6 @@
 ?>
 
 <h1>My <?php echo $status; ?> Tickets</h1>
-<br/>
 
 <?php 
 $this->widget('CustomSmallListView', array(
