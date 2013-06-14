@@ -70,11 +70,12 @@ class EvaluationsController extends Controller
 		$model=new Evaluations;
 		
 		// Find all departments that the current user is the supervisor of.
-		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
+		$departments = Departments::model()->with('userInfos')->findAll('userInfos.userid=' . Yii::app()->user->id);
 		
 		if(isset($_POST['Evaluations']))
 		{
 			$model->attributes=$_POST['Evaluations'];
+
 			if($model->save())
 			{
 				// Record the evaluation create event.
@@ -90,9 +91,12 @@ class EvaluationsController extends Controller
 						'departmentid IS NULL'), 'questionid', 'questionid');
 				
 				// Find all questions for the department.
-				$questions2 = CHtml::ListData(EvaluationQuestions::model()->findAll(
-						'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid');
-				
+				$questions2 = array();
+				foreach($departments as $department)
+				{
+					$questions2 = array_merge($questions2, CHtml::ListData(EvaluationQuestions::model()->findAll(
+							'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid'));
+				}
 				$questions = array_merge($questions, $questions2);
 				
 				foreach($questions as $question)
@@ -110,15 +114,23 @@ class EvaluationsController extends Controller
 			}
 		}
 		
-		$allUsers = array();
 		foreach($departments as $department)
 		{
 			if($department->departmentname != 'Administration')
 			{
-				// Find all active users in that department, except for the current user and put them in an array.
-				$allUsers = array_merge($allUsers, CHtml::ListData(UserInfo::model()->findAll(
-						'departmentid=' . $department->getAttribute('departmentid') 
-						. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username'));
+				if(!isset($allUsers))
+				{
+					$allUsers = CHtml::ListData(UserInfo::model()->findAll(
+							'departmentid=' . $department->getAttribute('departmentid') 
+							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+				}
+				else
+				{
+					// Find all active users in that department, except for the current user and put them in an array.
+					$allUsers = array_merge($allUsers, CHtml::ListData(UserInfo::model()->findAll(
+							'departmentid=' . $department->getAttribute('departmentid') 
+							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username'));
+				}
 			}
 			else
 			{
