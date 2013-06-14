@@ -69,8 +69,8 @@ class EvaluationsController extends Controller
 	{
 		$model=new Evaluations;
 		
-		// Find the user's department.
-		$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+		// Find all departments that the current user is the supervisor of.
+		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
 		
 		if(isset($_POST['Evaluations']))
 		{
@@ -109,19 +109,23 @@ class EvaluationsController extends Controller
 				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 			}
 		}
-
-		if($department->departmentname != 'Administration')
+		
+		$allUsers = array();
+		foreach($departments as $department)
 		{
-			// Find all active users in that department, except for the current user and put them in an array.
-			$allUsers = CHtml::ListData(UserInfo::model()->findAll(
-					'departmentid=' . $department->getAttribute('departmentid') 
-					. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
-		}
-		else
-		{
-			// People in the administration department can create evaluations for anyone, except themself.
-			$allUsers = CHtml::ListData(UserInfo::model()->findAll(
-					'active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+			if($department->departmentname != 'Administration')
+			{
+				// Find all active users in that department, except for the current user and put them in an array.
+				$allUsers = array_merge($allUsers, CHtml::ListData(UserInfo::model()->findAll(
+						'departmentid=' . $department->getAttribute('departmentid') 
+						. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username'));
+			}
+			else
+			{
+				// People in the administration department can create evaluations for anyone, except themself.
+				$allUsers = CHtml::ListData(UserInfo::model()->findAll(
+						'active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+			}
 		}
 		
 		$this->render('create',array(
