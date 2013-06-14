@@ -15,3 +15,7 @@ protected/runtime/cache-1.1.12.db
 protected/runtime/application.log
 !/protected/modules/bugtracker/views/issueTracker/index.php
 !/protected/modules/issuetracker/views/issueTracker/index.php
+<<<<<<< HEAD
+=======
+protected/vendors/
+>>>>>>> origin/master

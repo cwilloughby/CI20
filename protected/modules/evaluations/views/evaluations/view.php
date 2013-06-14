@@ -40,8 +40,20 @@ $this->menu2=array(
 					$model->evaluator0->firstname . ' ' . $model->evaluator0->lastname):"Unknown"
 		),
 	),
-)); 
+));
+?>
 
+<div class="form">
+	<?php
+	$form=$this->beginWidget('CActiveForm', array(
+		'id'=>'pdf-form',
+		'stateful'=>true, 
+	));
+	echo "<br/>" . CHtml::submitButton("Print PDF", array('name' => 'PDFButton'));
+	$this->endWidget(); ?>
+</div><!-- form -->
+
+<?php
 $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$answersDataProvider,
 	'itemView'=>'_viewAnswers',

@@ -25,7 +25,17 @@ class EvaluationsController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array('criteria'=>array('condition'=>'evaluationid=' . $id)));
+		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
+			'criteria'=>array(
+				'condition'=>'evaluationid=' . $id
+			)));
+		$total = $dataProvider->getTotalitemCount();
+		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
+			'criteria'=>array(
+				'condition'=>'evaluationid=' . $id
+			),
+			'pagination'=>array('pageSize'=>$total)));
+		
 		if(isset($_POST['EvaluationAnswers']))
 		{
 			// An answer was posted, record it.
@@ -33,11 +43,22 @@ class EvaluationsController extends Controller
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
 		}
-		
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'answersDataProvider'=>$dataProvider,
-		));
+		else if(isset($_POST['PDFButton']))
+		{
+			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
+			$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
+				'model'=>$this->loadModel($id),
+				'answersDataProvider'=>$dataProvider,
+				), true));
+			$html2pdf->Output();
+		}
+		else
+		{
+			$this->render('view',array(
+				'model'=>$this->loadModel($id),
+				'answersDataProvider'=>$dataProvider,
+			));
+		}
 	}
 
 	/**
