@@ -124,6 +124,15 @@ return array(
 			'assignmentTable'=>'ci_auth_assignments',
 			'itemChildTable'=>'ci_auth_item_children',
 		),
+		'ePdf' => array(
+			'class' => 'ext.yii-pdf.EYiiPdf',
+			'params' => array(
+				'HTML2PDF' => array(
+					'librarySourcePath' => 'application.vendors.html2pdf.*',
+					'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
+				)
+			)
+		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

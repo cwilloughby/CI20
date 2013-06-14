@@ -13,3 +13,4 @@ index.php
 /assets/videos/
 !/protected/modules/bugtracker/views/issueTracker/index.php
 !/protected/modules/issuetracker/views/issueTracker/index.php
+protected/vendors/

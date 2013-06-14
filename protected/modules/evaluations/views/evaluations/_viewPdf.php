@@ -2,7 +2,7 @@
 /* @var $this EvaluationsController */
 /* @var $data EvaluationAnswers */
 ?>
-
+<br/>
 <div class="view">
 	<b><?php echo CHtml::encode($data->getAttributeLabel('question')); ?>:</b>
 	<?php echo CHtml::encode($data->question->question); ?>
