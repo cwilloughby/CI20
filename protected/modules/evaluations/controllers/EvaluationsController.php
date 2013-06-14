@@ -70,7 +70,7 @@ class EvaluationsController extends Controller
 		$model=new Evaluations;
 		
 		// Find all departments that the current user is the supervisor of.
-		$departments = Departments::model()->with('userInfos')->findAll('userInfos.userid=' . Yii::app()->user->id);
+		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
 		
 		if(isset($_POST['Evaluations']))
 		{
