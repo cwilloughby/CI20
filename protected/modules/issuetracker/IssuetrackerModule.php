@@ -9,6 +9,7 @@ class IssuetrackerModule extends CWebModule
 		// import the module-level models and components
 		$this->setImport(array(
 			'issuetracker.models.*',
+			'issuetracker.components.*',
 		));
 	}
 }

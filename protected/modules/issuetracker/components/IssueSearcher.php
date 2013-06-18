@@ -5,17 +5,18 @@
 class IssueSearcher extends CPortlet
 {
 	public $pageTitle = 'Search Issues';
+	public $search = null;
 	
 	/**
 	 * This function renders the issue searcher widget.
 	 */
-	protected function renderContent()
+	public function renderContent()
 	{
 		$tracker = new IssueTracker;
 		
-		if(isset($_GET['IssueTracker']))
+		if(!is_null($this->search))
 		{
-			$tracker->attributes=$_GET['IssueTracker'];
+			$tracker->attributes=$this->search;
 			$tracker->scenario = 'search';
 			
 			if($tracker->validate())

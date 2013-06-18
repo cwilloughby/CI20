@@ -2,7 +2,7 @@
 /* @var $this IssueTrackerController */
 /* @var $dataProvider CActiveDataProvider */
 ?>
-
+<div id="issues">
 <?php 
 $this->widget('CustomSmallListView', array(
 	'dataProvider'=>$dataProvider,
@@ -10,3 +10,4 @@ $this->widget('CustomSmallListView', array(
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 ));
 ?>
+</div>

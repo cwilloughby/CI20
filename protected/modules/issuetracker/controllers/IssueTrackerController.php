@@ -228,6 +228,15 @@ class IssueTrackerController extends Controller
 		}
 	}
 	
+	function actionPortlet()
+	{
+		if(!is_null($_GET['IssueTracker']))
+			$results = $this->widget('IssueSearcher', array('search'=>$_GET['IssueTracker']), true);
+		else
+			$results = $this->widget('IssueSearcher', array('search'=>null), true);
+		echo $results;
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
