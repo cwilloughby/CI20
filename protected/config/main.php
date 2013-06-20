@@ -8,7 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'CI2.0',
-
+	'theme'=>'abound',
+	
 	// preloading 'log' component
 	'preload'=>array('log'),
 

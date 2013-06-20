@@ -13,6 +13,7 @@ class Controller extends SBaseController
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
+	public $menu=array();
 	public $menu1=array();
 	public $menu2=array();
 	

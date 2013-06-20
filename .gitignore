@@ -19,3 +19,6 @@ protected/runtime/application.log
 =======
 protected/vendors/
 >>>>>>> origin/master
+!/themes/abound/views/personalInfo/index.php
+!/themes/abound/views/site/index.php
+!/themes/abound/views/customer/index.php
