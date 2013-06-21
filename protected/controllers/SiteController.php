@@ -40,4 +40,13 @@ class SiteController extends Controller
 				$this->render('error', $error);
 		}
 	}
+	
+	/**
+	 * This function is used to select the color style for the site, 
+	 * and save the choice to the logged in user.
+	 */
+	public function actionColor()
+	{
+		
+	}
 }
