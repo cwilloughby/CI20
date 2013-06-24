@@ -104,13 +104,13 @@
     	<div class="container">
         
         	<div class="style-switcher pull-left">
-                <a href="#" onclick="switcher('none');"><span class="style" style="background-color:#0088CC;"></span></a>
-                <a href="#" onclick="switcher('style2');"><span class="style" style="background-color:#7c5706;"></span></a>
-                <a href="#" onclick="switcher('style3');"><span class="style" style="background-color:#468847;"></span></a>
-                <a href="#" onclick="switcher('style4');"><span class="style" style="background-color:#4e4e4e;"></span></a>
-                <a href="#" onclick="switcher('style5');"><span class="style" style="background-color:#d85515;"></span></a>
-                <a href="#" onclick="switcher('style6');"><span class="style" style="background-color:#a00a69;"></span></a>
-                <a href="#" onclick="switcher('style7');"><span class="style" style="background-color:#a30c22;"></span></a>
+                <a href="#" onclick="switcher('/css/style-blue.css');"><span class="style" style="background-color:#0088CC;"></span></a>
+                <a href="#" onclick="switcher('/css/style-brown.css');"><span class="style" style="background-color:#7c5706;"></span></a>
+                <a href="#" onclick="switcher('/css/style-green.css');"><span class="style" style="background-color:#468847;"></span></a>
+                <a href="#" onclick="switcher('/css/style-grey.css');"><span class="style" style="background-color:#4e4e4e;"></span></a>
+                <a href="#" onclick="switcher('/css/style-orange.css');"><span class="style" style="background-color:#d85515;"></span></a>
+                <a href="#" onclick="switcher('/css/style-purple.css');"><span class="style" style="background-color:#a00a69;"></span></a>
+                <a href="#" onclick="switcher('/css/style-red.css');"><span class="style" style="background-color:#a30c22;"></span></a>
           	</div>
            <form class="navbar-search pull-right" action="">
            	 
@@ -122,17 +122,14 @@
 </div><!-- subnav -->
 
 <script type="text/javascript">
-function send()
-{
-	var data=$("#issue-tracker-search-form").serialize();
-	
+function switcher(style)
+{	
 	$.ajax({
 		type: 'GET',
 		url: '<?php echo Yii::app()->createAbsoluteUrl("site/color"); ?>',
-		data:data,
+		data: {style: style},
 		success:function(data){
-			alert(data);
-			//$("div #issues").html(data);
+			$("#mystyle").attr("href", data);
 		},
 		error:function(data){ // if error occured
 			alert("Error occured.please try again");

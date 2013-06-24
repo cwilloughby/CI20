@@ -47,6 +47,29 @@ class SiteController extends Controller
 	 */
 	public function actionColor()
 	{
-		
+		if(!is_null($_GET) && !Yii::app()->user->isGuest)
+		{
+			$prefs = UserPrefs::model()->findByPk(Yii::app()->user->id);  
+
+			//now check if the model is null
+			if(!$prefs) 
+				$prefs = new UserPrefs;
+
+			$prefs->userid = Yii::app()->user->id;
+			$prefs->color = $_GET['style'];
+
+			//save
+			$prefs->save(false);
+			
+			setcookie("style", $_GET['style'], time()+604800); // 604800 = amount of seconds in one week
+			$results = Yii::app()->theme->baseUrl . $_GET['style'];
+			echo $results;
+		}
+		else if(!is_null($_GET) && Yii::app()->user->isGuest)
+		{
+			setcookie("style", $_GET['style'], time()+604800); // 604800 = amount of seconds in one week
+			$results = Yii::app()->theme->baseUrl . $_GET['style'];
+			echo $results;
+		}
 	}
 }

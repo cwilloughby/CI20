@@ -39,7 +39,7 @@ class LoginController extends Controller
 					->where('ci_user_prefs.userid=:id', array(':id'=>Yii::app()->user->id))
 					->queryAll();
 				
-				if(array_key_exists('color', $color[0]))
+				if(array_key_exists(0, $color) && array_key_exists('color', $color[0]))
 				{
 					setcookie("style", $color[0]['color'], time()+604800); // 604800 = amount of seconds in one week
 				}

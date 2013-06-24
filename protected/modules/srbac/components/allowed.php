@@ -2,6 +2,7 @@
  return array(
 	'SiteIndex',
 	'SiteError',
+	'SiteColor',
 	'security@LoginLogin',
 	'security@LoginLogout',
 	'security@PasswordRecoveryrequest',
