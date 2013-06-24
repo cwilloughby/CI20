@@ -25,7 +25,7 @@
 								array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 								array('label'=>'<i class="icon icon-eye-open"></i> View Open Tickets', 'url'=>array('/tickets/troubletickets/index')),
 								array('label'=>'<i class="icon icon-eye-close"></i> View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex')),
-								array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+								array('label'=>'<i class="icon icon-book"></i> Training Resources', 'url'=>array('/training/training/typeindex')),
 							),
 						),
 						array(
@@ -42,8 +42,8 @@
 							'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
 								|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							'items'=>array(
-								array('label'=>'News Management', 'url'=>array('/news/news/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-								array('label'=>'CJIS Issue Tracker', 'url'=>array('/issuetracker/issuetracker/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-bullhorn"></i> News Management', 'url'=>array('/news/news/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-map-marker"></i> CJIS Issue Tracker', 'url'=>array('/issuetracker/issuetracker/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
 							),
 						),
 						array(
@@ -52,9 +52,9 @@
 							'items'=>array(
 								array('label'=>'<i class="icon icon-user"></i> Manage Users', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-comment"></i> Comment Manager', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-								array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-								array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-								array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-list-alt"></i> Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-lock"></i> Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-warning-sign"></i> Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-film"></i> Upload Videos', 'url'=>array('/videos/videos/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							),
 						),
@@ -64,8 +64,8 @@
 								|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 								|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
 							'items'=>array(
-								array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-								array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
+								array('label'=>'<i class="icon icon-time"></i> Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-facetime-video"></i> GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 									|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id))),
 							),
 						),

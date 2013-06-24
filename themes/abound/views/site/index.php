@@ -4,15 +4,6 @@
 $this->pageTitle=Yii::app()->name;
 $baseUrl = Yii::app()->theme->baseUrl; 
 ?>
-<?php
-$gridDataProvider = new CArrayDataProvider(array(
-    array('id'=>1, 'firstName'=>'Mark', 'lastName'=>'Otto', 'language'=>'CSS','usage'=>'<span class="inlinebar">1,3,4,5,3,5</span>'),
-    array('id'=>2, 'firstName'=>'Jacob', 'lastName'=>'Thornton', 'language'=>'JavaScript','usage'=>'<span class="inlinebar">1,3,16,5,12,5</span>'),
-    array('id'=>3, 'firstName'=>'Stu', 'lastName'=>'Dent', 'language'=>'HTML','usage'=>'<span class="inlinebar">1,4,4,7,5,9,10</span>'),
-	array('id'=>4, 'firstName'=>'Jacob', 'lastName'=>'Thornton', 'language'=>'JavaScript','usage'=>'<span class="inlinebar">1,3,16,5,12,5</span>'),
-    array('id'=>5, 'firstName'=>'Stu', 'lastName'=>'Dent', 'language'=>'HTML','usage'=>'<span class="inlinebar">1,3,4,5,3,5</span>'),
-));
-?>
 
 <div class="row-fluid">
 	<div class="span3 ">
@@ -30,7 +21,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 					  // The link to the trouble ticket form.
 					  array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 					  // The link to the hr policy page.
-					  array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+					  array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 					  // The link to the emergency response plan.
 					  array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 
