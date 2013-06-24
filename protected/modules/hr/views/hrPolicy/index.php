@@ -3,10 +3,12 @@
 /* @var $section HrSection */
 /* @var $policy HrPolicy */
 ?>
-
+<script src="<?php echo Yii::app()->baseUrl; ?>/assets/jquery/jquery.js"></script>
+<script src="<?php echo Yii::app()->baseUrl; ?>/assets/jquery/jqueryui.js"></script>
 <script>
-$(function() {
-	$("div.accordion").accordion({
+jQuery.noConflict();
+jQuery(function() {
+	jQuery("div.accordion").accordion({
 		collapsible: true,
 		heightStyle: "content",
 		clearStyle: "true",
