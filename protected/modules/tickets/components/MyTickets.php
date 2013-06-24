@@ -24,7 +24,7 @@ class MyTickets extends CPortlet
 							'pageSize'=>2
 						),
 						'criteria'=>array(
-							'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
+							'condition'=> 't.closedbyuserid IS NULL AND t.openedby= ' . Yii::app()->user->id,
 						),
 						'sort'=>array(
 							'defaultOrder'=>array(

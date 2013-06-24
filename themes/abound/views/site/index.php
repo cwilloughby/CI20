@@ -79,8 +79,6 @@ $gridDataProvider = new CArrayDataProvider(array(
 	<div class="span7">
 		<?php 
 		$this->widget('MyTickets');
-
-		$this->widget('MyTickets', array('status' => 'Closed'));
 		?>
 	</div><!--/span-->
 </div>
