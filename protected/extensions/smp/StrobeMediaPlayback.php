@@ -577,7 +577,7 @@ public function setSourceUrl() {
             $cs=Yii::app()->getClientScript();
 			
 			// You need to include jQuery only if you have not done so already  elsewhere in your page.
-          $cs->registerScriptFile($this->baseUrl. '/lib/jquery/jquery-1.4.2.js',CClientScript::POS_HEAD);
+          //$cs->registerScriptFile($this->baseUrl. '/lib/jquery/jquery-1.4.2.js',CClientScript::POS_HEAD);
 
             $cs->registerScriptFile($this->baseUrl. '/lib/swfobject.js',CClientScript::POS_HEAD);
 
