@@ -28,7 +28,7 @@ $desc = CHtml::listData($dataProvider->getData(), 'id', 'description');
 
 foreach($summary as $id=>$content)
 {
-     $sortableItems[$id] = '<a class="tooltip" href="#" title="To increase the priority of this item, click and drag it upwards. To decrease the priority of this item, click and drag it downwards.">'
+     $sortableItems[$id] = '<a class="tooltipCustom" href="#" title="To increase the priority of this item, click and drag it upwards. To decrease the priority of this item, click and drag it downwards.">'
 			. '<div class="portlet-decoration"><div class="portlet-title">' . $key[$id] . ' Summary: ' . $content . '</div></div>'
 			. '<div class="portlet-content">' . $desc[$id] . '</div>'
 			. '</a>';

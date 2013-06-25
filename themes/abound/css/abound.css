@@ -525,3 +525,19 @@ footer {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
+
+
+/* These parts were added by Charles Willoughby */
+.tooltipCustom {
+	border-bottom: 1px dotted #000000;
+	color: #000000; outline: none;
+	cursor: help; text-decoration: none;
+	position: relative;
+	transition: 5s position;
+}
+.priOrder
+{
+    list-style-type: none;
+	padding:0; 
+	margin:0;
+}
