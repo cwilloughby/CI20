@@ -26,8 +26,9 @@
 				'title'=>'Page Menu',
 			));
 			$this->widget('zii.widgets.CMenu', array(
+				'encodeLabel'=>false,
 				'items'=>$this->menu2,
-				'htmlOptions'=>array('class'=>'operations'),
+				'htmlOptions'=>array('class'=>'OPERATIONS'),
 			));
 			$this->endWidget();
 		  ?>

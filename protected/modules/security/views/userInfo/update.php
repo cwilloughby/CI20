@@ -11,15 +11,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Users', 'url'=>array('admin')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'List Users', 'url'=>array('index')),
-	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->userid)),
-	array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->userid)),
+	array('label'=>'<i class="icon icon-search"></i> Search Users', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-user"></i> Create User', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Users', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View User', 'url'=>array('view', 'id'=>$model->userid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update User', 'url'=>array('update', 'id'=>$model->userid)),
 	($model->active == 2 
-		? array('label'=>'Enable User', 'url'=>'#', 
+		? array('label'=>'<i class="icon icon-ok"></i> Enable User', 'url'=>'#', 
 			'linkOptions'=>array('submit'=>array('enable','id'=>$model->userid),'confirm'=>'Are you sure you want to enable this user?'))
-		: array('label'=>'Disable User', 'url'=>'#', 
+		: array('label'=>'<i class="icon icon-remove"></i> Disable User', 'url'=>'#', 
 			'linkOptions'=>(array('submit'=>array('disable','id'=>$model->userid),'confirm'=>'Are you sure you want to disable this user?')))),
 );
 ?>

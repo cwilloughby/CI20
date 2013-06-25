@@ -11,9 +11,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-	array('label'=>'Create Evaluation', 'url'=>array('create')),
-	array('label'=>'List Evaluations', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Evaluations', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-file"></i> Create Evaluation', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Evaluations', 'url'=>array('index')),
 );
 ?>
 

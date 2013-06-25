@@ -8,10 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Defendant Tools', 'url'=>array('/evidence/defendant/admin')),
-	array('label'=>'Attorney Tools', 'url'=>array('/evidence/attorney/admin')),
-	array('label'=>'Case Tools', 'url'=>array('/evidence/crtcase/admin')),
-	array('label'=>'Evidence Tools', 'url'=>array('/evidence/evidence/admin')),
+	array('label'=>'<i class="icon icon-user"></i> Defendant Tools', 'url'=>array('/evidence/defendant/admin')),
+	array('label'=>'<i class="icon icon-briefcase"></i> Attorney Tools', 'url'=>array('/evidence/attorney/admin')),
+	array('label'=>'<i class="icon icon-cog"></i> Case Tools', 'url'=>array('/evidence/crtcase/admin')),
+	array('label'=>'<i class="icon icon-wrench"></i> Evidence Tools', 'url'=>array('/evidence/evidence/admin')),
 );
 ?>
 

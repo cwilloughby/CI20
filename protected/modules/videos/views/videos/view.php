@@ -8,12 +8,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Videos', 'url'=>array('admin')),
-	array('label'=>'Upload Video', 'url'=>array('create')),
-	array('label'=>'List Videos', 'url'=>array('index')),
-	array('label'=>'View Video', 'url'=>array('view', 'id'=>$model->videoid)),
-	array('label'=>'Update Video', 'url'=>array('update', 'id'=>$model->videoid)),
-	array('label'=>'Delete Video', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'<i class="icon icon-search"></i> Search Videos', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-film"></i> Upload Video', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Videos', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Video', 'url'=>array('view', 'id'=>$model->videoid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update Video', 'url'=>array('update', 'id'=>$model->videoid)),
+	array('label'=>'<i class="icon icon-trash"></i> Delete Video', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 

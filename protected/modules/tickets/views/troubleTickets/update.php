@@ -11,12 +11,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-	array('label'=>'Create Ticket', 'url'=>array('create')),
-	array('label'=>'List Open Trouble Tickets', 'url'=>array('index')),
-	array('label'=>'List Closed Trouble Tickets', 'url'=>array('closedindex')),
-	array('label'=>'View Trouble Ticket', 'url'=>array('view', 'id'=>$model->ticketid)),
-	array('label'=>'Update Trouble Ticket', 'url'=>array('update', 'id'=>$model->ticketid)),
+	array('label'=>'<i class="icon icon-search"></i> Search Trouble Tickets', 'url'=>array('admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-eye-open"></i> List Open Trouble Tickets', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-eye-close"></i> List Closed Trouble Tickets', 'url'=>array('closedindex')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Trouble Ticket', 'url'=>array('view', 'id'=>$model->ticketid)),
+	array('label'=>'<i class="icon icon-pencil"></i> Update Trouble Ticket', 'url'=>array('update', 'id'=>$model->ticketid)),
 );
 ?>
 

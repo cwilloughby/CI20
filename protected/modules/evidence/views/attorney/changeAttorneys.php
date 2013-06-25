@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'View Case File', 'url'=>array('view', 'id'=>$summary->summaryid)),
-	array('label'=>'Update Case File', 'url'=>array('update', 'id'=>$summary->summaryid)),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Case File', 'url'=>array('view', 'id'=>$summary->summaryid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update Case File', 'url'=>array('update', 'id'=>$summary->summaryid)),
 );
 ?>
 

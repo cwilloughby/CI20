@@ -11,12 +11,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search CJIS Issues', 'url'=>array('admin')),
-	array('label'=>'Create CJIS Issue', 'url'=>array('create')),
-	array('label'=>'List CJIS Issues', 'url'=>array('index')),
-	array('label'=>'View CJIS Issue', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Update CJIS Issue', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Change Priority Order', 'url'=>array('changepriorities')),
+	array('label'=>'<i class="icon icon-search"></i> Search CJIS Issues', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-file"></i> Create CJIS Issue', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List CJIS Issues', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View CJIS Issue', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'<i class="icon icon-edit"></i> Update CJIS Issue', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'<i class="icon icon-list"></i> Change Priority Order', 'url'=>array('changepriorities')),
 );
 ?>
 

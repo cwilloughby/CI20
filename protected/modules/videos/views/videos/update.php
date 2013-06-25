@@ -10,10 +10,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Videos', 'url'=>array('admin')),
-	array('label'=>'Upload Video', 'url'=>array('create')),
-	array('label'=>'List Videos', 'url'=>array('index')),
-	array('label'=>'View Video', 'url'=>array('view', 'id'=>$video->videoid)),
+	array('label'=>'<i class="icon icon-search"></i> Search Videos', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-film"></i> Upload Video', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Videos', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Video', 'url'=>array('view', 'id'=>$video->videoid)),
 );
 ?>
 

@@ -10,9 +10,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search News Posts', 'url'=>array('admin')),
-	array('label'=>'Create News Post', 'url'=>array('create')),
-	array('label'=>'List News Posts', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search News Posts', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-file"></i> Create News Post', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List News Posts', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

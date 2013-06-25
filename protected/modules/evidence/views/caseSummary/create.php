@@ -13,8 +13,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Case Files', 'url'=>array('admin')),
-	array('label'=>'Create Case File', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-search"></i> Search Case Files', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-file"></i> Create Case File', 'url'=>array('create')),
 );
 ?>
 

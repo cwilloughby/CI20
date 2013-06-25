@@ -12,9 +12,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'View Case File', 'url'=>array('/evidence/casesummary/view', 'id'=>$summary->summaryid)),
-	array('label'=>'Update Case File', 'url'=>array('/evidence/casesummary/update', 'id'=>$summary->summaryid)),
-	array('label'=>'Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$summary->summaryid)),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Case File', 'url'=>array('/evidence/casesummary/view', 'id'=>$summary->summaryid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update Case File', 'url'=>array('/evidence/casesummary/update', 'id'=>$summary->summaryid)),
+	array('label'=>'<i class="icon icon-folder-open"></i> Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$summary->summaryid)),
 );
 ?>
 

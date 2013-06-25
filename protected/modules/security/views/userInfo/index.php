@@ -9,9 +9,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Users', 'url'=>array('admin')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'List Users', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Users', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-user"></i> Create User', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Users', 'url'=>array('index')),
 );
 ?>
 

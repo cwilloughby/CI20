@@ -11,8 +11,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Attorneys', 'url'=>array('admin')),
-	array('label'=>'Create Attorney', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-search"></i> Search Attorneys', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-user"></i> Create Attorney', 'url'=>array('create')),
 );
 ?>
 

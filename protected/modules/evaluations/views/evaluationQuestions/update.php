@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Evaluation Questions', 'url'=>array('admin')),
-	array('label'=>'Create Evaluation Question', 'url'=>array('create')),
-	array('label'=>'List Evaluation Questions', 'url'=>array('index')),
-	array('label'=>'View Evaluation Question', 'url'=>array('view', 'id'=>$model->questionid)),
+	array('label'=>'<i class="icon icon-search"></i> Search Evaluation Questions', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-file"></i> Create Evaluation Question', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Evaluation Questions', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Evaluation Question', 'url'=>array('view', 'id'=>$model->questionid)),
 );
 ?>
 

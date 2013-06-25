@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Logs', 'url'=>array('admin')),
-	array('label'=>'List Logs', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Logs', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Logs', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

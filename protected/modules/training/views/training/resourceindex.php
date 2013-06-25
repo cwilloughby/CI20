@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'List Training Resources', 'url'=>array('typeIndex')),
+	array('label'=>'<i class="icon icon-list"></i> List Training Resources', 'url'=>array('typeIndex')),
 );
 
 $count = 1;
