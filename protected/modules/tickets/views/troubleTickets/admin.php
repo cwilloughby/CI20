@@ -48,7 +48,7 @@ $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageS
 $this->widget('CustomGridView', array(
 	'id'=>'trouble-tickets-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'filter'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id) ? $model : null),
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		'ticketid',
