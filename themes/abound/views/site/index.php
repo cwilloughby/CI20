@@ -6,7 +6,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 ?>
 
 <div class="row-fluid">
-	<div class="span3 ">
+	<div class="span3 portlet_border">
 		<?php
 		if(!isset(Yii::app()->user->id))
 			$this->widget('UserLogin');
@@ -23,11 +23,6 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	</div>
 
 	<div class="span6 ">
-		<div class="non-semantic-protector">
-			<h1 class="ribbon">
-				<strong class="ribbon-content">Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></strong>
-			</h1>
-		</div>
 		<p>This is an Intranet website and can only be accessed from a computer 
 		inside the Metro/JIS Domain, just open an internet window and in the
 		URL address type "ci2" and hit "enter".</p>
@@ -36,7 +31,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		You must be a Criminal Court Clerk employee to create an account. 
 		Site functions are disabled until you have logged in.</p>
 	</div>
-  <div class="span3 ">
+  <div class="span3 portlet_border">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
@@ -70,7 +65,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			?>
 		</div>
 	</div>
-	<div class="span3">
+	<div class="span3 portlet_border">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
@@ -80,7 +75,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->endWidget();
 		?>
 	</div>
-	<div class="span3">
+	<div class="span3 portlet_border">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
@@ -90,7 +85,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->endWidget();
 		?>
 	</div>
-	<div class="span3">
+	<div class="span3 portlet_border">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Training Resources',
@@ -103,10 +98,10 @@ $baseUrl = Yii::app()->theme->baseUrl;
 </div>
 <div class="row-fluid">
 
-	<div class="span4">
+	<div class="span4 portlet_border">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-picture"></span><span id="tickettitle">My Open Tickets</span>',
+			'title'=>'<span class="icon-picture"></span><span id="tickettitle">My Open Tickets</span><img class="switcher icon-retweet"  style="float:right" onclick="ticketswitcher();"></img>',
 			'titleCssClass'=>''
 		));
 		?>
@@ -122,7 +117,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
         <?php $this->endWidget(); ?>
         
 	</div>
-	<div class="span4">
+	<div class="span4 portlet_border">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-large"></span>Income Chart',
@@ -134,16 +129,19 @@ $baseUrl = Yii::app()->theme->baseUrl;
         
         <?php $this->endWidget(); ?>
 	</div><!--/span-->
-	<div class="span4">
+	<div class="span4 portlet_border">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Search Issues',
+			'title'=>'<span class="icon-th-list"></span><span id="issuetitle">Search Issues</span><img class="switcher icon-retweet" style="float:right" onclick="issueswitcher();"></img>',
 			'titleCssClass'=>''
 		));
 		?>
-        
-        <?php $this->widget('IssueSearcher');?>
-        
+        <div id="issuesearcher">
+			<?php $this->widget('IssueSearcher');?>
+        </div>
+		<div id="allissues">
+			<?php $this->widget('IssueSearcher', array('type'=>'All'));?>
+        </div>
         <?php $this->endWidget(); ?>
 	</div>
 </div>
@@ -166,13 +164,14 @@ $baseUrl = Yii::app()->theme->baseUrl;
 
 <script>
 
-var ticketSwitchCount = {
-    count: 1
+var counter = {
+    ticketSwitchCount: 1,
+	issueSwitchCount: 1
 };
 
 function ticketswitcher()
 {
-	var data = ticketSwitchCount.count;
+	var data = counter.ticketSwitchCount;
 	
 	if((data % 3) == 1)
 	{
@@ -192,9 +191,27 @@ function ticketswitcher()
 		$("div #myclosedtickets").css("display","none");
 		$("div #myopentickets").css("display","block");
 	}
-	ticketSwitchCount.count++;
+	counter.ticketSwitchCount++;
 }
 
+function issueswitcher()
+{
+	var data = counter.issueSwitchCount;
+	
+	if((data % 2) == 1)
+	{
+		$("div #issuetitle").html('All Issues');
+		$("div #issuesearcher").css("display","none");
+		$("div #allissues").css("display","block");
+	}
+	else
+	{
+		$("div #issuetitle").html('Search Issues');
+		$("div #allissues").css("display","none");
+		$("div #issuesearcher").css("display","block");
+	}
+	counter.issueSwitchCount++;
+}
 	
             $(function() {
 

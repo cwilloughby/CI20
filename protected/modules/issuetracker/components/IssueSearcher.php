@@ -6,43 +6,56 @@ class IssueSearcher extends CPortlet
 {
 	public $pageTitle = 'Search Issues';
 	public $search = null;
+	public $type = 'Search';
 	
 	/**
 	 * This function renders the issue searcher widget.
 	 */
 	public function renderContent()
 	{
-		$tracker = new IssueTracker;
-		
-		if(!is_null($this->search))
+		if($this->type == "Search")
 		{
-			$tracker->attributes=$this->search;
-			$tracker->scenario = 'search';
-			
-			if($tracker->validate())
+			$tracker = new IssueTracker;
+
+			if(!is_null($this->search))
 			{
-				$criteria=new CDbCriteria;
-				$criteria->compare('t.key', $tracker->search, true, 'OR');
-				$criteria->compare('t.type', $tracker->search, true, 'OR');
-				$criteria->compare('t.summary', $tracker->search, true, 'OR');
-				$criteria->compare('t.description', $tracker->search, true, 'OR');
-				
-				$dataProvider = new CActiveDataProvider('IssueTracker', array(
-					'pagination'=>array(
-						'pageSize'=> 3,
-					),
-					'criteria'=>$criteria,
-				));
+				$tracker->attributes=$this->search;
+				$tracker->scenario = 'search';
+
+				if($tracker->validate())
+				{
+					$criteria=new CDbCriteria;
+					$criteria->compare('t.key', $tracker->search, true, 'OR');
+					$criteria->compare('t.type', $tracker->search, true, 'OR');
+					$criteria->compare('t.summary', $tracker->search, true, 'OR');
+					$criteria->compare('t.description', $tracker->search, true, 'OR');
+
+					$dataProvider = new CActiveDataProvider('IssueTracker', array(
+						'pagination'=>array(
+							'pageSize'=> 3,
+						),
+						'criteria'=>$criteria,
+					));
+				}
+				else
+					$dataProvider = null;
 			}
 			else
 				$dataProvider = null;
-		}
-		else
-			$dataProvider = null;
 
-		$this->render('issuesearcher',array(
-			'tracker'=>$tracker,
-		));
+			$this->render('issuesearcher',array(
+				'tracker'=>$tracker,
+			));
+		}
+		else 
+		{
+			$dataProvider=new CActiveDataProvider('IssueTracker', array(
+					'pagination'=>array(
+						'pageSize'=>3
+					),
+				));
+		}
+		
 		if(!is_null($dataProvider))
 		{
 			$this->render('indexissues',array(

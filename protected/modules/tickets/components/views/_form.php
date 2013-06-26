@@ -5,8 +5,6 @@
 /* @var $form CActiveForm */
 ?>
 
-<?php echo CHtml::Button('Switch Widgets!',array('onclick'=>'ticketswitcher();')); ?> 
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
