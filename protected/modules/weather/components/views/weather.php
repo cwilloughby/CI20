@@ -1,11 +1,7 @@
 <?php
 /* @var $this WeatherController */
 /* @var $weather array */
-?>
 
-<h1>12 Hour Forecast</h1>
-
-<?php 
 if(!is_null($weather))
 {
 	echo $weather['summary'] . "<br/>";

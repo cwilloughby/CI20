@@ -3,11 +3,7 @@
 /* @var $news Array */
 /* @var $dates Array */
 /* @var $type String */
-?>
 
-<h3><?php echo $type; ?></h3>
-
-<?php 
 foreach($news as $key => $value)
 {
 	echo "<hr/>";

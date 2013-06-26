@@ -7,50 +7,100 @@ $baseUrl = Yii::app()->theme->baseUrl;
 
 <div class="row-fluid">
 	<div class="span3 ">
-		<div class="sidebar-nav">
-			<?php
-			if(!isset(Yii::app()->user->id))
-				$this->widget('UserLogin');
-			else
-			{
-				$this->widget('zii.widgets.CMenu', array(
-				  /*'type'=>'list',*/
-				  'encodeLabel'=>false,
-				  'items'=>array(
-					  array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
-					  // The link to the trouble ticket form.
-					  array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
-					  // The link to the hr policy page.
-					  array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
-					  // The link to the emergency response plan.
-					  array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+		<?php
+		if(!isset(Yii::app()->user->id))
+			$this->widget('UserLogin');
+		else
+		{
+			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
+				'titleCssClass'=>''
+			));
+			$this->widget('WeatherReport');
+			$this->endWidget();
+		}
+		?>
+	</div>
 
-					  // Include the operations menu
-					  array('label'=>'OPERATIONS','items'=>$this->menu1),
-				  ),
-				  ));
-			}
-			?>
+	<div class="span6 ">
+		<div class="non-semantic-protector">
+			<h1 class="ribbon">
+				<strong class="ribbon-content">Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></strong>
+			</h1>
 		</div>
-		<?php $this->widget('WeatherReport');?>
-	</div>
+		<p>This is an Intranet website and can only be accessed from a computer 
+		inside the Metro/JIS Domain, just open an internet window and in the
+		URL address type "ci2" and hit "enter".</p>
 
-  <div class="span4 ">
-	<div class="stat-block">
-	  <ul>
-		<li><?php $this->widget('NewsReport');?></li>
-	  </ul>
+		<p>Please create an account under the login if you have not already done so.
+		You must be a Criminal Court Clerk employee to create an account. 
+		Site functions are disabled until you have logged in.</p>
 	</div>
-  </div>
   <div class="span3 ">
-	<div class="stat-block">
-	  <ul>
-		<li><?php $this->widget('NewsReport', array('type'=>'IT News'));?></li>
-	  </ul>
-	</div>
+		<?php
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
+			'titleCssClass'=>''
+		));
+		$this->widget('NewsReport');
+		$this->endWidget(); 
+		?>
   </div>
 </div>
+<div class="row-fluid">
+	<div class="span3">
+		<div class="sidebar-nav">
+			<?php 
+			$this->widget('zii.widgets.CMenu', array(
+				/*'type'=>'list',*/
+				'encodeLabel'=>false,
+				'items'=>array(
+					array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
+					// The link to the trouble ticket form.
+					array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+					// The link to the hr policy page.
+					array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+					// The link to the emergency response plan.
+					array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 
+					// Include the operations menu
+					array('label'=>'OPERATIONS','items'=>$this->menu1),
+				),
+			));
+			?>
+		</div>
+	</div>
+	<div class="span3">
+		<?php 
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-th-list"></span> IT News',
+			'titleCssClass'=>''
+		));
+		$this->widget('NewsReport', array('type'=>'IT News'));
+		$this->endWidget();
+		?>
+	</div>
+	<div class="span3">
+		<?php 
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-th-list"></span> IT News',
+			'titleCssClass'=>''
+		));
+		$this->widget('NewsReport', array('type'=>'IT News'));
+		$this->endWidget();
+		?>
+	</div>
+	<div class="span3">
+		<?php 
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-th-list"></span> Training Resources',
+			'titleCssClass'=>''
+		));
+		$this->widget('Training');
+		$this->endWidget();
+		?>
+	</div>
+</div>
 <div class="row-fluid">
 
 	<div class="span4">
@@ -72,11 +122,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
         <?php $this->endWidget(); ?>
         
 	</div>
-	
-</div>
-
-<div class="row-fluid">
-	<div class="span6">
+	<div class="span4">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-large"></span>Income Chart',
@@ -88,10 +134,10 @@ $baseUrl = Yii::app()->theme->baseUrl;
         
         <?php $this->endWidget(); ?>
 	</div><!--/span-->
-    <div class="span6">
-    	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Visitors Chart',
+	<div class="span4">
+		<?php
+			$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-th-list"></span> Search Issues',
 			'titleCssClass'=>''
 		));
 		?>
@@ -99,6 +145,10 @@ $baseUrl = Yii::app()->theme->baseUrl;
         <?php $this->widget('IssueSearcher');?>
         
         <?php $this->endWidget(); ?>
+	</div>
+</div>
+
+<div class="row-fluid">
     </div>
 	<div class="span2">
     	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">

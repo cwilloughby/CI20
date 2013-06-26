@@ -1,12 +1,7 @@
 <?php
 /* @var $this TrainingController */
 /* @var $dataProvider CActiveDataProvider */
-?>
 
-<h1>Training Resources</h1>
-<br/>
-
-<?php 
 $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
@@ -14,5 +9,5 @@ $this->widget('CustomListView', array(
 )); 
 ?>
 
-<h4>For More Training Materials Try:</h4>
+<h5>For More Training Materials Try:</h5>
 <a href="http://www.gcflearnfree.org/">www.gcflearnfree.org</a>
