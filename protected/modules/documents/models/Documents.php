@@ -84,7 +84,7 @@ class Documents extends CActiveRecord
 				{
 					// If it is local.
 					// Create a folder with the uploaddate set as the name, unless it already exists.
-					$temp = "/../../../../assets/uploads/" . $this->uploaddate . "/";
+					$temp = dirname(Yii::app()->getBasePath()) . "/assets/uploads/" . $this->uploaddate . "/";
 				}
 				
 				if(!is_dir($temp))
@@ -111,7 +111,7 @@ class Documents extends CActiveRecord
 				{
 					// If it is local.
 					// Create a folder with the uploaddate set as the name, unless it already exists.
-					$temp = "C:/wamp/www/CI20/assets/videos/";
+					$temp = dirname(Yii::app()->getBasePath()) . "/assets/videos/";
 				}
 
 				if(!is_dir($temp))

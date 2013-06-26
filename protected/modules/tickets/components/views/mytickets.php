@@ -3,11 +3,12 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<h1>My <?php echo $status; ?> Tickets</h1>
+<?php echo CHtml::Button('Switch Widgets!',array('onclick'=>'ticketswitcher();')); ?> 
 
 <?php 
 $this->widget('CustomSmallListView', array(
 	'dataProvider'=>$dataProvider,
+	'ajaxUpdate'=>true,
 	'itemView'=>'_view',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 )); 

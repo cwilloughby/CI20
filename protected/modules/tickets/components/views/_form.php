@@ -5,7 +5,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<h1>Create Trouble Ticket</h1>
+<?php echo CHtml::Button('Switch Widgets!',array('onclick'=>'ticketswitcher();')); ?> 
 
 <div class="form">
 

@@ -76,9 +76,9 @@ class CreateTicketWid extends CPortlet
 		}
 		
 		$this->render('_form',array(
-			'ticket'=>$ticket,
-			'file'=>$file,
-		));
+				'ticket'=>$ticket,
+				'file'=>$file,
+			));
 	}
 	
 	/**

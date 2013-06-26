@@ -54,24 +54,25 @@ $baseUrl = Yii::app()->theme->baseUrl;
 <div class="row-fluid">
 
 	<div class="span4">
-      <?php
+		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-picture"></span>Helpdesk',
+			'title'=>'<span class="icon-picture"></span><span id="tickettitle">My Open Tickets</span>',
 			'titleCssClass'=>''
 		));
 		?>
-        
-		<?php $this->widget('CreateTicketWid');?>
-        
+		<div id="myopentickets">
+			<?php $this->widget('MyTickets');?>
+        </div>
+		<div id="createticket">
+			<?php $this->widget('CreateTicketWid'); ?>
+        </div>
+		<div id="myclosedtickets">
+			<?php $this->widget('MyTickets', array('status'=>'Closed'));?>
+        </div>
         <?php $this->endWidget(); ?>
         
 	</div>
 	
-	<div class="span7">
-		<?php 
-		$this->widget('MyTickets');
-		?>
-	</div><!--/span-->
 </div>
 
 <div class="row-fluid">
@@ -114,6 +115,37 @@ $baseUrl = Yii::app()->theme->baseUrl;
 
 
 <script>
+
+var ticketSwitchCount = {
+    count: 1
+};
+
+function ticketswitcher()
+{
+	var data = ticketSwitchCount.count;
+	
+	if((data % 3) == 1)
+	{
+		$("div #tickettitle").html('Create Trouble Ticket');
+		$("div #myopentickets").css("display","none");
+		$("div #createticket").css("display","block");
+	}
+	else if((data % 3) == 2)
+	{
+		$("div #tickettitle").html('My Closed Tickets');
+		$("div #createticket").css("display","none");
+		$("div #myclosedtickets").css("display","block");
+	}
+	else
+	{
+		$("div #tickettitle").html('My Open Tickets');
+		$("div #myclosedtickets").css("display","none");
+		$("div #myopentickets").css("display","block");
+	}
+	ticketSwitchCount.count++;
+}
+
+	
             $(function() {
 
                 $(".knob").knob({

@@ -21,6 +21,7 @@ class MyTickets extends CPortlet
 				$dataProvider=new CActiveDataProvider('TroubleTickets', 
 					array(
 						'pagination'=>array(
+							'route'=>'site/index',
 							'pageSize'=>2
 						),
 						'criteria'=>array(

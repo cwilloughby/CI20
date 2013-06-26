@@ -541,3 +541,8 @@ footer {
 	padding:0; 
 	margin:0;
 }
+
+#createticket, #myclosedtickets
+{
+	display:none;
+}
