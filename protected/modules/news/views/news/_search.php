@@ -12,16 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'typeid'); ?>
-		<?php echo $form->textField($model,'typeid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'postedby'); ?>
-		<?php echo $form->textField($model,'postedby'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'date'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
 			array(
@@ -45,7 +35,21 @@
 		<?php echo $form->label($model,'news'); ?>
 		<?php echo $form->textArea($model,'news',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
-
+	<?php
+	if(Yii::app()->user->checkAccess("IT", Yii::app()->user->id))
+	{
+		?>
+		<div class="row">
+			<?php echo $form->label($model,'typeid'); ?>
+			<?php echo $form->textField($model,'typeid'); ?>
+		</div>
+		<div class="row">
+			<?php echo $form->label($model,'postedby'); ?>
+			<?php echo $form->textField($model,'postedby'); ?>
+		</div>
+		<?php
+	}
+	?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
