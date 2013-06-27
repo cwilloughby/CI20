@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'<i class="icon icon-search"></i> Search Case Files', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-file"></i> Create Case File', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-file"></i> Create Case File', 'url'=>array('create'), 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -47,7 +47,7 @@ $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageS
 $this->widget('CustomGridView', array(
 	'id'=>'case-summary-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $model : null),
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		array( 

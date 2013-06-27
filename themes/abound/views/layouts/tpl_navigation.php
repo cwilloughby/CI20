@@ -33,8 +33,8 @@
 							'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
 							'items'=>array(
 								array('label'=>'<i class="icon icon-search"></i> Search Case Files', 'url'=>array('/evidence/casesummary/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
-								array('label'=>'<i class="icon icon-edit"></i> Create Case File', 'url'=>array('/evidence/casesummary/create'),'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
-								array('label'=>'<i class="icon icon-briefcase"></i> Advanced Tools', 'url'=>array('/evidence/casesummary/evidencemanager'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-edit"></i> Create Case File', 'url'=>array('/evidence/casesummary/create'),'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-briefcase"></i> Advanced Tools', 'url'=>array('/evidence/casesummary/evidencemanager'), 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
 							),
 						),
 						array(

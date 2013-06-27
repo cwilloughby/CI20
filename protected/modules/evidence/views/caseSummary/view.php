@@ -12,12 +12,13 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'<i class="icon icon-search"></i> Search Case Files', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-file"></i> Create Case File', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-file"></i> Create Case File', 'url'=>array('create'), 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
 	array('label'=>'<i class="icon icon-zoom-in"></i> View Case File', 'url'=>array('view', 'id'=>$case->summaryid)),
-	array('label'=>'<i class="icon icon-edit"></i> Update Case File', 'url'=>array('update', 'id'=>$case->summaryid)),
-	array('label'=>'<i class="icon icon-user"></i> Update Defendant', 'url'=>array('/evidence/defendant/changeDefendant', 'id'=>$case->summaryid)),
-	array('label'=>'<i class="icon icon-folder-open"></i> Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$case->summaryid)),
-	array('label'=>'<i class="icon icon-trash"></i> Delete Case File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),
+	array('label'=>'<i class="icon icon-edit"></i> Update Case File', 'url'=>array('update', 'id'=>$case->summaryid), 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-user"></i> Update Defendant', 'url'=>array('/evidence/defendant/changeDefendant', 'id'=>$case->summaryid), 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-folder-open"></i> Update Court Case', 'url'=>array('/evidence/crtcase/changeCourtCase', 'id'=>$case->summaryid, 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id))),
+	array('label'=>'<i class="icon icon-trash"></i> Delete Case File', 'url'=>'#', 'visible'=>Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id),
+		'linkOptions'=>array('submit'=>array('delete','id'=>$case->summaryid),
 		'confirm'=>'Are you sure you want to delete this case file?
 This will NOT delete the defendant, case, attorneys, or evidence.')),
 );
@@ -97,7 +98,7 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 <?php $this->widget('CustomGridView', array(
 	'id'=>'attorney-grid',
 	'dataProvider'=>$attorneys->search($case->summaryid),
-	'filter'=>$attorneys,
+	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $attorneys : null),
 	'columns'=>array(
 		'fname',
 		'lname',
@@ -109,7 +110,8 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 			'deleteConfirmation'=>"js:'Are you sure you want to remove this attorney from the case?'",
 			'buttons'=>array(
 				'view'=>array(
-					'url'=>'Yii::app()->createUrl("/evidence/attorney/view", array("id"=>$data->attyid))'
+					'url'=>'Yii::app()->createUrl("/evidence/attorney/view", array("id"=>$data->attyid))',
+					'visible'=>'Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id)'
 				),
 				'delete'=>array(
 					'label'=>'Remove Attorney',
@@ -120,20 +122,6 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 		),
 	),
 ));
-/*
-Yii::app()->clientScript->registerScript('addAttorney', "
-$('.attorney-button').click(function(){
-	$('.add-attorneys').toggle();
-	return false;
-});");
-
-echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
-<div class="add-attorneys" style="display:none">
-<?php $this->renderPartial('../attorney/_changeAttorneyForm',array(
-	'attorney' => $attorneys, 'summary' => $case
-)); ?>
-</div><!-- changeAttorneyForm -->
-*/
 ?>
 <br/><br/>
 <hr>
@@ -143,7 +131,7 @@ echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
 <?php $this->widget('CustomGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
-	'filter'=>$evidence,
+	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $evidence : null),
 	'afterAjaxUpdate'=>"function(){jQuery('#date_added_search').datepicker({
 		'dateFormat': 'yy-mm-dd',
 		'showAnim':'fold',
@@ -167,15 +155,17 @@ echo CHtml::link('Add Attorneys','#',array('class'=>'attorney-button')); ?>
 			'deleteConfirmation'=>"js:'Are you sure you want to delete this evidence?'",
 			'buttons'=>array(
 				'view'=>array(
-					'url'=>'Yii::app()->createUrl("/evidence/evidence/view", array("id"=>$data->evidenceid))'
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/view", array("id"=>$data->evidenceid))',
+					'visible'=>'Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id)'
 				),
 				'update'=>array(
-					'url'=>'Yii::app()->createUrl("/evidence/evidence/update", array("id"=>$data->evidenceid))'
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/update", array("id"=>$data->evidenceid))',
+					'visible'=>'Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id)'
 				),
 				'delete'=>array(
 					'label'=>'Delete Evidence',
-					'url'=>'Yii::app()->createUrl("/evidence/evidence/delete", 
-						array("id"=>$data->evidenceid))'
+					'url'=>'Yii::app()->createUrl("/evidence/evidence/delete", array("id"=>$data->evidenceid))',
+					'visible'=>'Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id)'
 				),
 			),
 		),
@@ -188,7 +178,11 @@ $('.evidence-button').click(function(){
 	return false;
 });");
 
-echo CHtml::link('Add Evidence','#',array('class'=>'evidence-button')); ?>
+if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
+{
+	echo CHtml::link('Add Evidence','#',array('class'=>'evidence-button'));
+}
+?>
 <div class="add-evidence" style="display:none">
 <?php $this->renderPartial('../evidence/_changeEvidenceForm',array('summary'=>$case, 'evidence'=>$evidence)); ?>
 </div><!-- changeEvidenceForm -->
