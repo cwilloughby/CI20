@@ -12,6 +12,8 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			$this->widget('UserLogin');
 		else
 		{
+			//$this->widget('TimeReport');
+			
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
 				'titleCssClass'=>''

@@ -35,6 +35,7 @@ return array(
 		'application.modules.news.components.*',
 		'application.modules.training.components.*',
 		'application.modules.tickets.components.*',
+		'application.modules.timelog.components.*',
 		'application.modules.issuetracker.components.*',
 		'zii.widgets.CPortlet'
 	),
