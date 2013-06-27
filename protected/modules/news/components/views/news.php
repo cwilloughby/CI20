@@ -6,8 +6,8 @@
 
 foreach($news as $key => $value)
 {
-	echo "<hr/>";
 	echo date('m/d/Y \a\t g:i a', strtotime($dates[$key]));
 	echo "<p>" . CHtml::link($value, array('/news/news/view', 'id'=>$key), array('class'=>'news')) . "</p>";
+	echo "<hr/>";
 }
 ?>

@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php 
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 
-$this->widget('zii.widgets.grid.CGridView', array(
+$this->widget('CustomGridView', array(
 	'id'=>'evaluation-questions-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -54,7 +54,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 		array( 
 			'name'=>'department_search', 
-			'value'=>'$data->department->departmentname' 
+			'value'=>'(isset($data->department->departmentname))?$data->department->departmentname:"All Departments"',
 		),
 		'question',
 		array(

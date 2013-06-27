@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Comments', 'url'=>array('admin')),
-	array('label'=>'List Comments', 'url'=>array('index')),
-	array('label'=>'View Comment', 'url'=>array('view', 'id'=>$model->commentid)),
-	array('label'=>'Update Comment', 'url'=>array('update', 'id'=>$model->commentid)),
+	array('label'=>'<i class="icon icon-search"></i> Search Comments', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Comments', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Comment', 'url'=>array('view', 'id'=>$model->commentid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update Comment', 'url'=>array('update', 'id'=>$model->commentid)),
 );
 ?>
 

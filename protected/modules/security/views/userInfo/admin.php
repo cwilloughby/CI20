@@ -53,7 +53,6 @@ $this->widget('CustomGridView', array(
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'afterAjaxUpdate'=>"function(){jQuery('#hire_date_search').datepicker({'dateFormat': 'yy-mm-dd'})}",
 	'columns'=>array(
-		'userid',
 		'firstname',
 		'lastname',
 		'middlename',

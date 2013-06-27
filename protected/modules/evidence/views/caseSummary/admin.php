@@ -110,8 +110,6 @@ $this->widget('CustomGridView', array(
 				'onchange'=>"$.fn.yiiGridView.update('case-summary-grid',{ data:{pageSize: $(this).val() }})",
 			)),
 			'template'=>'{view}',
-			'htmlOptions' => array('style'=>'width:15px'),
-			'headerHtmlOptions'=>array('style'=>'width:15px;'),
 		),
 	),
 )); ?>

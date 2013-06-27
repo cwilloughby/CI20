@@ -51,7 +51,6 @@ $this->widget('CustomGridView', array(
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'attyid',
 		'lname',
 		'fname',
 		'type',

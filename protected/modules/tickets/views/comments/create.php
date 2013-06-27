@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Comments', 'url'=>array('admin')),
-	array('label'=>'List Comments', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Comments', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Comments', 'url'=>array('index')),
 );
 ?>
 
