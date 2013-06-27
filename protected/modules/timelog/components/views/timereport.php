@@ -1,13 +1,11 @@
 <?php
-/* @var $this NewsController */
-/* @var $news Array */
-/* @var $dates Array */
-/* @var $type String */
+/* @var $this TimeLogController */
+/* @var $ciLog Array */
+/* @var $computerLog Array */
 
-foreach($news as $key => $value)
+echo "You last CI2 login was:<br/>" . CHtml::encode(date('m/d/Y \a\t g:i a', strtotime($ciLog[0]['eventdate'])));
+if(!is_null($computerLog))
 {
-	echo "<hr/>";
-	echo date('m/d/Y \a\t g:i a', strtotime($dates[$key]));
-	echo "<p>" . CHtml::link($value, array('/news/news/view', 'id'=>$key), array('class'=>'news')) . "</p>";
+	echo "<br/>Your last known computer login was:<br/>" . CHtml::encode(date('m/d/Y \a\t g:i a', strtotime($computerLog[0]['eventtime'] . " " . $computerLog[0]['eventdate'])));
 }
 ?>

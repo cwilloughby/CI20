@@ -20,8 +20,6 @@ class TimeReport extends CPortlet
 			->order('ci_log.eventdate DESC')
 			->limit(1, 1)
 			->queryAll();
-
-		print_r($lastCiLog);
 		
 		if(!Yii::app()->user->checkAccess('External', Yii::app()->user->id))
 		{
@@ -33,18 +31,11 @@ class TimeReport extends CPortlet
 				->order('ci_time_log.eventdate DESC')
 				->limit(1)
 				->queryAll();
-
-			print_r($lastComputerLog);
 		}
-		/*
-		Yii::app()->user->id;
-		
-		// Put the news into an array.
-		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 100);
-		$newsDates = CHtml::listData($news, 'newsid', 'date');
-		
+		else
+			$lastComputerLog = null;
+
 		// Display the office news.
-		$this->render('news',array('news'=>$newsReport, 'type'=>$this->type, 'dates'=>$newsDates));
-		*/
+		$this->render('timereport',array('ciLog'=>$lastCiLog, 'computerLog'=>$lastComputerLog));
 	}
 }
