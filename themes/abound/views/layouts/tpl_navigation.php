@@ -8,7 +8,7 @@
           </a>
      
           <!-- Be sure to leave the brand out there if you want it shown -->
-          <a class="brand" href="#">CI2.0</a>
+          <a class="brand" href='/site/index'>CI2.0</a>
           
           <div class="nav-collapse">
 			<?php $this->widget('zii.widgets.CMenu',array(
@@ -114,7 +114,7 @@
           	</div>
            <form class="navbar-search pull-right" action="">
            	 
-           <input type="text" class="search-query span2" placeholder="Search">
+           <!-- <input type="text" class="search-query span2" placeholder="Search">-->
            
            </form>
     	</div><!-- container -->

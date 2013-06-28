@@ -73,3 +73,15 @@ ul.yiiPager .selected a {
   text-shadow:#CCCCCC 0 0 0;
   font-weight:bold;
 }
+
+.grid-view table.items th
+{
+	color: white;
+	background-color: #d85515;
+	background-image: -moz-linear-gradient(top, #d85515, #ec6320);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d85515), to(#ec6320));
+	background-image: -webkit-linear-gradient(top, #d85515, #ec6320);
+	background-image: -o-linear-gradient(top, #d85515, #ec6320);
+	background-image: linear-gradient(to bottom, #d85515, #ec6320);
+	text-align: center;
+}

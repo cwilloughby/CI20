@@ -41,7 +41,7 @@ class LoginController extends Controller
 				
 				if(array_key_exists(0, $color) && array_key_exists('color', $color[0]))
 				{
-					setcookie("style", $color[0]['color'], time()+604800); // 604800 = amount of seconds in one week
+					setcookie("style", $color[0]['color'], time()+604800, '/'); // 604800 = amount of seconds in one week
 				}
 				$this->redirect(Yii::app()->user->returnUrl);
 			}

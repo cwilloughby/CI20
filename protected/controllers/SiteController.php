@@ -61,13 +61,13 @@ class SiteController extends Controller
 			//save
 			$prefs->save(false);
 			
-			setcookie("style", $_GET['style'], time()+604800); // 604800 = amount of seconds in one week
+			setcookie("style", $_GET['style'], time()+604800, '/'); // 604800 = amount of seconds in one week
 			$results = Yii::app()->theme->baseUrl . $_GET['style'];
 			echo $results;
 		}
 		else if(!is_null($_GET) && Yii::app()->user->isGuest)
 		{
-			setcookie("style", $_GET['style'], time()+604800); // 604800 = amount of seconds in one week
+			setcookie("style", $_GET['style'], time()+604800, '/'); // 604800 = amount of seconds in one week
 			$results = Yii::app()->theme->baseUrl . $_GET['style'];
 			echo $results;
 		}
