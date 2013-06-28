@@ -16,14 +16,28 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				'title'=>'<span class="icon-th-list"></span> Last Login',
 				'titleCssClass'=>''
 			));
-			$this->widget('TimeReport');
+			?>
+			<div id="img1" onmouseenter='myOutAnimater(img1, timeReport);'>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			</div>
+			<div id="timeReport" onmouseleave='myInAnimater(img1, timeReport);'>
+				<?php $this->widget('TimeReport'); ?>
+			</div>
+			<?php
 			$this->endWidget();
 			
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
 				'titleCssClass'=>''
 			));
-			$this->widget('WeatherReport');
+			?>
+			<div id="img2" onmouseover='myOutAnimater(img2, weatherReport);'>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			</div>
+			<div id="weatherReport" onmouseout='myInAnimater(img2, weatherReport);'>
+				<?php $this->widget('WeatherReport'); ?>
+			</div>
+			<?php
 			$this->endWidget();
 		}
 		?>
@@ -38,38 +52,46 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		You must be a Criminal Court Clerk employee to create an account. 
 		Site functions are disabled until you have logged in.</p>
 	</div>
-  <div class="span3 portlet_border">
-		<?php
+	<div class="span3 portlet_border">
+		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
 			'titleCssClass'=>''
-		));
-		$this->widget('NewsReport');
-		$this->endWidget(); 
-		?>
-  </div>
+		));?>
+		<div id="img3" onmouseover='myOutAnimater(img3, mainNews);'>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+		</div>
+		<div id="mainNews" onmouseout='myInAnimater(img3, mainNews);'>
+			<?php $this->widget('NewsReport');?>
+		</div>
+		<?php $this->endWidget(); ?> 
+	</div>
 </div>
 <div class="row-fluid">
 	<div class="span3">
 		<div class="sidebar-nav">
-			<?php 
-			$this->widget('zii.widgets.CMenu', array(
-				/*'type'=>'list',*/
-				'encodeLabel'=>false,
-				'items'=>array(
-					array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
-					// The link to the trouble ticket form.
-					array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
-					// The link to the hr policy page.
-					array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
-					// The link to the emergency response plan.
-					array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+			<div id="img4" onmouseover='myOutAnimater(img4, quickMenu);'>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			</div>
+			<div id="quickMenu" onmouseout='myInAnimater(img4, quickMenu);'>
+				<?php $this->widget('zii.widgets.CMenu', array(
+					/*'type'=>'list',*/
+					'encodeLabel'=>false,
+					'items'=>array(
+						array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
+						// The link to the trouble ticket form.
+						array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+						// The link to the hr policy page.
+						array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+						// The link to the emergency response plan.
+						array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 
-					// Include the operations menu
-					array('label'=>'OPERATIONS','items'=>$this->menu1),
-				),
-			));
-			?>
+						// Include the operations menu
+						array('label'=>'OPERATIONS','items'=>$this->menu1),
+					),
+				));
+				?>
+			</div>
 		</div>
 	</div>
 	<div class="span3 portlet_border">
@@ -87,20 +109,28 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
 			'titleCssClass'=>''
-		));
-		$this->widget('NewsReport', array('type'=>'IT News'));
-		$this->endWidget();
-		?>
+		));?>
+		<div id="img5" onmouseover='myOutAnimater(img5, itNews);'>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+		</div>
+		<div id="itNews" onmouseout='myInAnimater(img5, itNews);'>
+			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
+		</div>
+		<?php $this->endWidget(); ?> 
 	</div>
 	<div class="span3 portlet_border">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Training Resources',
 			'titleCssClass'=>''
-		));
-		$this->widget('Training');
-		$this->endWidget();
-		?>
+		));?>
+		<div id="img6" onmouseover='myOutAnimater(img6, train);'>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+		</div>
+		<div id="train" onmouseout='myInAnimater(img6, train);'>
+			<?php $this->widget('Training');?>
+		</div>
+		<?php $this->endWidget(); ?> 
 	</div>
 </div>
 <div class="row-fluid">
@@ -219,7 +249,19 @@ function issueswitcher()
 	}
 	counter.issueSwitchCount++;
 }
-	
+
+function myOutAnimater(imgid, portletid)
+{
+	$(imgid).stop(true).css("display","none");
+	$(portletid).stop(true).css("display","block");
+}
+
+function myInAnimater(imgid, portletid)
+{
+	$(portletid).stop(true).css("display","none");
+	$(imgid).stop(true).css("display","block");
+}
+
             $(function() {
 
                 $(".knob").knob({

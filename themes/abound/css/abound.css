@@ -530,6 +530,10 @@ footer {
 }
 
 
+
+
+
+
 /* These parts were added by Charles Willoughby */
 .tooltipCustom {
 	border-bottom: 1px dotted #000000;
@@ -545,12 +549,7 @@ footer {
 	margin:0;
 }
 
-#createticket, #myclosedtickets
-{
-	display:none;
-}
-
-#allissues
+#createticket, #myclosedtickets, #allissues, #timeReport, #weatherReport, #mainNews, #itNews, #train
 {
 	display:none;
 }
