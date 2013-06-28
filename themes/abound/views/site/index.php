@@ -6,7 +6,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 ?>
 
 <div class="row-fluid">
-	<div class="span3 portlet_border">
+	<div class="span3">
 		<?php
 		if(!isset(Yii::app()->user->id))
 			$this->widget('UserLogin');
@@ -14,25 +14,27 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		{
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> Last Login',
-				'titleCssClass'=>''
+				'titleCssClass'=>'',
+				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet'
 			));
 			?>
-			<div id="img1" onmouseenter='myOutAnimater(img1, timeReport);'>
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
-			</div>
 			<div id="timeReport" onmouseleave='myInAnimater(img1, timeReport);'>
 				<?php $this->widget('TimeReport'); ?>
+			</div>
+			<div id="img1"  onmouseenter='myOutAnimater(img1, timeReport);'>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage-small'>"; ?>
 			</div>
 			<?php
 			$this->endWidget();
 			
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
-				'titleCssClass'=>''
+				'titleCssClass'=>'',
+				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet'
 			));
 			?>
 			<div id="img2" onmouseover='myOutAnimater(img2, weatherReport);'>
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage-small'>"; ?>
 			</div>
 			<div id="weatherReport" onmouseout='myInAnimater(img2, weatherReport);'>
 				<?php $this->widget('WeatherReport'); ?>
@@ -52,14 +54,15 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		You must be a Criminal Court Clerk employee to create an account. 
 		Site functions are disabled until you have logged in.</p>
 	</div>
-	<div class="span3 portlet_border">
+	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
 		<div id="img3" onmouseover='myOutAnimater(img3, mainNews);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<div id="mainNews" onmouseout='myInAnimater(img3, mainNews);'>
 			<?php $this->widget('NewsReport');?>
@@ -70,8 +73,14 @@ $baseUrl = Yii::app()->theme->baseUrl;
 <div class="row-fluid">
 	<div class="span3">
 		<div class="sidebar-nav">
+			<?php 
+			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'<span class="icon-th-list"></span> Quick Links',
+				'titleCssClass'=>'',
+				'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+			));?>
 			<div id="img4" onmouseover='myOutAnimater(img4, quickMenu);'>
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 			</div>
 			<div id="quickMenu" onmouseout='myInAnimater(img4, quickMenu);'>
 				<?php $this->widget('zii.widgets.CMenu', array(
@@ -92,40 +101,44 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				));
 				?>
 			</div>
+			<?php $this->endWidget(); ?> 
 		</div>
 	</div>
-	<div class="span3 portlet_border">
+	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));
 		$this->widget('NewsReport', array('type'=>'IT News'));
 		$this->endWidget();
 		?>
 	</div>
-	<div class="span3 portlet_border">
+	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
 		<div id="img5" onmouseover='myOutAnimater(img5, itNews);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<div id="itNews" onmouseout='myInAnimater(img5, itNews);'>
 			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
 		</div>
 		<?php $this->endWidget(); ?> 
 	</div>
-	<div class="span3 portlet_border">
+	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Training Resources',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
 		<div id="img6" onmouseover='myOutAnimater(img6, train);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png'>"; ?>
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<div id="train" onmouseout='myInAnimater(img6, train);'>
 			<?php $this->widget('Training');?>
@@ -135,11 +148,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 </div>
 <div class="row-fluid">
 
-	<div class="span4 portlet_border">
+	<div class="span4">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-picture"></span><span id="tickettitle">My Open Tickets</span><img class="switcher icon-retweet"  style="float:right" onclick="ticketswitcher();"></img>',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));
 		?>
 		<div id="myopentickets">
@@ -154,11 +168,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
         <?php $this->endWidget(); ?>
         
 	</div>
-	<div class="span4 portlet_border">
+	<div class="span4">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-large"></span>Income Chart',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));
 		?>
         
@@ -166,11 +181,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
         
         <?php $this->endWidget(); ?>
 	</div><!--/span-->
-	<div class="span4 portlet_border">
+	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span><span id="issuetitle">Search Issues</span><img class="switcher icon-retweet" style="float:right" onclick="issueswitcher();"></img>',
-			'titleCssClass'=>''
+			'titleCssClass'=>'',
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));
 		?>
         <div id="issuesearcher">

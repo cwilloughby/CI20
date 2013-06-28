@@ -708,3 +708,33 @@ body
 {
     display:inline;
 }
+
+.outer-portlet {
+	min-height: 225px;
+	max-height: 225px;
+}
+.small-portlet {
+	min-height: 100px;
+	max-height: 100px;
+}
+.large-portlet {
+	min-height: 270px;
+	max-height: 370px;
+}
+
+.overimage-small
+{
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.overimage
+{
+    width: 100%;
+    height: 270px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
