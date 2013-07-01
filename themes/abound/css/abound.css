@@ -737,3 +737,14 @@ body
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
+div.centriod
+{
+	background-color: yellow;
+	fond-weight: bold;
+}
+
+span.required
+{
+	color: red;
+}
