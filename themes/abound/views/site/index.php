@@ -18,26 +18,26 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet'
 			));
 			?>
-			<div id="timeReport" onmouseleave='myInAnimater(img1, timeReport);'>
+			<div class="textdiv">
 				<?php $this->widget('TimeReport'); ?>
 			</div>
-			<div id="img1"  onmouseenter='myOutAnimater(img1, timeReport);'>
+			<div class="imgdiv">
 				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage-small'>"; ?>
 			</div>
 			<?php
 			$this->endWidget();
-			
+
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet'
 			));
 			?>
-			<div id="img2" onmouseover='myOutAnimater(img2, weatherReport);'>
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage-small'>"; ?>
-			</div>
-			<div id="weatherReport" onmouseout='myInAnimater(img2, weatherReport);'>
+			<div class="textdiv">
 				<?php $this->widget('WeatherReport'); ?>
+			</div>
+			<div class="imgdiv">
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage-small'>"; ?>
 			</div>
 			<?php
 			$this->endWidget();
@@ -61,11 +61,11 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
-		<div id="img3" onmouseover='myOutAnimater(img3, mainNews);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
-		</div>
-		<div id="mainNews" onmouseout='myInAnimater(img3, mainNews);'>
+		<div class="textdiv">
 			<?php $this->widget('NewsReport');?>
+		</div>
+		<div class="imgdiv">
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<?php $this->endWidget(); ?> 
 	</div>
@@ -79,10 +79,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 			));?>
-			<div id="img4" onmouseover='myOutAnimater(img4, quickMenu);'>
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
-			</div>
-			<div id="quickMenu" onmouseout='myInAnimater(img4, quickMenu);'>
+			<div class="textdiv">
 				<?php $this->widget('zii.widgets.CMenu', array(
 					/*'type'=>'list',*/
 					'encodeLabel'=>false,
@@ -100,6 +97,9 @@ $baseUrl = Yii::app()->theme->baseUrl;
 					),
 				));
 				?>
+			</div>
+			<div class="imgdiv">
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 			</div>
 			<?php $this->endWidget(); ?> 
 		</div>
@@ -122,11 +122,11 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
-		<div id="img5" onmouseover='myOutAnimater(img5, itNews);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
-		</div>
-		<div id="itNews" onmouseout='myInAnimater(img5, itNews);'>
+		<div class="textdiv">
 			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
+		</div>
+		<div class="imgdiv">
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<?php $this->endWidget(); ?> 
 	</div>
@@ -137,11 +137,11 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));?>
-		<div id="img6" onmouseover='myOutAnimater(img6, train);'>
-			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
-		</div>
-		<div id="train" onmouseout='myInAnimater(img6, train);'>
+		<div class="textdiv">
 			<?php $this->widget('Training');?>
+		</div>
+		<div class="imgdiv">
+			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/css/black.png' class='overimage'>"; ?>
 		</div>
 		<?php $this->endWidget(); ?> 
 	</div>
@@ -266,102 +266,96 @@ function issueswitcher()
 	counter.issueSwitchCount++;
 }
 
-function myOutAnimater(imgid, portletid)
-{
-	$(imgid).stop(true).css("display","none");
-	$(portletid).stop(true).css("display","block");
-}
+$(".portlet-content").hover(function() {
+	$(".imgdiv, .textdiv", this).toggle();
+})
 
-function myInAnimater(imgid, portletid)
-{
-	$(portletid).stop(true).css("display","none");
-	$(imgid).stop(true).css("display","block");
-}
 
-            $(function() {
 
-                $(".knob").knob({
-                    /*change : function (value) {
-                        //console.log("change : " + value);
-                    },
-                    release : function (value) {
-                        console.log("release : " + value);
-                    },
-                    cancel : function () {
-                        console.log("cancel : " + this.value);
-                    },*/
-                    draw : function () {
+$(function() {
 
-                        // "tron" case
-                        if(this.$.data('skin') == 'tron') {
+	$(".knob").knob({
+		/*change : function (value) {
+			//console.log("change : " + value);
+		},
+		release : function (value) {
+			console.log("release : " + value);
+		},
+		cancel : function () {
+			console.log("cancel : " + this.value);
+		},*/
+		draw : function () {
 
-                            var a = this.angle(this.cv)  // Angle
-                                , sa = this.startAngle          // Previous start angle
-                                , sat = this.startAngle         // Start angle
-                                , ea                            // Previous end angle
-                                , eat = sat + a                 // End angle
-                                , r = 1;
+			// "tron" case
+			if(this.$.data('skin') == 'tron') {
 
-                            this.g.lineWidth = this.lineWidth;
+				var a = this.angle(this.cv)  // Angle
+					, sa = this.startAngle          // Previous start angle
+					, sat = this.startAngle         // Start angle
+					, ea                            // Previous end angle
+					, eat = sat + a                 // End angle
+					, r = 1;
 
-                            this.o.cursor
-                                && (sat = eat - 0.3)
-                                && (eat = eat + 0.3);
+				this.g.lineWidth = this.lineWidth;
 
-                            if (this.o.displayPrevious) {
-                                ea = this.startAngle + this.angle(this.v);
-                                this.o.cursor
-                                    && (sa = ea - 0.3)
-                                    && (ea = ea + 0.3);
-                                this.g.beginPath();
-                                this.g.strokeStyle = this.pColor;
-                                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
-                                this.g.stroke();
-                            }
+				this.o.cursor
+					&& (sat = eat - 0.3)
+					&& (eat = eat + 0.3);
 
-                            this.g.beginPath();
-                            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
-                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
-                            this.g.stroke();
+				if (this.o.displayPrevious) {
+					ea = this.startAngle + this.angle(this.v);
+					this.o.cursor
+						&& (sa = ea - 0.3)
+						&& (ea = ea + 0.3);
+					this.g.beginPath();
+					this.g.strokeStyle = this.pColor;
+					this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+					this.g.stroke();
+				}
 
-                            this.g.lineWidth = 2;
-                            this.g.beginPath();
-                            this.g.strokeStyle = this.o.fgColor;
-                            this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-                            this.g.stroke();
+				this.g.beginPath();
+				this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+				this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+				this.g.stroke();
 
-                            return false;
-                        }
-                    }
-                });
+				this.g.lineWidth = 2;
+				this.g.beginPath();
+				this.g.strokeStyle = this.o.fgColor;
+				this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+				this.g.stroke();
 
-                // Example of infinite knob, iPod click wheel
-                var v, up=0,down=0,i=0
-                    ,$idir = $("div.idir")
-                    ,$ival = $("div.ival")
-                    ,incr = function() { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
-                    ,decr = function() { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
-                $("input.infinite").knob(
-                                    {
-                                    min : 0
-                                    , max : 20
-                                    , stopper : false
-                                    , change : function () {
-                                                    if(v > this.cv){
-                                                        if(up){
-                                                            decr();
-                                                            up=0;
-                                                        }else{up=1;down=0;}
-                                                    } else {
-                                                        if(v < this.cv){
-                                                            if(down){
-                                                                incr();
-                                                                down=0;
-                                                            }else{down=1;up=0;}
-                                                        }
-                                                    }
-                                                    v = this.cv;
-                                                }
-                                    });
-            });
-        </script>
+				return false;
+			}
+		}
+	});
+
+	// Example of infinite knob, iPod click wheel
+	var v, up=0,down=0,i=0
+		,$idir = $("div.idir")
+		,$ival = $("div.ival")
+		,incr = function() { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
+		,decr = function() { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
+	$("input.infinite").knob(
+						{
+						min : 0
+						, max : 20
+						, stopper : false
+						, change : function () {
+										if(v > this.cv){
+											if(up){
+												decr();
+												up=0;
+											}else{up=1;down=0;}
+										} else {
+											if(v < this.cv){
+												if(down){
+													incr();
+													down=0;
+												}else{down=1;up=0;}
+											}
+										}
+										v = this.cv;
+									}
+						});
+});
+</script>

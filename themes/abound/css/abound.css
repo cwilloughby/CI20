@@ -549,7 +549,7 @@ footer {
 	margin:0;
 }
 
-#createticket, #myclosedtickets, #allissues, #timeReport, #weatherReport, #mainNews, #itNews, #train, #quickMenu
+#createticket, #myclosedtickets, #allissues, .textdiv
 {
 	display:none;
 }
