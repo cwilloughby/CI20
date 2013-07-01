@@ -30,8 +30,8 @@
 			'append'=>CHtml::tag('span',array('class'=>'hint'),'You can remove this line'),
 		)
 	))?>
- 
-	<table>
+
+	<table class="evidence">
 		<tr>
 			<th><?php echo $form->labelEx($evidence,'exhibitlist');?></th>
 			<th><?php echo $form->labelEx($evidence,'hearingtype');?></th>
@@ -41,13 +41,13 @@
 			<th><?php echo $form->labelEx($evidence,'comment');?></th>
 		</tr>
 
-		<tr class="row copy">
+		<tr class="filters copy">
 			
 			<?php echo $form->hiddenField($evidence,'caseno[]', array('required' => true, 'value'=>$summary->caseno)); ?>
 			<?php echo $form->error($evidence,'caseno[]'); ?>
 			
 			<td>
-			<?php echo $form->textField($evidence,'exhibitlist[]', array("style"=>'width:70px')); ?>
+			<?php echo $form->textField($evidence,'exhibitlist[]'); ?>
 			<?php echo $form->error($evidence,'exhibitlist[]'); ?>
 			</td>
 			
@@ -57,7 +57,7 @@
 			</td>
 			
 			<td>
-			<?php echo $form->textField($evidence,'hearingdate[]', array("style"=>'width:70px')); ?>
+			<?php echo $form->textField($evidence,'hearingdate[]'); ?>
 			<?php echo $form->error($evidence,'hearingdate[]'); ?>
 			</td>
 			

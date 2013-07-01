@@ -131,14 +131,14 @@ class Evidence extends CActiveRecord
 			return false;
 
 		$idx = 0;
-
+		$case = $formData['caseno'][0];
 		// Loop through the array, splitting it into individual models and saving those models. 
 		foreach($formData['exhibitno'] as $ex)
 		{
 			$model = new Evidence;
 
 			// The attributes can be found at the same postion in the formData.
-			$model->caseno = $formData['caseno'][$idx];
+			$model->caseno = $case;
 			$model->hearingtype = $formData['hearingtype'][$idx];
 			$model->hearingdate = date('Y-m-d', strtotime($formData['hearingdate'][$idx]));
 			$model->exhibitno = $ex;

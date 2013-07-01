@@ -12,16 +12,30 @@ class TimeReport extends CPortlet
 	 */
 	protected function renderContent()
 	{
-		// Grab the time and date of the previous ci2 login.
-		$lastCiLog = Yii::app()->db->createCommand()
-			->select('ci_log.eventdate')
-			->from('ci_log')
-			->where('ci_log.userid = :id AND ci_log.event = "Login Succeeded"', array(':id'=>Yii::app()->user->id))
-			->order('ci_log.eventdate DESC')
-			->limit(1, 1)
-			->queryAll();
+		try
+		{
+			// Grab the time and date of the previous ci2 login.
+			$lastCiLog = Yii::app()->db->createCommand()
+				->select('ci_log.eventdate')
+				->from('ci_log')
+				->where('ci_log.userid = :id AND ci_log.event = "Login Succeeded"', array(':id'=>Yii::app()->user->id))
+				->order('ci_log.eventdate DESC')
+				->limit(1)
+				->queryAll();
+			
+			if(empty($lastCiLog))
+			{
+				throw new Exception;
+			}
+			
+			$lastCiLog = date('m/d/Y \a\t g:i a', strtotime($lastCiLog[0]['eventdate']));
+		}
+		catch (Exception $ex)
+		{
+			$lastCiLog = "Unknown";
+		}
 		
-		if(!Yii::app()->user->checkAccess('External', Yii::app()->user->id))
+		try
 		{
 			// Grab the time and date of the previous computer.
 			$lastComputerLog = Yii::app()->db->createCommand()
@@ -31,11 +45,19 @@ class TimeReport extends CPortlet
 				->order('ci_time_log.eventdate DESC')
 				->limit(1)
 				->queryAll();
-		}
-		else
-			$lastComputerLog = null;
 
-		// Display the office news.
+			if(empty($lastComputerLog))
+			{
+				throw new Exception;
+			}
+			
+			$lastComputerLog = date('m/d/Y \a\t g:i a', strtotime($lastComputerLog[0]['eventtime'] . " " . $lastComputerLog[0]['eventdate']));
+		}
+		catch(Exception $ex)
+		{
+			$lastComputerLog = "Unknown";
+		}
+		// Display the time report.
 		$this->render('timereport',array('ciLog'=>$lastCiLog, 'computerLog'=>$lastComputerLog));
 	}
 }

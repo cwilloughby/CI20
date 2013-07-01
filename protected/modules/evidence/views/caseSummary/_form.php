@@ -116,7 +116,7 @@
 			<th><?php echo $form->labelEx($attorney,'barid');?></th>
 		</tr>
 
-		<tr class="row copy">
+		<tr class="filters copy">
 			<td>
 			<?php echo $form->textField($attorney,'fname[]', array('required' => true)); ?>
 			<?php echo $form->error($attorney,'fname[]'); ?>
