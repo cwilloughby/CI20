@@ -137,7 +137,7 @@ class IssueTracker extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('key',$this->key,true);
+		$criteria->compare('t.key',$this->key,true);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('reporter',$this->reporter,true);
