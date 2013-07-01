@@ -41,7 +41,7 @@ $this->widget('zii.widgets.jui.CJuiSortable', array(
 	'htmlOptions' => array('class' => 'priOrder'),
 	'options' => array(
 		'update'=>'js:function(event,ui){
-			$.post("",{ChangePriorities:$("ul#priorityList").sortable("toArray").toString()},function(data){});
+			$.post("",{ChangePriorities:jQuery("ul#priorityList").sortable("toArray").toString()},function(data){});
 		}'
 	),
 ));

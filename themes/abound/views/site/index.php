@@ -59,7 +59,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
 			'titleCssClass'=>'',
-			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet'
 		));?>
 		<div class="textdiv">
 			<?php $this->widget('NewsReport');?>
@@ -77,7 +77,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon-th-list"></span> Quick Links',
 				'titleCssClass'=>'',
-				'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+				'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet'
 			));?>
 			<div class="textdiv">
 				<?php $this->widget('zii.widgets.CMenu', array(
@@ -109,7 +109,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
 			'titleCssClass'=>'',
-			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet'
 		));
 		$this->widget('NewsReport', array('type'=>'IT News'));
 		$this->endWidget();
@@ -120,7 +120,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> IT News',
 			'titleCssClass'=>'',
-			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet'
 		));?>
 		<div class="textdiv">
 			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
@@ -135,7 +135,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Training Resources',
 			'titleCssClass'=>'',
-			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
+			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet'
 		));?>
 		<div class="textdiv">
 			<?php $this->widget('Training');?>
