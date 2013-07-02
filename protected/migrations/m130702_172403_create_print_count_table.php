@@ -25,7 +25,8 @@ class m130702_172403_create_print_count_table extends CDbMigration
 				'id' => 'INT NOT NULL AUTO_INCREMENT',
 				'date' => 'DATE NOT NULL',
 				'machineid' => 'INT(2) NULL',
-				'total' => 'INT NULL',
+				'starttotal' => 'INT NULL',
+				'endtotal' => 'INT NULL',
 				'PRIMARY KEY (`id`)',
 			),
 			'ENGINE=InnoDB, COLLATE=utf8_general_ci');

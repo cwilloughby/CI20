@@ -3,6 +3,7 @@
 	'SiteIndex',
 	'SiteError',
 	'SiteColor',
+	'SitePrints',
 	'security@LoginLogin',
 	'security@LoginLogout',
 	'security@PasswordRecoveryrequest',

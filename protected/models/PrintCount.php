@@ -7,7 +7,8 @@
  * @property integer $id
  * @property string $date
  * @property integer $machineid
- * @property integer $total
+ * @property integer $starttotal
+ * @property integer $endtotal
  */
 class PrintCount extends CActiveRecord
 {
@@ -38,10 +39,10 @@ class PrintCount extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('date', 'required'),
-			array('machineid, total', 'numerical', 'integerOnly'=>true),
+			array('machineid, starttotal, endtotal', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, date, machineid, total', 'safe', 'on'=>'search'),
+			array('id, date, machineid, starttotal, endtotal', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +66,8 @@ class PrintCount extends CActiveRecord
 			'id' => 'ID',
 			'date' => 'Date',
 			'machineid' => 'Machineid',
-			'total' => 'Total',
+			'starttotal' => 'Start Total',
+			'endtotal' => 'End Total',
 		);
 	}
 
@@ -83,7 +85,8 @@ class PrintCount extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('machineid',$this->machineid);
-		$criteria->compare('total',$this->total);
+		$criteria->compare('starttotal',$this->starttotal);
+		$criteria->compare('endtotal',$this->endtotal);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

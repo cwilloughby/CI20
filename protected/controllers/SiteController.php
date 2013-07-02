@@ -72,4 +72,30 @@ class SiteController extends Controller
 			echo $results;
 		}
 	}
+	
+	public function actionPrints()
+	{
+		// This snippet will be used later on for obtaining the correct dates.
+		/*
+		$date = new DateTime();
+		$date->add(DateInterval::createFromDateString('yesterday'));
+		echo $date->format('F j, Y') . "\n";
+		*/
+		
+		$yesterday = Yii::app()->db->createCommand()
+			->select('starttotal, endtotal')
+			->from('ci_print_count')
+			->where('date=:date', array(':date'=>'2013-06-30'))
+			->queryAll();
+		
+		$dayBefore = Yii::app()->db->createCommand()
+			->select('starttotal, endtotal')
+			->from('ci_print_count')
+			->where('date=:date', array(':date'=>'2013-07-01'))
+			->queryAll();
+		
+		echo json_encode(array(
+			0 => ($yesterday[0]['endtotal'] - $yesterday[0]['starttotal']),
+			1 => ($dayBefore[0]['endtotal'] - $dayBefore[0]['starttotal'])));
+	}
 }
