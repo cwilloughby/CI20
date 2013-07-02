@@ -171,13 +171,13 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-large"></span>Income Chart',
+			'title'=>'<span class="icon-th-large"></span>Paperless Project',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet'
 		));
 		?>
         
-        <div class="visitors-chart" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
+        <div class="stacked-bars-chart" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
         
         <?php $this->endWidget(); ?>
 	</div><!--/span-->

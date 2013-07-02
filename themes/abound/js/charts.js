@@ -542,32 +542,24 @@ $(document).ready(function() {
 	//Stacked bars chart
     if (divElement.hasClass('stacked-bars-chart')) {
 	$(function () {
-		//some data
-		var d1 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d1.push([i, parseInt(Math.random() * 30)]);
+		
+		// We need to use ajax to get these values from the database.
+		var yesterday = [];
+		yesterday.push([1, parseInt(Math.random() * 30)]);
 	 
-	    var d2 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d2.push([i, parseInt(Math.random() * 30)]);
+		var dayBeforeLast = [];
+		dayBeforeLast.push([0, parseInt(Math.random() * 30)]);
 	 
-	    var d3 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d3.push([i, parseInt(Math.random() * 30)]);
+		var ds = new Array();
 	 
-	    var ds = new Array();
-	 
-	     ds.push({
-	     	label: "Data One",
-	        data:d1
+		// The label values here will have to be set to each date.
+		ds.push({
+	     	label: "Date 1",
+	        data: yesterday
 	    });
-	    ds.push({
-	    	label: "Data Two",
-	        data:d2
-	    });
-	    ds.push({
-	    	label: "Data Tree",
-	        data:d3
+		ds.push({
+	    	label: "Date 2",
+	        data: dayBeforeLast
 	    });
 
 		var stack = 0, bars = true, lines = false, steps = false;
@@ -581,7 +573,7 @@ $(document).ready(function() {
 				    axisMargin: 0, 
 				    borderWidth: 0,
 				    borderColor:null,
-				    minBorderMargin: 5 ,
+				    minBorderMargin: 5,
 				    clickable: true, 
 				    hoverable: true,
 				    autoHighlight: true,
@@ -591,10 +583,19 @@ $(document).ready(function() {
 		        	grow: {active:false},
 		        	stack: stack,
 	                lines: { show: lines, fill: true, steps: steps },
-	                bars: { show: bars, barWidth: 0.5, fill:1}
+	                bars: { show: bars, barWidth: 0.5, fill:1, barSpacing: 0.5}
 			    },
 		        xaxis: {ticks:11, tickDecimals: 0},
-		        legend: { position: "se" },
+				legend: { 
+		        	position: "ne", 
+		        	margin: [0,-25], 
+		        	noColumns: 0,
+		        	labelBoxBorderColor: null,
+		        	labelFormatter: function(label, series) {
+					    // just add some space to labes
+					    return label+'&nbsp;&nbsp;';
+					 }
+		    	},
 		        colors: chartColours,
 		        shadowSize:1,
 		        tooltip: true, //activate tooltip
