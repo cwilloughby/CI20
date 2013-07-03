@@ -6,7 +6,7 @@
 
 <h1>Login</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<?php echo "<b>" . CHtml::link('Register',array('security/registration/register')) . "</b>"; ?>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -39,5 +39,3 @@
 </div><!-- form -->
 
 <?php echo CHtml::link('Forgot your password?',array('security/password/recoveryrequest')); ?>
- -
-<?php echo CHtml::link('Register',array('security/registration/register')); ?>
