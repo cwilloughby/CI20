@@ -5,16 +5,7 @@ class HrPolicyController extends Controller
 	/**
 	 * @var string the default layout for the views.
 	 */
-	public $layout;
-
-	public function init()
-	{
-		// Don't show the page menu if the user doesn't have the ability to edit HR.
-		if(!Yii::app()->user->checkAccess('hr@HrEdit', Yii::app()->user->id))
-			$this->layout='//layouts/column2home';
-		else
-			$this->layout='//layouts/column2';
-	}
+	public $layout='//layouts/column2';
 	
 	/**
 	 * @return array action filters

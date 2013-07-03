@@ -6,7 +6,7 @@ $this->widget('CustomSmallListView', array(
 	'dataProvider'=>$dataProvider,
 	'ajaxUpdate'=>true,
 	'itemView'=>'_view',
-	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'template'=>"{summary}\n{items}\n{pager}",
 )); 
 ?>
 

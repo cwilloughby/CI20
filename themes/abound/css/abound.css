@@ -753,3 +753,13 @@ span.required
 	color: red;
 }
 
+.newsrule
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ui-accordion-header
+{
+	cursor: pointer;
+}

@@ -25,8 +25,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search HR Policies', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-file"></i> Create HR Policy', 'url'=>array('createpolicy')),
+	array('label'=>'<i class="icon icon-search"></i> Search HR Policies', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-file"></i> Create HR Policy', 'url'=>array('createpolicy'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'<i class="icon icon-list-alt"></i> List HR Policies', 'url'=>array('index')),
 );
 ?>

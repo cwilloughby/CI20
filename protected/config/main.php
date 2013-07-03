@@ -73,7 +73,7 @@ return array(
 			'superUser'=>'IT', //default: Authorizer
 			'css'=>'srbac.css', //default: srbac.css
 			//default: application.views.layouts.main, must be an existing alias
-			'layout'=>'application.views.layouts.main', 
+			'layout'=>'webroot.themes.abound.views.layouts.main', 
 			//default: srbac.views.authitem.unauthorized, must be an existing alias
 			'notAuthorizedView'=>'srbac.views.authitem.unauthorized', 
 			'alwaysAllowed'=>array( //default: array()

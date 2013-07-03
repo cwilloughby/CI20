@@ -52,7 +52,6 @@ $this->widget('CustomGridView', array(
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'policyid',
 		'policy',
 		array(
 			'class'=>'CButtonColumn',

@@ -48,7 +48,7 @@
 						),
 						array(
 							'label'=>'IT Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
-							'visible'=>!Yii::app()->user->isGuest,
+							'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 							'items'=>array(
 								array('label'=>'<i class="icon icon-user"></i> Manage Users', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-comment"></i> Comment Manager', 'url'=>array('/tickets/comments/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
@@ -79,7 +79,7 @@
 						),
 						array(
 							'label'=>'Links <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
-							'visible'=>!Yii::app()->user->isGuest,
+							'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 							'items'=>array(
 								array('label'=>'<i class="icon icon-print"></i> Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							),
