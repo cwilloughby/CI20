@@ -33,7 +33,6 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet',
                                 'id'=>'weather',
-                            
 			));
 			?>
 			<div class="textdiv bigwhitefont">
@@ -123,6 +122,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		<div class="imgdiv">
 			<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/img/docs.jpg'  class='overimage'>"; ?>
 		</div>
+		<?php $this->endWidget(); ?> 
 	</div>
 	<div class="span3">
 		<?php 
