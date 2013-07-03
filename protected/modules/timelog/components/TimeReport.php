@@ -39,7 +39,7 @@ class TimeReport extends CPortlet
 		{
 			// Grab the time and date of the previous computer.
 			$lastComputerLog = Yii::app()->db->createCommand()
-				->select('ci_time_log.eventdate, ci_time_log.eventtime')
+				->select('ci_time_log.eventdate, ci_time_log.eventtime,, ci_time_log.computername')
 				->from('ci_time_log')
 				->where('ci_time_log.username = :name AND ci_time_log.eventtype = "login"', array(':name'=>Yii::app()->user->name))
 				->order('ci_time_log.eventdate DESC')
@@ -51,7 +51,7 @@ class TimeReport extends CPortlet
 				throw new Exception;
 			}
 			
-			$lastComputerLog = date('m/d/Y \a\t g:i a', strtotime($lastComputerLog[0]['eventtime'] . " " . $lastComputerLog[0]['eventdate']));
+			$lastComputerLog = date('m/d/Y \a\t g:i a', strtotime($lastComputerLog[0]['eventtime'] . " " . $lastComputerLog[0]['eventdate'])) . " on " . $lastComputerLog[0]['computername'];
 		}
 		catch(Exception $ex)
 		{
