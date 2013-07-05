@@ -49,8 +49,8 @@ class Documents extends CActiveRecord
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
 			array('attachment', 'file', 'types'=>'jpg, gif, png, txt, pdf, doc', 'maxSize'=>'2097152', 'allowEmpty'=>true),
-			array('video', 'file', 'types'=>'mp4', 'maxSize'=>'4097152', 'allowEmpty'=>true),
-			array('video', 'required', 'on'=>'video'),
+			array('video', 'file', 'types'=>'mp4, pdf, htm', 'maxSize'=>'4097152', 'allowEmpty'=>true),
+			array('video', 'required', 'on'=>'trainging'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('documentid, uploader, documentname, path, uploaddate', 'safe', 'on'=>'search'),
@@ -105,13 +105,13 @@ class Documents extends CActiveRecord
 				{
 					// If it is not local.
 					// Create a folder with the uploaddate set as the name, unless it already exists.
-					$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\videos\\";
+					$temp = "\\\\jis18822\\c$\\wamp\\www\\assets\\training\\";
 				}
 				else
 				{
 					// If it is local.
 					// Create a folder with the uploaddate set as the name, unless it already exists.
-					$temp = dirname(Yii::app()->getBasePath()) . "/assets/videos/";
+					$temp = dirname(Yii::app()->getBasePath()) . "/assets/training/";
 				}
 
 				if(!is_dir($temp))

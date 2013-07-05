@@ -55,7 +55,7 @@
 								array('label'=>'<i class="icon icon-list-alt"></i> Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-lock"></i> Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-warning-sign"></i> Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-								array('label'=>'<i class="icon icon-film"></i> Upload Videos', 'url'=>array('/videos/videos/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-film"></i> Upload Training Resources', 'url'=>array('/videos/videos/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							),
 						),
 						array(

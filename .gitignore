@@ -23,3 +23,4 @@ protected/vendors/
 !/themes/abound/views/site/index.php
 !/themes/abound/views/customer/index.php
 /themes/abound/img/
+/assets/training/

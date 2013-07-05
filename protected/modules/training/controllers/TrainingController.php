@@ -74,15 +74,29 @@ class TrainingController extends Controller
 			'distinct'=>true,
 		));
 		$types=CHtml::listData($models,'type','type');
-		$dataProvider=new CActiveDataProvider('Videos',
-				array(
+		$videoProvider=new CActiveDataProvider('Videos', array(
 					'criteria'=>array(
-						'condition'=> "t.type = :type",
+						'condition'=> "t.type = :type AND t.category = 'video'",
 						'params'=>array(":type" => $type)
 					)
 				));
+		$docProvider=new CActiveDataProvider('Videos', array(
+					'criteria'=>array(
+						'condition'=> "t.type = :type AND t.category = 'doc'",
+						'params'=>array(":type" => $type)
+					)
+				));
+		$pageProvider=new CActiveDataProvider('Videos', array(
+					'criteria'=>array(
+						'condition'=> "t.type = :type AND t.category = 'page'",
+						'params'=>array(":type" => $type)
+					)
+				));
+		
 		$this->render('resourceindex',array(
-			'dataProvider'=>$dataProvider,
+			'videoProvider'=>$videoProvider,
+			'docProvider'=>$docProvider,
+			'pageProvider'=>$pageProvider,
 			'types'=>$types,
 		));
 	}

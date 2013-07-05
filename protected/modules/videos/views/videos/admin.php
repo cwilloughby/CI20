@@ -3,14 +3,14 @@
 /* @var $model Videos */
 
 $this->breadcrumbs=array(
-	'Videos'=>array('index'),
+	'Training Resources'=>array('index'),
 	'Search',
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search Videos', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-film"></i> Upload Video', 'url'=>array('create')),
-	array('label'=>'<i class="icon icon-list-alt"></i> List Videos', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Search Videos</h1>
+<h1>Search Training Resources</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

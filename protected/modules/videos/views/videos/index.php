@@ -3,17 +3,17 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Videos',
+	'Training Resources',
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search Videos', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-film"></i> Upload Video', 'url'=>array('create')),
-	array('label'=>'<i class="icon icon-list-alt"></i> List Videos', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('index')),
 );
 ?>
 
-<h1>Videos</h1>
+<h1>Training Resources</h1>
 
 <?php $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,

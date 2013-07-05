@@ -20,5 +20,12 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($data->type); ?>
 	<br />
-
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('category')); ?>:</b>
+	<?php echo CHtml::encode($data->category); ?>
+	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('poster')); ?>:</b>
+	<?php echo CHtml::encode($data->poster); ?>
+	<br />
 </div>

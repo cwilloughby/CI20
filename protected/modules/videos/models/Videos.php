@@ -8,6 +8,8 @@
  * @property integer $documentid
  * @property string $title
  * @property string $type
+ * @property string $category
+ * @property string $poster
  *
  * The followings are the available model relations:
  * @property DocumentProcessor $document
@@ -40,13 +42,15 @@ class Videos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, type', 'required'),
+			array('title, type, category, poster', 'required'),
 			array('documentid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
 			array('type', 'length', 'max'=>45),
+			array('category', 'length', 'max'=>45),
+			array('poster', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('videoid, documentid, title, type', 'safe', 'on'=>'search'),
+			array('videoid, documentid, title, type, category, poster', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,10 +72,12 @@ class Videos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'videoid' => 'Video ID',
+			'videoid' => 'ID',
 			'documentid' => 'Document',
 			'title' => 'Title',
 			'type' => 'Type',
+			'category' => 'Category',
+			'poster' => 'Image',
 		);
 	}
 
@@ -90,7 +96,9 @@ class Videos extends CActiveRecord
 		$criteria->compare('documentid',$this->documentid);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('type',$this->type,true);
-
+		$criteria->compare('category',$this->category,true);
+		$criteria->compare('poster',$this->poster,true);
+		
 		return new CActiveDataProvider($this, array(
 			'pagination'=>array(
 				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),

@@ -13,8 +13,16 @@
 		<tr>
 			<td>
 			<?php 
-			echo CHtml::link('<img src="'. Yii::app()->request->baseUrl . '/assets/images/test.png" alt="' . $data->title . '"/>', 
+			if($data->category == 'Video')
+			{
+				echo CHtml::link('<img src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
 					array('view', 'id'=>$data->videoid, 'type'=>$data->type)); 
+			}
+			else
+			{
+				echo CHtml::link('<img src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
+					array(Yii::app()->request->baseUrl . "/assets/training/" . $data->document->documentname)); 
+			}
 			?>
 			</td>
 		</tr>

@@ -1,6 +1,8 @@
 <?php
 /* @var $this TrainingController */
-/* @var $dataProvider CActiveDataProvider */
+/* @var $videoProvider CActiveDataProvider */
+/* @var $docProvider CActiveDataProvider */
+/* @var $pageProvider CActiveDataProvider */
 /* @var $types Array */
 
 $this->pageTitle = Yii::app()->name . ' - List Training Resources';
@@ -25,11 +27,30 @@ foreach($types as $key =>$value)
 ?>
 
 <h1><?php echo $_GET['type']; ?></h1>
+<h3><?php echo "Videos"; ?></h3>
 <br/>
 
 <?php 
 $this->widget('VideoList', array(
-	'dataProvider'=>$dataProvider,
+	'dataProvider'=>$videoProvider,
+	'itemView'=>'_viewResource',
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'columnCount'=>2
+));
+?>
+<h3><?php echo "Documents"; ?></h3>
+<?php
+$this->widget('VideoList', array(
+	'dataProvider'=>$docProvider,
+	'itemView'=>'_viewResource',
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'columnCount'=>2
+));
+?>
+<h3><?php echo "TBD"; ?></h3>
+<?php
+$this->widget('VideoList', array(
+	'dataProvider'=>$pageProvider,
 	'itemView'=>'_viewResource',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columnCount'=>2

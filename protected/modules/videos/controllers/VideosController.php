@@ -39,7 +39,7 @@ class VideosController extends Controller
 		$video = new Videos;
 		$file = new Documents;
 		
-		$file->scenario = 'video';
+		$file->scenario = 'training';
 		
 		if(isset($_POST['Videos']))
 		{

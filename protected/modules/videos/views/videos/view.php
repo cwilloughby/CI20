@@ -3,21 +3,21 @@
 /* @var $model Videos */
 
 $this->breadcrumbs=array(
-	'Videos'=>array('index'),
+	'Training Resources'=>array('index'),
 	$model->title,
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search Videos', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-film"></i> Upload Video', 'url'=>array('create')),
-	array('label'=>'<i class="icon icon-list-alt"></i> List Videos', 'url'=>array('index')),
-	array('label'=>'<i class="icon icon-zoom-in"></i> View Video', 'url'=>array('view', 'id'=>$model->videoid)),
-	array('label'=>'<i class="icon icon-edit"></i> Update Video', 'url'=>array('update', 'id'=>$model->videoid)),
-	array('label'=>'<i class="icon icon-trash"></i> Delete Video', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View Training Resource', 'url'=>array('view', 'id'=>$model->videoid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update Training Resource', 'url'=>array('update', 'id'=>$model->videoid)),
+	array('label'=>'<i class="icon icon-trash"></i> Delete Training Resource', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->videoid),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 
-<h1>View Video #<?php echo $model->videoid; ?></h1>
+<h1>View Training Resource #<?php echo $model->videoid; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -34,12 +34,18 @@ $this->menu2=array(
 
 <br/>
 
-<?php $this->widget('application.extensions.smp.StrobeMediaPlayback',array(
-	'srcRelative'=>'/videos/' . $model->document->documentname,
-	'width'=>'320',
-	'height'=>'240',
-	'src_title'=>$model->title,
-	'allowFullScreen'=>'true',
-	'playButtonOverlay'=>true,
-	'scaleMode'=>'stretch',
-));?>
+<?php 
+
+if($model->category == 'Video')
+{
+	$this->widget('application.extensions.smp.StrobeMediaPlayback',array(
+		'srcRelative'=>'/videos/' . $model->document->documentname,
+		'width'=>'320',
+		'height'=>'240',
+		'src_title'=>$model->title,
+		'allowFullScreen'=>'true',
+		'playButtonOverlay'=>true,
+		'scaleMode'=>'stretch',
+	));
+}
+?>
