@@ -836,3 +836,13 @@ span.required
     color: black;
     font-size: medium;
 }
+.grabby {
+	cursor: move;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
+.grabby:active {
+	cursor: move;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing
+}
