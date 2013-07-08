@@ -34,7 +34,7 @@ foreach($types as $key =>$value)
 $this->widget('VideoList', array(
 	'dataProvider'=>$videoProvider,
 	'itemView'=>'_viewResource',
-	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'template'=>"{summary}\n{items}\n{pager}",
 	'columnCount'=>5
 ));
 ?>
@@ -43,7 +43,7 @@ $this->widget('VideoList', array(
 $this->widget('VideoList', array(
 	'dataProvider'=>$docProvider,
 	'itemView'=>'_viewResource',
-	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'template'=>"{summary}\n{items}\n{pager}",
 	'columnCount'=>5
 ));
 ?>
@@ -52,7 +52,7 @@ $this->widget('VideoList', array(
 $this->widget('VideoList', array(
 	'dataProvider'=>$pageProvider,
 	'itemView'=>'_viewResource',
-	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
+	'template'=>"{summary}\n{items}\n{pager}",
 	'columnCount'=>5
 ));
 ?>
