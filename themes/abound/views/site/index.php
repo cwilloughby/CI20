@@ -13,7 +13,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		else
 		{
 			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'<span class="icon-th-list"></span> <b>Last Login</b>',
+				'title'=>'<span class="icon-globe"></span> <b>Last Login</b>',
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet',
                                 'id'=>'lastlogin'
@@ -29,7 +29,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			$this->endWidget();
 
 			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'<span class="icon-th-list"></span> 12 Hour Forcast',
+				'title'=>'<span class="icon-picture"></span> 12 Hour Forcast',
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet',
                                 'id'=>'weather',
@@ -59,7 +59,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Criminal Court Clerk News',
+			'title'=>'<span class="icon-bullhorn"></span> Criminal Court Clerk News',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'clerknews'
@@ -84,22 +84,41 @@ $baseUrl = Yii::app()->theme->baseUrl;
                                 'id'=>'quicklinks'
 			));?>
 			<div class="textdiv">
-				<?php $this->widget('zii.widgets.CMenu', array(
-					/*'type'=>'list',*/
-					'encodeLabel'=>false,
-					'items'=>array(
-						array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
-						// The link to the trouble ticket form.
-						array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
-						// The link to the hr policy page.
-						array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
-						// The link to the emergency response plan.
-						array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+				<?php 
+				if(!Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id) || (!isset(Yii::app()->user->id)))
+				{
+					$this->widget('zii.widgets.CMenu', array(
+						/*'type'=>'list',*/
+						'encodeLabel'=>false,
+						'items'=>array(
+							array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
+							// The link to the trouble ticket form.
+							array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+							// The link to the hr policy page.
+							array('label'=>'<i class="icon icon-th-list"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+							// The link to the emergency response plan.
+							array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
 
-						// Include the operations menu
-						array('label'=>'OPERATIONS','items'=>$this->menu1),
-					),
-				));
+							// Include the operations menu
+							array('label'=>'OPERATIONS','items'=>$this->menu1),
+						),
+					));
+				}
+				else
+				{
+					$this->widget('zii.widgets.CMenu', array(
+						/*'type'=>'list',*/
+						'encodeLabel'=>false,
+						'items'=>array(
+							array('label'=>'<i class="icon icon-home"></i> Home', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
+							// The link to the trouble ticket form.
+							array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
+
+							// Include the operations menu
+							array('label'=>'OPERATIONS','items'=>$this->menu1),
+						),
+					));
+				}
 				?>
 			</div>
 			<div class="imgdiv">
@@ -111,7 +130,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Document Manager',
+			'title'=>'<span class="icon-file"></span> Document Manager',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                        'id'=>'docmanager'
@@ -127,7 +146,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> IT News',
+			'title'=>'<span class="icon-cog"></span> IT News',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'itnews'
@@ -143,7 +162,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Training Resources',
+			'title'=>'<span class="icon-book"></span> Training Resources',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'training'
@@ -162,7 +181,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-picture"></span><span id="tickettitle">My Open Tickets</span><img class="switcher icon-retweet"  style="float:right" onclick="ticketswitcher();"></img>',
+			'title'=>'<span class="icon-tag"></span><span id="tickettitle">My Open Tickets</span><img class="switcher icon-retweet"  style="float:right" onclick="ticketswitcher();"></img>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'troubleticket'
@@ -183,7 +202,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-large"></span>Project Paperless',
+			'title'=>'<span class="icon-print"></span>Project Paperless',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'paperless'
@@ -197,7 +216,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span><span id="issuetitle">Search Issues</span><img class="switcher icon-retweet" style="float:right" onclick="issueswitcher();"></img>',
+			'title'=>'<span class="icon-search"></span><span id="issuetitle">Search Issues</span><img class="switcher icon-retweet" style="float:right" onclick="issueswitcher();"></img>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'issuetracker'    

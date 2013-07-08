@@ -12,8 +12,8 @@ class IssueSearcher extends CPortlet
 	 * This function renders the issue searcher widget.
 	 */
 	public function renderContent()
-	{
-		if($this->type == "Search")
+	{	
+		if($this->type == "Search" && isset(Yii::app()->user->id))
 		{
 			$tracker = new IssueTracker;
 
@@ -25,11 +25,17 @@ class IssueSearcher extends CPortlet
 				if($tracker->validate())
 				{
 					$criteria=new CDbCriteria;
+					
 					$criteria->compare('t.key', $tracker->search, true, 'OR');
 					$criteria->compare('t.type', $tracker->search, true, 'OR');
 					$criteria->compare('t.summary', $tracker->search, true, 'OR');
 					$criteria->compare('t.description', $tracker->search, true, 'OR');
-
+					
+					if(Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id))
+					{
+						$criteria->addCondition('t.reporter="' . Yii::app()->user->name . '"', 'AND');
+					}
+					
 					$dataProvider = new CActiveDataProvider('IssueTracker', array(
 						'pagination'=>array(
 							'pageSize'=> 3,
@@ -49,10 +55,23 @@ class IssueSearcher extends CPortlet
 		}
 		else 
 		{
+			$criteria=new CDbCriteria;
+			
+			if(Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id))
+			{
+				$criteria->condition = 't.reporter="' . Yii::app()->user->name . '"';
+			}
+			
+			if(!isset(Yii::app()->user->id))
+			{
+				$criteria->addCondition("t.id = 'N/A'", 'AND');
+			}
+			
 			$dataProvider=new CActiveDataProvider('IssueTracker', array(
 					'pagination'=>array(
 						'pageSize'=>3
 					),
+					'criteria'=>$criteria,
 				));
 		}
 		

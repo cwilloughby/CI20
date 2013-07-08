@@ -61,7 +61,7 @@ class UserInfo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			// These fields are only required when creating a new user.
-			array('firstname, lastname, username, password, email, phoneext, hiredate, active', 'required', 'on'=>'insert'),
+			array('firstname, lastname, username, password, email, phoneext, active', 'required', 'on'=>'insert'),
 			// Only a username is required when requesting a password recovery email.
 			array('username', 'required', 'on'=>'request'),
 			// Only the old password, the new password, and the new password repeated are required on the password change form.

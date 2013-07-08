@@ -22,7 +22,7 @@ class RegisterForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('firstname, lastname, email, phoneext, departmentid, hiredate', 'required'),
+			array('firstname, lastname, email, phoneext, departmentid', 'required'),
 			array('email', 'email'),
 			array('email', 'doesNotExist'),
 			array('phoneext', 'numerical', 'integerOnly'=>true),

@@ -13,6 +13,10 @@ class NewsReport extends CPortlet
 	 */
 	protected function renderContent()
 	{
+		if(Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id) || (!isset(Yii::app()->user->id)))
+		{
+			$this->type = "N/A";
+		}
 		// Grab all the tips and conditionals of the selected subject.
 		$news = Yii::app()->db->createCommand()
 			->select('ci_news.newsid, ci_news.news, ci_news.date')

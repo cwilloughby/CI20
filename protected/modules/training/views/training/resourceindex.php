@@ -47,7 +47,7 @@ $this->widget('VideoList', array(
 	'columnCount'=>2
 ));
 ?>
-<h3><?php echo "TBD"; ?></h3>
+<h3><?php echo "Office Reference Sheets"; ?></h3>
 <?php
 $this->widget('VideoList', array(
 	'dataProvider'=>$pageProvider,
