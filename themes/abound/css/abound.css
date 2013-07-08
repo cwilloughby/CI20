@@ -846,3 +846,7 @@ span.required
 	cursor: -moz-grabbing;
 	cursor: -webkit-grabbing
 }
+
+.photolinks{
+	max-width: 100px;
+}

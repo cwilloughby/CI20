@@ -35,7 +35,7 @@ $this->widget('VideoList', array(
 	'dataProvider'=>$videoProvider,
 	'itemView'=>'_viewResource',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-	'columnCount'=>2
+	'columnCount'=>5
 ));
 ?>
 <h3><?php echo "Documents"; ?></h3>
@@ -44,7 +44,7 @@ $this->widget('VideoList', array(
 	'dataProvider'=>$docProvider,
 	'itemView'=>'_viewResource',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-	'columnCount'=>2
+	'columnCount'=>5
 ));
 ?>
 <h3><?php echo "Office Reference Sheets"; ?></h3>
@@ -53,6 +53,6 @@ $this->widget('VideoList', array(
 	'dataProvider'=>$pageProvider,
 	'itemView'=>'_viewResource',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-	'columnCount'=>2
+	'columnCount'=>5
 ));
 ?>
