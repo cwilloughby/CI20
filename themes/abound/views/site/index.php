@@ -216,7 +216,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="themes/abound/img/switch.png" class="switcher" style="float:right" onclick="issueswitcher();">',
+			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" class="switcher" style="float:right" onclick="issueswitcher();">',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'issuetracker'    
