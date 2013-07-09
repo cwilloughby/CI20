@@ -8,7 +8,7 @@
           </a>
      
           <!-- Be sure to leave the brand out there if you want it shown -->
-          <a class="brand" href='<?php echo Yii::app()->baseUrl ;?>'>CI2.0</a>
+          <a class="brand" href='/'>CI2.0</a>
           
           <div class="nav-collapse">
 			<?php $this->widget('zii.widgets.CMenu',array(
@@ -17,7 +17,7 @@
 					'itemCssClass'=>'item-test',
                     'encodeLabel'=>false,
 					'items'=>array(
-						array('label'=>'Home', 'url'=>array(Yii::app()->baseUrl), 'itemOptions'=>array('class'=>'menu-icon-home')),
+						array('label'=>'Home', 'url'=>'/', 'itemOptions'=>array('class'=>'menu-icon-home')),
 						array(
 							'label'=>'Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 							'visible'=>!Yii::app()->user->isGuest,

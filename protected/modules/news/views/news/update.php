@@ -9,11 +9,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search News Posts', 'url'=>array('admin')),
-	array('label'=>'<i class="icon icon-file"></i> Create News Post', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-search"></i> Search News Posts', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-file"></i> Create News Post', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
 	array('label'=>'<i class="icon icon-list-alt"></i> List News Posts', 'url'=>array('index')),
 	array('label'=>'<i class="icon icon-zoom-in"></i> View News Post', 'url'=>array('view', 'id'=>$model->newsid)),
-	array('label'=>'<i class="icon icon-edit"></i> Update News Post', 'url'=>array('update', 'id'=>$model->newsid)),
+	array('label'=>'<i class="icon icon-edit"></i> Update News Post', 'url'=>array('update', 'id'=>$model->newsid), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
 );
 ?>
 
