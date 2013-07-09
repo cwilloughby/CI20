@@ -765,64 +765,82 @@ span.required
 }
 
 #weather {
-    
-    background-image: url("/themes/abound/img/weather1.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-lightblue.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #lastlogin {
-    border-color: black;
+    border-color: #999999;
     border-style: solid;
-    border-width: 2px;
-    background-image: url("/themes/abound/img/bg-lightblue.jpg");
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-lightblue.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #quicklinks {
-   
-    background-image: url("/themes/abound/img/bg-blue.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-gray.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #clerknews {
-  
-    background-image: url("/themes/abound/img/bg-bluegradient2.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-gray.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #itnews {
-    
-    background-image: url("/themes/abound/img/itnews.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-gray.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #training {
-   
-    background-image: url("/themes/abound/img/bg-blue.jpg");
+   border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-gray.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #docmanager {
-    
-    background-image: url("/themes/abound/img/bg-gray.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-gray.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #troubleticket {
-    
-    background-image: url("/themes/abound/img/bg-drkgray.png");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-drkgray.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #issuetracker {
-   
-    background-image: url("/themes/abound/img/bg-green.jpg");
+   border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-green.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 #paperless {
-    
-    background-image: url("/themes/abound/img/bg-yellow.jpg");
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("/ci20/themes/abound/img/bg-yellow.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -844,5 +862,11 @@ span.required
 .grabby:active {
 	cursor: move;
 	cursor: -moz-grabbing;
-	cursor: -webkit-grabbing
+	cursor: -webkit-grabbing;
+}
+#tickettitle{
+    font-weight: bold;
+}
+#issuetitle{
+    font-weight: bold;
 }
