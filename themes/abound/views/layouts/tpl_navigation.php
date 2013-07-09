@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-     
+     test
           <!-- Be sure to leave the brand out there if you want it shown -->
           <a class="brand" href='<?php echo Yii::app()->baseUrl ;?>'>CI2.0</a>
           
