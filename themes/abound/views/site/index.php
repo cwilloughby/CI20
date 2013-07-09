@@ -29,7 +29,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 			$this->endWidget();
 
 			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'<span class="icon-picture"></span> 12 Hour Forcast',
+				'title'=>'<span class="icon-picture"></span> <b>12 Hour Forcast</b>',
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border small-portlet',
                                 'id'=>'weather',
@@ -39,7 +39,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 				<?php $this->widget('WeatherReport'); ?>
 			</div>
 			<div class="imgdiv">
-				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/img/weather2.jpg' class='overimage-small'>"; ?>
+				<?php echo "<img src='" . Yii::app()->theme->baseUrl . "/img/weather1.jpg' class='overimage-small'>"; ?>
 			</div>
 			<?php
 			$this->endWidget();
@@ -59,7 +59,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-bullhorn"></span> Criminal Court Clerk News',
+			'title'=>'<span class="icon-bullhorn"></span><b> Criminal Court Clerk News</b>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'clerknews'
@@ -78,12 +78,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 		<div class="sidebar-nav">
 			<?php 
 			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'<span class="icon-th-list"></span> Quick Links',
+				'title'=>'<span class="icon-th-list"></span> <b>Quick Links</b>',
 				'titleCssClass'=>'',
 				'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                                 'id'=>'quicklinks'
 			));?>
-			<div class="textdiv">
+			<div class="textdiv bigwhitefont">
 				<?php 
 				if(!Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id) || (!isset(Yii::app()->user->id)))
 				{
@@ -130,12 +130,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-file"></span> Document Manager',
+			'title'=>'<span class="icon-file"></span> <b>Document Manager</b>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                        'id'=>'docmanager'
 		));?>
-		<div class="textdiv">
+		<div class="textdiv bigwhitefont">
 			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
 		</div>
 		<div class="imgdiv">
@@ -146,12 +146,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-cog"></span> IT News',
+			'title'=>'<span class="icon-cog"></span><b> IT News</b>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'itnews'
 		));?>
-		<div class="textdiv">
+		<div class="textdiv bigwhitefont">
 			<?php $this->widget('NewsReport', array('type'=>'IT News'));?>
 		</div>
 		<div class="imgdiv">
@@ -162,12 +162,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span3">
 		<?php 
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-book"></span> Training Resources',
+			'title'=>'<span class="icon-book"></span> <b>Training Resources</b>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border medium-portlet',
                         'id'=>'training'
 		));?>
-		<div class="textdiv">
+		<div class="textdiv bigwhitefont">
 			<?php $this->widget('Training');?>
 		</div>
 		<div class="imgdiv">
@@ -181,19 +181,19 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-tag"></span><span id="tickettitle">My Open Tickets</span><img class="switcher icon-retweet"  style="float:right" onclick="ticketswitcher();"></img>',
+			'title'=>'<span class="icon-tag"></span><span id="tickettitle"><b>My Open Tickets</b></span><img src="themes/abound/img/switch.png" class="switcher" style="float:right" onclick="ticketswitcher();">',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'troubleticket'
 		));
 		?>
-		<div id="myopentickets">
+            <div id="myopentickets" class="bigwhitefont">
 			<?php $this->widget('MyTickets');?>
         </div>
-		<div id="createticket">
+		<div id="createticket" class="bigwhitefont">
 			<?php $this->widget('CreateTicketWid'); ?>
         </div>
-		<div id="myclosedtickets">
+		<div id="myclosedtickets" class="bigwhitefont">
 			<?php $this->widget('MyTickets', array('status'=>'Closed'));?>
         </div>
         <?php $this->endWidget(); ?>
@@ -202,27 +202,27 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 	  <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-print"></span>Project Paperless',
+			'title'=>'<span class="icon-print"></span><b>Project Paperless</b>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'paperless'
 		));
 		?>
         
-        <div class="stacked-bars-chart" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
+        <div class="stacked-bars-chart bigwhitefont" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
         
         <?php $this->endWidget(); ?>
 	</div><!--/span-->
 	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-search"></span><span id="issuetitle">Search Issues</span><img class="switcher icon-retweet" style="float:right" onclick="issueswitcher();"></img>',
+			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="themes/abound/img/switch.png" class="switcher" style="float:right" onclick="issueswitcher();">',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'issuetracker'    
 		));
 		?>
-        <div id="issuesearcher">
+        <div id="issuesearcher" class="bigwhitefont">
 			<?php $this->widget('IssueSearcher');?>
         </div>
 		<div id="allissues">
