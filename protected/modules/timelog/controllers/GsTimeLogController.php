@@ -54,31 +54,37 @@ class GsTimeLogController extends Controller
 			// Prepare the queries for the regular logs.
 			foreach($this->getLog1() as $value)
 			{
-				$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
-					FIELDS TERMINATED BY ','
-					(@eType, @cName, @uName, @date, @eTime)
-					SET username = trim(@uName),
-					computername = trim(@cName),
-					eventtype = trim(@eType),
-					eventtime = trim(@eTime),
-					eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
-		
-				$commands[$i] = Yii::app()->db->createCommand($sql);
-				$i++;
+				if(filesize($value) != 0)
+				{
+					$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
+						FIELDS TERMINATED BY ','
+						(@eType, @cName, @uName, @date, @eTime)
+						SET username = trim(@uName),
+						computername = trim(@cName),
+						eventtype = trim(@eType),
+						eventtime = trim(@eTime),
+						eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
+
+					$commands[$i] = Yii::app()->db->createCommand($sql);
+					$i++;
+				}
 			}
 			foreach($this->getLog2() as $value)
 			{
-				$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
-					FIELDS TERMINATED BY ','
-					(@eType, @uName, @cName, @date, @eTime)
-					SET username = trim(@uName),
-					computername = trim(@cName),
-					eventtype = trim(@eType),
-					eventtime = trim(@eTime),
-					eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
+				if(filesize($value) != 0)
+				{
+					$sql = "LOAD DATA INFILE '" . $value . "' INTO TABLE ci_gs_time_log
+						FIELDS TERMINATED BY ','
+						(@eType, @uName, @cName, @date, @eTime)
+						SET username = trim(@uName),
+						computername = trim(@cName),
+						eventtype = trim(@eType),
+						eventtime = trim(@eTime),
+						eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
 
-				$commands[$i] = Yii::app()->db->createCommand($sql);
-				$i++;
+					$commands[$i] = Yii::app()->db->createCommand($sql);
+					$i++;
+				}
 			}
 			
 			foreach($commands as $command)
