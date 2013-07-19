@@ -9,12 +9,12 @@ class GsTimeLogController extends Controller
 	public $layout='//layouts/column2';
 	
 	// Store the locations of the Logon.csv and Logoff.csv files.
-	private $log1 = array(1 => 'C:/Users/cwilloughby/Desktop/In/logon.csv', 
-						  2 => 'C:/Users/cwilloughby/Desktop/In/Logoff.csv');
+	private $log1 = array(1 => '//GSCT4482/Audit_User_1$/logon.csv', 
+						  2 => '//GSCT4482/Audit_User_1$/Logoff.csv');
 	
 	// Store the locations of the Logon_Probation.csv and Logoff_Probation.csv files.
-	private $log2 = array(1 => 'C:/Users/cwilloughby/Desktop/In/Logon_Probation.csv',
-						  2 => 'C:/Users/cwilloughby/Desktop/In/Logoff_Probation.csv');
+	private $log2 = array(1 => '//GSCT4482/Audit_User_1$/Logon_Probation.csv',
+						  2 => '//GSCT4482/Audit_User_1$/Logoff_Probation.csv');
 	
 	/**
 	 * @return array action filters
@@ -168,8 +168,11 @@ class GsTimeLogController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		// Auto import any new events in the text file to the database.
-		//$this->actionCreate();
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+		{
+			// Auto import any new events in the text file to the database.
+			$this->actionCreate();
+		}
 
 		// If the export button on the search form was clicked.
 		if(Yii::app()->request->getParam('export'))
