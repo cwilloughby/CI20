@@ -18,7 +18,12 @@ class VideosController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	function actions()
+	{
+		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'Videos'));
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -103,20 +108,6 @@ class VideosController extends Controller
 			'video'=>$video,
 			'file'=>$file,
 		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
