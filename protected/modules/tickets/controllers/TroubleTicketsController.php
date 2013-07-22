@@ -18,7 +18,13 @@ class TroubleTicketsController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	// External Actions
+	function actions()
+	{
+		return array(
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'TroubleTickets')
+		);
+	}
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -112,26 +118,6 @@ class TroubleTicketsController extends Controller
 		$this->render('create',array(
 			'ticket'=>$ticket,
 			'file'=>$file,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('TroubleTickets'))
-		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->ticketid));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
 		));
 	}
 

@@ -19,20 +19,14 @@ class NewsController extends Controller
 		);
 	}
 	
+	// External Actions
 	function actions()
 	{
-		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'News'));
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		return array(
+			'view' => array('class' => 'UpdateAction', 'modelClass' => 'News'),
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'News'),
+			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'News')
+		);
 	}
 
 	/**
@@ -50,26 +44,6 @@ class NewsController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('News'))
-		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->newsid));
-		}
-
-		$this->render('update',array(
 			'model'=>$model,
 		));
 	}

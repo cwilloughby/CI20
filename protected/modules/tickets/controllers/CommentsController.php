@@ -25,6 +25,7 @@ class CommentsController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'Comments'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Comments'),
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'Comments'),
 		);
 	}
 
@@ -71,29 +72,6 @@ class CommentsController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model, 'file'=>$file
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if($model->attributes = Yii::app()->request->getPost('Comments'))
-		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->commentid));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
 		));
 	}
 
