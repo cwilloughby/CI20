@@ -20,7 +20,15 @@ class TimeLogController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	// External Actions
+	function actions()
+	{
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'TimeLog'),
+		);
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -74,17 +82,6 @@ class TimeLogController extends Controller
 			$transaction->rollback();
 		}
 		return;
-	}
-	
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('TimeLog');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**

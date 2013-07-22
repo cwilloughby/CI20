@@ -26,7 +26,15 @@ class GsTimeLogController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	// External Actions
+	function actions()
+	{
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'GsTimeLog'),
+		);
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -141,31 +149,6 @@ class GsTimeLogController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('GsTimeLog');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
 		));
 	}
 

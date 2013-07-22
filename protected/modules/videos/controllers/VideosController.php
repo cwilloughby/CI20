@@ -19,9 +19,13 @@ class VideosController extends Controller
 		);
 	}
 	
+	// External Actions
 	function actions()
 	{
-		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'Videos'));
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'Videos'),
+			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Videos')
+		);
 	}
 	
 	/**
@@ -107,17 +111,6 @@ class VideosController extends Controller
 		$this->render('update',array(
 			'video'=>$video,
 			'file'=>$file,
-		));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Videos');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
 		));
 	}
 

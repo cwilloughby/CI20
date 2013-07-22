@@ -17,7 +17,15 @@ class UserInfoController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	// External Actions
+	function actions()
+	{
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'UserInfo'),
+		);
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -124,17 +132,6 @@ class UserInfoController extends Controller
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->userid));
-	}
-	
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('UserInfo');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**

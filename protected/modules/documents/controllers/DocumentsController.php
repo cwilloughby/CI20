@@ -19,9 +19,13 @@ class DocumentsController extends Controller
 		);
 	}
 	
+	// External Actions
 	function actions()
 	{
-		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'Documents'));
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'Documents'),
+			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Documents')
+		);
 	}
 	
 	/**
@@ -71,17 +75,6 @@ class DocumentsController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Documents');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
 		));
 	}
 

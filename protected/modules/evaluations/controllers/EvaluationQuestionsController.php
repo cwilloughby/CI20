@@ -18,7 +18,15 @@ class EvaluationQuestionsController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	// External Actions
+	function actions()
+	{
+		return array(
+			'index' => array('class' => 'IndexAction', 'modelClass' => 'EvaluationQuestions'),
+		);
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -97,17 +105,6 @@ class EvaluationQuestionsController extends Controller
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->questionid));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('EvaluationQuestions');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
 	}
 
 	/**
