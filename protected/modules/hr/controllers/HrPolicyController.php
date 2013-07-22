@@ -21,6 +21,7 @@ class HrPolicyController extends Controller
 	{
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'HrPolicy'),
+			'updatepolicy' => array('class' => 'UpdateAction', 'modelClass' => 'HrPolicy'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy')
 		);
 	}
@@ -64,25 +65,6 @@ class HrPolicyController extends Controller
 		}
 
 		$this->render('createSection',array(
-			'model'=>$model,
-		));
-	}
-	
-	/**
-	 * Updates the policy model.
-	 * @param integer $id the ID of the policy to be updated
-	 */
-	public function actionUpdatePolicy($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('HrPolicy'))
-		{
-			if($model->save())
-				$this->redirect('index');
-		}
-
-		$this->render('update',array(
 			'model'=>$model,
 		));
 	}

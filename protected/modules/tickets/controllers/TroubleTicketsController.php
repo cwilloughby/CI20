@@ -18,6 +18,7 @@ class TroubleTicketsController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
+	
 	// External Actions
 	function actions()
 	{
@@ -25,6 +26,7 @@ class TroubleTicketsController extends Controller
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'TroubleTickets')
 		);
 	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed

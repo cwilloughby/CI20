@@ -285,19 +285,6 @@ class GsTimeLogController extends Controller
 	}
 	
 	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=GsTimeLog::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-	
-	/**
 	 * This function returns the array that contains the path to the files
 	 * that the GPO writes to for the basic logon and logoff events.
 	 */

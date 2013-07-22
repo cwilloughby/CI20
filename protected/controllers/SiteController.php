@@ -10,21 +10,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// Find all of the news types.
-		$types = CHtml::listData(NewsType::model()->findAll(), 'typeid', 'type');
-		
-		// Grab the most recent news for each type of news.
-		foreach($types as $key => $value)
-		{
-			$out[$value] = News::model()->find(array(
-				'condition'=>'typeid=:id', 
-				'order'=>'date DESC', 
-				'params'=>array(':id'=>$key)))->getAttribute('news');
-		}
-		
-		$this->render('index',array(
-			'news'=>$out,
-		));
+		$this->render('index');
 	}
 
 	/**
