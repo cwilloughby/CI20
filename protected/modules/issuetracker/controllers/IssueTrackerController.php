@@ -38,9 +38,8 @@ class IssueTrackerController extends Controller
 	{
 		$model=new IssueTracker;
 
-		if(isset($_POST['IssueTracker']))
+		if($model->attributes = Yii::app()->request->getPost('IssueTracker'))
 		{
-			$model->attributes=$_POST['IssueTracker'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -59,9 +58,8 @@ class IssueTrackerController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['IssueTracker']))
+		if($model->attributes = Yii::app()->request->getPost('IssueTracker'))
 		{
-			$model->attributes=$_POST['IssueTracker'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

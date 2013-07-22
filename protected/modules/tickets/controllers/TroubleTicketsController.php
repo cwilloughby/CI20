@@ -55,9 +55,8 @@ class TroubleTicketsController extends Controller
 			Yii::app()->end();
 		}
 		
-		if(isset($_POST['TroubleTickets']))
+		if($ticket->attributes = Yii::app()->request->getPost('TroubleTickets'))
 		{
-			$ticket->attributes=$_POST['TroubleTickets'];
 			$file->attributes=$_POST['Documents'];
 			
 			// Validate BOTH $ticket and $file at the same time.
@@ -125,9 +124,8 @@ class TroubleTicketsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['TroubleTickets']))
+		if($model->attributes = Yii::app()->request->getPost('TroubleTickets'))
 		{
-			$model->attributes=$_POST['TroubleTickets'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->ticketid));
 		}
@@ -148,9 +146,8 @@ class TroubleTicketsController extends Controller
 		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
                  array(':selected_id'=>$id));
 		
-		if(isset($_POST['TroubleTickets']))
+		if($model->attributes = Yii::app()->request->getPost('TroubleTickets'))
 		{
-			$model->attributes=$_POST['TroubleTickets'];
 			$model->closedbyuserid = Yii::app()->user->id;
 			
 			if($model->update())
@@ -442,9 +439,8 @@ class TroubleTicketsController extends Controller
 		$comment=new Comments;
 		$file=new Documents;
 		
-		if(isset($_POST['Comments']))
+		if($comment->attributes = Yii::app()->request->getPost('Comments'))
 		{
-			$comment->attributes=$_POST['Comments'];
 			$file->attributes=$_POST['Documents'];
 			
 			// validate BOTH $comment and $file at the same time

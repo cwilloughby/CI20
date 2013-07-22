@@ -19,9 +19,8 @@ class RegistrationController extends Controller
 	{
 		$model = new RegisterForm();
 
-		if(isset($_POST['RegisterForm']))
+		if($model->attributes = Yii::app()->request->getPost('RegisterForm'))
 		{
-			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate())
 			{		
 				// Remove the flash message so the email will work again.

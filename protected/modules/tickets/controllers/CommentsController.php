@@ -42,9 +42,8 @@ class CommentsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Comments']))
+		if($model->attributes = Yii::app()->request->getPost('Comments'))
 		{
-			$model->attributes=$_POST['Comments'];
 			$file->attributes=$_POST['Documents'];
 			
 			// validate BOTH $model and $file at the same time
@@ -89,9 +88,8 @@ class CommentsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Comments']))
+		if($model->attributes = Yii::app()->request->getPost('Comments'))
 		{
-			$model->attributes=$_POST['Comments'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->commentid));
 		}

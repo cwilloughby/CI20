@@ -72,10 +72,8 @@ class EvaluationsController extends Controller
 		// Find all departments that the current user is the supervisor of.
 		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
 		
-		if(isset($_POST['Evaluations']))
+		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
 		{
-			$model->attributes=$_POST['Evaluations'];
-
 			if($model->save())
 			{
 				// Record the evaluation create event.
@@ -155,9 +153,8 @@ class EvaluationsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['Evaluations']))
+		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
 		{
-			$model->attributes=$_POST['Evaluations'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->evaluationid));
 		}

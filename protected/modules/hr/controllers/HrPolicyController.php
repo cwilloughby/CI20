@@ -35,9 +35,8 @@ class HrPolicyController extends Controller
 	{
 		$model=new HrPolicy;
 
-		if(isset($_POST['HrPolicy']))
+		if($model->attributes = Yii::app()->request->getPost('HrPolicy'))
 		{
-			$model->attributes=$_POST['HrPolicy'];
 			if($model->save())
 				$this->redirect('index');
 		}
@@ -54,9 +53,8 @@ class HrPolicyController extends Controller
 	{
 		$model=new HrSections;
 
-		if(isset($_POST['HrSections']))
+		if($model->attributes = Yii::app()->request->getPost('HrSections'))
 		{
-			$model->attributes=$_POST['HrSections'];
 			$temp = Yii::app()->db->createCommand()
 				->select('MAX(sectionid)')
 				->from('ci_hr_sections')
@@ -81,10 +79,8 @@ class HrPolicyController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['HrPolicy']))
+		if($model->attributes = Yii::app()->request->getPost('HrPolicy'))
 		{
-			$model->attributes=$_POST['HrPolicy'];
-			
 			if($model->save())
 				$this->redirect('index');
 		}
@@ -103,10 +99,8 @@ class HrPolicyController extends Controller
 	{
 		$model=HrSections::model()->findByPk(array('policyid' => $id1, 'sectionid' =>$id2));
 
-		if(isset($_POST['HrSections']))
+		if($model->attributes = Yii::app()->request->getPost('HrSections'))
 		{
-			$model->attributes=$_POST['HrSections'];
-			
 			if($model->save())
 				$this->redirect('index');
 		}

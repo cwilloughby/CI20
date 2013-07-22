@@ -38,9 +38,8 @@ class DocumentsController extends Controller
 	{
 		$model=new Documents;
 
-		if(isset($_POST['Documents']))
+		if($model->attributes = Yii::app()->request->getPost('Documents'))
 		{
-			$model->attributes=$_POST['Documents'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->documentid));
 		}
@@ -59,9 +58,8 @@ class DocumentsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['Documents']))
+		if($model->attributes = Yii::app()->request->getPost('Documents'))
 		{
-			$model->attributes=$_POST['Documents'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->documentid));
 		}

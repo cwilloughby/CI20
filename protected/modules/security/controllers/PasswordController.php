@@ -19,9 +19,8 @@ class PasswordController extends Controller
 	{
 		$model=new UserInfo;
 
-		if(isset($_POST['UserInfo']))
+		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
-			$model->attributes=$_POST['UserInfo'];
 			// Use different validation rules.
 			$model->scenario = 'request';
 			
@@ -57,9 +56,8 @@ class PasswordController extends Controller
 			$data = $sec->decrypt(urldecode($_GET["username"]));
 			$model->username = $data;
 
-			if(isset($_POST['UserInfo']))
+			if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 			{
-				$model->attributes=$_POST['UserInfo'];
 				// Use different validation rules.
 				$model->scenario = 'recovery';
 
@@ -99,9 +97,8 @@ class PasswordController extends Controller
 	{
 		$model=new UserInfo;
 
-		if(isset($_POST['UserInfo']))
+		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
-			$model->attributes=$_POST['UserInfo'];
 			// Use different validation rules.
 			$model->scenario = 'change';
 			

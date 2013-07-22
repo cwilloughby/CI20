@@ -41,9 +41,8 @@ class VideosController extends Controller
 		
 		$file->scenario = 'training';
 		
-		if(isset($_POST['Videos']))
+		if($video->attributes = Yii::app()->request->getPost('Videos'))
 		{
-			$video->attributes=$_POST['Videos'];
 			$file->video = CUploadedFile::getInstance($file,'video');
 			
 			// Validate both $video and $file at the same time.
@@ -79,9 +78,8 @@ class VideosController extends Controller
 		$video = $this->loadModel($id);
 		$file = Documents::model()->findByPk($video->documentid);
 		
-		if(isset($_POST['Videos']))
+		if($video->attributes = Yii::app()->request->getPost('Videos'))
 		{
-			$video->attributes=$_POST['Videos'];
 			$file->video = CUploadedFile::getInstance($file,'video');
 			
 			// Validate both $video and $file at the same time.

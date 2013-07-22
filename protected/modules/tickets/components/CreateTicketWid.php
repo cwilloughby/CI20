@@ -20,8 +20,7 @@ class CreateTicketWid extends CPortlet {
                 Yii::app()->end();
             }
 
-            if (isset($_POST['TroubleTickets'])) {
-                $ticket->attributes = $_POST['TroubleTickets'];
+            if($ticket->attributes = Yii::app()->request->getPost('TroubleTickets')) {
                 $file->attributes = $_POST['Documents'];
 
                 // Validate BOTH $ticket and $file at the same time.
@@ -96,5 +95,4 @@ class CreateTicketWid extends CPortlet {
         }
         return $text;
     }
-
 }

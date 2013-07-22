@@ -15,18 +15,12 @@ class CentriodController extends Controller
 	{
 		$model = new Centriod;
 		
-		if(isset($_POST['Centriod']))
+		if($model->attributes = Yii::app()->request->getPost('Centriod'))
 		{
-			$model->attributes = $_POST['Centriod'];
-			
 			if($model->validate())
-			{
 				$results = $model->reportFiles();
-			}
 			else
-			{
 				$results = false;
-			}
 		}
 		else
 		{

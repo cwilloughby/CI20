@@ -44,9 +44,8 @@ class CrtCaseController extends Controller
 	{
 		$model=new CrtCase;
 
-		if(isset($_POST['CrtCase']))
+		if($model->attributes = Yii::app()->request->getPost('CrtCase'))
 		{
-			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
 			{
 				// Record the court case create event.
@@ -75,9 +74,8 @@ class CrtCaseController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['CrtCase']))
+		if($model->attributes = Yii::app()->request->getPost('CrtCase'))
 		{
-			$model->attributes=$_POST['CrtCase'];
 			if($model->save())
 			{
 				// Record the court case update event.

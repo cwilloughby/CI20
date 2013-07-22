@@ -38,9 +38,8 @@ class NewsController extends Controller
 	{
 		$model=new News;
 
-		if(isset($_POST['News']))
+		if($model->attributes = Yii::app()->request->getPost('News'))
 		{
-			$model->attributes=$_POST['News'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->newsid));
 		}
@@ -59,9 +58,8 @@ class NewsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['News']))
+		if($model->attributes = Yii::app()->request->getPost('News'))
 		{
-			$model->attributes=$_POST['News'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->newsid));
 		}

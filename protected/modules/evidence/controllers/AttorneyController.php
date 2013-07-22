@@ -44,9 +44,8 @@ class AttorneyController extends Controller
 	{
 		$model=new Attorney;
 
-		if(isset($_POST['Attorney']))
+		if($model->attributes = Yii::app()->request->getPost('Attorney'))
 		{
-			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
 				// Record the attorney create event.
@@ -75,9 +74,8 @@ class AttorneyController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['Attorney']))
+		if($model->attributes = Yii::app()->request->getPost('Attorney'))
 		{
-			$model->attributes=$_POST['Attorney'];
 			if($model->save())
 			{
 				// Record the attorney update event.

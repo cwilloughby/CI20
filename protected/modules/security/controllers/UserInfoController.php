@@ -50,9 +50,8 @@ class UserInfoController extends Controller
 			$model->hiredate = urldecode($_GET['hiredate']);
 		}
 		
-		if(isset($_POST['UserInfo']))
+		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
-			$model->attributes=$_POST['UserInfo'];
 			$model->password = sha1($model->username);
 			$model->departmentid += 1;
 			$model->active = true;
@@ -90,9 +89,8 @@ class UserInfoController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['UserInfo']))
+		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
-			$model->attributes=$_POST['UserInfo'];
 			if($model->update())
 				$this->redirect(array('view','id'=>$model->userid));
 		}

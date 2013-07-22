@@ -66,9 +66,8 @@ class EvidenceController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['Evidence']))
+		if($model->attributes = Yii::app()->request->getPost('Evidence'))
 		{
-			$model->attributes=$_POST['Evidence'];
 			$model->exhibitlist = $_POST['Evidence']['exhibitlist'];
 			
 			if((int)$model->hearingdate)

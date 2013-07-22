@@ -38,11 +38,10 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model=new EvaluationQuestions;
 		
-		if(isset($_POST['EvaluationQuestions']))
+		if($model->attributes = Yii::app()->request->getPost('EvaluationQuestions'))
 		{
 			// Find the user's department.
 			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-			$model->attributes=$_POST['EvaluationQuestions'];
 			$model->departmentid = $department->departmentid;
 			
 			if($model->save())
@@ -63,9 +62,8 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(isset($_POST['EvaluationQuestions']))
+		if($model->attributes = Yii::app()->request->getPost('EvaluationQuestions'))
 		{
-			$model->attributes=$_POST['EvaluationQuestions'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->questionid));
 		}

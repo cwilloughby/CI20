@@ -44,9 +44,8 @@ class DefendantController extends Controller
 	{
 		$model=new Defendant;
 
-		if(isset($_POST['Defendant']))
+		if($model->attributes = Yii::app()->request->getPost('Defendant'))
 		{
-			$model->attributes=$_POST['Defendant'];
 			if($model->save())
 			{
 				// Record the defendant create event.
@@ -75,12 +74,8 @@ class DefendantController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Defendant']))
+		if($model->attributes = Yii::app()->request->getPost('Defendant'))
 		{
-			$model->attributes=$_POST['Defendant'];
 			if($model->save())
 			{
 				// Record the defendant update event.

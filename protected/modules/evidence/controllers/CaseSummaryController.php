@@ -37,13 +37,11 @@ class CaseSummaryController extends Controller
 		
 		$attorneys = new Attorney('search');
 		$attorneys->unsetAttributes();  // clear any default values
-		if(isset($_GET['Attorney']))
-			$attorneys->attributes=$_GET['Attorney'];
+		$attorneys->attributes = Yii::app()->request->getQuery('Attorney');
 		
 		$evidence=new Evidence('search');
 		$evidence->unsetAttributes();  // clear any default values
-		if(isset($_GET['Evidence']))
-			$evidence->attributes=$_GET['Evidence'];
+		$evidence->attributes = Yii::app()->request->getQuery('Evidence');
 		
 		$this->render('view',array(
 			'case' => $case,
@@ -63,9 +61,8 @@ class CaseSummaryController extends Controller
 		$case = new CrtCase;
 		$attorney = new Attorney;
 		
-		if(isset($_POST['CaseSummary']))
+		if($summary->attributes = Yii::app()->request->getPost('CaseSummary'))
 		{
-			$summary->attributes = $_POST['CaseSummary'];
 			$defendant->attributes = $_POST['Defendant'];
 			$case->attributes = $_POST['CrtCase'];
 			
@@ -127,9 +124,8 @@ class CaseSummaryController extends Controller
 	{
 		$summary = $this->loadModel($id);
 
-		if(isset($_POST['CaseSummary']))
+		if($summary->attributes = Yii::app()->request->getPost('CaseSummary'))
 		{
-			$summary->attributes = $_POST['CaseSummary'];
 			if($summary->save())
 			{
 				// Record the case summary update event.
@@ -190,7 +186,6 @@ class CaseSummaryController extends Controller
 		if(isset($_GET['CaseSummary']))
 		{
 			$model->attributes=$_GET['CaseSummary'];
-			
 			// Convert any provided date into a format that the database understands.
 			if((int)$model->dispodate)
 			{
