@@ -19,18 +19,10 @@ class HrPolicyController extends Controller
 	
 	function actions()
 	{
-		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy'));
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'HrPolicy'),
+			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy')
+		);
 	}
 
 	/**

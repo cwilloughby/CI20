@@ -17,18 +17,15 @@ class LogController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
+	
+	// External Actions
+	function actions()
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'Log'),
+		);
 	}
-
+	
 	/**
 	 * Lists all models.
 	 */

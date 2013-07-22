@@ -31,19 +31,9 @@ class GsTimeLogController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'GsTimeLog'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'GsTimeLog'),
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 	
 	/**

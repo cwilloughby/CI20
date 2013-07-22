@@ -23,19 +23,9 @@ class CommentsController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'Comments'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Comments'),
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 
 	/**

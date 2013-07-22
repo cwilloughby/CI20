@@ -22,19 +22,9 @@ class UserInfoController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'UserInfo'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'UserInfo'),
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 
 	/**

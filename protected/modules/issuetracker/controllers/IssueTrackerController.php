@@ -23,20 +23,10 @@ class IssueTrackerController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'IssueTracker'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'IssueTracker'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'IssueTracker')
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 
 	/**

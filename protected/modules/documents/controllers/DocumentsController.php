@@ -23,20 +23,10 @@ class DocumentsController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'Documents'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Documents'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Documents')
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 
 	/**

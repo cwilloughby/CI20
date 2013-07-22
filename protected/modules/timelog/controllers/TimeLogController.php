@@ -25,19 +25,9 @@ class TimeLogController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'TimeLog'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'TimeLog'),
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
 	}
 	
 	/**
