@@ -37,9 +37,6 @@ class CommentsController extends Controller
 	{
 		$model=new Comments;
 		$file=new Documents;
-		
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if($model->attributes = Yii::app()->request->getPost('Comments'))
 		{

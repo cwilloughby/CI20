@@ -23,8 +23,8 @@
 							'visible'=>!Yii::app()->user->isGuest,
 							'items'=>array(
 								array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
-								array('label'=>'<i class="icon icon-eye-open"></i> View Open Tickets', 'url'=>array('/tickets/troubletickets/index')),
-								array('label'=>'<i class="icon icon-eye-close"></i> View Closed Tickets', 'url'=>array('/tickets/troubletickets/closedindex')),
+								array('label'=>'<i class="icon icon-eye-open"></i> View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
+								array('label'=>'<i class="icon icon-eye-close"></i> View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 								array('label'=>'<i class="icon icon-book"></i> Training Resources', 'url'=>array('/training/training/typeindex')),
 							),
 						),

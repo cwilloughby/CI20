@@ -140,6 +140,7 @@ class TroubleTickets extends CActiveRecord
 	 */
 	public function search()
 	{
+		$this->dateFormatter();
 		$criteria=new CDbCriteria;
 		$criteria->with = array('category', 'subject', 'openedby0', 'closedbyuser');
 		
@@ -186,6 +187,21 @@ class TroubleTickets extends CActiveRecord
 	}
 	
 	/**
+	 * Convert the supplied dates, if any, to the correct format.
+	 */
+	public function dateFormatter()
+	{
+		if((int)$this->opendate)
+		{
+			$this->opendate = date('Y-m-d', strtotime($this->opendate));
+		}
+		if((int)$this->closedate)
+		{
+			$this->closedate = date('Y-m-d', strtotime($this->closedate));
+		}
+	}
+	
+	/**
 	 * Adds a comment to this trouble ticket.
 	 */
 	public function addComment($comment)
@@ -202,5 +218,66 @@ class TroubleTickets extends CActiveRecord
 		}
 		else
 			return false;
+	}
+	
+	/**
+	 * Grab the subjects associated with the selected category.
+	 */
+	public function getSubjects()
+	{
+		// Grab all the subjects of the selected category.
+		$subjects = Yii::app()->db->createCommand()
+			->select('ci_ticket_subjects.subjectid, subjectname')
+			->from('ci_ticket_subjects')
+			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
+			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_GET['categoryid']))
+			->queryAll();
+		
+		// Put the subjects into a list that is compatible with CHtml::tag
+		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
+		echo CHtml::tag('option',array('value' => ''), CHtml::encode('Select a subject'),true);
+		
+		// Put each subject into the dropdown box.
+		foreach($data as $value => $name) {
+			echo CHtml::tag('option', array('value' => $value), $name,true);
+		}
+	}
+	
+	/**
+	 * Grab the tips and conditional textboxes associated with the selected subject.
+	 */
+	public function getTipsAndConditions()
+	{
+		// Grab all the tips and conditionals of the selected subject.
+		$tipsAndConditions = Yii::app()->db->createCommand()
+			->select('ci_tips.tipid, ci_tips.tip, ci_ticket_conditionals.label')
+			->from('ci_tips')
+			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
+			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
+			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
+			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
+			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_GET['subjectid']))
+			->queryAll();
+
+		// Put the tips into a list that is compatible with CHtml::ListBox
+		$tipsData = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
+		
+		// Output the tips.
+		foreach($tipsData as $tip)
+			echo CHtml::label($tip,$tip);
+
+		echo "<br/>";
+		// Put the conditionals into a list that is compatible with CHtml::label and CHtml::textField
+		$conditionalData = CHtml::listData($tipsAndConditions, 'label', 'label');
+		
+		// Output each conditional textbox and its label.
+		foreach($conditionalData as $value => $name)
+		{
+			if(isset($name))
+			{
+				echo CHtml::label($value,$name, array('required' => true));
+				echo CHtml::textField($value,'', array('required' => true));
+			}
+		}
 	}
 }

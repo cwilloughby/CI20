@@ -23,29 +23,10 @@ class TroubleTicketsController extends Controller
 	function actions()
 	{
 		return array(
+			'view' => array('class' => 'ViewAction', 'modelClass' => 'TroubleTickets'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'TroubleTickets'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'TroubleTickets')
 		);
-	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		// Load the ticket.
-		$ticket=$this->loadModel($id);
-		// Load all comments on that ticket.
-		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
-                 array(':selected_id'=>$id));
-		// Setup the new comment form.
-		$comment=$this->createComment($ticket);
-		
-		$this->render('view',array(
-			'model'=>$ticket,
-			'ticketComments'=>$ticketComments,
-			'comment'=>$comment,
-		));
 	}
 	
 	/**
@@ -173,173 +154,63 @@ class TroubleTicketsController extends Controller
 	}
 	
 	/**
-	 * Lists all open trouble tickets.
+	 * Lists all trouble tickets.
 	 */
 	public function actionIndex()
 	{
-		// If the user has an IT role then they can see all open tickets.
+		$status = Yii::app()->request->getQuery('status');
+		if($status != "Open" && $status != "Closed")
+			throw new CHttpException(404);
+		
+		$criteria=new CDbCriteria;
+		
+		// If the user has an IT role, then they can see all open tickets.
 		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
 		{
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=>'closedbyuserid IS NULL'
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
 		}
 		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
-			// If the user is a supervisor.
-			// Find that supervisor's department
+			// If the user is a supervisor, find that supervisor's department
 			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-
-			// Find all users in that department.
+			// Find all userids in that department.
 			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
 					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
-			
-			// Find all the tickets for those users.
+			// Put all those userid's into a string with "," seperating each value.
 			$stringed = join(',', $allUsers);
 			
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=> "closedbyuserid IS NULL AND openedby IN (" . $stringed . ")"
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
+			
+			$criteria->addCondition("openedby IN (" . $stringed . ")");
 		}
 		else 
 		{
-			// Only show tickets that this user has opened.
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=> 'closedbyuserid IS NULL AND openedby= ' . Yii::app()->user->id
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
+			
+			$criteria->addCondition("openedby = :user", array(":user" => Yii::app()->user->id));
 		}
-
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		
+		$dataProvider = new CActiveDataProvider('TroubleTickets', array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>array(
+					'ticketid'=>CSort::SORT_ASC,
+				),
+			)
 		));
-	}
-	
-	/**
-	 * Lists all closed trouble tickets.
-	 */
-	public function actionClosedIndex()
-	{
-		// If the user has an IT role then they can see all closed tickets.
-		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
-		{
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=>'closedbyuserid IS NOT NULL'
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
-		}
-		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
-		{
-			// If the user is a supervisor, find that supervisor's department.
-			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-
-			// Find all users in that department.
-			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
-					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
-			
-			// Find all the tickets for those users.
-			$stringed = join(',', $allUsers);
-			
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=> "closedbyuserid IS NOT NULL AND openedby IN (" . $stringed . ")"
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
-		}
-		else 
-		{
-			// Only show tickets that this user has closed.
-			$dataProvider=new CActiveDataProvider('TroubleTickets', 
-				array(
-					'criteria'=>array(
-						'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
-					),
-					'sort'=>array(
-						'defaultOrder'=>array(
-							'ticketid'=>CSort::SORT_ASC,
-						),
-					),
-				)
-			);
-		}
 		
-		$this->render('closedIndex',array(
+		$this->render('index', array(
 			'dataProvider'=>$dataProvider,
-		));
-	}
-	
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new TroubleTickets('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['TroubleTickets']))
-		{
-			$model->attributes=$_GET['TroubleTickets'];
-			
-			if((int)$model->opendate)
-			{
-				$model->opendate = date('Y-m-d', strtotime($model->opendate));
-			}
-			if((int)$model->closedate)
-			{
-				$model->closedate = date('Y-m-d', strtotime($model->closedate));
-			}
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
+			'status'=>$status
 		));
 	}
 
@@ -362,22 +233,8 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionDynamicsubjects()
 	{	
-		// Grab all the subjects of the selected category.
-		$subjects = Yii::app()->db->createCommand()
-			->select('ci_ticket_subjects.subjectid, subjectname')
-			->from('ci_ticket_subjects')
-			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
-			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_GET['categoryid']))
-			->queryAll();
-		
-		// Put the subjects into a list that is compatible with CHtml::tag
-		$data = CHtml::listData($subjects, 'subjectid', 'subjectname');
-		echo CHtml::tag('option',array('value' => ''), CHtml::encode('Select a subject'),true);
-		
-		// Put each subject into the dropdown box.
-		foreach($data as $value => $name) {
-			echo CHtml::tag('option', array('value' => $value), $name,true);
-		}
+		$model = new TroubleTickets;
+		$model->getSubjects();
 	}
 	
 	/**
@@ -386,80 +243,7 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionDynamictips()
 	{	
-		// Grab all the tips and conditionals of the selected subject.
-		$tipsAndConditions = Yii::app()->db->createCommand()
-			->select('ci_tips.tipid, ci_tips.tip, ci_ticket_conditionals.label')
-			->from('ci_tips')
-			->leftJoin('ci_subject_tips','ci_subject_tips.tipid = ci_tips.tipid')
-			->leftJoin('ci_ticket_subjects','ci_ticket_subjects.subjectid = ci_subject_tips.subjectid')
-			->leftJoin('ci_subject_conditions','ci_subject_conditions.subjectid = ci_ticket_subjects.subjectid')
-			->leftJoin('ci_ticket_conditionals','ci_ticket_conditionals.conditionalid = ci_subject_conditions.conditionalid')
-			->where('ci_subject_tips.subjectid=:id', array(':id'=>$_GET['subjectid']))
-			->queryAll();
-
-		// Put the tips into a list that is compatible with CHtml::ListBox
-		$tipsData = CHtml::listData($tipsAndConditions, 'tipid', 'tip');
-		
-		// Output the tips.
-		foreach($tipsData as $tip)
-			echo CHtml::label($tip,$tip);
-
-		echo "<br/>";
-		// Put the conditionals into a list that is compatible with CHtml::label and CHtml::textField
-		$conditionalData = CHtml::listData($tipsAndConditions, 'label', 'label');
-		
-		// Output each conditional textbox and its label.
-		foreach($conditionalData as $value => $name)
-		{
-			if(isset($name))
-			{
-				echo CHtml::label($value,$name, array('required' => true));
-				echo CHtml::textField($value,'', array('required' => true));
-			}
-		}
-	}
-	
-	/**
-	 * Creates a new comment on an issue
-	 */
-	protected function createComment($ticket)
-	{
-		$comment=new Comments;
-		$file=new Documents;
-		
-		if($comment->attributes = Yii::app()->request->getPost('Comments'))
-		{
-			$file->attributes=$_POST['Documents'];
-			
-			// validate BOTH $comment and $file at the same time
-			$valid=$comment->validate() && $file->validate();
-			
-			if($valid)
-			{
-				$file->attachment=CUploadedFile::getInstance($file,'attachment');
-				$temp = $comment->content;
-				
-				if(isset($file->attachment))
-				{
-					$file->save(false);
-					// This description will only allow the link to work on the website.
-					$comment->content .= "\nAttachment: " 
-						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
-							. $file->uploaddate . '/' . $file->documentname));
-					// This description will only be used for the email so the link will work.
-					$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
-				}
-					
-				$ticket->addComment($comment);
-				
-				$this->redirect(
-					array('/email/email/commentemail',
-						'creator' => $ticket->openedby,
-						'ticketid' => $ticket->ticketid,
-						'content' => $temp,
-					));
-			}
-		}
-		return array($comment,$file);
+		$model = new TroubleTickets;
+		$model->getTipsAndConditions();
 	}
 }

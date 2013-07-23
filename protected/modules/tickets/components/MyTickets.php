@@ -4,7 +4,7 @@
  */
 class MyTickets extends CPortlet
 {
-	public $pageTitle = 'Training';
+	public $pageTitle = 'Tickets';
 	
 	public $status = "Open";
 	
