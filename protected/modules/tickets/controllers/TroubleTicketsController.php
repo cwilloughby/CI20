@@ -14,8 +14,9 @@ class TroubleTicketsController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			'accessControl', // Perform access control for CRUD operations.
+			'postOnly + delete', // We only allow deletion via POST requests.
+			'ajaxOnly + dynamicsubjects, dynamictips', // We only allow these actions to run via AJAX requests.
 		);
 	}
 	

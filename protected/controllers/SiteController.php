@@ -5,6 +5,16 @@ class SiteController extends Controller
 	public $layout='//layouts/column1';
 	
 	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'ajaxOnly + color', // We only allow this action to run via AJAX requests.
+		);
+	}
+	
+	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
