@@ -27,41 +27,11 @@
 	</div>
 	
 	<div class="row">
-		<b>From:</b>
 		<?php
-		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'name'=>'from_date',  // name of post parameter
-			'value'=>(isset(Yii::app()->request->cookies['from_date'])) ? Yii::app()->request->cookies['from_date']->value : '',  // value comes from cookie after submition
-			'options' => array(
-				'showAnim' => 'fold',
-				'dateFormat' => 'mm/dd/yy', 
-				'defaultDate' => $model->eventdate,
-				'changeYear' => true,
-				'changeMonth' => true,
-				'showButtonPanel' => true,
-			),
-			'htmlOptions'=>array(
-				'style'=>'height:20px;'
-			),
-		));
-		?>
-	
-		<b>To:</b>
-		<?php
-		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'name'=>'to_date',
-			'value'=>(isset(Yii::app()->request->cookies['to_date'])) ? Yii::app()->request->cookies['to_date']->value : '',
-			'options' => array(
-				'showAnim' => 'fold',
-				'dateFormat' => 'mm/dd/yy', 
-				'defaultDate' => $model->eventdate,
-				'changeYear' => true,
-				'changeMonth' => true,
-				'showButtonPanel' => true,
-			),
-			'htmlOptions'=>array(
-				'style'=>'height:20px;'
-			),
+		$this->widget('RangeInputField', array(
+			'model' => $model,
+			'attributeFrom' => 'from_date',
+			'attributeTo' => 'to_date',
 		));
 		?>
 	</div>

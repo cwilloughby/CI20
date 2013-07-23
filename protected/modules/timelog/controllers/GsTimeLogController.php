@@ -159,10 +159,6 @@ class GsTimeLogController extends Controller
 			$this->actionExport();
 			Yii::app()->end();
 		}
-		
-		// First unset the cookies for dates.
-		unset(Yii::app()->request->cookies['from_date']);  
-		unset(Yii::app()->request->cookies['to_date']);
 
 		$model = new GsTimeLog('search');  // your model
 		$model->unsetAttributes();  // clear any default values
@@ -177,25 +173,9 @@ class GsTimeLogController extends Controller
 		if(isset($_GET['GsTimeLog']))
 		{
 			$model->attributes=$_GET['GsTimeLog'];
-			
-			if(isset($_GET['from_date']) || isset($_GET['to_date']))
-			{
-				Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
-				Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
-				$model->from_date = $_GET['from_date'];
-				$model->to_date = $_GET['to_date'];
 
-				// If the from_date is set.
-				if((int)$model->from_date)
-				{
-					$model->from_date = date('Y-m-d', strtotime($model->from_date));
-				}
-				// If the to_date is set.
-				if((int)$model->to_date)
-				{
-					$model->to_date = date('Y-m-d', strtotime($model->to_date));
-				}
-			}
+			// If the date range was provided, convert the formats.
+			$model->dateFormatter();
 		}
 
 		$this->render('admin',array(
@@ -231,27 +211,9 @@ class GsTimeLogController extends Controller
 		if(isset($_GET['GsTimeLog']))
 		{
 			$model->attributes=$_GET['GsTimeLog'];
-			
-			if(isset($_GET['from_date']) || isset($_GET['to_date']))
-			{
-				Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_GET['from_date']);  // define cookie for from_date
-				Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_GET['to_date']);
-				$model->from_date = $_GET['from_date'];
-				$model->to_date = $_GET['to_date'];
-				
-				// If the from_date is set.
-				if((int)$model->from_date)
-				{
-					// Convert the date format to the same format that is used in the database.
-					$model->from_date = date('Y-m-d', strtotime($model->from_date));
-				}
-				// If the to_date is set.
-				if((int)$model->to_date)
-				{
-					// Convert the date format to the same format that is used in the database.
-					$model->to_date = date('Y-m-d', strtotime($model->to_date));
-				}
-			}
+
+			// If the date range was provided, convert the formats.
+			$model->dateFormatter();
 		}
 		
 		$dp = $model->search();

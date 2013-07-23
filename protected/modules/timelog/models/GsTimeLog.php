@@ -80,7 +80,23 @@ class GsTimeLog extends CActiveRecord
 			'eventdate' => 'Event Date (MM/DD/YYYY)',
 		);
 	}
-
+	
+	/**
+	 * Convert the supplied dates, if any, to the correct format.
+	 */
+	public function dateFormatter()
+	{
+		if(isset($this->from_date) || isset($this->to_date))
+		{
+			// If the from_date is set, convert the date format to the same format that is used in the database.
+			if((int)$this->from_date)
+				$this->from_date = date('Y-m-d', strtotime($this->from_date));
+			// If the to_date is set, convert the date format to the same format that is used in the database.
+			if((int)$this->to_date)
+				$this->to_date = date('Y-m-d', strtotime($this->to_date));
+		}
+	}
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
