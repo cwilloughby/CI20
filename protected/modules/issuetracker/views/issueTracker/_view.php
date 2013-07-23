@@ -33,27 +33,4 @@
 	<?php echo CHtml::encode($data->assigned); ?>
 	<br />
 
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updated')); ?>:</b>
-	<?php echo CHtml::encode($data->updated); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('originalestimate')); ?>:</b>
-	<?php echo CHtml::encode($data->originalestimate); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('remainingestimate')); ?>:</b>
-	<?php echo CHtml::encode($data->remainingestimate); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('timespent')); ?>:</b>
-	<?php echo CHtml::encode($data->timespent); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('resolution')); ?>:</b>
-	<?php echo CHtml::encode($data->resolution); ?>
-	<br />
-
-	*/ ?>
-
 </div>

@@ -29,5 +29,4 @@
 	<?php echo CHtml::encode($data->event); ?>
 	<br />
 
-
 </div>
