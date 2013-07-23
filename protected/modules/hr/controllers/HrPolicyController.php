@@ -17,10 +17,12 @@ class HrPolicyController extends Controller
 		);
 	}
 	
+	// External Actions
 	function actions()
 	{
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'HrPolicy'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'HrPolicy'),
 			'updatepolicy' => array('class' => 'UpdateAction', 'modelClass' => 'HrPolicy'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy')
 		);
@@ -162,29 +164,6 @@ class HrPolicyController extends Controller
 			'panels'=>$panels,
 			'section'=>$nSection,
 			'policy'=>$nPolicy
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new HrPolicy('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['HrPolicy']))
-			$model->attributes=$_GET['HrPolicy'];
-
-		$this->render('admin',array(
-			'model'=>$model,
 		));
 	}
 

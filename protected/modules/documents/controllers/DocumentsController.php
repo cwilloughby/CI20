@@ -25,6 +25,7 @@ class DocumentsController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'Documents'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Documents'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Documents'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Documents')
 		);
 	}
@@ -64,29 +65,6 @@ class DocumentsController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Documents('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['Documents']))
-			$model->attributes=$_GET['Documents'];
-
-		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}

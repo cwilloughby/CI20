@@ -25,6 +25,7 @@ class IssueTrackerController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'IssueTracker'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'IssueTracker'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'IssueTracker'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'IssueTracker'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'IssueTracker')
 		);
@@ -45,29 +46,6 @@ class IssueTrackerController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new IssueTracker('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['IssueTracker']))
-			$model->attributes=$_GET['IssueTracker'];
-
-		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}

@@ -25,6 +25,7 @@ class EvaluationQuestionsController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'EvaluationQuestions'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'EvaluationQuestions'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'EvaluationQuestions'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'EvaluationQuestions'),
 		);
 	}
@@ -76,29 +77,6 @@ class EvaluationQuestionsController extends Controller
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->questionid));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new EvaluationQuestions('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['EvaluationQuestions']))
-			$model->attributes=$_GET['EvaluationQuestions'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

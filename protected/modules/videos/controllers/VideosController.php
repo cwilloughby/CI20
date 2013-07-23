@@ -25,6 +25,7 @@ class VideosController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'Videos'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Videos'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Videos'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Videos')
 		);
 	}
@@ -101,29 +102,6 @@ class VideosController extends Controller
 		$this->render('update',array(
 			'video'=>$video,
 			'file'=>$file,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Videos('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['Videos']))
-			$model->attributes=$_GET['Videos'];
-
-		$this->render('admin',array(
-			'model'=>$model,
 		));
 	}
 

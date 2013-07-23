@@ -10,7 +10,7 @@ class ViewAction extends CAction
 	function run()
 	{
 		if(empty($_GET[$this->pk]))
-		throw new CHttpException(404);
+			throw new CHttpException(404);
 
 		$model = CActiveRecord::model($this->modelClass)->findByPk($_GET[$this->pk]);
 
