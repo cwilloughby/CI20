@@ -222,7 +222,7 @@ class EmailController extends Controller
 			}
 		}
 		
-		$this->redirect(array('/tickets/troubletickets/index'));
+		$this->redirect(array('/tickets/troubletickets/index?status=Open'));
 	}
 	
 	/**
