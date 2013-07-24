@@ -897,3 +897,7 @@ span.required
 #hrmain span, #hrsub span {
 	vertical-align: inherit;
 }
+
+.pager .next a, .pager .next span {
+	float: left;
+}

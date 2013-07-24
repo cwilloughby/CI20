@@ -22,6 +22,12 @@ $this->menu2=array(
 
 <h1>HR Policies</h1>
 
+<?php if(Yii::app()->user->hasFlash('deleted')):?>
+    <div class="info">
+        <?php echo Yii::app()->user->getFlash('deleted'); ?>
+    </div>
+<?php endif; ?>
+
 <div class="accordion">
 	<?php
 	foreach($panels as $key1 => $value1)
@@ -84,4 +90,10 @@ Yii::app()->clientScript->registerScript('accordionscript',
 		});
 	});',
 CClientScript::POS_READY);
+
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+   CClientScript::POS_READY
+);
 ?>

@@ -41,6 +41,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
+<?php if(Yii::app()->user->hasFlash('deleted')):?>
+    <div class="info">
+        <?php echo Yii::app()->user->getFlash('deleted'); ?>
+    </div>
+<?php endif; ?>
+
 <?php 
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 
@@ -59,4 +65,10 @@ $this->widget('CustomGridView', array(
 			'template'=>'{view}{update}{delete}',
 		),
 	),
-)); ?>
+));
+
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+   CClientScript::POS_READY
+);

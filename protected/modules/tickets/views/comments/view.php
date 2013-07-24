@@ -20,6 +20,12 @@ $this->menu2=array(
 
 <h1>View Comment #<?php echo $model->commentid; ?></h1>
 
+<?php if(Yii::app()->user->hasFlash('updated')):?>
+    <div class="info">
+        <?php echo Yii::app()->user->getFlash('updated'); ?>
+    </div>
+<?php endif; ?>
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -31,4 +37,10 @@ $this->menu2=array(
 		),
 		'datecreated',
 	),
-)); ?>
+)); 
+
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+   CClientScript::POS_READY
+);

@@ -21,7 +21,10 @@ class UpdateAction extends CAction
 		if($model->attributes = Yii::app()->request->getPost($this->modelClass))
 		{
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('updated', 'Record has been updated.');
 				Yii::app()->getController()->redirect(array('view','id'=>$_GET[$this->pk]));
+			}
 		}
 		Yii::app()->getController()->render('update', array('model'=>$model));
 	}

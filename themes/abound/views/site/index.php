@@ -233,7 +233,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 </div>
 
 <div class="row-fluid">
-    </div>
+    <!--</div>
 	<div class="span2">
     	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">
     </div>

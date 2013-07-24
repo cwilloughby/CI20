@@ -18,8 +18,20 @@ $this->menu2=array(
 
 <h1>Issue Tracker</h1>
 
+<?php if(Yii::app()->user->hasFlash('deleted')):?>
+    <div class="info">
+        <?php echo Yii::app()->user->getFlash('deleted'); ?>
+    </div>
+<?php endif; ?>
+
 <?php $this->widget('CustomListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-)); ?>
+));
+
+Yii::app()->clientScript->registerScript(
+   'myHideEffect',
+   '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+   CClientScript::POS_READY
+);

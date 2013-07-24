@@ -26,7 +26,13 @@ $this->menu2=array(
 
 <h1>View Trouble Ticket #<?php echo $model->ticketid; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php 
+if(Yii::app()->user->hasFlash('updated'))
+{
+	echo Yii::app()->user->getFlash('updated');
+}
+
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'ticketid',

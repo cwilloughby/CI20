@@ -19,7 +19,10 @@ class DeleteAction extends CAction
 			throw new CHttpException(404);
 
 		if($model->delete())
+		{
+			Yii::app()->user->setFlash('deleted', 'Record has been deleted.');
 			Yii::app()->getController()->redirect($this->redirectTo);
+		}
 
 		throw new CHttpException(500);
 	}
