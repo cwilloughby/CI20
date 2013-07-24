@@ -22,5 +22,4 @@
 	<?php echo CHtml::encode($data->question); ?>
 	<br />
 
-
 </div>

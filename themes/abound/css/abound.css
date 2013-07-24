@@ -881,7 +881,6 @@ span.required
 	max-height: 100px;
 	margin-top: 5px;
 	margin-right: 25px;
-=======
 	cursor: -webkit-grabbing;
 }
 #tickettitle{
@@ -889,5 +888,12 @@ span.required
 }
 #issuetitle{
     font-weight: bold;
->>>>>>> origin/sdWorking
+}
+
+#hrmain {
+	margin-bottom: 0px;
+}
+
+#hrmain span, #hrsub span {
+	vertical-align: inherit;
 }

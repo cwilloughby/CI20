@@ -181,7 +181,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-tag"></span><span id="tickettitle"><b>My Open Tickets</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" class="switcher" style="float:right" onclick="ticketswitcher();">',
+			'title'=>'<span class="icon-tag"></span><span id="tickettitle"><b>My Open Tickets</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" id="ticketswitcher" class="switcher" style="float:right">',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'troubleticket'
@@ -216,7 +216,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" class="switcher" style="float:right" onclick="issueswitcher();">',
+			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" id="issueswitcher" class="switcher" style="float:right">',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'issuetracker'    
@@ -233,7 +233,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 </div>
 
 <div class="row-fluid">
-    <!--</div>
+    </div>
 	<div class="span2">
     	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">
     </div>
@@ -245,66 +245,64 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	</div><!--/span-->
 </div><!--/row-->
 
-          
+<?php
+Yii::app()->clientScript->registerScript('homeImageSwitcher', 
+	'var counter = {
+		ticketSwitchCount: 1,
+		issueSwitchCount: 1
+	};
 
+	$("#ticketswitcher").click(function()
+	{
+		var data = counter.ticketSwitchCount;
+
+		if((data % 3) == 1)
+		{
+			$("div #tickettitle").html("Create Trouble Ticket");
+			$("div #myopentickets").css("display","none");
+			$("div #createticket").css("display","block");
+		}
+		else if((data % 3) == 2)
+		{
+			$("div #tickettitle").html("My Closed Tickets");
+			$("div #createticket").css("display","none");
+			$("div #myclosedtickets").css("display","block");
+		}
+		else
+		{
+			$("div #tickettitle").html("My Open Tickets");
+			$("div #myclosedtickets").css("display","none");
+			$("div #myopentickets").css("display","block");
+		}
+		counter.ticketSwitchCount++;
+	});
+
+	$("#issueswitcher").click(function()
+	{
+		var data = counter.issueSwitchCount;
+
+		if((data % 2) == 1)
+		{
+			$("div #issuetitle").html("All Issues");
+			$("div #issuesearcher").css("display","none");
+			$("div #allissues").css("display","block");
+		}
+		else
+		{
+			$("div #issuetitle").html("Search Issues");
+			$("div #allissues").css("display","none");
+			$("div #issuesearcher").css("display","block");
+		}
+		counter.issueSwitchCount++;
+	});
+
+	$(".portlet-content").hover(function() {
+		$(".imgdiv, .textdiv", this).toggle();
+	})',
+CClientScript::POS_READY);
+?>
 
 <script>
-
-var counter = {
-    ticketSwitchCount: 1,
-	issueSwitchCount: 1
-};
-
-function ticketswitcher()
-{
-	var data = counter.ticketSwitchCount;
-	
-	if((data % 3) == 1)
-	{
-		$("div #tickettitle").html('Create Trouble Ticket');
-		$("div #myopentickets").css("display","none");
-		$("div #createticket").css("display","block");
-	}
-	else if((data % 3) == 2)
-	{
-		$("div #tickettitle").html('My Closed Tickets');
-		$("div #createticket").css("display","none");
-		$("div #myclosedtickets").css("display","block");
-	}
-	else
-	{
-		$("div #tickettitle").html('My Open Tickets');
-		$("div #myclosedtickets").css("display","none");
-		$("div #myopentickets").css("display","block");
-	}
-	counter.ticketSwitchCount++;
-}
-
-function issueswitcher()
-{
-	var data = counter.issueSwitchCount;
-	
-	if((data % 2) == 1)
-	{
-		$("div #issuetitle").html('All Issues');
-		$("div #issuesearcher").css("display","none");
-		$("div #allissues").css("display","block");
-	}
-	else
-	{
-		$("div #issuetitle").html('Search Issues');
-		$("div #allissues").css("display","none");
-		$("div #issuesearcher").css("display","block");
-	}
-	counter.issueSwitchCount++;
-}
-
-$(".portlet-content").hover(function() {
-	$(".imgdiv, .textdiv", this).toggle();
-})
-
-
-
 $(function() {
 
 	$(".knob").knob({
