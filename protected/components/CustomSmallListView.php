@@ -11,6 +11,7 @@ class CustomSmallListView extends CListView
         $this->pager = array( 
 			'class' => 'CLinkPager', 
 			'header' => '',
+			'maxButtonCount'=>5,
 			'firstPageLabel' => '<<', 
 			'prevPageLabel' => '<', 
 			'nextPageLabel' => '>', 
