@@ -9,8 +9,19 @@
 	<br/>
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('score')); ?>:</b>
-	<?php echo CHtml::encode($data->score); ?>
-	<br/>
+	<?php
+	if($data->question->type == 1)
+	{
+		echo CHtml::encode($data->score) . "<br/>";
+	}
+	else if($data->question->type == 2)
+	{
+		if($data->score == 1)
+			echo "Acceptable<br/>";
+		else 
+			echo "Unacceptable<br/>";
+	}
+	?>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('comments')); ?>:</b>
 	<?php echo CHtml::encode($data->comments); ?>
