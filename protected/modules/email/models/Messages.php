@@ -142,18 +142,21 @@ class Messages extends CActiveRecord
 	 */
 	public function setEmail($toAddress, $fromAddress, $subject, $body, $type, $ccAddress = null)
 	{
+		// Set the message's destination address.
 		$this->mail->AddAddress($toAddress);
 		$this->to = $toAddress;
 		
+		// Set the message's sender address.
 		$this->mail->SetFrom($fromAddress);
 		$this->from = $fromAddress;
 		
-		// Set the cc address if it was provided.
+		// Set the cc address if one was provided.
 		if(!is_null($ccAddress))
 		{
 			$this->mail->AddCC($ccAddress);
 		}
 		
+		// Set the message's subject.
 		$this->mail->Subject = $subject;
 		$this->subject = $subject;
 		
@@ -164,8 +167,12 @@ class Messages extends CActiveRecord
 		
 		// The link to the recovery email page needs to be ommited from the log for security.
 		if($type == "Recovery")
+		{
 			$this->messagebody = "Follow this link to recover your password: Link omited for security";
+		}
 		else
+		{
 			$this->messagebody = $this->mail->Body;
+		}
 	}
 }

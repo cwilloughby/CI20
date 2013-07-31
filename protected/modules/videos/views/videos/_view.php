@@ -5,8 +5,7 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('videoid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->videoid), array('view', 'id'=>$data->videoid)); ?>
+	<b><?php echo CHtml::link(CHtml::encode('View Training Resource ' . $data->videoid), array('view', 'id'=>$data->videoid)); ?></b>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('documentid')); ?>:</b>
