@@ -40,7 +40,11 @@ $this->menu2=array(
 			'name'=>'date',
 			'value'=>isset($model->date)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->date))):"N\\A"
 		),
-		'news',
+		array(
+			'name'=>'news',
+			'value'=>nl2br($model->news),
+			'type'=>'raw',
+		),
 	),
 ));
 
