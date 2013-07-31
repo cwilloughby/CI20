@@ -21,7 +21,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('news')); ?>:</b>
-	<?php echo CHtml::encode($data->news); ?>
+	<?php echo nl2br($data->news); ?>
 	<br />
 
 
