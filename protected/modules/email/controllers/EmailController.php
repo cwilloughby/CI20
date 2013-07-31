@@ -201,8 +201,8 @@ class EmailController extends Controller
 					'user' => Yii::app()->user->name,
 					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
 					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
-					'description' => $body,
-					'resolution' => $_GET['resolution'],
+					'description' => nl2br($body),
+					'resolution' => nl2br($_GET['resolution']),
 				), true),
 			"Trouble Ticket",
 			"ccc.helpdesk@nashville.gov"
@@ -242,7 +242,7 @@ class EmailController extends Controller
 				array(
 					'ticketID' => $_GET['ticketid'],
 					'user' => Yii::app()->user->name,
-					'content' => $_GET['content'],
+					'content' => nl2br($_GET['content']),
 				), true),
 			"Comment",
 			"ccc.helpdesk@nashville.gov"

@@ -5,8 +5,7 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('commentid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->commentid), array('view', 'id'=>$data->commentid)); ?>
+	<b><?php echo  CHtml::link(CHtml::encode('View Comment ' . $data->commentid), array('view', 'id'=>$data->commentid)); ?></b>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>

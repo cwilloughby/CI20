@@ -14,4 +14,3 @@
 	<li>Subject: <?php echo $subject; ?></li>
 	<li>Description: <?php echo $description; ?> </li>
 <ul>
-

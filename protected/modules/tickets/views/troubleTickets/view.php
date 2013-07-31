@@ -65,7 +65,11 @@ $this->widget('zii.widgets.CDetailView', array(
 			'name'=>'closedate',
 			'value'=>isset($model->closedate)?CHtml::encode(date('g:i a m/d/Y', strtotime($model->closedate))):"N\\A"
 		),
-		'resolution',
+		array(
+			'name'=>'resolution',
+			'value'=>nl2br($model->resolution),
+			'type'=>'raw',
+		),
 	),
 )); ?>
 

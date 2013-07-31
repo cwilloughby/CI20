@@ -42,7 +42,11 @@ $this->menu2=array(
 			'name'=>'subjectid',
 			'value'=>isset($model->subject)?CHtml::encode($model->subject->subjectname):"Unknown"
 		),
-		'description',
+		array(
+			'name'=>'description',
+			'value'=>nl2br($model->description),
+			'type'=>'raw',
+		),
 	),
 )); ?>
 
