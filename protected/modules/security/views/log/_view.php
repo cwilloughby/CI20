@@ -5,8 +5,7 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::link(CHtml::encode('View Log ' . $data->eventid), array('view', 'id'=>$data->eventid)); ?></b>
-	<br />
+	<h4><?php echo CHtml::link(CHtml::encode('View Log ' . $data->eventid), array('view', 'id'=>$data->eventid)); ?></h4>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('userid')); ?>:</b>
 	<?php echo CHtml::encode($data->user->username); ?>

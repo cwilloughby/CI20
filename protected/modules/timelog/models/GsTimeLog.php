@@ -77,7 +77,7 @@ class GsTimeLog extends CActiveRecord
 			'computername' => 'Computername',
 			'eventtype' => 'Event Type',
 			'eventtime' => 'Event Time',
-			'eventdate' => 'Event Date (MM/DD/YYYY)',
+			'eventdate' => 'Event Date',
 		);
 	}
 	

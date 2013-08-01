@@ -50,7 +50,23 @@ class CrtCase extends CActiveRecord
 			array('caseno, crtdiv, cptno', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the court case update event.
+		$log = new Log;
+		$log->tablename = 'ci_crt_case';
+		$log->event = 'Court Case Created or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
 
+		return parent::afterSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -117,7 +133,7 @@ class CrtCase extends CActiveRecord
 			{
 				$caseCheck['caseno'] = $case->caseno;
 
-				// Record the court case create event. Commented out for testing.
+				// Record the court case create event.
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Created';
@@ -137,7 +153,7 @@ class CrtCase extends CActiveRecord
 			
 			if($case->save())
 			{
-				// Record the court case create event. Commented out for testing.
+				// Record the court case create event.
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Updated';

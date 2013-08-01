@@ -10,7 +10,6 @@ class WeatherController extends Controller
 	public function actionReport()
 	{
 		$model = new Weather;
-
 		$weather = $model->getWeather();
 		
 		// Display the weather.

@@ -23,27 +23,10 @@ class HrPolicyController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'HrPolicy'),
 			'admin' => array('class' => 'AdminAction', 'modelClass' => 'HrPolicy'),
+			'createpolicy' => array('class' => 'CreateAction', 'modelClass' => 'HrPolicy', 'redirectTo' => 'index'),
 			'updatepolicy' => array('class' => 'UpdateAction', 'modelClass' => 'HrPolicy'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy')
 		);
-	}
-
-	/**
-	 * Creates a policy.
-	 */
-	public function actionCreatePolicy()
-	{
-		$model=new HrPolicy;
-
-		if($model->attributes = Yii::app()->request->getPost('HrPolicy'))
-		{
-			if($model->save())
-				$this->redirect('index');
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 	
 	/**

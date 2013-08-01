@@ -1,5 +1,4 @@
 <?php foreach($comments as $comment): ?>
-<br/>
 <fieldset class="news">
 	<legend>
 		<?php echo CHtml::encode($comment->createdby0->username) . " on " 

@@ -5,8 +5,11 @@
 
 <div class="view">
 
-	<?php echo CHtml::link("Edit", array('update', 'id'=>$data->userid)); ?>
-	<br />
+	<h4>
+	<?php echo CHtml::link('View User', array('view', 'id'=>$data->userid)); ?>
+	&emsp;-&emsp;
+	<?php echo CHtml::link('Edit User', array('update', 'id'=>$data->userid)); ?>
+	</h4>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('firstname')); ?>:</b>
 	<?php echo CHtml::encode($data->firstname); ?>

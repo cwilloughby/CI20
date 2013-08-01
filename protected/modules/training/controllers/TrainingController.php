@@ -9,25 +9,12 @@ class TrainingController extends Controller
 	public $layout='//layouts/column2';
 
 	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id, $type)
 	{
-		$models=Videos::model()->findAll(array(
-			'select'=>'type',
-			'distinct'=>true,
-		));
+		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$this->render('view',array(
 			'video'=>$this->loadModel($id),
@@ -45,10 +32,7 @@ class TrainingController extends Controller
 		$sql = "SELECT COUNT(DISTINCT type) FROM ci_videos";
 		$num = Yii::app()->db->createCommand($sql)->queryScalar();
 		
-		$models=Videos::model()->findAll(array(
-			'select'=>'type',
-			'distinct'=>true,
-		));
+		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$dataProvider=new CActiveDataProvider('Videos',
 				array(
@@ -69,10 +53,7 @@ class TrainingController extends Controller
 	 */
 	public function actionResourceIndex($type)
 	{
-		$models=Videos::model()->findAll(array(
-			'select'=>'type',
-			'distinct'=>true,
-		));
+		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$videoProvider=new CActiveDataProvider('Videos', array(
 					'criteria'=>array(

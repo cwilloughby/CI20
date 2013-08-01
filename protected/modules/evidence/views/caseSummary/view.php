@@ -122,8 +122,22 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 		),
 	),
 ));
+
+Yii::app()->clientScript->registerScript('addAttorney', "
+$('.attorney-button').click(function(){
+	$('.add-attorney').toggle();
+	return false;
+});");
+
+if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
+{
+	echo CHtml::link('Add Attorney','#',array('class'=>'attorney-button'));
+}
 ?>
-<br/><br/>
+<div class="add-attorney" style="display:none">
+<?php $this->renderPartial('../attorney/_changeAttorneyForm',array('summary'=>$case, 'attorney'=>$attorneys)); ?>
+</div><!-- changeAttorneyForm -->
+
 <hr>
 
 <?php echo "<br/><h3>Evidence</h3>"; ?>

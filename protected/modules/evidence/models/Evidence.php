@@ -57,7 +57,52 @@ class Evidence extends CActiveRecord
 			array('evidenceid, caseno, exhibitno, evidencename, comment, dateadded, exhibitlist, hearingdate, hearingtype,', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a delete occurs.
+	 */
+	protected function beforeDelete()
+	{
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_summary';
+		$log->event = 'Evidence ' . $this->evidencename . ' Deleted from ' . $this->caseno;
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
 
+		return parent::beforeDelete();
+	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function beforeSave()
+	{
+		$this->exhibitlist = $_POST['Evidence']['exhibitlist'];
+		
+		if((int)$this->hearingdate)
+			$this->hearingdate = date('Y-m-d', strtotime($this->hearingdate));
+
+		return parent::beforeSave();
+	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the evidence update event.
+		$log = new Log;
+		$log->tablename = 'ci_evidence';
+		$log->event = 'Evidence Created or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
+
+		return parent::afterSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -101,6 +146,9 @@ class Evidence extends CActiveRecord
 			$criteria->condition = "caseno=:caseno";
 			$criteria->params = array(":caseno" => $caseno);
 		}
+					
+		if((int)$this->dateadded)
+			$this->dateadded = date('Y-m-d', strtotime($this->dateadded));
 		
 		$criteria->compare('evidenceid',$this->evidenceid);
 		$criteria->compare('caseno',$this->caseno,true);

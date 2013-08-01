@@ -5,32 +5,30 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('key')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->key), array('view', 'id'=>$data->id)); ?>
-	<br />
+	<h4><?php echo CHtml::link(CHtml::encode('View Issue ' . $data->key), array('view', 'id'=>$data->id)); ?></h4>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:
 	<?php echo CHtml::encode($data->type); ?>
-	<br />
+	</h5>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:
 	<?php echo CHtml::encode($data->created); ?>
-	<br />
+	</h5>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('reporter')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('reporter')); ?>:
 	<?php echo CHtml::encode($data->reporter); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('summary')); ?>:</b>
+	</h5>
+	
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('assigned')); ?>:
+	<?php echo CHtml::encode($data->assigned); ?>
+	</h5>
+	
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('summary')); ?>:
 	<?php echo CHtml::encode($data->summary); ?>
-	<br />
+	</h5>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('assigned')); ?>:</b>
-	<?php echo CHtml::encode($data->assigned); ?>
+	<?php echo nl2br($data->description); ?>
 	<br />
 
 </div>

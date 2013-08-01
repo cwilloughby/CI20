@@ -52,7 +52,23 @@ class Attorney extends CActiveRecord
 			array('attyid, lname, fname, type, barid', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the attorney update event.
+		$log = new Log;
+		$log->tablename = 'ci_attorney';
+		$log->event = 'Attorney Created or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
 
+		return parent::afterSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -155,7 +171,7 @@ class Attorney extends CActiveRecord
 				{
 					$attyCheck['attyid'] = $model->attyid;
 					
-					// Record the attorney create event. Commented out for testing.
+					// Record the attorney create event.
 					$log = new Log;
 					$log->tablename = 'ci_attorney';
 					$log->event = 'Attorney Created';
@@ -171,7 +187,7 @@ class Attorney extends CActiveRecord
 			$caseAttorney->summaryid = $summaryid;
 			$caseAttorney->save();
 			
-			// Record the case attorney create event. Commented out for testing.
+			// Record the case attorney create event.
 			$log = new Log;
 			$log->tablename = 'ci_case_attorney';
 			$log->event = 'Attorney Added To Case';

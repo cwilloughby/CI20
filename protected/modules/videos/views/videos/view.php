@@ -22,13 +22,12 @@ $this->menu2=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'videoid',
+		'title',
+		'type',
 		array(        
 			'name'=>'documentid',
 			'value'=>isset($model->document)?CHtml::encode($model->document->path):"Unknown"
 		),
-		'title',
-		'type',
 	),
 )); ?>
 

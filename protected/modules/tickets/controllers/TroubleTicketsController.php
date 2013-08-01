@@ -197,7 +197,8 @@ class TroubleTicketsController extends Controller
 			else
 				$criteria->condition = "closedbyuserid IS NOT NULL";
 			
-			$criteria->addCondition("openedby = :user", array(":user" => Yii::app()->user->id));
+			$criteria->addCondition("openedby = :user");
+			$criteria->params = array(":user" => Yii::app()->user->id);
 		}
 		
 		$dataProvider = new CActiveDataProvider('TroubleTickets', array(

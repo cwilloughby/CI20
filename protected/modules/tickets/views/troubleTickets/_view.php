@@ -6,30 +6,47 @@
 <div class="view">
 	<div class="row-fluid">
 		<div class="span6">
+			
+			<h4>
 			<?php echo CHtml::link('View Ticket', array('view', 'id'=>$data->ticketid)); ?>
 			&emsp;-&emsp;
-			<?php echo CHtml::link('Close Trouble Ticket', array('close', 'id'=>$data->ticketid)); ?>
-			<br/>
+			<?php echo CHtml::link('Close Ticket', array('update', 'id'=>$data->ticketid)); ?>
+			</h4>
 
-			<b><?php echo CHtml::encode($data->getAttributeLabel('ticketid')); ?>:</b>
+			<h5><?php echo CHtml::encode($data->getAttributeLabel('ticketid')); ?>:
 			<?php echo CHtml::encode($data->ticketid); ?>
-			<br/>
+			<h5/>
 
-			<b><?php echo CHtml::encode($data->getAttributeLabel('openedby')); ?>:</b>
+			<h5><?php echo CHtml::encode($data->getAttributeLabel('openedby')); ?>:
 			<?php echo CHtml::encode($data->openedby0->username); ?>
-			<br/>
+			</h5>
 
-			<b><?php echo CHtml::encode($data->getAttributeLabel('opendate')); ?>:</b>
+			<h5><?php echo CHtml::encode($data->getAttributeLabel('opendate')); ?>:
 			<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->opendate))); ?>
-			<br/>
+			</h5>
 
-			<b><?php echo CHtml::encode($data->getAttributeLabel('categoryid')); ?>:</b>
+			<?php
+			if($_GET['status'] == 'Closed')
+			{
+				?>
+				<h5><?php echo CHtml::encode($data->getAttributeLabel('closedbyuserid')); ?>:
+				<?php echo CHtml::encode($data->closedbyuser->username); ?>
+				</h5>
+
+				<h5><?php echo CHtml::encode($data->getAttributeLabel('closedate')); ?>:
+				<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->closedate))); ?>
+				</h5>
+				<?php
+			}
+			?>
+			
+			<h5><?php echo CHtml::encode($data->getAttributeLabel('categoryid')); ?>:
 			<?php echo CHtml::encode($data->category->categoryname); ?>
-			<br/>
+			</h5>
 
-			<b><?php echo CHtml::encode($data->getAttributeLabel('subjectid')); ?>:</b>
+			<h5><?php echo CHtml::encode($data->getAttributeLabel('subjectid')); ?>:
 			<?php echo CHtml::encode($data->subject->subjectname); ?>
-			<br/>
+			</h5>
 
 			<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 			<?php echo nl2br($data->description); ?>
@@ -48,7 +65,7 @@
 
 			if($ticketComments)
 			{
-				echo "<b>Last Comment:</b>";
+				echo "<h4>Last Comment:</h4>";
 
 				$this->renderPartial('_comments',array(
 					'comments'=>$ticketComments,

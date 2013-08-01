@@ -20,7 +20,11 @@ class EvidenceController extends Controller
 	
 	function actions()
 	{
-		return array('delete' => array('class' => 'DeleteAction', 'modelClass' => 'Evidence', 'redirectTo' => 'admin'));
+		return array(
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Evidence'),
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'Evidence'),
+			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'Evidence', 'redirectTo' => 'admin')
+		);
 	}
 	
 	/**
@@ -53,80 +57,11 @@ class EvidenceController extends Controller
 		{
 			if($model->saveEvidence($_POST['Evidence']))
 			{
-				$this->redirect(array('admin'));
+				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If the update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('Evidence'))
-		{
-			$model->exhibitlist = $_POST['Evidence']['exhibitlist'];
-			
-			if((int)$model->hearingdate)
-			{
-				$model->hearingdate = date('Y-m-d', strtotime($model->hearingdate));
-			}
-			
-			if($model->save())
-			{
-				// Record the evidence update event.
-				$log = new Log;
-				$log->tablename = 'ci_evidence';
-				$log->event = 'Evidence Updated';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$model->evidenceid));
-			}
-		}
-		
-		$model->hearingdate = date('m/d/Y', strtotime($model->hearingdate));
-		
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Evidence('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['Evidence']))
-		{
-			$model->attributes=$_GET['Evidence'];
-			
-			if((int)$model->dateadded)
-			{
-				$model->dateadded = date('Y-m-d', strtotime($model->dateadded));
-			}
-		}
-
-		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}

@@ -50,7 +50,23 @@ class Defendant extends CActiveRecord
 			array('defid, lname, fname, oca', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the event.
+		$log = new Log;
+		$log->tablename = 'ci_defendant';
+		$log->event = 'Defendant Created or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
 
+		return parent::afterSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -127,7 +143,7 @@ class Defendant extends CActiveRecord
 			{
 				$defCheck['defid'] = $def->defid;
 
-				// Record the defendant create event. Commented out for testing.
+				// Record the defendant create event.
 				$log = new Log;
 				$log->tablename = 'ci_defendant';
 				$log->event = 'Defendant Created';

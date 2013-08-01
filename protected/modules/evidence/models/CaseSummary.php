@@ -83,7 +83,39 @@ class CaseSummary extends CActiveRecord
 			array('summaryid, defid, def_search1, def_search2, div_search, complaint_search, caseno, location, dispodate, page, sentence, indate, outdate, destructiondate, recip, comment, dna, bio, drug, firearm, money, other', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the case summary create or update event.
+		$log = new Log;
+		$log->tablename = 'ci_case_summary';
+		$log->event = 'Case Summary Created Or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
 
+		return parent::afterSave();
+	}
+	
+	/**
+	 * Log the event after a delete occurs.
+	 */
+	protected function afterDelete()
+	{
+		// Log the delete event.
+		$log = new Log;
+		$log->tablename = 'ci_case_summary';
+		$log->event = 'Case Summary Deleted';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
+
+		return parent::afterDelete();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -137,6 +169,16 @@ class CaseSummary extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->with = array('def', 'caseno0');
+		
+		// Convert any provided date into a format that the database understands.
+		if((int)$this->dispodate)
+			$this->dispodate = date('Y-m-d', strtotime($this->dispodate));
+		if((int)$this->indate)
+			$this->indate = date('Y-m-d', strtotime($this->indate));
+		if((int)$this->outdate)
+			$this->outdate = date('Y-m-d', strtotime($this->outdate));
+		if((int)$this->destructiondate)
+			$this->destructiondate = date('Y-m-d', strtotime($this->destructiondate));
 		
 		$criteria->compare('summaryid',$this->summaryid);
 		$criteria->compare('defid',$this->defid);

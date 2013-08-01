@@ -23,6 +23,8 @@ class CrtCaseController extends Controller
 	{
 		return array(
 			'admin' => array('class' => 'AdminAction', 'modelClass' => 'CrtCase'),
+			'create' => array('class' => 'CreateAction', 'modelClass' => 'CrtCase'),
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'CrtCase'),
 		);
 	}
 	
@@ -41,65 +43,6 @@ class CrtCaseController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'cases'=>$cases,
-		));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new CrtCase;
-
-		if($model->attributes = Yii::app()->request->getPost('CrtCase'))
-		{
-			if($model->save())
-			{
-				// Record the court case create event.
-				$log = new Log;
-				$log->tablename = 'ci_crt_case';
-				$log->event = 'Court Case Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$model->caseno));
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('CrtCase'))
-		{
-			if($model->save())
-			{
-				// Record the court case update event.
-				$log = new Log;
-				$log->tablename = 'ci_crt_case';
-				$log->event = 'Court Case Updated';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$model->caseno));
-			}
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
 		));
 	}
 
@@ -143,27 +86,14 @@ class CrtCaseController extends Controller
 			
 			// Save the changed to the case summary
 			if($summary->save())
-			{
-				// Record the case summary update event.
-				$log = new Log;
-				$log->tablename = 'ci_case_summary';
-				$log->event = 'Case Summary Case Changed';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $id;
-				$log->save(false);
-				
 				$this->redirect(array('/evidence/casesummary/view','id'=>$summary->summaryid));
-			}
 		}
 		else
 		{
 			$case = $this->loadModel($summary->caseno);
 		}
 
-		$this->render('changeCourtCase',array(
-			'summary' => $summary,
-			'case' => $case
-		));
+		$this->render('changeCourtCase',array('summary' => $summary, 'case' => $case));
 	}
 	
 	/**

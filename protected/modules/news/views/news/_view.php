@@ -5,20 +5,19 @@
 
 <div class="view">
 
-	<?php echo CHtml::link('View News', array('view', 'id'=>$data->newsid)); ?>
-	<br />
+	<h4><?php echo CHtml::link('View News', array('view', 'id'=>$data->newsid)); ?></h4>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('typeid')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('typeid')); ?>:
 	<?php echo CHtml::encode($data->type->type); ?>
-	<br />
+	</h5>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('postedby')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('postedby')); ?>:
 	<?php echo CHtml::encode($data->postedby0->username); ?>
-	<br />
+	</h5>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:
 	<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->date))); ?>
-	<br />
+	</h5>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('news')); ?>:</b>
 	<?php echo nl2br($data->news); ?>

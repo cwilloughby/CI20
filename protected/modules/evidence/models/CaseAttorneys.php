@@ -32,8 +32,7 @@ class CaseAttorneys extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// NOTE: you should only define rules for those attributes that will receive user inputs.
 		return array(
 			array('summaryid, attyid', 'required'),
 			array('summaryid, attyid', 'numerical', 'integerOnly'=>true),
@@ -42,7 +41,7 @@ class CaseAttorneys extends CActiveRecord
 			array('summaryid, attyid', 'safe', 'on'=>'search'),
 		);
 	}
-
+	
 	/**
 	 * @return array relational rules.
 	 */

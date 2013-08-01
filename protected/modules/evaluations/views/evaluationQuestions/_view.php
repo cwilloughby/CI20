@@ -5,18 +5,16 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('questionid')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->questionid), array('view', 'id'=>$data->questionid)); ?>
-	<br />
+	<h4><?php echo CHtml::link(CHtml::encode("View Question " . $data->questionid), array('view', 'id'=>$data->questionid)); ?></h4>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:</b>
+	<h5><?php echo CHtml::encode($data->getAttributeLabel('departmentid')); ?>:
 	<?php 
 	if(is_null($data->departmentid))
 		echo "General Question";
 	else
 		echo CHtml::encode($data->department->departmentname); 
 	?>
-	<br />
+	</h5>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('question')); ?>:</b>
 	<?php echo CHtml::encode($data->question); ?>

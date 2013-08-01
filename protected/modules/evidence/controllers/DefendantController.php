@@ -23,6 +23,8 @@ class DefendantController extends Controller
 	{
 		return array(
 			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Defendant'),
+			'create' => array('class' => 'CreateAction', 'modelClass' => 'Defendant'),
+			'update' => array('class' => 'UpdateAction', 'modelClass' => 'Defendant'),
 		);
 	}
 	
@@ -41,65 +43,6 @@ class DefendantController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'cases'=>$cases,
-		));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new Defendant;
-
-		if($model->attributes = Yii::app()->request->getPost('Defendant'))
-		{
-			if($model->save())
-			{
-				// Record the defendant create event.
-				$log = new Log;
-				$log->tablename = 'ci_defendant';
-				$log->event = 'Defendant Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$model->defid));
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		if($model->attributes = Yii::app()->request->getPost('Defendant'))
-		{
-			if($model->save())
-			{
-				// Record the defendant update event.
-				$log = new Log;
-				$log->tablename = 'ci_defendant';
-				$log->event = 'Defendant Updated';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
-				$this->redirect(array('view','id'=>$model->defid));
-			}
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
 		));
 	}
 

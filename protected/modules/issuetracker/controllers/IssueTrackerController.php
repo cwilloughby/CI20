@@ -26,28 +26,10 @@ class IssueTrackerController extends Controller
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'IssueTracker'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'IssueTracker'),
 			'admin' => array('class' => 'AdminAction', 'modelClass' => 'IssueTracker'),
+			'create' => array('class' => 'CreateAction', 'modelClass' => 'IssueTracker'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'IssueTracker'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'IssueTracker')
 		);
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new IssueTracker;
-
-		if($model->attributes = Yii::app()->request->getPost('IssueTracker'))
-		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 	
 	/**
