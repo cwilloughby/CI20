@@ -10,7 +10,7 @@
 			<h4>
 			<?php echo CHtml::link('View Ticket', array('view', 'id'=>$data->ticketid)); ?>
 			&emsp;-&emsp;
-			<?php echo CHtml::link('Close Ticket', array('update', 'id'=>$data->ticketid)); ?>
+			<?php echo CHtml::link('Close Ticket', array('close', 'id'=>$data->ticketid)); ?>
 			</h4>
 
 			<h5><?php echo CHtml::encode($data->getAttributeLabel('ticketid')); ?>:
