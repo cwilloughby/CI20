@@ -18,9 +18,28 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php $this->widget('ext.jqrelcopy.JQRelcopy',array(
+	<?php 
+	$datePickerConfig =  array(
+					'model' => $evidence,
+					'attribute' => 'hearingdate[]',
+					'language' => 'en',
+					'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+					'options' => array(
+						'showAnim' => 'fold',
+						'dateFormat' => 'yy-mm-dd', 
+						'defaultDate' => $evidence->hearingdate,
+						'changeYear' => true,
+						'changeMonth' => true,
+						'showButtonPanel' => true,
+					),
+				);
+	
+	
+	
+	$this->widget('ext.jqrelcopy.JQRelcopy',array(
 		'id' => 'copylink',
 		'removeText' => 'Remove',
+		'jsAfterNewId' => JQRelcopy::afterNewIdDatePicker($datePickerConfig),
 		'removeHtmlOptions' => array('style'=>'color:red'),
 		'options' => array(
 			'copyClass'=>'newcopy',
@@ -57,10 +76,10 @@
 			</td>
 			
 			<td>
-			<?php echo $form->textField($evidence,'hearingdate[]'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker', $datePickerConfig);?>
 			<?php echo $form->error($evidence,'hearingdate[]'); ?>
 			</td>
-			
+		
 			<td>
 			<?php echo $form->textField($evidence,'exhibitno[]', array('required' => true)); ?>
 			<?php echo $form->error($evidence,'exhibitno[]'); ?>

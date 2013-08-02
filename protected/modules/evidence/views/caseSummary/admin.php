@@ -67,6 +67,16 @@ $this->widget('CustomGridView', array(
 			'name'=>'complaint_search', 
 			'value'=>'$data->caseno0->cptno' 
 		),
+		array(
+			'header'=>'Hearing Dates', // give new column a header
+			'type'=>'HTML', // set it to manual HTML
+			'value'=>'$data->hearingDatesToString()' // here is where you call the new function
+		),
+		array(
+			'header'=>'Locations', // give new column a header
+			'type'=>'HTML', // set it to manual HTML
+			'value'=>'$data->locationsToString($data->caseno)' // here is where you call the new function
+		),
 		'sentence',
 		array(        
 			'name'=>'dna',

@@ -41,7 +41,16 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 			'name'=>'complaint_search',
 			'value'=>isset($case->def)?CHtml::encode($case->caseno0->cptno):"N/A"
 		),
-		'location',
+		array(
+			'label'=>'Hearing Dates', // give new column a header
+			'type'=>'HTML', // set it to manual HTML
+			'value'=>$case->hearingDatesToString() // here is where you call the new function
+		),
+		array(
+			'label'=>'Locations', // give new column a header
+			'type'=>'HTML', // set it to manual HTML
+			'value'=>$case->locationsToString($case->caseno) // here is where you call the new function
+		),
 		array(
 			'name' => 'dispodate',
 			'value' => (isset($case->dispodate) && ((int)$case->dispodate))
@@ -140,18 +149,13 @@ if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
 
 <hr>
 
-<?php echo "<br/><h3>Evidence</h3>"; ?>
+<?php echo "<br/><h3>All Evidence</h3>"; ?>
 
 <?php $this->widget('CustomGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
 	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $evidence : null),
-	'afterAjaxUpdate'=>"function(){jQuery('#date_added_search').datepicker({
-		'dateFormat': 'yy-mm-dd',
-		'showAnim':'fold',
-		'changeYear':true,
-		'changeMonth':true,
-		'showButtonPanel':true})}",
+	'afterAjaxUpdate'=>"function(){jQuery('#date_search').datepicker({'dateFormat': 'yy-mm-dd',	'changeYear':true, 'changeMonth':true, 'showButtonPanel':true})}",
 	'columns'=>array(
 		'exhibitlist',
 		'exhibitno',
@@ -162,6 +166,20 @@ if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
 			'name' => 'hearingdate',
 			'value' => '(isset($data->hearingdate) && ((int)$data->hearingdate))
 				?CHtml::encode(date("m/d/Y", strtotime($data->hearingdate))):"N/A"',
+			'type' => 'raw', 
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
+				'model'=>$evidence, 
+				'attribute'=>'hearingdate',
+				'htmlOptions' => array('id' => 'date_search'), 
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'yy-mm-dd',
+					'defaultDate' => $evidence->hearingdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				)
+			), true)
 		),
 		array(
 			'class'=>'CButtonColumn',

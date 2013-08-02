@@ -318,4 +318,32 @@ class CaseSummary extends CActiveRecord
 				return 'N/A';
 		}
 	}
+	
+	public function hearingDatesToString()
+	{
+		$return = '';
+		foreach ($this->caseno0->evidences as $hDate)
+		{
+			$hDate->hearingdate = DATE("m/d/Y", STRTOTIME("$hDate->hearingdate"));
+			if(!strstr($return, $hDate->hearingdate))
+			{
+				$return .= $hDate->hearingdate . ', ';
+			}
+		}
+		return $return;
+	}
+	
+	public function locationsToString($case)
+	{
+		$casesfound = CaseSummary::model()->findAll('caseno=:caseno', array(':caseno' => $case));
+		$return = '';
+		foreach ($casesfound as $loc)
+		{
+			if($loc->location != '' && !strstr($return, $loc->location))
+			{
+				$return .= $loc->location . ', ';
+			}
+		}
+		return $return;
+	}
 }

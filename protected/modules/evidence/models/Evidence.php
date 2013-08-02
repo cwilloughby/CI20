@@ -146,7 +146,10 @@ class Evidence extends CActiveRecord
 			$criteria->condition = "caseno=:caseno";
 			$criteria->params = array(":caseno" => $caseno);
 		}
-					
+		
+		if((int)$this->hearingdate)
+			$this->hearingdate = date('Y-m-d', strtotime($this->hearingdate));
+
 		if((int)$this->dateadded)
 			$this->dateadded = date('Y-m-d', strtotime($this->dateadded));
 		

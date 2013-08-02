@@ -901,3 +901,17 @@ span.required
 .pager .next a, .pager .next span {
 	float: left;
 }
+
+.news h5 {
+	margin-top: 2px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+	border-width: 0px 0px 1px;
+	border-style: none none solid;
+	border-color: -moz-use-text-color -moz-use-text-color rgb(229, 229, 229);
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+}
