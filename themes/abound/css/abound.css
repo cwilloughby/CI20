@@ -915,3 +915,7 @@ span.required
 	-moz-border-left-colors: none;
 	border-image: none;
 }
+
+textarea {
+	width: 375px;
+}
