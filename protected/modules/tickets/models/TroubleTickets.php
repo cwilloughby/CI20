@@ -187,6 +187,52 @@ class TroubleTickets extends CActiveRecord
 	}
 	
 	/**
+	 * Make a criteria object used for showing a list of tickets.
+	 */
+	public function TicketListCriteria($status = 'Open')
+	{
+		$criteria = new CDbCriteria;
+		
+		// If the user has an IT role, then they can see all open tickets.
+		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
+		{
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
+		}
+		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
+		{
+			// If the user is a supervisor, find that supervisor's department
+			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+			// Find all userids in that department.
+			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
+					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
+			// Put all those userid's into a string with a "," seperating each value.
+			$stringed = join(',', $allUsers);
+			
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
+			
+			$criteria->addCondition("openedby IN (" . $stringed . ")");
+		}
+		else 
+		{
+			if($status == "Open")
+				$criteria->condition = "closedbyuserid IS NULL";
+			else
+				$criteria->condition = "closedbyuserid IS NOT NULL";
+			
+			$criteria->addCondition("openedby = :user");
+			$criteria->params = array(":user" => Yii::app()->user->id);
+		}
+		
+		return $criteria;
+	}
+	
+	/**
 	 * Convert the supplied dates, if any, to the correct format.
 	 */
 	public function dateFormatter()
@@ -279,5 +325,23 @@ class TroubleTickets extends CActiveRecord
 				echo CHtml::textField($value,'', array('required' => true));
 			}
 		}
+	}
+	
+	/**
+	 * Since the number of conditionals are dynamic, this function is needed to retrieve them from the POST. 
+	 */
+	public function IsolateAndRetrieveConditionals($postval)
+	{
+		// Remove the first two elements and the last two elements from the POST array to isolate the conditionals.
+		array_shift($postval);
+		array_shift($postval);
+		array_pop($postval);
+		array_pop($postval);
+
+		$this->description .= "\n\n";
+
+		// Grab all the data from the conditionals and put them in the description.
+		foreach($postval as $key => $value) 
+			$this->description .= $key . ": " . $value . "\n";
 	}
 }

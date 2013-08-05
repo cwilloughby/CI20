@@ -24,6 +24,7 @@ class UserInfoController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'UserInfo'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'UserInfo'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'UserInfo'),
 		);
 	}
 
@@ -85,7 +86,7 @@ class UserInfoController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id, 'UserInfo');
 
 		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
@@ -104,7 +105,7 @@ class UserInfoController extends Controller
 	 */
 	public function actionDisable($id)
 	{
-		$model = $this->loadModel($id);
+		$model = $this->loadModel($id, 'UserInfo');
 		$model->active = 2;
 		
 		if($model->update())
@@ -117,54 +118,11 @@ class UserInfoController extends Controller
 	 */
 	public function actionEnable($id)
 	{
-		$model = $this->loadModel($id);
+		$model = $this->loadModel($id, 'UserInfo');
 		$model->active = 1;
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->userid));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new UserInfo('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['UserInfo']))
-		{
-			$model->attributes=$_GET['UserInfo'];
-			
-			if((int)$model->hiredate)
-			{
-				$model->hiredate = date('Y-m-d', strtotime($model->hiredate));
-			}
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=UserInfo::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

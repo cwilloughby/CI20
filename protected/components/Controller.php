@@ -23,4 +23,24 @@ class Controller extends SBaseController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+	
+	/**
+	 * Returns the data model based on the primary key param and modelClass name.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer the ID of the model to be loaded
+	 */
+	public function loadModel($id = null, $modelClass = null)
+	{
+		if(is_null($id))
+			throw new CHttpException(404);
+		else if(is_null($modelClass)) 
+			throw new CHttpException(404);
+		
+		$model = CActiveRecord::model($modelClass)->findByPk($id);
+
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		else
+			return $model;
+	}
 }

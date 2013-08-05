@@ -23,14 +23,10 @@ class EmailController extends Controller
 			$model = new Messages;
 
 			// Create the link to the user creation page that will go in the email.
-			// The $_GET variables will be used to autopopulate many of the form fields.
 			$link = "http://jis18822/security/userinfo/create"				
-						. '?firstname=' . urlencode($_GET['firstname'])
-						. '&lastname=' . urlencode($_GET['lastname'])
-						. '&middlename=' . urlencode($_GET['middlename'])
-						. '&email=' . urlencode($_GET['email'])
-						. '&phoneext=' . urlencode($_GET['phoneext'])
-						. '&departmentid=' . urlencode($_GET['departmentid'])
+						. '?firstname=' . urlencode($_GET['firstname']) . '&lastname=' . urlencode($_GET['lastname'])
+						. '&middlename=' . urlencode($_GET['middlename']) . '&email=' . urlencode($_GET['email'])
+						. '&phoneext=' . urlencode($_GET['phoneext']) . '&departmentid=' . urlencode($_GET['departmentid'])
 						. '&hiredate=' . urlencode($_GET['hiredate']);
 			
 			// Set the sender, the recipient, the subject, the body, and the message type.

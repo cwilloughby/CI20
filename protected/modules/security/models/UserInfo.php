@@ -170,6 +170,9 @@ class UserInfo extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 
+		if((int)$this->hiredate)
+			$this->hiredate = date('Y-m-d', strtotime($this->hiredate));
+		
 		$criteria->compare('userid',$this->userid);
 		$criteria->compare('firstname',$this->firstname,true);
 		$criteria->compare('lastname',$this->lastname,true);

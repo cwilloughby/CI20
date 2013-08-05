@@ -45,7 +45,23 @@ class EvaluationAnswers extends CActiveRecord
 			array('evaluationid, questionid, score, comments', 'safe', 'on'=>'search'),
 		);
 	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function beforeSave()
+	{
+		// Record the event.
+		$log = new Log;
+		$log->tablename = 'ci_evaluation_answers';
+		$log->event = 'Evaluation Answer Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->evaluationid . ", " . $this->questionid;
+		$log->save(false);
 
+		return parent::beforeSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */

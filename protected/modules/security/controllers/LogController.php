@@ -23,6 +23,7 @@ class LogController extends Controller
 	{
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'Log'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Log'),
 		);
 	}
 	
@@ -52,36 +53,6 @@ class LogController extends Controller
 		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Log('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['Log']))
-		{
-			$model->attributes=$_GET['Log'];
-			
-			if((int)$model->eventdate)
-			{
-				$model->eventdate = date('Y-m-d', strtotime($model->eventdate));
-			}
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
 		));
 	}
 }

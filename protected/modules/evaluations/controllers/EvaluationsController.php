@@ -18,7 +18,15 @@ class EvaluationsController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
+	
+	// External Actions
+	function actions()
+	{
+		return array(
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Evaluations'),
+		);
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -47,7 +55,7 @@ class EvaluationsController extends Controller
 		{
 			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
 			$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
-				'model'=>$this->loadModel($id),
+				'model'=>$this->loadModel($id, 'Evaluations'),
 				'answersDataProvider'=>$dataProvider,
 				), true));
 			$html2pdf->Output();
@@ -55,7 +63,7 @@ class EvaluationsController extends Controller
 		else
 		{
 			$this->render('view',array(
-				'model'=>$this->loadModel($id),
+				'model'=>$this->loadModel($id, 'Evaluations'),
 				'answersDataProvider'=>$dataProvider,
 			));
 		}
@@ -76,14 +84,6 @@ class EvaluationsController extends Controller
 		{
 			if($model->save())
 			{
-				// Record the evaluation create event.
-				$log = new Log;
-				$log->tablename = 'ci_evaluations';
-				$log->event = 'Evaluation Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $model->getPrimaryKey();
-				$log->save(false);
-				
 				// Find all general questions.
 				$questions = CHtml::ListData(EvaluationQuestions::model()->findAll(
 						'departmentid IS NULL'), 'questionid', 'questionid');
@@ -111,7 +111,7 @@ class EvaluationsController extends Controller
 				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 			}
 		}
-		
+
 		foreach($departments as $department)
 		{
 			if($department->departmentname != 'Administration')
@@ -125,9 +125,9 @@ class EvaluationsController extends Controller
 				else
 				{
 					// Find all active users in that department, except for the current user and put them in an array.
-					$allUsers = array_merge($allUsers, CHtml::ListData(UserInfo::model()->findAll(
+					$allUsers += CHtml::ListData(UserInfo::model()->findAll(
 							'departmentid=' . $department->getAttribute('departmentid') 
-							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username'));
+							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
 				}
 			}
 			else
@@ -137,7 +137,7 @@ class EvaluationsController extends Controller
 						'active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
 			}
 		}
-		
+
 		$this->render('create',array(
 			'model'=>$model,
 			'allUsers' => $allUsers,
@@ -151,7 +151,7 @@ class EvaluationsController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id, 'Evaluations');
 
 		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
 		{
@@ -191,30 +191,17 @@ class EvaluationsController extends Controller
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
-			
-			// Record the evaluation create event.
-			$log = new Log;
-			$log->tablename = 'ci_evaluation_answers';
-			$log->event = 'Evaluation Answer Updated';
-			$log->userid = Yii::app()->user->getId();
-			$log->tablerow = $model->evaluationid . ", " . $model->questionid;
-			$log->save(false);
 
 			$page = $_GET['EvaluationAnswers_page'] + 1;
+			// Redirect to the next question in the list. If all questions are answered, redirect to the view page.
 			if($page <= $dataProvider->totalItemCount)
-			{
-				// Redirect to the next question in the list.
 				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
-			}
 			else
-			{
-				// All questions have been answered, redirect to the view page.
 				$this->redirect(array('view','id'=>$model->evaluationid));
-			}
 		}
 
 		$this->render('edit',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id, 'Evaluations'),
 			'answersDataProvider'=>$dataProvider,
 		));
 	}
@@ -229,11 +216,9 @@ class EvaluationsController extends Controller
 		{
 			// Find the user's department.
 			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-			
 			// Find all users in that department.
 			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
 					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
-			
 			$stringed = join(',', $allUsers);
 			
 			// Find all evaluations for those users.
@@ -258,51 +243,6 @@ class EvaluationsController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
-	
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Evaluations('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		// If the search form was posted.
-		if(isset($_GET['Evaluations']))
-		{
-			$model->attributes=$_GET['Evaluations'];
-			
-			if((int)$model->evaluationdate)
-			{
-				// If the date was posted, convert it to the format that the database recognizes.
-				$model->evaluationdate = date('Y-m-d', strtotime($model->evaluationdate));
-			}
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Evaluations::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 	
 	/**

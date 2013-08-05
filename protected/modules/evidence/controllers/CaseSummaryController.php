@@ -33,7 +33,7 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$case = $this->loadModel($id);
+		$case = $this->loadModel($id, 'CaseSummary');
 		
 		if(isset($_POST['Attorney']))
 			$this->forward('changeAttorneys');
@@ -115,7 +115,7 @@ class CaseSummaryController extends Controller
 	{
 		// Delete all records on the attorney bridge table that have this summary id.
 		CaseAttorneys::model()->deleteAll('summaryid =' . $id);
-		$this->loadModel($id)->delete();
+		$this->loadModel($id, 'CaseSummary')->delete();
 
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -127,7 +127,7 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionChangeEvidence($id)
 	{
-		$summary = $this->loadModel($id);
+		$summary = $this->loadModel($id, 'CaseSummary');
 		$evidence = new Evidence;
 		
 		if(isset($_POST['Evidence']))
@@ -150,7 +150,7 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionChangeAttorneys($id)
 	{
-		$summary = $this->loadModel($id);
+		$summary = $this->loadModel($id, 'CaseSummary');
 		$attorney = new Attorney;
 		
 		if(isset($_POST['Attorney']))
@@ -185,19 +185,6 @@ class CaseSummaryController extends Controller
 	public function actionEvidenceManager()
 	{
 		$this->render('advanced');
-	}
-	
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=CaseSummary::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

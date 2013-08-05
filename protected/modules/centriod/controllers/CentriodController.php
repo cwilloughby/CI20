@@ -23,9 +23,7 @@ class CentriodController extends Controller
 				$results = false;
 		}
 		else
-		{
 			$results = false;
-		}
 
 		// Display the form.
 		$this->render('index', array('centriod'=> $model, 'results' => $results));

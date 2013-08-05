@@ -120,7 +120,10 @@ class News extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
-
+		
+		if((int)$this->date)
+			$this->date = date('Y-m-d', strtotime($this->date));
+		
 		$criteria->compare('newsid',$this->newsid);
 		$criteria->compare('typeid',$this->typeid);
 		$criteria->compare('type.type',$this->user_search,true);

@@ -57,15 +57,12 @@ class VideosController extends Controller
 					$video->documentid = $file->primaryKey;
 					echo $video->documentid;
 					if($video->save())
-						$this->redirect(array('view','id'=>$video->videoid));
+						$this->redirect(array('view', 'id'=>$video->videoid));
 				}
 			}
 		}
 
-		$this->render('create',array(
-			'video'=>$video,
-			'file'=>$file,
-		));
+		$this->render('create', array('video'=>$video, 'file'=>$file));
 	}
 
 	/**
@@ -75,7 +72,7 @@ class VideosController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$video = $this->loadModel($id);
+		$video = $this->loadModel($id, 'Videos');
 		$file = Documents::model()->findByPk($video->documentid);
 		
 		if($video->attributes = Yii::app()->request->getPost('Videos'))
@@ -92,29 +89,13 @@ class VideosController extends Controller
 				if($file->save(false))
 				{
 					$video->documentid = $file->primaryKey;
-					echo $video->documentid;
+
 					if($video->save())
 						$this->redirect(array('view','id'=>$video->videoid));
 				}
 			}
 		}
 
-		$this->render('update',array(
-			'video'=>$video,
-			'file'=>$file,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Videos::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		$this->render('update', array('video'=>$video, 'file'=>$file));
 	}
 }

@@ -24,6 +24,7 @@ class NewsController extends Controller
 	{
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'News'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'News'),
 			'create' => array('class' => 'CreateAction', 'modelClass' => 'News'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'News'),
 			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'News')
@@ -44,36 +45,6 @@ class NewsController extends Controller
 		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new News('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['News']))
-		{
-			$model->attributes=$_GET['News'];
-			
-			if((int)$model->date)
-			{
-				$model->date = date('Y-m-d', strtotime($model->date));
-			}
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
 		));
 	}
 }

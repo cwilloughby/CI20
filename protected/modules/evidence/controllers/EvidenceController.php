@@ -40,7 +40,7 @@ class EvidenceController extends Controller
 			$cases->attributes=$_GET['CaseSummary'];
 		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id, 'Evidence'),
 			'cases'=>$cases,
 		));
 	}
@@ -64,19 +64,6 @@ class EvidenceController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Evidence::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

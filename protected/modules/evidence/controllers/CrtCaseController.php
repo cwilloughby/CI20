@@ -41,7 +41,7 @@ class CrtCaseController extends Controller
 			$cases->attributes=$_GET['CaseSummary'];
 		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id, 'CrtCase'),
 			'cases'=>$cases,
 		));
 	}
@@ -55,7 +55,7 @@ class CrtCaseController extends Controller
 	{
 		try
 		{
-			$this->loadModel($id)->delete();
+			$this->loadModel($id, 'CrtCase')->delete();
 		}
 		catch(Exception $ex)
 		{
@@ -90,23 +90,10 @@ class CrtCaseController extends Controller
 		}
 		else
 		{
-			$case = $this->loadModel($summary->caseno);
+			$case = $this->loadModel($summary->caseno, 'CrtCase');
 		}
 
 		$this->render('changeCourtCase',array('summary' => $summary, 'case' => $case));
-	}
-	
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=CrtCase::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

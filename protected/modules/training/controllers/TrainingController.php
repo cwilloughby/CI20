@@ -17,7 +17,7 @@ class TrainingController extends Controller
 		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$this->render('view',array(
-			'video'=>$this->loadModel($id),
+			'video'=>$this->loadModel($id, 'Videos'),
 			'types'=>$types,
 			'type'=>$type
 		));
@@ -80,18 +80,5 @@ class TrainingController extends Controller
 			'pageProvider'=>$pageProvider,
 			'types'=>$types,
 		));
-	}
-	
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model = Videos::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 }

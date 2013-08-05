@@ -51,24 +51,11 @@ class TroubleTicketsController extends Controller
 			
 			// Validate BOTH $ticket and $file at the same time.
 			$valid=$ticket->validate() && $file->validate();
-		
 			if($valid)
 			{
 				$file->attachment=CUploadedFile::getInstance($file,'attachment');
 				
-				// Remove the first two elements and the last two elements from the POST array
-				// to isolate the conditionals.
-				array_shift($_POST);
-				array_shift($_POST);
-				array_pop($_POST);
-				array_pop($_POST);
-
-				$ticket->description .= "\n\n";
-				
-				// Grab all the data from the conditionals and put them in the description.
-				foreach($_POST as $key => $value) 
-					$ticket->description .= $key . ": " . $value . "\n";
-				
+				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
 				
 				if(isset($file->attachment))
@@ -111,7 +98,7 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionClose($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id, 'TroubleTickets');
 		// Load all comments on that ticket.
 		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
                  array(':selected_id'=>$id));
@@ -146,7 +133,7 @@ class TroubleTicketsController extends Controller
 	 */
 	public function actionReopen($id)
 	{
-		$model = $this->loadModel($id);
+		$model = $this->loadModel($id, 'TroubleTickets');
 		$model->closedbyuserid = NULL;
 		$model->closedate = NULL;
 		
@@ -163,51 +150,12 @@ class TroubleTicketsController extends Controller
 		if($status != "Open" && $status != "Closed")
 			throw new CHttpException(404);
 		
-		$criteria=new CDbCriteria;
-		
-		// If the user has an IT role, then they can see all open tickets.
-		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
-		{
-			if($status == "Open")
-				$criteria->condition = "closedbyuserid IS NULL";
-			else
-				$criteria->condition = "closedbyuserid IS NOT NULL";
-		}
-		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
-		{
-			// If the user is a supervisor, find that supervisor's department
-			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-			// Find all userids in that department.
-			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
-					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
-			// Put all those userid's into a string with "," seperating each value.
-			$stringed = join(',', $allUsers);
-			
-			if($status == "Open")
-				$criteria->condition = "closedbyuserid IS NULL";
-			else
-				$criteria->condition = "closedbyuserid IS NOT NULL";
-			
-			$criteria->addCondition("openedby IN (" . $stringed . ")");
-		}
-		else 
-		{
-			if($status == "Open")
-				$criteria->condition = "closedbyuserid IS NULL";
-			else
-				$criteria->condition = "closedbyuserid IS NOT NULL";
-			
-			$criteria->addCondition("openedby = :user");
-			$criteria->params = array(":user" => Yii::app()->user->id);
-		}
+		$ticket = new TroubleTickets;
+		$criteria = $ticket->TicketListCriteria($status);
 		
 		$dataProvider = new CActiveDataProvider('TroubleTickets', array(
 			'criteria'=>$criteria,
-			'sort'=>array(
-				'defaultOrder'=>array(
-					'ticketid'=>CSort::SORT_ASC,
-				),
-			)
+			'sort'=>array('defaultOrder'=>array('ticketid'=>CSort::SORT_ASC))
 		));
 		
 		$this->render('index', array(
@@ -215,23 +163,9 @@ class TroubleTicketsController extends Controller
 			'status'=>$status
 		));
 	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=TroubleTickets::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
 	
 	/**
-	 * Grab the subjects associated with the selected category.
-	 * This is only used by AJAX.
+	 * Grab the subjects associated with the selected category. This is only used by AJAX.
 	 */
 	public function actionDynamicsubjects()
 	{	
@@ -240,8 +174,7 @@ class TroubleTicketsController extends Controller
 	}
 	
 	/**
-	 * Grab the tips and conditional textboxes associated with the selected subject.
-	 * This is only used by AJAX.
+	 * Grab the tips and conditional textboxes associated with the selected subject. This is only used by AJAX.
 	 */
 	public function actionDynamictips()
 	{	

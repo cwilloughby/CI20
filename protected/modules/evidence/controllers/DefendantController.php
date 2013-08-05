@@ -41,7 +41,7 @@ class DefendantController extends Controller
 			$cases->attributes=$_GET['CaseSummary'];
 
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id, 'Defendant'),
 			'cases'=>$cases,
 		));
 	}
@@ -55,7 +55,7 @@ class DefendantController extends Controller
 	{
 		try
 		{
-			$this->loadModel($id)->delete();
+			$this->loadModel($id, 'Defendant')->delete();
 		}
 		catch(Exception $ex)
 		{
@@ -144,26 +144,13 @@ class DefendantController extends Controller
 		}
 		else
 		{
-			$defendant = $this->loadModel($summary->defid);
+			$defendant = $this->loadModel($summary->defid, 'Defendant');
 		}
 
 		$this->render('changeDefendant',array(
 			'summary' => $summary,
 			'defendant' => $defendant
 		));
-	}
-	
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Defendant::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

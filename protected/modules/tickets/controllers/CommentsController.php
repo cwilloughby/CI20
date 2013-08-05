@@ -48,7 +48,6 @@ class CommentsController extends Controller
 			if($valid)
 			{
 				$file->attachment=CUploadedFile::getInstance($file,'attachment');
-				
 				$temp = $model->content;
 				
 				if(isset($file->attachment))
@@ -89,7 +88,7 @@ class CommentsController extends Controller
 		}
 		
 		// Now we can delete the comment.
-		$this->loadModel($id)->delete();
+		$this->loadModel($id, 'Comments')->delete();
 		
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -116,27 +115,12 @@ class CommentsController extends Controller
 			$model->attributes=$_GET['Comments'];
 			
 			if((int)$model->datecreated)
-			{
 				$model->datecreated = date('Y-m-d', strtotime($model->datecreated));
-			}
 		}
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Comments::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 
 	/**

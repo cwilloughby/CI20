@@ -89,6 +89,9 @@ class Log extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->with = array('user');
+					
+		if((int)$this->eventdate)
+			$this->eventdate = date('Y-m-d', strtotime($this->eventdate));
 		
 		$criteria->compare('eventid',$this->eventid);
 		$criteria->compare('user.username',$this->user_search,true);

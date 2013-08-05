@@ -81,8 +81,24 @@ class Evaluations extends CActiveRecord
 
 		if($this->isNewRecord)
 			$this->evaluator=$id;
-
+		
 		return parent::beforeSave();
+	}
+	
+	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the event.
+		$log = new Log;
+		$log->tablename = 'ci_evaluations';
+		$log->event = 'Evaluation Created or Updated';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->getPrimaryKey();
+		$log->save(false);
+
+		return parent::afterSave();
 	}
 	
 	/**
@@ -122,6 +138,9 @@ class Evaluations extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->with = array('employee0', 'evaluator0');
+		
+		if((int)$this->evaluationdate)
+			$this->evaluationdate = date('Y-m-d', strtotime($this->evaluationdate));
 		
 		$criteria->compare('evaluationid',$this->evaluationid);
 		$criteria->compare('employee',$this->employee);

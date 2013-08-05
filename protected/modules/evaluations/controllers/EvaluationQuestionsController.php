@@ -59,7 +59,7 @@ class EvaluationQuestionsController extends Controller
 	 */
 	public function actionDisable($id)
 	{
-		$model = $this->loadModel($id);
+		$model = $this->loadModel($id, 'EvaluationQuestions');
 		$model->active = 2;
 		
 		if($model->update())
@@ -72,23 +72,10 @@ class EvaluationQuestionsController extends Controller
 	 */
 	public function actionEnable($id)
 	{
-		$model = $this->loadModel($id);
+		$model = $this->loadModel($id, 'EvaluationQuestions');
 		$model->active = 1;
 		
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->questionid));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=EvaluationQuestions::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
 	}
 }
