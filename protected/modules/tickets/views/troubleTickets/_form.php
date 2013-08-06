@@ -51,7 +51,7 @@
 			<?php 
 			echo $form->labelEx($ticket, 'subjectid');
 			echo $form->dropDownList($ticket, 'subjectid', array(), 
-				array('empty' => 'Select a subject','style'=>'border:0px','ajax' => 
+				array('empty' => 'Select a subject','ajax' => 
 					array(
 						'type' => 'GET',
 						'url' => CController::createUrl('troubletickets/dynamictips'),
@@ -92,6 +92,8 @@
 		echo $form->error($file, 'attachment');
 		?>
 	</div>
+	
+	<br/>
 	
 	<div id="button" class="row buttons" style="display:none">
 		<?php echo CHtml::submitButton($ticket->isNewRecord ? 'Create' : 'Save'); ?>

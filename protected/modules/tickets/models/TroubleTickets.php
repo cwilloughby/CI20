@@ -277,6 +277,7 @@ class TroubleTickets extends CActiveRecord
 			->from('ci_ticket_subjects')
 			->leftJoin('ci_category_subject_bridge','ci_category_subject_bridge.subjectid = ci_ticket_subjects.subjectid')
 			->where('ci_category_subject_bridge.categoryid=:id', array(':id'=>$_GET['categoryid']))
+			->order('subjectname ASC')
 			->queryAll();
 		
 		// Put the subjects into a list that is compatible with CHtml::tag
