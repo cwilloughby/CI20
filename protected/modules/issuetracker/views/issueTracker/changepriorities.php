@@ -21,17 +21,24 @@ $this->menu2=array(
 
 To increase the priority of an item, click and drag it upwards. To decrease the priority of an item, click and drag it downwards.
 
+<div class="form">
+
 <?php
+echo CHtml::beginForm('printchecked');
+
 // Organize the dataProvider data into a Zii-friendly array
 $priority = CHtml::listData($dataProvider->getData(), 'id', 'priority');
 $key = CHtml::listData($dataProvider->getData(), 'id', 'key');
 $summary = CHtml::listData($dataProvider->getData(), 'id', 'summary');
 $desc = CHtml::listData($dataProvider->getData(), 'id', 'description');
 
+echo CHtml::submitButton('Print Selected');
+	
 foreach($summary as $id=>$content)
 {
-     $sortableItems[$id] = '<div class="portlet-decoration grabby"><div class="portlet-title">Priority: ' . $priority[$id] . ', Key: ' . $key[$id] . ', Summary: ' . $content . '</div></div>'
-			. '<div class="portlet-content grabby">' . $desc[$id] . '</div>';
+     $sortableItems[$id] = 
+		'<div class="portlet-decoration grabby"><div class="portlet-title">' . CHtml::checkBox($key[$id], false) . ' <b>Priority: ' . $priority[$id] . ', Key: ' . $key[$id] . ', Summary: ' . $content . '</b></div></div>'
+		. '<div class="portlet-content grabby solid-back">' . $desc[$id] . '</div>';
 }
 
 // Implement the JUI Sortable plugin
@@ -45,4 +52,8 @@ $this->widget('zii.widgets.jui.CJuiSortable', array(
 		}'
 	),
 ));
+
+echo "<br/>" . CHtml::submitButton('Print Selected');
 ?>
+
+<?php echo CHtml::endForm(); ?>

@@ -70,7 +70,7 @@ class EvaluationsController extends Controller
 	}
 
 	/**
-	 * Creates a new model.
+	 * Creates a new model. Makes use of the beforeSave and afterSave events in the model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
@@ -145,7 +145,7 @@ class EvaluationsController extends Controller
 	}
 
 	/**
-	 * Change the employee being evaluated.
+	 * Change the employee being evaluated. Makes use of the beforeSave and afterSave events in the model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
@@ -173,7 +173,7 @@ class EvaluationsController extends Controller
 	}
 	
 	/**
-	 * This function is used to answer the evaluation questions.
+	 * This function is used to answer the evaluation questions. Makes use of the beforeSave event in the EvaluationAnswers model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */

@@ -20,12 +20,27 @@
 		<?php echo $form->label($model,'type'); ?>
 		<?php echo $form->textField($model,'type',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'created',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->created,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'reporter'); ?>
 		<?php echo $form->textField($model,'reporter',array('size'=>45,'maxlength'=>45)); ?>
@@ -45,12 +60,27 @@
 		<?php echo $form->label($model,'assigned'); ?>
 		<?php echo $form->textField($model,'assigned',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'updated'); ?>
-		<?php echo $form->textField($model,'updated'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'updated',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->updated,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'originalestimate'); ?>
 		<?php echo $form->textField($model,'originalestimate'); ?>

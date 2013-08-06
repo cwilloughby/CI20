@@ -919,3 +919,67 @@ span.required
 textarea {
 	width: 375px;
 }
+
+.solid-back {
+	background-color: white;
+}
+
+.priOrder li:nth-child(1) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: red;
+}
+
+.priOrder li:nth-child(2) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: blue;
+}
+
+.priOrder li:nth-child(3) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: blueviolet;
+}
+
+.priOrder li:nth-child(4) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: brown;
+}
+
+.priOrder li:nth-child(5) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+.priOrder li:nth-child(6) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: green;
+}
+
+.priOrder li:nth-child(7) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: pink;
+}
+
+.priOrder li:nth-child(8) {
+	border-style:solid;
+	border-width: 2px;
+	border-color: orange;
+}
+
+.priOrder li:nth-child(9) {
+	border-style:solid;
+	border-width: 3px;
+	border-color: paleturquoise;
+}
+
+.priOrder li:nth-child(10) {
+	border-style:solid;
+	border-width: 3px;
+	border-color: greenyellow;
+}

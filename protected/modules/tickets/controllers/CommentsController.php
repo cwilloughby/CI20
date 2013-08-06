@@ -25,12 +25,13 @@ class CommentsController extends Controller
 		return array(
 			'view' => array('class' => 'ViewAction', 'modelClass' => 'Comments'),
 			'index' => array('class' => 'IndexAction', 'modelClass' => 'Comments'),
+			'admin' => array('class' => 'AdminAction', 'modelClass' => 'Comments'),
 			'update' => array('class' => 'UpdateAction', 'modelClass' => 'Comments'),
 		);
 	}
 
 	/**
-	 * Creates a new model.
+	 * Creates a new model. Makes use of the beforeSave event in the model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
@@ -72,55 +73,18 @@ class CommentsController extends Controller
 	}
 
 	/**
-	 * Deletes a particular model.
+	 * Deletes a particular model. Makes use of the beforeDelete event in the model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
 	{
-		// To prevent integrity constraint violations, we have to see if the comment is connected to 
-		// a trouble ticket on the bridge table.
-		$bridge = TicketComments::model()->find('commentid=:selected_id',array(':selected_id'=>$id));
-		if($bridge)
-		{
-			// Delete the connection.
-			$bridge->delete();
-		}
-		
 		// Now we can delete the comment.
 		$this->loadModel($id, 'Comments')->delete();
 		
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Comments('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-		
-		if(isset($_GET['Comments']))
-		{
-			$model->attributes=$_GET['Comments'];
-			
-			if((int)$model->datecreated)
-				$model->datecreated = date('Y-m-d', strtotime($model->datecreated));
-		}
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

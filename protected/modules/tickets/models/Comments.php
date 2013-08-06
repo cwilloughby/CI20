@@ -96,6 +96,22 @@ class Comments extends CActiveRecord
 	}
 	
 	/**
+	 * To prevent integrity constraint violations, we have to see if the comment is connected to 
+	 * a trouble ticket on the bridge table and delete that connection.
+	 */
+	protected function beforeDelete()
+	{
+		$bridge = TicketComments::model()->find('commentid=:selected_id',array(':selected_id'=>$this->commentid));
+		if($bridge)
+		{
+			// Delete the connection.
+			$bridge->delete();
+		}
+
+		return parent::beforeDelete();
+	}
+	
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
@@ -117,7 +133,10 @@ class Comments extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->with = array('createdby0');
-			
+		
+		if((int)$this->datecreated)
+			$this->datecreated = date('Y-m-d', strtotime($this->datecreated));
+						
 		$criteria->compare('commentid',$this->commentid);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('createdby0.username',$this->user_search,true);

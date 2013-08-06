@@ -49,7 +49,7 @@ class IssueTracker extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('key, type, resolution', 'required', 'on'=>'insert'),
+			array('key, type', 'required', 'on'=>'insert'),
 			array('search', 'required', 'on'=>'search'),
 			array('originalestimate, remainingestimate, timespent, priority', 'numerical', 'integerOnly'=>true),
 			array('key', 'length', 'max'=>10),
@@ -62,7 +62,7 @@ class IssueTracker extends CActiveRecord
 	}
 
 	/**
-	 * Attaches the timestamp behavior to auto set the opendate value
+	 * Attaches the timestamp behavior to auto set the created and updated value
 	 * when a new ticket is made.
 	 */
 	public function behaviors() 
@@ -77,7 +77,7 @@ class IssueTracker extends CActiveRecord
 	}
 	
 	/**
-	 * Sets the openedby or closedbyuserid values to the person who opened or closed the ticket.
+	 * Set the priority to the last.
 	 */
 	protected function beforeSave()
 	{
@@ -135,7 +135,13 @@ class IssueTracker extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
-
+		
+		if((int)$this->created)
+			$this->created = date('Y-m-d', strtotime($this->created));
+		
+		if((int)$this->updated)
+			$this->updated = date('Y-m-d', strtotime($this->updated));
+		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('t.key',$this->key,true);
 		$criteria->compare('type',$this->type,true);

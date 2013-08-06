@@ -141,6 +141,41 @@ class IssueTrackerController extends Controller
 		}
 	}
 	
+	/**
+	 * Print the checked issues to a pdf.
+	 */
+	public function actionPrintChecked()
+	{
+		// Handle the POST request data submission.
+		if(isset($_POST) && (count($_POST) > 1))
+		{
+			$checked = $_POST;
+			
+			foreach($checked as $key => $value)
+			{
+				$model = IssueTracker::model()->find('t.key=:thekey', array(':thekey'=>$key));
+				
+				if(isset($model))
+				{
+					if(!isset($html2pdf))
+					{
+						$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
+					}
+					$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
+						'model'=>$model,
+						), true));
+				}
+			}
+			
+			if(isset($html2pdf))
+				$html2pdf->Output();
+			else
+				$this->redirect(array('/issuetracker/issuetracker/changepriorities'));
+		}
+		else
+			$this->redirect(array('/issuetracker/issuetracker/changepriorities'));
+	}
+	
 	function actionPortlet()
 	{
 		if(!is_null($_GET['IssueTracker']))

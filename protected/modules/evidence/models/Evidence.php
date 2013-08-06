@@ -75,7 +75,7 @@ class Evidence extends CActiveRecord
 	}
 	
 	/**
-	 * Log the event after a save occurs.
+	 * Convert the date before saving.
 	 */
 	protected function beforeSave()
 	{

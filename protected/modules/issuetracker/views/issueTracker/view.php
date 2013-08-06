@@ -38,8 +38,16 @@ $this->menu2=array(
 			'value'=>isset($model->created)?CHtml::encode(date('m/d/Y', strtotime($model->created))):"N\\A"
 		),
 		'reporter',
-		'summary',
-		'description',
+		array(
+			'name'=>'summary',
+			'value'=>nl2br($model->summary),
+			'type'=>'raw',
+		),
+		array(
+			'name'=>'description',
+			'value'=>nl2br($model->description),
+			'type'=>'raw',
+		),
 		'assigned',
 		array(        
 			'name'=>'updated',

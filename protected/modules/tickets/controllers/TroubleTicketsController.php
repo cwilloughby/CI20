@@ -31,7 +31,7 @@ class TroubleTicketsController extends Controller
 	}
 	
 	/**
-	 * Creates a new model.
+	 * Creates a new model. Makes use of the beforeSave event in the model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
