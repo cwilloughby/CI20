@@ -169,4 +169,20 @@ class IssueTracker extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/**
+	 * Take the keys of an array and put them into a string with ',' seperating each key
+	 * @return String
+	 */
+	public function prepareString($checked)
+	{
+		$stringed = "";
+		foreach($checked as $key => $value)
+		{
+			if($stringed != "")
+				$stringed .= ", ";
+			$stringed .= "'" . $key . "'";
+		}
+		return $stringed;
+	}
 }

@@ -149,28 +149,18 @@ class IssueTrackerController extends Controller
 		// Handle the POST request data submission.
 		if(isset($_POST) && (count($_POST) > 1))
 		{
-			$checked = $_POST;
+			$model = new IssueTracker;
 			
-			foreach($checked as $key => $value)
-			{
-				$model = IssueTracker::model()->find('t.key=:thekey', array(':thekey'=>$key));
-				
-				if(isset($model))
-				{
-					if(!isset($html2pdf))
-					{
-						$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
-					}
-					$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
-						'model'=>$model,
-						), true));
-				}
-			}
+			$dataProvider = new CActiveDataProvider('IssueTracker', array(
+				'criteria'=>array('condition'=> "t.key IN (" . $model->prepareString($_POST) . ")"),
+				'sort'=>array('defaultOrder' => 'priority ASC')
+			));
 			
-			if(isset($html2pdf))
-				$html2pdf->Output();
-			else
-				$this->redirect(array('/issuetracker/issuetracker/changepriorities'));
+			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
+			$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
+				'dataProvider' => $dataProvider,
+			), true));
+			$html2pdf->Output();
 		}
 		else
 			$this->redirect(array('/issuetracker/issuetracker/changepriorities'));
