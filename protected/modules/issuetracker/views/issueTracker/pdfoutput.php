@@ -17,16 +17,16 @@
 	
 	foreach($summary as $id=>$content)
 	{
-		echo "<b>" . $key[$id] . "</b><br/><br/>";
+		echo "<b>" . CHtml::encode($key[$id]) . "</b><br/><br/>";
 
 		if((int)$created[$id])
-			echo "<b>Created: </b>" . date('m/d/Y', strtotime($created[$id])) . "<br/><br/>";
+			echo "<b>Created: </b>" . CHtml::encode(date('m/d/Y', strtotime($created[$id]))) . "<br/><br/>";
 
-		echo "<b>Reported By: </b>" . $reported[$id] . "<br/><br/>";
+		echo "<b>Reported By: </b>" . CHtml::encode($reported[$id]) . "<br/><br/>";
 
-		echo "<b>Summary: </b>" . $summary[$id] . "<br/><br/>";
+		echo "<b>Summary: </b>" . CHtml::encode($summary[$id]) . "<br/><br/>";
 
-		echo "<b>Description: </b>" . $desc[$id] . "<br/><br/><hr/>";
+		echo "<b>Description: </b>" . CHtml::encode($desc[$id]) . "<br/><br/><hr/>";
 	}
 	?>
 
