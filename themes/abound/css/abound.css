@@ -924,62 +924,52 @@ textarea {
 	background-color: white;
 }
 
-.priOrder li:nth-child(1) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: red;
+.priOrder li:nth-child(1) .portlet-decoration {
+	background-image: none;
+	background-color: tomato;
 }
 
-.priOrder li:nth-child(2) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: blue;
+.priOrder li:nth-child(2) .portlet-decoration {
+	background-image: none;
+	background-color: cyan;
 }
 
-.priOrder li:nth-child(3) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: blueviolet;
+.priOrder li:nth-child(3) .portlet-decoration {
+	background-image: none;
+	background-color: yellowgreen;
 }
 
-.priOrder li:nth-child(4) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: brown;
+.priOrder li:nth-child(4) .portlet-decoration {
+	background-image: none;
+	background-color: pink;
 }
 
-.priOrder li:nth-child(5) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: black;
+.priOrder li:nth-child(5) .portlet-decoration {
+	background-image: none;
+	background-color: orchid;
 }
 
-.priOrder li:nth-child(6) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: green;
+.priOrder li:nth-child(6) .portlet-decoration {
+	background-image: none;
+	background-color: lightcoral;
 }
 
-.priOrder li:nth-child(7) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: pink;
+.priOrder li:nth-child(7) .portlet-decoration {
+	background-image: none;
+	background-color: yellow;
 }
 
-.priOrder li:nth-child(8) {
-	border-style:solid;
-	border-width: 2px;
-	border-color: orange;
+.priOrder li:nth-child(8) .portlet-decoration {
+	background-image: none;
+	background-color: orange;
 }
 
-.priOrder li:nth-child(9) {
-	border-style:solid;
-	border-width: 3px;
-	border-color: paleturquoise;
+.priOrder li:nth-child(9) .portlet-decoration {
+	background-image: none;
+	background-color: paleturquoise;
 }
 
-.priOrder li:nth-child(10) {
-	border-style:solid;
-	border-width: 3px;
-	border-color: greenyellow;
+.priOrder li:nth-child(10) .portlet-decoration {
+	background-image: none;
+	background-color: greenyellow;
 }

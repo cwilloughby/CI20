@@ -32,7 +32,8 @@ $key = CHtml::listData($dataProvider->getData(), 'id', 'key');
 $summary = CHtml::listData($dataProvider->getData(), 'id', 'summary');
 $desc = CHtml::listData($dataProvider->getData(), 'id', 'description');
 
-echo CHtml::submitButton('Print Selected');
+echo "<h4>" . CHtml::linkButton('Print Selected');
+echo CHtml::link('Refreash Priority', '/issuetracker/issuetracker/changepriorities', array('style'=>'float:right;')) . "</h4>";
 	
 foreach($summary as $id=>$content)
 {
@@ -53,7 +54,8 @@ $this->widget('zii.widgets.jui.CJuiSortable', array(
 	),
 ));
 
-echo "<br/>" . CHtml::submitButton('Print Selected');
+echo "<h4>" . CHtml::linkButton('Print Selected');
+echo CHtml::link('Refreash Priority', '/issuetracker/issuetracker/changepriorities', array('style'=>'float:right;')) . "</h4>";
 ?>
 
 <?php echo CHtml::endForm(); ?>

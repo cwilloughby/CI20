@@ -102,9 +102,28 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 	),
 ));?>
 
-<br/><h3>Attorneys</h3>
+<br/>
 
-<?php $this->widget('CustomGridView', array(
+<h3>Attorneys</h3>
+
+<?php 
+Yii::app()->clientScript->registerScript('addAttorney', "
+$('.attorney-button').click(function(){
+	$('.add-attorney').toggle();
+	return false;
+});");
+
+if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
+{
+	echo CHtml::link('Add Attorney','#',array('class'=>'attorney-button'));
+}
+?>
+<div class="add-attorney" style="display:none">
+<?php $this->renderPartial('../attorney/_changeAttorneyForm',array('summary'=>$case, 'attorney'=>$attorneys)); ?>
+</div><!-- changeAttorneyForm -->
+
+<?php
+$this->widget('CustomGridView', array(
 	'id'=>'attorney-grid',
 	'dataProvider'=>$attorneys->search($case->summaryid),
 	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $attorneys : null),
@@ -131,27 +150,30 @@ This will NOT delete the defendant, case, attorneys, or evidence.')),
 		),
 	),
 ));
+?>
 
-Yii::app()->clientScript->registerScript('addAttorney', "
-$('.attorney-button').click(function(){
-	$('.add-attorney').toggle();
+<hr>
+
+<?php echo "<br/><h3>Evidence</h3>"; ?>
+
+<?php 
+Yii::app()->clientScript->registerScript('addEvidence', "
+$('.evidence-button').click(function(){
+	$('.add-evidence').toggle();
 	return false;
 });");
 
 if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
 {
-	echo CHtml::link('Add Attorney','#',array('class'=>'attorney-button'));
+	echo CHtml::link('Add Evidence','#',array('class'=>'evidence-button'));
 }
 ?>
-<div class="add-attorney" style="display:none">
-<?php $this->renderPartial('../attorney/_changeAttorneyForm',array('summary'=>$case, 'attorney'=>$attorneys)); ?>
-</div><!-- changeAttorneyForm -->
+<div class="add-evidence" style="display:none">
+<?php $this->renderPartial('../evidence/_changeEvidenceForm',array('summary'=>$case, 'evidence'=>$evidence)); ?>
+</div><!-- changeEvidenceForm -->
 
-<hr>
-
-<?php echo "<br/><h3>All Evidence</h3>"; ?>
-
-<?php $this->widget('CustomGridView', array(
+<?php
+$this->widget('CustomGridView', array(
 	'id'=>'evidence-grid',
 	'dataProvider'=>$evidence->search($case->caseno),
 	'filter'=>(Yii::app()->user->checkAccess('EvidenceAdmin', Yii::app()->user->id) ? $evidence : null),
@@ -203,18 +225,3 @@ if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
 		),
 	),
 )); 
-
-Yii::app()->clientScript->registerScript('addEvidence', "
-$('.evidence-button').click(function(){
-	$('.add-evidence').toggle();
-	return false;
-});");
-
-if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
-{
-	echo CHtml::link('Add Evidence','#',array('class'=>'evidence-button'));
-}
-?>
-<div class="add-evidence" style="display:none">
-<?php $this->renderPartial('../evidence/_changeEvidenceForm',array('summary'=>$case, 'evidence'=>$evidence)); ?>
-</div><!-- changeEvidenceForm -->

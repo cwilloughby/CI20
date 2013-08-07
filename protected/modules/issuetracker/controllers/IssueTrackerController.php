@@ -147,7 +147,7 @@ class IssueTrackerController extends Controller
 	public function actionPrintChecked()
 	{
 		// Handle the POST request data submission.
-		if(isset($_POST) && (count($_POST) > 1))
+		if(isset($_POST))
 		{
 			$model = new IssueTracker;
 			
