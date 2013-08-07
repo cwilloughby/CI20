@@ -973,3 +973,7 @@ textarea {
 	background-image: none;
 	background-color: greenyellow;
 }
+
+.portlet-title input {
+	margin: 0px;
+}
