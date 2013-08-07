@@ -174,7 +174,9 @@ class Centriod extends CModel
 			{
 				$row = 0;
 				$parsedFiles['Warrant']['Location'] = $files['Warrant'];
-								
+				
+				// Normally a flat file has everything on one line, but the warrant file seperates the charges into different lines.
+				// This loop iterates through each line. So each iteration is a seperate charge.
 				while(!feof($handle)) 
 				{
 					// Grab a line from the file.
@@ -183,12 +185,14 @@ class Centriod extends CModel
 					{
 						$count = count($this->warrant);	
 
+						// Element refers to things like, warrant number, ncic, tca, ect. So this loop goes through each one.
 						for($element = 0; $element < $count; $element++)
 						{
 							$parsedFiles['Warrant']['Charge' . ($row + 1)][$this->warrant[$element]['Arrest Element']] 
 								= trim(substr($buffer, $this->warrant[$element]['Start Point'], $this->warrant[$element]['Length']));
 						}
 					}
+					// Increase the line number.
 					$row++;
 				}
 				fclose($handle);
@@ -207,6 +211,8 @@ class Centriod extends CModel
 				$row = 0;
 				$parsedFiles['Alias']['Location'] = $files['Alias'];
 				
+				// Normally a flat file has everything on one line, but the alias file seperates the aliases into different lines.
+				// This loop iterates through each line. So each iteration is a seperate alias.
 				while(!feof($handle)) 
 				{
 					// Grab a line from the file.
@@ -215,12 +221,14 @@ class Centriod extends CModel
 					{
 						$count = count($this->alias);	
 
+						// Element refers to things like, first name, last name, suffix, ect. So this loop goes through each one.
 						for($element = 0; $element < $count; $element++)
 						{
 							$parsedFiles['Alias']['Alias' . ($row + 1)][$this->alias[$element]['Arrest Element']] 
 									= trim(substr($buffer, $this->alias[$element]['Start Point'], $this->alias[$element]['Length']));
 						}
 					}
+					// Increase the line number.
 					$row++;
 				}
 				fclose($handle);
@@ -339,7 +347,7 @@ class Centriod extends CModel
 	}
 	
 	/**
-	 * This function finds any blank values in the demographic.
+	 * This function finds any blank elements in the demographic info.
 	 * @param type $array
 	 */
 	private function checkBlankDemographic($demographic)

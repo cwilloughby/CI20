@@ -10,7 +10,15 @@
 			<h5><?php echo CHtml::encode($data->getAttributeLabel('ticketid')); ?>:
 			<?php echo CHtml::encode($data->ticketid); ?>
 			<h5/>
-
+			
+			<h5>
+			<?php echo CHtml::encode($data->getAttributeLabel('categoryid')); ?>:
+			<?php echo CHtml::encode($data->category->categoryname); ?>
+			&emsp;-&emsp;
+			<?php echo CHtml::encode($data->getAttributeLabel('subjectid')); ?>:
+			<?php echo CHtml::encode($data->subject->subjectname); ?>
+			</h5>
+			
 			<h5>
 			<?php echo CHtml::encode($data->getAttributeLabel('openedby')); ?>:
 			<?php echo CHtml::encode($data->openedby0->username); ?>
@@ -33,27 +41,12 @@
 				<?php
 			}
 			?>
-			
-			<h5>
-			<?php echo CHtml::encode($data->getAttributeLabel('categoryid')); ?>:
-			<?php echo CHtml::encode($data->category->categoryname); ?>
-			&emsp;-&emsp;
-			<?php echo CHtml::encode($data->getAttributeLabel('subjectid')); ?>:
-			<?php echo CHtml::encode($data->subject->subjectname); ?>
-			</h5>
 
 			<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 			<?php echo nl2br($data->description); ?>
 			
 			<h4>
-			<?php echo CHtml::link('View Ticket', array('view', 'id'=>$data->ticketid));
-			if($_GET['status'] != 'Closed')
-			{
-				?>
-				&emsp;-&emsp;
-				<?php echo CHtml::link('Close Ticket', array('close', 'id'=>$data->ticketid));
-			}
-			?>
+			<?php echo CHtml::link('Manage Ticket', array('view', 'id'=>$data->ticketid)); ?>
 			</h4>
 		</div>
 		<div class="span6">

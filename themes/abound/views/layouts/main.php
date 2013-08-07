@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta charset="utf-8">
-	<title>CI2.0</title>
+	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Free yii themes, free web application theme">
 	<meta name="author" content="Webapplicationthemes.com">
@@ -27,7 +27,6 @@
 	$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 	$cs->registerCssFile($baseUrl.'/css/abound.css');
-	//$cs->registerCssFile($baseUrl.'/css/style-blue.css');
 	?>
 	<!-- styles for style switcher -->
 	<?php  
@@ -61,13 +60,13 @@
     
 <section class="main-body">
     <div class="container-fluid">
-            <!-- Include content pages -->
-            <?php echo $content; ?>
+		<!-- Include content pages -->
+		<?php echo $content; ?>
     </div>
 </section>
 
 <!-- Require the footer -->
 <?php require_once('tpl_footer.php')?>
 
-  </body>
+</body>
 </html>

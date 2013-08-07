@@ -91,41 +91,6 @@ class TroubleTicketsController extends Controller
 			'file'=>$file,
 		));
 	}
-
-	/**
-	 * Tickets are closed, instead of deleted. This function first calls the closeTicket form.
-	 * @param integer $id the ID of the model to be closed.
-	 */
-	public function actionClose($id)
-	{
-		$model=$this->loadModel($id, 'TroubleTickets');
-		// Load all comments on that ticket.
-		$ticketComments=Comments::model()->with('ciTroubleTickets')->findAll('ciTroubleTickets.ticketid=:selected_id',
-                 array(':selected_id'=>$id));
-		
-		if($model->attributes = Yii::app()->request->getPost('TroubleTickets'))
-		{
-			$model->closedbyuserid = Yii::app()->user->id;
-			
-			if($model->update())
-			{
-				$this->redirect(
-					array('/email/email/helpcloseemail',
-						'creator' => $model->openedby,
-						'ticketid' => $model->ticketid,
-						'category' => $model->categoryid,
-						'subject' => $model->subjectid,
-						'description' => $model->description,
-						'resolution' => $model->resolution,
-					));
-			}
-		}
-		
-		$this->render('close',array(
-			'model'=>$model,
-			'ticketComments'=>$ticketComments
-		));
-	}
 	
 	/**
 	 * This function will reopen a ticket.
