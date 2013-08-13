@@ -63,7 +63,7 @@ class Documents extends CActiveRecord
 	 */
 	protected function beforeValidate()
 	{
-		// Set the uploader attribute to the current user.
+		// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
 
 		// Set the uploaddate attribute to the current date.
 		
