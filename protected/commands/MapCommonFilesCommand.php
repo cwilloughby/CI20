@@ -12,7 +12,7 @@ class MapCommonFilesCommand extends CConsoleCommand
 	 * Run the command and map the files and folders.
 	 * I know this name does not follow best practice but it is required this way by yii.
 	 */
-    public function run()
+    public function run($args)
 	{
         // Create Document model object.
 		
@@ -39,7 +39,7 @@ class MapCommonFilesCommand extends CConsoleCommand
 			{
 				// If the mapping of a file failed, then the indexing of that file will be skipped and the loop
 				// will move on to the next file. That way, a single bad file will not stop the entire process.
-				// The failure should be recorded here.
+				// The failure will also be recorded here.
 			}
 			
 		} // End loop

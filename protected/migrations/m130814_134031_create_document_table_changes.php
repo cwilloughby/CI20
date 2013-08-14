@@ -21,13 +21,10 @@ class m130814_134031_create_document_table_changes extends CDbMigration
 	
 	public function up()
 	{
-		$this->dropTable('ci_document_type');
-		$this->dropTable('ci_document_processor');
-		
 		$this->createTable('ci_document_queues', array(
 			'itemid' => 'INT(11) NOT NULL AUTO_INCREMENT',
-			'queue' => 'VARCHAR(45) NOT NULL' ,
-			'documentid' => 'INT(11) NOT NULL' ,
+			'queue' => 'VARCHAR(45) NOT NULL',
+			'documentid' => 'INT(11) NOT NULL',
 			'completedby' => 'INT(4) NULL',
 			'completiondate' => 'DATETIME NULL',
 			'PRIMARY KEY (`itemid`)',

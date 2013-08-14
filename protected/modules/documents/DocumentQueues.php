@@ -3,7 +3,7 @@
 /**
  * This is the model class for table "ci_document_queues".
  *
- * The followings are the available columns in table 'ci_documents':
+ * The followings are the available columns in table 'ci_document_queues':
  * @property integer $itemid
  * @property string $queue
  * @property integer $documentid

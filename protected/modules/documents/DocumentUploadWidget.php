@@ -10,7 +10,7 @@ class DocumentUploadWidget extends CPortlet
 	
 	/**
 	 * This routine is for displaying the file upload form and processing the uploaded file.
-	 * I know this name does not follow best practice but it is required this way by yii.
+	 * I know this name does not follow best practice, but it is required this way by yii.
 	 * A better name would be displayUploadFormAndValidate()
 	 */
     protected function renderContent()

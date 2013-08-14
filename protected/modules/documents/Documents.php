@@ -28,7 +28,7 @@ class Documents extends CActiveRecord
 	
 	/**
 	 * Returns the static model of the specified AR class.
-	 * I know this name does not follow best practice but it is required this way by yii.
+	 * I know this name does not follow best practice, but it is required this way by yii.
 	 * A better name would be getModel()
 	 * @param string $className active record class name.
 	 * @return Documents the static model class
@@ -39,7 +39,7 @@ class Documents extends CActiveRecord
 	} // End of function model
 
 	/** 
-	 * I know this name does not follow best practice but it is required this way by yii.
+	 * I know this name does not follow best practice, but it is required this way by yii.
 	 * A better name would be getTableName()
 	 * @return string the associated database table name
 	 */
@@ -49,7 +49,7 @@ class Documents extends CActiveRecord
 	} // End of function tableName
 
 	/**
-	 * I know this name does not follow best practice but it is required this way by yii.
+	 * I know this name does not follow best practice, but it is required this way by yii.
 	 * A better name would be setValidationRules()
 	 * @return array validation rules for model attributes.
 	 */
@@ -169,7 +169,7 @@ class Documents extends CActiveRecord
 
 		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
 
-		// Read in the modified date metadata and give to the model’s modifieddate attribute.
+		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 
 		// Read in the contents of the word document and give it to the model’s content attribute.
 
@@ -187,7 +187,7 @@ class Documents extends CActiveRecord
 
 		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
 
-		// Read in the modified date metadata and give to the model’s modifieddate attribute.
+		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 
 		// Read in the contents of the excel document and give it to the model’s content attribute.
 
@@ -205,7 +205,7 @@ class Documents extends CActiveRecord
 
 		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
 
-		// Read in the modified date metadata and give to the model’s modifieddate attribute.
+		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 
 		// OCR conversion here.
 		
@@ -225,7 +225,7 @@ class Documents extends CActiveRecord
 
 		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
 
-		// Read in the modified date metadata and give to the model’s modifieddate attribute.
+		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 		
 		// OCR conversion here.
 		
@@ -234,4 +234,26 @@ class Documents extends CActiveRecord
 		// Close the tiff document.
 	} // End function setTiffFileContentsAndMetadata
 	
+	/**
+	 * Create an array containing documentname and documentpath of the requested files,
+	 * as long as those files are shareable.
+	 * @return array (documentname => documentpath)
+	 */
+	public function createArrayAndValidateForFileSharing($requestedFiles)
+	{
+		// Loop for each file that the user is trying to share
+		{
+			// Double chack that the file that the user is trying to share, is actually shareable.
+			{
+				// Add the current file's documentname and path to an array.
+			}
+			// Else
+			{
+				// One or more of the files is not shareable. Throw an exception.
+			}
+		}
+		
+		// return the array of document names and document paths.
+	} // End function createArrayForFileSharing
+
 } // End of class Documents
