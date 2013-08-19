@@ -26,6 +26,7 @@ class DocumentQueues extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		// Return the model name.
+		return parent::model($className);
 	} // End of function model
 
 	/** 
@@ -46,6 +47,15 @@ class DocumentQueues extends CActiveRecord
 	public function rules()
 	{
 		// Define the validation rules in an array and return it.
+		return array(
+			array('queue', 'required'),
+			array('documentid, completedby', 'numerical', 'integerOnly'=>true),
+			array('queue', 'length', 'max'=>45),
+			array('completiondate', 'safe'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('itemid, queue, documentid, completedby, completiondate', 'safe', 'on'=>'search'),
+		);
 	} // End of function rules
 	
 	/**
@@ -55,6 +65,10 @@ class DocumentQueues extends CActiveRecord
 	public function relations()
 	{
 		// Return an array of defined relationships.
+		return array(
+            'completedby0' => array(self::BELONGS_TO, 'UserInfo', 'completedby'),
+            'document' => array(self::BELONGS_TO, 'Documents', 'documentid'),
+        );
 	} // End function relations
 
 	/**
@@ -64,5 +78,34 @@ class DocumentQueues extends CActiveRecord
 	public function attributeLabels()
 	{
 		// Return an array of attribute labels.
+		return array(
+            'itemid' => 'Itemid',
+            'queue' => 'Queue',
+            'documentid' => 'Documentid',
+            'completedby' => 'Completedby',
+            'completiondate' => 'Completiondate',
+        );
 	} // End function attributeLabels
+	
+	/**
+     * Retrieves a list of models based on the current search/filter conditions.
+     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+     */
+    public function search()
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
+
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('itemid',$this->itemid);
+        $criteria->compare('queue',$this->queue,true);
+        $criteria->compare('documentid',$this->documentid);
+        $criteria->compare('completedby',$this->completedby);
+        $criteria->compare('completiondate',$this->completiondate,true);
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
 }

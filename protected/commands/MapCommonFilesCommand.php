@@ -10,7 +10,7 @@ class MapCommonFilesCommand extends CConsoleCommand
 	
 	/**
 	 * Run the command and map the files and folders.
-	 * I know this name does not follow best practice but it is required this way by yii.
+	 * I know this name does not follow best practice, but it is required this way by yii.
 	 */
     public function run($args)
 	{
@@ -18,7 +18,7 @@ class MapCommonFilesCommand extends CConsoleCommand
 		
 		// Loop through folders and subfolders, grabbing each file
 		{
-			// Try to catch errors related to the current file.
+			// Try to detect errors related to the current file.
 			{
 				// Pass the current file to the model.
 				

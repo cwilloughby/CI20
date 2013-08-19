@@ -3,18 +3,31 @@
 /* @var $ticket TroubleTickets */
 /* @var $file Documents */
 /* @var $form CActiveForm */
+
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
+
+<script>
+Dropzone.options.ticketsForm = {
+	paramName: "file", // The name that will be used to transfer the file
+	autoProcessQueue: false,
+	url:'/tickets/troubletickets/create',
+	success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
+};
+</script>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'trouble-tickets-form',
+	'id'=>'ticketsForm',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
+	'action'=>'/tickets/troubletickets/create',
 	'stateful'=>true, 
-	'htmlOptions' => array('enctype' => 'multipart/form-data'),
+	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -86,19 +99,22 @@
 	</div>
 
 	<div class="row">
-		<?php
-		echo $form->labelEx($file, 'attachment');
-		echo $form->fileField($file, 'attachment');
-		echo $form->error($file, 'attachment');
-		?>
+		<div class="fallback">
+			<?php echo $form->fileField($file, 'file'); ?>
+			<?php echo $form->error($file, 'file'); ?>
+		</div>
 	</div>
 	
 	<br/>
 	
 	<div id="button" class="row buttons" style="display:none">
-		<?php echo CHtml::submitButton($ticket->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
+			'onclick'=> '
+				var dz = Dropzone.forElement("#ticketsForm");
+				dz.processQueue();
+			')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
+	
 </div><!-- form -->

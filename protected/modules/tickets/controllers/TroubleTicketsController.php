@@ -47,26 +47,26 @@ class TroubleTicketsController extends Controller
 		
 		if($ticket->attributes = Yii::app()->request->getPost('TroubleTickets'))
 		{
-			$file->attributes=$_POST['Documents'];
-			
-			// Validate BOTH $ticket and $file at the same time.
-			$valid=$ticket->validate() && $file->validate();
-			if($valid)
+			if($ticket->validate())
 			{
-				$file->attachment=CUploadedFile::getInstance($file,'attachment');
-				
 				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
 				
-				if(isset($file->attachment))
+				if(!empty($_FILES))
 				{
-					$file->save(false);
-					// This description will only allow the link to work on the website.
-					$ticket->description .= "\nAttachment: " 
-						. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
-							. $file->uploaddate . '/' . $file->documentname));
-					// This description will only be used for the email so the link will work.
-					$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+					// Read in the current file.
+					$file->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+					$file->type = 'attachment';
+					if($file->validate())
+					{
+						move_uploaded_file($file->file['tempName'], $file->path);
+						// This description will only allow the link to work on the website.
+						$ticket->description .= "\nAttachment: " 
+							. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+								. $file->uploaddate . '/' . $file->documentname));
+						// This description will only be used for the email so the link will work.
+						$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+					}
 				}
 				else
 					$temp .= "\n";

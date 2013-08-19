@@ -233,6 +233,9 @@ $baseUrl = Yii::app()->theme->baseUrl;
 </div>
 
 <div class="row-fluid">
+	
+	<?php $this->widget('DocumentUploadWidget', array('type'=>'QueueName')); ?>
+	
     <!--</div>
 	<div class="span2">
     	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">

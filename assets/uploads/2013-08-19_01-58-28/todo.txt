@@ -1,0 +1,43 @@
+
+The Trouble Ticket subjects "Subject 51 - Courtroom audio is not working" and "Subject 75 - Courtroom Printer"
+need to have Brad and Amber CC'ed on the email alerts.
+
+View Ticket and Close Ticket need to be combined into one page.
+
+
+Known bugs:
+
+The priority switcher does not record changes if used in ie.
+
+Changing the court case number on the case summary page will cause it's evidence to be orphaned.
+
+Drag and drop file upload on trouble tickets requires a file or the form wont submit.
+
+
+
+
+
+Possible Improvments:
+
+Check through ci2 and see if there is any code that should make use of events. (Pages 44 - 45)
+
+Add more yii exceptions.
+
+Using Yii::app()->getRequest(), with sendFile(...) for sending files. (Page 66)
+
+Make a Delete, Admin, Index, and View Component for identical delete, admin, index, and view actions
+throughout the controllers. (Pages 96 - 98)
+
+Make a Success or Error flash message for all the delete, update, and create actions. (Pages 102 - 103)
+
+Auto updating news widgets without page refresh (Pages 137 - 139)
+
+Custom grid view columns for setting flags (Pages 289 - 294)
+
+Profile the speed performance of pages (Pages 415 - 425)
+
+
+
+Multi file upload (Pages 144 - 151)
+
+Processing Queue (Pages 153 - 167)

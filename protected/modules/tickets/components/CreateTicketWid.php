@@ -13,7 +13,7 @@ class CreateTicketWid extends CPortlet {
     protected function renderContent() {
         if (isset(Yii::app()->user->id)) {
             $ticket = new TroubleTickets;
-            $file = new Documents;
+            $document = new Documents;
 
             if (isset($_POST['ajax']) && $_POST['ajax'] === 'trouble-tickets-form') {
                 echo CActiveForm::validate($model);
@@ -21,13 +21,15 @@ class CreateTicketWid extends CPortlet {
             }
 
             if($ticket->attributes = Yii::app()->request->getPost('TroubleTickets')) {
-                $file->attributes = $_POST['Documents'];
-
+                $document->attributes = $_POST['Documents'];
+				$document->type = 'attachment';
+				
                 // Validate BOTH $ticket and $file at the same time.
-                $valid = $ticket->validate() && $file->validate();
+                $valid = $ticket->validate() && $document->validate();
 
-                if ($valid) {
-                    $file->attachment = CUploadedFile::getInstance($file, 'attachment');
+                if($valid)
+				{
+                    $document->file = CUploadedFile::getInstance($document, 'file');
 
                     // Remove the first two elements and the last two elements from the POST array
                     // to isolate the conditionals.
@@ -44,14 +46,14 @@ class CreateTicketWid extends CPortlet {
 
                     $temp = $ticket->description;
 
-                    if (isset($file->attachment)) {
-                        $file->save(false);
+                    if(isset($document->file)) {
+                        $document->file->save(false);
                         // This description will only allow the link to work on the website.
                         $ticket->description .= "\nAttachment: "
-                                . CHtml::link($file->documentname, array('/../../../../assets/uploads/'
-                                    . $file->uploaddate . '/' . $file->documentname));
+                                . CHtml::link($document->documentname, array('/../../../../assets/uploads/'
+                                    . $document->uploaddate . '/' . $document->documentname));
                         // This description will only be used for the email so the link will work.
-                        $temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+                        $temp .= "\nAttachment: <a href='file:///" . $document->path . "'>" . $document->documentname . "</a>";
                     }
                     else
                         $temp .= "\n";
@@ -73,7 +75,7 @@ class CreateTicketWid extends CPortlet {
 
             $this->render('_form', array(
                 'ticket' => $ticket,
-                'file' => $file,
+                'file' => $document,
             ));
         }
     }

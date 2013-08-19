@@ -18,27 +18,29 @@ class ManageTicketWid extends CPortlet
 		
 			if(isset($_POST['yt1']))
 			{
-				echo "Close Ticket button was pressed!";
-				
-				$valid=$model->validate() && $file->validate();
-				if($valid)
+				if($model->validate())
 				{
-					$file->attachment=CUploadedFile::getInstance($file,'attachment');
 					$this->ticket->resolution = $model->content;
 					$this->ticket->closedbyuserid = Yii::app()->user->id;
 					$temp = $model->content;
-
-					if(isset($file->attachment))
+					
+					if(!empty($_FILES))
 					{
-						$file->save(false);
-						// This description will only allow the link to work on the website.
-						$this->ticket->resolution .= "\nAttachment: " 
-							. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
-								. $file->uploaddate . '/' . $file->documentname));
-						// This description will only be used for the email so the link will work.
-						$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
+						// Read in the current file.
+						$file->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+						$file->type = 'attachment';
+						if($file->validate())
+						{
+							$file->save(false);
+							// This description will only allow the link to work on the website.
+							$this->ticket->resolution .= "\nAttachment: " 
+								. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+									. $file->uploaddate . '/' . $file->documentname));
+							// This description will only be used for the email so the link will work.
+							$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
+						}
 					}
-				
+					
 					if($this->ticket->update())
 					{
 						$this->controller->redirect(

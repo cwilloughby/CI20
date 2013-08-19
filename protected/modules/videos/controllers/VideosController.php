@@ -37,24 +37,25 @@ class VideosController extends Controller
 	public function actionCreate()
 	{
 		$video = new Videos;
-		$file = new Documents;
+		$dcoument = new Documents;
 		
-		$file->scenario = 'training';
+		$document->scenario = 'training';
 		
 		if($video->attributes = Yii::app()->request->getPost('Videos'))
 		{
-			$file->video = CUploadedFile::getInstance($file,'video');
+			$document->type = 'video';
+			$document->file = CUploadedFile::getInstance($document, 'file');
 			
 			// Validate both $video and $file at the same time.
 			$videoCheck = $video->validate();
-			$fileCheck = $file->validate();
+			$fileCheck = $document->validate();
 			$valid = $videoCheck && $fileCheck;
 		
 			if($valid)
 			{
-				if($file->save(false))
+				if($document->save(false))
 				{
-					$video->documentid = $file->primaryKey;
+					$video->documentid = $document->primaryKey;
 					echo $video->documentid;
 					if($video->save())
 						$this->redirect(array('view', 'id'=>$video->videoid));
@@ -62,7 +63,7 @@ class VideosController extends Controller
 			}
 		}
 
-		$this->render('create', array('video'=>$video, 'file'=>$file));
+		$this->render('create', array('video'=>$video, 'file'=>$document));
 	}
 
 	/**

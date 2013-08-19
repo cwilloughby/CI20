@@ -14,7 +14,7 @@
 		'validateOnSubmit'=>true,
 	),
 	'stateful'=>true, 
-	'htmlOptions' => array('enctype' => 'multipart/form-data'),
+	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -85,12 +85,12 @@
 		?>
 	</div>
 
+	
 	<div class="row">
-		<?php
-		echo $form->labelEx($file, 'attachment');
-		echo $form->fileField($file, 'attachment');
-		echo $form->error($file, 'attachment');
-		?>
+		<div class="fallback">
+			<?php echo $form->fileField($file, 'file'); ?>
+			<?php echo $form->error($file, 'file'); ?>
+		</div>
 	</div>
 	
 	<div id="button" class="row buttons" style="display:none">

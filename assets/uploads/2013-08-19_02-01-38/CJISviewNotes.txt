@@ -1,0 +1,481 @@
+CJIS Views:
+
+
+AAP_V_GSFEES_PIF - ?
+
+ACC_PENDING_CC_CASES - A view of pending criminal cases.
+
+ACC_v_DA_PCHIS - ?
+
+ACC_V_NEW_ARRESTS_PNDNG_CASES - ?
+
+ACC_V_SESN_ITM_DEFENDANT - Session item defendant, uses so many key values that it is hard to read.
+
+ACC_V_SESN_ITM_DEFENDANT_OCA - Session item defendant and OCA, uses so many key values that it is hard to read.
+
+ACC_V_SESN_ITM_FTA_EVENTS - Session item failure to appear events, uses so many key values that it is hard to read.
+
+ACC_V_SESN_ITM_SUBP_EVENTS - Session item subpeana events uses so many key values that it is hard to read.
+
+ACC_V_SESN_ITM_TOT_FTA_EVENTS - Session item total failure to appear events, uses so many key values that it is hard to read.
+
+ACC_V_SESSION_DETAILS - A view that lists the details of the sessions.
+
+ACM_J_B_EVENTS - ?
+
+ACM_V_ADDRESS_TYPE - A view that shows the different address types that CJIS recognizes (Residential, Business, ect),
+			their abbreviations, the date the address type was created, and who created it.
+
+ACM_V_AFFIDAVIT_TEMPLATE - ?
+
+ACM_V_APPEALED_CASES - A view that contains a list of appealed cases, but it doesn't say when they were appealed.
+
+ACM_V_ATTORNEY_INFO_DA_ACTIVE - A view that shows all the information for the active DA attorneys.
+
+ACM_v_ATTORNEY_NONDA_ACTIVE - A view that shows all the information for the active non DA attorneys.
+
+ACM_V_ATTORNEY_INFO - A view that shows all the information for all the attorneys.
+
+ACM_V_BOND_ADDR_NOARREST_CITS - ?
+
+ACM_V_BOND_ADDRESS_CITATIONS - ?
+
+ACM_V_BOND_AGENT - A view that shows a list of bond agents, what bond company they work for, when they starting working,
+			and when they stopped working (if the have)
+
+ACM_V_BOND_AMT_POSTED - A view that shows the bond amount posted on each case, doesn't have the date.
+
+ACM_V_BOND_COMP_AMT_POSTED - A view that shows the total amount of money that a bond company has posted. No date range shown. 
+
+ACM_V_BOND_COMP_DET - ?
+
+ACM_V_BOND_COMP_FORFEIT_AMT - ?
+
+ACM_V_BOND_DISMISSED_EVENTS - ?
+
+ACM_V_BOND_INFO - A view that shows the bonds posted on each case, the amount, the date, the defendant, and the company.
+
+ACM_V_BOND_INFO_FP - ?
+
+ACM_V_BOND_INFO_FP_BCK - ?
+
+ACM_V_BOND_INFO1 - ?
+
+ACM_V_BOND_INFO2 - A view that shows the bonds posted on each case, the amount, the date, the defendant, and the company.
+
+ACM_V_BOND_INFO3 - A view that shows the bond events on each case, the date, the defendant, posted or released, ect.
+
+ACM_V_BOND_LIAB_AMT_POST - ?
+
+ACM_V_BOND_MAIL_ADDRESS - A view that shows the mailling address information of a person on bond.
+
+ACM_V_BOND_OTHER_EVENT_DET - A view that shows unusual types of bond events on each case.
+
+ACM_V_BOND_OTHER_EVENT_TYP - A view that shows unusual types of bond events, like forfeited, reinstated, ect.
+
+ACM_V_BOND_RELEASE_EVENT_TYP - A view that shows all the types of bond release events. There is only one so I'm not
+				sure what the point is.
+
+ACM_V_BOND_SET_EVENT_TYP - A view that shows all the type of bond set events.
+
+ACM_V_BOUND_OVER_CASES - ?
+
+ACM_V_CC_APPR_RESN_1 - ?
+
+ACM_V_CC_APPR_RESN_2 - ?
+
+ACM_V_CC_APPR_RESN_3 - ?
+
+ACM_v_CC_BOND_MAIL_ADDRESS - ?
+
+ACM_v_CC_CASE - A view that shows almost everything about cc cases, except for the individual charges.
+
+ACM_V_CJIS_BOND - A view that shows bond related event information such as amount set, bond release date, condition, ect.
+
+ACM_V_CJIS_BOND_PAYMENT - A view that shows payment related information for bonds.
+
+ACM_V_CJIS_CASE_BOND_PMNT - A view that shows the bond amount posted on each case.
+
+ACM_V_CJIS_DEFENDANT - A view that lists a huge amount of demographic information on defendants.
+
+ACM_V_CJIS_EVENT_TO_PRSN - ?
+
+ACM_V_CJIS_FACTS_CASE - ?
+
+ACM_V_CJIS_FUTURE_COURT_NOWNO - ?
+
+ACM_V_CJIS_FUTURE_COURTDATE - ?
+
+ACM_V_COUNT_EXPNG - ?
+
+ACM_V_CRIMINAL_INDICTMENT - ?
+
+ACM_V_CST_ASSMNT_EVENTS - ?
+
+ACM_V_DA_CAPIAS_CHARGE_TCA - ?
+
+ACM_V_DA_CAPIAS_EVENTS - ?
+
+ACM_v_DEFENDANT - A view that lists a huge amount of demographic information on defendants. 
+			Not sure what is different from ACM_V_CJIS_DEFENDANT
+
+ACM_V_DEFENDANT_DISMISS_CD - ?
+
+ACM_V_DISP_EVENT_ENT_TYPE - ?
+
+ACM_V_DISPOSITION_ON_COST - ?
+
+ACM_V_EVENT_DEFENDANTS - ?
+
+ACM_V_EVENT_ENTRY_CASE_ID - ?
+
+ACM_V_EVENT_ENTRY_TYPE_ID - ?
+
+ACM_V_EVENT_ONE_DEFENDANT - ?
+
+ACM_V_EXP_EVENT_ENT_TYP - ?
+
+ACM_V_FACTS_CASE - ?
+
+ACM_V_GJ_COUNT_DETAIL_SUMMARY - ?
+
+ACM_V_GS_APPEAL - ?
+
+ACM_V_GS_APPR_RESN_1 - ?
+
+ACM_V_GS_APPR_RESN_2 - ?
+
+ACM_V_GS_APPR_RESN_3 - ?
+
+ACM_V_GS_BOUND_OVER_DT - ?
+
+ACM_V_GS_CASE - ?
+
+ACM_V_GUILTY_DISPOSITIONS - A view that shows the different types of guilty dispositions (after trial, lesser charge, ect)
+
+ACM_V_JAIL_START_EVENT_ENT_TYP - ?
+
+ACM_V_JAIL_STOP_EVENT_ENT_TYP - ?
+
+ACM_V_JUDGE - A view that shows the first and last name of all the Judges.
+
+ACM_V_JUDGE_INFO - A view that shows the full name of all the judges, their type (criminal, ect), 
+			and whether they are active or not.
+
+ACM_V_JUDGE_DIVISION - A view that shows all the judges, their divisions, and wheather they are active or not.
+
+ACM_V_JUDGE_INFO_DIVISION - This view is just a combination of ACM_V_JUDGE_INFO and ACM_V_JUDGE_DIVISION
+
+ACM_V_ONE_DIVISION_JDG - ?
+
+ACM_V_ONLINE_DKT - ?
+
+ACM_V_PARTY - ?
+
+ACM_V_PARTY_BOND_COMPANY - ?
+
+ACM_v_PARTY_ONE_BOND_COMPANY - ?
+
+ACM_V_PAYMENT_ID - ?
+
+ACM_V_PHONE_SERVICE - ?
+
+ACM_V_PTAL_EVENTS
+
+ACM_V_ROLE - This view shows a person's name and role (defendant, witness, ect)
+
+ACM_V_SEALED_INDICTMENT - ?
+
+ACM_SEALED_INFORMATION - ?
+
+ACM_V_TOT_BOND_COMP_DEPOSIT - ?
+
+ACM_V_TOT_BOND_COMP_LIABLE - ?
+
+ACM_V_WAR_TO_DISMISS_OUTCOME - ?
+
+ACM_V_WARRANT_DISMISSED_CASES - ?
+
+AFM_V_ACCT1 - ?
+
+AFM_V_ACCT2 - ?
+
+AFM_V_ACCT3 - ?
+
+AFM_V_ACCT4 - ?
+
+AFM_V_BAL_AMT - ?
+
+AFM_V_EVENT_PARTY_COST_BAL - ?
+
+AFM_V_EXECUTION_REP_COSTS - ?
+
+AFM_V_PARTY_COST_BAL_NO_RECPT - ?
+
+AFM_V_PARTY_COST_BAL_RECPT - ?
+
+AFM_V_PARTY_COST_BALANCE - ?
+
+AFM_V_PARTY_COSTS - ?
+
+AFM_V_PARTY_PAYMNT - ?
+
+AFM_V_PARTY_TOTAL - ?
+
+AFM_V_PARTY_TOTAL_NO_RECEIPT - ?
+
+AFM_V_PARTY_TOTAL_RECEIPT - ?
+
+AFM_V_PRTY_CST_BAL_NO_RCPT_RPT - ?
+
+AFM_V_PRTY_CST_BAL_RECPT_RPT - ?
+
+AFM_V_PRTY_CST_BALANCE_RPT - ?
+
+AFM_V_VALID_RECEIPT_DETAIL - ?
+
+CJIS_V_COMPILE_DIR - ?
+
+EPC_CLI_EVENT_SET - ?
+
+EPC_CLI_PRODUCT - ?
+
+GH_LATE_FEES - ?
+
+JH_F_NUMBER_1 - ?
+
+JH_F_NUMBER_2 - ?
+
+JH_M_NUMBER_1 - ?
+
+JH_M_NUMBER_2 - ?
+
+JH_SUBP_EVENTS - ?
+
+JH_SUMMARY_NUMBER_2 - ?
+
+JH_SUBP_REPORT - ?
+
+JH_SUBP_REPORT_2 - ?
+
+JIS_USER_ROLES - A view that shows the roles of the jis users.
+
+JIS_ARRAIGNMENT_DT - ?
+
+JIS_V_DEFEN_ATTNY - ?
+
+JIS_V_DISP_CASE_PA_DY_DISTINC2 - ?
+
+JIS_V_DISP_CASE_PA_DY_DISTINCT - ?
+
+JIS_V_GS_CITATIONS_SERV - ?
+
+JIS_V_GS_RECS_WRITTEN - ?
+
+JIS_V_INSTR_INFO - ?
+
+JIS_V_MPDR_CONCLUDED_EVENTS - ?
+
+JIS_V_MPDR_EVNT_LIST - ?
+
+JIS_V_TRIAL_DT - ?
+
+PIT_V_EXECUTE_DIR - ?
+
+PIT_V_INCOMING_DIR_NAME - ?
+
+PIT_V_OCA_CITATION - ?
+
+PIT_V_OCA_WARRANT - ?
+
+PIT_V_OTHER_QUEUE - ?
+
+PIT_V_OUT_WARRANT_DIR_NAME - ?
+
+PIT_V_OUTGOING_DIR_NAME - ?
+
+POLICE_LOG_AFFIDAVIT_CSTDY - ?
+
+QUEST_SOO_ARCHIVE_DEST - ?
+
+QUEST_SOO_ARCHIVED_LOG - ?
+
+QUEST_SOO_BUFPOOLSTATS - ?
+
+QUEST_SOO_DATAFILE - ?
+
+QUEST_SOO_DBWRS - ?
+
+QUEST_SOO_FAILING_SEG - ?
+
+QUEST_SOO_FILESTAT - ?
+
+QUEST_SOO_FREE_SPACE - ?
+
+QUEST_SOO_FULL_SGASTAT - ?
+
+QUEST_SOO_INSTANCE - ?
+
+QUEST_SOO_ONLINE_REDO - ?
+
+QUEST_SOO_PREV_SQLTEXT - ?
+
+QUEST_SOO_ROLLBACK_INFO - ?
+
+QUEST_SOO_SESS_OPEN_CURSOR - ?
+
+QUEST_SOO_SESSION_SQLTEXT - ?
+
+QUEST_SOO_SQL_FULL_TEXT - ?
+
+QUEST_SOO_TS_SPACE - ?
+
+RPT_ARREST_INSTR - ?
+
+RPT_V_BOND_PMTS - ?
+
+RPT_V_SESSION - ?
+
+RPT_V_U_BOND_PMTS - ?
+
+S_USER_NAME - A view that shows the username of the person using the crystal report (in this case, cwilloughby).
+		I have no clue why jis made a view like this.
+
+
+SMCLIENT_FOLDER_MAP_V - Returns nothing.
+
+SMCLIENT_INSTALLATION_V - Returns nothing.
+
+SMCLIENT_ONLY_FOLDER_V - Returns nothing.
+
+SMCLIENT_V - Returns nothing.
+
+SMFOLDER_V - Returns nothing.
+
+SMHOST_FOLDER_MAP_V - Returns nothing.
+
+SMHOST_ONLY_FOLDER_V - Returns nothing.
+
+SMHOST_V - Returns nothing.
+
+SMINSTALLATION_V - Returns nothing.
+
+SMINSTALLED_PRODUCT_V - Returns nothing.
+
+SMP_AD_ADDRESSES - Returns nothing.
+
+SMP_AD_DISCOVERED_NODES - Returns nothing.
+
+SMP_AD_NODES - Returns nothing.
+
+SMP_AD_PARMS - Returns nothing.
+
+SMP_AUTO_DISCOVERY_ITEM - ?
+
+SMP_AUTO_DISCOVERY_PARMS - ?
+
+SMP_BLOB - ?
+
+SMP_BRM_ACTIVE_JOB - ?
+
+SMP_BRM_CHANNEL_DEVICE - ?
+
+SMP_BRM_DEFAULT_CHANNEL - ?
+
+SMP_BRM_RC_CONNECT_STRING - ?
+
+SMP_BRM_SAVED_JOB - ?
+
+SMP_BRM_TEMP_SCRIPTS - ?
+
+SMP_CREDENTIALS - ?
+
+SMP_EBU_ACTIVE_JOB - ?
+
+SMP_EBU_SAVED_JOB - ?
+
+SMP_JOB - ?
+
+SMP_JOB_HISTORY - ?
+
+SMP_JOB_INSTANCE - ?
+
+SMP_JOB_LIBRARY - ?
+
+SMP_JOB_TASK_INSTANCE - ?
+
+SMP_LONG_TEXT - ?
+
+SMP_SERVICE_DATA - ?
+
+SMP_SERVICE_GROUP_DEFN - ?
+
+SMP_SERVICE_ITEM - ?
+
+SMP_UPDATESERVICES_CALLED - ?
+
+SMP_VAB_ACTIVE_JOB - ?
+
+SMP_VAB_SAVED_JOB - ?
+
+SMP_VAR_LIST_DATABASES - ?
+
+SMPRODUCT_V - ?
+
+USER_MENU - ?
+
+USER_ROLE - ?
+
+V_AGENCY - A view that shows all the different agencies from bonding companies to sheriff offices 
+		and their contact numbers.
+
+V_CC_INCOURT_APPEARANCE_REASON - A view that shows the different types of CC court appearance reasons,
+					probation violation, ect.
+
+V_CITATION_QUEUE - A view that shows everything that is currently in the citation queue.
+
+V_CJIS_LAST_PV - A view that shows the last probation violation that occured on a specified case, if any.
+
+V_CJIS_NEXT_COURT_DATE - A view that shows the next scheduled court date for a specified case.
+
+V_CJIS_PERSON_ADDRESS - A view that shows the address of of people in cjis. It doesn't show their
+				names, so it doesn't seem very useful.
+
+V_CJIS_PREV_COURT_DATE - A view that shows the previous court date for a specified case.
+
+V_CJIS_RELEASE_FORM - ?
+
+V_CJIS_SUBPOENA - ?
+
+V_HOLDER - ?
+
+V_HOLDER_TYPE - ?
+
+V_ICE - ?
+
+V_INMATE - ?
+
+V_INMATE_ICE_STATUS - ?
+
+V_INMATE_OLD - ?
+
+V_JAIL_TIME - ?
+
+V_MEDIA_CMP - ?
+
+V_PAPER_GENERATED_EVENTS - ?
+
+V_SHERIFF_PAYMENT_ACCOUNTS - ?
+
+V_TJIS_DISP_EVENT_ENT_TYP - ?
+
+V_TJIS_FILING_EVENT_ENT_TYP - ?
+
+V_WARRANT_QUEUE - A view that shows everything that is currently in the warrant queue.
+
+V_TJIS_NON_PII_DISPOSITIONS - ?
+
+V_TJIS_PII_DISPOSITIONS - ?
+
+
+
