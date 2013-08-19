@@ -56,7 +56,7 @@ class TroubleTicketsController extends Controller
 				{
 					// Read in the current file.
 					$file->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
-					$file->type = 'attachment';
+					$file->uploadType = 'attachment';
 					if($file->validate())
 					{
 						move_uploaded_file($file->file['tempName'], $file->path);

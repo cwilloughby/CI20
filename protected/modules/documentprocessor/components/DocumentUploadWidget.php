@@ -7,7 +7,7 @@ class DocumentUploadWidget extends CPortlet
 {
 	// Make a class variable that will be used to determine where a file should be stored.
 	// (A document queue, or the training page for example.)
-	public $type;
+	public $uploadType;
 	
 	/**
 	 * This routine is for displaying the file upload form and processing the uploaded file.
@@ -19,7 +19,7 @@ class DocumentUploadWidget extends CPortlet
 		// Create Document model object.
 		$document = new Documents;
 		$document->scenario = 'processor';
-		$document->type = $this->type;
+		$document->uploadType = $this->uploadType;
 		
 		// If the form was posted.
 		if(!empty($_FILES)) 
@@ -39,11 +39,10 @@ class DocumentUploadWidget extends CPortlet
 					$document->save(false);
 					
 					// Upload file to server.
-					if($this->type != 'Common')
-						move_uploaded_file($document->file['tempName'], $document->path);
+					move_uploaded_file($document->file['tempName'], $document->path);
 					
 					// If the type of upload is for a document queue.
-					if($this->type == 'QueueName')
+					if($this->uploadType == 'QueueName')
 					{
 						// Create DocumentQueues model object.
 

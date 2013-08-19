@@ -12,7 +12,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 Dropzone.options.ticketsForm = {
 	paramName: "file", // The name that will be used to transfer the file
 	autoProcessQueue: false,
-	url:'/tickets/troubletickets/create',
+	url:$_SERVER['PHP_SELF'],
 	success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
 };
 </script>
@@ -25,8 +25,8 @@ Dropzone.options.ticketsForm = {
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-	'action'=>'/tickets/troubletickets/create',
-	'stateful'=>true, 
+	'action'=>$_SERVER['PHP_SELF'],
+	'stateful'=>true,
 	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
 )); ?>
 
@@ -109,10 +109,10 @@ Dropzone.options.ticketsForm = {
 	
 	<div id="button" class="row buttons" style="display:none">
 		<?php echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
-			'onclick'=> '
-				var dz = Dropzone.forElement("#ticketsForm");
-				dz.processQueue();
-			')); ?>
+			'onclick'=> 
+				'var dz = Dropzone.forElement("#ticketsForm");
+				dz.processQueue();'
+			)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

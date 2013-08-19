@@ -9,9 +9,12 @@
  * @property string $documentname
  * @property string $path
  * @property string $uploaddate
+ * @property string $type
+ * @property string $ext
  * @property string $prefix
  * @property string $description
  * @property string $content
+ * @property string $created
  * @property string $modifieddate
  * @property string $modifiedby
  * @property integer $signed
@@ -25,7 +28,7 @@
 class Documents extends CActiveRecord
 {
 	public $file;
-	public $type;
+	public $uploadType;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -62,9 +65,13 @@ class Documents extends CActiveRecord
 			array('uploader', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
+			array('type', 'length', 'max'=>45),
+			array('ext', 'length', 'max'=>6),
+			array('prefix', 'length', 'max'=>10),
+			array('modifiedby', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('documentid, uploader, documentname, path, uploaddate, content, modifiedby, modifieddate, signed, shareable, disabled', 'safe', 'on'=>'search'),
+			array('documentid, uploader, documentname, path, uploaddate, type, ext, prefix, description, content, created, modifiedby, modifieddate, signed, shareable, disabled', 'safe', 'on'=>'search'),
 		);
 	} // End of function rules
 	
@@ -82,29 +89,11 @@ class Documents extends CActiveRecord
 			$this->uploaddate = date('Y-m-d_h-i-s');
 			
 			// Set the path attribute based on the type of upload.
-			if($this->type == 'attachment')
+			if($this->uploadType != 'Cron Job')
+				$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+			else
 			{
-				// The path used depends on if the code is local (test) or not.
-				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-					$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\uploads\\" . $this->uploaddate . "\\";
-				else
-					$this->path = dirname(Yii::app()->getBasePath()) . "/assets/uploads/" . $this->uploaddate . "/";
-			}
-			else if($this->type == 'video')
-			{
-				// The path used depends on if the code is local (test) or not.
-				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-					$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\training\\";
-				else
-					$this->path = dirname(Yii::app()->getBasePath()) . "/assets/training/";
-			}
-			else if($this->type == 'QueueName')
-			{
-				// The path used depends on if the code is local (test) or not.
-				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-					$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\QueueName\\" . $this->uploaddate . "\\";
-				else
-					$this->path = dirname(Yii::app()->getBasePath()) . "/assets/QueueName/" . $this->uploaddate . "/";
+				// To be Determined
 			}
 			
 			// Extract the document name and set the attribute.
@@ -165,15 +154,18 @@ class Documents extends CActiveRecord
 			'documentname' => 'Document Name',
 			'path' => 'Path',
 			'uploaddate' => 'Upload Date',
-			'file' => 'File',
+			'type' => 'File Type',
+			'ext' => 'Extension',
 			'prefix' => 'Prefix',
 			'description' => 'Description',
 			'content' => 'Content',
+			'created' => 'Created On',
 			'modifiedby' => 'Last Modified By',
 			'modifieddate' => 'Last Modified On',
 			'signed' => 'Signed',
 			'disabled' => 'Disabled',
 			'shareable' => 'Shareable',
+			'file' => 'File',
 		);
 	} // End function attributeLabels
 
@@ -197,9 +189,12 @@ class Documents extends CActiveRecord
 		$criteria->compare('documentname',$this->documentname,true);
 		$criteria->compare('path',$this->path,true);
 		$criteria->compare('uploaddate',$this->uploaddate,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('ext',$this->ext,true);
 		$criteria->compare('prefix',$this->prefix,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('content',$this->content,true);
+		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modifiedby',$this->modifiedby,true);
 		$criteria->compare('modifieddate',$this->modifieddate,true);
 		$criteria->compare('signed',$this->prefix,true);
@@ -379,7 +374,7 @@ class Documents extends CActiveRecord
 			else
 			{
 				// The file is not shareable. Throw an exception.
-				throw new Exception($file->documentname . 'is not shareable!');
+				throw new Exception($file->documentname . ' is not shareable!');
 			}
 		}
 		

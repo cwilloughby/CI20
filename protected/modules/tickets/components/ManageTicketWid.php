@@ -28,7 +28,7 @@ class ManageTicketWid extends CPortlet
 					{
 						// Read in the current file.
 						$file->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
-						$file->type = 'attachment';
+						$file->uploadType = 'attachment';
 						if($file->validate())
 						{
 							$file->save(false);

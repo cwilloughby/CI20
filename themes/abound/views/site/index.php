@@ -234,7 +234,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 
 <div class="row-fluid">
 	
-	<?php $this->widget('DocumentUploadWidget', array('type'=>'QueueName')); ?>
+	<?php $this->widget('DocumentUploadWidget', array('uploadType'=>'QueueName')); ?>
 	
     <!--</div>
 	<div class="span2">

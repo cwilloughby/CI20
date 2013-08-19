@@ -17,7 +17,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-	'action'=>Yii::app()->createAbsoluteUrl(Yii::app()->request->url),
+	'action'=>$_SERVER['PHP_SELF'],
 	'stateful'=>true, 
 	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
 )); ?>
