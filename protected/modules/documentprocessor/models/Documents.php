@@ -90,7 +90,10 @@ class Documents extends CActiveRecord
 			
 			// Set the path attribute based on the type of upload.
 			if($this->uploadType != 'Cron Job')
-				$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+			{
+				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+				$this->path = dirname(Yii::app()->getBasePath()) . "/assets/uploads/" . $this->uploaddate . "/";
+			}
 			else
 			{
 				// To be Determined
