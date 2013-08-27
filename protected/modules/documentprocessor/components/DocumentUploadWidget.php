@@ -29,12 +29,12 @@ class DocumentUploadWidget extends CPortlet
 				// Read in the current file.
 				$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
 				
-				// Call function to read the file’s content and metadata.
-				$document->setModelContentsAndMetadata();
-				
 				// Validate attributes.
 				if($document->validate())
 				{
+					// Call function to read the file’s content and metadata.
+					$document->setModelContentsAndMetadata();
+					
 					// Save Document Model
 					$document->save(false);
 					

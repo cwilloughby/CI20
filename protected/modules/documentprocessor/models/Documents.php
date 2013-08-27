@@ -275,11 +275,8 @@ class Documents extends CActiveRecord
 	 */
 	public function setTextFileContents()
 	{
-		// Open the text file for reading.
-
 		// Read in the contents of the text file and give it to the model’s content attribute.
-
-		// Close the text file.
+		$this->content = file_get_contents($this->file['tempName']);
 	} // End function setTextFileContents()
 
 	/**
