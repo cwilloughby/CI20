@@ -12,11 +12,18 @@ class WeatherReport extends CPortlet
 	 */
 	protected function renderContent()
 	{
-		$model = new Weather;
+		try
+		{
+			$model = new Weather;
 
-		$weather = $model->getWeather();
-		
-		// Display the weather.
-		$this->render('weather',array('weather'=>$weather));
+			$weather = $model->getWeather();
+
+			// Display the weather.
+			$this->render('weather',array('weather'=>$weather));
+		}
+		catch(Exception $ex)
+		{
+			echo "The weather report is currently unavailable. Please try again later.";
+		}
 	}
 }

@@ -39,9 +39,9 @@ class TroubleTicketsController extends Controller
 		$ticket=new TroubleTickets;
 		$file=new Documents;
 		
-		if(isset($_POST['ajax']) && $_POST['ajax']==='trouble-tickets-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='ticketsForm')
 		{
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate($ticket);
 			Yii::app()->end();
 		}
 		
@@ -52,20 +52,27 @@ class TroubleTicketsController extends Controller
 				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
 				
+				// Were any files attached to the new ticket?
 				if(!empty($_FILES))
 				{
-					// Read in the current file.
-					$file->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
-					$file->uploadType = 'attachment';
-					if($file->validate())
+					// Loop throught each file.
+					foreach($_FILES['file']['name'] as $key => $value)
 					{
-						move_uploaded_file($file->file['tempName'], $file->path);
-						// This description will only allow the link to work on the website.
-						$ticket->description .= "\nAttachment: " 
-							. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
-								. $file->uploaddate . '/' . $file->documentname));
-						// This description will only be used for the email so the link will work.
-						$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+						// Read in the current file.
+						$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
+						$file->uploadType = 'attachment';
+
+						if($file->validate())
+						{
+
+							move_uploaded_file($file->file['tempName'], $file->path);
+							// This description will only allow the link to work on the website.
+							$ticket->description .= "\nAttachment: " 
+								. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+									. $file->uploaddate . '/' . $file->documentname));
+							// This description will only be used for the email so the link will work.
+							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+						}
 					}
 				}
 				else

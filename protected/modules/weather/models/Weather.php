@@ -36,7 +36,11 @@ class Weather
 	 */
 	private function convertReport($xml)
 	{
+		libxml_use_internal_errors(true);
 		$xml = simplexml_load_string($xml);
+		if(libxml_get_errors())
+			throw new Exception("XML Failure");
+		libxml_clear_errors();
 		
 		if(isset($xml->data->parameters->temperature[1]->value))
 		{

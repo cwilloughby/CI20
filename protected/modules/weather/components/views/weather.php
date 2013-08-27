@@ -2,6 +2,7 @@
 /* @var $this WeatherController */
 /* @var $weather array */
 
+
 if(!is_null($weather))
 {
 	echo CHtml::encode($weather['summary']) . "<br/>";
@@ -11,4 +12,3 @@ if(!is_null($weather))
 }
 else
 	echo "Unable to obtain the forecast. Please try again later.";
-?>

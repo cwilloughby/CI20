@@ -146,7 +146,7 @@ class EmailController extends Controller
 
 			Yii::app()->user->setFlash('success', "Email Made!");
 		}
-		$this->render('helpopenemail');
+		$this->redirect('/tickets/troubletickets/index?status=Open');
 	}
 	
 	/**

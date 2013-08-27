@@ -12,6 +12,8 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 Dropzone.options.ticketsForm = {
 	paramName: "file", // The name that will be used to transfer the file
 	autoProcessQueue: false,
+	uploadMultiple: true,
+	parallelUploads: 10,
 	success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
 };
 </script>
@@ -46,7 +48,6 @@ Dropzone.options.ticketsForm = {
 					'beforeSend' => 'function(){
 						$("#test").hide();
 						$("#dependant").hide();
-						$("#button").hide();
 					}',
 					'complete' => 'function(){
 						$("#test").show();
@@ -71,11 +72,9 @@ Dropzone.options.ticketsForm = {
 						'update' => '#dependant',
 						'beforeSend' => 'function(){
 							$("#dependant").hide();
-							$("#button").hide();
 						}',
 						'complete' => 'function(){
 							$("#dependant").show();
-							$("#button").show();
 						}',
 					)
 				)
@@ -103,18 +102,21 @@ Dropzone.options.ticketsForm = {
 		</div>
 	</div>
 	
-	<div id="button" class="row buttons" style="display:none">
+	<div id="button" class="row buttons">
 		<?php echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
-			'onclick'=> 
-				'var dz = Dropzone.forElement("#ticketsForm");
-				queuedFiles = dz.getQueuedFiles();
-				if((queuedFiles.length > 0))
+			'onclick'=> '
+				if(myValidate())
 				{
-					dz.processQueue();
-				}
-				else
-				{
-					document.getElementById("ticketsForm").submit();
+					var dz = Dropzone.forElement("#ticketsForm");
+					queuedFiles = dz.getQueuedFiles();
+					if((queuedFiles.length > 0))
+					{
+						dz.processQueue();
+					}
+					else
+					{
+						document.getElementById("ticketsForm").submit();
+					}
 				}'
 			)); ?>
 	</div>
@@ -122,3 +124,16 @@ Dropzone.options.ticketsForm = {
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+				
+<script>
+function myValidate()
+{
+	var conditionals = document.getElementById('dependant').querySelectorAll('input[type="text"]');
+	for(var i = 0; i < conditionals.length; i += 1)
+	{
+		if(conditionals[i].value == "")
+			return false;
+	}
+	return true;
+}
+</script>
