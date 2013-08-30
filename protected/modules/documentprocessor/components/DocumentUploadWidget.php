@@ -32,14 +32,14 @@ class DocumentUploadWidget extends CPortlet
 				// Validate attributes.
 				if($document->validate())
 				{
+					// Upload file to server.
+					move_uploaded_file($document->file['tempName'], $document->path);
+					
 					// Call function to read the file’s content and metadata.
 					$document->setModelContentsAndMetadata();
 					
 					// Save Document Model
 					$document->save(false);
-					
-					// Upload file to server.
-					move_uploaded_file($document->file['tempName'], $document->path);
 					
 					// If the type of upload is for a document queue.
 					if($this->uploadType == 'QueueName')

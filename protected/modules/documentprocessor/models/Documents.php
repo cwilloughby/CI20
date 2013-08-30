@@ -14,15 +14,15 @@
  * @property string $prefix
  * @property string $description
  * @property string $content
- * @property string $created
+ * @property integer $modifiedby
  * @property string $modifieddate
- * @property string $modifiedby
  * @property integer $signed
  * @property integer $disabled
  * @property integer $shareable
  *
  * The followings are the available model relations:
  * @property DocumentQueues[] $documentQueues
+ * @property UserInfo $modifiedby0
  * @property UserInfo $uploader0
  */
 class Documents extends CActiveRecord
@@ -62,7 +62,7 @@ class Documents extends CActiveRecord
 	{
 		// Define the validation rules in an array and return it.
 		return array(
-			array('uploader', 'numerical', 'integerOnly'=>true),
+			array('uploader, modifiedby', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
 			array('type', 'length', 'max'=>45),
@@ -71,9 +71,24 @@ class Documents extends CActiveRecord
 			array('modifiedby', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('documentid, uploader, documentname, path, uploaddate, type, ext, prefix, description, content, created, modifiedby, modifieddate, signed, shareable, disabled', 'safe', 'on'=>'search'),
+			array('documentid, uploader, documentname, path, uploaddate, type, ext, prefix, description, content, modifiedby, modifieddate, signed, shareable, disabled', 'safe', 'on'=>'search'),
 		);
 	} // End of function rules
+	
+	/**
+	 * Attaches the timestamp behavior to auto set the opendate value
+	 * when a new ticket is made.
+	 */
+	public function behaviors() 
+	{
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'uploaddate',
+				'updateAttribute' => 'modifieddate',
+			),
+		);
+	}
 	
 	protected function beforeValidate()
 	{
@@ -84,9 +99,6 @@ class Documents extends CActiveRecord
 				$this->uploader = Yii::app()->user->id;
 			else
 				$this->uploader = 0;
-			
-			// Set the uploaddate attribute to the current date.
-			$this->uploaddate = date('Y-m-d_h-i-s');
 			
 			// Set the path attribute based on the type of upload.
 			if($this->uploadType != 'Cron Job')
@@ -140,6 +152,7 @@ class Documents extends CActiveRecord
 		// Return an array of defined relationships.
 		return array(
 			'documentQueues' => array(self::HAS_MANY, 'DocumentQueues', 'documentid'),
+			'modifiedby0' => array(self::BELONGS_TO, 'UserInfo', 'modifiedby'),
 			'uploader0' => array(self::BELONGS_TO, 'UserInfo', 'uploader'),
 		);
 	} // End function relations
@@ -162,7 +175,6 @@ class Documents extends CActiveRecord
 			'prefix' => 'Prefix',
 			'description' => 'Description',
 			'content' => 'Content',
-			'created' => 'Created On',
 			'modifiedby' => 'Last Modified By',
 			'modifieddate' => 'Last Modified On',
 			'signed' => 'Signed',
@@ -198,7 +210,7 @@ class Documents extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('created',$this->created,true);
-		$criteria->compare('modifiedby',$this->modifiedby,true);
+		$criteria->compare('modifiedby',$this->modifiedby);
 		$criteria->compare('modifieddate',$this->modifieddate,true);
 		$criteria->compare('signed',$this->prefix,true);
 		$criteria->compare('disabled',$this->description,true);
@@ -219,10 +231,14 @@ class Documents extends CActiveRecord
 	 */
 	public function setModelContentsAndMetadata()
 	{
-		// Get the extension.
-		$ext = pathinfo($this->path, PATHINFO_EXTENSION);
+		// Set the metadata.
+		$this->ext = pathinfo($this->path, PATHINFO_EXTENSION);
+		$this->modifieddate = date('Y-m-d_h-i-s');
+		$this->type = 'file';
+		if(isset(Yii::app()->user->id))
+			$this->modifiedby = Yii::app()->user->id;
 		
-		switch($ext)
+		switch($this->ext)
 		{
 			// If it is a text file.
 			case 'txt':
@@ -235,28 +251,28 @@ class Documents extends CActiveRecord
 			case 'doc':
 			{
 				// Call function to read and set word file contents and metadata.
-				$this->setWordFileContentsAndMetadata();
+				$this->setWordFileContents();
 				break;
 			}
 			// If it is an excel file.
 			case 'xls':
 			{
 				// Call function to read and set excel file contents and metadata.
-				$this->setExcelFileContentsAndMetadata();
+				$this->setExcelFileContents();
 				break;
 			}
 			// If it is a pdf file.
 			case 'pdf':
 			{
 				// Call function to read and set pdf file contents and metadata.
-				$this->setPdfFileContentsAndMetadata();
+				$this->setPdfFileContents();
 				break;
 			}
 			// If it is a tif file
 			case 'tif':
 			{
 				// Call function to read and set file contents and metadata.
-				$this->setTifFileContentsAndMetadata();
+				$this->setTifFileContents();
 				break;
 			}
 			// If it was none of the above.
@@ -276,7 +292,7 @@ class Documents extends CActiveRecord
 	public function setTextFileContents()
 	{
 		// Read in the contents of the text file and give it to the model’s content attribute.
-		$this->content = file_get_contents($this->file['tempName']);
+		$this->content = file_get_contents($this->file['realName']);
 	} // End function setTextFileContents()
 
 	/**
@@ -284,17 +300,14 @@ class Documents extends CActiveRecord
 	 * then setting the model’s content attribute to that content. It also reads in the file’s
 	 * modified by, and modified date metadata
 	 */
-	public function setWordFileContentsAndMetadata()
+	public function setWordFileContents()
 	{
 		// Open the word document for reading.
-
-		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
-
-		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
-
+		
 		// Read in the contents of the word document and give it to the model’s content attribute.
-
+		
 		// Close the word document.
+		
 	} // End function setWordFileContentsAndMetadata
 
 	/**
@@ -302,13 +315,9 @@ class Documents extends CActiveRecord
 	 * then setting the model’s content attribute to that content. It also reads in the file’s
 	 * modified by, and modified date metadata
 	 */
-	public function setExcelFileContentsAndMetadata()
+	public function setExcelFileContents()
 	{
 		// Open the excel document for reading.
-
-		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
-
-		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 
 		// Read in the contents of the excel document and give it to the model’s content attribute.
 
@@ -317,22 +326,19 @@ class Documents extends CActiveRecord
 	
 	/**
 	 * This function is for reading in the content of a Pdf document,
-	 * then setting the model’s content attribute to that content. It also reads in the file’s
-	 * modified by, and modified date metadata
+	 * then setting the model’s content attribute to that content.
 	 */
-	public function setPdfFileContentsAndMetadata()
+	public function setPdfFileContents()
 	{
 		// Open the pdf document for reading.
-
-		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
-
-		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
-
+		$a = new PDF2Text();
+		$a->setFilename($this->path);
+		
 		// OCR conversion here.
+		$a->decodePDF();
 		
 		// Read in the contents of the pdf document and give it to the model’s content attribute.
-
-		// Close the pdf document.
+		$this->content = $a->output(); 
 	} // End function setPdfFileContentsAndMetadata
 	
 	/**
@@ -340,13 +346,9 @@ class Documents extends CActiveRecord
 	 * then setting the model’s content attribute to that content. It also reads in the file’s
 	 * modified by, and modified date metadata
 	 */
-	public function setTifFileContentsAndMetadata()
+	public function setTifFileContents()
 	{
 		// Open the tiff document for reading.
-
-		// Read in the modified by metadata and give it to the model’s modifiedby attribute.	
-
-		// Read in the modified date metadata and give it to the model’s modifieddate attribute.
 		
 		// OCR conversion here.
 		

@@ -24,3 +24,4 @@ protected/vendors/
 !/themes/abound/views/customer/index.php
 /themes/abound/img/
 /assets/training/
+!/protected/modules/documentprocessor/views/documentProcessor/index.php
