@@ -17,7 +17,6 @@ protected/runtime/application.log
 !/protected/modules/issuetracker/views/issueTracker/index.php
 <<<<<<< HEAD
 =======
-protected/vendors/
 >>>>>>> origin/master
 !/themes/abound/views/personalInfo/index.php
 !/themes/abound/views/site/index.php
@@ -25,3 +24,5 @@ protected/vendors/
 /themes/abound/img/
 /assets/training/
 !/protected/modules/documentprocessor/views/documentProcessor/index.php
+!/protected/vendors/TesseractOCR.php
+/protected/vendors/html2pdf/

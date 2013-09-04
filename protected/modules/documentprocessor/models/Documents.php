@@ -84,7 +84,7 @@ class Documents extends CActiveRecord
 		return array(
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
-				'createAttribute' => 'uploaddate',
+				'createAttribute' => null,
 				'updateAttribute' => 'modifieddate',
 			),
 		);
@@ -99,6 +99,9 @@ class Documents extends CActiveRecord
 				$this->uploader = Yii::app()->user->id;
 			else
 				$this->uploader = 0;
+			
+			// Set the uploaddate attribute to the current date.
+			$this->uploaddate = date('Y-m-d_h-i-s');
 			
 			// Set the path attribute based on the type of upload.
 			if($this->uploadType != 'Cron Job')
@@ -292,7 +295,7 @@ class Documents extends CActiveRecord
 	public function setTextFileContents()
 	{
 		// Read in the contents of the text file and give it to the model’s content attribute.
-		$this->content = file_get_contents($this->file['realName']);
+		$this->content = file_get_contents($this->path);
 	} // End function setTextFileContents()
 
 	/**
@@ -333,12 +336,22 @@ class Documents extends CActiveRecord
 		// Open the pdf document for reading.
 		$a = new PDF2Text();
 		$a->setFilename($this->path);
-		
-		// OCR conversion here.
 		$a->decodePDF();
-		
-		// Read in the contents of the pdf document and give it to the model’s content attribute.
-		$this->content = $a->output(); 
+	
+		// If the pdf is already readable, then we don't need to perform OCR.
+		if($a->output())
+		{
+			// Read in the contents of the pdf document and give it to the model’s content attribute.
+			$this->content = $a->output(); 
+		}
+		else 
+		{
+			// OCR conversion here.
+			$tess = new TesseractOCR();
+			// Read in the contents of the pdf document and give it to the model’s content attribute.
+			$this->content = $tess->recognize($this->path);
+		}
+
 	} // End function setPdfFileContentsAndMetadata
 	
 	/**

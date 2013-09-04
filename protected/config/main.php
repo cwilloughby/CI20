@@ -23,6 +23,7 @@ return array(
 		'application.extensions.jqrelcopy.JQRelcopy',
 		'application.extensions.smp.StrobeMediaPlayback',
 		'application.extensions.dropzone.EDropzone',
+		'application.extensions.filetree.SFileTree',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
@@ -39,6 +40,7 @@ return array(
 		'application.modules.timelog.components.*',
 		'application.modules.issuetracker.components.*',
 		'application.modules.documentprocessor.components.*',
+		'application.vendors.*',
 		'zii.widgets.CPortlet'
 	),
 
