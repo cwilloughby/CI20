@@ -18,42 +18,13 @@ class DocumentUploadWidget extends CPortlet
 	{
 		// Create Document model object.
 		$document = new Documents;
-		$document->scenario = 'processor';
+		$document->scenario = 'averageSubmit';
 		$document->uploadType = $this->uploadType;
 		
 		// If the form was posted.
 		if(!empty($_FILES)) 
 		{	
-			// Loop for multiple files
-			{
-				// Read in the current file.
-				$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
-				
-				// Validate attributes.
-				if($document->validate())
-				{
-					// Upload file to server.
-					move_uploaded_file($document->file['tempName'], $document->path);
-					
-					// Call function to read the file’s content and metadata.
-					$document->setModelContentsAndMetadata();
-					
-					// Save Document Model
-					$document->save(false);
-					
-					// If the type of upload is for a document queue.
-					if($this->uploadType == 'QueueName')
-					{
-						// Create DocumentQueues model object.
-
-						// Pass documentid of newly uploaded file to document queue model.
-
-						// Pass name of queue to document queue model.
-
-						// Save DocumentQueues Model.
-					}
-				}
-			} // End loop
+			$document = $this->storeFile($document);
 		} // End if
 
 		// Call view to render the upload form.
@@ -62,4 +33,36 @@ class DocumentUploadWidget extends CPortlet
 		));
     } // End function renderContent
 	
+	private function storeFile($document)
+	{
+		// Read in the current file.
+		$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+		$document->setDocumentAttributes();
+
+		// Validate attributes.
+		if($document->validate())
+		{
+			// Upload file to server.
+			$document->uploadFile();
+
+			// Call function to read the file’s content and metadata.
+			$document->setModelContentsAndMetadata();
+
+			// Save Document Model
+			$document->save(false);
+
+			// If the type of upload is for a document queue.
+			if($this->uploadType == 'QueueName')
+			{
+				// Create DocumentQueues model object.
+
+				// Pass documentid of newly uploaded file to document queue model.
+
+				// Pass name of queue to document queue model.
+
+				// Save DocumentQueues Model.
+			}
+		}
+		return $document;
+	}
 } // End of class DocumentUploadWidget

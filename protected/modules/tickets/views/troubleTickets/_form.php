@@ -14,6 +14,7 @@ Dropzone.options.ticketsForm = {
 	autoProcessQueue: false,
 	uploadMultiple: true,
 	parallelUploads: 10,
+	maxFilesize: 12,
 	success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
 };
 </script>

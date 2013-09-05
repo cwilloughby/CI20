@@ -12,7 +12,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'upload-form',
+	'id'=>'uploadForm',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
@@ -30,3 +30,10 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 <?php $this->endWidget(); ?>
 	
 </div><!-- form -->
+
+<script>
+Dropzone.options.uploadForm = {
+	acceptedFiles: 'application/pdf, application/msword, application/vnd.ms-excel, image/tiff, image/jpeg, image/png, image/bmp, text/plain',
+	maxFilesize: 12
+};
+</script>

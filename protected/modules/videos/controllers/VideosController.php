@@ -37,14 +37,15 @@ class VideosController extends Controller
 	public function actionCreate()
 	{
 		$video = new Videos;
-		$dcoument = new Documents;
-		
-		$document->scenario = 'training';
+		$document = new Documents;
+		$document->scenario = 'trainingSubmit';
+		$document->uploadType = 'training resource';
 		
 		if($video->attributes = Yii::app()->request->getPost('Videos'))
 		{
+			$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+			$document->setDocumentAttributes();
 			$document->type = 'video';
-			$document->file = CUploadedFile::getInstance($document, 'file');
 			
 			// Validate both $video and $file at the same time.
 			$videoCheck = $video->validate();

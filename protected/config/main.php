@@ -40,7 +40,6 @@ return array(
 		'application.modules.timelog.components.*',
 		'application.modules.issuetracker.components.*',
 		'application.modules.documentprocessor.components.*',
-		'application.vendors.*',
 		'zii.widgets.CPortlet'
 	),
 

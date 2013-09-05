@@ -61,11 +61,13 @@ class TroubleTicketsController extends Controller
 						// Read in the current file.
 						$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
 						$file->uploadType = 'attachment';
+						$file->setDocumentAttributes();
 
+						// Validate attributes.
 						if($file->validate())
 						{
-
-							move_uploaded_file($file->file['tempName'], $file->path);
+							// Upload file to server.
+							$file->uploadFile();
 							// This description will only allow the link to work on the website.
 							$ticket->description .= "\nAttachment: " 
 								. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 

@@ -27,6 +27,8 @@
  */
 class Documents extends CActiveRecord
 {
+	const FILE_BASE_PATH = 'C:/wamp/files';
+	
 	public $file;
 	public $uploadType;
 	
@@ -69,11 +71,29 @@ class Documents extends CActiveRecord
 			array('ext', 'length', 'max'=>6),
 			array('prefix', 'length', 'max'=>10),
 			array('modifiedby', 'length', 'max'=>45),
+			array('ext', 'validExt', 'on' => 'averageSubmit'),
+			array('ext', 'validTrainingResource', 'on' => 'trainingSubmit'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('documentid, uploader, documentname, path, uploaddate, type, ext, prefix, description, content, modifiedby, modifieddate, signed, shareable, disabled', 'safe', 'on'=>'search'),
 		);
 	} // End of function rules
+	
+	/**
+	 * This validation rule is used for most file submissions, 
+	 * @param type $attribute
+	 */
+	public function validExt($attribute)
+	{
+		if(!in_array($this->$attribute, array('pdf', 'doc', 'docx', 'xls', 'tif', 'tiff', 'jpg', 'png', 'bmp', 'txt')))
+			$this->addError($this->$attribute, 'only pdf, doc, docx, xls, tif, jpg, png, bmp, or txt files are allowed!');
+	}
+	
+	public function validTrainingResource($attribute)
+	{
+		if(!in_array($this->$attribute, array('pdf', 'mp4', 'htm', 'png', 'css')))
+			$this->addError($this->$attribute, 'only pdf, mp4, htm, png, or css files are allowed!');
+	}
 	
 	/**
 	 * Attaches the timestamp behavior to auto set the opendate value
@@ -88,45 +108,6 @@ class Documents extends CActiveRecord
 				'updateAttribute' => 'modifieddate',
 			),
 		);
-	}
-	
-	protected function beforeValidate()
-	{
-		if($this->isNewRecord)
-		{
-			// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
-			if(isset(Yii::app()->user->id))
-				$this->uploader = Yii::app()->user->id;
-			else
-				$this->uploader = 0;
-			
-			// Set the uploaddate attribute to the current date.
-			$this->uploaddate = date('Y-m-d_h-i-s');
-			
-			// Set the path attribute based on the type of upload.
-			if($this->uploadType != 'Cron Job')
-			{
-				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
-				$this->path = dirname(Yii::app()->getBasePath()) . "/assets/uploads/" . $this->uploaddate . "/";
-			}
-			else
-			{
-				// To be Determined
-			}
-			
-			// Extract the document name and set the attribute.
-			$this->documentname = $this->file['realName'];
-
-			// Create the folder if it does not exist.
-			if(!is_dir($this->path))
-				mkdir($this->path);
-
-			// Set the path.
-			$this->path = $this->path . $this->documentname;
-		}
-		
-		// Return to beforeValidate parent function (required by yii).
-		return parent::beforeValidate();
 	}
 	
 	/**
@@ -229,13 +210,62 @@ class Documents extends CActiveRecord
 	} // End function search
 	
 	/**
+	 * Normal attribute assignment method won't work, so this function is used.
+	 */
+	public function setDocumentAttributes()
+	{
+		// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
+		if(isset(Yii::app()->user->id))
+			$this->uploader = Yii::app()->user->id;
+		else
+			$this->uploader = 0;
+
+		// Set the uploaddate attribute to the current date.
+		$this->uploaddate = date('Y-m-d_h-i-s');
+		// Set the extension.
+		$this->ext = pathinfo($this->file['realName'], PATHINFO_EXTENSION);
+		
+		// Set the path attribute based on the type of upload.
+		if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource')
+		{
+			//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+			$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+		}
+		else if($this->uploadType == 'training resource')
+		{
+			$this->path = self::FILE_BASE_PATH . "/training/";
+		}
+		else
+		{
+			// To be Determined
+		}
+
+		// Extract the document name and set the attribute.
+		$this->documentname = $this->file['realName'];
+	}
+	
+	/**
+	 * This function is where a file is actually uploaded to the server.
+	 */
+	public function uploadFile()
+	{
+		// Create the folder if it does not exist.
+		if(!is_dir($this->path))
+			mkdir($this->path);
+
+		// Set the path.
+		$this->path = $this->path . $this->documentname;
+		
+		move_uploaded_file($this->file['tempName'], $this->path);
+	}
+	
+	/**
 	 * This function's main purpose is to determine HOW to read in a
 	 * file's contents and metadata. Setting them is the side effect.
 	 */
 	public function setModelContentsAndMetadata()
 	{
 		// Set the metadata.
-		$this->ext = pathinfo($this->path, PATHINFO_EXTENSION);
 		$this->modifieddate = date('Y-m-d_h-i-s');
 		$this->type = 'file';
 		if(isset(Yii::app()->user->id))
@@ -347,27 +377,23 @@ class Documents extends CActiveRecord
 		else 
 		{
 			// OCR conversion here.
-			$tess = new TesseractOCR();
 			// Read in the contents of the pdf document and give it to the model’s content attribute.
-			$this->content = $tess->recognize($this->path);
+			$tess = new TesseractOCR();
+			$this->content = $tess->convertToText($this->path);
 		}
 
 	} // End function setPdfFileContentsAndMetadata
 	
 	/**
 	 * This function is for reading in the content of a Tiff document,
-	 * then setting the model’s content attribute to that content. It also reads in the file’s
-	 * modified by, and modified date metadata
+	 * then setting the model’s content attribute to that content.
 	 */
 	public function setTifFileContents()
 	{
-		// Open the tiff document for reading.
-		
 		// OCR conversion here.
-		
 		// Read in the contents of the tiff document and give it to the model’s content attribute.
-
-		// Close the tiff document.
+		$tess = new TesseractOCR();
+		$this->content = $tess->convertToText($this->path);
 	} // End function setTiffFileContentsAndMetadata
 	
 	/**
