@@ -24,6 +24,7 @@ return array(
 		'application.extensions.smp.StrobeMediaPlayback',
 		'application.extensions.dropzone.EDropzone',
 		'application.extensions.filetree.SFileTree',
+		'application.extensions.yexcel.Yexcel',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
@@ -143,6 +144,9 @@ return array(
 					'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
 				)
 			)
+		),
+		'yexcel' => array(
+			'class' => 'ext.yexcel.Yexcel'
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

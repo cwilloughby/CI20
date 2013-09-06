@@ -362,11 +362,15 @@ class Documents extends CActiveRecord
 	 */
 	public function setExcelFileContents()
 	{
-		// Open the excel document for reading.
+		// Read the contents of the excel file into an array.
+		$sheetArray = Yii::app()->yexcel->readActiveSheet($this->path);
 
-		// Read in the contents of the excel document and give it to the model’s content attribute.
-
-		// Close the excel document.
+		foreach($sheetArray as $row)
+		{
+			// Read in the contents of the excel document and give it to the model’s content attribute.
+			foreach($row as $column)
+				$this->content .= $column . " ";
+		}
 	} // End function setExcelFileContentsAndMetadata
 	
 	/**
