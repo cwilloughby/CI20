@@ -287,6 +287,12 @@ class Documents extends CActiveRecord
 				$this->setWordFileContents();
 				break;
 			}
+			case 'docx':
+			{
+				// Call function to read and set word file contents and metadata.
+				$this->setWordFileContents();
+				break;
+			}
 			// If it is an excel file.
 			case 'xls':
 			{
@@ -336,11 +342,17 @@ class Documents extends CActiveRecord
 	public function setWordFileContents()
 	{
 		// Open the word document for reading.
+		$word = new COM("word.application") or die ("Could not initialise MS Word object.");
+		$word->Documents->Open(realpath($this->path));
 		
 		// Read in the contents of the word document and give it to the model’s content attribute.
+		$this->content = preg_replace("/[^A-Za-z0-9 ]/", "", (string)$word->ActiveDocument->Content); 
 		
-		// Close the word document.
-		
+		// Close the word document and clean up.
+		$word->ActiveDocument->Close(false);
+		$word->Quit();
+		$word = null;
+		unset($word);
 	} // End function setWordFileContentsAndMetadata
 
 	/**

@@ -33,7 +33,15 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 
 <script>
 Dropzone.options.uploadForm = {
-	acceptedFiles: 'application/pdf, application/msword, application/vnd.ms-excel, image/tiff, image/jpeg, image/png, image/bmp, text/plain',
+	acceptedFiles: 'application/pdf, \n\
+					application/msword,\n\
+					application/vnd.openxmlformats-officedocument.wordprocessingml.document, \n\
+					application/vnd.ms-excel, \n\
+					image/tiff, \n\
+					image/jpeg, \n\
+					image/png, \n\
+					image/bmp, \n\
+					text/plain',
 	maxFilesize: 12
 };
 </script>
