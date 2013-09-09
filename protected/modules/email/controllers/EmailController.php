@@ -201,7 +201,7 @@ class EmailController extends Controller
 		$model = new Messages;
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
-		// Set the sender, the recipient, the subject, the body, and the message type.
+		// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
 		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI Ticket #" . $_GET['ticketid'],
 			$this->renderPartial('commentemailbody', 
 				array('ticketID' => $_GET['ticketid'], 'user' => Yii::app()->user->name, 'content' => nl2br($_GET['content'])), true),
@@ -223,5 +223,34 @@ class EmailController extends Controller
 			}
 		}
 		$this->redirect(array('/tickets/troubletickets/view?id=' . $_GET['ticketid']));
+	}
+	
+	/**
+	 * This function is used to send out the document share emails.
+	 */
+	public function actionDocumentShareEmail()
+	{
+		// This will prevent the email from being resent if the user refreshes the page.
+		//if(!Yii::app()->user->hasFlash('success'))
+		{
+			// Create a message object.
+			$model = new Messages;
+			$email = UserInfo::model()->findByPk(Yii::app()->user->id)->email;
+
+			// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
+			$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Someone shared a document with you",
+				$this->renderPartial('sharedocumentemailbody', array('file' => 'placeholder value'), true),
+				"Share",
+				$email
+			);
+			
+			// Send the email.
+			$model->mail->Send();
+			// Save a record of the message in the ci_messages table.
+			$model->save();
+
+			//Yii::app()->user->setFlash('shared', "Email Made!");
+		}
+		$this->render('sharedocumentemail');
 	}
 }

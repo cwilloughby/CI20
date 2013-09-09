@@ -86,11 +86,14 @@ class DocumentProcessorController extends Controller
 	} // End function actionListAccessibleQueues
 	
 	/**
-	 * Lists the files on the G drive in a searchable tree.
+	 * This function shares files that have been checked.
 	 */
 	public function actionShareValidatedFiles()
 	{
 		// Create Documents model object.
+		
+		// Remove the flash message so the email will work again.
+		Yii::app()->user->getFlash('shared');
 		
 		// Try to catch errors.
 		{
