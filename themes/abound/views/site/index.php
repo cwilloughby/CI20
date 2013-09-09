@@ -234,24 +234,6 @@ $baseUrl = Yii::app()->theme->baseUrl;
 
 <div class="row-fluid">
 	
-	<?php $this->widget('DocumentUploadWidget', array('uploadType'=>'QueueName')); ?>
-	
-	<?php
-	/*
-	$this->widget('application.extensions.filetree.SFileTree',
-		array(
-			"div"=>"filetree",
-			"root"=> '/wamp/www/ci20/assets/',
-			"multiFolder"=>"true",
-			"expandSpeed"=>500,
-			"collapseSpeed"=>500,
-			"callback"=>"window.alert('C:' + file)",
-		)
-	);
-	*/
-	?>
-	<!--<div id="filetree"></div>
-	
     <!--</div>
 	<div class="span2">
     	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">

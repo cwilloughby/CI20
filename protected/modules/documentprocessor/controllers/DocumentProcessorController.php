@@ -6,6 +6,7 @@
 class DocumentProcessorController extends Controller
 {
 	// Set the layout that views used by this controller will use by default.
+	public $layout='//layouts/column2';
 	
 	/**
 	 * Some controller actions should only be accessed under certain conditions.
@@ -27,10 +28,17 @@ class DocumentProcessorController extends Controller
 	public function actionAdminSearchableFileList()
 	{
 		// Create Documents model object.
+		$documents = new Documents('search');
+		$documents->unsetAttributes();  // clear any default values
 		
-		// Setup the dataProvider to only get records from the model whose paths are on the G drive.
+		// Setup the dataProvider.
+		if(isset($_GET['Documents']))
+			$document->attributes = $_GET['Documents'];
 		
 		// Call the view file and give it the dataprovider.
+		$this->render('admin', array(
+			'documents' => $documents,
+		));
 	} // End function actionAdminSearchableFileList
 	
 	/**

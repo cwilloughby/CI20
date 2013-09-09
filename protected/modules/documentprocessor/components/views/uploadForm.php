@@ -17,7 +17,6 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-	'action'=>$_SERVER['PHP_SELF'],
 	'stateful'=>true, 
 	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
 )); ?>

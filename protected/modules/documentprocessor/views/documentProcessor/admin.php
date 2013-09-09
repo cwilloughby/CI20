@@ -1,16 +1,18 @@
 <?php
 /* @var $this DocumentsController */
-/* @var $model Documents */
+/* @var $documents Documents */
+
+$this->pageTitle = Yii::app()->name . " - Document Processor";
 
 $this->breadcrumbs=array(
 	'Documents'=>array('index'),
 	'Search',
 );
 
-$this->menu=array(
-	array('label'=>'Search Documents', 'url'=>array('admin')),
-	array('label'=>'Create Documents', 'url'=>array('create')),
-	array('label'=>'List Documents', 'url'=>array('index')),
+$this->menu2=array(
+	array('label'=>'Search Documents', 'url'=>array('adminsearchablefilelist')),
+	array('label'=>'Upload Documents', 'url'=>array('create')),
+	array('label'=>'List Document Queues', 'url'=>array('listaccessiblequeues')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -37,29 +39,29 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
-	'model'=>$model,
+	'model'=>$documents,
 )); ?>
 </div><!-- search-form -->
 
 <?php 
-$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+$this->widget('application.extensions.filetree.SFileTree',
+	array(
+		"div"=>"filetree",
+		"root"=> '/wamp/files/',
+		"multiFolder"=>"true",
+		"expandSpeed"=>500,
+		"collapseSpeed"=>500,
+		"callback"=>"window.alert('C:' + file)",
+	)
+);
+?>
 
-$this->widget('CustomGridView', array(
-	'id'=>'documents-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
-	'columns'=>array(
-		'documentid',
-		'uploader',
-		'documentname',
-		'path',
-		'uploaddate',
-		array(
-			'class'=>'CButtonColumn',
-			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
-				'onchange'=>"$.fn.yiiGridView.update('documents-grid',{ data:{pageSize: $(this).val() }})",
-			)),
-		),
-	),
-)); ?>
+<form action="/documentprocessor/documentprocessor/adminsearchablefilelist" method="post">
+	
+<div id="filetree"></div>
+
+<input type="submit" value="Share Checked Files"/>
+
+</form>
+
+<?php $this->widget('DocumentUploadWidget', array('uploadType'=>'Admin')); ?>

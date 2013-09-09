@@ -41,6 +41,7 @@ if(file_exists($root . $_POST['dir']))
 				echo "<li class='directory collapsed'><a href='#' rel='" . htmlentities($_POST['dir'] . $file) . "/'>" . htmlentities($file) . "</a></li>";
 			}
 		}
+
 		// All files.
 		foreach($files as $file) 
 		{
@@ -51,13 +52,13 @@ if(file_exists($root . $_POST['dir']))
 			{
 				$ext = preg_replace('/^.*\./', '', $file);
 				echo "<li class='file ext_$ext'>
-					<input type='checkbox' name='vehicle' value='share' style='float:left;'>
+					<input type='checkbox' name='C:$_POST[dir]' value='C:$_POST[dir]$file' style='float:left;'>
 					<a href='#' rel='" . htmlentities($_POST['dir'] . $file) . "'>" . htmlentities($file) . "</a>
 					</li>";
 			}
 		} 
 
-		echo "</ul>";	
+		echo "</ul>";
 	}
 }
 ?>
