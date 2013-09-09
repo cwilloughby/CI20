@@ -42,6 +42,15 @@ Dropzone.options.uploadForm = {
 					image/png, \n\
 					image/bmp, \n\
 					text/plain',
-	maxFilesize: 12
+	maxFilesize: 12,
+	init: function() {
+		this.on("error", function(file, message) {
+			file.previewElement.classList.add("dz-error");
+			if(message.length < 100)
+				return file.previewElement.querySelector("[data-dz-errormessage]").textContent = message;
+			else
+				return file.previewElement.querySelector("[data-dz-errormessage]").textContent = "Upload Failed!";
+		});
+	}
 };
 </script>

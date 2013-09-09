@@ -4,7 +4,7 @@ class TesseractOCR
 	private $jpgImagesArray;
 	private $outputFilesArray;
 	private $configFile;
-	
+		
 	/**
 	 * This function takes a file and OCR's it, then returns the contents of the file as a string.
 	 * @param string $originalImage
@@ -27,7 +27,7 @@ class TesseractOCR
 	private function convertImageToJpg($originalImage)
 	{
 		$jpgImageBaseName = 'C:/wamp/tmp/tesseract-ocr-jpg-' . rand();
-		exec("convert -density 400 \"$originalImage\" -depth 8 \"$jpgImageBaseName.jpg\"");
+		exec("convert -density 350 -define jpeg:size=1366x768 \"$originalImage\" -depth 8 -colorspace Gray \"$jpgImageBaseName.jpg\"");
 		return $jpgImageBaseName;
 	}
 

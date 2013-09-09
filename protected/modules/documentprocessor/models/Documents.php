@@ -214,34 +214,42 @@ class Documents extends CActiveRecord
 	 */
 	public function setDocumentAttributes()
 	{
-		// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
-		if(isset(Yii::app()->user->id))
-			$this->uploader = Yii::app()->user->id;
-		else
-			$this->uploader = 0;
+		try
+		{
+			// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
+			if(isset(Yii::app()->user->id))
+				$this->uploader = Yii::app()->user->id;
+			else
+				$this->uploader = 0;
 
-		// Set the uploaddate attribute to the current date.
-		$this->uploaddate = date('Y-m-d_h-i-s');
-		// Set the extension.
-		$this->ext = pathinfo($this->file['realName'], PATHINFO_EXTENSION);
-		
-		// Set the path attribute based on the type of upload.
-		if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource')
-		{
-			//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
-			$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
-		}
-		else if($this->uploadType == 'training resource')
-		{
-			$this->path = self::FILE_BASE_PATH . "/training/";
-		}
-		else
-		{
-			// To be Determined
-		}
+			// Set the uploaddate attribute to the current date.
+			$this->uploaddate = date('Y-m-d_h-i-s');
+			// Set the extension.
+			$this->ext = pathinfo($this->file['realName'], PATHINFO_EXTENSION);
 
-		// Extract the document name and set the attribute.
-		$this->documentname = $this->file['realName'];
+			// Set the path attribute based on the type of upload.
+			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource')
+			{
+				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+				$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+			}
+			else if($this->uploadType == 'training resource')
+			{
+				$this->path = self::FILE_BASE_PATH . "/training/";
+			}
+			else
+			{
+				// To be Determined
+			}
+
+			// Extract the document name and set the attribute.
+			$this->documentname = $this->file['realName'];
+		}
+		catch(Exception $ex)
+		{
+			echo "Failed to set document attributes with error " . $ex;
+			die();
+		}
 	}
 	
 	/**
@@ -253,15 +261,15 @@ class Documents extends CActiveRecord
 		if(!is_dir($this->path))
 			mkdir($this->path);
 
-		// Set the path.
+		// Set the complete path.
 		$this->path = $this->path . $this->documentname;
 		
 		move_uploaded_file($this->file['tempName'], $this->path);
 	}
 	
 	/**
-	 * This function's main purpose is to determine HOW to read in a
-	 * file's contents and metadata. Setting them is the side effect.
+	 * This function's main purpose is to determine HOW to read in a file's contents. 
+	 * Setting them is the side effect. It also sets some of the metadata.
 	 */
 	public function setModelContentsAndMetadata()
 	{
@@ -271,56 +279,64 @@ class Documents extends CActiveRecord
 		if(isset(Yii::app()->user->id))
 			$this->modifiedby = Yii::app()->user->id;
 		
-		switch($this->ext)
+		try
 		{
-			// If it is a text file.
-			case 'txt':
+			switch($this->ext)
 			{
-				// Call function to read and set text file contents.
-				$this->setTextFileContents();
-				break;
+				// If it is a text file.
+				case 'txt':
+				{
+					// Call function to read and set text file contents.
+					$this->setTextFileContents();
+					break;
+				}
+				// If it is a word file.
+				case 'doc':
+				{
+					// Call function to read and set word file contents.
+					$this->setWordFileContents();
+					break;
+				}
+				case 'docx':
+				{
+					// Call function to read and set word file contents.
+					$this->setWordFileContents();
+					break;
+				}
+				// If it is an excel file.
+				case 'xls':
+				{
+					// Call function to read and set excel file contents.
+					$this->setExcelFileContents();
+					break;
+				}
+				// If it is a pdf file.
+				case 'pdf':
+				{
+					// Call function to read and set pdf file contents.
+					$this->setPdfFileContents();
+					break;
+				}
+				// If it is a tif file
+				case 'tif':
+				{
+					// Call function to read and set file contents.
+					$this->setTifFileContents();
+					break;
+				}
+				// If it was none of the above.
+				default:
+				{
+					// Set to null.
+					$this->content = null;
+					break;
+				}
 			}
-			// If it is a word file.
-			case 'doc':
-			{
-				// Call function to read and set word file contents and metadata.
-				$this->setWordFileContents();
-				break;
-			}
-			case 'docx':
-			{
-				// Call function to read and set word file contents and metadata.
-				$this->setWordFileContents();
-				break;
-			}
-			// If it is an excel file.
-			case 'xls':
-			{
-				// Call function to read and set excel file contents and metadata.
-				$this->setExcelFileContents();
-				break;
-			}
-			// If it is a pdf file.
-			case 'pdf':
-			{
-				// Call function to read and set pdf file contents and metadata.
-				$this->setPdfFileContents();
-				break;
-			}
-			// If it is a tif file
-			case 'tif':
-			{
-				// Call function to read and set file contents and metadata.
-				$this->setTifFileContents();
-				break;
-			}
-			// If it was none of the above.
-			default:
-			{
-				// Set to null.
-				$this->content = null;
-				break;
-			}
+		}
+		catch(Exception $ex)
+		{
+			Yii::log("File content read failed with message " . $ex, 'warning', 'system.web.CController');
+			$this->content = null;
 		}
 	} // End function setFileContentsAndMetadata
 
