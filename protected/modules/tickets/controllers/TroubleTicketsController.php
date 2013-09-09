@@ -70,7 +70,7 @@ class TroubleTicketsController extends Controller
 							$file->uploadFile();
 							// This description will only allow the link to work on the website.
 							$ticket->description .= "\nAttachment: " 
-								. CHtml::link($file->documentname,array('/../../../../assets/uploads/' 
+								. CHtml::link($file->documentname,array('/files/uploads/' 
 									. $file->uploaddate . '/' . $file->documentname));
 							// This description will only be used for the email so the link will work.
 							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
