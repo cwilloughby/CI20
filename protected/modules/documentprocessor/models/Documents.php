@@ -80,7 +80,7 @@ class Documents extends CActiveRecord
 	} // End of function rules
 	
 	/**
-	 * This validation rule is used for most file submissions, 
+	 * This validation rule is used for most file submissions.
 	 * @param type $attribute
 	 */
 	public function validExt($attribute)
@@ -89,6 +89,10 @@ class Documents extends CActiveRecord
 			$this->addError($this->$attribute, 'only pdf, doc, docx, xls, tif, jpg, png, bmp, or txt files are allowed!');
 	}
 	
+	/**
+	 * This validation rule is used when submitting training resources. 
+	 * @param type $attribute
+	 */
 	public function validTrainingResource($attribute)
 	{
 		if(!in_array($this->$attribute, array('pdf', 'mp4', 'htm', 'png', 'css')))
@@ -99,7 +103,7 @@ class Documents extends CActiveRecord
 	 * Attaches the timestamp behavior to auto set the opendate value
 	 * when a new ticket is made.
 	 */
-	public function behaviors() 
+	public function behaviors()
 	{
 		return array(
 			'CTimestampBehavior' => array(
@@ -228,10 +232,14 @@ class Documents extends CActiveRecord
 			$this->ext = pathinfo($this->file['realName'], PATHINFO_EXTENSION);
 
 			// Set the path attribute based on the type of upload.
-			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource')
+			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource' && $this->uploadType != 'attachment')
 			{
 				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
 				$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+			}
+			else if($this->uploadType == 'attachment')
+			{
+				$this->path = self::FILE_BASE_PATH . "/attachments/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'training resource')
 			{

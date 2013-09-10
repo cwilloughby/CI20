@@ -8,17 +8,6 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
 
-<script>
-Dropzone.options.ticketsForm = {
-	paramName: "file", // The name that will be used to transfer the file
-	autoProcessQueue: false,
-	uploadMultiple: true,
-	parallelUploads: 10,
-	maxFilesize: 12,
-	success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
-};
-</script>
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -105,36 +94,51 @@ Dropzone.options.ticketsForm = {
 	
 	<div id="button" class="row buttons">
 		<?php echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
-			'onclick'=> '
-				if(myValidate())
-				{
-					var dz = Dropzone.forElement("#ticketsForm");
-					queuedFiles = dz.getQueuedFiles();
-					if((queuedFiles.length > 0))
-					{
-						dz.processQueue();
-					}
-					else
-					{
-						document.getElementById("ticketsForm").submit();
-					}
-				}'
-			)); ?>
+			'onclick'=> 'TicketSubmit()'
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-				
-<script>
-function myValidate()
-{
-	var conditionals = document.getElementById('dependant').querySelectorAll('input[type="text"]');
-	for(var i = 0; i < conditionals.length; i += 1)
+
+<?php
+Yii::app()->clientScript->registerScript('TicketScript', "
+	Dropzone.options.ticketsForm = {
+		paramName: 'file', // The name that will be used to transfer the file
+		autoProcessQueue: false,
+		uploadMultiple: true,
+		parallelUploads: 10,
+		maxFilesize: 12,
+		success: function(){ window.location.href = '/tickets/troubletickets/index?status=Open';}
+	};
+	
+	function TicketSubmit()
 	{
-		if(conditionals[i].value == "")
-			return false;
+		if(myValidate())
+		{
+			var dz = Dropzone.forElement('#ticketsForm');
+			queuedFiles = dz.getQueuedFiles();
+			if((queuedFiles.length > 0))
+			{
+				dz.processQueue();
+			}
+			else
+			{
+				document.getElementById('ticketsForm').submit();
+			}
+		}
+	};
+	
+	function myValidate()
+	{
+		var conditionals = document.getElementById('dependant').querySelectorAll('input[type=\"text\"]');
+		for(var i = 0; i < conditionals.length; i += 1)
+		{
+			if(conditionals[i].value == '')
+				return false;
+		}
+		return true;
 	}
-	return true;
-}
-</script>
+", CClientScript::POS_END);
+?>

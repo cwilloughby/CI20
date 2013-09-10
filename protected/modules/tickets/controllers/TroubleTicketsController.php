@@ -55,7 +55,7 @@ class TroubleTicketsController extends Controller
 				// Were any files attached to the new ticket?
 				if(!empty($_FILES))
 				{
-					// Loop throught each file.
+					// Loop through each file.
 					foreach($_FILES['file']['name'] as $key => $value)
 					{
 						// Read in the current file.
@@ -70,7 +70,7 @@ class TroubleTicketsController extends Controller
 							$file->uploadFile();
 							// This description will only allow the link to work on the website.
 							$ticket->description .= "\nAttachment: " 
-								. CHtml::link($file->documentname,array('/files/uploads/' 
+								. CHtml::link($file->documentname,array('/files/attachments/' 
 									. $file->uploaddate . '/' . $file->documentname));
 							// This description will only be used for the email so the link will work.
 							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
