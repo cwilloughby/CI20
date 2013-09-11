@@ -32,8 +32,7 @@ class TicketComments extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('ticketid, commentid', 'required'),
 			array('ticketid, commentid', 'numerical', 'integerOnly'=>true),
@@ -44,21 +43,23 @@ class TicketComments extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'ticketid' => 'Ticket ID',
 			'commentid' => 'Comment ID',

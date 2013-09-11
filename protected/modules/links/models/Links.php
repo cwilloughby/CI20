@@ -13,7 +13,7 @@ class Links
 		array('Name'=>'CrimClerk_gs_copier', 'Address' => 'http://10.96.23.95'),
 		array('Name'=>'CrimClerk_Minutes_copier', 'Address' => 'http://10.96.23.98'),
 		array('Name'=>'CrimClerk_MSE_copier', 'Address' => 'http://10.52.102.37'),
-	);
+	); // End of array $copiers
 	
 	private $printers = array(
 		array('Name'=>'CrimClerk_Bond_Office_1', 'Address' => 'http://10.96.23.37'),
@@ -27,13 +27,21 @@ class Links
 		array('Name'=>'CrimClerk_Middle_Counter', 'Address' => 'http://10.96.22.220'),
 		array('Name'=>'CrimClerk_Public_Counter', 'Address' => 'http://10.96.23.94'),
 		array('Name'=>'CrimClerk_Right_Counter', 'Address' => 'http://rnp507336'),
-	);
+	); // End of array $printers
 	
+	/**
+	 * Return an array list of printers.
+	 * @return array
+	 */
 	public function getPrinters()
 	{
 		return $this->printers;
 	}
 	
+	/**
+	 * Return an array list of copiers.
+	 * @return array
+	 */
 	public function getCopiers()
 	{
 		return $this->copiers;

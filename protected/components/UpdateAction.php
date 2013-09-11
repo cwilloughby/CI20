@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * The external update actions used for typical CRUD updates.
  */
 class UpdateAction extends CAction
@@ -11,19 +11,24 @@ class UpdateAction extends CAction
 	function run()
 	{
 		if(empty($_GET[$this->pk]))
-			throw new CHttpException(404);
+			throw new CHttpException(400, "Bad Request. An id must be given.");
 		
 		$model = CActiveRecord::model($this->modelClass)->findByPk($_GET[$this->pk]);
 
 		if(!$model)
-			throw new CHttpException(404);
+			throw new CHttpException(400, "Failed to load data.");
 
 		if($model->attributes = Yii::app()->request->getPost($this->modelClass))
 		{
-			if($model->save())
+			if($model->validate())
 			{
-				Yii::app()->user->setFlash('updated', 'Record has been updated.');
-				Yii::app()->getController()->redirect(array($this->redirectTo,'id'=>$_GET[$this->pk]));
+				if($model->save(false))
+				{
+					Yii::app()->user->setFlash('updated', 'Record has been updated.');
+					Yii::app()->getController()->redirect(array($this->redirectTo,'id'=>$_GET[$this->pk]));
+				}
+				else
+					throw new CHttpException(500, "Failed to update data.");
 			}
 		}
 		Yii::app()->getController()->render('update', array('model'=>$model));

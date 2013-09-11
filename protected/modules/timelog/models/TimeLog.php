@@ -40,8 +40,7 @@ class TimeLog extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('id', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
@@ -49,7 +48,6 @@ class TimeLog extends CActiveRecord
 			array('computername', 'length', 'max'=>15),
 			array('eventtype', 'length', 'max'=>7),
 			array('eventtime, eventdate', 'safe'),
-			
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, username, computername, eventtype, eventtime, eventdate, from_date, to_date', 'safe', 'on'=>'search'),
@@ -57,21 +55,23 @@ class TimeLog extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'id' => 'ID',
 			'username' => 'Username',
@@ -80,22 +80,6 @@ class TimeLog extends CActiveRecord
 			'eventtime' => 'Event Time',
 			'eventdate' => 'Event Date',
 		);
-	}
-
-	/**
-	 * Convert the supplied dates, if any, to the correct format.
-	 */
-	public function dateFormatter()
-	{
-		if(isset($this->from_date) || isset($this->to_date))
-		{
-			// If the from_date is set, convert the date format to the same format that is used in the database.
-			if((int)$this->from_date)
-				$this->from_date = date('Y-m-d', strtotime($this->from_date));
-			// If the to_date is set, convert the date format to the same format that is used in the database.
-			if((int)$this->to_date)
-				$this->to_date = date('Y-m-d', strtotime($this->to_date));
-		}
 	}
 	
 	/**
@@ -175,5 +159,21 @@ class TimeLog extends CActiveRecord
 				),
 			),
 		));
+	}
+	
+	/**
+	 * Convert the supplied dates, if any, to the correct format.
+	 */
+	public function dateFormatter()
+	{
+		if(isset($this->from_date) || isset($this->to_date))
+		{
+			// If the from_date is set, convert the date format to the same format that is used in the database.
+			if((int)$this->from_date)
+				$this->from_date = date('Y-m-d', strtotime($this->from_date));
+			// If the to_date is set, convert the date format to the same format that is used in the database.
+			if((int)$this->to_date)
+				$this->to_date = date('Y-m-d', strtotime($this->to_date));
+		}
 	}
 }

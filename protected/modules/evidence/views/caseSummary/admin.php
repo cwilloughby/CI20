@@ -70,12 +70,12 @@ $this->widget('CustomGridView', array(
 		array(
 			'header'=>'Hearing Dates', // give new column a header
 			'type'=>'HTML', // set it to manual HTML
-			'value'=>'$data->hearingDatesToString()' // here is where you call the new function
+			'value'=>'$data->hearingDatesToString()'
 		),
 		array(
 			'header'=>'Locations', // give new column a header
 			'type'=>'HTML', // set it to manual HTML
-			'value'=>'$data->locationsToString($data->caseno)' // here is where you call the new function
+			'value'=>'$data->locationsToString($data->caseno)'
 		),
 		'sentence',
 		array(        

@@ -1,11 +1,11 @@
 <?php
 class ManageTicketWid extends CPortlet 
 {
-    public $pageTitle = 'Close Ticket';
+    public $pageTitle = 'Ticket Manager';
 	public $ticket;
 	
     /**
-     * This function renders the close ticket widget.
+     * This function renders the manage ticket widget.
      */
     protected function renderContent()
 	{
@@ -18,10 +18,14 @@ class ManageTicketWid extends CPortlet
 			{
 				if(isset($_POST['submittype']))
 				{
+					// If the user is trying to submit a new comment.
 					if($_POST['submittype'] == 'comment')
 						$this->processNewComment($ticketManager, $file);
+					// If the user is trying to close the ticket.
 					else if($_POST['submittype'] == 'close')
 						$this->processTicketClose($ticketManager, $file);
+					else
+						throw new Exception("Invalid submit type was provided.");
 				}
 				else
 					throw new Exception("No submit type was provided.");
@@ -31,7 +35,6 @@ class ManageTicketWid extends CPortlet
 		{
 			echo "Ticket manager failed with error " . $ex;
 		}
-		
 		
 		$this->render('_manageTicket',array(
 			'model'=>$ticketManager, 'file'=>$file
@@ -48,31 +51,33 @@ class ManageTicketWid extends CPortlet
 		// Validate the model.
 		if($ticketManager->validate())
 		{
+			// Since the user is trying to close the ticket, pass the ticketManager's content attribute 
+			// to the ticket's resolution attribute.
 			$this->ticket->resolution = $ticketManager->content;
 			$this->ticket->closedbyuserid = Yii::app()->user->id;
 			$temp = $ticketManager->content;
 
-			// If a file was uploaded.
+			// If one or more files was uploaded.
 			if(!empty($_FILES))
 			{
 				// Loop through each file.
 				foreach($_FILES['file']['name'] as $key => $value)
 				{
-					// Read in the current file.
+					// Read in the properties of the current file.
 					$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
 					$file->uploadType = 'attachment';
 					$file->setDocumentAttributes();
 
-					// Validate attributes.
+					// Validate the current file's attributes.
 					if($file->validate())
 					{
-						// Upload file to server.
+						// Upload the current file to the server.
 						$file->uploadFile();
-						// This description will only allow the link to work on the website.
+						// This description is used so the link to the document will work on the website.
 						$this->ticket->resolution .= "\nAttachment: " 
 							. CHtml::link($file->documentname,array('/files/attachments/' 
 								. $file->uploaddate . '/' . $file->documentname));
-						// This description will only be used for the email so the link will work.
+						// This description is used so the link to the document will work on the email.
 						$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
 					}
 				}
@@ -109,30 +114,33 @@ class ManageTicketWid extends CPortlet
 		// Validate the model.
 		if($ticketManager->validate())
 		{
+			// Since the user is trying to make a new comment, pass the ticketManager's content attribute 
+			// to the comment's content attribute.
 			$comment = new Comments;
 			$comment->content = $ticketManager->content;
 			$temp = $comment->content;
 			
-			// If a file was uploaded.
+			// If one or more files was uploaded.
 			if(!empty($_FILES))
 			{
 				// Loop through each file.
 				foreach($_FILES['file']['name'] as $key => $value)
 				{
+					// Read in the properties of the current file.
 					$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
 					$file->uploadType = 'attachment';
 					$file->setDocumentAttributes();
 
-					// Validate attributes.
+					// Validate the current file's attributes.
 					if($file->validate())
 					{
-						// Upload file to server.
+						// Upload the current file to the server.
 						$file->uploadFile();
-						// This description will only allow the link to work on the website.
+						// This description is used so the link to the document will work on the website.
 						$comment->content .= "\nAttachment: " 
 							. CHtml::link($file->documentname,array('/files/attachments/' 
 								. $file->uploaddate . '/' . $file->documentname));
-						// This description will only be used for the email so the link will work.
+						// This description is used so the link to the document will work on the email.
 						$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
 					}
 				}

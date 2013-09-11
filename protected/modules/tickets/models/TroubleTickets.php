@@ -24,6 +24,7 @@
  */
 class TroubleTickets extends CActiveRecord
 {	
+	// These variables are used to look up meaningful values of foreign keys.
 	public $subject_search;
 	public $category_search;
 	public $user_search;
@@ -52,8 +53,7 @@ class TroubleTickets extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('categoryid, subjectid', 'required'),
 			array('openedby, categoryid, subjectid, closedbyuserid', 'numerical', 'integerOnly'=>true),
@@ -65,8 +65,8 @@ class TroubleTickets extends CActiveRecord
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the opendate value
-	 * when a new ticket is made.
+	 * Attaches the timestamp behavior to auto set the opendate value when a new ticket is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors() 
 	{
@@ -96,12 +96,12 @@ class TroubleTickets extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ticketComments' => array(self::HAS_MANY, 'TicketComments', 'ticketid'),
 			'ticketMessages' => array(self::HAS_MANY, 'TicketMessages', 'ticketid'),
@@ -113,10 +113,12 @@ class TroubleTickets extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'ticketid' => 'Ticket #',
 			'openedby' => 'Opened By',
@@ -188,12 +190,13 @@ class TroubleTickets extends CActiveRecord
 	
 	/**
 	 * Make a criteria object used for showing a list of tickets.
+	 * @return CDbCriteria
 	 */
 	public function TicketListCriteria($status = 'Open')
 	{
 		$criteria = new CDbCriteria;
 		
-		// If the user has an IT role, then they can see all open tickets.
+		// If the user has an IT role, then they can see all tickets.
 		if(Yii::app()->user->checkAccess('IT', Yii::app()->user->id))
 		{
 			if($status == "Open")
@@ -201,6 +204,7 @@ class TroubleTickets extends CActiveRecord
 			else
 				$criteria->condition = "closedbyuserid IS NOT NULL";
 		}
+		// If the user has a Supervisor role, then they can see all tickets made by users in their department.
 		else if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
 			// If the user is a supervisor, find that supervisor's department
@@ -218,6 +222,7 @@ class TroubleTickets extends CActiveRecord
 			
 			$criteria->addCondition("openedby IN (" . $stringed . ")");
 		}
+		// Otherwise the user can only see their own tickets.
 		else 
 		{
 			if($status == "Open")
@@ -233,22 +238,19 @@ class TroubleTickets extends CActiveRecord
 	}
 	
 	/**
-	 * Convert the supplied dates, if any, to the correct format.
+	 * Convert the supplied dates, if any, to the format recognized by the database.
 	 */
 	public function dateFormatter()
 	{
 		if((int)$this->opendate)
-		{
 			$this->opendate = date('Y-m-d', strtotime($this->opendate));
-		}
 		if((int)$this->closedate)
-		{
 			$this->closedate = date('Y-m-d', strtotime($this->closedate));
-		}
 	}
 	
 	/**
-	 * Adds a comment to this trouble ticket.
+	 * This function is used to add a comment to the current trouble ticket.
+	 * @return boolean
 	 */
 	public function addComment($comment)
 	{

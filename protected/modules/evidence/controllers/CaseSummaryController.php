@@ -18,7 +18,12 @@ class CaseSummaryController extends Controller
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(
@@ -168,8 +173,11 @@ class CaseSummaryController extends Controller
 	 * @param integer $sid the summary ID
 	 * @param integer $aid the attorney ID
 	 */
-	public function actionDeleteAttorneyFromCase($sid, $aid)
+	public function actionDeleteAttorneyFromCase($sid = null, $aid = null)
 	{
+		if($sid == null || $aid == null)
+			throw new CHttpException(400, "Bad Request. Ids must be given.");
+		
 		// Delete the record on the attorney bridge table that has this summaryid and attyid.
 		CaseAttorneys::model()->deleteByPk(array('summaryid' => $sid, 'attyid' => $aid));
 		

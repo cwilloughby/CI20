@@ -16,6 +16,7 @@
  */
 class EvaluationQuestions extends CActiveRecord
 {
+	// This variable is used to look up meaningful values of foreign keys.
 	public $department_search;
 	
 	/**
@@ -41,8 +42,7 @@ class EvaluationQuestions extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('question', 'required'),
 			array('departmentid, active, type', 'numerical', 'integerOnly'=>true),
@@ -53,12 +53,12 @@ class EvaluationQuestions extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ciEvaluations' => array(self::MANY_MANY, 'Evaluations', 'ci_evaluation_answers(questionid, evaluationid)'),
 			'department' => array(self::BELONGS_TO, 'Departments', 'departmentid'),
@@ -66,10 +66,12 @@ class EvaluationQuestions extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'questionid' => 'Question ID',
 			'departmentid' => 'Department',
@@ -110,5 +112,21 @@ class EvaluationQuestions extends CActiveRecord
 				),
 			),
 		));
+	}
+	
+	public function prepareQuestions($departments)
+	{
+		// Find all general questions.
+		$questions = CHtml::ListData($this->findAll(
+			'departmentid IS NULL'), 'questionid', 'questionid');
+
+		// Find all questions for the department.
+		$questions2 = array();
+		foreach($departments as $department)
+		{
+			$questions2 = array_merge($questions2, CHtml::ListData($this->findAll(
+				'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid'));
+		}
+		return array_merge($questions, $questions2);
 	}
 }

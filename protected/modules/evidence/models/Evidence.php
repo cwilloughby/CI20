@@ -42,8 +42,7 @@ class Evidence extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('caseno, hearingdate, hearingtype, exhibitno, evidencename', 'required'),
 			array('caseno', 'length', 'max'=>50),
@@ -104,22 +103,24 @@ class Evidence extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'caseno0' => array(self::BELONGS_TO, 'CrtCase', 'caseno'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'evidenceid' => 'Evidence ID',
 			'caseno' => 'Case Number',
@@ -175,6 +176,7 @@ class Evidence extends CActiveRecord
 	 * actionCreate returns an array, but model->save() can only save one model at a time.
 	 * So this function is used to split the array into individual models.
 	 * @param array $formData contains all the rows from the form in an array.
+	 * @return boolean
 	 */
 	public function saveEvidence($formData)
 	{
@@ -183,7 +185,8 @@ class Evidence extends CActiveRecord
 
 		$idx = 0;
 		$case = $formData['caseno'][0];
-		// Loop through the array, splitting it into individual models and saving those models. 
+		
+		// Loop through each new piece of evidence that the user is trying to create. 
 		foreach($formData['exhibitno'] as $ex)
 		{
 			$model = new Evidence;

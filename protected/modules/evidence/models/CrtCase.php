@@ -37,8 +37,7 @@ class CrtCase extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('caseno', 'required'),
 			array('caseno, cptno', 'length', 'max'=>50),
@@ -68,12 +67,12 @@ class CrtCase extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'caseSummaries' => array(self::HAS_MANY, 'CaseSummary', 'caseno'),
 			'evidences' => array(self::HAS_MANY, 'Evidence', 'caseno'),
@@ -81,10 +80,12 @@ class CrtCase extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'caseno' => 'Case Number',
 			'crtdiv' => 'Court Division',
@@ -115,6 +116,8 @@ class CrtCase extends CActiveRecord
 	/**
 	 * Check to see if the case already exists in the court cases table.
 	 * It it does, return the caseno, otherwise create the case and return the new caseno.
+	 * @param CrtCase $case
+	 * @return string
 	 */
 	public function saveCase($case)
 	{
@@ -124,11 +127,12 @@ class CrtCase extends CActiveRecord
 			'params' => array(':caseno' => $case->caseno)
 		));
 		
-		// If the defendant does not already exists in the database.
+		// If the case does not already exists in the database.
 		if(!isset($caseCheck['caseno']))
 		{
 			$caseCheck['caseno'] = $case->caseno;
 			
+			// Create the new case.
 			if($case->save())
 			{
 				$caseCheck['caseno'] = $case->caseno;
@@ -144,16 +148,16 @@ class CrtCase extends CActiveRecord
 		}
 		else
 		{
+			// Update the case's data
 			$div = $case->crtdiv;
 			$cpt = $case->cptno;
-			
 			$case = CrtCase::model()->findByPk($case->caseno);
 			$case->crtdiv = $div;
 			$case->cptno = $cpt;
-			
+			// Save the new information.
 			if($case->save())
 			{
-				// Record the court case create event.
+				// Record the court case update event.
 				$log = new Log;
 				$log->tablename = 'ci_crt_case';
 				$log->event = 'Court Case Updated';

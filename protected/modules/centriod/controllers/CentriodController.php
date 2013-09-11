@@ -13,18 +13,25 @@ class CentriodController extends Controller
 	 */
 	public function actionExamineFiles()
 	{
-		$model = new Centriod;
-		
-		if($model->attributes = Yii::app()->request->getPost('Centriod'))
+		try
 		{
-			if($model->validate())
-				$results = $model->reportFiles();
+			$model = new Centriod;
+
+			if($model->attributes = Yii::app()->request->getPost('Centriod'))
+			{
+				if($model->validate())
+					$results = $model->reportFiles();
+				else
+					$results = false;
+			}
 			else
 				$results = false;
 		}
-		else
-			$results = false;
-
+		catch(Exception $ex)
+		{
+			echo "Centriod module failed with error " . $ex;
+		}
+		
 		// Display the form.
 		$this->render('index', array('centriod'=> $model, 'results' => $results));
 	}

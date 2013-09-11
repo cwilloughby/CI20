@@ -19,7 +19,12 @@ class EvaluationQuestionsController extends Controller
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(
@@ -37,17 +42,19 @@ class EvaluationQuestionsController extends Controller
 	public function actionCreate()
 	{
 		$model=new EvaluationQuestions;
-		
+
 		if($model->attributes = Yii::app()->request->getPost('EvaluationQuestions'))
 		{
 			// Find the user's department.
 			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
 			$model->departmentid = $department->departmentid;
-			
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->questionid));
+			else
+				throw new CHttpException(500, "Internal Error. Failed to save new question.");
 		}
-
+		
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -61,9 +68,11 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model = $this->loadModel($id, 'EvaluationQuestions');
 		$model->active = 2;
-		
+
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->questionid));
+		else
+			throw new CHttpException(500, "Internal error. Failed to disable question.");
 	}
 
 	/**
@@ -74,8 +83,10 @@ class EvaluationQuestionsController extends Controller
 	{
 		$model = $this->loadModel($id, 'EvaluationQuestions');
 		$model->active = 1;
-		
+
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->questionid));
+		else
+			throw new CHttpException(500, "Internal error. Failed to enable question.");
 	}
 }

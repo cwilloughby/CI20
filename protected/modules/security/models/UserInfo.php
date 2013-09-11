@@ -57,8 +57,7 @@ class UserInfo extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			// These fields are only required when creating a new user.
 			array('firstname, lastname, username, password, email, phoneext, active', 'required', 'on'=>'insert'),
@@ -121,12 +120,12 @@ class UserInfo extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'comments' => array(self::HAS_MANY, 'Comments', 'createdby'),
             'computerInventories' => array(self::HAS_MANY, 'ComputerInventory', 'userid'),
@@ -142,10 +141,12 @@ class UserInfo extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'firstName' => 'First Name',
 			'lastName' => 'Last Name',

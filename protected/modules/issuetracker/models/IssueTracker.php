@@ -46,8 +46,7 @@ class IssueTracker extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('key, type', 'required', 'on'=>'insert'),
 			array('search', 'required', 'on'=>'search'),
@@ -62,8 +61,8 @@ class IssueTracker extends CActiveRecord
 	}
 
 	/**
-	 * Attaches the timestamp behavior to auto set the created and updated value
-	 * when a new ticket is made.
+	 * Attaches the timestamp behavior to auto set the created and updated value when a new ticket is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors() 
 	{
@@ -94,21 +93,23 @@ class IssueTracker extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'id' => 'ID',
 			'key' => 'Key',
@@ -171,7 +172,8 @@ class IssueTracker extends CActiveRecord
 	}
 	
 	/**
-	 * Take the keys of an array and put them into a string with ',' seperating each key
+	 * Take the keys of an array and puts them into a string with ',' seperating each key
+	 * @param array $checked
 	 * @return String
 	 */
 	public function prepareString($checked)

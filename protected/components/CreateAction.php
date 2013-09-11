@@ -1,6 +1,6 @@
 <?php
-/*
- * The external update actions used for typical CRUD updates.
+/**
+ * The external create actions used for typical CRUD creates.
  */
 class CreateAction extends CAction
 {
@@ -13,12 +13,18 @@ class CreateAction extends CAction
 
 		if($model->attributes = Yii::app()->request->getPost($this->modelClass))
 		{
-			if($model->save())
+			if($model->validate())
 			{
-				Yii::app()->user->setFlash('created', 'Record has been created.');
-				Yii::app()->getController()->redirect(array($this->redirectTo,'id'=>$model->getPrimaryKey()));
+				if($model->save(false))
+				{
+					Yii::app()->user->setFlash('created', 'Record has been created.');
+					Yii::app()->getController()->redirect(array($this->redirectTo,'id'=>$model->getPrimaryKey()));
+				}
+				else
+					throw new CHttpException(500, "Failed to create data.");
 			}
 		}
+		
 		Yii::app()->getController()->render('create', array('model'=>$model));
 	}
 }

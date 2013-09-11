@@ -15,6 +15,7 @@
  */
 class Comments extends CActiveRecord
 {
+	// This variable is used to look up meaningful values of foreign keys.
 	public $user_search;
 	
 	/**
@@ -40,8 +41,7 @@ class Comments extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('content', 'required'),
 			array('createdby', 'numerical', 'integerOnly'=>true),
@@ -52,12 +52,12 @@ class Comments extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'createdby0' => array(self::BELONGS_TO, 'UserInfo', 'createdby'),
 			'ciTroubleTickets' => array(self::MANY_MANY, 'TroubleTickets', 'ci_ticket_comments(commentid, ticketid)'),
@@ -65,8 +65,8 @@ class Comments extends CActiveRecord
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the datecreated value
-	 * when a new comment is made.
+	 * Attaches the timestamp behavior to auto set the datecreated value when a new comment is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors() 
 	{
@@ -112,10 +112,12 @@ class Comments extends CActiveRecord
 	}
 	
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'commentid' => 'Comment ID',
 			'content' => 'Content',

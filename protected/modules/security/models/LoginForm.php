@@ -13,12 +13,11 @@ class LoginForm extends CFormModel
 	private $_identity;
 
 	/**
-	 * Declares the validation rules.
-	 * The rules state that username and password are required,
-	 * and password needs to be authenticated.
+	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
 	{
+		// Define the validation rules in an array and return it.
 		return array(
 			// username and password are required.
 			array('username, password', 'required'),
@@ -26,21 +25,9 @@ class LoginForm extends CFormModel
 			array('password', 'authenticate'),
 		);
 	}
-
-	/**
-	 * Declares attribute labels.
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'username'=>'Username',
-			'password'=>'Password'
-		);
-	}
-
+	
 	/**
 	 * Authenticates the password.
-	 * This is the 'authenticate' validator as declared in rules().
 	 */
 	public function authenticate($attribute,$params)
 	{
@@ -50,6 +37,19 @@ class LoginForm extends CFormModel
 			if(!$this->_identity->authenticate())
 				$this->addError('password','Incorrect username or password or your account is locked.');
 		}
+	}
+	
+	/**
+	 * Determine the attribute labels that will be shown to the users.
+	 * Declares attribute labels.
+	 */
+	public function attributeLabels()
+	{
+		// Return an array of attribute labels.
+		return array(
+			'username'=>'Username',
+			'password'=>'Password'
+		);
 	}
 
 	/**

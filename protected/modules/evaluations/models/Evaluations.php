@@ -16,6 +16,7 @@
  */
 class Evaluations extends CActiveRecord
 {
+	// These variables are used to look up meaningful values of foreign keys.
 	public $employee_search;
 	public $evaluator_search;
 	
@@ -42,8 +43,7 @@ class Evaluations extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('employee', 'required'),
 			array('employee, evaluator', 'numerical', 'integerOnly'=>true),
@@ -55,8 +55,7 @@ class Evaluations extends CActiveRecord
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the evaluationdate value
-	 * when a new evaluation is made.
+	 * Attaches the timestamp behavior to auto set the evaluationdate value when a new evaluation is made.
 	 */
 	public function behaviors() 
 	{
@@ -102,12 +101,12 @@ class Evaluations extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ciEvaluationQuestions' => array(self::MANY_MANY, 'EvaluationQuestions', 'ci_evaluation_answers(evaluationid, questionid)'),
 			'employee0' => array(self::BELONGS_TO, 'UserInfo', 'employee'),
@@ -116,10 +115,12 @@ class Evaluations extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'evaluationid' => 'Evaluation ID',
 			'employee' => 'Employee',
@@ -168,5 +169,34 @@ class Evaluations extends CActiveRecord
 				),
 			),
 		));
+	}
+	
+	/**
+	 * Prepare a list of users that will be used by the dropdown list on the create evaluation page.
+	 * @param Department $departments
+	 * @return array
+	 */
+	public function prepareUserList($departments)
+	{
+		$allUsers = array();
+		// For each department that the current user is the supervisor of.
+		foreach($departments as $department)
+		{
+			// If the current department is not the administration department
+			if($department->departmentname != 'Administration')
+			{
+				// Add the users in the current department, except for the current user, to a list.
+				$allUsers += CHtml::ListData(UserInfo::model()->findAll(
+						'departmentid=' . $department->getAttribute('departmentid') 
+						. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+			}
+			// People in the administration department can create evaluations for anyone, except themself.
+			else
+			{
+				$allUsers = CHtml::ListData(UserInfo::model()->findAll(
+						'active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+			}
+		}
+		return $allUsers;
 	}
 }

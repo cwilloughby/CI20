@@ -35,11 +35,8 @@ class Tips extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
-			array('tipid', 'required'),
-			array('tipid', 'numerical', 'integerOnly'=>true),
 			array('tip', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -48,22 +45,24 @@ class Tips extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ciTicketSubjects' => array(self::MANY_MANY, 'TicketSubjects', 'ci_subject_tips(tipid, subjectid)'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'tipid' => 'Tip ID',
 			'tip' => 'Tip',

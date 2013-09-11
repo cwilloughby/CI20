@@ -37,8 +37,7 @@ class HrSections extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('policyid, section', 'required'),
 			array('policyid, sectionid', 'numerical', 'integerOnly'=>true),
@@ -49,8 +48,8 @@ class HrSections extends CActiveRecord
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the opendate value
-	 * when a new ticket is made.
+	 * Attaches the timestamp behavior to auto set the opendate value when a new ticket is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors() 
 	{
@@ -64,22 +63,24 @@ class HrSections extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'policy' => array(self::BELONGS_TO, 'HrPolicy', 'policyid'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'policyid' => 'Policy ID',
 			'sectionid' => 'Section ID',

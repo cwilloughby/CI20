@@ -17,7 +17,12 @@ class HrPolicyController extends Controller
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(
@@ -59,8 +64,11 @@ class HrPolicyController extends Controller
 	 * @param integer $id1 the ID of the policy.
 	 * @param integer $id2 the ID of the section to be updated.
 	 */
-	public function actionUpdateSection($id1, $id2)
+	public function actionUpdateSection($id1 = null, $id2 = null)
 	{
+		if($id1 == null || $id2 == null)
+			throw new CHttpException(400, "Bad Request. Ids must be given.");
+		
 		$model=HrSections::model()->findByPk(array('policyid' => $id1, 'sectionid' =>$id2));
 
 		if($model->attributes = Yii::app()->request->getPost('HrSections'))

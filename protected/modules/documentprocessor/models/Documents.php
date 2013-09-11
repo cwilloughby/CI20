@@ -27,6 +27,7 @@
  */
 class Documents extends CActiveRecord
 {
+	// This const is the base path that all files uploaded to the server will be saved under.
 	const FILE_BASE_PATH = 'C:/wamp/files';
 	
 	public $file;
@@ -81,27 +82,37 @@ class Documents extends CActiveRecord
 	
 	/**
 	 * This validation rule is used for most file submissions.
+	 * It makes it so that only pdf, doc, docx, xls, tif, jpg, png, bmp, or txt files are allowed.
 	 * @param type $attribute
 	 */
 	public function validExt($attribute)
 	{
+		// If the value of the attribute is not one of the values in the array.
 		if(!in_array($this->$attribute, array('pdf', 'doc', 'docx', 'xls', 'tif', 'tiff', 'jpg', 'png', 'bmp', 'txt')))
+		{
+			// The file type is invalid. Throw a validation error.
 			$this->addError($this->$attribute, 'only pdf, doc, docx, xls, tif, jpg, png, bmp, or txt files are allowed!');
+		}
 	}
 	
 	/**
 	 * This validation rule is used when submitting training resources. 
+	 * It makes it so that only pdf, mp4, htm, png, or css files are allowed.
 	 * @param type $attribute
 	 */
 	public function validTrainingResource($attribute)
 	{
+		// If the value of the attribute is not one of the values in the array.
 		if(!in_array($this->$attribute, array('pdf', 'mp4', 'htm', 'png', 'css')))
+		{
+			// The file type is invalid. Throw a validation error.
 			$this->addError($this->$attribute, 'only pdf, mp4, htm, png, or css files are allowed!');
+		}
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the opendate value
-	 * when a new ticket is made.
+	 * Attaches the timestamp behavior to auto set the opendate value when a new ticket is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors()
 	{
@@ -115,7 +126,7 @@ class Documents extends CActiveRecord
 	}
 	
 	/**
-	 * After a file is saved. Log the upload.
+	 * After a file is saved. Log the upload event.
 	 */
 	protected function afterSave()
 	{
@@ -132,7 +143,7 @@ class Documents extends CActiveRecord
 	} // End function afterSave
 	
 	/**
-	 * Determine the model's relationship with other models.
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -272,6 +283,7 @@ class Documents extends CActiveRecord
 		// Set the complete path.
 		$this->path = $this->path . $this->documentname;
 		
+		// Create a permanent version of the temporary file and save it on the server.
 		move_uploaded_file($this->file['tempName'], $this->path);
 	}
 	
@@ -298,13 +310,14 @@ class Documents extends CActiveRecord
 					$this->setTextFileContents();
 					break;
 				}
-				// If it is a word file.
+				// If it is a doc word file.
 				case 'doc':
 				{
 					// Call function to read and set word file contents.
 					$this->setWordFileContents();
 					break;
 				}
+				// If it is a docx word file.
 				case 'docx':
 				{
 					// Call function to read and set word file contents.
@@ -335,15 +348,16 @@ class Documents extends CActiveRecord
 				// If it was none of the above.
 				default:
 				{
-					// Set to null.
-					$this->content = null;
+					throw new Exception("Cannot read the content of that type of file.");
 					break;
 				}
 			}
 		}
 		catch(Exception $ex)
 		{
+			// The program failed to read the content of the file. Log the reason why it failed.
 			Yii::log("File content read failed with message " . $ex, 'warning', 'system.web.CController');
+			// We don't want to stop the upload, so just set the content to null.
 			$this->content = null;
 		}
 	} // End function setFileContentsAndMetadata
@@ -360,8 +374,7 @@ class Documents extends CActiveRecord
 
 	/**
 	 * This function is for reading in the content of a word document,
-	 * then setting the model’s content attribute to that content. It also reads in the file’s
-	 * modified by, and modified date metadata
+	 * then setting the model’s content attribute to that content.
 	 */
 	public function setWordFileContents()
 	{
@@ -381,19 +394,22 @@ class Documents extends CActiveRecord
 
 	/**
 	 * This function is for reading in the content of an excel document,
-	 * then setting the model’s content attribute to that content. It also reads in the file’s
-	 * modified by, and modified date metadata
+	 * then setting the model’s content attribute to that content.
 	 */
 	public function setExcelFileContents()
 	{
 		// Read the contents of the excel file into an array.
 		$sheetArray = Yii::app()->yexcel->readActiveSheet($this->path);
 
+		// Loop through each row in the excel sheet.
 		foreach($sheetArray as $row)
 		{
-			// Read in the contents of the excel document and give it to the model’s content attribute.
+			// Loop through each column in the current row of the excel sheet.
 			foreach($row as $column)
+			{
+				// Read in the contents of the current column and concatenate it to the model’s content attribute.
 				$this->content .= $column . " ";
+			}
 		}
 	} // End function setExcelFileContentsAndMetadata
 	
@@ -421,7 +437,6 @@ class Documents extends CActiveRecord
 			$tess = new TesseractOCR();
 			$this->content = $tess->convertToText($this->path);
 		}
-
 	} // End function setPdfFileContentsAndMetadata
 	
 	/**

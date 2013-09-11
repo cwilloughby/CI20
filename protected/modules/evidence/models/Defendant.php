@@ -37,8 +37,7 @@ class Defendant extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('lname', 'required'),
 			array('oca', 'numerical', 'integerOnly'=>true),
@@ -68,22 +67,24 @@ class Defendant extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'caseSummaries' => array(self::HAS_MANY, 'CaseSummary', 'defid'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'defid' => 'Defendant ID',
 			'lname' => "Defendant's Last Name",
@@ -116,11 +117,15 @@ class Defendant extends CActiveRecord
 	/**
 	 * Check to see if the defendant already exists in the defendant table.
 	 * It it does, return the defid, otherwise create the defendant and return the new defid.
+	 * @param Defendant $def
+	 * @return string
 	 */
 	public function saveDefendant($def)
 	{
+		// If the oca was provided.
 		if($def->oca)
 		{
+			// Determine if the defendant already exists.
 			$defCheck = Defendant::model()->find(array(
 				'select' => 'defid',
 				'condition' => 'fname = :fname AND lname = :lname AND oca = :oca',
@@ -129,6 +134,7 @@ class Defendant extends CActiveRecord
 		}
 		else
 		{
+			// Determine if the defendant already exists.
 			$defCheck = Defendant::model()->find(array(
 				'select' => 'defid',
 				'condition' => 'fname = :fname AND lname = :lname',

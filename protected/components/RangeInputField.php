@@ -1,7 +1,7 @@
 <?php
 /**
-  * This is a custom form field for a date range.
-  */
+ * This is a custom form field for a date range.
+ */
 class RangeInputField extends CInputWidget
 {
 	public $attributeFrom;

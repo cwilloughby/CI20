@@ -21,7 +21,12 @@ class TimeLogController extends Controller
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(

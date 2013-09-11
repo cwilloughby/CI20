@@ -19,7 +19,12 @@ class EvaluationsController extends Controller
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(
@@ -44,13 +49,15 @@ class EvaluationsController extends Controller
 			),
 			'pagination'=>array('pageSize'=>$total)));
 		
+		// If an answer was posted.
 		if(isset($_POST['EvaluationAnswers']))
 		{
-			// An answer was posted, record it.
+			// Record the answer.
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
 		}
+		// If the PDF print button was pressed.
 		else if(isset($_POST['PDFButton']))
 		{
 			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
@@ -80,63 +87,30 @@ class EvaluationsController extends Controller
 		// Find all departments that the current user is the supervisor of.
 		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
 		
+		// If the create evaluation form was posted.
 		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
 		{
+			// Save the new evaluation.
 			if($model->save())
 			{
-				// Find all general questions.
-				$questions = CHtml::ListData(EvaluationQuestions::model()->findAll(
-						'departmentid IS NULL'), 'questionid', 'questionid');
-				
-				// Find all questions for the department.
-				$questions2 = array();
-				foreach($departments as $department)
-				{
-					$questions2 = array_merge($questions2, CHtml::ListData(EvaluationQuestions::model()->findAll(
-							'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid'));
-				}
-				$questions = array_merge($questions, $questions2);
+				$questions = EvaluationQuestions::model()->prepareQuestions($departments);
 				
 				foreach($questions as $question)
 				{
 					// Each question will eventaully have an answer, but for now we create blank entries in the
 					// ci_evaluation_answers table to bridge the questions to the new evaluation.
 					$answer = new EvaluationAnswers;
-					
 					$answer->evaluationid = $model->evaluationid;
 					$answer->questionid = $question;
-					
 					$answer->save();
 				}
+				// Redirect to the edit page so the current user can begin to fill out the evaluation.
 				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 			}
 		}
 
-		foreach($departments as $department)
-		{
-			if($department->departmentname != 'Administration')
-			{
-				if(!isset($allUsers))
-				{
-					$allUsers = CHtml::ListData(UserInfo::model()->findAll(
-							'departmentid=' . $department->getAttribute('departmentid') 
-							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
-				}
-				else
-				{
-					// Find all active users in that department, except for the current user and put them in an array.
-					$allUsers += CHtml::ListData(UserInfo::model()->findAll(
-							'departmentid=' . $department->getAttribute('departmentid') 
-							. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
-				}
-			}
-			else
-			{
-				// People in the administration department can create evaluations for anyone, except themself.
-				$allUsers = CHtml::ListData(UserInfo::model()->findAll(
-						'active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
-			}
-		}
+		// Prepare a list of users that the current user is allowed to make evaluations for.
+		$allUsers = $model->prepareUserList($departments);
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -185,9 +159,10 @@ class EvaluationsController extends Controller
 				'pageSize'=>1,
 			)));
 		
+		// If an answer was posted, 
 		if(isset($_POST['EvaluationAnswers']))
 		{
-			// An answer was posted, record it.
+			// Record the answer.
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
@@ -250,11 +225,13 @@ class EvaluationsController extends Controller
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadAnswerModel($evaluationid, $questionid)
+	public function loadAnswerModel($evaluationid = null, $questionid = null)
 	{
+		if(is_null($evaluationid) || is_null($questionid))
+			throw new CHttpException(400, "Bad Request! Ids must be given.");
 		$model= EvaluationAnswers::model()->findByPk(array('evaluationid' => $evaluationid, 'questionid' => $questionid));
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'The requested data does not exist.');
 		return $model;
 	}
 }

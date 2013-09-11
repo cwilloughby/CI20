@@ -13,8 +13,7 @@ class ManageTicket extends CModel
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('content', 'required'),
 			array('content', 'safe'),

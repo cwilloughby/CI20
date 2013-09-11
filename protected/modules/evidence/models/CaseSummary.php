@@ -30,6 +30,7 @@
  */
 class CaseSummary extends CActiveRecord
 {
+	// These variables are used to look up meaningful values of foreign keys.
 	public $def_search1;
 	public $def_search2;
 	public $div_search;
@@ -58,8 +59,7 @@ class CaseSummary extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('defid, caseno', 'required'),
 			array('defid, dna, bio, drug, firearm, money, other', 'numerical', 'integerOnly'=>true),
@@ -117,12 +117,12 @@ class CaseSummary extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ciAttorneys' => array(self::MANY_MANY, 'Attorney', 'ci_case_attorneys(summaryid, attyid)'),
 			'caseno0' => array(self::BELONGS_TO, 'CrtCase', 'caseno'),
@@ -131,10 +131,12 @@ class CaseSummary extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'summaryid' => 'Summary ID',
 			'defid' => 'Defendant',
@@ -170,7 +172,7 @@ class CaseSummary extends CActiveRecord
 		$criteria=new CDbCriteria;
 		$criteria->with = array('def', 'caseno0');
 		
-		// Convert any provided date into a format that the database understands.
+		// Convert any provided dates into a format that the database understands.
 		if((int)$this->dispodate)
 			$this->dispodate = date('Y-m-d', strtotime($this->dispodate));
 		if((int)$this->indate)
@@ -242,21 +244,21 @@ class CaseSummary extends CActiveRecord
 		$criteria = new CDbCriteria;
 		$criteria->with = array('def');
 		
+		// If the user needs to find all the cases for a specific attorney.
 		if($type == 1)
 		{
-			// This is for if the user needs to find all the cases for a specific attorney.
 			$criteria->join = "LEFT JOIN ci_case_attorneys ON ci_case_attorneys.summaryid = t.summaryid";
 			$criteria->condition = "ci_case_attorneys.attyid = :id";
 		}
+		// If the user needs to find the case file for a specific piece of evidence.
 		else if($type == 2)
 		{
-			// This is for if the user needs to find the case file for a specific piece of evidence.
 			$criteria->join = "LEFT JOIN ci_evidence ON ci_evidence.caseno = t.caseno";
 			$criteria->condition = "ci_evidence.caseno = :id";
 		}
+		// If the user needs to find all the case files for a specific defendant.
 		else if($type == 3)
 		{
-			// This is for if the user needs to find all the case files for a specific defendant.
 			$criteria->join = "LEFT JOIN ci_defendant ON ci_defendant.defid = t.defid";
 			$criteria->condition = "ci_defendant.defid = :id";
 		}
@@ -296,7 +298,9 @@ class CaseSummary extends CActiveRecord
 
 	/**
 	 * This function is used to translate the 0's, 1's, and 2's of the 
-	 * dna, bio, dug, firearm, other, and money columns
+	 * dna, bio, dug, firearm, other, and money columns.
+	 * @param integer $yesNo
+	 * @return string
 	 */
 	public function getYesNo($yesNo = null)
 	{
@@ -319,6 +323,10 @@ class CaseSummary extends CActiveRecord
 		}
 	}
 	
+	/**
+	 * This function is used to combine the hearing date from multiple summaries into one string.
+	 * @return string
+	 */
 	public function hearingDatesToString()
 	{
 		$return = '';
@@ -333,6 +341,11 @@ class CaseSummary extends CActiveRecord
 		return $return;
 	}
 	
+	/**
+	 * This function is used to combine the location data from multiple summaries into one string.
+	 * @param string $case
+	 * @return string
+	 */
 	public function locationsToString($case)
 	{
 		$casesfound = CaseSummary::model()->findAll('caseno=:caseno', array(':caseno' => $case));

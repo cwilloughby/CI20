@@ -15,12 +15,16 @@ class TroubleTicketsController extends Controller
 	{
 		return array(
 			'accessControl', // Perform access control for CRUD operations.
-			'postOnly + delete', // We only allow deletion via POST requests.
 			'ajaxOnly + dynamicsubjects, dynamictips', // We only allow these actions to run via AJAX requests.
 		);
 	}
 	
-	// External Actions
+	/**
+	 * This function returns a list of external actions.
+	 * External actions are identical functions shared by many controllers throughout ci2.
+	 * The code for the external actions can be found in protected\components
+	 * @return array
+	 */
 	function actions()
 	{
 		return array(
@@ -39,8 +43,11 @@ class TroubleTicketsController extends Controller
 		$ticket=new TroubleTickets;
 		$file=new Documents;
 		
+		// AJAX is used to verify that the user has filled out the conditional textboxes.
+		// This checks for AJAX posts.
 		if(isset($_POST['ajax']) && $_POST['ajax']==='ticketsForm')
 		{
+			// Validate the form inputs, then output any error messages.
 			echo CActiveForm::validate($ticket);
 			Yii::app()->end();
 		}
@@ -49,49 +56,56 @@ class TroubleTicketsController extends Controller
 		{
 			if($ticket->validate())
 			{
+				// Retieve the conditional text boxes from the posted form data.
+				// The number of conditionals is dynamic, so this is need to extract them.
 				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
-				
-				// Were any files attached to the new ticket?
+
+				// If one or more files was uploaded.
 				if(!empty($_FILES))
 				{
 					// Loop through each file.
 					foreach($_FILES['file']['name'] as $key => $value)
 					{
-						// Read in the current file.
+						// Read in the properties of the current file.
 						$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
 						$file->uploadType = 'attachment';
 						$file->setDocumentAttributes();
 
-						// Validate attributes.
+						// Validate the current file's attributes.
 						if($file->validate())
 						{
-							// Upload file to server.
+							// Upload the current file to the server.
 							$file->uploadFile();
-							// This description will only allow the link to work on the website.
+							// This description is used so the link to the document will work on the website.
 							$ticket->description .= "\nAttachment: " 
 								. CHtml::link($file->documentname,array('/files/attachments/' 
 									. $file->uploaddate . '/' . $file->documentname));
-							// This description will only be used for the email so the link will work.
+							// This description is used so the link to the document will work on the email.
 							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
 						}
 					}
 				}
 				else
 					$temp .= "\n";
-				
-				$ticket->save(false);
-				
-				// Remove the flash message so the email will work again.
-				Yii::app()->user->getFlash('success');
-				
-				$this->redirect(
-					array('/email/email/helpopenemail', 
-						'ticketid' => $ticket->ticketid,
-						'category' => $ticket->categoryid,
-						'subject' => $ticket->subjectid,
-						'description' => $temp,
-					));
+
+				// Try to save the new ticket.
+				if($ticket->save(false))
+				{
+					// Remove the flash message so the email will work again.
+					Yii::app()->user->getFlash('success');
+
+					// Send an email alert.
+					$this->redirect(
+						array('/email/email/helpopenemail', 
+							'ticketid' => $ticket->ticketid,
+							'category' => $ticket->categoryid,
+							'subject' => $ticket->subjectid,
+							'description' => $temp,
+						));
+				}
+				else
+					throw new CHttpException(400, "Ticket failed to save.");
 			}
 		}
 		
@@ -110,23 +124,31 @@ class TroubleTicketsController extends Controller
 		$model = $this->loadModel($id, 'TroubleTickets');
 		$model->closedbyuserid = NULL;
 		$model->closedate = NULL;
-		
+
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->ticketid));
+		else
+			throw new CHttpException(400, "Ticket failed to reopen.");
 	}
 	
 	/**
-	 * Lists all trouble tickets.
+	 * This function lists all open trouble tickets or all closed trouble tickets,
+	 * depending on what status value is passed through GET.
 	 */
 	public function actionIndex()
 	{
+		// A GET variable is used to determine if the user is trying to see a list of open tickets,
+		// or a list of closed ticket. First we grab that GET value and determine if the value is valid.
 		$status = Yii::app()->request->getQuery('status');
 		if($status != "Open" && $status != "Closed")
-			throw new CHttpException(404);
+			throw new CHttpException(400, "Bad Request. Invalid status value given.");
 		
+		// Create a ticket model object.
 		$ticket = new TroubleTickets;
+		// Prepare the SQL criteria.
 		$criteria = $ticket->TicketListCriteria($status);
 		
+		// Create a data provider that uses the criteria.
 		$dataProvider = new CActiveDataProvider('TroubleTickets', array(
 			'criteria'=>$criteria,
 			'sort'=>array('defaultOrder'=>array('ticketid'=>CSort::SORT_ASC))

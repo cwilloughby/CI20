@@ -38,8 +38,7 @@ class Attorney extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('lname, fname', 'required'),
 			array('barid', 'numerical', 'integerOnly'=>true),
@@ -70,22 +69,24 @@ class Attorney extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'ciCaseSummaries' => array(self::MANY_MANY, 'CaseSummary', 'ci_case_attorneys(attyid, summaryid)'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'attyid' => 'Attorney ID',
 			'lname' => "Attorney's Last Name",
@@ -137,46 +138,49 @@ class Attorney extends CActiveRecord
 
 		$idx = 0;
 
-		// Loop through the array, splitting it into individual models and saving those models. 
+		// Loop through each new attorney that the user is trying to create. 
 		foreach($formData['fname'] as $ex)
 		{
-			$model = new Attorney;
+			$attorney = new Attorney;
 
 			// The attributes can be found at the same postion in the formData.
-			$model->lname = $formData['lname'][$idx];
-			$model->fname = $formData['fname'][$idx];
-			$model->barid = $formData['barid'][$idx];
+			$attorney->lname = $formData['lname'][$idx];
+			$attorney->fname = $formData['fname'][$idx];
+			$attorney->barid = $formData['barid'][$idx];
 			
-			if($model->barid)
+			// If a bar id was provided.
+			if($attorney->barid)
 			{
+				// Determine if the attorney already exists.
 				$attyCheck = Attorney::model()->find(array(
 					'select' => 'attyid',
 					'condition' => 'fname = :fname AND lname = :lname AND barid = :barid',
-					'params' => array(':fname' => $model->fname, ':lname' => $model->lname, ':barid' => $model->barid)
+					'params' => array(':fname' => $attorney->fname, ':lname' => $attorney->lname, ':barid' => $attorney->barid)
 				));
 			}
 			else
 			{
+				// Determine if the attorney already exists.
 				$attyCheck = Attorney::model()->find(array(
 					'select' => 'attyid',
 					'condition' => 'fname = :fname AND lname = :lname',
-					'params' => array(':fname' => $model->fname, ':lname' => $model->lname)
+					'params' => array(':fname' => $attorney->fname, ':lname' => $attorney->lname)
 				));
 			}
 			
 			// If the attorney does not already exists in the database.
 			if(!isset($attyCheck['attyid']))
 			{
-				if($model->save())
+				if($attorney->save())
 				{
-					$attyCheck['attyid'] = $model->attyid;
+					$attyCheck['attyid'] = $attorney->attyid;
 					
 					// Record the attorney create event.
 					$log = new Log;
 					$log->tablename = 'ci_attorney';
 					$log->event = 'Attorney Created';
 					$log->userid = Yii::app()->user->getId();
-					$log->tablerow = $model->getPrimaryKey();
+					$log->tablerow = $attorney->getPrimaryKey();
 					$log->save(false);
 				}
 			}

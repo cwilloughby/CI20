@@ -32,8 +32,7 @@ class CategorySubjectBridge extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('categoryid, subjectid', 'required'),
 			array('categoryid, subjectid', 'numerical', 'integerOnly'=>true),
@@ -44,21 +43,23 @@ class CategorySubjectBridge extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'categoryid' => 'Category ID',
 			'subjectid' => 'Subject ID',
@@ -71,9 +72,6 @@ class CategorySubjectBridge extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('categoryid',$this->categoryid);

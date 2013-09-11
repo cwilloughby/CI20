@@ -42,8 +42,7 @@ class News extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('typeid, news', 'required'),
 			array('typeid, postedby', 'numerical', 'integerOnly'=>true),
@@ -54,8 +53,8 @@ class News extends CActiveRecord
 	}
 	
 	/**
-	 * Attaches the timestamp behavior to auto set the date value
-	 * when a news post is made.
+	 * Attaches the timestamp behavior to auto set the date value when a news post is made.
+	 * @return array containing behaviors.
 	 */
 	public function behaviors() 
 	{
@@ -85,12 +84,12 @@ class News extends CActiveRecord
 	}
 	
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'type' => array(self::BELONGS_TO, 'NewsType', 'typeid'),
 			'postedby0' => array(self::BELONGS_TO, 'UserInfo', 'postedby'),
@@ -98,10 +97,12 @@ class News extends CActiveRecord
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
 			'newsid' => 'News ID',
 			'typeid' => 'Type',

@@ -1,6 +1,6 @@
 <?php
-/*
- * The external index actions used for typical CRUD index reads.
+/**
+ * The external admin actions used for typical admin pages.
  */
 class AdminAction extends CAction
 {
@@ -8,19 +8,26 @@ class AdminAction extends CAction
 
 	function run()
 	{
-		$model=new $this->modelClass('search');
-		$model->unsetAttributes();  // clear any default values
-		
-		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
+		try
 		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
+			$model=new $this->modelClass('search');
+			$model->unsetAttributes();  // clear any default values
+
+			// If the pager number was changed.
+			if(isset($_GET['pageSize'])) 
+			{
+				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				unset($_GET['pageSize']);
+			}
+
+			if(isset($_GET[$this->modelClass]))
+				$model->attributes=$_GET[$this->modelClass];
+		}
+		catch(Exception $ex)
+		{
+			echo "Admin page failed with error " . $ex;
 		}
 		
-		if(isset($_GET[$this->modelClass]))
-			$model->attributes=$_GET[$this->modelClass];
-
 		Yii::app()->getController()->render('admin',array(
 			'model'=>$model,
 		));
