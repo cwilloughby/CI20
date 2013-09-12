@@ -7,7 +7,7 @@ $cs->registerCssFile(Yii::app()->baseUrl . '/css/dropzone.css');
 $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
 
-<h3>Upload File</h3>
+<h3>Upload Files</h3>
 
 <div class="form">
 

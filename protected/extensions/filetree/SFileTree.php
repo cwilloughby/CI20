@@ -12,7 +12,7 @@ class SFileTree extends CWidget {
   public $div;
 /* @var $root String : root folder to display*/
   public $root;
-  private $_script = "jqueryFileTree.php";
+  public $script = "jqueryFileTree.php";
 /* @var $folderEvent String : Event to trigger expand/collapse*/
   public $folderEvent = "click";
 /* @var $expandSpeed int : Speed at which to expand branches (in milliseconds);
@@ -69,7 +69,7 @@ class SFileTree extends CWidget {
     $script = "$('#".$this->div."').fileTree({";
 
     $s['root'] = $this->root ? "root:'".$this->root."'" : "root:'/'";
-    $s['script'] = "script:'".$this->_baseUrl."/".$this->_script."'";
+    $s['script'] = "script:'".$this->_baseUrl."/".$this->script."'";
     $s['folderEvent'] = $this->folderEvent ? "folderEvent:'".$this->folderEvent."'" : "folderEvent:'click'";
     $s['expandSpeed'] = $this->expandSpeed ? "expandSpeed:'".$this->expandSpeed."'" : "expandSpeed:'500'";
     $s['collapseSpeed'] = $this->collapseSpeed ? "collapseSpeed:'".$this->collapseSpeed."'" : "collapseSpeed:'500'";

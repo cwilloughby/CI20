@@ -32,13 +32,23 @@ class DocumentProcessorController extends Controller
 		$documents->unsetAttributes();  // clear any default values
 		
 		// Setup the dataProvider.
-		if(isset($_GET['Documents']))
-			$document->attributes = $_GET['Documents'];
-		
+		if(isset($_POST['search']))
+		{
+			// Determine what attributes can be searched and how they can be searched.
+			//$criteria=new CDbCriteria;
+
+			//$criteria->compare('documentid',$this->documentid);
+			$provider = array(
+					'condition'=>'documentid = 177',
+				);
+
+			
+			Yii::app()->session['provider'] = $provider;
+			
+			//$document->attributes = $_GET['Documents'];
+		}
 		// Call the view file and give it the dataprovider.
-		$this->render('admin', array(
-			'documents' => $documents,
-		));
+		$this->render('admin');
 	} // End function actionAdminSearchableFileList
 	
 	/**
@@ -92,12 +102,15 @@ class DocumentProcessorController extends Controller
 	{
 		// Create Documents model object.
 		
+		// Read in the list of files that the user wants to share from the POST
+		
 		// Remove the flash message so the email will work again.
 		Yii::app()->user->getFlash('shared');
 		
 		// Try to catch errors.
 		{
 			// Send the requested files to the model so it can return an array of documentnames and documentpaths.
+			// The function called here will also double check that the files are actually shareable.
 		}
 		// Catch errors here.
 		{
@@ -107,6 +120,26 @@ class DocumentProcessorController extends Controller
 		// Redirect to the email module so the files can be sent. Passing it the destination addresses, the message body,
 		// and the array of documentnames and paths.
 	} // End function actionShareFiles
+	
+	public function actionFileTree()
+	{
+		// Create Documents model object.
+		$documents = new Documents('search');
+		$documents->unsetAttributes();  // clear any default values
+		
+		if(isset(Yii::app()->session['provider']))
+		{
+			$data = Yii::app()->session['provider'];
+			$provider = new CActiveDataProvider($documents, array(
+				'criteria'=>$data,
+				'pagination'=>array(
+					'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+				),
+			));
+			unset(Yii::app()->session['provider']);
+		}
+		$this->renderPartial('jqueryFileTree');
+	}
 	
 	/*
 	 * Each specific document queue will most likely need its own action to handle each queue's unique requirements.
