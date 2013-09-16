@@ -23,6 +23,44 @@ class DocumentProcessorController extends Controller
 	} // End function filters
 	
 	/**
+	 * Standard upload page.
+	 */
+	public function actionUpload()
+	{
+		try
+		{
+			// Create Document model object.
+			$document = new Documents;
+			// If the form was posted.
+			if(!empty($_FILES)) 
+			{	
+				// Read in the current file.
+				$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+				$document->setDocumentAttributes();
+				// Validate attributes.
+				if($document->validate())
+				{
+					// Upload file to server.
+					$document->uploadFile();
+					// Call function to read the file’s content and metadata.
+					$document->setModelContentsAndMetadata();
+					// Save the Document Model
+					$document->save(false);
+				}
+			}
+
+			// Call view to render the upload form.
+			$this->render('uploadForm', array(
+				'document' => $document,
+			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "DPC1: Document upload form failed with error " . $ex);
+		}
+	}
+	
+	/**
 	 * Lists the files in all the queues even if the files are marked as completed.
 	 */
 	public function actionAdminSearchableFileList()
@@ -35,13 +73,9 @@ class DocumentProcessorController extends Controller
 		if(isset($_POST['search']))
 		{
 			// Determine what attributes can be searched and how they can be searched.
-			//$criteria=new CDbCriteria;
-
-			//$criteria->compare('documentid',$this->documentid);
 			$provider = array(
 					'condition'=>'documentid = 177',
 				);
-
 			
 			Yii::app()->session['provider'] = $provider;
 			

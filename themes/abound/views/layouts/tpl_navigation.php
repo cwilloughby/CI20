@@ -27,6 +27,7 @@
 								array('label'=>'<i class="icon icon-eye-close"></i> View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 								array('label'=>'<i class="icon icon-book"></i> Training Resources', 'url'=>array('/training/training/typeindex')),
 								array('label'=>'<i class="icon icon-book"></i> Document P Admin', 'url'=>array('/documentprocessor/documentprocessor/adminsearchablefilelist')),
+								array('label'=>'<i class="icon icon-book"></i> Document Upload', 'url'=>array('/documentprocessor/documentprocessor/upload')),
 							),
 						),
 						array(

@@ -266,7 +266,7 @@ class Documents extends CActiveRecord
 		}
 		catch(Exception $ex)
 		{
-			echo "Failed to set document attributes with error " . $ex;
+			throw new CHttpException(404, "DPM1: Failed to set document attributes with error " . $ex);
 			die();
 		}
 	}
@@ -276,15 +276,22 @@ class Documents extends CActiveRecord
 	 */
 	public function uploadFile()
 	{
-		// Create the folder if it does not exist.
-		if(!is_dir($this->path))
-			mkdir($this->path);
+		try
+		{
+			// Create the folder if it does not exist.
+			if(!is_dir($this->path))
+				mkdir($this->path, 0777, true);
 
-		// Set the complete path.
-		$this->path = $this->path . $this->documentname;
-		
-		// Create a permanent version of the temporary file and save it on the server.
-		move_uploaded_file($this->file['tempName'], $this->path);
+			// Set the complete path.
+			$this->path = $this->path . $this->documentname;
+
+			// Create a permanent version of the temporary file and save it on the server.
+			move_uploaded_file($this->fle['tempName'], $this->path);
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "DPM2: Failed to upload file with error " . $ex);
+		}
 	}
 	
 	/**
@@ -298,6 +305,8 @@ class Documents extends CActiveRecord
 		$this->type = 'file';
 		if(isset(Yii::app()->user->id))
 			$this->modifiedby = Yii::app()->user->id;
+		else
+			throw new CHttpException(404, "DPM3: Only valid users can upload documents!");
 		
 		try
 		{
