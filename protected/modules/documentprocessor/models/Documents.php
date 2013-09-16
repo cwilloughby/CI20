@@ -286,7 +286,7 @@ class Documents extends CActiveRecord
 			$this->path = $this->path . $this->documentname;
 
 			// Create a permanent version of the temporary file and save it on the server.
-			move_uploaded_file($this->fle['tempName'], $this->path);
+			move_uploaded_file($this->file['tempName'], $this->path);
 		}
 		catch(Exception $ex)
 		{
