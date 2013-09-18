@@ -38,7 +38,7 @@ if(file_exists($root . $_POST['dir']))
 				&& $file != '..' 
 				&& is_dir($root . $_POST['dir'] . $file)) 
 			{
-				echo "<li class='directory collapsed'><a href='#' rel='" . htmlentities($_POST['dir'] . $file) . "/'>" . htmlentities($file) . "</a></li>";
+				echo "<li class='directory collapsed' id='" . htmlentities($_POST['dir'] . $file) . "'><a href='#' rel='" . htmlentities($_POST['dir'] . $file) . "/'>" . htmlentities($file) . "</a></li>";
 			}
 		}
 
@@ -51,7 +51,7 @@ if(file_exists($root . $_POST['dir']))
 				&& !is_dir($root . $_POST['dir'] . $file)) 
 			{
 				$ext = preg_replace('/^.*\./', '', $file);
-				echo "<li class='file ext_$ext'>
+				echo "<li class='file ext_$ext' id='" . htmlentities($_POST['dir'] . $file) . "'>
 					<input type='checkbox' name='C:$_POST[dir]' value='C:$_POST[dir]$file' style='float:left;'>
 					<a href='#' rel='" . htmlentities($_POST['dir'] . $file) . "'>" . htmlentities($file) . "</a>
 					</li>";

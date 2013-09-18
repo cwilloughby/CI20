@@ -57,3 +57,17 @@ $this->widget('application.extensions.filetree.SFileTree',
 </form>
 
 <?php $this->widget('DocumentUploadWidget', array('uploadType'=>'Admin')); ?>
+
+<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
+
+<?php
+Yii::app()->clientScript->registerScript('fileSort', "
+	$(function(){
+		$('#filetree').sortable({
+			items:'li',
+			helper : 'clone',
+			dropOnEmpty: true
+		});
+	});
+", CClientScript::POS_END);
+?>
