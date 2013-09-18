@@ -50,7 +50,9 @@ $this->widget('application.extensions.filetree.SFileTree',
 
 	<input type="submit" value="Share Checked Files"/>
 	<br/><br/>
+	<ul id="atree">
 	<div id="filetree"></div>
+	</ul>
 	<br/>
 	<input type="submit" value="Share Checked Files"/>
 
@@ -58,15 +60,19 @@ $this->widget('application.extensions.filetree.SFileTree',
 
 <?php $this->widget('DocumentUploadWidget', array('uploadType'=>'Admin')); ?>
 
-<?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
+<?php 
+Yii::app()->clientScript->registerCoreScript('jquery.ui');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/scripts/jquery.mjs.nestedSortable.js');
+?>
 
 <?php
 Yii::app()->clientScript->registerScript('fileSort', "
 	$(function(){
-		$('#filetree').sortable({
-			items:'li',
-			helper : 'clone',
-			dropOnEmpty: true
+		$('#atree').nestedSortable({
+			listType: 'ul',
+            handle: 'a',
+            items: 'li',
+			helper: 'clone'
 		});
 	});
 ", CClientScript::POS_END);
