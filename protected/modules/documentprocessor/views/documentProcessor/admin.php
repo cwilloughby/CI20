@@ -19,7 +19,7 @@ $this->menu2=array(
 <h1>Search Documents</h1>
 
 <?php 
-$this->widget('application.extensions.filetree.SFileTree',
+$this->widget('application.vendors.extensions.filetree.SFileTree',
 	array(
 		"div"=>"filetree",
 		"root"=> '/wamp/files/',

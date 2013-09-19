@@ -61,6 +61,9 @@ class VideosController extends Controller
 			{
 				if($document->save(false))
 				{
+					// Upload file to server.
+					$document->uploadFile();
+					
 					$video->documentid = $document->primaryKey;
 					echo $video->documentid;
 					if($video->save())

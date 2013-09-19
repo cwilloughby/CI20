@@ -25,8 +25,8 @@ foreach($types as $key =>$value)
 }
 ?>
 
-<?php $this->widget('application.extensions.smp.StrobeMediaPlayback',array(
-	'srcRelative'=>'/training/' . $video->document->documentname,
+<?php $this->widget('application.vendors.extensions.smp.StrobeMediaPlayback',array(
+	'srcRelative'=>'/files/training/' . $video->document->documentname,
 	'width'=>'320',
 	'height'=>'240',
 	'src_title'=>$video->title,

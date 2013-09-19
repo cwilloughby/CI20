@@ -38,6 +38,5 @@ class VideoList extends CustomListView
 			$this->renderEmptyText();
 			
 		echo CHtml::closeTag('table');
-		
 	}
 }

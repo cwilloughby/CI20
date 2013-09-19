@@ -19,12 +19,12 @@ return array(
 		'application.components.*',
 		'application.modules.security.models.*',
 		'application.modules.security.components.*',
-		'application.extensions.phpmailer.JPhpMailer',
-		'application.extensions.jqrelcopy.JQRelcopy',
-		'application.extensions.smp.StrobeMediaPlayback',
-		'application.extensions.dropzone.EDropzone',
-		'application.extensions.filetree.SFileTree',
-		'application.extensions.yexcel.Yexcel',
+		'application.vendors.extensions.phpmailer.JPhpMailer',
+		'application.vendors.extensions.jqrelcopy.JQRelcopy',
+		'application.vendors.extensions.smp.StrobeMediaPlayback',
+		'application.vendors.extensions.dropzone.EDropzone',
+		'application.vendors.extensions.filetree.SFileTree',
+		'application.vendors.extensions.yexcel.Yexcel',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
@@ -137,16 +137,16 @@ return array(
 			'itemChildTable'=>'ci_auth_item_children',
 		),
 		'ePdf' => array(
-			'class' => 'ext.yii-pdf.EYiiPdf',
+			'class' => 'application.vendors.extensions.yii-pdf.EYiiPdf',
 			'params' => array(
 				'HTML2PDF' => array(
-					'librarySourcePath' => 'application.vendors.html2pdf.*',
+					'librarySourcePath' => 'application.vendors.libraries.html2pdf.*',
 					'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
 				)
 			)
 		),
 		'yexcel' => array(
-			'class' => 'ext.yexcel.Yexcel'
+			'class' => 'application.vendors.extensions.yexcel.Yexcel'
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
