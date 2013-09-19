@@ -15,9 +15,8 @@ class WeatherReport extends CPortlet
 	{
 		try
 		{
-			$model = new Weather;
-
-			$weather = $model->getWeather();
+			// Obtain the weather.
+			$weather = Weather::getWeather();
 
 			// Display the weather.
 			$this->render('weather',array('weather'=>$weather));

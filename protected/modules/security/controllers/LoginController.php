@@ -25,11 +25,10 @@ class LoginController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-
+		
 		// collect user input data
-		if(isset($_POST['LoginForm']))
+		if($model->attributes = Yii::app()->request->getPost('LoginForm'))
 		{
-			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 			{
@@ -39,6 +38,7 @@ class LoginController extends Controller
 					->where('ci_user_prefs.userid=:id', array(':id'=>Yii::app()->user->id))
 					->queryAll();
 				
+				// If the user's color preference cookie is not set, set it here.
 				if(array_key_exists(0, $color) && array_key_exists('color', $color[0]))
 				{
 					setcookie("style", $color[0]['color'], time()+604800, '/'); // 604800 = amount of seconds in one week

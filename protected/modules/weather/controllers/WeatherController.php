@@ -13,10 +13,17 @@ class WeatherController extends Controller
 	 */
 	public function actionReport()
 	{
-		$model = new Weather;
-		$weather = $model->getWeather();
-		
-		// Display the weather.
-		$this->render('weather',array('weather'=>$weather));
+		try
+		{
+			// Obtain the weather.
+			$weather = Weather::getWeather();
+
+			// Display the weather.
+			$this->render('weather',array('weather'=>$weather));
+		}
+		catch(Exception $ex)
+		{
+			echo "The weather report is currently unavailable. Please try again later.";
+		}
 	}
 }

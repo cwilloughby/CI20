@@ -11,7 +11,7 @@ class Weather
 	 * Get the weather report from NOAA for the Nashville area. Stores the results in the cache for 30 minutes
 	 * to limit the number of requests sent to NOAA.
 	 */
-	public function getWeather()
+	public static function getWeather()
 	{
 		$value = Yii::app()->cache->get('weather');
 		if($value === false)
@@ -23,9 +23,9 @@ class Weather
 			$value = curl_exec($curl);
 			curl_close($curl);
 		
-			Yii::app()->cache->set('weather', $value, 1800);
+			Yii::app()->cache->set('weather', $value, 3600);
 		}
-		return $this->convertReport($value);
+		return Weather::convertReport($value);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Weather
 	 * @param string $xml the xml sent from NOAA
 	 * @return array contains minTemp, maxTemp, rainChance, and summary
 	 */
-	private function convertReport($xml)
+	private static function convertReport($xml)
 	{
 		libxml_use_internal_errors(true);
 		$xml = simplexml_load_string($xml);

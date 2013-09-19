@@ -31,6 +31,9 @@ class DocumentProcessorController extends Controller
 		{
 			// Create Document model object.
 			$document = new Documents;
+			if(isset($_GET['uploadType']))
+				$document->uploadType = $_GET['uploadType'];
+			
 			// If the form was posted.
 			if(!empty($_FILES)) 
 			{	
