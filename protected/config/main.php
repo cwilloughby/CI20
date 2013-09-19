@@ -34,13 +34,9 @@ return array(
 		'application.modules.weather.models.*',
 		'application.modules.videos.models.*',
 		'application.modules.issuetracker.models.*',
-		'application.modules.weather.components.*',
-		'application.modules.news.components.*',
 		'application.modules.training.components.*',
-		'application.modules.tickets.components.*',
-		'application.modules.timelog.components.*',
-		'application.modules.issuetracker.components.*',
 		'application.modules.documentprocessor.components.*',
+		'application.widgets.*',
 		'zii.widgets.CPortlet'
 	),
 
