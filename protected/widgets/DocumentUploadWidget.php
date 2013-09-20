@@ -37,7 +37,7 @@ class DocumentUploadWidget extends CPortlet
 		}
 		catch(Exception $ex)
 		{
-			echo "Document upload form failed with error " . $ex;
+			echo "DPW1: Document upload form failed with error " . $ex;
 		}
     } // End function renderContent
 } // End of class DocumentUploadWidget

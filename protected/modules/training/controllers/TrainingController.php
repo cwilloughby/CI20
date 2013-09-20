@@ -51,8 +51,11 @@ class TrainingController extends Controller
 	/**
 	 * Lists all the different training resources of the specified type.
 	 */
-	public function actionResourceIndex($type)
+	public function actionResourceIndex($type = null)
 	{
+		if(is_null($type))
+			throw new CHttpException(400, "Bad Request! A type must be given.");
+		
 		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$videoProvider=new CActiveDataProvider('Videos', array(
