@@ -18,43 +18,30 @@ class MyTickets extends CPortlet
 			if($this->status == "Open")
 			{
 				// Only show tickets that this user has open.
-				$dataProvider=new CActiveDataProvider('TroubleTickets', 
-					array(
-						'pagination'=>array(
-							'route'=>'site/index',
-							'pageSize'=>2
-						),
-						'criteria'=>array(
-							'condition'=> 't.closedbyuserid IS NULL AND t.openedby= ' . Yii::app()->user->id,
-						),
-						'sort'=>array(
-							'defaultOrder'=>array(
-								'ticketid'=>CSort::SORT_ASC,
-							),
-						),
-					)
-				);
+				$condition = 't.closedbyuserid IS NULL AND t.openedby= ' . Yii::app()->user->id;
 			}
 			else
 			{
 				// Only show tickets that this user has closed.
-				$dataProvider=new CActiveDataProvider('TroubleTickets', 
-					array(
-						'pagination'=>array(
-							'pageSize'=>2
-						),
-						'criteria'=>array(
-							'condition'=>'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL'
-						),
-						'sort'=>array(
-							'defaultOrder'=>array(
-								'ticketid'=>CSort::SORT_ASC,
-							),
-						),
-					)
-				);
+				$condition = 'openedby= ' . Yii::app()->user->id . ' AND closedbyuserid IS NOT NULL';
 			}
 
+			$dataProvider=new CActiveDataProvider('TroubleTickets', 
+				array(
+					'pagination'=>array(
+						'pageSize'=>2
+					),
+					'criteria'=>array(
+						'condition'=>$condition,
+					),
+					'sort'=>array(
+						'defaultOrder'=>array(
+							'ticketid'=>CSort::SORT_ASC,
+						),
+					),
+				)
+			);
+			
 			$this->render('mytickets',array(
 				'dataProvider'=>$dataProvider,
 				'status'=>$this->status

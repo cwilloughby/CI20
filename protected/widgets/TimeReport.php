@@ -38,7 +38,7 @@ class TimeReport extends CPortlet
 		
 		try
 		{
-			// Grab the time and date of the previous computer.
+			// Grab the time and date of the previous computer login.
 			$lastComputerLog = Yii::app()->db->createCommand()
 				->select('ci_time_log.eventdate, ci_time_log.eventtime,, ci_time_log.computername')
 				->from('ci_time_log')

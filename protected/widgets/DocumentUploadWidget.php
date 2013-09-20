@@ -25,7 +25,7 @@ class DocumentUploadWidget extends CPortlet
 				// Forward to the documentprocessorcontroller's upload action.
 				$_GET['uploadType'] = $this->uploadType;
 				$this->controller->forward('documentprocessor/documentprocessor/upload');
-			} // End if
+			}
 
 			// Create Document model object.
 			$document = new Documents;

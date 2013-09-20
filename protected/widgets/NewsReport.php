@@ -10,14 +10,13 @@ class NewsReport extends CPortlet
 	public $type = 'Criminal Court Clerk News';
 	
 	/**
-	 * This function renders the login form.
+	 * This function renders the news.
 	 */
 	protected function renderContent()
 	{
 		if(Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id) || (!isset(Yii::app()->user->id)))
-		{
 			$this->type = "N/A";
-		}
+		
 		// Grab all the tips and conditionals of the selected subject.
 		$news = Yii::app()->db->createCommand()
 			->select('ci_news.newsid, ci_news.news, ci_news.date')
@@ -32,7 +31,7 @@ class NewsReport extends CPortlet
 		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 100);
 		$newsDates = CHtml::listData($news, 'newsid', 'date');
 		
-		// Display the office news.
+		// Display the news.
 		$this->render('news',array('news'=>$newsReport, 'type'=>$this->type, 'dates'=>$newsDates));
 	}
 	
