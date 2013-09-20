@@ -36,7 +36,7 @@ $this->menu2=array(
 <?php 
 if($model->category == 'Video')
 {
-	$this->widget('application.vendors.extensions.smp.StrobeMediaPlayback',array(
+	$this->widget('StrobeMediaPlayback',array(
 		'srcRelative'=>'/files/training/' . $model->document->documentname,
 		'width'=>'320',
 		'height'=>'240',

@@ -5,7 +5,6 @@
 /* @var $form CActiveForm */
 
 $cs = Yii::app()->getClientScript();
-$cs->registerCssFile(Yii::app()->baseUrl . '/css/dropzone.css');
 $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
 
