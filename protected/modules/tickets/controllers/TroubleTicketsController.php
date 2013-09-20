@@ -177,4 +177,75 @@ class TroubleTicketsController extends Controller
 		$model = new TroubleTickets;
 		$model->getTipsAndConditions();
 	}
+	
+	/**
+	 * This function is for when the user wants to close the ticket.
+	 */
+	public static function closeTicket()
+	{
+		$ticketManager = new ManageTicket;
+		$file = new Documents;
+
+		if($ticketManager->attributes = Yii::app()->request->getPost('ManageTicket'))
+		{
+			// Validate the model.
+			if($ticketManager->validate())
+			{
+				$ticket = $_GET['ticket'];
+				
+				// Since the user is trying to close the ticket, pass the ticketManager's content attribute 
+				// to the ticket's resolution attribute.
+				$ticket->resolution = $ticketManager->content;
+				$ticket->closedbyuserid = Yii::app()->user->id;
+				$temp = $ticketManager->content;
+
+				// If one or more files was uploaded.
+				if(!empty($_FILES))
+				{
+					// Loop through each file.
+					foreach($_FILES['file']['name'] as $key => $value)
+					{
+						// Read in the properties of the current file.
+						$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
+						$file->uploadType = 'attachment';
+						$file->setDocumentAttributes();
+
+						// Validate the current file's attributes.
+						if($file->validate())
+						{
+							// Upload the current file to the server.
+							$file->uploadFile();
+							// This description is used so the link to the document will work on the website.
+							$ticket->resolution .= "\nAttachment: " 
+								. CHtml::link($file->documentname,array('/files/attachments/' 
+									. $file->uploaddate . '/' . $file->documentname));
+							// This description is used so the link to the document will work on the email.
+							$temp .= "\nAttachment: " . CHtml::link($file->documentname, "file:///" . $file->path);
+						}
+					}
+				}
+				else
+					$temp .= "\n";
+
+				// Try to update the trouble ticket.
+				if($ticket->update())
+				{
+					// Send the close ticket email alert.
+					Yii::app()->controller->redirect(
+						array('/email/email/helpcloseemail',
+							'creator' => $ticket->openedby,
+							'ticketid' => $ticket->ticketid,
+							'category' => $ticket->categoryid,
+							'subject' => $ticket->subjectid,
+							'description' => $ticket->description,
+							'resolution' => $temp,
+						));
+				}
+				else
+					throw new Exception("Update failed. Ticket did not close.");
+			}
+			else 
+				return $ticketManager;
+		}
+	}
 }

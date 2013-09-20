@@ -28,6 +28,7 @@ return array(
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
 		'application.modules.email.controllers.*',
+		'application.modules.tickets.controllers.*',
 		'application.modules.tickets.models.*',
 		'application.modules.documentprocessor.models.*',
 		'application.modules.news.models.*',
