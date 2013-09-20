@@ -132,11 +132,25 @@ return array(
 			'assignmentTable'=>'ci_auth_assignments',
 			'itemChildTable'=>'ci_auth_item_children',
 		),
+		'clientScript' => array(
+			'packages' => array(
+				'jquery' => array(
+					'basePath' => "webroot.vendors.jquery.*",
+					'js' => array('jquery1.7.js'),
+					'coreScriptPosition' => CClientScript::POS_HEAD,
+				),
+				'jqueryui' => array(
+					'basePath' => "webroot.vendors.jquery.*",
+					'js' => array('jqueryui.js'),
+					'coreScriptPosition' => CClientScript::POS_HEAD,
+				),
+			),
+		),
 		'ePdf' => array(
-			'class' => 'application.extensions.yii-pdf.EYiiPdf',
+			'class' => 'ext.yii-pdf.EYiiPdf',
 			'params' => array(
 				'HTML2PDF' => array(
-					'librarySourcePath' => 'application.vendors.html2pdf.*',
+					'librarySourcePath' => 'webroot.vendors.html2pdf.*',
 					'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
 				)
 			)
