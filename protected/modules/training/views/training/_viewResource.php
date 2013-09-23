@@ -17,7 +17,7 @@
 			else
 			{
 				echo CHtml::link('<img class="thumbnail photolinks" src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
-					array(Yii::app()->request->baseUrl . "/assets/training/" . $data->document->documentname));
+					array("/files/training/" . $data->document->documentname));
 				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 			}
 			?>

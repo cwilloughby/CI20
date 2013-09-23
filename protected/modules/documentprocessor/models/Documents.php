@@ -88,7 +88,7 @@ class Documents extends CActiveRecord
 	public function validExt($attribute)
 	{
 		// If the value of the attribute is not one of the values in the array.
-		if(!in_array($this->$attribute, array('pdf', 'doc', 'docx', 'xls', 'tif', 'tiff', 'jpg', 'png', 'bmp', 'txt')))
+		if(!in_array(strtolower($this->$attribute), array('pdf', 'doc', 'docx', 'xls', 'tif', 'tiff', 'jpg', 'png', 'bmp', 'txt')))
 		{
 			// The file type is invalid. Throw a validation error.
 			$this->addError($this->$attribute, 'only pdf, doc, docx, xls, tif, jpg, png, bmp, or txt files are allowed!');
@@ -103,7 +103,7 @@ class Documents extends CActiveRecord
 	public function validTrainingResource($attribute)
 	{
 		// If the value of the attribute is not one of the values in the array.
-		if(!in_array($this->$attribute, array('pdf', 'mp4', 'htm', 'png', 'css')))
+		if(!in_array(strtolower($this->$attribute), array('pdf', 'mp4', 'htm', 'png', 'css', 'xlsx')))
 		{
 			// The file type is invalid. Throw a validation error.
 			$this->addError($this->$attribute, 'only pdf, mp4, htm, png, or css files are allowed!');

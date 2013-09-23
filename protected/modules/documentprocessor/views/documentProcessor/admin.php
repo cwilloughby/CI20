@@ -1,8 +1,9 @@
 <?php
 /* @var $this DocumentsController */
 /* @var $documents Documents */
+/* @var $dir String */
 
-$this->pageTitle = Yii::app()->name . " - Document Processor";
+$this->pageTitle = Yii::app()->name . " - Document Processor Admin";
 
 $this->breadcrumbs=array(
 	'Documents'=>array('index'),
@@ -10,7 +11,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search Documents', 'url'=>array('adminsearchablefilelist')),
+	array('label'=>'Search Documents', 'url'=>array('adminsearchablefiletree')),
 	array('label'=>'Upload Documents', 'url'=>array('create')),
 	array('label'=>'List Document Queues', 'url'=>array('listaccessiblequeues')),
 );
@@ -22,12 +23,12 @@ $this->menu2=array(
 $this->widget('SFileTree',
 	array(
 		"div"=>"filetree",
-		"root"=> '/wamp/files/',
+		"root"=> $dir,
 		"multiFolder"=>"true",
 		"expandSpeed"=>500,
 		"collapseSpeed"=>500,
 		"callback"=>"window.alert('C:' + file)",
-		"script"=> "/../../../documentprocessor/documentprocessor/filetree"
+		"script"=> "/../../../documentprocessor/documentprocessor/displayfiletree"
 	)
 );
 ?>

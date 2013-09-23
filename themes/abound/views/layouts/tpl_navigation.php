@@ -17,7 +17,7 @@
 					'itemCssClass'=>'item-test',
                     'encodeLabel'=>false,
 					'items'=>array(
-						array('label'=>'Home', 'url'=>'/', 'itemOptions'=>array('class'=>'menu-icon-home')),
+						array('label'=>'Home', 'url'=>'/site/index', 'itemOptions'=>array('class'=>'menu-icon-home')),
 						array(
 							'label'=>'Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 							'visible'=>!Yii::app()->user->isGuest,
@@ -26,7 +26,7 @@
 								array('label'=>'<i class="icon icon-eye-open"></i> View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 								array('label'=>'<i class="icon icon-eye-close"></i> View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 								array('label'=>'<i class="icon icon-book"></i> Training Resources', 'url'=>array('/training/training/typeindex')),
-								array('label'=>'<i class="icon icon-book"></i> Document P Admin', 'url'=>array('/documentprocessor/documentprocessor/adminsearchablefilelist')),
+								array('label'=>'<i class="icon icon-book"></i> Document P Admin', 'url'=>array('/documentprocessor/documentprocessor/adminsearchablefiletree')),
 								array('label'=>'<i class="icon icon-book"></i> Document Upload', 'url'=>array('/documentprocessor/documentprocessor/upload')),
 							),
 						),

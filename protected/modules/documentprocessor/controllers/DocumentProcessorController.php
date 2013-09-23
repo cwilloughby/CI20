@@ -66,26 +66,12 @@ class DocumentProcessorController extends Controller
 	/**
 	 * Lists the files in all the queues even if the files are marked as completed.
 	 */
-	public function actionAdminSearchableFileList()
+	public function actionAdminSearchableFileTree()
 	{
-		// Create Documents model object.
-		$documents = new Documents('search');
-		$documents->unsetAttributes();  // clear any default values
-		
-		// Setup the dataProvider.
-		if(isset($_POST['search']))
-		{
-			// Determine what attributes can be searched and how they can be searched.
-			$provider = array(
-					'condition'=>'documentid = 177',
-				);
-			
-			Yii::app()->session['provider'] = $provider;
-			
-			//$document->attributes = $_GET['Documents'];
-		}
+		$dir = $this->searchFiles();
+
 		// Call the view file and give it the dataprovider.
-		$this->render('admin');
+		$this->render('admin', array('dir' => $dir));
 	} // End function actionAdminSearchableFileList
 	
 	/**
@@ -158,24 +144,23 @@ class DocumentProcessorController extends Controller
 		// and the array of documentnames and paths.
 	} // End function actionShareFiles
 	
-	public function actionFileTree()
+	public function actionDisplayFileTree()
 	{
-		// Create Documents model object.
-		$documents = new Documents('search');
-		$documents->unsetAttributes();  // clear any default values
-		
-		if(isset(Yii::app()->session['provider']))
-		{
-			$data = Yii::app()->session['provider'];
-			$provider = new CActiveDataProvider($documents, array(
-				'criteria'=>$data,
-				'pagination'=>array(
-					'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
-				),
-			));
-			unset(Yii::app()->session['provider']);
-		}
 		$this->renderPartial('jqueryFileTree');
+	}
+	
+	public function searchFiles()
+	{
+		$dir = "/wamp/files/";
+		
+		if(isset($_POST['search']) && $_POST['search'] != "")
+		{
+			$dir = Documents::model()->find('documentname=:param', array(':param'=>$_POST['search']))->path;
+			
+			//$dir = "/wamp/files/uploads/";
+		}
+		
+		return $dir;
 	}
 	
 	/*

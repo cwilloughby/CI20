@@ -40,7 +40,7 @@ class ManageTicketWid extends CPortlet
 		}
 		catch(Exception $ex)
 		{
-			echo "Ticket manager failed with error " . $ex;
+			throw new CHttpException(500, "TMW1: Ticket manager failed with error " . $ex);
 		}
 		
 		$this->render('_manageTicket',array(
