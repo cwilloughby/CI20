@@ -1,6 +1,6 @@
 <?php
 /* @var $this TrainingController */
-/* @var $data Videos */
+/* @var $data TrainingResources */
 ?>
 
 <td class="wrapper">
@@ -11,7 +11,7 @@
 			if($data->category == 'Video')
 			{
 				echo CHtml::link('<img class="thumbnail photolinks" src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
-					array('view', 'id'=>$data->videoid, 'type'=>$data->type));
+					array('view', 'id'=>$data->resourceid, 'type'=>$data->type));
 				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 			}
 			else

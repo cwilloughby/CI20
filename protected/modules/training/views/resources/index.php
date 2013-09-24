@@ -1,5 +1,5 @@
 <?php
-/* @var $this VideosController */
+/* @var $this ResourcesController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(

@@ -57,7 +57,7 @@
 								array('label'=>'<i class="icon icon-list-alt"></i> Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-lock"></i> Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								array('label'=>'<i class="icon icon-warning-sign"></i> Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-								array('label'=>'<i class="icon icon-film"></i> Upload Training Resources', 'url'=>array('/videos/videos/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+								array('label'=>'<i class="icon icon-film"></i> Upload Training Resources', 'url'=>array('/training/resources/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							),
 						),
 						array(
@@ -91,7 +91,7 @@
 							'visible'=>!Yii::app()->user->isGuest,
 							'items'=>array(
 								array('label'=>'<i class="icon icon-off"></i> Logout', 'url'=>array('/security/login/logout')),
-								array('label'=>'<i class="icon icon-lock"></i> Change Password', 'url'=>array('/security/password/change')),
+								array('label'=>'<i class="icon icon-lock"></i> Change Password', 'url'=>array('/security/password/changepassword')),
 							),
 						),
 					)

@@ -1,14 +1,14 @@
 <?php
 /* @var $this TrainingController */
-/* @var $video Videos */
+/* @var $resource TrainingResources */
 /* @var $types Array */
 
 $this->pageTitle = Yii::app()->name . ' - Training Video';
 
 $this->breadcrumbs=array(
 	'Training'=>array('typeindex'),
-	$type=>array('resourceindex', 'type'=>$video->type),
-	$video->videoid,
+	$type=>array('resourceindex', 'type'=>$resource->type),
+	$resource->resourceid,
 );
 
 $this->menu2=array(
@@ -26,10 +26,10 @@ foreach($types as $key =>$value)
 ?>
 
 <?php $this->widget('StrobeMediaPlayback',array(
-	'srcRelative'=>'/files/training/' . $video->document->documentname,
+	'srcRelative'=>'/files/training/' . $resource->document->documentname,
 	'width'=>'320',
 	'height'=>'240',
-	'src_title'=>$video->title,
+	'src_title'=>$resource->title,
 	'allowFullScreen'=>'true',
 	'playButtonOverlay'=>true,
 	'scaleMode'=>'stretch',

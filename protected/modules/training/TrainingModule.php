@@ -7,8 +7,7 @@ class TrainingModule extends CWebModule
 	public function init()
 	{
 		$this->setImport(array(
-			'videos.models.*',
-			'training.components.*'
+			'training.models.*',
 		));
 	}
 }

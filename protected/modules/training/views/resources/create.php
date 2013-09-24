@@ -1,6 +1,6 @@
 <?php
-/* @var $this VideosController */
-/* @var $video Videos */
+/* @var $this ResourcesController */
+/* @var $resource TrainingResources */
 /* @var $file Documents */
 
 $this->breadcrumbs=array(
@@ -17,4 +17,4 @@ $this->menu2=array(
 
 <h1>Upload Training Resource</h1>
 
-<?php echo $this->renderPartial('_form', array('video'=>$video, 'file'=>$file)); ?>
+<?php echo $this->renderPartial('_form', array('resource'=>$resource, 'file'=>$file)); ?>

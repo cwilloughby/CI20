@@ -1,10 +1,10 @@
 <?php
 
 /**
- * This is the model class for table "ci_videos".
+ * This is the model class for table "ci_training_resources".
  *
- * The followings are the available columns in table 'ci_videos':
- * @property integer $videoid
+ * The followings are the available columns in table 'ci_training_resources':
+ * @property integer $resourceid
  * @property integer $documentid
  * @property string $title
  * @property string $type
@@ -14,7 +14,7 @@
  * The followings are the available model relations:
  * @property DocumentProcessor $document
  */
-class Videos extends CActiveRecord
+class TrainingResources extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -31,7 +31,7 @@ class Videos extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ci_videos';
+		return 'ci_training_resources';
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Videos extends CActiveRecord
 			array('poster', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('videoid, documentid, title, type, category, poster', 'safe', 'on'=>'search'),
+			array('resourceid, documentid, title, type, category, poster', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,7 +73,7 @@ class Videos extends CActiveRecord
 	{
 		// Return an array of attribute labels.
 		return array(
-			'videoid' => 'ID',
+			'resourceid' => 'ID',
 			'documentid' => 'Document',
 			'title' => 'Title',
 			'type' => 'Type',
@@ -90,7 +90,7 @@ class Videos extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('videoid',$this->videoid);
+		$criteria->compare('resourceid',$this->resourceid);
 		$criteria->compare('documentid',$this->documentid);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('type',$this->type,true);

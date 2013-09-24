@@ -1,6 +1,6 @@
 <?php
 /* @var $this TrainingController */
-/* @var $data Videos */
+/* @var $data TrainingResources */
 ?>
 
 <div class="view">

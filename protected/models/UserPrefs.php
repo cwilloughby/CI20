@@ -35,8 +35,7 @@ class UserPrefs extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// Define the validation rules in an array and return it.
 		return array(
 			array('userid', 'required'),
 			array('userid', 'numerical', 'integerOnly'=>true),
@@ -48,24 +47,26 @@ class UserPrefs extends CActiveRecord
 	}
 
 	/**
+	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		// Return an array of defined relationships.
 		return array(
 			'user' => array(self::BELONGS_TO, 'UserInfo', 'userid'),
 		);
 	}
 
 	/**
+	 * Determine the attribute labels that will be shown to the users.
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
+		// Return an array of attribute labels.
 		return array(
-			'userid' => 'Userid',
+			'userid' => 'User ID',
 			'color' => 'Color',
 		);
 	}
@@ -84,5 +85,23 @@ class UserPrefs extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * Obtain the user's color preference from the database and sets it in a cookie.
+	 */
+	public static function setUserColor()
+	{
+		$color = Yii::app()->db->createCommand()
+			->select('ci_user_prefs.color')
+			->from('ci_user_prefs')
+			->where('ci_user_prefs.userid=:id', array(':id'=>Yii::app()->user->id))
+			->queryAll();
+
+		// If the user's color preference cookie is not set, set it here.
+		if(array_key_exists(0, $color) && array_key_exists('color', $color[0]))
+		{
+			setcookie("style", $color[0]['color'], time()+604800, '/'); // 604800 = amount of seconds in one week
+		}
 	}
 }

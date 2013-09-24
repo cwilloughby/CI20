@@ -113,6 +113,7 @@ $('.attorney-button').click(function(){
 	return false;
 });");
 
+// If the user has permission to add attorneys, display the add attorney button.
 if(Yii::app()->user->checkAccess("EvidenceAdmin", Yii::app()->user->id))
 {
 	echo CHtml::link('Add Attorney','#',array('class'=>'attorney-button'));

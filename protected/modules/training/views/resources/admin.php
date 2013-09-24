@@ -1,6 +1,6 @@
 <?php
-/* @var $this VideosController */
-/* @var $model Videos */
+/* @var $this ResourcesController */
+/* @var $model TrainingResources */
 
 $this->breadcrumbs=array(
 	'Training Resources'=>array('index'),

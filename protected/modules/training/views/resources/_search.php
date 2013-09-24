@@ -1,6 +1,6 @@
 <?php
-/* @var $this VideosController */
-/* @var $model Videos */
+/* @var $this ResourcesController */
+/* @var $model TrainingResources */
 /* @var $form CActiveForm */
 ?>
 

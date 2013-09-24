@@ -1,6 +1,6 @@
 <?php
-/* @var $this VideosController */
-/* @var $video Videos */
+/* @var $this ResourcesController */
+/* @var $resource TrainingResources */
 /* @var $file Documents */
 /* @var $form CActiveForm */
 
@@ -19,30 +19,30 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary(array($video, $file)); ?>
+	<?php echo $form->errorSummary(array($resource, $file)); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($video,'title'); ?>
-		<?php echo $form->textField($video,'title',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($video,'title'); ?>
+		<?php echo $form->labelEx($resource,'title'); ?>
+		<?php echo $form->textField($resource,'title',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($resource,'title'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($video,'type'); ?>
-		<?php echo $form->textField($video,'type',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($video,'type'); ?>
+		<?php echo $form->labelEx($resource,'type'); ?>
+		<?php echo $form->textField($resource,'type',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($resource,'type'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($video,'category'); ?>
-		<?php echo $form->dropDownList($video,'category',array('Video'=>'Video', 'page'=>'Html Page', 'doc'=>'Document'), array('empty' => 'Select File Type')); ?>
-		<?php echo $form->error($video,'category'); ?>
+		<?php echo $form->labelEx($resource,'category'); ?>
+		<?php echo $form->dropDownList($resource,'category',array('Video'=>'Video', 'page'=>'Html Page', 'doc'=>'Document'), array('empty' => 'Select File Type')); ?>
+		<?php echo $form->error($resource,'category'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($video,'poster'); ?>
-		<?php echo $form->textField($video,'poster',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($video,'poster'); ?>
+		<?php echo $form->labelEx($resource,'poster'); ?>
+		<?php echo $form->textField($resource,'poster',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($resource,'poster'); ?>
 	</div>
 	
 	<div class="row">
@@ -55,7 +55,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	</div>
 	
 	<div id="button" class="row buttons">
-		<?php echo CHtml::button($video->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
+		<?php echo CHtml::button($resource->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
 			'onclick'=> 'VideosSubmit()'
 		)); ?>
 	</div>
@@ -72,7 +72,7 @@ Yii::app()->clientScript->registerScript('VideosScript', "
 		autoProcessQueue: false,
 		uploadMultiple: false,
 		maxFilesize: 12,
-		success: function(){ window.location.href = '/videos/videos/index';},
+		success: function(){ window.location.href = '/training/resources/index';},
 		init: function() {
 			this.on('error', function(file, message) {
 				file.previewElement.classList.add('dz-error');

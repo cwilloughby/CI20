@@ -203,14 +203,6 @@ class Evidence extends CActiveRecord
 			if(!$model->save())
 				return false;
 			
-			// Record the evidence create event.
-			$log = new Log;
-			$log->tablename = 'ci_evidence';
-			$log->event = 'Evidence Created';
-			$log->userid = Yii::app()->user->getId();
-			$log->tablerow = $model->getPrimaryKey();
-			$log->save(false);
-			
 			$idx++;
 		}
 		return true;

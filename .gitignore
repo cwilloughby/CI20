@@ -27,3 +27,4 @@ protected/runtime/application.log
 !/protected/vendors/TesseractOCR.php
 /protected/vendors/html2pdf/
 /protected/vendors/libraries/html2pdf/
+!/protected/modules/training/views/resources/index.php

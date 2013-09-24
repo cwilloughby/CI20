@@ -1,11 +1,11 @@
 <?php
-/* @var $this VideosController */
-/* @var $data Videos */
+/* @var $this ResourcesController */
+/* @var $data TrainingResources */
 ?>
 
 <div class="view">
 
-	<h4><?php echo CHtml::link(CHtml::encode('View Training Resource ' . $data->videoid), array('view', 'id'=>$data->videoid)); ?></h4>
+	<h4><?php echo CHtml::link(CHtml::encode('View Training Resource ' . $data->resourceid), array('view', 'id'=>$data->resourceid)); ?></h4>
 
 	<h5><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:
 	<?php echo CHtml::encode($data->title); ?>

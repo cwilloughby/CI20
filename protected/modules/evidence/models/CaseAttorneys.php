@@ -43,6 +43,22 @@ class CaseAttorneys extends CActiveRecord
 	}
 	
 	/**
+	 * Log the event after a save occurs.
+	 */
+	protected function afterSave()
+	{
+		// Record the case attorney create event.
+		$log = new Log;
+		$log->tablename = 'ci_case_attorney';
+		$log->event = 'Attorney Added To Case';
+		$log->userid = Yii::app()->user->getId();
+		$log->tablerow = $this->summaryid . ", " . $this->attyid;
+		$log->save(false);
+
+		return parent::afterSave();
+	}
+	
+	/**
 	 * Define the relations between this model and other models.
 	 * @return array relational rules.
 	 */

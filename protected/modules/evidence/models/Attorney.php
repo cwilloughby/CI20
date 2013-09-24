@@ -172,17 +172,7 @@ class Attorney extends CActiveRecord
 			if(!isset($attyCheck['attyid']))
 			{
 				if($attorney->save())
-				{
 					$attyCheck['attyid'] = $attorney->attyid;
-					
-					// Record the attorney create event.
-					$log = new Log;
-					$log->tablename = 'ci_attorney';
-					$log->event = 'Attorney Created';
-					$log->userid = Yii::app()->user->getId();
-					$log->tablerow = $attorney->getPrimaryKey();
-					$log->save(false);
-				}
 			}
 			
 			// Connect the attorney to the new case summary.
@@ -190,14 +180,6 @@ class Attorney extends CActiveRecord
 			$caseAttorney->attyid = $attyCheck['attyid'];
 			$caseAttorney->summaryid = $summaryid;
 			$caseAttorney->save();
-			
-			// Record the case attorney create event.
-			$log = new Log;
-			$log->tablename = 'ci_case_attorney';
-			$log->event = 'Attorney Added To Case';
-			$log->userid = Yii::app()->user->getId();
-			$log->tablerow = $caseAttorney->summaryid . ", " . $caseAttorney->attyid;
-			$log->save(false);
 			
 			$idx++;
 		}

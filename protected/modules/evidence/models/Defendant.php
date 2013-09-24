@@ -146,17 +146,7 @@ class Defendant extends CActiveRecord
 		if(!isset($defCheck['defid']))
 		{
 			if($def->save())
-			{
 				$defCheck['defid'] = $def->defid;
-
-				// Record the defendant create event.
-				$log = new Log;
-				$log->tablename = 'ci_defendant';
-				$log->event = 'Defendant Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $def->getPrimaryKey();
-				$log->save(false);
-			}
 		}
 
 		// Return the defendant's id.

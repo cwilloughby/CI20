@@ -14,10 +14,10 @@ class TrainingController extends Controller
 	 */
 	public function actionView($id, $type)
 	{
-		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
+		$models=TrainingResources::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
 		$this->render('view',array(
-			'video'=>$this->loadModel($id, 'Videos'),
+			'resource'=>$this->loadModel($id, 'TrainingResources'),
 			'types'=>$types,
 			'type'=>$type
 		));
@@ -29,12 +29,12 @@ class TrainingController extends Controller
 	public function actionTypeIndex()
 	{
 		// We need to count the number of distinct types to get around a yii pager bug.
-		$sql = "SELECT COUNT(DISTINCT type) FROM ci_videos";
+		$sql = "SELECT COUNT(DISTINCT type) FROM ci_training_resources";
 		$num = Yii::app()->db->createCommand($sql)->queryScalar();
 		
-		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
+		$models=TrainingResources::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
-		$dataProvider=new CActiveDataProvider('Videos',
+		$dataProvider=new CActiveDataProvider('TrainingResources',
 				array(
 					'criteria'=>array(
 						'select'=>'type',
@@ -56,21 +56,24 @@ class TrainingController extends Controller
 		if(is_null($type))
 			throw new CHttpException(400, "Bad Request! A type must be given.");
 		
-		$models=Videos::model()->findAll(array('select'=>'type','distinct'=>true));
+		$models=TrainingResources::model()->findAll(array('select'=>'type','distinct'=>true));
 		$types=CHtml::listData($models,'type','type');
-		$videoProvider=new CActiveDataProvider('Videos', array(
+		// Construct a data provider that will grab all the videos.
+		$videoProvider=new CActiveDataProvider('TrainingResources', array(
 					'criteria'=>array(
 						'condition'=> "t.type = :type AND t.category = 'video'",
 						'params'=>array(":type" => $type)
 					)
 				));
-		$docProvider=new CActiveDataProvider('Videos', array(
+		// Construct a data provider that will grab all the documents.
+		$docProvider=new CActiveDataProvider('TrainingResources', array(
 					'criteria'=>array(
 						'condition'=> "t.type = :type AND t.category = 'doc'",
 						'params'=>array(":type" => $type)
 					)
 				));
-		$pageProvider=new CActiveDataProvider('Videos', array(
+		// Construct a data provider that will grab all the html reference pages.
+		$pageProvider=new CActiveDataProvider('TrainingResources', array(
 					'criteria'=>array(
 						'condition'=> "t.type = :type AND t.category = 'page'",
 						'params'=>array(":type" => $type)

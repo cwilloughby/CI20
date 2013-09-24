@@ -33,10 +33,8 @@ return array(
 		'application.modules.documentprocessor.models.*',
 		'application.modules.news.models.*',
 		'application.modules.weather.models.*',
-		'application.modules.videos.models.*',
 		'application.modules.issuetracker.models.*',
-		'application.modules.training.components.*',
-		'application.modules.documentprocessor.components.*',
+		'application.modules.training.models.*',
 		'application.widgets.*',
 		'zii.widgets.CPortlet'
 	),
@@ -61,7 +59,6 @@ return array(
 		'centriod',
 		'links',
 		'evaluations',
-		'videos',
 		'training',
 		'issuetracker',
 		'srbac'=>array(
@@ -140,7 +137,7 @@ return array(
 					'js' => array('jquery1.7.js'),
 					'coreScriptPosition' => CClientScript::POS_HEAD,
 				),
-				'jqueryui' => array(
+				'jquery.ui' => array(
 					'basePath' => "webroot.vendors.jquery.*",
 					'js' => array('jqueryui.js'),
 					'coreScriptPosition' => CClientScript::POS_HEAD,

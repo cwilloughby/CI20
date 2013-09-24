@@ -3,8 +3,6 @@
 /* @var $section HrSection */
 /* @var $policy HrPolicy */
 ?>
-<script src="<?php echo Yii::app()->baseUrl; ?>/assets/jquery/jquery.js"></script>
-<script src="<?php echo Yii::app()->baseUrl; ?>/assets/jquery/jqueryui.js"></script>
 
 <?php
 $this->pageTitle = Yii::app()->name . ' - HR Policy';
@@ -79,10 +77,12 @@ $this->menu2=array(
 </div>
 
 <?php
+Yii::app()->clientScript->registerCoreScript('jquery', CClientScript::POS_END);
+Yii::app()->clientScript->registerCoreScript('jquery.ui', CClientScript::POS_END);
+
 Yii::app()->clientScript->registerScript('accordionscript',
-	'jQuery.noConflict();
-	jQuery(function() {
-		jQuery("div.accordion").accordion({
+	'$(function() {
+		$("div.accordion").accordion({
 			collapsible: true,
 			heightStyle: "content",
 			clearStyle: "true",

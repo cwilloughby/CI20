@@ -15,7 +15,7 @@ class PasswordController extends Controller
 	/**
 	 * The password recovery request form. Used when you can't remember the password.
 	 */
-	public function actionRecoveryrequest()
+	public function actionPasswordRecoveryRequestForm()
 	{
 		$model=new UserInfo;
 
@@ -46,7 +46,7 @@ class PasswordController extends Controller
 	/**
 	 * The password recovery form 
 	 */
-	public function actionRecovery()
+	public function actionPasswordRecoveryForm()
 	{
 		$model=new UserInfo;
 
@@ -70,12 +70,7 @@ class PasswordController extends Controller
 					if($data->update())
 					{
 						// Record the password change event.
-						$log = new Log;
-						$log->tablename = 'ci_user_info';
-						$log->event = 'Password Recovered';
-						$log->userid = $data->userid;
-						$log->tablerow = $log->userid;
-						$log->save(false);
+						$model->logPasswordChange();
 						
 						$this->redirect(Yii::app()->homeUrl);
 					}
@@ -93,7 +88,7 @@ class PasswordController extends Controller
 	/**
 	 * The password change form. Used when you can remember the current password.
 	 */
-	public function actionChange()
+	public function actionChangePassword()
 	{
 		$model=new UserInfo;
 
@@ -112,12 +107,7 @@ class PasswordController extends Controller
 				if($data->update())
 				{
 					// Record the password change event.
-					$log = new Log;
-					$log->tablename = 'ci_user_info';
-					$log->event = 'Password Changed';
-					$log->userid = Yii::app()->user->getId();
-					$log->tablerow = $log->userid;
-					$log->save(false);
+					$model->logPasswordChange();
 					
 					$this->redirect(Yii::app()->homeUrl);
 				}

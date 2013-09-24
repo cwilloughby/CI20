@@ -15,7 +15,7 @@ class UserLogin extends CPortlet
 	{
 		if(isset($_POST['LoginForm']))
 		{
-			$this->controller->forward('/security/login/login');
+			$this->controller->forward('/security/login/loginform');
 		}
 		
 		$form=new LoginForm;

@@ -55,7 +55,7 @@ class CrtCase extends CActiveRecord
 	 */
 	protected function afterSave()
 	{
-		// Record the court case update event.
+		// Record the court case save event.
 		$log = new Log;
 		$log->tablename = 'ci_crt_case';
 		$log->event = 'Court Case Created or Updated';
@@ -134,17 +134,7 @@ class CrtCase extends CActiveRecord
 			
 			// Create the new case.
 			if($case->save())
-			{
 				$caseCheck['caseno'] = $case->caseno;
-
-				// Record the court case create event.
-				$log = new Log;
-				$log->tablename = 'ci_crt_case';
-				$log->event = 'Court Case Created';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $case->getPrimaryKey();
-				$log->save(false);
-			}
 		}
 		else
 		{
@@ -155,16 +145,7 @@ class CrtCase extends CActiveRecord
 			$case->crtdiv = $div;
 			$case->cptno = $cpt;
 			// Save the new information.
-			if($case->save())
-			{
-				// Record the court case update event.
-				$log = new Log;
-				$log->tablename = 'ci_crt_case';
-				$log->event = 'Court Case Updated';
-				$log->userid = Yii::app()->user->getId();
-				$log->tablerow = $case->getPrimaryKey();
-				$log->save(false);
-			}
+			$case->save();
 		}
 		
 		// Return the case number.

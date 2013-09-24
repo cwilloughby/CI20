@@ -14,10 +14,10 @@ class Training extends CPortlet
 	protected function renderContent()
 	{
 		// We need to count the number of distinct types to get around a yii pager bug.
-		$sql = "SELECT COUNT(DISTINCT type) FROM ci_videos";
+		$sql = "SELECT COUNT(DISTINCT type) FROM ci_training_resources";
 		$num = Yii::app()->db->createCommand($sql)->queryScalar();
 		
-		$dataProvider=new CActiveDataProvider('Videos',
+		$dataProvider=new CActiveDataProvider('TrainingResources',
 				array(
 					'pagination'=>array(
 						'pageSize'=>4
