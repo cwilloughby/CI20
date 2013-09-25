@@ -152,9 +152,7 @@ class Messages extends CActiveRecord
 		
 		// Set the cc address if one was provided.
 		if(!is_null($ccAddress))
-		{
 			$this->mail->AddCC($ccAddress);
-		}
 		
 		// Set the message's subject.
 		$this->mail->Subject = $subject;
@@ -167,12 +165,8 @@ class Messages extends CActiveRecord
 		
 		// The link to the recovery email page needs to be ommited from the log for security.
 		if($type == "Recovery")
-		{
 			$this->messagebody = "Follow this link to recover your password: Link omited for security";
-		}
 		else
-		{
 			$this->messagebody = $this->mail->Body;
-		}
 	}
 }

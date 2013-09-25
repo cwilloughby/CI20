@@ -15,7 +15,6 @@ $this->breadcrumbs=array(
 <?php echo $this->renderPartial('_form', array('centriod'=>$centriod)); ?>
 
 <?php
-
 if($results)
 {
 	$this->widget('zii.widgets.jui.CJuiTabs',array(

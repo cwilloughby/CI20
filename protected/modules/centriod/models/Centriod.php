@@ -120,7 +120,7 @@ class Centriod extends CModel
 	{
 		// Find the files.
 		$files = $this->locateFiles();
-		// Read in the files and parse them in an array.
+		// Read in the files and parse them into an array.
 		$parsedFiles = $this->parseFileContents($files);
 		// Search the array for common errors and highlight them.
 		$report = $this->findErrors($parsedFiles);
@@ -137,29 +137,36 @@ class Centriod extends CModel
 	{	
 		$files = array();
 		
-		// Determine where the demographic file is.
-		if(file_exists(self::SUCCESS . $this->arrestnumber . "D"))
-			$files['Demographic'] = self::SUCCESS . $this->arrestnumber . "D";
-		else if(file_exists(self::FAILED . $this->arrestnumber . "D"))
-			$files['Demographic'] = self::FAILED . $this->arrestnumber . "D";
-		else
-			$files['Demographic'] = 'Does not exist!';
-		
-		// Determine where the warrant file is.
-		if(file_exists(self::SUCCESS . $this->arrestnumber . "W"))
-			$files['Warrant'] = self::SUCCESS . $this->arrestnumber . "W";
-		else if(file_exists(self::FAILED . $this->arrestnumber . "W"))
-			$files['Warrant'] = self::FAILED . $this->arrestnumber . "W";
-		else
-			$files['Warrant'] = 'Does not exist!';
-		
-		// Determine where the alias file is.
-		if(file_exists(self::SUCCESS . $this->arrestnumber . "A"))
-			$files['Alias'] = self::SUCCESS . $this->arrestnumber . "A";
-		else if(file_exists(self::FAILED . $this->arrestnumber . "A"))
-			$files['Alias'] = self::FAILED . $this->arrestnumber . "A";
-		else
-			$files['Alias'] = 'This arrest has no alias file.';
+		try
+		{
+			// Determine where the demographic file is.
+			if(file_exists(self::SUCCESS . $this->arrestnumber . "D"))
+				$files['Demographic'] = self::SUCCESS . $this->arrestnumber . "D";
+			else if(file_exists(self::FAILED . $this->arrestnumber . "D"))
+				$files['Demographic'] = self::FAILED . $this->arrestnumber . "D";
+			else
+				$files['Demographic'] = 'Does not exist!';
+
+			// Determine where the warrant file is.
+			if(file_exists(self::SUCCESS . $this->arrestnumber . "W"))
+				$files['Warrant'] = self::SUCCESS . $this->arrestnumber . "W";
+			else if(file_exists(self::FAILED . $this->arrestnumber . "W"))
+				$files['Warrant'] = self::FAILED . $this->arrestnumber . "W";
+			else
+				$files['Warrant'] = 'Does not exist!';
+
+			// Determine where the alias file is.
+			if(file_exists(self::SUCCESS . $this->arrestnumber . "A"))
+				$files['Alias'] = self::SUCCESS . $this->arrestnumber . "A";
+			else if(file_exists(self::FAILED . $this->arrestnumber . "A"))
+				$files['Alias'] = self::FAILED . $this->arrestnumber . "A";
+			else
+				$files['Alias'] = 'This arrest has no alias file.';
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "CMM1: Centriod file locator failed with error " . $ex);
+		}
 		
 		return $files;
 	} // End of function locateFiles
@@ -173,128 +180,147 @@ class Centriod extends CModel
 	{
 		$parsedFiles = array();
 		
-		// Make sure the Warrant file exists.
-		if($files['Warrant'] != 'Does not exist!')
+		try
 		{
-			$handle = @fopen($files['Warrant'], 'r');
-
-			if($handle)
+			// Make sure the Warrant file exists.
+			if($files['Warrant'] != 'Does not exist!')
 			{
-				$row = 0;
-				$parsedFiles['Warrant']['Location'] = $files['Warrant'];
-				
-				// Normally a flat file has everything on one line, but the warrant file seperates the charges into different lines.
-				// This loop iterates through each line. So each iteration is a seperate charge.
-				while(!feof($handle)) 
+				$handle = @fopen($files['Warrant'], 'r');
+
+				if($handle)
+				{
+					$row = 0;
+					$parsedFiles['Warrant']['Location'] = $files['Warrant'];
+
+					// Normally a flat file has everything on one line, but the warrant file seperates the charges into different lines.
+					// This loop iterates through each line. So each iteration is a seperate charge.
+					while(!feof($handle)) 
+					{
+						// Grab a line from the file.
+						$buffer = fgets($handle, 4096);
+						if($buffer != "")
+						{
+							$count = count($this->warrant);	
+
+							// Element refers to things like, warrant number, ncic, tca, ect. So this loop goes through each one.
+							for($element = 0; $element < $count; $element++)
+							{
+								$parsedFiles['Warrant']['Charge' . ($row + 1)][$this->warrant[$element]['Arrest Element']] 
+									= trim(substr($buffer, $this->warrant[$element]['Start Point'], $this->warrant[$element]['Length']));
+							}
+						}
+						// Increase the line number.
+						$row++;
+					}
+					fclose($handle);
+				}
+			}
+			else
+				$parsedFiles['Warrant'] = "The warrant file does not exist!";
+
+			// Make sure the Alias file exists.
+			if($files['Alias'] != 'This arrest has no alias file.')
+			{
+				$handle = @fopen($files['Alias'], 'r');
+
+				if($handle) 
+				{
+					$row = 0;
+					$parsedFiles['Alias']['Location'] = $files['Alias'];
+
+					// Normally a flat file has everything on one line, but the alias file seperates the aliases into different lines.
+					// This loop iterates through each line. So each iteration is a seperate alias.
+					while(!feof($handle)) 
+					{
+						// Grab a line from the file.
+						$buffer = fgets($handle, 4096);
+						if($buffer != "")
+						{
+							$count = count($this->alias);	
+
+							// Element refers to things like, first name, last name, suffix, ect. So this loop goes through each one.
+							for($element = 0; $element < $count; $element++)
+							{
+								$parsedFiles['Alias']['Alias' . ($row + 1)][$this->alias[$element]['Arrest Element']] 
+										= trim(substr($buffer, $this->alias[$element]['Start Point'], $this->alias[$element]['Length']));
+							}
+						}
+						// Increase the line number.
+						$row++;
+					}
+					fclose($handle);
+				}
+			}
+			else
+				$parsedFiles['Alias'] = 'This arrest has no alias file.';
+
+			// Make sure the Demographic file exists.
+			if($files['Demographic'] != 'Does not exist!')
+			{
+				$handle = @fopen($files['Demographic'], 'r');
+
+				if($handle) 
 				{
 					// Grab a line from the file.
 					$buffer = fgets($handle, 4096);
+					$parsedFiles['Demographic']['Location'] = $files['Demographic'];
+
 					if($buffer != "")
 					{
-						$count = count($this->warrant);	
+						$count = count($this->demographic);	
 
-						// Element refers to things like, warrant number, ncic, tca, ect. So this loop goes through each one.
 						for($element = 0; $element < $count; $element++)
 						{
-							$parsedFiles['Warrant']['Charge' . ($row + 1)][$this->warrant[$element]['Arrest Element']] 
-								= trim(substr($buffer, $this->warrant[$element]['Start Point'], $this->warrant[$element]['Length']));
+							$parsedFiles['Demographic']['Element' . ($element + 1)]['Element']
+									= $this->demographic[$element]['Arrest Element'];
+							$parsedFiles['Demographic']['Element' . ($element + 1)]['Start Point'] 
+									= $this->demographic[$element]['Start Point'];
+							$parsedFiles['Demographic']['Element' . ($element + 1)]['Length'] 
+									= $this->demographic[$element]['Length'];
+							$parsedFiles['Demographic']['Element' . ($element + 1)]['Value'] 
+									= trim(substr($buffer, $this->demographic[$element]['Start Point'], $this->demographic[$element]['Length']));
 						}
 					}
-					// Increase the line number.
-					$row++;
+					fclose($handle);
 				}
-				fclose($handle);
 			}
+			else
+				$parsedFiles['Demographic'] = "The demographic file does not exist!";
 		}
-		else
-			$parsedFiles['Warrant'] = "The warrant file does not exist!";
-		
-		// Make sure the Alias file exists.
-		if($files['Alias'] != 'This arrest has no alias file.')
+		catch(Exception $ex)
 		{
-			$handle = @fopen($files['Alias'], 'r');
-
-			if($handle) 
-			{
-				$row = 0;
-				$parsedFiles['Alias']['Location'] = $files['Alias'];
-				
-				// Normally a flat file has everything on one line, but the alias file seperates the aliases into different lines.
-				// This loop iterates through each line. So each iteration is a seperate alias.
-				while(!feof($handle)) 
-				{
-					// Grab a line from the file.
-					$buffer = fgets($handle, 4096);
-					if($buffer != "")
-					{
-						$count = count($this->alias);	
-
-						// Element refers to things like, first name, last name, suffix, ect. So this loop goes through each one.
-						for($element = 0; $element < $count; $element++)
-						{
-							$parsedFiles['Alias']['Alias' . ($row + 1)][$this->alias[$element]['Arrest Element']] 
-									= trim(substr($buffer, $this->alias[$element]['Start Point'], $this->alias[$element]['Length']));
-						}
-					}
-					// Increase the line number.
-					$row++;
-				}
-				fclose($handle);
-			}
+			throw new CHttpException(500, "CMM2: Centriod file parser failed with error " . $ex);
 		}
-		else
-			$parsedFiles['Alias'] = 'This arrest has no alias file.';
 		
-		// Make sure the Demographic file exists.
-		if($files['Demographic'] != 'Does not exist!')
-		{
-			$handle = @fopen($files['Demographic'], 'r');
-
-			if($handle) 
-			{
-				// Grab a line from the file.
-				$buffer = fgets($handle, 4096);
-				$parsedFiles['Demographic']['Location'] = $files['Demographic'];
-				
-				if($buffer != "")
-				{
-					$count = count($this->demographic);	
-
-					for($element = 0; $element < $count; $element++)
-					{
-						$parsedFiles['Demographic']['Element' . ($element + 1)]['Element']
-								= $this->demographic[$element]['Arrest Element'];
-						$parsedFiles['Demographic']['Element' . ($element + 1)]['Start Point'] 
-								= $this->demographic[$element]['Start Point'];
-						$parsedFiles['Demographic']['Element' . ($element + 1)]['Length'] 
-								= $this->demographic[$element]['Length'];
-						$parsedFiles['Demographic']['Element' . ($element + 1)]['Value'] 
-								= trim(substr($buffer, $this->demographic[$element]['Start Point'], $this->demographic[$element]['Length']));
-					}
-				}
-				fclose($handle);
-			}
-		}
-		else
-			$parsedFiles['Demographic'] = "The demographic file does not exist!";
-
 		return $parsedFiles;
 	} // End of function parseFileContents
 	
-	private function findErrors($array)
+	/**
+	 * This function takes an array containing parsed information from the centriod flat files
+	 * and then runs the various error checker functions on it.
+	 * @param array $parsedData
+	 * @return array
+	 */
+	private function findErrors($parsedData)
 	{
-		if($array['Demographic'] != "The demographic file does not exist!")
+		try
 		{
-			$array['Demographic'] = $this->checkStates($array['Demographic']);
-			$array['Demographic'] = $this->checkDemographicNumbers($array['Demographic']);
-			$array['Demographic'] = $this->checkBlankDemographic($array['Demographic']);
+			if($parsedData['Demographic'] != "The demographic file does not exist!")
+			{
+				$parsedData['Demographic'] = $this->checkStates($parsedData['Demographic']);
+				$parsedData['Demographic'] = $this->checkDemographicNumbers($parsedData['Demographic']);
+				$parsedData['Demographic'] = $this->checkBlankDemographic($parsedData['Demographic']);
+			}
+			if($parsedData['Warrant'] != "The warrant file does not exist!")
+			{
+				$parsedData['Warrant'] = $this->checkWarrantValues($parsedData['Warrant']);
+				$parsedData['Warrant'] = $this->checkBlankWarrant($parsedData['Warrant']);
+			}
 		}
-		if($array['Warrant'] != "The warrant file does not exist!")
+		catch(Exception $ex)
 		{
-			$array['Warrant'] = $this->checkWarrantValues($array['Warrant']);
-			$array['Warrant'] = $this->checkBlankWarrant($array['Warrant']);
+			throw new CHttpException(500, "CMM3: Centriod error detector failed with error " . $ex);
 		}
-		
 		return $array;
 	}
 	

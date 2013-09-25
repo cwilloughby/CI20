@@ -64,7 +64,7 @@ class AttorneyController extends Controller
 		}
 		catch(Exception $ex)
 		{
-			throw new CHttpException('the attorney cannot be deleted, because it is still assigned to a case.');
+			throw new CHttpException('The attorney cannot be deleted, because it is still assigned to a case.');
 		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

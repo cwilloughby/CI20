@@ -118,12 +118,19 @@ class CaseSummaryController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		// Delete all records on the attorney bridge table that have this summary id.
-		CaseAttorneys::model()->deleteAll('summaryid =' . $id);
-		$this->loadModel($id, 'CaseSummary')->delete();
+		try
+		{
+			// Delete all records on the attorney bridge table that have this summary id.
+			CaseAttorneys::model()->deleteAll('summaryid =' . $id);
+			$this->loadModel($id, 'CaseSummary')->delete();
 
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EVCSC1: Failed to delete case summary with error " . $ex);
+		}
 	}
 	
 	/**
@@ -135,14 +142,21 @@ class CaseSummaryController extends Controller
 		$summary = $this->loadModel($id, 'CaseSummary');
 		$evidence = new Evidence;
 		
-		if(isset($_POST['Evidence']))
+		try
 		{
-			// Add the evidence to the database.
-			$evidence->saveEvidence($_POST['Evidence']);
-				
-			$this->redirect(array('view','id'=>$summary->summaryid));
-		}
+			if(isset($_POST['Evidence']))
+			{
+				// Add the evidence to the database.
+				$evidence->saveEvidence($_POST['Evidence']);
 
+				$this->redirect(array('view','id'=>$summary->summaryid));
+			}
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EVCSC2: Centriod module failed with error " . $ex);
+		}
+		
 		$this->render('changeEvidence',array(
 			'summary' => $summary,
 			'evidence' => $evidence
@@ -158,13 +172,20 @@ class CaseSummaryController extends Controller
 		$summary = $this->loadModel($id, 'CaseSummary');
 		$attorney = new Attorney;
 		
-		if(isset($_POST['Attorney']))
+		try
 		{
-			// Add the attorneys to the database if they don't already exist and associate them to the case summary.
-			// If they already exist, then just associate it to the case summary.
-			$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
-				
-			$this->redirect(array('view','id'=>$summary->summaryid));
+			if(isset($_POST['Attorney']))
+			{
+				// Add the attorneys to the database if they don't already exist and associate them to the case summary.
+				// If they already exist, then just associate it to the case summary.
+				$attorney->saveAttorneys($_POST['Attorney'], $summary->summaryid);
+
+				$this->redirect(array('view','id'=>$summary->summaryid));
+			}
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EVCSC3: Failed to change attorneys on case summary with error " . $ex);
 		}
 	}
 	
@@ -178,18 +199,28 @@ class CaseSummaryController extends Controller
 		if($sid == null || $aid == null)
 			throw new CHttpException(400, "Bad Request. Ids must be given.");
 		
-		// Delete the record on the attorney bridge table that has this summaryid and attyid.
-		CaseAttorneys::model()->deleteByPk(array('summaryid' => $sid, 'attyid' => $aid));
-		
-		// Log the delete event.
-		$log = new Log;
-		$log->tablename = 'ci_case_attorneys';
-		$log->event = 'Attorney Removed From Case';
-		$log->userid = Yii::app()->user->getId();
-		$log->tablerow = $sid . ", " . $aid;
-		$log->save(false);
+		try
+		{
+			// Delete the record on the attorney bridge table that has this summaryid and attyid.
+			CaseAttorneys::model()->deleteByPk(array('summaryid' => $sid, 'attyid' => $aid));
+
+			// Log the delete event.
+			$log = new Log;
+			$log->tablename = 'ci_case_attorneys';
+			$log->event = 'Attorney Removed From Case';
+			$log->userid = Yii::app()->user->getId();
+			$log->tablerow = $sid . ", " . $aid;
+			$log->save(false);
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EVCSC4: Failed to delete attorney from case summary with error " . $ex);
+		}
 	}
 	
+	/**
+	 * This action will show the advanced tools page.
+	 */
 	public function actionEvidenceManager()
 	{
 		$this->render('advanced');

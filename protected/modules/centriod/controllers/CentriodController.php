@@ -29,10 +29,10 @@ class CentriodController extends Controller
 		}
 		catch(Exception $ex)
 		{
-			echo "Centriod module failed with error " . $ex;
+			throw new CHttpException(500, "CMC1: Centriod module failed with error " . $ex);
 		}
 		
 		// Display the form.
-		$this->render('index', array('centriod'=> $model, 'results' => $results));
+		$this->render('centriod', array('centriod'=> $model, 'results' => $results));
 	}
 }

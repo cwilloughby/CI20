@@ -50,6 +50,7 @@ class Evidence extends CActiveRecord
 			array('exhibitno', 'length', 'max'=>20),
 			array('evidencename', 'length', 'max'=>1000),
 			array('comment', 'length', 'max'=>100),
+			array('exhibitlist', 'numerical', 'integerOnly'=>true),
 			array('hearingdate, dateadded', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -78,8 +79,6 @@ class Evidence extends CActiveRecord
 	 */
 	protected function beforeSave()
 	{
-		$this->exhibitlist = $_POST['Evidence']['exhibitlist'];
-		
 		if((int)$this->hearingdate)
 			$this->hearingdate = date('Y-m-d', strtotime($this->hearingdate));
 

@@ -38,38 +38,28 @@ class EvaluationsController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
-			'criteria'=>array(
-				'condition'=>'evaluationid=' . $id
-			)));
-		// Alter the pagination so that all questions are shown on the same page.
-		$total = $dataProvider->getTotalitemCount();
-		$dataProvider->pagination = array('pageSize'=>$total);
-		
-		// If an answer was posted.
-		if(isset($_POST['EvaluationAnswers']))
+		try
 		{
-			// Record the answer.
-			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
-			$model->attributes=$_POST['EvaluationAnswers'];
-			$model->save();
-		}
-		// If the PDF print button was pressed.
-		else if(isset($_POST['PDFButton']))
-		{
-			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
-			$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
-				'model'=>$this->loadModel($id, 'Evaluations'),
-				'answersDataProvider'=>$dataProvider,
-				), true));
-			$html2pdf->Output();
-		}
-		else
-		{
+			// If the PDF print button was pressed.
+			if(isset($_POST['PDFButton']))
+				$this->forward('printEvaluationPDF');
+
+			$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
+				'criteria'=>array(
+					'condition'=>'evaluationid=' . $id
+				)));
+			// Alter the pagination so that all questions are shown on the same page.
+			$total = $dataProvider->getTotalitemCount();
+			$dataProvider->pagination = array('pageSize'=>$total);
+
 			$this->render('view',array(
 				'model'=>$this->loadModel($id, 'Evaluations'),
 				'answersDataProvider'=>$dataProvider,
 			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EUC1: Evaluation View failed with error " . $ex);
 		}
 	}
 
@@ -79,36 +69,43 @@ class EvaluationsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Evaluations;
-		
-		// Find all departments that the current user is the supervisor of.
-		$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
-		
-		// If the create evaluation form was posted.
-		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
+		try
 		{
-			// Save the new evaluation.
-			if($model->save())
+			$model=new Evaluations;
+
+			// Find all departments that the current user is the supervisor of.
+			$departments = Departments::model()->findAll('supervisorid=' . Yii::app()->user->id);
+
+			// If the create evaluation form was posted.
+			if($model->attributes = Yii::app()->request->getPost('Evaluations'))
 			{
-				$questions = EvaluationQuestions::model()->prepareQuestions($departments);
-				
-				foreach($questions as $question)
+				// Save the new evaluation.
+				if($model->save())
 				{
-					// Each question will eventaully have an answer, but for now we create blank entries in the
-					// ci_evaluation_answers table to bridge the questions to the new evaluation.
-					$answer = new EvaluationAnswers;
-					$answer->evaluationid = $model->evaluationid;
-					$answer->questionid = $question;
-					$answer->save();
+					$questions = EvaluationQuestions::model()->prepareQuestions($departments);
+
+					foreach($questions as $question)
+					{
+						// Each question will eventaully have an answer, but for now we create blank entries in the
+						// ci_evaluation_answers table to bridge the questions to the new evaluation.
+						$answer = new EvaluationAnswers;
+						$answer->evaluationid = $model->evaluationid;
+						$answer->questionid = $question;
+						$answer->save();
+					}
+					// Redirect to the edit page so the current user can begin to fill out the evaluation.
+					$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 				}
-				// Redirect to the edit page so the current user can begin to fill out the evaluation.
-				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 			}
+
+			// Prepare a list of users that the current user is allowed to make evaluations for.
+			$allUsers = $model->prepareUserList($departments);
 		}
-
-		// Prepare a list of users that the current user is allowed to make evaluations for.
-		$allUsers = $model->prepareUserList($departments);
-
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EUC2: Evaluation Create failed with error " . $ex);
+		}
+		
 		$this->render('create',array(
 			'model'=>$model,
 			'allUsers' => $allUsers,
@@ -124,18 +121,25 @@ class EvaluationsController extends Controller
 	{
 		$model=$this->loadModel($id, 'Evaluations');
 
-		if($model->attributes = Yii::app()->request->getPost('Evaluations'))
+		try
 		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->evaluationid));
+			if($model->attributes = Yii::app()->request->getPost('Evaluations'))
+			{
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->evaluationid));
+			}
+
+			// Find the user's department.
+			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+			// Find all active users in that department, except for the current user and put them in an array.
+			$allUsers = CHtml::ListData(UserInfo::model()->findAll(
+					'departmentid=' . $department->getAttribute('departmentid') 
+					. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
 		}
-		
-		// Find the user's department.
-		$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-		// Find all active users in that department, except for the current user and put them in an array.
-		$allUsers = CHtml::ListData(UserInfo::model()->findAll(
-				'departmentid=' . $department->getAttribute('departmentid') 
-				. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "EUC3: Change Employee failed with error " . $ex);
+		}
 		
 		$this->render('changeemployee',array(
 			'model'=>$model,
@@ -156,23 +160,26 @@ class EvaluationsController extends Controller
 			'pagination'=>array(
 				'pageSize'=>1,
 			)));
-		
+
 		// If an answer was posted, 
 		if(isset($_POST['EvaluationAnswers']))
 		{
-			// Record the submitted answer.
+			// Bring in the values from the form.
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
-			$model->save();
-
-			// Redirect to the next question in the list. If all questions are answered, redirect to the view page.
-			$page = $_GET['EvaluationAnswers_page'] + 1;
-			if($page <= $dataProvider->totalItemCount)
-				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
-			else
-				$this->redirect(array('view','id'=>$model->evaluationid));
+			
+			// Try to record the answers
+			if($model->save())
+			{
+				// Redirect to the next question in the list. If all questions are answered, redirect to the view page.
+				$page = $_GET['EvaluationAnswers_page'] + 1;
+				if($page <= $dataProvider->totalItemCount)
+					$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
+				else
+					$this->redirect(array('view','id'=>$model->evaluationid));
+			}
 		}
-
+		
 		$this->render('answerquestions',array(
 			'model'=>$this->loadModel($id, 'Evaluations'),
 			'answersDataProvider'=>$dataProvider,
@@ -187,13 +194,20 @@ class EvaluationsController extends Controller
 		// If the user has supervisor access.
 		if(Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id))
 		{
-			// Find the user's department.
-			$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
-			// Find all users in that department.
-			$allUsers = CHtml::ListData(UserInfo::model()->with('department')
-					->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
-			$stringed = join(',', $allUsers);
-			
+			try
+			{
+				// Find the user's department.
+				$department = Departments::model()->with('userInfos')->find('userInfos.userid= ' . Yii::app()->user->id);
+				// Find all users in that department.
+				$allUsers = CHtml::ListData(UserInfo::model()->with('department')
+						->findAll('department.departmentid=' . $department->getAttribute('departmentid')), 'userid', 'userid');
+				$stringed = join(',', $allUsers);
+			}
+			catch(Exception $ex)
+			{
+				throw new CHttpException(500, "EUC4: Evaluation Index failed with error " . $ex);
+			}
+
 			// Find all evaluations for those users.
 			$dataProvider=new CActiveDataProvider('Evaluations',
 				array(
@@ -216,6 +230,30 @@ class EvaluationsController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+	
+	/**
+	 * Prints the evalution as a pdf in the browser.
+	 */
+	public function actionPrintEvaluationPDF($id)
+	{
+		if(isset($_POST['Evaluations']))
+		{
+			$answersProvider=new CActiveDataProvider('EvaluationAnswers', array(
+				'criteria'=>array(
+					'condition'=>'evaluationid=' . $id
+				)));
+			// Alter the pagination so that all questions are shown on the same page.
+			$total = $answersProvider->getTotalitemCount();
+			$answersProvider->pagination = array('pageSize'=>$total);
+
+			$html2pdf = Yii::app()->ePdf->HTML2PDF('', 'A5');
+			$html2pdf->WriteHTML($this->renderPartial('pdfoutput', array(
+				'model'=>$this->loadModel($id, 'Evaluations'),
+				'answersDataProvider'=>$answersProvider,
+				), true));
+			$html2pdf->Output();
+		}
 	}
 	
 	/**

@@ -32,7 +32,7 @@ class EmailController extends Controller
 			// Set the sender, the recipient, the subject, the body, and the message type.
 			$model->setEmail("ccc.helpdesk@nashville.gov", "ccc.helpdesk@nashville.gov", "CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'],
 				$this->renderPartial('registeremailbody', 
-					array('firstname' => $_GET['firstname'], 'lastname' => $_GET['lastname'] ,'link' => $link), true),
+					array('firstname' => $_GET['firstname'], 'lastname' => $_GET['lastname'], 'link' => $link), true),
 				"Registration Request"
 			);
 
@@ -127,8 +127,7 @@ class EmailController extends Controller
 						'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
 						'description' => nl2br($_GET['description'])
 					), true),
-				"Trouble Ticket",
-				$user->email
+				"Trouble Ticket", $user->email
 			);
 			
 			// Send the email.
@@ -172,8 +171,7 @@ class EmailController extends Controller
 					'description' => nl2br($body),
 					'resolution' => nl2br($_GET['resolution']),
 				), true),
-			"Trouble Ticket",
-			"ccc.helpdesk@nashville.gov"
+			"Trouble Ticket", "ccc.helpdesk@nashville.gov"
 		);
 
 		// Send the email.
@@ -205,8 +203,7 @@ class EmailController extends Controller
 		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI Ticket #" . $_GET['ticketid'],
 			$this->renderPartial('commentemailbody', 
 				array('ticketID' => $_GET['ticketid'], 'user' => Yii::app()->user->name, 'content' => nl2br($_GET['content'])), true),
-			"Comment",
-			"ccc.helpdesk@nashville.gov"
+			"Comment", "ccc.helpdesk@nashville.gov"
 		);
 		
 		// Send the email.
@@ -240,8 +237,7 @@ class EmailController extends Controller
 			// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
 			$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Someone shared a document with you",
 				$this->renderPartial('sharedocumentemailbody', array('file' => 'placeholder value'), true),
-				"Share",
-				$email
+				"Share", $email
 			);
 			
 			// Send the email.

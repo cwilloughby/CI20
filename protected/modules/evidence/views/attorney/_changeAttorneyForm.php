@@ -11,6 +11,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'add-attorney-form',
 	'enableAjaxValidation'=>false,
+	'action'=>'changeAttorneys'
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>

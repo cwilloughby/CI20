@@ -47,8 +47,10 @@ $this->menu2=array(
 	<?php
 	$form=$this->beginWidget('CActiveForm', array(
 		'id'=>'pdf-form',
-		'stateful'=>true, 
+		'stateful'=>true,
 	));
+	echo $form->hiddenField($model, 'evaluationid');
+	
 	echo "<br/>" . CHtml::submitButton("Print PDF", array('name' => 'PDFButton'));
 	$this->endWidget(); ?>
 </div><!-- form -->
