@@ -62,6 +62,7 @@ class EvaluationQuestionsController extends Controller
 
 	/**
 	 * Questions are never deleted, just disabled.
+	 * This is so that old evaluations that used that question won't have missing data.
 	 * @param integer $id the ID of the model to be disabled
 	 */
 	public function actionDisable($id)

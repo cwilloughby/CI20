@@ -42,12 +42,9 @@ class EvaluationsController extends Controller
 			'criteria'=>array(
 				'condition'=>'evaluationid=' . $id
 			)));
+		// Alter the pagination so that all questions are shown on the same page.
 		$total = $dataProvider->getTotalitemCount();
-		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
-			'criteria'=>array(
-				'condition'=>'evaluationid=' . $id
-			),
-			'pagination'=>array('pageSize'=>$total)));
+		$dataProvider->pagination = array('pageSize'=>$total);
 		
 		// If an answer was posted.
 		if(isset($_POST['EvaluationAnswers']))
@@ -123,7 +120,7 @@ class EvaluationsController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionChangeEmployee($id)
 	{
 		$model=$this->loadModel($id, 'Evaluations');
 
@@ -140,18 +137,19 @@ class EvaluationsController extends Controller
 				'departmentid=' . $department->getAttribute('departmentid') 
 				. ' AND active = 1 AND userid !=' . Yii::app()->user->id), 'userid', 'username');
 		
-		$this->render('update',array(
+		$this->render('changeemployee',array(
 			'model'=>$model,
 			'allUsers' => $allUsers,
 		));
 	}
 	
 	/**
-	 * This function is used to answer the evaluation questions. Makes use of the beforeSave event in the EvaluationAnswers model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * This function is used to answer the evaluation questions. Makes use of the beforeSave
+	 * event in the EvaluationAnswers model. If update is successful, the browser will be
+	 * redirected to the next question. After the last question, the browser is redirected to the view page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionEdit($id)
+	public function actionAnswerQuestions($id)
 	{
 		$dataProvider=new CActiveDataProvider('EvaluationAnswers', array(
 			'criteria'=>array('condition'=>'evaluationid=' . $id),
@@ -162,20 +160,20 @@ class EvaluationsController extends Controller
 		// If an answer was posted, 
 		if(isset($_POST['EvaluationAnswers']))
 		{
-			// Record the answer.
+			// Record the submitted answer.
 			$model=$this->loadAnswerModel($_POST['EvaluationAnswers']['evaluationid'], $_POST['EvaluationAnswers']['questionid']);
 			$model->attributes=$_POST['EvaluationAnswers'];
 			$model->save();
 
-			$page = $_GET['EvaluationAnswers_page'] + 1;
 			// Redirect to the next question in the list. If all questions are answered, redirect to the view page.
+			$page = $_GET['EvaluationAnswers_page'] + 1;
 			if($page <= $dataProvider->totalItemCount)
 				$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
 			else
 				$this->redirect(array('view','id'=>$model->evaluationid));
 		}
 
-		$this->render('edit',array(
+		$this->render('answerquestions',array(
 			'model'=>$this->loadModel($id, 'Evaluations'),
 			'answersDataProvider'=>$dataProvider,
 		));
@@ -206,7 +204,7 @@ class EvaluationsController extends Controller
 		}
 		else
 		{
-			// Find all evaluations for the user.
+			// Non supervisors can only see their own evaluations.
 			$dataProvider=new CActiveDataProvider('Evaluations',
 				array(
 					'criteria'=>array(
@@ -224,6 +222,7 @@ class EvaluationsController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
+	 * @return EvaluationAnswers
 	 */
 	public function loadAnswerModel($evaluationid = null, $questionid = null)
 	{
@@ -231,7 +230,7 @@ class EvaluationsController extends Controller
 			throw new CHttpException(400, "Bad Request! Ids must be given.");
 		$model= EvaluationAnswers::model()->findByPk(array('evaluationid' => $evaluationid, 'questionid' => $questionid));
 		if($model===null)
-			throw new CHttpException(404,'The requested data does not exist.');
+			throw new CHttpException(404, 'The requested data does not exist.');
 		return $model;
 	}
 }

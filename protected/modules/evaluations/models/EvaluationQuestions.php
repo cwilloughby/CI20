@@ -114,19 +114,27 @@ class EvaluationQuestions extends CActiveRecord
 		));
 	}
 	
+	/**
+	 * This function returns an array containing all the questionids for the general questions and
+	 * the questions that are specific to the requested departments. It excludes any questions that have been
+	 * marked as disabled.
+	 * @param Departments $departments
+	 * @return array
+	 */
 	public function prepareQuestions($departments)
 	{
-		// Find all general questions.
-		$questions = CHtml::ListData($this->findAll(
-			'departmentid IS NULL'), 'questionid', 'questionid');
+		// Find all general questions that are active.
+		$generalQuestions = CHtml::ListData($this->findAll(
+			'departmentid IS NULL AND active = 1'), 'questionid', 'questionid');
 
-		// Find all questions for the department.
-		$questions2 = array();
+		// Find all questions for the requested departments that are active.
+		$departmentQuestions = array();
 		foreach($departments as $department)
 		{
-			$questions2 = array_merge($questions2, CHtml::ListData($this->findAll(
-				'departmentid=' . $department->getAttribute('departmentid')), 'questionid', 'questionid'));
+			$departmentQuestions = array_merge($departmentQuestions, CHtml::ListData($this->findAll(
+				'departmentid=' . $department->getAttribute('departmentid') . ' AND active = 1'), 'questionid', 'questionid'));
 		}
-		return array_merge($questions, $questions2);
+		// Return the general questions and the department specific questions in an array.
+		return array_merge($generalQuestions, $departmentQuestions);
 	}
 }
