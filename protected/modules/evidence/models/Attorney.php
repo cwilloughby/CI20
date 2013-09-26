@@ -125,7 +125,11 @@ class Attorney extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+ 
+    
+        
+        
+        
 	/**
 	 * actionCreate returns an array for the attorneys, but model->save() can only save one model at a time.
 	 * So this function is used to split the array into individual models.
@@ -185,4 +189,38 @@ class Attorney extends CActiveRecord
 		}
 		return true;
 	}
+        
+        public function doesAttorneyExist()
+        {
+            try {
+                // Determine if the attorney already exists.
+                    $this->exists('fname = :fname AND lname =:lname AND barid =:barid', 
+                            array(':fname'=>$this->fname, ':lname'=>$this->lname, ':barid'=>$this->barid));                    
+                                
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        
+        }
+        
+        public function getAttorneyId() 
+        {
+            try {
+                if(doesAttorneyExist()) 
+                {
+                    
+                }
+                
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+
+
+
+            doesAttorneyExist();   
+        }
+        
+        
+        
+  
 }
