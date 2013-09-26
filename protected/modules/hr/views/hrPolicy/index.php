@@ -1,5 +1,6 @@
 <?php
 /* @var $this HrSectionsController */
+/* @var $panels Array */
 /* @var $section HrSection */
 /* @var $policy HrPolicy */
 ?>
@@ -28,23 +29,23 @@ $this->menu2=array(
 
 <div class="accordion">
 	<?php
-	foreach($panels as $key1 => $value1)
+	foreach($panels as $policyKey => $policyValue)
 	{		
 		?>
-		<h3 class="portlet-decoration" id="hrmain"><span class="icon-hand-up"></span> <?php echo $key1; ?></h3>
+		<h3 class="portlet-decoration" id="hrmain"><span class="icon-hand-up"></span> <?php echo $policyKey; ?></h3>
 		<div class="accordion portlet-content portlet_border">
 			<?php
-			if(is_array($value1))
+			if(is_array($policyValue))
 			{
-				foreach($value1 as $key2 => $value2)
+				foreach($policyValue as $sectionKey => $sectionValue)
 				{
 					?>
-					<h4 id="hrsub" class="portlet-decoration"><span class="icon-hand-up"></span> <?php echo $key2; ?></h4>
+					<h4 id="hrsub" class="portlet-decoration"><span class="icon-hand-up"></span> <?php echo $sectionKey; ?></h4>
 					<div><?php 
-					if($key2 != 'Create New Section')
-						echo nl2br($value2);
+					if($sectionKey != 'Create New Section')
+						echo nl2br($sectionValue);
 					else {
-						echo $value2;
+						echo $sectionValue;
 					}
 					?>
 					</div>
@@ -56,7 +57,7 @@ $this->menu2=array(
 				?>
 				<h4 id="hrsub"><span class="icon-hand-up"></span> <?php echo "Create New Section"; ?></h4>
 				<div class="portlet-content portlet_border">
-					<?php echo $this->renderPartial('_formSection', array('model'=>$section, 'id'=>$value1)); ?>
+					<?php echo $this->renderPartial('_formSection', array('model'=>$section, 'id'=>$policyValue)); ?>
 				</div>
 				<?php
 			}
