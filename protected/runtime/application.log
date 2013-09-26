@@ -419,3 +419,70 @@ Stack trace:
 #15 {main}
 REQUEST_URI=/
 ---
+2013/09/26 22:35:41 [error] [system.db.CDbCommand] Error in preparing SQL: DELETE FROM YiiCache WHERE expire>0 AND expire<1380234941
+in C:\wamp\www\CI20\index.php (13)
+2013/09/26 22:35:41 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiCache. The SQL statement executed was: DELETE FROM YiiCache WHERE expire>0 AND expire<1380234941.
+in C:\wamp\www\CI20\index.php (13)
+2013/09/26 22:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/4b223113/listview/styles.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/4b223113...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/4b223113/listview/styles.css
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/9cb8edb/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/9cb8edb/...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/9cb8edb/srbac.css
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/25f9e486/jquery1.7.js".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/25f9e486...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/25f9e486/jquery1.7.js
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ea4aa60c/jquery.yiiactiveform.js".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/ea4aa60c...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/ea4aa60c/jquery.yiiactiveform.js
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ea4aa60c/jquery.ba-bbq.js".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/ea4aa60c...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/ea4aa60c/jquery.ba-bbq.js
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/abound/img/switch.png".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/abound/i...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/themes/abound/img/switch.png
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2013/09/26 22:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/4b223113/listview/jquery.yiilistview.js".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/4b223113...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/assets/4b223113/listview/jquery.yiilistview.js
+HTTP_REFERER=http://localhost/CI20/index.php
+---
