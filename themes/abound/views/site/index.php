@@ -181,7 +181,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-tag"></span><span id="tickettitle"><b>My Open Tickets</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" id="ticketswitcher" class="switcher" style="float:right">',
+			'title'=>'<span class="icon-tag"></span><span id="tickettitle"><b>My Open Tickets</b></span><span id="ticketswitcher" class="switcher" style="float:right">Switch</span>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'troubleticket'
@@ -216,7 +216,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 	<div class="span4">
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><img src="' . Yii::app()->theme->baseUrl . '/img/switch.png" id="issueswitcher" class="switcher" style="float:right">',
+			'title'=>'<span class="icon-search"></span><span id="issuetitle"><b>Search Issues</b></span><span id="issueswitcher" class="switcher" style="float:right">Switch</span>',
 			'titleCssClass'=>'',
 			'contentCssClass'=>'portlet-content outer-portlet portlet_border large-portlet',
                         'id'=>'issuetracker'    
