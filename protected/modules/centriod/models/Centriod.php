@@ -321,7 +321,7 @@ class Centriod extends CModel
 		{
 			throw new CHttpException(500, "CMM3: Centriod error detector failed with error " . $ex);
 		}
-		return $array;
+		return $parsedData;
 	}
 	
 	/**
