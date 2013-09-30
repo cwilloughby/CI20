@@ -111,6 +111,10 @@ class IssueTrackerController extends Controller
 		$this->redirect(array('admin'));
 	}
 
+	/**
+	 * Displays the issues in a list that allows the user to click and drag issues up or down
+	 * the list to change the issue's priority.
+	 */
 	public function actionChangePriorities()
 	{	
 		// Handle the POST request data submission.
@@ -171,6 +175,9 @@ class IssueTrackerController extends Controller
 			$this->redirect(array('/issuetracker/issuetracker/changepriorities'));
 	}
 	
+	/**
+	 * This function is used by the issueTracker portlet. It may be phased out when we switch to the new theme.
+	 */
 	function actionPortlet()
 	{
 		if(!is_null($_GET['IssueTracker']))

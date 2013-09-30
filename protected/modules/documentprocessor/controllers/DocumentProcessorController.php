@@ -144,11 +144,19 @@ class DocumentProcessorController extends Controller
 		// and the array of documentnames and paths.
 	} // End function actionShareFiles
 	
+	/**
+	 * This function is just used to call the view file that actually draws the file tree.
+	 */
 	public function actionDisplayFileTree()
 	{
 		$this->renderPartial('jqueryFileTree');
 	}
 	
+	/**
+	 * This function uses POSTED search criteria to find the directory to the desired files.
+	 * If no search criteria is provided, it will use the default dir.
+	 * @return string
+	 */
 	public function searchFiles()
 	{
 		$dir = "/wamp/files/";
@@ -156,8 +164,6 @@ class DocumentProcessorController extends Controller
 		if(isset($_POST['search']) && $_POST['search'] != "")
 		{
 			$dir = Documents::model()->find('documentname=:param', array(':param'=>$_POST['search']))->path;
-			
-			//$dir = "/wamp/files/uploads/";
 		}
 		
 		return $dir;
