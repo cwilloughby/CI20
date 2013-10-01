@@ -33,14 +33,18 @@ class AttorneyTest extends CDbTestCase
 		$this->attorney->fname = "afsasdf";
 		$this->attorney->lname = "eqwrqwer";
 		$this->attorney->barid = NULL;
-		$this->assertFalse($this->attorney->doesAttorneyExist(), "The test returned null or it found an attorney when it should not have.");
+		$results = $this->attorney->doesAttorneyExist();
+		$this->assertInternalType('boolean', $results);
+		$this->assertFalse($results, "The test found an attorney when it should not have.");
 		
 		// This second check should return true, because there is an Attorney named "Hershell Koger"
 		// NOTE: The null barid will mess up the search. There will need to be some kind of "IS NULL" check.
 		$this->attorney->fname = "Hershell";
 		$this->attorney->lname = "Koger";
 		$this->attorney->barid = NULL;
-		$this->assertTrue($this->attorney->doesAttorneyExist(), "The test did not find an attorney when it should have.");
+		$results = $this->attorney->doesAttorneyExist();
+		$this->assertInternalType('boolean', $results);
+		$this->assertTrue($results, "The test did not find an attorney when it should have.");
 	}
 	
 	/**
@@ -48,13 +52,24 @@ class AttorneyTest extends CDbTestCase
 	 */
 	public function testGetAttorneyId()
 	{
-		// Let's pretend that the user entered this data in the form.
+		// Let's pretend that the user entered this information for an attorney that does not exist.
+		$formData['fname'] = "afsasdf";
+		$formData['lname'] = "eqwrqwer";
+		$formData['barid'] = NULL;
+		// Call the getAttorneyId function and check that the return value is an integer.
+		$returnValue = $this->attorney->getAttorneyId($formData);
+		$this->assertInternalType('integer', $returnValue);
+		// The number that was returned should match an attyid in the database.
+		$this->assertTrue($this->attorney->exists('attyid = :id ', array(':id'=>$returnValue)),
+				"The Attorney ID that was returned was not actually in the database!");
+		
+		// Let's pretend that the user entered this information for an attorney that does exist.
 		$formData['fname'] = "Hershell";
 		$formData['lname'] = "Koger";
 		$formData['barid'] = NULL;
 		// Call the getAttorneyId function and check that the return value is an integer.
 		$returnValue = $this->attorney->getAttorneyId($formData);
-		$this->assertInternalType('integer', $returnValue, "getAttorneyId did not return an integer!");
+		$this->assertInternalType('integer', $returnValue);
 		// The number that was returned should match an attyid in the database.
 		$this->assertTrue($this->attorney->exists('attyid = :id ', array(':id'=>$returnValue)),
 				"The Attorney ID that was returned was not actually in the database!");
