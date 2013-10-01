@@ -1,7 +1,7 @@
 <?php
 /**
- * This class is for the weather porlet. 
- * This allows the login form to be displayed on the home page.
+ * This class is for the news porlet. 
+ * This allows the news report to be displayed on the home page.
  */
 class NewsReport extends CPortlet
 {
@@ -17,7 +17,7 @@ class NewsReport extends CPortlet
 		if(Yii::app()->user->checkAccess('DefaultExternal', Yii::app()->user->id) || (!isset(Yii::app()->user->id)))
 			$this->type = "N/A";
 		
-		// Grab all the tips and conditionals of the selected subject.
+		// Grab the 5 most recent news posts of the desired news type.
 		$news = Yii::app()->db->createCommand()
 			->select('ci_news.newsid, ci_news.news, ci_news.date')
 			->from('ci_news_type')
