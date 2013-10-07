@@ -105,9 +105,11 @@ return array(
 			'caseSensitive'=>false,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'CI20/<controller:\w+>/<id:\d+>'=>'CI20/<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+				'CI20/<module:\w+>/<controller:\w+>/<action:\w+>' => 'CI20/<module>/<controller>/<action>',
 			),
 		),
 		'cache'=>array(

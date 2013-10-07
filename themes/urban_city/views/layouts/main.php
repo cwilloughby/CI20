@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Urban City - free website template</title>
+<title>CI2.0</title>
 <meta name="keywords" content="free website templates, urban city, life, blue, CSS, HTML" />
 <meta name="description" content="Urban City is a free website template from templatemo.com" />
 
@@ -11,7 +11,13 @@ $baseUrl = Yii::app()->theme->baseUrl;
 $cs = Yii::app()->getClientScript();
 Yii::app()->clientScript->registerCoreScript('jquery');
 
+
+$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
+$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 $cs->registerCssFile($baseUrl.'/css/templatemo_style.css');
+$cs->registerCssFile($baseUrl.'/css/spans.css');
+$cs->registerCssFile($baseUrl.'/css/responsive_widths.css');
+$cs->registerCssFile($baseUrl.'/css/abound.css');
 ?>
 
 <script language="javascript" type="text/javascript">
@@ -25,7 +31,10 @@ function clearText(field)
 <?php
 $cs->registerCssFile($baseUrl.'/css/nivo-slider.css', 'screen');
 
+$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 $cs->registerScriptFile($baseUrl.'/js/jquery.nivo.slider.js');
+$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
+$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
 ?>
 
 <script type="text/javascript">
@@ -53,6 +62,9 @@ $(window).load(function() {
 </head>
 
 <body>
+	
+<?php require_once('tpl_navigation.php')?>
+	
 <section class="main-body">
     <div class="container-fluid">
             <!-- Include content pages -->

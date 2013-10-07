@@ -59,21 +59,21 @@ a.more:hover { text-decoration: none; color: #fff; }
 .tmo_list li a:hover { color: #990000; text-decoration: none; }
 
 #templatemo_wrapper {
-	width: 960px;
+	width: 70%;
 	margin: 0 auto;
 }
 
 #templatemo_header {
     height: 87px;
-    width: 960px;
+    width: 100%;
     padding: 0;
     margin-bottom: 40px;
-    background: url(/themes/urban_city/images/templatemo_header.jpg) center top no-repeat;
+    background: url(/themes/urban_city/images/templatemo_header.jpg) no-repeat;
 }
 
 #site_title {
 	float: left;
-	width: 260px;
+	width: 100%;
 	padding-top: 28px;
 	margin-right: 40px;
 }
@@ -84,17 +84,16 @@ a.more:hover { text-decoration: none; color: #fff; }
 }
 
 #site_title h1 a {
-	display: block;
-	background: url(/themes/urban_city/images/templatemo_logo.png) no-repeat;
-	width: 200px;
+	width: 80%;
 	height: 55px;
 	margin: 0 0 0 30px;
 	padding: 0;
 	font-size: 40px;
-	color: #d07f0b;
+	color: rgb(255, 255, 255);
 	font-weight: normal;
 	text-decoration: none;
-	text-indent: -10000px
+	text-indent: -10000px;
+	line-height: 1em;
 }
 
 #site_title a span {
@@ -107,7 +106,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #templatemo_menu {
 	float: left;
-	width: 400px;
+	width: 100%;
 	height: 76px;
 	padding: 0;
 }
@@ -128,10 +127,10 @@ a.more:hover { text-decoration: none; color: #fff; }
 	float: left;
 	display: block;
 	position: relative;
-	width: 95px;
+	width: 10%;
 	height: 30px;
 	padding: 46px 0 0 0;
-	margin: 0 5px 0 0;
+	margin: 0 0px 0 0;
 	font-size: 14px;
 	text-align: center;
 	text-decoration: none;
@@ -146,7 +145,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 	position: absolute;
 	top: 5px;
 	left: 32px;
-	width: 38px;
+	width: 100%;
 	height: 37px;
 }
 #templatemo_menu ul li a span.home { background: url(/themes/urban_city/images/templatemo_home.png) no-repeat }
@@ -164,7 +163,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #slider {
 	clear: both;
-	width: 960px;
+	width: 100%;
 	height: 245px;
 	background: #000;
 	margin-bottom: 40px;
@@ -173,7 +172,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #templatemo_middle {
 	clear: both;
-	width: 960px;
+	width: 100%;
 	height: 347px;
 	color: #f6f6f6;
 	margin-bottom: 40px;
@@ -204,7 +203,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #templatemo_content {
 	clear: both;
-	width: 960px;
+	width: 100%;
 	margin-bottom: 40px;
 }
 
@@ -220,7 +219,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 }
 
 #templatemo_footer {
-	width: 960px;
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 	color: #d6d6d6;
