@@ -71,7 +71,6 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #templatemo_header {
     height: 87px;
-    width: 100%;
     padding: 0 0 0 30px;
     margin-bottom: 40px;
     background: url(/themes/urban_city/images/templatemo_header.jpg) no-repeat;
@@ -99,7 +98,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 	color: rgb(255, 255, 255);
 	font-weight: normal;
 	text-decoration: none;
-	text-indent: -10000px;
+	/*text-indent: -10000px;*/
 	line-height: 1em;
 }
 

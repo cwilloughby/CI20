@@ -10,15 +10,15 @@
 			<?php 
 			if($data->category == 'Video')
 			{
+				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 				echo CHtml::link('<img class="thumbnail photolinks" src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
 					array('view', 'id'=>$data->resourceid, 'type'=>$data->type));
-				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 			}
 			else
 			{
+				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 				echo CHtml::link('<img class="thumbnail photolinks" src="'. Yii::app()->request->baseUrl . '/themes/abound/img/' . $data->poster . '" alt="' . $data->title . '"/>', 
 					array("/files/training/" . $data->document->documentname));
-				echo "<caption class='thumbnail caption phototitle'>$data->title</caption></img>";
 			}
 			?>
 			</td>

@@ -47,7 +47,11 @@
 
 	<div class="row-fluid">
     <div id="templatemo_content">
-    
+		
+		<?php
+    	if(!isset(Yii::app()->user->id))
+			$this->widget('UserLogin');
+		?>
     	<div class="span6">
         	<h2>Photo Gallery</h2>
             <ul class="gallery">

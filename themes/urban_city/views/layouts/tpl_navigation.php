@@ -2,7 +2,7 @@
 <div id="navbar">
 <div id="templatemo_header">
 	<div id="site_title">
-		<h1><a href="http://www.templatemo.com" target="_parent">CI2.0</a></h1>
+		<h1><a href="/site/index" target="_parent">CI2.0</a></h1>
 	</div> <!-- end of site_title -->
 
 	<div id="templatemo_menu">
@@ -10,13 +10,14 @@
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 			<div class="container">
+				
 				<?php $this->widget('zii.widgets.CMenu',array(
 						'htmlOptions'=>array('class'=>'pull-right nav'),
 						'submenuHtmlOptions'=>array('class'=>'dropdown-menu'),
 						'itemCssClass'=>'item-test',
 						'encodeLabel'=>false,
 						'items'=>array(
-							array('label'=>'<span class="home"></span>Home', 'url'=>'/'),
+							array('label'=>'<span class="home"></span>Home', 'url'=>'/site/index'),
 							array(
 								'label'=>'<span class="portfolio"></span>Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'items'=>array(
@@ -24,6 +25,8 @@
 									array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 									array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 									array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+									array('label'=>'Document P Admin', 'url'=>array('/documentprocessor/documentprocessor/adminsearchablefiletree')),
+									array('label'=>'Document Upload', 'url'=>array('/documentprocessor/documentprocessor/upload')),
 								),
 							),
 							array(

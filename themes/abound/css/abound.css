@@ -881,6 +881,7 @@ span.required
 	margin-top: 5px;
 	margin-right: 25px;
 	cursor: -webkit-grabbing;
+	caption-side:bottom;
 }
 #tickettitle{
     font-weight: bold;

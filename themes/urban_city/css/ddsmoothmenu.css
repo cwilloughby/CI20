@@ -231,8 +231,7 @@ Begin bootstap.min.css Content
     line-height: 20px;
     color: #333;
     white-space: nowrap;
-	background: url(/themes/urban_city/images/templatemo_menu.png) top;
-    background-size: cover !important;
+	background: url(/themes/urban_city/images/templatemo_menu_medium.png) no-repeat top !important;
 	width: 160px !important;
 	padding: 10px !important;
 	height: 20px !important;

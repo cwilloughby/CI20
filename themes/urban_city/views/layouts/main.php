@@ -17,6 +17,8 @@ $cs->registerCssFile($baseUrl.'/css/abound.css');
 $cs->registerCssFile($baseUrl.'/css/templatemo_style.css');
 $cs->registerCssFile($baseUrl.'/css/nivo-slider.css', 'screen');
 $cs->registerCssFile($baseUrl.'/css/ddsmoothmenu.css');
+$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
+$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 ?>
 
 <script language="javascript" type="text/javascript">
