@@ -51,7 +51,13 @@ a.more:hover { text-decoration: none; color: #fff; }
 .col_w540 { width: 540px }
 .col_w340 { width: 340px }
 .col_w440 { width: 440px }
-.v_divider { padding-right: 50px; background: url(/themes/urban_city/images/templatemo_divider.png) right no-repeat }
+.v_divider 
+{ 
+	padding-right: 50px; 
+	background: url(/themes/urban_city/images/templatemo_divider.png);
+	background-repeat:no-repeat;
+	background-position:right; 
+}
 
 .tmo_list { margin: 20px 0; padding: 0; list-style: none; }
 .tmo_list li { margin: 0 0 13px; padding: 0 0 3px 0;line-height: 1em; color: #1d1d1d; }
@@ -66,14 +72,15 @@ a.more:hover { text-decoration: none; color: #fff; }
 #templatemo_header {
     height: 87px;
     width: 100%;
-    padding: 0;
+    padding: 0 0 0 30px;
     margin-bottom: 40px;
     background: url(/themes/urban_city/images/templatemo_header.jpg) no-repeat;
+	background-position: 10% 0%;
 }
 
 #site_title {
 	float: left;
-	width: 100%;
+	width: 20%;
 	padding-top: 28px;
 	margin-right: 40px;
 }
@@ -105,8 +112,8 @@ a.more:hover { text-decoration: none; color: #fff; }
 }
 
 #templatemo_menu {
-	float: left;
-	width: 100%;
+	float: right;
+	width: 75%;
 	height: 76px;
 	padding: 0;
 }
@@ -124,10 +131,9 @@ a.more:hover { text-decoration: none; color: #fff; }
 }
 
 #templatemo_menu ul li a {
-	float: left;
 	display: block;
 	position: relative;
-	width: 10%;
+	width: 100px;
 	height: 30px;
 	padding: 46px 0 0 0;
 	margin: 0 0px 0 0;

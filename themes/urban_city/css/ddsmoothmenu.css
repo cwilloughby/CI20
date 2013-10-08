@@ -143,10 +143,6 @@ opacity: 0.5;
   text-decoration: none;
 }
 
-.nav-collapse {
-	padding-top: 15px;
-}
-
 /*
 Begin bootstap.min.css Content
 Begin bootstap.min.css Content
@@ -174,9 +170,12 @@ Begin bootstap.min.css Content
     outline: 0;
 }
 .caret {
+	position: relative !important;
     display: inline-block;
-    width: 0;
-    height: 0;
+    width: 0px !important;
+    height: 0 !important;
+	top: 0px !important;
+	left: 0px !important;
     vertical-align: top;
     border-top: 4px solid #000;
     border-right: 4px solid transparent;
@@ -197,7 +196,6 @@ Begin bootstap.min.css Content
     padding: 5px 0;
     margin: 2px 0 0;
     list-style: none;
-    background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
     *border-right-width: 2px;
@@ -233,6 +231,11 @@ Begin bootstap.min.css Content
     line-height: 20px;
     color: #333;
     white-space: nowrap;
+	background: url(/themes/urban_city/images/templatemo_menu.png) top;
+    background-size: cover !important;
+	width: 160px !important;
+	padding: 10px !important;
+	height: 20px !important;
 }
 .dropdown-menu li>a:hover, .dropdown-menu li>a:focus, .dropdown-submenu:hover>a {
     color: #fff;
@@ -340,24 +343,9 @@ Begin bootstap.min.css Content
 }
 .navbar-inner {
     min-height: 40px;
-    padding-right: 20px;
+    padding-right: 50px;
     padding-left: 20px;
-    background-color: #fafafa;
-    background-image: -moz-linear-gradient(top, #fff, #f2f2f2);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2));
-    background-image: -webkit-linear-gradient(top, #fff, #f2f2f2);
-    background-image: -o-linear-gradient(top, #fff, #f2f2f2);
-    background-image: linear-gradient(to bottom, #fff, #f2f2f2);
-    background-repeat: repeat-x;
-    border: 1px solid #d4d4d4;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
-    *zoom: 1;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	float:right;
 }
 .navbar-inner:before, .navbar-inner:after {
     display: table;
@@ -509,7 +497,7 @@ Begin bootstap.min.css Content
     margin: 0 10px 0 0;
 }
 .navbar .nav.pull-right {
-    float: right;
+    /* float: right;*/
     margin-right: 0;
 }
 .navbar .nav>li {
@@ -652,17 +640,6 @@ Begin bootstap.min.css Content
 }
 .navbar-inverse {
     color: #999;
-}
-.navbar-inverse .navbar-inner {
-    background-color: #1b1b1b;
-    background-image: -moz-linear-gradient(top, #222, #111);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#111));
-    background-image: -webkit-linear-gradient(top, #222, #111);
-    background-image: -o-linear-gradient(top, #222, #111);
-    background-image: linear-gradient(to bottom, #222, #111);
-    background-repeat: repeat-x;
-    border-color: #252525;
-    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 .navbar-inverse .brand, .navbar-inverse .nav>li>a {
     color: #999;

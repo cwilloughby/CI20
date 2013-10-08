@@ -96,7 +96,7 @@ return array(
 			'class' => 'CWebUser',
 			'autoUpdateFlash' => false,
 			'allowAutoLogin'=>false,
-			'loginUrl'=>array('/security/login/login'),
+			'loginUrl'=>array('/security/login/loginform'),
 		),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
@@ -107,7 +107,9 @@ return array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'CI20/<controller:\w+>/<id:\d+>'=>'CI20/<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'CI20/<controller:\w+>/<action:\w+>/<id:\d+>'=>'CI20/<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'CI20/<controller:\w+>/<action:\w+>'=>'CI20/<controller>/<action>',
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 				'CI20/<module:\w+>/<controller:\w+>/<action:\w+>' => 'CI20/<module>/<controller>/<action>',
 			),

@@ -15,7 +15,7 @@
 	
 	<div class="row-fluid">
 		<div id="templatemo_middle">
-			<div class="span7 v_divider">
+			<div class="span6 v_divider">
 				<h1>Welcome to CI2.0</h1>
 				<p>This is an Intranet website and can only be accessed from a computer 
 				inside the Metro/JIS Domain, just open an internet window and in the
@@ -25,20 +25,21 @@
 				You must be a Criminal Court Clerk employee to create an account. 
 				Site functions are disabled until you have logged in.</p>
 			</div>
+			
 			<div class="span5">
 				<div>
-					<div class="tb_entry">
+					<p>
 						Donec iaculis felis id neque. Morbi nunc. Praesent varius egestas velit.
-					</div>
-					<div class="tb_entry">
+					</p>
+					<p>
 						Donec a massa ut pede pulvinar vulputate Nulla et augue. Sed eu nunc quis pede tristique suscipit.
-					</div>
-					<div class="tb_entry">
+					</p>
+					<p>
 						Nam sit amet justo vel libero tincidunt dignissim Cras magna velit, pellentesque mattis, faucibus vitae, feugiat vitae, sapien.
-					</div>
-					<div class="tb_entry">
+					</p>
+					<p>
 						Fusce ac orci sit Amet velit ultrices condimentum. Integer imperdiet odio ac eros.
-					</div>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -90,11 +91,4 @@
 		</div>
     </div>
 	</div>
-</div>
-
-<div id="templatemo_footer_wrapper">
-	<div id="templatemo_footer">
-		Copyright &copy; <?php echo date('Y'); ?> by Office of the Criminal Court Clerk of Davidson County.<br/>
-		All Rights Reserved.
-	</div> <!-- end of templatemo_footer -->
 </div>

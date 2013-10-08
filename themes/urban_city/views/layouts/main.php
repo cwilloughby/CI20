@@ -11,13 +11,12 @@ $baseUrl = Yii::app()->theme->baseUrl;
 $cs = Yii::app()->getClientScript();
 Yii::app()->clientScript->registerCoreScript('jquery');
 
-
-$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
-$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
-$cs->registerCssFile($baseUrl.'/css/templatemo_style.css');
 $cs->registerCssFile($baseUrl.'/css/spans.css');
 $cs->registerCssFile($baseUrl.'/css/responsive_widths.css');
 $cs->registerCssFile($baseUrl.'/css/abound.css');
+$cs->registerCssFile($baseUrl.'/css/templatemo_style.css');
+$cs->registerCssFile($baseUrl.'/css/nivo-slider.css', 'screen');
+$cs->registerCssFile($baseUrl.'/css/ddsmoothmenu.css');
 ?>
 
 <script language="javascript" type="text/javascript">
@@ -29,11 +28,8 @@ function clearText(field)
 </script>
 
 <?php
-$cs->registerCssFile($baseUrl.'/css/nivo-slider.css', 'screen');
-
 $cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 $cs->registerScriptFile($baseUrl.'/js/jquery.nivo.slider.js');
-$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 $cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
 ?>
 
@@ -42,8 +38,8 @@ $(window).load(function() {
 	$('#slider').nivoSlider({
 		effect:'random',
 		slices:15,
-		animSpeed:500,
-		pauseTime:2000,
+		animSpeed:600,
+		pauseTime:8000,
 		startSlide:0, // Set starting Slide (0 index)
 		directionNav: false, // Next and Prev
 		directionNavHide:false, // Only show on hover
@@ -71,6 +67,8 @@ $(window).load(function() {
             <?php echo $content; ?>
     </div>
 </section>
+	
+<?php require_once('tpl_footer.php')?>
 </body>
 
 </html>
