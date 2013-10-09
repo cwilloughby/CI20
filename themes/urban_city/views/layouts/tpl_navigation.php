@@ -20,6 +20,7 @@
 							array('label'=>'<span class="home"></span>Home', 'url'=>'/site/index'),
 							array(
 								'label'=>'<span class="portfolio"></span>Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'visible'=>!Yii::app()->user->isGuest,
 								'items'=>array(
 									array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 									array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),

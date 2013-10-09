@@ -1,10 +1,11 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-
-  <div class="row-fluid">
+	<br/>
+	<div id="templatemo_body">
+	<div class="row-fluid">
 	<div class="span3">
 		<div class="sidebar-nav">
-        
+
 		  <?php $this->widget('zii.widgets.CMenu', array(
 			/*'type'=>'list',*/
 			'encodeLabel'=>false,
@@ -16,7 +17,7 @@
 				array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				// The link to the emergency response plan.
 				array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
-				
+
 				// Include the operations menu
 				array('label'=>'OPERATIONS','items'=>$this->menu1),
 			),
@@ -33,24 +34,24 @@
 			$this->endWidget();
 		  ?>
 		</div>
-        <br>
-		
-    </div><!--/span-->
-    <div class="span9">
-    
-    <?php if(isset($this->breadcrumbs)):?>
+		<br>
+	</div><!--/span-->
+	
+	<div class="span9">
+
+	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-            'links'=>$this->breadcrumbs,
+			'links'=>$this->breadcrumbs,
 			'homeLink'=>CHtml::link('Home', '/'),
 			'htmlOptions'=>array('class'=>'breadcrumb')
-        )); ?><!-- breadcrumbs -->
-    <?php endif?>
-    
-    <!-- Include content pages -->
-    <?php echo $content; ?>
+		)); ?><!-- breadcrumbs -->
+	<?php endif?>
+
+	<!-- Include content pages -->
+	<?php echo $content; ?>
 
 	</div><!--/span-->
-  </div><!--/row-->
-
+	</div><!--/row-->
+	</div>
 
 <?php $this->endContent(); ?>

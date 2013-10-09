@@ -1,8 +1,10 @@
 
 <div id="templatemo_wrapper">
 	
+	<div id="templatemo_body">
+	
 	<div class="row-fluid">
-		<div class="span10">
+		<div class="span12" id="nivo">
 			<div id="slider">
 				<a href="#" target="_parent"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/01.jpg" alt="01" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." /></a>
 				<a href="#" target="_parent"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/02.jpg" alt="02" title="Nullam ante leo, consectetur eget adipiscing et." /></a>
@@ -15,7 +17,21 @@
 	
 	<div class="row-fluid">
 		<div id="templatemo_middle">
-			<div class="span6 v_divider">
+			<div class="span4 v_divider">
+				<?php
+				if(!isset(Yii::app()->user->id))
+					$this->widget('UserLogin');
+				else
+				{
+					echo "<h4>Last Login</h4>";
+					$this->widget('TimeReport');
+					echo "<h4>Weather</h4>";
+					$this->widget('WeatherReport');
+				}
+				?>
+			</div>
+			
+			<div class="span5 v_divider">
 				<h1>Welcome to CI2.0</h1>
 				<p>This is an Intranet website and can only be accessed from a computer 
 				inside the Metro/JIS Domain, just open an internet window and in the
@@ -25,22 +41,11 @@
 				You must be a Criminal Court Clerk employee to create an account. 
 				Site functions are disabled until you have logged in.</p>
 			</div>
-			
-			<div class="span5">
-				<div>
-					<p>
-						Donec iaculis felis id neque. Morbi nunc. Praesent varius egestas velit.
-					</p>
-					<p>
-						Donec a massa ut pede pulvinar vulputate Nulla et augue. Sed eu nunc quis pede tristique suscipit.
-					</p>
-					<p>
-						Nam sit amet justo vel libero tincidunt dignissim Cras magna velit, pellentesque mattis, faucibus vitae, feugiat vitae, sapien.
-					</p>
-					<p>
-						Fusce ac orci sit Amet velit ultrices condimentum. Integer imperdiet odio ac eros.
-					</p>
-				</div>
+			<div class="span3">
+				<?php 
+				echo "<h4>News</h4>";
+				$this->widget('NewsReport');
+				?>
 			</div>
 		</div>
 	</div>
@@ -48,10 +53,6 @@
 	<div class="row-fluid">
     <div id="templatemo_content">
 		
-		<?php
-    	if(!isset(Yii::app()->user->id))
-			$this->widget('UserLogin');
-		?>
     	<div class="span6">
         	<h2>Photo Gallery</h2>
             <ul class="gallery">
@@ -95,4 +96,5 @@
 		</div>
     </div>
 	</div>
+</div>
 </div>
