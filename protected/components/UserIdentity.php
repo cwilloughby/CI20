@@ -30,7 +30,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_USERNAME_NOT_ACTIVE;
 			
 			// Record the failed login event.
-			$this->recordLoginEvent($record, 'Login Failed, Decativated User');
+			$this->recordLoginEvent($record, 'Login Failed, Deactivated User');
 		}
         else if($record->password!==sha1($this->password))
 		{
