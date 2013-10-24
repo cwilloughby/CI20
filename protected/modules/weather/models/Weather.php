@@ -20,6 +20,7 @@ class Weather
 			curl_setopt($curl, CURLOPT_URL, self::WEATHER);
 			curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)');
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_HEADER, false);
 			$value = curl_exec($curl);
 			curl_close($curl);
 		

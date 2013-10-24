@@ -88,7 +88,7 @@ class EmailController extends Controller
 			$sec = Yii::app()->getSecurityManager();
 			$email = $sec->decrypt(urldecode($_GET["email"]));
 			// Create the link to the password recovery page.
-			$link = $this->createAbsoluteUrl('/security/password/recovery',array('username'=> $_GET['username']));
+			$link = $this->createAbsoluteUrl('/security/password/passwordrecoveryform',array('username'=> $_GET['username']));
 			
 			// Set the sender, the recipient, the subject, the body, and the message type.
 			$model->setEmail($email, "ccc.helpdesk@nashville.gov", "CI Password Recovery",

@@ -62,17 +62,18 @@
 </head>
 
 <body>
-	
-<?php require_once('tpl_navigation.php')?>
-	
-<section class="main-body">
-    <div class="container-fluid">
-            <!-- Include content pages -->
-            <?php echo $content; ?>
-    </div>
-</section>
-	
-<?php require_once('tpl_footer.php')?>
+	<?php require_once('tpl_navigation.php')?>
+
+	<section class="main-body">
+		<div class="container-fluid">
+			<!-- Include content pages -->
+			<?php echo $content; ?>
+			<!-- Make sure the page footer will still be at the bottom of the page on smaller pages -->
+			<div class="push"></div>
+		</div>
+	</section>
+
+	<?php require_once('tpl_footer.php')?>
 </body>
 
 </html>

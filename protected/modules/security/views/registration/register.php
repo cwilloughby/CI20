@@ -6,7 +6,7 @@
 $this->pageTitle = Yii::app()->name . ' - Register';
 
 $this->breadcrumbs=array(
-	'Login'=>array('/security/login/login'),
+	'Login'=>array('/security/login/loginform'),
 	'Register',
 );
 ?>

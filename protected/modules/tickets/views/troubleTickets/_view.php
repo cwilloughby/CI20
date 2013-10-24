@@ -46,7 +46,7 @@
 			<?php echo nl2br($data->description); ?>
 			
 			<h4>
-			<?php echo CHtml::link('Manage Ticket', array('view', 'id'=>$data->ticketid)); ?>
+			<?php echo CHtml::link('Manage Ticket', array('view', 'id'=>$data->ticketid), array('class'=>'aboundLink')); ?>
 			</h4>
 		</div>
 		<div class="span6">

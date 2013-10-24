@@ -57,7 +57,7 @@
 									array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 									array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 									array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-									array('label'=>'Upload Training Resources', 'url'=>array('/videos/videos/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+									array('label'=>'Upload Training Resources', 'url'=>array('/training/resources/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								),
 							),
 							array(
@@ -91,7 +91,7 @@
 								'visible'=>!Yii::app()->user->isGuest,
 								'items'=>array(
 									array('label'=>'Logout', 'url'=>array('/security/login/logout')),
-									array('label'=>'Change Password', 'url'=>array('/security/password/change')),
+									array('label'=>'Change Password', 'url'=>array('/security/password/changePassword')),
 								),
 							),
 						)

@@ -12,7 +12,8 @@ class CustomListView extends CListView
         parent::init();
 
         $this->pager = array( 
-			'class' => 'CLinkPager', 
+			'class' => 'CLinkPager',
+			'header' => '',
 			'firstPageLabel' => '<<', 
 			'prevPageLabel' => '<', 
 			'nextPageLabel' => '>', 

@@ -1,7 +1,7 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 	<br/>
-	<div id="templatemo_body">
+	<div id="abound_body">
 	<div class="row-fluid">
 	<div class="span3">
 		<div class="sidebar-nav">
@@ -16,7 +16,7 @@
 				// The link to the hr policy page.
 				array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				// The link to the emergency response plan.
-				array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>Yii::app()->baseUrl . '/assets/files/cep.pdf'),
+				array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>'/files/cep.pdf'),
 
 				// Include the operations menu
 				array('label'=>'OPERATIONS','items'=>$this->menu1),

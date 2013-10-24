@@ -9,14 +9,15 @@ class CustomGridView extends CGridView
 {
     public function init()
 	{
-        parent::init();
+		parent::init();
 
-        $this->pager = array( 
-			'class' => 'CLinkPager', 
+		$this->pager = array( 
+			'class' => 'CLinkPager',
+			'header' => '',
 			'firstPageLabel' => '<<', 
 			'prevPageLabel' => '<', 
 			'nextPageLabel' => '>', 
 			'lastPageLabel' => '>>', 
-	   );
+		);
     }
 }
