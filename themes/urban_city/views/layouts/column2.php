@@ -1,12 +1,14 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
+<div id="abound_wrapper">
+	<br/>
 	<br/>
 	<div id="abound_body">
 	<div class="row-fluid">
 	<div class="span3">
 		<div class="sidebar-nav">
 
-		  <?php $this->widget('zii.widgets.CMenu', array(
+		<?php $this->widget('zii.widgets.CMenu', array(
 			/*'type'=>'list',*/
 			'encodeLabel'=>false,
 			'items'=>array(
@@ -53,5 +55,5 @@
 	</div><!--/span-->
 	</div><!--/row-->
 	</div>
-
+</div>
 <?php $this->endContent(); ?>

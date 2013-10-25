@@ -35,7 +35,7 @@
 	<?php
 	$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 	$cs->registerScriptFile($baseUrl.'/js/jquery.nivo.slider.js');
-	$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
+	//$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
 	?>
 
 	<script type="text/javascript">

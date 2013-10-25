@@ -20,20 +20,23 @@ if($results)
 	$this->widget('zii.widgets.jui.CJuiTabs',array(
 		'tabs'=>array(
 			// Render the warrant view in a tab.
-			'Warrant'=>	$this->renderPartial('warrant', 
+			'Warrant'=>	array('content'=>$this->renderPartial('warrant', 
 				array(
 					'warrant' => $results['Warrant'],
 				), $this),
+				'id'=>'warrantTab'),
 			// Render the demographic view in a tab.
-			'Demographic'=>	$this->renderPartial('demographic', 
+			'Demographic'=>	array('content'=>$this->renderPartial('demographic', 
 				array(
 					'demographic' => $results['Demographic'],
 				), $this),
+				'id'=>'demographicTab'),
 			// Render the alias view in a tab.
-			'Alias'=>	$this->renderPartial('alias', 
+			'Alias'=> array('content'=>$this->renderPartial('alias', 
 				array(
 					'aliases' => $results['Alias'],
 				), $this),
+				'id'=>'aliasTab'),
 		),
 		// additional javascript options for the tabs plugin
 		'options'=>array(

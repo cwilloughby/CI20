@@ -25,8 +25,7 @@
 									array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 									array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 									array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
-									array('label'=>'Document P Admin', 'url'=>array('/documentprocessor/documentprocessor/adminsearchablefiletree')),
-									array('label'=>'Document Upload', 'url'=>array('/documentprocessor/documentprocessor/upload')),
+									array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 								),
 							),
 							array(

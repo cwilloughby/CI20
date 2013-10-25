@@ -6,6 +6,8 @@
 $this->pageTitle = Yii::app()->name . ' - Change Password';
 ?>
 
+<h1>Change Your Password</h1>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

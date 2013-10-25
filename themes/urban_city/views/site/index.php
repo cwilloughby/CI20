@@ -36,7 +36,10 @@
 			<p>Please create an account under the login if you have not already done so.
 			You must be a Criminal Court Clerk employee to create an account. 
 			Site functions are disabled until you have logged in.</p>
+			
+			<p>We hope you enjoy the new CI site.</p>
 		</div>
+		
 		<div class="span3">
 			<?php 
 			echo "<h4>News</h4>";
@@ -47,49 +50,25 @@
 </div>
 
 <div class="row-fluid">
-<div id="templatemo_content">
-
-	<div class="span6">
-		<h2>Photo Gallery</h2>
-		<ul class="gallery">
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_02.jpg" alt="image 2" /></a></li>
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_03.jpg" alt="image 3" /></a></li>
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_04.jpg" alt="image 4" /></a></li>
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_05.jpg" alt="image 5" /></a></li>
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_06.jpg" alt="image 6" /></a></li>
-			<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_07.jpg" alt="image 7" /></a></li>
-		</ul>
-	</div>
-
-	<div class="span6">
-		<div class="row-fluid">
-			<div class="span10">
-				<h2>High Quality Products</h2>
-			</div>
-			<div class="span5">
-				<ul class="tmo_list">
-					<li><a href="#">&raquo; Morbi sed vehicula augue</a></li>
-					<li><a href="#">&raquo; Vestibulum suscipit</a></li>
-					<li><a href="#">&raquo; Risus sed fermentum</a></li>
-					<li><a href="#">&raquo; Feugiat risus ligula</a></li>
-				</ul>
-			</div>
-			<div class="span5">
-				<ul class="tmo_list">
-					<li><a href="#">&raquo; Morbi sed vehicula augue</a></li>
-					<li><a href="#">&raquo; Vestibulum suscipit</a></li>
-					<li><a href="#">&raquo; Risus sed fermentum</a></li>
-					<li><a href="#">&raquo; Feugiat risus ligula</a></li>
-				</ul>
-			</div>
+	<div id="templatemo_content">
+		
+		<div class="span9 v_divider">
+			<h4>Photo Gallery</h4>
+			<ul class="gallery">
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_02.jpg" alt="image 2" /></a></li>
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_03.jpg" alt="image 3" /></a></li>
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_04.jpg" alt="image 4" /></a></li>
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_05.jpg" alt="image 5" /></a></li>
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_06.jpg" alt="image 6" /></a></li>
+				<li><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl;?>/images/templatemo_image_07.jpg" alt="image 7" /></a></li>
+			</ul>
 		</div>
-
-		<div class="row-fluid">
-			<p><a href="#"><strong>Quisque in diam a justo condimentum molestie. Cum sociis natoque penatibus et magnis dis parturient montes.</strong></a></p>
-			<p>Curabitur quis velit quis tortor tincidunt aliquet. Vivamus leo velit, convallis id, ultrices sit amet, tempor a, libero.</p>
-			<p>Quisque rhoncus nulla quis sem. Mauris quis nulla sed ipsum pretium sagittis. Suspendisse feugiat. Ut sodales libero ut odio. Maecenas venenatis metus eu est. In sed risus ac felis varius bibendum. Nulla imperdiet congue metus.</p>
+		
+		<div class="span3">
+			<?php 
+			echo "<h4>IT News</h4>";
+			$this->widget('NewsReport', array('type'=>'IT News'));
+			?>
 		</div>
 	</div>
 </div>
-</div>
-

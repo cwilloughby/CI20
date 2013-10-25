@@ -670,7 +670,6 @@ label {
 }
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     display: inline-block;
-    height: 20px;
     padding: 4px 6px;
     margin-bottom: 9px;
     font-size: 14px;
@@ -680,7 +679,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-input, textarea, .uneditable-input {
+input, .uneditable-input {
     width: 206px;
 }
 textarea {

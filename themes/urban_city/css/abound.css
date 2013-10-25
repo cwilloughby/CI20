@@ -3,8 +3,23 @@ body {
 	padding-bottom: 40px;
 }
 
+#abound_wrapper {
+	width: 100%;
+	background-image: url(/themes/urban_city/images/small_body.png);
+	background-position: top center;
+	background-repeat: repeat-x;
+}
+
+#footer_top {
+	width: 100%;
+	padding: 30px 0;
+	background-image: url(/themes/urban_city/images/footer_top.png);
+	background-position: top center;
+	background-repeat: repeat-x;
+}
+
 #abound_body {
-    width: 85%;
+    width: 90%;
     margin: 0px auto;
 }
 
@@ -41,9 +56,6 @@ div#navbar {
 }
 /* End Group */
 
-.grid-view {
-
-}
 
 /*Nav bar*/
 .navbar .brand {
@@ -745,7 +757,7 @@ body
 .grid-view .button-column #pageSize
 {
 	min-width:50px; 
-	max-width:65px;
+	max-width:55px;
 }
 
 /**
@@ -811,87 +823,6 @@ span.required
 .ui-accordion-header
 {
 	cursor: pointer;
-}
-
-#weather {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-lightblue.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#lastlogin {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-lightblue.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#quicklinks {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-gray.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#clerknews {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-gray.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#itnews {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-gray.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#training {
-   border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-gray.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#docmanager {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-gray.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#troubleticket {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-drkgray.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#issuetracker {
-   border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-green.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#paperless {
-    border-color: #999999;
-    border-style: solid;
-    border-width: 1px;
-    background-image: url("/themes/abound/img/bg-yellow.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .bigwhitefont {

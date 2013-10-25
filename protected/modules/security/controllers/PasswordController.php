@@ -92,6 +92,7 @@ class PasswordController extends Controller
 	 */
 	public function actionChangePassword()
 	{
+		$this->layout='//layouts/column2';
 		$model=new UserInfo;
 
 		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
