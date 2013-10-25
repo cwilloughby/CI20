@@ -14,12 +14,11 @@
 				<?php $this->widget('zii.widgets.CMenu',array(
 						'htmlOptions'=>array('class'=>'pull-right nav'),
 						'submenuHtmlOptions'=>array('class'=>'dropdown-menu'),
-						'itemCssClass'=>'item-test',
 						'encodeLabel'=>false,
 						'items'=>array(
-							array('label'=>'<span class="home"></span>Home', 'url'=>'/site/index'),
+							array('label'=>'<span class="homeicon"></span>Home', 'url'=>'/site/index'),
 							array(
-								'label'=>'<span class="portfolio"></span>Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="helpdeskicon"></span>Helpdesk <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest,
 								'items'=>array(
 									array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
@@ -31,7 +30,7 @@
 								),
 							),
 							array(
-								'label'=>'<span class="projects"></span>Evidence <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="evidenceicon"></span>Evidence <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
 								'items'=>array(
 									array('label'=>'Search Case Files', 'url'=>array('/evidence/casesummary/admin'), 'visible'=>Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
@@ -40,7 +39,7 @@
 								),
 							),
 							array(
-								'label'=>'<span class="gallery"></span>Admin Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="adminicon"></span>Admin Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
 									|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								'items'=>array(
@@ -49,7 +48,7 @@
 								),
 							),
 							array(
-								'label'=>'IT Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="ITicon"></span>IT Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 								'items'=>array(
 									array('label'=>'Manage Users', 'url'=>array('/security/userinfo/index'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
@@ -61,7 +60,7 @@
 								),
 							),
 							array(
-								'label'=>'Time Log <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="timeicon"></span>Time Log <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
 									|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 									|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
@@ -72,7 +71,7 @@
 								),
 							),
 							array(
-								'label'=>'Evaluations <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="evaluationicon"></span>Evaluations <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest,
 								'items'=>array(
 									array('label'=>'Evaluations', 'url'=>array('/evaluations/evaluations/index'), 'visible'=>!Yii::app()->user->isGuest),
@@ -80,14 +79,14 @@
 								),
 							),
 							array(
-								'label'=>'Links <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="linksicon"></span>Links <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 								'items'=>array(
 									array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 								),
 							),
 							array(
-								'label'=>Yii::app()->user->name . '<span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+								'label'=>'<span class="usericon"></span>' . Yii::app()->user->name . '<span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 								'visible'=>!Yii::app()->user->isGuest,
 								'items'=>array(
 									array('label'=>'Logout', 'url'=>array('/security/login/logout')),

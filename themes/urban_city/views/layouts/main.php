@@ -19,6 +19,7 @@
 	$cs->registerCssFile($baseUrl.'/css/ddsmoothmenu.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
+	$cs->registerCssFile(Yii::app()->baseUrl . '/css/sprites.css');
 	?>
 		
 	<link rel="shortcut icon" href="<?php echo $baseUrl;?>/images/favicon.ico">

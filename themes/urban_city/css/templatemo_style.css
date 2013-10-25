@@ -170,13 +170,8 @@ a.more:hover { text-decoration: none; color: #fff; }
 	position: absolute;
 	top: 5px;
 	left: 32px;
-	width: 100%;
 	height: 37px;
 }
-#templatemo_menu ul li a span.home { background: url(/themes/urban_city/images/templatemo_home.png) no-repeat }
-#templatemo_menu ul li a span.portfolio { background: url(/themes/urban_city/images/templatemo_portfolio.png) no-repeat }
-#templatemo_menu ul li a span.projects { background: url(/themes/urban_city/images/templatemo_project.png) no-repeat }
-#templatemo_menu ul li a span.gallery { background: url(/themes/urban_city/images/templatemo_gallery.png) no-repeat }
 
 #templatemo_menu ul li a:hover, #templatemo_menu ul li .current { color: #0fa7ba;  }
 #templatemo_menu ul li .last { background: none }
