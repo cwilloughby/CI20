@@ -627,8 +627,7 @@ input.span1, textarea.span1, .uneditable-input.span1 {
 
 @media(max-width:767px) {
     body {
-    padding-right: 20px;
-    padding-left: 20px;
+
 }
 .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
     margin-right: -20px;
@@ -660,7 +659,6 @@ input.span1, textarea.span1, .uneditable-input.span1 {
 }
 [class*="span"], .row-fluid [class*="span"] {
     display: block;
-    float: none;
     width: 100%;
     margin-left: 0;
     -webkit-box-sizing: border-box;

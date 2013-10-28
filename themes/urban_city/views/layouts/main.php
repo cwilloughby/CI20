@@ -15,11 +15,12 @@
 	$cs->registerCssFile($baseUrl.'/css/responsive_widths.css');
 	$cs->registerCssFile($baseUrl.'/css/abound.css');
 	$cs->registerCssFile($baseUrl.'/css/templatemo_style.css');
-	$cs->registerCssFile($baseUrl.'/css/nivo-slider.css', 'screen');
-	$cs->registerCssFile($baseUrl.'/css/ddsmoothmenu.css');
+	//$cs->registerCssFile($baseUrl.'/css/ddsmoothmenu.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 	$cs->registerCssFile(Yii::app()->baseUrl . '/css/sprites.css');
+	
+	$cs->registerCssFile('/../vendors/flexSlider/flexslider.css');
 	?>
 		
 	<link rel="shortcut icon" href="<?php echo $baseUrl;?>/images/favicon.ico">
@@ -33,38 +34,31 @@
 	</script>
 
 	<?php
+	$cs->registerScriptFile('/../vendors/flexSlider/jquery.flexslider.js');
 	$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
-	$cs->registerScriptFile($baseUrl.'/js/jquery.nivo.slider.js');
-	//$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
+	$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
 	?>
 
 	<script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider({
-			effect:'random',
-			slices:15,
-			animSpeed:600,
-			pauseTime:8000,
-			startSlide:0, // Set starting Slide (0 index)
-			directionNav: false, // Next and Prev
-			directionNavHide:false, // Only show on hover
-			controlNav:false, // 1,2,3...
-			controlNavThumbs:false, //Use thumbnails for Control Nav
-			pauseOnHover:true, //Stop animation while hovering
-			manualAdvance:false, //Force manual transitions
-			captionOpacity:0.8, //Universal caption opacity
-			beforeChange: function(){},
-			afterChange: function(){},
-			slideshowEnd: function(){} //Triggers after all slides have been shown
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				animationLoop: true,
+				slideshow: true,
+				slideshowSpeed: 7000,
+				animationSpeed: 600,
+				directionNav: false, 
+			});
 		});
-	});
 	</script>
 
 </head>
 
 <body>
-	<?php require_once('tpl_navigation.php')?>
-
+	<section id="navigation-main">  
+		<?php require_once('tpl_navigation.php')?>
+	</section>
+	
 	<section class="main-body">
 		<div class="container-fluid">
 			<!-- Include content pages -->

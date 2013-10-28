@@ -77,6 +77,11 @@ div#navbar {
   border-radius:5px;
 }
 
+#navigation-main {
+	z-index: 110;
+	position: relative;
+}
+
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 1224px) {
