@@ -1870,8 +1870,11 @@ table [class*=span], .row-fluid table [class*=span] {
     border-left: 4px solid transparent;
     content: ""}
 .dropdown .caret {
+	position: relative !important;
     margin-top: 8px;
     margin-left: 2px;
+	top: 0px !important;
+	left: 0px !important;
 }
 .dropdown-menu {
     position: absolute;
