@@ -6,23 +6,23 @@
 			<ul class="slides">
 				<li>
 					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/01.jpg" alt="01"/>
-					<p class="flex-caption">This image has a  caption!</p>
+					<p class="flex-caption">This image has a caption!</p>
 				</li>
 				<li>
 					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/02.jpg" alt="02"/>
-					<p class="flex-caption">This image has a  caption!</p>
+					<p class="flex-caption">This image has a caption!</p>
 				</li>
 				<li>
 					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/03.jpg" alt="03"/>
-					<p class="flex-caption">This image has a  caption!</p>
+					<p class="flex-caption">This image has a caption!</p>
 				</li>
 				<li>
 					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/04.jpg" alt="04"/>
-					<p class="flex-caption">This image has a  caption!</p>
+					<p class="flex-caption">This image has a caption!</p>
 				</li>
 				<li>
 					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/05.jpg" alt="05"/>
-					<p class="flex-caption">This image has a  caption!</p>
+					<p class="flex-caption">This image has a caption!</p>
 				</li>
 			</ul>
 		</div>
@@ -57,8 +57,8 @@
 
 			<div class="span3">
 				<?php 
-				echo "<h4>News</h4>";
-				$this->widget('NewsReport');
+				//echo "<h4>News</h4>";
+				//$this->widget('NewsReport');
 				?>
 			</div>
 		</div>
@@ -81,8 +81,8 @@
 
 	<div class="span3">
 		<?php 
-		echo "<h4>IT News</h4>";
-		$this->widget('NewsReport', array('type'=>'IT News'));
+		//echo "<h4>IT News</h4>";
+		//$this->widget('NewsReport', array('type'=>'IT News'));
 		?>
 	</div>
 	</div>

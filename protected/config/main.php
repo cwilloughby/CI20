@@ -23,7 +23,7 @@ return array(
 		'application.extensions.jqrelcopy.JQRelcopy',
 		'application.extensions.smp.StrobeMediaPlayback',
 		'application.extensions.dropzone.EDropzone',
-		'application.extensions.filetree.SFileTree',
+		//'application.extensions.filetree.SFileTree',
 		'application.extensions.yexcel.Yexcel',
 		'application.modules.srbac.controllers.SBaseController',
 		'application.modules.srbac.models.Assignments',
@@ -31,36 +31,38 @@ return array(
 		'application.modules.tickets.controllers.*',
 		'application.modules.tickets.models.*',
 		'application.modules.documentprocessor.models.*',
-		'application.modules.news.models.*',
+		//'application.modules.news.models.*',
 		'application.modules.weather.models.*',
-		'application.modules.issuetracker.models.*',
-		'application.modules.training.models.*',
+		//'application.modules.issuetracker.models.*',
+		//'application.modules.training.models.*',
 		'application.widgets.*',
 		'zii.widgets.CPortlet'
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
+		/*
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'giicool',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
+		*/
 		'security',
 		'email',
 		'tickets',
-		'hr',
+		//'hr',
 		'documentprocessor',
-		'news',
-		'evidence',
+		//'news',
+		//'evidence',
 		'timelog',
 		'weather',
 		'centriod',
-		'links',
-		'evaluations',
-		'training',
-		'issuetracker',
+		//'links',
+		//'evaluations',
+		//'training',
+		//'issuetracker',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid

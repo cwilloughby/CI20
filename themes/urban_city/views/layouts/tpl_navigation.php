@@ -26,10 +26,11 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
-							array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
-							array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+							//array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 						),
 					),
+					/*
 					array(
 						'label'=>'<span class="evidenceicon"></span>Evidence <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('EvidenceView', Yii::app()->user->id)),
@@ -41,13 +42,14 @@
 					),
 					array(
 						'label'=>'<span class="adminicon"></span>Admin Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
-						'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
+						'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)
 							|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						'items'=>array(
 							array('label'=>'News Management', 'url'=>array('/news/news/index'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-							array('label'=>'CJIS Issue Tracker', 'url'=>array('/issuetracker/issuetracker/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+							array('label'=>'CJIS Issue Tracker', 'url'=>array('/issuetracker/issuetracker/admin'), 'visible'=>Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
 						),
 					),
+					*/
 					array(
 						'label'=>'<span class="ITicon"></span>IT Tools <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
@@ -57,13 +59,13 @@
 							array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-							array('label'=>'Upload Training Resources', 'url'=>array('/training/resources/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+							//array('label'=>'Upload Training Resources', 'url'=>array('/training/resources/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					array(
 						'label'=>'<span class="timeicon"></span>Time Log <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
-						'visible'=>!Yii::app()->user->isGuest && (Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)
-							|| Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
+						'visible'=>!Yii::app()->user->isGuest && (/*Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)*/
+							Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 							|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
 						'items'=>array(
 							array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
@@ -71,6 +73,7 @@
 								|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id))),
 						),
 					),
+					/*
 					array(
 						'label'=>'<span class="evaluationicon"></span>Evaluations <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>!Yii::app()->user->isGuest,
@@ -86,6 +89,7 @@
 							array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
+					*/
 					array(
 						'label'=>'<span class="usericon"></span>' . Yii::app()->user->name . '<span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>!Yii::app()->user->isGuest,
