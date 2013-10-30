@@ -16,7 +16,7 @@
 				// The link to the trouble ticket form.
 				array('label'=>'<i class="icon icon-tag"></i> Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 				// The link to the hr policy page.
-				array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+				//array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				// The link to the emergency response plan.
 				array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>'/files/cep.pdf'),
 
