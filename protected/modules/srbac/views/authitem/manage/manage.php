@@ -14,6 +14,11 @@
  * @since 1.0.0
  */
  ?>
+<div id="abound_wrapper">
+	<br/>
+	<br/>
+	<div id="abound_body">
+
 <?php $this->breadcrumbs = array(
     'Srbac Manage'
 )
@@ -174,3 +179,5 @@
     $this->renderPartial($this->module->footer);
   }
 }?>
+	</div>
+</div>

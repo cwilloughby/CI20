@@ -15,6 +15,7 @@
  */
 
  ?>
+
 <p align="right">
 Yii Version <?php echo Yii::getVersion(); ?>,&nbsp;
 Srbac Version <?php echo $this->module->getVersion() ?> - Copyright &copy; 2009-2010 by
