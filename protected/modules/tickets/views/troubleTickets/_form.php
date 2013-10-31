@@ -4,8 +4,8 @@
 /* @var $file Documents */
 /* @var $form CActiveForm */
 
-$cs = Yii::app()->getClientScript();
-$cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
+//$cs = Yii::app()->getClientScript();
+//$cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
 
 <div class="form">
@@ -17,7 +17,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 		'validateOnSubmit'=>true,
 	),
 	'stateful'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
+	'htmlOptions' => array('enctype' => 'multipart/form-data'/*, 'class' => 'dropzone'*/),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -86,23 +86,29 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	</div>
 
 	<div class="row">
-		<div class="fallback">
-			<?php echo $form->fileField($file, 'file'); ?>
-			<?php echo $form->error($file, 'file'); ?>
-		</div>
+		<?php 
+		echo $form->fileField($file, 'file');
+		echo $form->error($file, 'file'); 
+		?>
+	</div>
+	<br/>
+	<div id="button" class="row buttons">
+		<?php
+		/*
+		echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
+			'onclick'=> 'TicketSubmit()'
+		));
+		*/
+		echo CHtml::submitButton($ticket->isNewRecord ? 'Create' : 'Save');
+		?>
 	</div>
 	
-	<div id="button" class="row buttons">
-		<?php echo CHtml::button($ticket->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
-			'onclick'=> 'TicketSubmit()'
-		)); ?>
-	</div>
-
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
 
 <?php
+/*
 Yii::app()->clientScript->registerScript('TicketScript', "
 	Dropzone.options.ticketsForm = {
 		paramName: 'file', // The name that will be used to transfer the file
@@ -141,4 +147,5 @@ Yii::app()->clientScript->registerScript('TicketScript', "
 		return true;
 	}
 ", CClientScript::POS_END);
+*/
 ?>

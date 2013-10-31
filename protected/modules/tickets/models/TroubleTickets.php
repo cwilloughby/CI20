@@ -338,14 +338,18 @@ class TroubleTickets extends CActiveRecord
 		// Remove the first two elements and the last two elements from the POST array to isolate the conditionals.
 		array_shift($postval);
 		array_shift($postval);
-
+		array_pop($postval);
+		array_pop($postval);
+		
 		$this->description .= "\n\n";
 		
 		// Grab all the data from the conditionals and put them in the description.
 		foreach($postval as $key => $value)
 		{
 			if($key != 'yt0')
+			{
 				$this->description .= $key . ": " . $value . "\n";
+			}
 		}
 	}
 }

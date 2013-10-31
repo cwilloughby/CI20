@@ -58,9 +58,59 @@ class TroubleTicketsController extends Controller
 			{
 				// Retieve the conditional text boxes from the posted form data.
 				// The number of conditionals is dynamic, so this is need to extract them.
+				$file->file = CUploadedFile::getInstance($file, 'file');
 				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
+				
+				if(isset($file->file))
+				{
+					$file->uploadType = 'attachment';
+					$file->setDocumentAttributes();
 
+					// Validate the file's attributes.
+					if($file->validate())
+					{
+						// Create the folder if it does not exist.
+						if(!is_dir($file->path))
+							mkdir($file->path, 0777, true);
+						// Set the complete path.
+						$file->path = $file->path . $file->documentname;
+						// Upload the file to the server.
+						$file->file->saveAs($file->path, 'false');
+						// This description is used so the link to the document will work on the website.
+						$ticket->description .= "\nAttachment: " 
+							. CHtml::link($file->documentname,array('/files/attachments/' 
+								. $file->uploaddate . '/' . $file->documentname));
+						// This description is used so the link to the document will work on the email.
+						$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+					}
+					else 
+					{
+						echo "bad file read";
+					};
+				}
+				else
+					$temp .= "\n";
+				
+				// Try to save the new ticket.
+				if($ticket->save(false))
+				{
+					// Remove the flash message so the email will work again.
+					Yii::app()->user->getFlash('success');
+
+					// Send an email alert.
+					$this->redirect(
+						array('/email/email/helpopenemail', 
+							'ticketid' => $ticket->ticketid,
+							'category' => $ticket->categoryid,
+							'subject' => $ticket->subjectid,
+							'description' => $temp,
+						));
+				}
+				else
+					throw new CHttpException(400, "Ticket failed to save.");
+				
+				/*
 				// If one or more files was uploaded.
 				if(!empty($_FILES))
 				{
@@ -106,6 +156,7 @@ class TroubleTicketsController extends Controller
 				}
 				else
 					throw new CHttpException(400, "Ticket failed to save.");
+				*/
 			}
 		}
 		

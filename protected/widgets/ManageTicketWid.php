@@ -1,4 +1,5 @@
 <?php
+/*
 class ManageTicketWid extends CPortlet 
 {
     public $pageTitle = 'Ticket Manager';
@@ -8,6 +9,7 @@ class ManageTicketWid extends CPortlet
     /**
      * This function renders the manage ticket widget.
      */
+	 /*
     protected function renderContent()
 	{
 		try
@@ -45,6 +47,122 @@ class ManageTicketWid extends CPortlet
 		
 		$this->render('_manageTicket',array(
 			'model'=>$ticketManager, 'file'=>$file
+		));
+	}
+}
+*/
+
+class ManageTicketWid extends CPortlet 
+{
+    public $pageTitle = 'Ticket Manager';
+	public $ticket;
+	
+    /**
+     * This function renders the close ticket widget.
+     */
+    protected function renderContent()
+	{
+		$model = new ManageTicket;
+		$file = new Documents;
+		
+		if($model->attributes = Yii::app()->request->getPost('ManageTicket'))
+		{
+			$file->attributes=$_POST['Documents'];
+		
+			if(isset($_POST['yt1']))
+			{
+				if($model->validate())
+				{
+					$file->file =CUploadedFile::getInstance($file,'file');
+					$this->ticket->resolution = $model->content;
+					$this->ticket->closedbyuserid = Yii::app()->user->id;
+					$temp = $model->content;
+					
+					if(isset($file->file))
+					{
+						$file->uploadType = 'attachment';
+						$file->setDocumentAttributes();
+
+						// Validate the file's attributes.
+						if($file->validate())
+						{
+							// Create the folder if it does not exist.
+							if(!is_dir($file->path))
+								mkdir($file->path, 0777, true);
+							// Set the complete path.
+							$file->path = $file->path . $file->documentname;
+							// Upload the file to the server.
+							$file->file->saveAs($file->path, 'false');
+							// This description is used so the link to the document will work on the website.
+							$this->ticket->resolution .= "\nAttachment: " 
+								. CHtml::link($file->documentname,array('/files/attachments/' 
+									. $file->uploaddate . '/' . $file->documentname));
+							// This description is used so the link to the document will work on the email.
+							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+						}
+					}
+					
+					if($this->ticket->update())
+					{
+						$this->controller->redirect(
+							array('/email/email/helpcloseemail',
+								'creator' => $this->ticket->openedby,
+								'ticketid' => $this->ticket->ticketid,
+								'category' => $this->ticket->categoryid,
+								'subject' => $this->ticket->subjectid,
+								'description' => $this->ticket->description,
+								'resolution' => $temp,
+							));
+					}
+				}
+			}
+			else if(isset($_POST['yt0']))
+			{
+				$comment = new Comments;
+				
+				if($model->validate())
+				{
+					$file->file=CUploadedFile::getInstance($file,'file');
+					$comment->content = $model->content;
+					$temp = $comment->content;
+
+					if(isset($file->file))
+					{
+						$file->uploadType = 'attachment';
+						$file->setDocumentAttributes();
+
+						// Validate the file's attributes.
+						if($file->validate())
+						{
+							// Create the folder if it does not exist.
+							if(!is_dir($file->path))
+								mkdir($file->path, 0777, true);
+							// Set the complete path.
+							$file->path = $file->path . $file->documentname;
+							// Upload the file to the server.
+							$file->file->saveAs($file->path, 'false');
+							// This description is used so the link to the document will work on the website.
+							$comment->content .= "\nAttachment: " 
+								. CHtml::link($file->documentname,array('/files/attachments/' 
+									. $file->uploaddate . '/' . $file->documentname));
+							// This description is used so the link to the document will work on the email.
+							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
+						}
+					}
+
+					$this->ticket->addComment($comment);
+
+					$this->controller->redirect(
+						array('/email/email/commentemail',
+							'creator' => $this->ticket->openedby,
+							'ticketid' => $this->ticket->ticketid,
+							'content' => $temp,
+						));
+				}
+			}
+		}
+		$this->render('_manageTicket',array(
+			'model'=>$model, 'file'=>$file
 		));
 	}
 }

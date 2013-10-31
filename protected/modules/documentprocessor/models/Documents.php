@@ -236,6 +236,40 @@ class Documents extends CActiveRecord
 				$this->uploader = Yii::app()->user->id;
 			else
 				$this->uploader = 0;
+			
+			// Set the uploaddate attribute to the current date.
+			$this->uploaddate = date('Y-m-d_h-i-s');
+			
+			$this->documentname = $this->file->getName();
+			
+			// Set the extension.
+			$this->ext = pathinfo($this->documentname, PATHINFO_EXTENSION);
+			
+			// Set the path attribute based on the type of upload.
+			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource' && $this->uploadType != 'attachment')
+			{
+				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
+				$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+			}
+			else if($this->uploadType == 'attachment')
+			{
+				$this->path = self::FILE_BASE_PATH . "/attachments/" . $this->uploaddate . "/";
+			}
+			else if($this->uploadType == 'training resource')
+			{
+				$this->path = self::FILE_BASE_PATH . "/training/";
+			}
+			else
+			{
+				// To be Determined
+			}
+			
+			/*
+			// Set the uploader attribute to the current user or set it to a system id if this import is done by a Cron job.
+			if(isset(Yii::app()->user->id))
+				$this->uploader = Yii::app()->user->id;
+			else
+				$this->uploader = 0;
 
 			// Set the uploaddate attribute to the current date.
 			$this->uploaddate = date('Y-m-d_h-i-s');
@@ -263,6 +297,7 @@ class Documents extends CActiveRecord
 
 			// Extract the document name and set the attribute.
 			$this->documentname = $this->file['realName'];
+			*/
 		}
 		catch(Exception $ex)
 		{

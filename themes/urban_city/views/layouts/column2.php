@@ -18,7 +18,7 @@
 				// The link to the hr policy page.
 				//array('label'=>'<i class="icon icon-book"></i> Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 				// The link to the emergency response plan.
-				array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>'/files/cep.pdf'),
+				//array('label'=>'<i class="icon icon-fire"></i> Emergency Response Plan', 'url'=>'/files/cep.pdf'),
 
 				// Include the operations menu
 				array('label'=>'OPERATIONS','items'=>$this->menu1),
