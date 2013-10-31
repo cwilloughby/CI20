@@ -29,6 +29,7 @@ class Documents extends CActiveRecord
 {
 	// This const is the base path that all files uploaded to the server will be saved under.
 	const FILE_BASE_PATH = 'C:/wamp/files';
+	const FILE_BASE_PATH_REMOTE = '\\\\jis18822\\c$\\wamp\\files';
 	
 	public $file;
 	public $uploadType;
@@ -248,16 +249,24 @@ class Documents extends CActiveRecord
 			// Set the path attribute based on the type of upload.
 			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource' && $this->uploadType != 'attachment')
 			{
-				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
-				$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\uploads\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/uploads/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'attachment')
 			{
-				$this->path = self::FILE_BASE_PATH . "/attachments/" . $this->uploaddate . "/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\attachments\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/attachments/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'training resource')
 			{
-				$this->path = self::FILE_BASE_PATH . "/training/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\training\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/training/";
 			}
 			else
 			{
@@ -279,16 +288,24 @@ class Documents extends CActiveRecord
 			// Set the path attribute based on the type of upload.
 			if($this->uploadType != 'Cron Job' && $this->uploadType != 'training resource' && $this->uploadType != 'attachment')
 			{
-				//$this->path = "\\\\jis18822\\c$\\wamp\\www\\assets\\" . $this->uploadType . "\\" . $this->uploaddate . "\\";
-				$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\uploads\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/uploads/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'attachment')
 			{
-				$this->path = self::FILE_BASE_PATH . "/attachments/" . $this->uploaddate . "/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\attachments\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/attachments/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'training resource')
 			{
-				$this->path = self::FILE_BASE_PATH . "/training/";
+				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\training\\" . $this->uploaddate . "\\";
+				else
+					$this->path = self::FILE_BASE_PATH_LOCAL . "/training/";
 			}
 			else
 			{
