@@ -34,10 +34,12 @@
 					$this->widget('UserLogin');
 				else
 				{
+					/*
 					echo "<h4>Last Login</h4>";
 					$this->widget('TimeReport');
 					echo "<h4>Weather</h4>";
 					$this->widget('WeatherReport');
+					*/
 				}
 				?>
 			</div>
