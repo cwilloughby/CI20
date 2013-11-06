@@ -28,7 +28,7 @@
 		<?php
 		echo $form->labelEx($ticket, 'categoryid');
 		echo $form->dropDownList($ticket, 'categoryid', CHtml::listData(TicketCategories::model()->findAll(), 'categoryid', 'categoryname'), 
-			array('empty' => 'Select a category','ajax' => 
+			array('empty' => 'Select a category', 'style'=>'width:300px;', 'ajax' => 
 				array(
 					'type' => 'GET',
 					'url' => CController::createUrl('troubletickets/dynamicsubjects'),
@@ -53,7 +53,7 @@
 			<?php 
 			echo $form->labelEx($ticket, 'subjectid');
 			echo $form->dropDownList($ticket, 'subjectid', array(), 
-				array('empty' => 'Select a subject','ajax' => 
+				array('empty' => 'Select a subject', 'style'=>'width:300px;', 'ajax' => 
 					array(
 						'type' => 'GET',
 						'url' => CController::createUrl('troubletickets/dynamictips'),
