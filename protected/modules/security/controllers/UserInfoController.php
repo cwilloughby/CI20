@@ -57,7 +57,6 @@ class UserInfoController extends Controller
 		if($model->attributes = Yii::app()->request->getPost('UserInfo'))
 		{
 			$model->password = sha1($model->username);
-			$model->departmentid += 1;
 			$model->active = true;
 			$model->hiredate = date('Y-m-d', strtotime($model->hiredate));
 			
@@ -79,7 +78,7 @@ class UserInfoController extends Controller
 			}
 		}
 
-		$departments=array_merge(array(""=>""),CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname'));
+		$departments=CHtml::listData(Departments::model()->findAll(),'departmentid','departmentname');
 		
 		$this->render('create',array('model'=>$model, 'departments'=>$departments));
 	}
