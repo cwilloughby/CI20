@@ -43,7 +43,7 @@ class RegistrationController extends Controller
 		}
 		
 		$departments=Departments::model()->findAll();
-		$departments = array_merge(array(""=>""),CHtml::listData($departments,'departmentid','departmentname'));
+		$departments = CHtml::listData($departments,'departmentid','departmentname');
 		
 		$this->render('register',array('model'=>$model, 'departments'=>$departments));
 	}
