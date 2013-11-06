@@ -198,12 +198,15 @@ class UserInfo extends CActiveRecord
 	/**
 	 * This function is used to log the fact that the user's password was changed.
 	 */
-	public function logPasswordChange()
+	public function logPasswordChange($id = null)
 	{
 		$log = new Log;
 		$log->tablename = 'ci_user_info';
 		$log->event = 'Password Changed';
-		$log->userid = Yii::app()->user->getId();
+		if(is_null($id))
+			$log->userid = Yii::app()->user->getId();
+		else
+			$log->userid = $id;
 		$log->tablerow = $log->userid;
 		$log->save(false);
 	}

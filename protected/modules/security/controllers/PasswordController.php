@@ -72,7 +72,7 @@ class PasswordController extends Controller
 					if($data->update())
 					{
 						// Record the password change event.
-						$model->logPasswordChange();
+						$model->logPasswordChange($data->userid);
 						
 						$this->redirect(Yii::app()->homeUrl);
 					}
