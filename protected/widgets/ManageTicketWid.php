@@ -118,46 +118,12 @@ class ManageTicketWid extends CPortlet
 			}
 			else if(isset($_POST['yt0']))
 			{
+				// The user is trying to enter a new comment on a ticket.
 				$comment = new Comments;
 				
 				if($model->validate())
 				{
-					$file->file=CUploadedFile::getInstance($file,'file');
-					$comment->content = $model->content;
-					$temp = $comment->content;
-
-					if(isset($file->file))
-					{
-						$file->uploadType = 'attachment';
-						$file->setDocumentAttributes();
-
-						// Validate the file's attributes.
-						if($file->validate())
-						{
-							// Create the folder if it does not exist.
-							if(!is_dir($file->path))
-								mkdir($file->path, 0777, true);
-							// Set the complete path.
-							$file->path = $file->path . $file->documentname;
-							// Upload the file to the server.
-							$file->file->saveAs($file->path, 'false');
-							// This description is used so the link to the document will work on the website.
-							$comment->content .= "\nAttachment: " 
-								. CHtml::link($file->documentname,array('/files/attachments/' 
-									. $file->uploaddate . '/' . $file->documentname));
-							// This description is used so the link to the document will work on the email.
-							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
-						}
-					}
-
-					$this->ticket->addComment($comment);
-
-					$this->controller->redirect(
-						array('/email/email/commentemail',
-							'creator' => $this->ticket->openedby,
-							'ticketid' => $this->ticket->ticketid,
-							'content' => $temp,
-						));
+					CommentsController::createComment($this->ticket);
 				}
 			}
 		}

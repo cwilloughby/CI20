@@ -252,21 +252,21 @@ class Documents extends CActiveRecord
 				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
 					$this->path = self::FILE_BASE_PATH_REMOTE . "\\uploads\\" . $this->uploaddate . "\\";
 				else
-					$this->path = self::FILE_BASE_PATH_LOCAL . "/uploads/" . $this->uploaddate . "/";
+					$this->path = self::FILE_BASE_PATH . "/uploads/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'attachment')
 			{
 				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
 					$this->path = self::FILE_BASE_PATH_REMOTE . "\\attachments\\" . $this->uploaddate . "\\";
 				else
-					$this->path = self::FILE_BASE_PATH_LOCAL . "/attachments/" . $this->uploaddate . "/";
+					$this->path = self::FILE_BASE_PATH . "/attachments/" . $this->uploaddate . "/";
 			}
 			else if($this->uploadType == 'training resource')
 			{
 				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
 					$this->path = self::FILE_BASE_PATH_REMOTE . "\\training\\" . $this->uploaddate . "\\";
 				else
-					$this->path = self::FILE_BASE_PATH_LOCAL . "/training/";
+					$this->path = self::FILE_BASE_PATH . "/training/";
 			}
 			else
 			{

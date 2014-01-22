@@ -200,9 +200,11 @@ class EmailController extends Controller
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
 		
 		// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
+		// The renderPartial function is used to apply a style to the body of the email.
 		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI Ticket #" . $_GET['ticketid'],
 			$this->renderPartial('commentemailbody', 
-				array('ticketID' => $_GET['ticketid'], 'user' => Yii::app()->user->name, 'content' => nl2br($_GET['content'])), true),
+				array('ticketID' => $_GET['ticketid'], 'user' => Yii::app()->user->name, 'content' => nl2br($_GET['content']), 'ticketBody' => nl2br($_GET['ticketBody'])), true
+			),
 			"Comment", "ccc.helpdesk@nashville.gov"
 		);
 		
