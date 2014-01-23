@@ -89,7 +89,7 @@ class CommentsController extends Controller
 							. CHtml::link($file->documentname,array("/files/attachments/" 
 								. $file->uploaddate . "/" . $file->documentname));
 						// This description is used so the link to the document will work on the email.
-						$temp .= '\nAttachment: <a href="file:///' . $file->path . '">' . $file->documentname . '</a>';
+						$temp .= '<br/><br/>Attachment: <a href="file:///' . $file->path . '">' . $file->documentname . '</a>';
 					}
 				}
 

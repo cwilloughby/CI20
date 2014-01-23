@@ -67,10 +67,10 @@ class ManageTicketWid extends CPortlet
 		
 		if($model->attributes = Yii::app()->request->getPost('ManageTicket'))
 		{
-			$file->attributes=$_POST['Documents'];
-		
 			if(isset($_POST['yt1']))
 			{
+				$file->attributes=$_POST['Documents'];
+				
 				if($model->validate())
 				{
 					$file->file =CUploadedFile::getInstance($file,'file');
@@ -119,8 +119,6 @@ class ManageTicketWid extends CPortlet
 			else if(isset($_POST['yt0']))
 			{
 				// The user is trying to enter a new comment on a ticket.
-				$comment = new Comments;
-				
 				if($model->validate())
 				{
 					CommentsController::createComment($this->ticket);
