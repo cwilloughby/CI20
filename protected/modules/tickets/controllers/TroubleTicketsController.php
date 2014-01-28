@@ -299,4 +299,67 @@ class TroubleTicketsController extends Controller
 				return $ticketManager;
 		}
 	}
+	
+	/**
+	 * This function will be used to import trouble tickets from the old ci site
+	 * to ci2.
+	 */
+	public function actionImportOldTickets()
+	{
+		// Open the csv file.
+		$fileHandle = fopen("C:\Users\cwilloughby\Desktop\helpdeskOld.csv", "r");
+		
+		// Loop through each row in the csv file.
+		while(!feof($fileHandle))
+		{
+			$ticket = new TroubleTickets;
+			
+			// Read the current line;
+			$lineOfText = fgetcsv($fileHandle);
+
+			if(isset($lineOfText[1]))
+			{
+				// Read each column in the current row into a variable.
+				$ticket->ticketid = $lineOfText[0];
+				$openedby = $lineOfText[1];
+				$ticket->opendate = $lineOfText[2];
+				$ticket->categoryid = TicketCategories::model()->find('categoryname=:catname', array(':catname'=>$lineOfText[3]))->categoryid;
+				$ticket->subjectid = TicketSubjects::model()->find('subjectname=:subname', array(':subname'=>$lineOfText[4]))->subjectid;
+				$ticket->description = $lineOfText[5];
+
+				if(isset($lineOfText[6]))
+					$ticket->resolution = $lineOfText[6];
+				if(isset($lineOfText[7]))
+					$closedby = $lineOfText[7];
+				if(isset($lineOfText[8]))
+					$ticket->closedate = $lineOfText[8];
+
+				// Take the username of the ticket's creator and concatenamte it into the description.
+				$ticket->description .= "\nThis ticket was originally made by: " . $openedby;
+				// For the id of the user who created the ticket, change the user name to id 51
+				$ticket->openedby = 51;
+
+				// Change the id of the user who closed the ticket to either 
+				// 1 (for cwilloughby),
+				// 14 (for sdothard),
+				// or 51 (for gelliot)
+				if($closedby == "cwilloughby")
+					$ticket->closedbyuserid = 1;
+				else if($closedby == "sdothard")
+					$ticket->closedbyuserid = 14;
+				else if($closedby == "gelliott")
+					$ticket->closedbyuserid = 51;
+				else
+					$ticket->closedbyuserid = null;
+				
+				// Try to save the new ticket.
+				if(!$ticket->save(false))
+				{
+					throw new CHttpException(400, "Ticket failed to import.");
+				}
+			}
+		}
+		// Close the csv file.
+		fclose($fileHandle);
+	}
 }
