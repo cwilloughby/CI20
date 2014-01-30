@@ -26,6 +26,7 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
+							array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin')),
 							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
 							//array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 						),

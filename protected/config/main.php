@@ -63,7 +63,7 @@ return array(
 		//'evaluations',
 		//'training',
 		//'issuetracker',
-		'cjisdispo',
+		'cjisdispositions',
 		'srbac'=>array(
 			'userclass'=>'UserInfo', //default: User
 			'userid'=>'userid', //default: userid

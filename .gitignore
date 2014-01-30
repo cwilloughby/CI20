@@ -29,3 +29,5 @@ protected/runtime/application.log
 /protected/vendors/libraries/html2pdf/
 !/protected/modules/training/views/resources/index.php
 !/themes/urban_city/views/site/index.php
+!/protected/modules/cjisdispo/views/cjisDispo/index.php
+!/protected/modules/cjisdispositions/views/cjisDispositions/index.php
