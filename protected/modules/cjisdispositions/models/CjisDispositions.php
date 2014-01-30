@@ -71,19 +71,18 @@ class CjisDispositions extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('caseno, lastname, firstname, dateofbirth, gender, race, offensedescription, offensetype, specifiedjailcreditdays, specifiedjailcredithours', 'required'),
 			array('count, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, probationyears, probationmonths, probationdays', 'numerical', 'integerOnly'=>true),
 			array('court', 'length', 'max'=>8),
-			array('caseno, offensetype, percentage, suspendallbut, suspendpercentage, workreleasepercentage, timeservedcredit, probationtype, restitutionamount, courtfines', 'length', 'max'=>25),
+			array('caseno, offensetype, percentage, suspendallbut, suspendpercentage, workreleasepercentage, timeservedcredit, probationtype', 'length', 'max'=>25),
 			array('lastname, firstname, disposition, location, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours', 'length', 'max'=>45),
 			array('gender, race, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, earlyreleaseflag', 'length', 'max'=>1),
+			array('restitutionamount, courtfines', 'length', 'max'=>10),
 			array('dateconcluded, incarcerationspecialconditions, probationspecialconditions, finesspecialcondition', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('court, caseno, lastname, firstname, dateofbirth, gender, race, count, offensedescription, offensetype, disposition, dateconcluded, location, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, percentage, suspendallbut, suspendpercentage, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, workreleasepercentage, earlyreleaseflag, timeservedcredit, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours, incarcerationspecialconditions, probationtype, probationyears, probationmonths, probationdays, probationspecialconditions, restitutionamount, courtfines, finesspecialcondition', 'safe', 'on'=>'search'),
+			array('dispoid, court, caseno, lastname, firstname, dateofbirth, gender, race, count, offensedescription, offensetype, disposition, dateconcluded, location, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, percentage, suspendallbut, suspendpercentage, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, workreleasepercentage, earlyreleaseflag, timeservedcredit, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours, incarcerationspecialconditions, probationtype, probationyears, probationmonths, probationdays, probationspecialconditions, restitutionamount, courtfines, finesspecialcondition', 'safe', 'on'=>'search'),
 		);
 	}
 

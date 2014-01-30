@@ -60,8 +60,8 @@ class m140130_170226_create_cjis_dispositions_table extends CDbMigration
 			'probationmonths' => "INT(2) NULL",
 			'probationdays' => "INT(2) NULL",
 			'probationspecialconditions' => "TEXT NULL",
-			'restitutionamount' => "VARCHAR(25) NULL",
-			'courtfines' => "VARCHAR(25) NULL",
+			'restitutionamount' => "DECIMAL(10,2) NULL",
+			'courtfines' => "DECIMAL(10,2) NULL",
 			'finesspecialcondition' => "TEXT NULL",
 			"PRIMARY KEY('dispoid')"
 		),
