@@ -115,12 +115,10 @@ return array(
 				'CI20/<module:\w+>/<controller:\w+>/<action:\w+>' => 'CI20/<module>/<controller>/<action>',
 			),
 		),
-		/*
 		'cache'=>array(
 			//'class'=>'system.caching.CApcCache',
 			'class'=>'system.caching.CDbCache'
 		),
-		*/
 		'db'=>array(
 			'class'=>'CDbConnection',
 			'connectionString' => 'mysql:host=localhost;dbname=ci2',
@@ -128,7 +126,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
-			//'schemaCachingDuration'=>3600,
+			'schemaCachingDuration'=>3600,
 		),
 		'authManager'=>array(
 			'class'=>'application.modules.srbac.components.SDbAuthManager',
