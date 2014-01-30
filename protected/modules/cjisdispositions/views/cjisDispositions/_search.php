@@ -10,15 +10,15 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'court'); ?>
 		<?php echo $form->textField($model,'court',array('size'=>8,'maxlength'=>8)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'case'); ?>
-		<?php echo $form->textField($model,'case',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->label($model,'caseno'); ?>
+		<?php echo $form->textField($model,'caseno',array('size'=>25,'maxlength'=>25)); ?>
 	</div>
 
 	<div class="row">
@@ -143,27 +143,27 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'dayfordayflag'); ?>
-		<?php echo $form->dropDownList($model,'dayfordayflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'dayfordayflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'hourforhourflag'); ?>
-		<?php echo $form->dropDownList($model,'hourforhourflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'hourforhourflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'suspendedflag'); ?>
-		<?php echo $form->dropDownList($model,'suspendedflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'suspendedflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'noworkdetailflag'); ?>
-		<?php echo $form->dropDownList($model,'noworkdetailflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'noworkdetailflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'workreleaseflag'); ?>
-		<?php echo $form->dropDownList($model,'workreleaseflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'workreleaseflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
@@ -173,7 +173,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'earlyreleaseflag'); ?>
-		<?php echo $form->dropDownList($model,'earlyreleaseflag', Array('', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'earlyreleaseflag', Array('' => '', 'N' => 'No', 'Y' => 'Yes'), array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 	
 	<div class="row">

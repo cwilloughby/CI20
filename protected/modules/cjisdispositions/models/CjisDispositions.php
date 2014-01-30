@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'ci_cjis_dispositions':
  * @property integer $dispoid
  * @property string $court
- * @property string $case
+ * @property string $caseno
  * @property string $lastname
  * @property string $firstname
  * @property string $dateofbirth
@@ -74,16 +74,16 @@ class CjisDispositions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('case, lastname, firstname, dateofbirth, gender, race, offensedescription, offensetype, specifiedjailcreditdays, specifiedjailcredithours', 'required'),
+			array('caseno, lastname, firstname, dateofbirth, gender, race, offensedescription, offensetype, specifiedjailcreditdays, specifiedjailcredithours', 'required'),
 			array('count, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, probationyears, probationmonths, probationdays', 'numerical', 'integerOnly'=>true),
 			array('court', 'length', 'max'=>8),
-			array('case, offensetype, percentage, suspendallbut, suspendpercentage, workreleasepercentage, timeservedcredit, probationtype, restitutionamount, courtfines', 'length', 'max'=>25),
+			array('caseno, offensetype, percentage, suspendallbut, suspendpercentage, workreleasepercentage, timeservedcredit, probationtype, restitutionamount, courtfines', 'length', 'max'=>25),
 			array('lastname, firstname, disposition, location, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours', 'length', 'max'=>45),
 			array('gender, race, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, earlyreleaseflag', 'length', 'max'=>1),
 			array('dateconcluded, incarcerationspecialconditions, probationspecialconditions, finesspecialcondition', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('court, case, lastname, firstname, dateofbirth, gender, race, count, offensedescription, offensetype, disposition, dateconcluded, location, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, percentage, suspendallbut, suspendpercentage, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, workreleasepercentage, earlyreleaseflag, timeservedcredit, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours, incarcerationspecialconditions, probationtype, probationyears, probationmonths, probationdays, probationspecialconditions, restitutionamount, courtfines, finesspecialcondition', 'safe', 'on'=>'search'),
+			array('court, caseno, lastname, firstname, dateofbirth, gender, race, count, offensedescription, offensetype, disposition, dateconcluded, location, incarcerationyears, incarcerationmonths, incarcerationdays, incarcerationhours, percentage, suspendallbut, suspendpercentage, dayfordayflag, hourforhourflag, suspendedflag, noworkdetailflag, workreleaseflag, workreleasepercentage, earlyreleaseflag, timeservedcredit, specifiedjailcreditmonths, specifiedjailcreditdays, specifiedjailcredithours, incarcerationspecialconditions, probationtype, probationyears, probationmonths, probationdays, probationspecialconditions, restitutionamount, courtfines, finesspecialcondition', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -106,7 +106,7 @@ class CjisDispositions extends CActiveRecord
 		return array(
 			'dispoid' => 'Dispoid',
 			'court' => 'Court',
-			'case' => 'Case',
+			'caseno' => 'Case',
 			'lastname' => 'Lastname',
 			'firstname' => 'Firstname',
 			'dateofbirth' => 'Date of Birth',
@@ -158,7 +158,7 @@ class CjisDispositions extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('court',$this->court,true);
-		$criteria->compare('case',$this->case,true);
+		$criteria->compare('caseno',$this->caseno,true);
 		$criteria->compare('lastname',$this->lastname,true);
 		$criteria->compare('firstname',$this->firstname,true);
 		$criteria->compare('dateofbirth',$this->dateofbirth,true);

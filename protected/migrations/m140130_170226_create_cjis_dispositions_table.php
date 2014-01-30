@@ -24,7 +24,7 @@ class m140130_170226_create_cjis_dispositions_table extends CDbMigration
 		$this->createTable('ci_cjis_dispositions', array(
 			'dispoid' => "INT NOT NULL AUTO_INCREMENT",
 			'court' => "VARCHAR(8) NOT NULL DEFAULT 'CC'",
-			'case' => "VARCHAR(25) NOT NULL",
+			'caseno' => "VARCHAR(25) NOT NULL",
 			'lastname' => "VARCHAR(45) NOT NULL",
 			'firstname' => "VARCHAR(45) NOT NULL",
 			'dateofbirth' => "DATE NOT NULL",

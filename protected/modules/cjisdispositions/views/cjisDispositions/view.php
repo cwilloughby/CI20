@@ -22,7 +22,7 @@ $this->menu2=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'court',
-		'case',
+		'caseno',
 		'lastname',
 		'firstname',
 		array(        

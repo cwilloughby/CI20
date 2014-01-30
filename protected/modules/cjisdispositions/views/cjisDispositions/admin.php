@@ -21,6 +21,7 @@ $('.search-form form').submit(function(){
 	$.fn.yiiGridView.update('cjis-dispositions-grid', {
 		data: $(this).serialize()
 	});
+	$('.search-form').toggle();
 	return false;
 });
 ");
@@ -39,7 +40,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-
+	
 <?php 
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
 
@@ -49,7 +50,7 @@ $this->widget('CustomGridView', array(
 	'filter'=>$model,
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'case',
+		'caseno',
 		'lastname',
 		'firstname',
 		array(

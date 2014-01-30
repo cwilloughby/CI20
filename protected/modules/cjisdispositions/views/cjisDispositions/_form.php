@@ -22,9 +22,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'case'); ?>
-		<?php echo $form->textField($model,'case',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'case'); ?>
+		<?php echo $form->labelEx($model,'caseno'); ?>
+		<?php echo $form->textField($model,'caseno',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->error($model,'caseno'); ?>
 	</div>
 
 	<div class="row">

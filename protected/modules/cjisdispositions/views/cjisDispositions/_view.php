@@ -9,8 +9,8 @@
 	<?php echo CHtml::encode($data->court); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('case')); ?>:</b>
-	<?php echo CHtml::encode($data->case); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('caseno')); ?>:</b>
+	<?php echo CHtml::encode($data->caseno); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('lastname')); ?>:</b>
