@@ -118,7 +118,7 @@ class EmailController extends Controller
 			$user = UserInfo::model()->findByPk(Yii::app()->user->id);
 
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail("ccc.helpdesk@nashville.gov", $user->email, "Opening CI Ticket #" . $_GET['ticketid'],
+			$model->setEmail("ccc.helpdesk@nashville.gov", $user->email, "Opening CI2 Ticket #" . $_GET['ticketid'],
 				$this->renderPartial('helpopenemailbody', 
 					array(
 						'ticketID' => $_GET['ticketid'],
@@ -161,7 +161,7 @@ class EmailController extends Controller
 		$body = implode("\n", $body);
 		
 		// Set the sender, the recipient, the subject, the body, and the message type.
-		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Closing CI Ticket #" . $_GET['ticketid'],
+		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Closing CI2 Ticket #" . $_GET['ticketid'],
 			$this->renderPartial('helpcloseemailbody', 
 				array(
 					'ticketID' => $_GET['ticketid'],
@@ -201,9 +201,16 @@ class EmailController extends Controller
 		
 		// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
 		// The renderPartial function is used to apply a style to the body of the email.
-		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI Ticket #" . $_GET['ticketid'],
+		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI2 Ticket #" . $_GET['ticketid'],
 			$this->renderPartial('commentemailbody', 
-				array('ticketID' => $_GET['ticketid'], 'user' => Yii::app()->user->name, 'content' => nl2br($_GET['content']), 'ticketBody' => nl2br($_GET['ticketBody'])), true
+				array(
+					'ticketID' => $_GET['ticketid'],
+					'user' => Yii::app()->user->name,
+					'content' => nl2br($_GET['content']),
+					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
+					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
+					'ticketBody' => nl2br($_GET['ticketBody'])
+				), true
 			),
 			"Comment", "ccc.helpdesk@nashville.gov"
 		);

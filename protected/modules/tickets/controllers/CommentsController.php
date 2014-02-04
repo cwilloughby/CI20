@@ -100,6 +100,8 @@ class CommentsController extends Controller
 						'creator' => $ticket->openedby,
 						'ticketid' => $ticket->ticketid,
 						'content' => $temp,
+						'category' => $ticket->categoryid,
+						'subject' => $ticket->subjectid,
 						'ticketBody' => str_replace("/files/attachments/", "file:///C:/wamp/files/attachments/" , $ticket->description),
 					));
 			}
