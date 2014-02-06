@@ -154,7 +154,8 @@ class EmailController extends Controller
 	public function actionHelpcloseemail()
 	{
 		$model = new Messages;
-		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
+		$creator = UserInfo::model()->findByPk($_GET['creator']);
+		$email = $creator->email;
 		
 		$body = explode("\n", $_GET['description']);
 		array_pop($body);
@@ -165,7 +166,8 @@ class EmailController extends Controller
 			$this->renderPartial('helpcloseemailbody', 
 				array(
 					'ticketID' => $_GET['ticketid'],
-					'user' => Yii::app()->user->name,
+					'creator' => $creator->username,
+					'closer' => Yii::app()->user->name,
 					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
 					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
 					'description' => nl2br($body),

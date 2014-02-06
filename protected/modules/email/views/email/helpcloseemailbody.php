@@ -1,7 +1,8 @@
 <?php
 /* @var $this EmailController */
 /* @var $ticketID String */
-/* @var $user String */
+/* @var $creator String */
+/* @var $closer String */
 /* @var $category String */
 /* @var $subject String */
 /* @var $description String */
@@ -36,9 +37,9 @@
             </tr>
             <tr>
                 <td align="left" valign="top" bgcolor="#FFFFCC">
-                <span class="leftA"><font face="arial"><?php echo $user; ?>, we have received your
-                request. <br>
-                A technician will contact you shortly.
+                <span class="leftA"><font face="arial"><?php echo $creator; ?>, your issue has been fixed
+					by <?php echo $closer; ?>. If it turns out that your issue has not been fixed, please contact IT 
+					and we will reopen the ticket.<br>
                 </font></span>
                 </td>
             </tr>
