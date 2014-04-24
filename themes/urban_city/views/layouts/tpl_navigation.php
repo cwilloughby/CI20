@@ -26,9 +26,17 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
-							array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
 							//array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+						),
+					),
+					array(
+						'label'=>'<span class="cjisicon"></span>CJIS <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+						'visible'=>!Yii::app()->user->isGuest,
+						'items'=>array(
+							array('label'=>'Upload CJIS File', 'url'=>array('/cjisucflist/doctable/createFileRecord'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+							array('label'=>'Search CJIS Files', 'url'=>array('/cjisucflist/doctable/searchableFileTable')),
+							array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					/*

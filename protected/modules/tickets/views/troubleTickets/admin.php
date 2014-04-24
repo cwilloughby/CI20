@@ -2,6 +2,8 @@
 /* @var $this TroubleTicketsController */
 /* @var $model TroubleTickets */
 
+$this->pageTitle = Yii::app()->name . ' - Search Trouble Tickets';
+
 $this->breadcrumbs=array(
 	'Trouble Tickets'=>array('index'),
 	'Search',
