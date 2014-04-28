@@ -7,7 +7,7 @@ class NewsController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
-
+	
 	/**
 	 * @return array action filters
 	 */
@@ -50,6 +50,40 @@ class NewsController extends Controller
 		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+		));
+	}
+	
+	/**
+	 * This function is used to create a special type of IT news post for announcing new CJIS builds.
+	 */
+	public function actionCreateCjisNews()
+	{
+		$model = new News;
+		$model->scenario = 'cjisNews';
+		
+		if($model->attributes = Yii::app()->request->getPost('News'))
+		{
+			// Grab the id for the IT news type.
+			$type = Yii::app()->db->createCommand()
+				->select('typeid')
+				->from('ci_news_type')
+				->where('type=:type', array(':type'=>'IT News'))
+				->queryAll();
+			
+			$model->typeid = $type[0]['typeid'];
+
+			// Format the body of the news post.
+			$model->news = "Build #: " . $model->buildNum . "<br/>Release Date: " . $model->releaseDate . "<br/><br/>Features: " . $model->features;
+			
+			if($model->validate())
+			{
+				$model->save(false);
+				$this->redirect(array('view','newsid'=>$model->newsid));
+			}
+		}
+		
+		$this->render('createCjisNews',array(
+			'model'=>$model,
 		));
 	}
 }

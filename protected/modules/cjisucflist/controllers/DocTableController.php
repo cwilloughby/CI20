@@ -37,14 +37,20 @@ class DocTableController extends Controller
 	public function actionCreateFileRecord()
 	{
 		$model=new DocTable;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$model->scenario = 'create';
+		
 		if($model->attributes = Yii::app()->request->getPost('DocTable'))
 		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
+			if($model->validate())
+			{
+				$model->name = $model->fileUp->name;
+				$model->extension = $model->fileUp->extensionName;
+				$model->setPath();
+				$model->save(false);
+				$model->fileUp->saveAs($model->path);
+				$this->redirect(array('viewFileRecord','id'=>$model->id));
+			}
 		}
 
 		$this->render('upload',array(
@@ -60,11 +66,26 @@ class DocTableController extends Controller
 	public function actionUpdateFileRecord($id)
 	{
 		$model=$this->loadModel($id, "DocTable");
-
-		if($model->attributes = Yii::app()->request->getPost('DocTable'))
+		$model->scenario = 'update';
+		
+		if(($model->attributes = Yii::app()->request->getPost('DocTable')) && $model->validate())
 		{
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			// If a new file is being uploaded.
+			if(isset($model->fileUp))
+			{
+				$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
+				$model->name = $model->fileUp->name;
+				$model->extension = $model->fileUp->extensionName;
+				$model->setPath();
+				$model->save(false);
+				$model->fileUp->saveAs($model->path);
+			}
+			// If a file record is being updated without a change to the uploaded file.
+			else
+			{
+				$model->save(false);
+			}
+			$this->redirect(array('viewFileRecord','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -83,7 +104,7 @@ class DocTableController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('searchableTable'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('searchableFileTable'));
 	}
 
 	/**
@@ -106,35 +127,47 @@ class DocTableController extends Controller
 	 */
 	public function actionDownload($path, $name, $ext)
 	{
-		$fileContent = file_get_contents($path . "." . $ext);
-		$file = $name . "." . $ext;
+		if(!file_exists($path))
+			throw new CHttpException(404, 'The file ' . $name . ' was not found!');
+		
+		try
+		{
+			$size = filesize($path);
+			$fileContent = file_get_contents($path);
 
-		$supportedMimeTypes=array(
-			"doc" => "application/msword",
-			"docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-			"ppt" => "application/vnd.ms-powerpoint",
-			"xls" => "application/vnd.ms-excel",
-			"xlsx"=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-			"zip" => "application/zip",
-		);
-       
-		// Select the correct MIME type.
-		if(array_key_exists($ext, $supportedMimeTypes))
-			$mimeType=$supportedMimeTypes[$ext];
-		else
-			$mimeType="text/plain";
+			$supportedMimeTypes=array(
+				"doc" => "application/msword",
+				"docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				"ppt" => "application/vnd.ms-powerpoint",
+				"xls" => "application/vnd.ms-excel",
+				"xlsx"=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+				"zip" => "application/zip",
+			);
 
-		// Turn off output buffering to decrease cpu usage.
-		@ob_end_clean(); 
-  
-		// Required for IE, otherwise Content-Disposition could be ignored.
-		if(ini_get('zlib.output_compression'))
-			ini_set('zlib.output_compression', 'Off');
-   
-		header('Content-Type: ' . $mimeType);
-		header("Content-disposition: attachment; filename=$file");
-		header("Pragma: no-cache");
-		echo $fileContent;
-		exit;
+			// Select the correct MIME type.
+			if(array_key_exists($ext, $supportedMimeTypes))
+				$mimeType=$supportedMimeTypes[$ext];
+			else
+				$mimeType="text/plain";
+
+			// Turn off output buffering to decrease cpu usage.
+			@ob_end_clean(); 
+
+			// Required for IE, otherwise Content-Disposition could be ignored.
+			if(ini_get('zlib.output_compression'))
+				ini_set('zlib.output_compression', 'Off');
+
+			header('Content-Type: ' . $mimeType);
+			header('Content-disposition: attachment; filename="' . $name . '"');
+			header("Content-Length: " . $size);
+			header("Content-Transfer-Encoding: binary");
+			header("Pragma: no-cache");
+			echo $fileContent;
+			exit;
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "An unknown error has occurred while trying to download the file " . $name);
+		}
 	}
 }

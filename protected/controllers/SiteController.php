@@ -28,7 +28,7 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
-		$this->layout = '//layouts/column1';
+		$this->layout = '//layouts/column2';
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)

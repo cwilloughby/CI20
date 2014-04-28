@@ -9,6 +9,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'doc-table-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -16,33 +17,22 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>125)); ?>
-		<?php echo $form->error($model,'name'); ?>
+		<?php echo $form->labelEx($model, 'fileUp'); ?>
+		<?php echo $form->fileField($model, 'fileUp'); ?>
+		<?php echo $form->error($model,'fileUp'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'type'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'path'); ?>
-		<?php echo $form->textField($model,'path',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'path'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'extension'); ?>
-		<?php echo $form->textField($model,'extension',array('size'=>7,'maxlength'=>7)); ?>
-		<?php echo $form->error($model,'extension'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'uploader'); ?>
-		<?php echo $form->textField($model,'uploader',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'uploader'); ?>
+		<?php echo $form->label($model,'type'); ?>
+		<?php echo $form->dropDownList($model,'type', 
+			array(
+				""=>"",
+				"Design"=>"Design",
+				"Documentation"=>"Documentation",
+				"Instructional"=>"Instructional",
+				"Proposal"=>"Proposal"
+			));
+		?>
 	</div>
 
 	<div class="row">
@@ -52,11 +42,25 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'release_date'); ?>
-		<?php echo $form->textField($model,'release_date'); ?>
-		<?php echo $form->error($model,'release_date'); ?>
+		<?php echo $form->label($model,'release_date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'release_date',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->release_date,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'agency'); ?>
 		<?php echo $form->textField($model,'agency',array('size'=>45,'maxlength'=>45)); ?>
@@ -65,7 +69,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'cda_num'); ?>
-		<?php echo $form->textField($model,'cda_num',array('size'=>8,'maxlength'=>8)); ?>
+		<?php echo $form->textField($model,'cda_num',array('size'=>8,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'cda_num'); ?>
 	</div>
 
@@ -82,35 +86,77 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'coding_start_date'); ?>
-		<?php echo $form->textField($model,'coding_start_date'); ?>
-		<?php echo $form->error($model,'coding_start_date'); ?>
+		<?php echo $form->label($model,'coding_start_date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'coding_start_date',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->coding_start_date,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'test_start_date'); ?>
-		<?php echo $form->textField($model,'test_start_date'); ?>
-		<?php echo $form->error($model,'test_start_date'); ?>
+		<?php echo $form->label($model,'test_start_date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'test_start_date',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->test_start_date,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'production_date'); ?>
-		<?php echo $form->textField($model,'production_date'); ?>
-		<?php echo $form->error($model,'production_date'); ?>
+		<?php echo $form->label($model,'production_date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'production_date',
+				'language' => 'en',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->production_date,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'documentation_subject'); ?>
-		<?php echo $form->textField($model,'documentation_subject',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textArea($model,'documentation_subject',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'documentation_subject'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'instruction_feature'); ?>
-		<?php echo $form->textField($model,'instruction_feature',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textArea($model,'instruction_feature',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'instruction_feature'); ?>
 	</div>
-
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

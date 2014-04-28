@@ -34,12 +34,12 @@ class Controller extends SBaseController
 		if(is_null($id))
 			throw new CHttpException(400, "Bad Request! An id must be given.");
 		else if(is_null($modelClass)) 
-			throw new CHttpException(404, "Bad Request! A model must be given.");
+			throw new CHttpException(400, "Bad Request! A model must be given.");
 		
 		$model = CActiveRecord::model($modelClass)->findByPk($id);
 
 		if($model===null)
-			throw new CHttpException(400, 'The requested data does not exist!');
+			throw new CHttpException(404, 'The requested data does not exist!');
 		else
 			return $model;
 	}

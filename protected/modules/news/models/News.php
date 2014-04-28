@@ -19,6 +19,11 @@ class News extends CActiveRecord
 	public $type_search;
 	public $user_search;
 	
+	// These three variables are used for posting CJIS news.
+	public $buildNum;
+	public $releaseDate;
+	public $features;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -45,6 +50,7 @@ class News extends CActiveRecord
 		// Define the validation rules in an array and return it.
 		return array(
 			array('typeid, news', 'required'),
+			array('buildNum, releaseDate, features', 'required', 'on'=>'cjisNews'),
 			array('typeid, postedby', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -111,6 +117,9 @@ class News extends CActiveRecord
 			'user_search' => 'Posted By',
 			'date' => 'Date',
 			'news' => 'News',
+			'buildNum' => 'Build Number',
+			'releaseDate' => 'Release Date',
+			'features' => 'Features'
 		);
 	}
 
@@ -124,7 +133,7 @@ class News extends CActiveRecord
 		
 		if((int)$this->date)
 			$this->date = date('Y-m-d', strtotime($this->date));
-		
+				
 		$criteria->compare('newsid',$this->newsid);
 		$criteria->compare('typeid',$this->typeid);
 		$criteria->compare('type.type',$this->user_search,true);

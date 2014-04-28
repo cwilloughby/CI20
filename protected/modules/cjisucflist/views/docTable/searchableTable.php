@@ -34,12 +34,9 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
-</div><!-- search-form -->
 
 <?php 
 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
@@ -51,28 +48,62 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
 		array(
-			'class' => 'CLinkColumn',
-			'header' => 'Name',
-			'labelExpression' => '$data->name',
-			'urlExpression' => 'Yii::app()->createUrl("cjisucflist/doctable/download", array("path"=>"$data->path", "name"=>"$data->name", "ext"=>"$data->extension"))'
-		),
-		array(
-			'name' => 'upload_date',
-			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->upload_date"))',
+			'name' => 'name',
+			'type' => 'raw',
+			'value' => 'CHtml::link($data->name,Yii::app()->createUrl("cjisucflist/doctable/download", array("path"=>"$data->path", "name"=>"$data->name", "ext"=>"$data->extension")))',
+			'htmlOptions' => array('style' => 'max-width:150px; overflow-x: auto; word-wrap:break-word')
 		),
 		'type',
+		array(
+			'name' => 'agency',
+			'value' => '(isset($data->agency))
+				?CHtml::encode($data->agency):"N/A"',
+		),
+		array(
+			'name' => 'cda_num',
+			'value' => '(isset($data->cda_num))
+				?CHtml::encode($data->cda_num):"N/A"',
+		),
+		array(
+			'name' => 'release_num',
+			'value' => '(isset($data->release_num))
+				?CHtml::encode($data->release_num):"N/A"',
+		),
+		array(
+			'name' => 'release_date',
+			'value' => '(isset($data->release_date) && ((int)$data->release_date))
+				?CHtml::encode(date("m/d/Y", strtotime($data->release_date))):"N/A"',
+		),
+		array(
+			'name' => 'problem',
+			'value' => '(isset($data->problem))
+				?CHtml::encode($data->problem):"N/A"',
+		),
+		array(
+			'name' => 'description',
+			'value' => '(isset($data->description))
+				?CHtml::encode($data->description):"N/A"',
+		),
+		array(
+			'name' => 'documentation_subject',
+			'value' => '(isset($data->documentation_subject))
+				?CHtml::encode($data->documentation_subject):"N/A"',
+		),
+		array(
+			'name' => 'instruction_feature',
+			'value' => '(isset($data->instruction_feature))
+				?CHtml::encode($data->instruction_feature):"N/A"',
+		),
 		/*
+		array(
+			'name' => 'upload_date',
+			'value' => 'DATE("m/d/Y", STRTOTIME("$data->upload_date"))',
+		),
 		'uploader',
-		'release_num',
-		'release_date',
 		array(
 			'name' => 'release_date',
 			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->release_date"))',
 		),
-		'agency',
-		'cda_num',
-		'problem',
-		'description',
 		array(
 			'name' => 'coding_start_date',
 			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->coding_start_date"))',
@@ -85,8 +116,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'production_date',
 			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->production_date"))',
 		),
-		'documentation_subject',
-		'instruction_feature',
 		*/
 		array(
 			'class'=>'CButtonColumn',

@@ -32,6 +32,9 @@ class DocTable extends CActiveRecord
 	// The single search box uses this.
 	public $globalSearch;
 	
+	// This is used to store a file that is being uploaded.
+	public $fileUp;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -58,14 +61,17 @@ class DocTable extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('upload_date, name, type, path, extension, uploader', 'required'),
+			array('type', 'required'),
+			array('fileUp', 'file', 'types'=>'doc, docx, ppt, xls, xlsx, zip', 'allowEmpty'=>true, 'message'=>'Only files with doc, docx, ppt, xls, xlsx, or zip extensions are allowed.'),
+			array('fileUp', 'required', 'on'=>'create', 'message'=>'You must provide a file to upload.'),
 			array('name', 'length', 'max'=>125),
 			array('type, uploader, release_num, agency', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>200),
 			array('extension', 'length', 'max'=>7),
 			array('cda_num', 'length', 'max'=>100),
 			array('globalSearch','length', 'max'=>70),
-			array('release_date, problem, description, coding_start_date, test_start_date, production_date, documentation_subject, instruction_feature', 'safe'),
+			array('release_date, coding_start_date, test_start_date, production_date', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like MM/DD/YYYY'),
+			array('fileUp, release_date, problem, description, coding_start_date, test_start_date, production_date, documentation_subject, instruction_feature', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('upload_date, name, type, path, extension, uploader, release_num, release_date, agency, cda_num, problem, description, coding_start_date, test_start_date, production_date, documentation_subject, instruction_feature', 'safe', 'on'=>'search'),
@@ -87,6 +93,25 @@ class DocTable extends CActiveRecord
 		);
 	}
 	
+	public function beforeSave()
+	{
+		// Switch the format of the dates to the format used by the database.
+		$this->dateFormatter();
+		
+		// if this is a new record, set the identity of the uploader.
+		if($this->isNewRecord)
+			$this->uploader = Yii::app()->user->name;
+		
+		// This loop prevents blank fields from changing nulls in the database to empty strings.
+		foreach($this->attributes as $key => $value)
+		{
+			if(!$value)
+				$this->$key = NULL;
+		}
+		
+		return parent::beforeSave();
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -104,6 +129,7 @@ class DocTable extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'fileUp' => 'Upload File',
 			'id' => 'ID',
 			'upload_date' => 'Upload Date',
 			'name' => 'Name',
@@ -114,7 +140,7 @@ class DocTable extends CActiveRecord
 			'release_num' => 'Release Number',
 			'release_date' => 'Release Date',
 			'agency' => 'Agency',
-			'cda_num' => 'CDA Number(s)',
+			'cda_num' => 'CDA #',
 			'problem' => 'Problem',
 			'description' => 'Description',
 			'coding_start_date' => 'Coding Start Date',
@@ -197,5 +223,13 @@ class DocTable extends CActiveRecord
 			$this->test_start_date = date('Y-m-d', strtotime($this->test_start_date));
 		if((int)$this->production_date)
 			$this->production_date = date('Y-m-d', strtotime($this->production_date));
+	}
+	
+	public function setPath()
+	{
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
+			$this->path = self::CJIS_FILE_BASE_PATH_REMOTE . "\\" . $this->name;
+		else
+			$this->path = self::CJIS_FILE_BASE_PATH . "/" . $this->name;
 	}
 }
