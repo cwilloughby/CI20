@@ -26,7 +26,7 @@ $this->menu2=array(
 			'label'=>'Name',
 			'type'=>'raw',
             'value'=>CHtml::link(CHtml::encode($model->name),
-				Yii::app()->createUrl("cjisucflist/doctable/download", array("path"=>"$model->path", "name"=>"$model->name", "ext"=>"$model->extension")))
+				Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$model->path", "name"=>"$model->name")))
 		),
 		'type',
 		array(

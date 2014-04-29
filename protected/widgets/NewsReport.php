@@ -26,7 +26,7 @@ class NewsReport extends CPortlet
 			->order('ci_news.date DESC')
 			->limit(5)
 			->queryAll();
-
+		
 		// Put the news into an array.
 		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 100);
 		$newsDates = CHtml::listData($news, 'newsid', 'date');
@@ -48,6 +48,7 @@ class NewsReport extends CPortlet
 		foreach($text as $key => $value)
 		{
 			$length = abs((int)$length);
+			$text[$key] = strip_tags($text[$key], "<br>");
 			if(strlen($text[$key]) > $length) {
 				$text[$key] = preg_replace("/^(.{1,$length})(\s.*|$)/s", '\\1...', $text[$key]);
 			}

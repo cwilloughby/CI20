@@ -26,14 +26,18 @@
 class DocTable extends CActiveRecord
 {
 	// This const is the base path that all files uploaded to the server will be saved under.
-	const CJIS_FILE_BASE_PATH = 'C:/wamp/files/cjis';
-	const CJIS_FILE_BASE_PATH_REMOTE = '\\\\jis18822\\c$\\wamp\\files\\cjis';
+	const CJIS_FILE_BASE_PATH = 'C:/wamp/files/ucf';
+	const CJIS_FILE_BASE_PATH_REMOTE = '\\\\jis18822\\c$\\wamp\\files\\ucf';
 	
 	// The single search box uses this.
 	public $globalSearch;
 	
 	// This is used to store a file that is being uploaded.
 	public $fileUp;
+	
+	// These two variables are used for posting CJIS news.
+	public $buildNum;
+	public $features;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -61,9 +65,11 @@ class DocTable extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('type', 'required'),
-			array('fileUp', 'file', 'types'=>'doc, docx, ppt, xls, xlsx, zip', 'allowEmpty'=>true, 'message'=>'Only files with doc, docx, ppt, xls, xlsx, or zip extensions are allowed.'),
-			array('fileUp', 'required', 'on'=>'create', 'message'=>'You must provide a file to upload.'),
+			array('type', 'required', 'on'=>'update'),
+			array('fileUp', 'required', 'on'=>'create, cjisNews', 'message'=>'You must provide a file to upload.'),
+			array('type', 'required', 'on'=>'create', 'message'=>'Please specify an upload type.'),
+			array('buildNum, release_date, features', 'required', 'on'=>'cjisNews'),
+			array('fileUp', 'file', 'types'=>'pdf', 'allowEmpty'=>true, 'message'=>'Only files with the pdf extension are allowed.'),
 			array('name', 'length', 'max'=>125),
 			array('type, uploader, release_num, agency', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>200),
@@ -148,6 +154,8 @@ class DocTable extends CActiveRecord
 			'production_date' => 'Production Date',
 			'documentation_subject' => 'Documentation Subject',
 			'instruction_feature' => 'Instruction Feature',
+			'buildNum' => 'Build Number',
+			'features' => 'Features'
 		);
 	}
 
@@ -225,11 +233,44 @@ class DocTable extends CActiveRecord
 			$this->production_date = date('Y-m-d', strtotime($this->production_date));
 	}
 	
-	public function setPath()
+	/**
+	 * The actual file upload occurs here.
+	 */
+	public function uploadFile()
 	{
+		$this->name = $this->fileUp->name;
+		$this->setPath();
+		$this->fileUp->saveAs($this->path);
+	}
+	
+	/**
+	 * Select the correct save path dependinbg on if the user is in development or production.
+	 */
+	private function setPath()
+	{
+		// Set the uploaddate attribute to the current date.
+		$uploaddate = date('Y-m-d_h-i-s');
+		
 		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
-			$this->path = self::CJIS_FILE_BASE_PATH_REMOTE . "\\" . $this->name;
+		{
+			$this->path = self::CJIS_FILE_BASE_PATH_REMOTE . "\\" . $uploaddate;
+			
+			// Create the folder if it does not exist.
+			if(!is_dir($this->path))
+				mkdir($this->path, 0777, true);
+			
+			$this->path = $this->path . "\\" . $this->name;
+		}
 		else
-			$this->path = self::CJIS_FILE_BASE_PATH . "/" . $this->name;
+		{
+			$this->path = self::CJIS_FILE_BASE_PATH . "/" . $uploaddate;
+			
+			// Create the folder if it does not exist.
+			if(!is_dir($this->path))
+				mkdir($this->path, 0777, true);
+			
+			$this->path = $this->path . "/" . $this->name;
+		}
+
 	}
 }

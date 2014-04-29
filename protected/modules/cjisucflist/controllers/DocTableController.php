@@ -44,11 +44,10 @@ class DocTableController extends Controller
 			$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
 			if($model->validate())
 			{
-				$model->name = $model->fileUp->name;
+				$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
+				$model->uploadFile();
 				$model->extension = $model->fileUp->extensionName;
-				$model->setPath();
 				$model->save(false);
-				$model->fileUp->saveAs($model->path);
 				$this->redirect(array('viewFileRecord','id'=>$model->id));
 			}
 		}
@@ -74,11 +73,9 @@ class DocTableController extends Controller
 			if(isset($model->fileUp))
 			{
 				$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
-				$model->name = $model->fileUp->name;
+				$model->uploadFile();
 				$model->extension = $model->fileUp->extensionName;
-				$model->setPath();
 				$model->save(false);
-				$model->fileUp->saveAs($model->path);
 			}
 			// If a file record is being updated without a change to the uploaded file.
 			else
@@ -123,51 +120,59 @@ class DocTableController extends Controller
 	}
 	
 	/**
-	 * This function is used by the download links to send the file to the user.
+	 * This function is used by the download links to display the file for the user.
 	 */
-	public function actionDownload($path, $name, $ext)
+	public function actionDisplayOnline($path, $name)
 	{
 		if(!file_exists($path))
 			throw new CHttpException(404, 'The file ' . $name . ' was not found!');
 		
-		try
+		header('Content-disposition: inline');
+		header('Content-type: application/pdf');
+		readfile($path);
+		exit;
+	}
+	
+	/**
+	 * This function is used to create a special type of IT news post for announcing new CJIS builds.
+	 */
+	public function actionCreateCjisNews()
+	{
+		$model = new DocTable;
+		$model->scenario = 'cjisNews';
+		
+		if($model->attributes = Yii::app()->request->getPost('DocTable') && $model->validate())
 		{
-			$size = filesize($path);
-			$fileContent = file_get_contents($path);
+			$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
+			$model->uploadFile();
+			
+			$news = new News;
+			
+			// Grab the id for the "IT news" type.
+			$type = Yii::app()->db->createCommand()
+				->select('typeid')
+				->from('ci_news_type')
+				->where('type=:type', array(':type'=>'IT News'))
+				->queryAll();
+			
+			// Set the news type for the new record.
+			$news->typeid = $type[0]['typeid'];
 
-			$supportedMimeTypes=array(
-				"doc" => "application/msword",
-				"docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-				"ppt" => "application/vnd.ms-powerpoint",
-				"xls" => "application/vnd.ms-excel",
-				"xlsx"=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-				"zip" => "application/zip",
-			);
-
-			// Select the correct MIME type.
-			if(array_key_exists($ext, $supportedMimeTypes))
-				$mimeType=$supportedMimeTypes[$ext];
-			else
-				$mimeType="text/plain";
-
-			// Turn off output buffering to decrease cpu usage.
-			@ob_end_clean(); 
-
-			// Required for IE, otherwise Content-Disposition could be ignored.
-			if(ini_get('zlib.output_compression'))
-				ini_set('zlib.output_compression', 'Off');
-
-			header('Content-Type: ' . $mimeType);
-			header('Content-disposition: attachment; filename="' . $name . '"');
-			header("Content-Length: " . $size);
-			header("Content-Transfer-Encoding: binary");
-			header("Pragma: no-cache");
-			echo $fileContent;
-			exit;
+			// Format the body of the news post.
+			$news->news = "Build #: " . $model->buildNum . "&nbsp;&nbsp;&nbsp;&nbsp;" . CHtml::link('View Doc',
+					Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$model->path", "name"=>"$model->name")))
+				. "<br/>Release Date: " . $model->releaseDate 
+				. "<br/><br/>Features: " . $model->features;
+			
+			if($news->validate())
+			{
+				$news->save(false);
+				$this->redirect(array('/news/news/view','id'=>$news->newsid));
+			}
 		}
-		catch(Exception $ex)
-		{
-			throw new CHttpException(500, "An unknown error has occurred while trying to download the file " . $name);
-		}
+		
+		$this->render('createCjisNews',array(
+			'model'=>$model,
+		));
 	}
 }

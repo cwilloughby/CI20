@@ -37,7 +37,7 @@
 							array('label'=>'Search CJIS Files', 'url'=>array('/cjisucflist/doctable/searchableFileTable')),
 							array('label'=>'Upload CJIS File', 'url'=>array('/cjisucflist/doctable/createFileRecord'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-							array('label'=>'CJIS News Management', 'url'=>array('/news/news/createCjisNews'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+							array('label'=>'Post CJIS News', 'url'=>array('/cjisucflist/doctable/createCjisNews'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					/*

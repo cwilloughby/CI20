@@ -50,7 +50,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'name' => 'name',
 			'type' => 'raw',
-			'value' => 'CHtml::link($data->name,Yii::app()->createUrl("cjisucflist/doctable/download", array("path"=>"$data->path", "name"=>"$data->name", "ext"=>"$data->extension")))',
+			'value' => 'CHtml::link($data->name,Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$data->path", "name"=>"$data->name")))',
 			'htmlOptions' => array('style' => 'max-width:150px; overflow-x: auto; word-wrap:break-word')
 		),
 		'type',

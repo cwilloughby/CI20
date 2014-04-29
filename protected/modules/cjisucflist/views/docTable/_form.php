@@ -8,7 +8,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'doc-table-form',
-	'enableAjaxValidation'=>false,
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
@@ -33,6 +32,7 @@
 				"Proposal"=>"Proposal"
 			));
 		?>
+		<?php echo $form->error($model,'type'); ?>
 	</div>
 
 	<div class="row">

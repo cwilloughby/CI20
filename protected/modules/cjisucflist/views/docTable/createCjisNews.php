@@ -1,6 +1,6 @@
 <?php
-/* @var $this NewsController */
-/* @var $model News */
+/* @var $this DocTableController */
+/* @var $model DocTable */
 
 $this->pageTitle = Yii::app()->name . ' - Post CJIS News';
 

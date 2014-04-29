@@ -19,11 +19,6 @@ class News extends CActiveRecord
 	public $type_search;
 	public $user_search;
 	
-	// These three variables are used for posting CJIS news.
-	public $buildNum;
-	public $releaseDate;
-	public $features;
-	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -117,9 +112,6 @@ class News extends CActiveRecord
 			'user_search' => 'Posted By',
 			'date' => 'Date',
 			'news' => 'News',
-			'buildNum' => 'Build Number',
-			'releaseDate' => 'Release Date',
-			'features' => 'Features'
 		);
 	}
 
