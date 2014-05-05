@@ -48,6 +48,7 @@
 				'model' => $model,
 				'attribute' => 'release_date',
 				'language' => 'en',
+				'id'=>'rel_date',
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
@@ -92,10 +93,13 @@
 				'model' => $model,
 				'attribute' => 'coding_start_date',
 				'language' => 'en',
+				'id'=>'coding_start',
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'mm/dd/yy',
+					'dateFormat' => 'yy-mm-dd',
+					'altField' => '#coding_start',
+					'altFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->coding_start_date,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -112,10 +116,13 @@
 				'model' => $model,
 				'attribute' => 'test_start_date',
 				'language' => 'en',
+				'id'=>'test_start',
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'mm/dd/yy',
+					'dateFormat' => 'yy-mm-dd',
+					'altField' => '#test_start',
+					'altFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->test_start_date,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -132,10 +139,13 @@
 				'model' => $model,
 				'attribute' => 'production_date',
 				'language' => 'en',
+				'id'=>'prod_date',
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'mm/dd/yy',
+					'dateFormat' => 'yy-mm-dd',
+					'altField' => '#prod_date',
+					'altFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->production_date,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -158,7 +168,7 @@
 	</div>
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Update'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

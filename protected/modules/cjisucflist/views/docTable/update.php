@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Search CJIS Files', 'url'=>array('searchableFileTable')),
-	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord')),
-	array('label'=>'View File Record', 'url'=>array('viewFileRecord', 'id'=>$model->id)),
+	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
+	array('label'=>'View File Record', 'url'=>array('viewFileRecord', 'id'=>$model->id), 'visible'=>Yii::app()->user->checkAccess("IT")),
 );
 ?>
 

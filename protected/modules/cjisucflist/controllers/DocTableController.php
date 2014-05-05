@@ -84,6 +84,9 @@ class DocTableController extends Controller
 			}
 			$this->redirect(array('viewFileRecord','id'=>$model->id));
 		}
+		
+		if(isset($model->release_date))
+			echo $model->release_date;
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -127,8 +130,13 @@ class DocTableController extends Controller
 		if(!file_exists($path))
 			throw new CHttpException(404, 'The file ' . $name . ' was not found!');
 		
-		header('Content-disposition: inline');
+		if(ini_get('zlib.output_compression'))
+			ini_set('zlib.output_compression', 'Off');
+		
 		header('Content-type: application/pdf');
+		header('Content-disposition: inline');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: ' . filesize($path));
 		readfile($path);
 		exit;
 	}

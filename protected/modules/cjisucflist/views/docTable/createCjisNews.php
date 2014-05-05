@@ -10,9 +10,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'<i class="icon icon-search"></i> Search News Posts', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-	array('label'=>'<i class="icon icon-file"></i> Create News Post', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-	array('label'=>'<i class="icon icon-list-alt"></i> List News Posts', 'url'=>array('index')),
+	array('label'=>'Search CJIS Files', 'url'=>array('searchableFileTable')),
+	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
+	array('label'=>'Update CJIS File Record ', 'url'=>array('updateFileRecord', 'id'=>$model->id), 'visible'=>Yii::app()->user->checkAccess("IT")),
+	array('label'=>'Delete CJIS File', 'url'=>'#', 'linkOptions'=>array('submit'=>array('deleteFileRecord','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'visible'=>Yii::app()->user->checkAccess("IT")),
 );
 ?>
 

@@ -897,6 +897,8 @@ span.required
 
 .grid-view table.items th {
 	background-color: #0A2F42;
+	/* IE9 */ 
+	background-image: none;
 	/* IE10 Consumer Preview */ 
 	background-image: -ms-linear-gradient(top, #13465B 0%, #0A2F42 100%);
 	/* Mozilla Firefox */ 
@@ -910,7 +912,6 @@ span.required
 	/* W3C Markup, IE10 Release Preview */ 
 	background-image: linear-gradient(to bottom, #13465B 0%, #0A2F42 100%);
 }
-
 
 .dropzone .dz-default.dz-message {
 	cursor: pointer;

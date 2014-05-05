@@ -76,7 +76,7 @@ class DocTable extends CActiveRecord
 			array('extension', 'length', 'max'=>7),
 			array('cda_num', 'length', 'max'=>100),
 			array('globalSearch','length', 'max'=>70),
-			array('release_date, coding_start_date, test_start_date, production_date', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like MM/DD/YYYY'),
+			array('release_date, coding_start_date, test_start_date, production_date', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'yyyy-M-d'),
 			array('fileUp, release_date, problem, description, coding_start_date, test_start_date, production_date, documentation_subject, instruction_feature', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -100,10 +100,7 @@ class DocTable extends CActiveRecord
 	}
 	
 	public function beforeSave()
-	{
-		// Switch the format of the dates to the format used by the database.
-		$this->dateFormatter();
-		
+	{		
 		// if this is a new record, set the identity of the uploader.
 		if($this->isNewRecord)
 			$this->uploader = Yii::app()->user->name;
@@ -116,6 +113,18 @@ class DocTable extends CActiveRecord
 		}
 		
 		return parent::beforeSave();
+	}
+	
+	public function beforeValidate()
+	{
+		$this->dateFormatter("Y-m-d");
+		return parent::beforeValidate();
+	}
+	
+	protected function afterFind()
+	{
+		$this->dateFormatter("m/d/Y");
+		return parent::afterFind();
 	}
 	
 	/**
@@ -165,7 +174,7 @@ class DocTable extends CActiveRecord
 	 */
 	public function search()
 	{
-		$this->dateFormatter();
+		$this->dateFormatter("Y-m-d");
 		$criteria=new CDbCriteria;
 
 		// If something was entered into the single search box.
@@ -217,20 +226,20 @@ class DocTable extends CActiveRecord
 	}
 	
 	/**
-	 * Convert the supplied dates, if any, to the format recognized by the database.
+	 * Convert the supplied dates to the desired format.
 	 */
-	public function dateFormatter()
+	public function dateFormatter($format)
 	{
 		if((int)$this->upload_date)
-			$this->upload_date = date('Y-m-d', strtotime($this->upload_date));
+			$this->upload_date = date($format, strtotime($this->upload_date));
 		if((int)$this->release_date)
-			$this->release_date = date('Y-m-d', strtotime($this->release_date));
+			$this->release_date = date($format, strtotime($this->release_date));
 		if((int)$this->coding_start_date)
-			$this->coding_start_date = date('Y-m-d', strtotime($this->coding_start_date));
+			$this->coding_start_date = date($format, strtotime($this->coding_start_date));
 		if((int)$this->test_start_date)
-			$this->test_start_date = date('Y-m-d', strtotime($this->test_start_date));
+			$this->test_start_date = date($format, strtotime($this->test_start_date));
 		if((int)$this->production_date)
-			$this->production_date = date('Y-m-d', strtotime($this->production_date));
+			$this->production_date = date($format, strtotime($this->production_date));
 	}
 	
 	/**

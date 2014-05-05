@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu2=array(
 	array('label'=>'Search CJIS Files', 'url'=>array('searchableFileTable')),
-	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord')),
+	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -50,8 +50,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'name' => 'name',
 			'type' => 'raw',
-			'value' => 'CHtml::link($data->name,Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$data->path", "name"=>"$data->name")))',
-			'htmlOptions' => array('style' => 'max-width:150px; overflow-x: auto; word-wrap:break-word')
+			// Exploiting a callback was the only way I could fix an Internet Explorer css issue.
+			'value' => function($data) { return '<div style="max-width:150px">' . CHtml::link($data->name,Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$data->path", "name"=>"$data->name"))) . "</div>";},
+			'htmlOptions' => array('style' => 'width:150px; max-width:150px; overflow-x: auto; word-wrap:break-word')
 		),
 		'type',
 		array(
@@ -63,6 +64,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'cda_num',
 			'value' => '(isset($data->cda_num))
 				?CHtml::encode($data->cda_num):"N/A"',
+			'htmlOptions' => array('style' => 'min-width:58px;')
 		),
 		array(
 			'name' => 'release_num',
@@ -94,29 +96,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value' => '(isset($data->instruction_feature))
 				?CHtml::encode($data->instruction_feature):"N/A"',
 		),
-		/*
-		array(
-			'name' => 'upload_date',
-			'value' => 'DATE("m/d/Y", STRTOTIME("$data->upload_date"))',
-		),
-		'uploader',
-		array(
-			'name' => 'release_date',
-			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->release_date"))',
-		),
-		array(
-			'name' => 'coding_start_date',
-			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->coding_start_date"))',
-		),
-		array(
-			'name' => 'test_start_date',
-			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->test_start_date"))',
-		),
-		array(
-			'name' => 'production_date',
-			'value' => 'DATE("m/d/Y g:i a", STRTOTIME("$data->production_date"))',
-		),
-		*/
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
@@ -124,14 +103,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			)),
 			'buttons' => array(  
 				'view' => array( 
-					'url' => 'Yii::app()->createUrl("cjisucflist/doctable/viewFileRecord", array("id"=>$data->id))',        
+					'url' => 'Yii::app()->createUrl("cjisucflist/doctable/viewFileRecord", array("id"=>$data->id))',
 				),
-				'update' => array(
+				'update' => array
+				(
+					'visible'=>'Yii::app()->user->checkAccess("IT")',
 					'url' => 'Yii::app()->createUrl("cjisucflist/doctable/updateFileRecord", array("id"=>$data->id))',
 				),
-				'delete' => array(
-					'url' => 'Yii::app()->createUrl("cjisucflist/doctable/deleteFileRecord", array("id"=>$data->id))',   
-				),                         
+				'delete' => array
+				(
+					'visible'=>'Yii::app()->user->checkAccess("IT")',
+					'url' => 'Yii::app()->createUrl("cjisucflist/doctable/deleteFileRecord", array("id"=>$data->id))',
+				),
 			),
 		),
 	),
