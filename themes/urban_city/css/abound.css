@@ -283,7 +283,6 @@ text-align: center !important;
   background-image: -o-linear-gradient(top, #848282, #9e9090);
   background-image: linear-gradient(to bottom, #848282, #9e9090);
   background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#848282', endColorstr='#9e9090', GradientType=0);
 }
 
 .dropdown-menu .active > a,
@@ -299,7 +298,6 @@ text-align: center !important;
   background-image: -o-linear-gradient(top, #848282, #9e9090);
   background-repeat: repeat-x;
   outline: 0;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#848282', endColorstr='#9e9090', GradientType=0);
 }
 /*Side Nav*/
 .sidebar-nav {

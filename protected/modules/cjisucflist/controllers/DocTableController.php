@@ -20,7 +20,7 @@ class DocTableController extends Controller
 	}
 
 	/**
-	 * Displays a particular model.
+	 * View the details of a file record. The DocTable model class is what actually loads the record.
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionViewFileRecord($id)
@@ -31,7 +31,8 @@ class DocTableController extends Controller
 	}
 
 	/**
-	 * Creates a new model.
+	 * This function shows the create form and processes it, allowing the user to enter the details 
+	 * of the file record and upload the file itself.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreateFileRecord()
@@ -39,27 +40,22 @@ class DocTableController extends Controller
 		$model=new DocTable;
 		$model->scenario = 'create';
 		
-		if($model->attributes = Yii::app()->request->getPost('DocTable'))
+		if(($model->attributes = Yii::app()->request->getPost('DocTable')) && $model->validate())
 		{
-			$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
-			if($model->validate())
-			{
-				$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
-				$model->uploadFile();
-				$model->extension = $model->fileUp->extensionName;
-				$model->save(false);
-				$this->redirect(array('viewFileRecord','id'=>$model->id));
-			}
+			$model->uploadFile();
+			$model->save(false);
+			$this->redirect(array('viewFileRecord','id'=>$model->id));
 		}
-
+				
 		$this->render('upload',array(
 			'model'=>$model,
 		));
 	}
 
 	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * This function shows the update form and processes it, allowing the user to change the details
+	 * of a file record and even upload a new file for that record to use.
+	 * If update is successful, the browser will be redirected to the 'viewFileRecord' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdateFileRecord($id)
@@ -72,9 +68,7 @@ class DocTableController extends Controller
 			// If a new file is being uploaded.
 			if(isset($model->fileUp))
 			{
-				$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
 				$model->uploadFile();
-				$model->extension = $model->fileUp->extensionName;
 				$model->save(false);
 			}
 			// If a file record is being updated without a change to the uploaded file.
@@ -85,16 +79,14 @@ class DocTableController extends Controller
 			$this->redirect(array('viewFileRecord','id'=>$model->id));
 		}
 		
-		if(isset($model->release_date))
-			echo $model->release_date;
-
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
 
 	/**
-	 * Deletes a particular model.
+	 * This function is used to delete a file record.
+	 * The DocTable model class does the actual deleting, but this function tells it what to delete.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
@@ -108,7 +100,8 @@ class DocTableController extends Controller
 	}
 
 	/**
-	 * Manages all models.
+	 * This function displays the search form and the table where the results are shown. 
+	 * The DocTable model class does the actual searching.
 	 */
 	public function actionSearchableFileTable()
 	{
@@ -123,55 +116,63 @@ class DocTableController extends Controller
 	}
 	
 	/**
-	 * This function is used by the download links to display the file for the user.
+	 * The document links call this function to open the file in the user’s browser.
 	 */
 	public function actionDisplayOnline($path, $name)
 	{
 		if(!file_exists($path))
 			throw new CHttpException(404, 'The file ' . $name . ' was not found!');
 		
-		if(ini_get('zlib.output_compression'))
-			ini_set('zlib.output_compression', 'Off');
-		
-		header('Content-type: application/pdf');
-		header('Content-disposition: inline');
-		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: ' . filesize($path));
-		readfile($path);
-		exit;
+		try
+		{
+			if(ini_get('zlib.output_compression'))
+				ini_set('zlib.output_compression', 'Off');
+
+			header('Content-type: application/pdf');
+			header('Content-disposition: inline');
+			header('Content-Transfer-Encoding: binary');
+			header('Content-Length: ' . filesize($path));
+			readfile($path);
+			exit;
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, 'An unexpected error occurred while sending the file ' . $name);
+		}
 	}
 	
 	/**
-	 * This function is used to create a special type of IT news post for announcing new CJIS builds.
+	 * This function displays the cjis news post form and processes it.
 	 */
 	public function actionCreateCjisNews()
 	{
 		$model = new DocTable;
 		$model->scenario = 'cjisNews';
 		
-		if($model->attributes = Yii::app()->request->getPost('DocTable') && $model->validate())
+		if(($model->attributes = Yii::app()->request->getPost('DocTable')) && $model->validate())
 		{
-			$model->fileUp = CUploadedFile::getInstance($model,'fileUp');
 			$model->uploadFile();
-			
 			$news = new News;
-			
-			// Grab the id for the "IT news" type.
-			$type = Yii::app()->db->createCommand()
-				->select('typeid')
-				->from('ci_news_type')
-				->where('type=:type', array(':type'=>'IT News'))
-				->queryAll();
-			
+
+			try
+			{
+				// Grab the id for the "IT news" type.
+				$type = Yii::app()->db->createCommand()
+					->select('typeid')
+					->from('ci_news_type')
+					->where('type=:type', array(':type'=>'IT News'))
+					->queryAll();
+			}
+			catch(Exception $ex)
+			{
+				throw new CDbException('Error retrieving news type from database.', PDO::errorInfo());
+			}
+
 			// Set the news type for the new record.
 			$news->typeid = $type[0]['typeid'];
-
 			// Format the body of the news post.
-			$news->news = "Build #: " . $model->buildNum . "&nbsp;&nbsp;&nbsp;&nbsp;" . CHtml::link('View Doc',
-					Yii::app()->createUrl("cjisucflist/doctable/displayonline", array("path"=>"$model->path", "name"=>"$model->name")))
-				. "<br/>Release Date: " . $model->releaseDate 
-				. "<br/><br/>Features: " . $model->features;
-			
+			$news->news = $this->renderPartial('cjisNewsBody', array('model' => $model), true);
+
 			if($news->validate())
 			{
 				$news->save(false);

@@ -76,7 +76,7 @@ class DocTable extends CActiveRecord
 			array('extension', 'length', 'max'=>7),
 			array('cda_num', 'length', 'max'=>100),
 			array('globalSearch','length', 'max'=>70),
-			array('release_date, coding_start_date, test_start_date, production_date', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'yyyy-M-d'),
+			array('release_date, coding_start_date, test_start_date, production_date', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'M/d/yyyy'),
 			array('fileUp, release_date, problem, description, coding_start_date, test_start_date, production_date, documentation_subject, instruction_feature', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -112,19 +112,27 @@ class DocTable extends CActiveRecord
 				$this->$key = NULL;
 		}
 		
-		return parent::beforeSave();
-	}
-	
-	public function beforeValidate()
-	{
 		$this->dateFormatter("Y-m-d");
-		return parent::beforeValidate();
+		
+		return parent::beforeSave();
 	}
 	
 	protected function afterFind()
 	{
 		$this->dateFormatter("m/d/Y");
 		return parent::afterFind();
+	}
+	
+	/**
+	 * Setting the attributes is normally handled entirely by the framework, but we have to handle the file import ourselves.
+	 */
+	public function setAttributes($values, $safeOnly = true)
+	{
+		$this->fileUp = CUploadedFile::getInstance($this,'fileUp');
+		if(isset($this->fileUp))
+			$this->extension = $this->fileUp->extensionName;
+		
+		return parent::setAttributes($values, $safeOnly);
 	}
 	
 	/**
@@ -247,9 +255,16 @@ class DocTable extends CActiveRecord
 	 */
 	public function uploadFile()
 	{
-		$this->name = $this->fileUp->name;
-		$this->setPath();
-		$this->fileUp->saveAs($this->path);
+		try
+		{
+			$this->name = $this->fileUp->name;
+			$this->setPath();
+			$this->fileUp->saveAs($this->path);
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, 'An unexpected error occurred while uploading the file ' . $this->name);
+		}
 	}
 	
 	/**
@@ -257,7 +272,7 @@ class DocTable extends CActiveRecord
 	 */
 	private function setPath()
 	{
-		// Set the uploaddate attribute to the current date.
+		// Set the uploaddate attribute to the current date for use as a folder name.
 		$uploaddate = date('Y-m-d_h-i-s');
 		
 		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
@@ -280,6 +295,5 @@ class DocTable extends CActiveRecord
 			
 			$this->path = $this->path . "/" . $this->name;
 		}
-
 	}
 }

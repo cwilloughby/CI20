@@ -97,9 +97,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'altField' => '#coding_start',
-					'altFormat' => 'mm/dd/yy',
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->coding_start_date,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -120,9 +118,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'altField' => '#test_start',
-					'altFormat' => 'mm/dd/yy',
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->test_start_date,
 					'changeYear' => true,
 					'changeMonth' => true,
@@ -143,9 +139,7 @@
 				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
 				'options' => array(
 					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'altField' => '#prod_date',
-					'altFormat' => 'mm/dd/yy',
+					'dateFormat' => 'mm/dd/yy',
 					'defaultDate' => $model->production_date,
 					'changeYear' => true,
 					'changeMonth' => true,
