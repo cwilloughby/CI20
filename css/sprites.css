@@ -1,63 +1,64 @@
-.homeicon, .helpdeskicon, .evidenceicon, .adminicon, .ITicon, .timeicon, .evaluationicon, .linksicon, .usericon{
+.homeicon, .helpdeskicon, .evidenceicon, .cjisicon, .adminicon, .ITicon, .timeicon, .evaluationicon, .linksicon, .usericon{
 	background: url(/../images/sprites.png) no-repeat;
 }
 
 .homeicon{
-	background-position: -2px 0;
+	background-position: 0 0;
 	width: 38px;
 	height: 37px;
 }
 
 .helpdeskicon{
-	background-position: -47px 0;
+	background-position: -50px 0;
 	width: 38px;
 	height: 37px;
 }
 
 .evidenceicon{
-	background-position: -101px -1px ;
-	width: 38px;
-	height: 37px;
-}
-
-.adminicon{
-	background-position: 0 -49px ;
-	width: 38px;
-	height: 37px;
-}
-
-.ITicon{
-	background-position: -48px -47px ;
-	width: 38px;
-	height: 37px;
-}
-
-.timeicon{
-	background-position: -100px -49px ;
-	width: 38px;
-	height: 37px;
-}
-
-.evaluationicon{
-	background-position: -1px -101px ;
-	width: 38px;
-	height: 37px;
-}
-
-.linksicon{
-	background-position: -52px -99px ;
-	width: 38px;
-	height: 37px;
-}
-
-.usericon{
-	background-position: -100px -99px ;
+	background-position: -100px 0;
 	width: 38px;
 	height: 37px;
 }
 
 .cjisicon{
-	background: url(/../images/CJISicon.png) no-repeat;
+	background-position: -150px 0;
 	width: 38px;
 	height: 37px;
 }
+
+.adminicon{
+	background-position: 0 -50px ;
+	width: 38px;
+	height: 37px;
+}
+
+.ITicon{
+	background-position: -50px -50px ;
+	width: 38px;
+	height: 37px;
+}
+
+.timeicon{
+	background-position: -100px -50px ;
+	width: 38px;
+	height: 37px;
+}
+
+.evaluationicon{
+	background-position: -1px -100px ;
+	width: 38px;
+	height: 37px;
+}
+
+.linksicon{
+	background-position: -50px -100px ;
+	width: 38px;
+	height: 37px;
+}
+
+.usericon{
+	background-position: -99px -99px ;
+	width: 38px;
+	height: 37px;
+}
+
