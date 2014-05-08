@@ -28,7 +28,7 @@ class NewsReport extends CPortlet
 			->queryAll();
 		
 		// Put the news into an array.
-		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 100);
+		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 150);
 		$newsDates = CHtml::listData($news, 'newsid', 'date');
 		
 		// Display the news.
@@ -36,7 +36,7 @@ class NewsReport extends CPortlet
 	}
 	
 	/**
-	 * This function takes a string and a number for the maximum length.
+	 * This function takes an array of strings and a number for the maximum length.
 	 * If the string is greater than the allowed length, the string will be shortend
 	 * to fit the length and "..." characters will be added to the end of the shortend string.
 	 * @param Array $text
