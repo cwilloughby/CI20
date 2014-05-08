@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search CJIS Files', 'url'=>array('searchableFileTable')),
-	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
+	array('label'=>'Search Documents', 'url'=>array('searchableFileTable')),
+	array('label'=>'Create Document', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Search CJIS Files</h1>
+<h1>Search Documents</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

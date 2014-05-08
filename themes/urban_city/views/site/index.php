@@ -2,6 +2,8 @@
 <div class="row-fluid" id="templatemo_wrapper">
 	<div class="templatemo_body">
 		<div class="row-fluid">
+		<?php
+		/*
 		<div class="span12 flexslider">
 			<ul class="slides">
 				<li>
@@ -26,6 +28,8 @@
 				</li>
 			</ul>
 		</div>
+		*/
+		?>
 		</div>
 		<div class="row-fluid" id="templatemo_middle">
 			<div class="span5 v_divider">

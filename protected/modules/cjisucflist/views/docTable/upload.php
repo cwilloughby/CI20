@@ -10,11 +10,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
-	array('label'=>'Search CJIS Files', 'url'=>array('searchableFileTable')),
-	array('label'=>'Upload CJIS File', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
+	array('label'=>'Search Documents', 'url'=>array('searchableFileTable')),
+	array('label'=>'Create Document', 'url'=>array('createFileRecord'), 'visible'=>Yii::app()->user->checkAccess("IT")),
 );
 ?>
 
-<h1>Upload CJIS File</h1>
+<h1>Create Document</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
