@@ -90,4 +90,26 @@ $this->menu2=array(
 				?CHtml::encode($model->instruction_feature):"N/A",
 		),
 	),
-)); ?>
+)); 
+
+// If the document has a release number, release date, and the user has IT access, 
+// then the "Create CJIS News Post" button is visible.
+if(isset($model->release_num) && isset($model->release_date) && Yii::app()->user->checkAccess("IT"))
+{
+	echo "<br/>" . CHtml::beginForm(Yii::app()->createUrl('cjisucflist/doctable/createCjisNews'), 'post');
+	
+	echo CHtml::activeHiddenField($model, 'path');
+	echo CHtml::activeHiddenField($model, 'name');
+	echo CHtml::activeHiddenField($model, 'release_num');
+	echo CHtml::activeHiddenField($model, 'release_date');
+	echo CHtml::hiddenField('firstView', 1);
+	?>
+
+	<div class="row buttons">
+        <?php echo CHtml::submitButton('Post CJIS News'); ?>
+    </div>
+
+	<?php
+	echo CHtml::endForm();
+}
+?>

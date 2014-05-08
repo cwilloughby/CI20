@@ -143,15 +143,23 @@ class DocTableController extends Controller
 	
 	/**
 	 * This function displays the cjis news post form and processes it.
+	 * the release number, release date, and document are posted to it from the ViewFileRecord view page.
 	 */
 	public function actionCreateCjisNews()
 	{
 		$model = new DocTable;
 		$model->scenario = 'cjisNews';
 		
-		if(($model->attributes = Yii::app()->request->getPost('DocTable')) && $model->validate())
+		/*
+		 * Normally the presence of POST data is what causes validation to be performed.
+		 * But this time, POST data is passed in from the previous view page when this page is first loaded.
+		 * So we need to perform a check to see if this is the first time the page is loaded, 
+		 * to prevent incorrect validation errors.
+		 */
+		if(isset($_POST['firstView']))
+			$model->attributes = Yii::app()->request->getPost('DocTable');
+		else if(($model->attributes = Yii::app()->request->getPost('DocTable')) && $model->validate())
 		{
-			$model->uploadFile();
 			$news = new News;
 
 			try
@@ -170,7 +178,7 @@ class DocTableController extends Controller
 
 			// Set the news type for the new record.
 			$news->typeid = $type[0]['typeid'];
-			// Format the body of the news post.
+			// Format the body of the news post using the cjisNewsBody view.
 			$news->news = $this->renderPartial('cjisNewsBody', array('model' => $model), true);
 
 			if($news->validate())

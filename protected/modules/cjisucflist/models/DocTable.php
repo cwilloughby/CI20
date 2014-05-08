@@ -35,8 +35,7 @@ class DocTable extends CActiveRecord
 	// This is used to store a file that is being uploaded.
 	public $fileUp;
 	
-	// These two variables are used for posting CJIS news.
-	public $buildNum;
+	// This variable is used for posting CJIS news.
 	public $features;
 	
 	/**
@@ -66,9 +65,12 @@ class DocTable extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('type', 'required', 'on'=>'update'),
-			array('fileUp', 'required', 'on'=>'create, cjisNews', 'message'=>'You must provide a file to upload.'),
+			array('fileUp', 'required', 'on'=>'create', 'message'=>'You must provide a file to upload.'),
 			array('type', 'required', 'on'=>'create', 'message'=>'Please specify an upload type.'),
-			array('buildNum, release_date, features', 'required', 'on'=>'cjisNews'),
+			array('features', 'required', 'on'=>'cjisNews'),
+			array('path', 'required', 'on'=>'cjisNews', 'message'=>'The file path was not passed to the form.'),
+			array('release_num', 'required', 'on'=>'cjisNews', 'message'=>'The release number was not passed to the form.'),
+			array('release_date', 'required', 'on'=>'cjisNews', 'message'=>'The release date was not passed to the form.'),
 			array('fileUp', 'file', 'types'=>'pdf', 'allowEmpty'=>true, 'message'=>'Only files with the pdf extension are allowed.'),
 			array('name', 'length', 'max'=>125),
 			array('type, uploader, release_num, agency', 'length', 'max'=>45),
@@ -171,7 +173,6 @@ class DocTable extends CActiveRecord
 			'production_date' => 'Production Date',
 			'documentation_subject' => 'Documentation Subject',
 			'instruction_feature' => 'Instruction Feature',
-			'buildNum' => 'Build Number',
 			'features' => 'Features'
 		);
 	}
@@ -205,6 +206,7 @@ class DocTable extends CActiveRecord
 				. "OR instruction_feature LIKE CONCAT('%', :globalSearch , '%') ");
 			$criteria->params = array(':globalSearch' => $this->globalSearch);
 		}
+		// If something was entered into the column search fields.
 		else
 		{
 			$criteria->compare('upload_date',$this->upload_date,true);
@@ -235,6 +237,7 @@ class DocTable extends CActiveRecord
 	
 	/**
 	 * Convert the supplied dates to the desired format.
+	 * @param string $format contains the date format that you want all of the model dates converted to.
 	 */
 	public function dateFormatter($format)
 	{
@@ -268,13 +271,14 @@ class DocTable extends CActiveRecord
 	}
 	
 	/**
-	 * Select the correct save path dependinbg on if the user is in development or production.
+	 * Select the correct save path depending on if the user is in development or production.
 	 */
 	private function setPath()
 	{
 		// Set the uploaddate attribute to the current date for use as a folder name.
 		$uploaddate = date('Y-m-d_h-i-s');
 		
+		// Remote upload location for production.
 		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
 		{
 			$this->path = self::CJIS_FILE_BASE_PATH_REMOTE . "\\" . $uploaddate;
@@ -285,6 +289,7 @@ class DocTable extends CActiveRecord
 			
 			$this->path = $this->path . "\\" . $this->name;
 		}
+		// Local upload location for development.
 		else
 		{
 			$this->path = self::CJIS_FILE_BASE_PATH . "/" . $uploaddate;

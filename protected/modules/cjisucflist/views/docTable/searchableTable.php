@@ -64,7 +64,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'name' => 'cda_num',
 			'value' => '(isset($data->cda_num))
 				?CHtml::encode($data->cda_num):"N/A"',
-			'htmlOptions' => array('style' => 'min-width:58px;')
+			'htmlOptions' => array('style' => 'min-width:58px; max-width:65px;')
 		),
 		array(
 			'name' => 'release_num',
