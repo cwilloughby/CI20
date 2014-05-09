@@ -12,6 +12,8 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
+	<p class="note">The release date and release number (if there are any) will be automatically added to the post.</p>
+	
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php 

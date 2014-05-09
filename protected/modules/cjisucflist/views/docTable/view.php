@@ -92,9 +92,8 @@ $this->menu2=array(
 	),
 )); 
 
-// If the document has a release number, release date, and the user has IT access, 
-// then the "Create CJIS News Post" button is visible.
-if(isset($model->release_num) && isset($model->release_date) && Yii::app()->user->checkAccess("IT"))
+// If the user has IT access, then the "Create CJIS News Post" button is visible.
+if(Yii::app()->user->checkAccess("IT"))
 {
 	echo "<br/>" . CHtml::beginForm(Yii::app()->createUrl('cjisucflist/doctable/createCjisNews'), 'post');
 	

@@ -178,8 +178,19 @@ class DocTableController extends Controller
 
 			// Set the news type for the new record.
 			$news->typeid = $type[0]['typeid'];
-			// Format the body of the news post using the cjisNewsBody view.
-			$news->news = $this->renderPartial('cjisNewsBody', array('model' => $model), true);
+			
+			// If a release date and release number were provided, the cjis build news format will be used.
+			if(isset($_POST['release_date']) && isset($_POST['release_num']))
+			{
+				// Format the body of the news post using the cjisBuildNewsBody view.
+				$news->news = $this->renderPartial('cjisBuildNewsBody', array('model' => $model), true);
+			}
+			// Otherwise use the generic cjis news post format.
+			else
+			{
+				// Format the body of the news post using the cjisNewsBody view.
+				$news->news = $this->renderPartial('cjisNewsBody', array('model' => $model), true);
+			}
 
 			if($news->validate())
 			{

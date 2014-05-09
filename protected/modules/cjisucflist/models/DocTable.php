@@ -69,8 +69,6 @@ class DocTable extends CActiveRecord
 			array('type', 'required', 'on'=>'create', 'message'=>'Please specify an upload type.'),
 			array('features', 'required', 'on'=>'cjisNews'),
 			array('path', 'required', 'on'=>'cjisNews', 'message'=>'The file path was not passed to the form.'),
-			array('release_num', 'required', 'on'=>'cjisNews', 'message'=>'The release number was not passed to the form.'),
-			array('release_date', 'required', 'on'=>'cjisNews', 'message'=>'The release date was not passed to the form.'),
 			array('fileUp', 'file', 'types'=>'pdf', 'allowEmpty'=>true, 'message'=>'Only files with the pdf extension are allowed.'),
 			array('name', 'length', 'max'=>125),
 			array('type, uploader, release_num, agency', 'length', 'max'=>45),
@@ -173,7 +171,7 @@ class DocTable extends CActiveRecord
 			'production_date' => 'Production Date',
 			'documentation_subject' => 'Documentation Subject',
 			'instruction_feature' => 'Instruction Feature',
-			'features' => 'Features'
+			'features' => 'Details'
 		);
 	}
 
