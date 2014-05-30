@@ -37,10 +37,15 @@ class EmailController extends Controller
 			);
 
 			// Send the email.
-			$model->mail->Send();
-			// Save a record of the message in the ci_messages table.
-			$model->save();
-
+			if($model->mail->Send())
+			{
+				// Save a record of the message in the ci_messages table.
+				$model->save();
+			}
+			else
+			{
+				throw new CHttpException(400, "A problem prevented your registration email alert from being sent to the helpdesk. Please notify IT of this error.");
+			}
 			Yii::app()->user->setFlash('success', "Email Made!");
 		}
 		$this->render('registeremail');
@@ -63,10 +68,15 @@ class EmailController extends Controller
 			);
 			
 			// Send the email.
-			$model->mail->Send();
-			// Save a record of the message in the ci_messages table.
-			$model->save();
-
+			if($model->mail->Send())
+			{
+				// Save a record of the message in the ci_messages table.
+				$model->save();
+			}
+			else
+			{
+				throw new CHttpException(400, "The new user was created, but a problem prevented the email alert from being sent to the new user. Please notify the user that their account is ready.");
+			}
 			Yii::app()->user->setFlash('success', "Email Made!");
 		}
 		$this->render('addemail');
@@ -97,10 +107,15 @@ class EmailController extends Controller
 			);
 			
 			// Send the email.
-			$model->mail->Send();
-			// Save a record of the message in the ci_messages table.
-			$model->save();
-
+			if($model->mail->Send())
+			{
+				// Save a record of the message in the ci_messages table.
+				$model->save();
+			}
+			else
+			{
+				throw new CHttpException(400, "The password recovery email could not be sent. Please notify IT of this error.");
+			}
 			Yii::app()->user->setFlash('success', "Email Made!");
 		}
 		$this->render('recoveryemail');
@@ -116,6 +131,13 @@ class EmailController extends Controller
 		{
 			$model = new Messages;
 			$user = UserInfo::model()->findByPk(Yii::app()->user->id);
+			// Get the current user's email to be CC'd.
+			$cc[0] = $user->email;
+			// Get the name of the subject.
+			$subject = TicketSubjects::model()->findByPk($_GET['subject'])->subjectname;
+			// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
+			if($subject == "Courtroom Printer Not Working")	
+				$cc[1] = "GSCourtroomSupport@nashville.gov";
 
 			// Set the sender, the recipient, the subject, the body, and the message type.
 			$model->setEmail("ccc.helpdesk@nashville.gov", $user->email, "Opening CI2 Ticket #" . $_GET['ticketid'],
@@ -124,25 +146,28 @@ class EmailController extends Controller
 						'ticketID' => $_GET['ticketid'],
 						'user' => Yii::app()->user->name,
 						'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
-						'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
+						'subject' => $subject,
 						'description' => nl2br($_GET['description'])
 					), true),
-				"Trouble Ticket", $user->email
+				"Trouble Ticket", $cc[0], $cc[1]
 			);
-			
 			// Send the email.
-			$model->mail->Send();
-
-			// Save a record of the message in the ci_messages table.
-			if($model->save())
+			if($model->mail->Send())
 			{
-				// Connect the new message to the ticket on the bridge table.
-				$bridge = new TicketMessages;
-				$bridge->ticketid = $_GET['ticketid'];
-				$bridge->messageid = $model->messageid;
-				$bridge->save();
+				// Save a record of the message in the ci_messages table.
+				if($model->save())
+				{
+					// Connect the new message to the ticket on the bridge table.
+					$bridge = new TicketMessages;
+					$bridge->ticketid = $_GET['ticketid'];
+					$bridge->messageid = $model->messageid;
+					$bridge->save();
+				}
 			}
-
+			else
+			{
+				throw new CHttpException(400, "Your ticket was created, but a problem prevented the email alert from being sent to the helpdesk. Please notify IT of this error.");
+			}
 			Yii::app()->user->setFlash('success', "Email Made!");
 		}
 		$this->redirect('/tickets/troubletickets/index?status=Open');
@@ -160,6 +185,13 @@ class EmailController extends Controller
 		$body = explode("\n", $_GET['description']);
 		array_pop($body);
 		$body = implode("\n", $body);
+		// Get the helpdesk email to be CC'd.
+		$cc[0] = "ccc.helpdesk@nashville.gov";
+		// Get the name of the subject.
+		$subject = TicketSubjects::model()->findByPk($_GET['subject'])->subjectname;
+		// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
+		if($subject == "Courtroom Printer Not Working")	
+			$cc[1] = "GSCourtroomSupport@nashville.gov";
 		
 		// Set the sender, the recipient, the subject, the body, and the message type.
 		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Closing CI2 Ticket #" . $_GET['ticketid'],
@@ -169,11 +201,11 @@ class EmailController extends Controller
 					'creator' => $creator->username,
 					'closer' => Yii::app()->user->name,
 					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
-					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
+					'subject' => $subject,
 					'description' => nl2br($body),
 					'resolution' => nl2br($_GET['resolution']),
 				), true),
-			"Trouble Ticket", "ccc.helpdesk@nashville.gov"
+			"Trouble Ticket", $cc[0], $cc[1]
 		);
 
 		// Send the email.
@@ -189,7 +221,10 @@ class EmailController extends Controller
 				$bridge->save();
 			}
 		}
-		
+		else
+		{
+			throw new CHttpException(400, "The ticket was closed, but a problem prevented the email alert from being sent. Please notify the ticket submitter that their problem is fixed.");
+		}
 		$this->redirect(array('/tickets/troubletickets/index?status=Open'));
 	}
 	
@@ -229,6 +264,10 @@ class EmailController extends Controller
 				$bridge->messageid = $model->messageid;
 				$bridge->save();
 			}
+		}
+		else
+		{
+			throw new CHttpException(400, "Your comment was created, but a problem prevented the email alert from being sent. Please notify IT of this error.");
 		}
 		$this->redirect(array('/tickets/troubletickets/view?id=' . $_GET['ticketid']));
 	}

@@ -140,7 +140,7 @@ class Messages extends CActiveRecord
 	 * @param string $type the type of message.
 	 * @param string $ccAddress an additional email address that the message will be sent to.
 	 */
-	public function setEmail($toAddress, $fromAddress, $subject, $body, $type, $ccAddress = null)
+	public function setEmail($toAddress, $fromAddress, $subject, $body, $type, $ccAddress1 = null, $ccAddress2 = null)
 	{
 		// Set the message's destination address.
 		$this->mail->AddAddress($toAddress);
@@ -151,9 +151,11 @@ class Messages extends CActiveRecord
 		$this->from = $fromAddress;
 		
 		// Set the cc address if one was provided.
-		if(!is_null($ccAddress))
-			$this->mail->AddCC($ccAddress);
-		
+		if(!is_null($ccAddress1))
+			$this->mail->AddCC($ccAddress1);
+		if(!is_null($ccAddress2))
+			$this->mail->AddCC($ccAddress2);
+				
 		// Set the message's subject.
 		$this->mail->Subject = $subject;
 		$this->subject = $subject;
