@@ -8,7 +8,7 @@ class Weather
 	const WEATHER = 'http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdBrowserClientByDay.php?lat=36.16652&lon=-86.780319&format=12+hourly&numDays=1';
 	
 	/**
-	 * Get the weather report from NOAA for the Nashville area. Stores the results in the cache for 30 minutes
+	 * Get the weather report from NOAA for the Nashville area. Stores the results in the cache for 60 minutes
 	 * to limit the number of requests sent to NOAA.
 	 */
 	public static function getWeather()

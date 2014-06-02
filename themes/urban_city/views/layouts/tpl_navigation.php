@@ -2,17 +2,12 @@
 <div class="navbar navbar-inverse" id="templatemo_header">
 	<div class="navbar-inner">
 	<div class="container">
-		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</a>
 
 		<div id="site_title">
 			<h1><a href="/site/index" target="_parent">CI2.0</a></h1>
 		</div> <!-- end of site_title -->
 		
-		<div class="nav-collapse" id="templatemo_menu">
+		<div id="templatemo_menu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 				'htmlOptions'=>array('class'=>'pull-right nav'),
 				'submenuHtmlOptions'=>array('class'=>'dropdown-menu'),
@@ -37,7 +32,6 @@
 							array('label'=>'Search Documents', 'url'=>array('/cjisucflist/doctable/searchableFileTable')),
 							//array('label'=>'Upload CJIS File', 'url'=>array('/cjisucflist/doctable/createFileRecord'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							//array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-							//array('label'=>'Post CJIS News', 'url'=>array('/cjisucflist/doctable/createCjisNews'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					/*
