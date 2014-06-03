@@ -1,40 +1,7 @@
 
 <div class="row-fluid" id="templatemo_wrapper">
 	<div class="templatemo_body">
-		<div class="row-fluid">
-		<div class="span12">
-		</div>
-		<?php
-		/*
-		<div class="span12 flexslider">
-			<ul class="slides">
-				<li>
-					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/01.jpg" alt="01"/>
-					<p class="flex-caption">This image has a caption!</p>
-				</li>
-				<li>
-					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/02.jpg" alt="02"/>
-					<p class="flex-caption">This image has a caption!</p>
-				</li>
-				<li>
-					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/03.jpg" alt="03"/>
-					<p class="flex-caption">This image has a caption!</p>
-				</li>
-				<li>
-					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/04.jpg" alt="04"/>
-					<p class="flex-caption">This image has a caption!</p>
-				</li>
-				<li>
-					<img src="<?php echo Yii::app()->theme->baseUrl;?>/images/slideshow/05.jpg" alt="05"/>
-					<p class="flex-caption">This image has a caption!</p>
-				</li>
-			</ul>
-		</div>
-		*/
-		?>
-		</div>
 		<div class="row-fluid" id="templatemo_middle">
-			
 			<?php
 			if(!isset(Yii::app()->user->id))
 				$this->widget('UserLogin');
@@ -57,6 +24,7 @@
 					echo "<h4>12 Hour Forecast</h4>";
 					$this->widget('WeatherReport');
 					?>
+
 				</div>
 			
 				<div class="span4 v_divider">
@@ -75,6 +43,14 @@
 				<?php
 			}
 			?>
+		</div>
+		<div class="row-fluid">
+			<div class="span6 flexslider">
+				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
+			</div>
+			<div class="span6 flexslider">
+				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,7 +1,6 @@
 <?php
 /**
  * This class is for the weather porlet. 
- * This allows the login form to be displayed on the home page.
  */
 class WeatherReport extends CPortlet
 {
@@ -9,7 +8,7 @@ class WeatherReport extends CPortlet
 	public $viewPath = '/views';
 	
 	/**
-	 * This function renders the login form.
+	 * This function obtains and displays the weather.
 	 */
 	protected function renderContent()
 	{
