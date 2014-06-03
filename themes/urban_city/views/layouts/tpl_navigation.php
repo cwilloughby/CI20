@@ -22,7 +22,7 @@
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
 							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
-							//array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+							array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 						),
 					),
 					array(
@@ -86,6 +86,7 @@
 							array('label'=>'Evaluation Questions', 'url'=>array('/evaluations/evaluationquestions/index'), 'visible'=>Yii::app()->user->checkAccess('Supervisor', Yii::app()->user->id)),
 						),
 					),
+					*/
 					array(
 						'label'=>'<span class="linksicon"></span>Links <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
@@ -93,7 +94,6 @@
 							array('label'=>'Printers & Copiers', 'url'=>array('/links/links/printersCopiers'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
-					*/
 					array(
 						'label'=>'<span class="usericon"></span>' . Yii::app()->user->name . '<span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'visible'=>!Yii::app()->user->isGuest,

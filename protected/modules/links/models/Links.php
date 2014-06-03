@@ -16,17 +16,17 @@ class Links
 	); // End of array $copiers
 	
 	private $printers = array(
-		array('Name'=>'CrimClerk_Bond_Office_1', 'Address' => 'http://10.96.23.37'),
-		array('Name'=>'CrimClerk_Bond_Office_2', 'Address' => 'http://10.96.23.50'),
-		array('Name'=>'CrimClerk_Cashier', 'Address' => 'http://10.96.22.141'),
+		array('Name'=>'CrimClerk_Bond_Office_1', 'Address' => 'http://10.96.22.230'),
+		array('Name'=>'CrimClerk_Bond_Office_2', 'Address' => 'http://10.96.22.220'),
+		array('Name'=>'CrimClerk_Cashier', 'Address' => 'http://10.96.22.49'),
 		array('Name'=>'CrimClerk_Court_Admin', 'Address' => 'http://NPIBF74AF'),
 		array('Name'=>'CrimClerk_Court_Chief', 'Address' => 'http://NPIDF1191'),
-		array('Name'=>'CrimClerk_Finance_Chief', 'Address' => 'http://DELL3F0D37'),
+		array('Name'=>'CrimClerk_Finance_Chief', 'Address' => 'http://10.96.22.133'),
 		array('Name'=>'CrimClerk_IT_Chief', 'Address' => 'http://NPI47D7CF'),
-		array('Name'=>'CrimClerk_Left_Counter', 'Address' => 'http://10.96.22.159'),
-		array('Name'=>'CrimClerk_Middle_Counter', 'Address' => 'http://10.96.22.220'),
-		array('Name'=>'CrimClerk_Public_Counter', 'Address' => 'http://10.96.23.94'),
-		array('Name'=>'CrimClerk_Right_Counter', 'Address' => 'http://rnp507336'),
+		array('Name'=>'CrimClerk_Left_Counter', 'Address' => 'http://10.96.22.231'),
+		array('Name'=>'CrimClerk_Middle_Counter', 'Address' => 'http://10.96.22.222'),
+		array('Name'=>'CrimClerk_Public_Counter', 'Address' => 'http://10.96.22.237'),
+		array('Name'=>'CrimClerk_Right_Counter', 'Address' => 'http://10.96.22.228'),
 	); // End of array $printers
 	
 	/**

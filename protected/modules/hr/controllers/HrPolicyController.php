@@ -30,7 +30,6 @@ class HrPolicyController extends Controller
 			'admin' => array('class' => 'AdminAction', 'modelClass' => 'HrPolicy'),
 			'createpolicy' => array('class' => 'CreateAction', 'modelClass' => 'HrPolicy', 'redirectTo' => 'index'),
 			'updatepolicy' => array('class' => 'UpdateAction', 'modelClass' => 'HrPolicy'),
-			'delete' => array('class' => 'DeleteAction', 'modelClass' => 'HrPolicy')
 		);
 	}
 	
@@ -66,8 +65,10 @@ class HrPolicyController extends Controller
 	 */
 	public function actionUpdateSection($id1 = null, $id2 = null)
 	{
+		$id1 = (integer)strip_tags($_GET['policyid']);
+		$id2 = (integer)strip_tags($_GET['sectionid']);
 		if($id1 == null || $id2 == null)
-			throw new CHttpException(400, "Bad Request. Ids must be given.");
+			throw new CHttpException(400, "Bad Request! Ids must be given.");
 		
 		$model=HrSections::model()->findByPk(array('policyid' => $id1, 'sectionid' =>$id2));
 
@@ -81,7 +82,58 @@ class HrPolicyController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	/**
+	 * Deletes a particular policy and it's section.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDelete($id)
+	{
+		if(empty($id))
+			throw new CHttpException(400, "Bad Request. An id must be given.");
 
+		$policy = CActiveRecord::model('HrPolicy')->findByPk($id);
+
+		if(!$policy)
+			throw new CHttpException(400, "Failed to load data.");
+		
+		// All sections in the policy must be deleted to prevent orphaned records.
+		CActiveRecord::model('HrSections')->deleteAll('policyid = :pid' , array('pid'=>$policy->policyid));
+		
+		if($policy->delete())
+		{
+			Yii::app()->user->setFlash('deleted', 'Record has been deleted.');
+			Yii::app()->getController()->redirect('index');
+		}
+		else
+			throw new CHttpException(500, "Failed to delete data.");
+	}
+	
+	/**
+	 * Deletes a particular section.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDeleteSection($sid, $pid)
+	{
+		if(empty($sid) || empty($pid))
+			throw new CHttpException(400, "Bad Request. An id must be given.");
+
+		$section = CActiveRecord::model('HrSections')->findByPk(array('sectionid'=>$sid, 'policyid'=>$pid));
+
+		if(!$section)
+			throw new CHttpException(400, "Failed to load data.");
+		
+		if($section->delete())
+		{
+			Yii::app()->user->setFlash('deleted', 'Record has been deleted.');
+			Yii::app()->getController()->redirect('index');
+		}
+		else
+			throw new CHttpException(500, "Failed to delete data.");
+	}
+	
 	/**
 	 * Lists all the policies and policy sections in an accordion that can be 
 	 * edited if the user has hr editing rights.
@@ -90,7 +142,7 @@ class HrPolicyController extends Controller
 	{
 		// If the user posted the policy or section form, forward to the createpolicy or createsection actions
 		if(isset($_POST['HrPolicy']))
-			$this->forward('createPolicy');
+			$this->forward('createpolicy');
 		else if(isset($_POST['HrSections']))
 			$this->forward('createSection');
 		
