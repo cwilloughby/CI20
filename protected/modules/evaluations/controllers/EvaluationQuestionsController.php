@@ -51,8 +51,6 @@ class EvaluationQuestionsController extends Controller
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->questionid));
-			else
-				throw new CHttpException(500, "Internal Error. Failed to save new question.");
 		}
 		
 		$this->render('create',array(

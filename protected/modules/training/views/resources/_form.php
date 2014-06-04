@@ -3,18 +3,13 @@
 /* @var $resource TrainingResources */
 /* @var $file Documents */
 /* @var $form CActiveForm */
-
-$cs = Yii::app()->getClientScript();
-$cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'videosForm',
-	'enableAjaxValidation'=>false,
-	'stateful'=>true, 
-	'htmlOptions' => array('enctype' => 'multipart/form-data', 'class' => 'dropzone'),
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -46,52 +41,19 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	</div>
 	
 	<div class="row">
-		<div class="fallback">
-			<?php
-			echo $form->fileField($file, 'video');
-			echo $form->error($file, 'video');
-			?>
-		</div>
+		<?php
+		echo $form->labelEx($file,'video');
+		echo $form->fileField($file, 'video');
+		echo $form->error($file, 'video');
+		?>
 	</div>
 	
-	<div id="button" class="row buttons">
-		<?php echo CHtml::button($resource->isNewRecord ? 'Create' : 'Save', array('title'=>"Create",
-			'onclick'=> 'VideosSubmit()'
-		)); ?>
+	<br/>
+	
+	<div class="row buttons">
+		<?php echo CHtml::submitButton($resource->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
-	<br/><br/>
+
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-
-<?php
-Yii::app()->clientScript->registerScript('VideosScript', "
-	Dropzone.options.videosForm = {
-		acceptedFiles: 'application/pdf, text/html, image/png, video/mp4',
-		paramName: 'file', // The name that will be used to transfer the file
-		autoProcessQueue: false,
-		uploadMultiple: false,
-		maxFilesize: 12,
-		success: function(){ window.location.href = '/training/resources/index';},
-		init: function() {
-			this.on('error', function(file, message) {
-				file.previewElement.classList.add('dz-error');
-				if(message.length < 100)
-					return file.previewElement.querySelector('[data-dz-errormessage]').textContent = message;
-				else
-					return file.previewElement.querySelector('[data-dz-errormessage]').textContent = 'Upload Failed!';
-			});
-		}
-	};
-	
-	function VideosSubmit()
-	{
-		var dz = Dropzone.forElement('#videosForm');
-		queuedFiles = dz.getQueuedFiles();
-		if((queuedFiles.length > 0))
-		{
-			dz.processQueue();
-		}
-	};
-", CClientScript::POS_END);
-?>

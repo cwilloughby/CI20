@@ -19,8 +19,6 @@
 		'enableAjaxValidation'=>false,
 	)); ?>
 
-		<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 		<?php 
 		echo $form->errorSummary($model); 
 
@@ -30,6 +28,7 @@
 
 		<div class="row">
 			<?php
+			// If the question type is 1, use for radio buttons.
 			if($data->question->type == 1)
 			{
 				echo $form->labelEx($model,'score');
@@ -42,6 +41,7 @@
 						));
 				echo $form->error($model,'score');
 			}
+			// Otherwise use two radio buttons.
 			else
 			{
 				echo $form->labelEx($model,'score');

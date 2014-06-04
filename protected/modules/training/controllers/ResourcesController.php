@@ -48,26 +48,32 @@ class ResourcesController extends Controller
 		
 		if($resource->attributes = Yii::app()->request->getPost('TrainingResources'))
 		{
-			$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
-			$document->setDocumentAttributes();
-			$document->type = 'video';
-			
-			// Validate both $video and $file at the same time.
-			$resourceCheck = $resource->validate();
-			$fileCheck = $document->validate();
-			$valid = $resourceCheck && $fileCheck;
-		
-			if($valid)
-			{
-				if($document->save(false))
-				{
-					// Upload file to server.
-					$document->uploadFile();
-					
-					$resource->documentid = $document->primaryKey;
+			$document->file = CUploadedFile::getInstance($document, 'video');
 
-					if($resource->save())
-						$this->redirect(array('view', 'id'=>$resource->resourceid));
+			// Validate the resource and make sure a file was uploaded.
+			if($resource->validate() && isset($document->file))
+			{
+				$document->uploadType = 'training resource';
+				$document->setDocumentAttributes();
+				
+				// Validate the file then make sure a record of it is saved.
+				if($document->validate())
+				{
+					if($document->save(false))
+					{
+						// Create the folder if it does not exist.
+						if(!is_dir($document->path))
+							mkdir($document->path, 0777, true);
+						// Set the complete path.
+						$document->path = $document->path . $document->documentname;
+						// Upload the file to the server.
+						$document->file->saveAs($document->path, 'false');
+						// Link the new foreign key.
+						$resource->documentid = $document->primaryKey;
+
+						if($resource->save())
+							$this->redirect(array('training/view', 'id'=>$data->resourceid, 'type'=>$data->type));
+					}
 				}
 			}
 		}
@@ -82,7 +88,7 @@ class ResourcesController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$resource = $this->loadModel($id, 'Videos');
+		$resource = $this->loadModel($id, 'TrainingResources');
 		$file = Documents::model()->findByPk($resource->documentid);
 		
 		if($resource->attributes = Yii::app()->request->getPost('TrainingResources'))

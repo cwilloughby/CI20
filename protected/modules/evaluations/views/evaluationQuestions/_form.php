@@ -24,7 +24,7 @@
 						'style'=>'display: inline; margin-right: 10px; font-weight: normal;'
 					)
 				));?>
-		<?php echo $form->error($model,'question'); ?>
+		<?php echo $form->error($model,'type'); ?>
 	</div>
 	
 	<div class="row">

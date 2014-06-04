@@ -46,7 +46,6 @@ class TrainingResources extends CActiveRecord
 			array('title', 'length', 'max'=>100),
 			array('type', 'length', 'max'=>45),
 			array('category', 'length', 'max'=>45),
-			array('poster', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('resourceid, documentid, title, type, category, poster', 'safe', 'on'=>'search'),
@@ -78,7 +77,6 @@ class TrainingResources extends CActiveRecord
 			'title' => 'Title',
 			'type' => 'Type',
 			'category' => 'Category',
-			'poster' => 'Image',
 		);
 	}
 

@@ -94,7 +94,7 @@ class EvaluationsController extends Controller
 						$answer->save();
 					}
 					// Redirect to the edit page so the current user can begin to fill out the evaluation.
-					$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
+					$this->redirect(array('answerQuestions','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>1));
 				}
 			}
 
@@ -172,9 +172,9 @@ class EvaluationsController extends Controller
 			if($model->save())
 			{
 				// Redirect to the next question in the list. If all questions are answered, redirect to the view page.
-				$page = $_GET['EvaluationAnswers_page'] + 1;
+				$page = (isset($_GET['EvaluationAnswers_page']) ? ($_GET['EvaluationAnswers_page'] + 1) : 2);
 				if($page <= $dataProvider->totalItemCount)
-					$this->redirect(array('edit','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
+					$this->redirect(array('answerQuestions','id'=>$model->evaluationid, 'EvaluationAnswers_page'=>$page));
 				else
 					$this->redirect(array('view','id'=>$model->evaluationid));
 			}
