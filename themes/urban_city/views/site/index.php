@@ -44,8 +44,6 @@
 			}
 			?>
 		</div>
-		<?php
-		/*
 		<div class="row-fluid">
 			<div class="span6 flexslider">
 				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
@@ -54,7 +52,5 @@
 				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
 			</div>
 		</div>
-		*/
-		?>
 	</div>
 </div>
