@@ -149,7 +149,7 @@ class EmailController extends Controller
 						'subject' => $subject,
 						'description' => nl2br($_GET['description'])
 					), true),
-				"Trouble Ticket", $cc[0], $cc[1]
+				"Trouble Ticket", $cc[0], (isset($cc[1]) ? $cc[1] : null)
 			);
 			// Send the email.
 			if($model->mail->Send())
@@ -205,7 +205,7 @@ class EmailController extends Controller
 					'description' => nl2br($body),
 					'resolution' => nl2br($_GET['resolution']),
 				), true),
-			"Trouble Ticket", $cc[0], $cc[1]
+			"Trouble Ticket", $cc[0], (isset($cc[1]) ? $cc[1] : null)
 		);
 
 		// Send the email.
