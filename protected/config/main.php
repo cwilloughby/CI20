@@ -61,7 +61,7 @@ return array(
 		'centriod',
 		'links',
 		'evaluations',
-		//'training',
+		'training',
 		//'issuetracker',
 		'cjisdispositions',
 		'cjisucflist',

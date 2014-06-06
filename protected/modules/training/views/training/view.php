@@ -12,6 +12,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('resources/admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('resources/create'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('typeIndex')),
 );
 
@@ -25,12 +27,21 @@ foreach($types as $key =>$value)
 }
 ?>
 
-<?php $this->widget('StrobeMediaPlayback',array(
-	'srcRelative'=>'/files/training/' . $resource->document->documentname,
-	'width'=>'320',
-	'height'=>'240',
-	'src_title'=>$resource->title,
-	'allowFullScreen'=>'true',
-	'playButtonOverlay'=>true,
-	'scaleMode'=>'stretch',
-));?>
+<?php 
+if($resource->category == 'Video')
+{
+	$this->widget('StrobeMediaPlayback',array(
+		'srcRelative'=>'/files/training/' . $resource->document->documentname,
+		'width'=>'320',
+		'height'=>'240',
+		'src_title'=>$resource->title,
+		'allowFullScreen'=>'true',
+		'playButtonOverlay'=>true,
+		'scaleMode'=>'stretch',
+	));
+}
+else
+{
+	echo CHtml::link($resource->title, Yii::app()->createUrl('/files/training/' . $resource->document->documentname));
+}
+?>

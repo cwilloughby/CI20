@@ -1,7 +1,7 @@
 <?php
 /* @var $this ResourcesController */
 /* @var $resource TrainingResources */
-/* @var $file Documents */
+/* @var $document Documents */
 /* @var $form CActiveForm */
 ?>
 
@@ -14,7 +14,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary(array($resource, $file)); ?>
+	<?php echo $form->errorSummary(array($resource, $document)); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($resource,'title'); ?>
@@ -35,16 +35,18 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($resource,'poster'); ?>
-		<?php echo $form->textField($resource,'poster',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($resource,'poster'); ?>
+		<?php
+		echo $form->labelEx($resource,'poster');
+		echo $form->fileField($resource, 'poster');
+		echo $form->error($resource, 'poster');
+		?>
 	</div>
 	
 	<div class="row">
 		<?php
-		echo $form->labelEx($file,'video');
-		echo $form->fileField($file, 'video');
-		echo $form->error($file, 'video');
+		echo "File <span class='required'>*</span><br/>";
+		echo $form->fileField($document, 'file');
+		echo $form->error($document, 'file');
 		?>
 	</div>
 	

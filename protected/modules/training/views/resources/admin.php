@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('admin')),
 	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('create')),
-	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('training/typeIndex')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -62,7 +62,14 @@ $this->widget('CustomGridView', array(
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
 				'onchange'=>"$.fn.yiiGridView.update('news-grid',{ data:{pageSize: $(this).val() }})",
 			)),
-			'template'=>'{view}{update}{delete}',
+			'template'=>'{view}{delete}',
+			'buttons'=>array
+			(
+				'view' => array
+				(
+					'url'=>'$this->grid->controller->createUrl("training/view", array("id"=>$data->primaryKey, "type"=>$data->type))',
+				),
+			),
 		),
 	),
 ));

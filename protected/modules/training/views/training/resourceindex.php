@@ -13,6 +13,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu2=array(
+	array('label'=>'<i class="icon icon-search"></i> Search Training Resources', 'url'=>array('resources/admin'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('resources/create'), 'visible' => Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 	array('label'=>'<i class="icon icon-list"></i> List Training Resources', 'url'=>array('typeIndex')),
 );
 

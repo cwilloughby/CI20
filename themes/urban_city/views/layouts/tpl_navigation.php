@@ -21,7 +21,7 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
-							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+							array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
 							array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 						),
 					),
@@ -63,7 +63,6 @@
 							//array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
-							array('label'=>'Upload Training Resources', 'url'=>array('/training/resources/create'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					array(

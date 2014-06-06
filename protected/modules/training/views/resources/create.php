@@ -1,7 +1,7 @@
 <?php
 /* @var $this ResourcesController */
 /* @var $resource TrainingResources */
-/* @var $file Documents */
+/* @var $document Documents */
 
 $this->breadcrumbs=array(
 	'Training Resources'=>array('index'),
@@ -17,4 +17,4 @@ $this->menu2=array(
 
 <h1>Upload Training Resource</h1>
 
-<?php echo $this->renderPartial('_form', array('resource'=>$resource, 'file'=>$file)); ?>
+<?php echo $this->renderPartial('_form', array('resource'=>$resource, 'document'=>$document)); ?>

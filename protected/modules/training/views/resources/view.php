@@ -12,7 +12,6 @@ $this->menu2=array(
 	array('label'=>'<i class="icon icon-film"></i> Upload Training Resource', 'url'=>array('create')),
 	array('label'=>'<i class="icon icon-list-alt"></i> List Training Resources', 'url'=>array('index')),
 	array('label'=>'<i class="icon icon-zoom-in"></i> View Training Resource', 'url'=>array('view', 'id'=>$model->resourceid)),
-	array('label'=>'<i class="icon icon-edit"></i> Update Training Resource', 'url'=>array('update', 'id'=>$model->resourceid)),
 	array('label'=>'<i class="icon icon-trash"></i> Delete Training Resource', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->resourceid),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>

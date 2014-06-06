@@ -26,6 +26,8 @@ class m130528_173451_create_videos_table extends CDbMigration
 				'documentid' => 'INT(11) NOT NULL',
 				'title' => 'VARCHAR(100) NULL',
 				'type' => 'VARCHAR(45) NOT NULL',
+				'category' => 'VARCHAR(45) NOT NULL',
+				'poster' => 'VARCHAR(200) NULL',
 				'PRIMARY KEY (`videoid`)',
 				'INDEX `fk_ci_training_resources_ci_documents1_idx` (`documentid` ASC)',
 				'CONSTRAINT `fk_ci_training_resources_ci_documents1`
@@ -40,6 +42,6 @@ class m130528_173451_create_videos_table extends CDbMigration
 	public function down()
 	{
 		// Drop the tables.
-		$this->dropTable('ci_videos');
+		$this->dropTable('ci_training_resources');
 	}
 }

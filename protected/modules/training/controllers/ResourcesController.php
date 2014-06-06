@@ -48,8 +48,9 @@ class ResourcesController extends Controller
 		
 		if($resource->attributes = Yii::app()->request->getPost('TrainingResources'))
 		{
-			$document->file = CUploadedFile::getInstance($document, 'video');
-
+			$document->file = CUploadedFile::getInstance($document, 'file');
+			$resource->poster = CUploadedFile::getInstance($resource, 'poster');
+			
 			// Validate the resource and make sure a file was uploaded.
 			if($resource->validate() && isset($document->file))
 			{
@@ -70,48 +71,15 @@ class ResourcesController extends Controller
 						$document->file->saveAs($document->path, 'false');
 						// Link the new foreign key.
 						$resource->documentid = $document->primaryKey;
-
+						$resource->uploadImage();
+						
 						if($resource->save())
-							$this->redirect(array('training/view', 'id'=>$data->resourceid, 'type'=>$data->type));
+							$this->redirect('/training/training/typeIndex');
 					}
 				}
 			}
 		}
 
-		$this->render('create', array('resource'=>$resource, 'file'=>$document));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$resource = $this->loadModel($id, 'TrainingResources');
-		$file = Documents::model()->findByPk($resource->documentid);
-		
-		if($resource->attributes = Yii::app()->request->getPost('TrainingResources'))
-		{
-			$file->video = CUploadedFile::getInstance($file,'video');
-			
-			// Validate both $video and $file at the same time.
-			$resourceCheck = $resource->validate();
-			$fileCheck = $file->validate();
-			$valid = $videoCheck && $fileCheck;
-		
-			if($valid)
-			{
-				if($file->save(false))
-				{
-					$resource->documentid = $file->primaryKey;
-
-					if($resource->save())
-						$this->redirect(array('view','id'=>$resource->resourceid));
-				}
-			}
-		}
-
-		$this->render('update', array('resource'=>$resource, 'file'=>$file));
+		$this->render('create', array('resource'=>$resource, 'document'=>$document));
 	}
 }
