@@ -264,7 +264,7 @@ class Documents extends CActiveRecord
 			else if($this->uploadType == 'training resource')
 			{
 				if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1"))
-					$this->path = self::FILE_BASE_PATH_REMOTE . "\\training\\" . $this->uploaddate . "\\";
+					$this->path = self::FILE_BASE_PATH_REMOTE . "\\training\\";
 				else
 					$this->path = self::FILE_BASE_PATH . "/training/";
 			}
