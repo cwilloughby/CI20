@@ -459,7 +459,7 @@ class StrobeMediaPlayback extends CWidget
 
 		$this->hostURL=Yii::app()->getRequest()->hostInfo ;
 		$this->appBaseUrl=Yii::app()->getRequest()->baseUrl ;
-		$this->configuration=$this->baseUrl .'/configuration.xml';
+		//$this->configuration=$this->baseUrl .'/configuration.xml';
 		$this->poster=$this->baseUrl .'/images/poster.png';
 		$this->expressInstallSwfurl=$this->baseUrl .'/expressInstall.swf';
 		$this->plugin_YouTubePlugin=$this->baseUrl .'/YouTubePlugin.swf';
