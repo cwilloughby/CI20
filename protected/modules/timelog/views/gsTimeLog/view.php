@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 $this->menu2=array(
 	array('label'=>'<i class="icon icon-search"></i> Search GS Time Logs', 'url'=>array('admin')),
 	array('label'=>'<i class="icon icon-list-alt"></i> List GS Time Logs', 'url'=>array('index')),
-	array('label'=>'<i class="icon icon-zoom-in"></i> View GS Time Log', 'url'=>array('view')),
+	array('label'=>'<i class="icon icon-zoom-in"></i> View GS Time Log', 'url'=>array('view', 'id'=>$model->id)),
 );
 ?>
 

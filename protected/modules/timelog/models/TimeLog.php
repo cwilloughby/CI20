@@ -112,7 +112,23 @@ class TimeLog extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('computername',$this->computername,true);
 		$criteria->compare('eventtype',$this->eventtype,true);
-		$criteria->compare('eventtime',$this->eventtime,true);
+		
+		// If an event time was specified.
+		if(!empty($this->eventtime))
+		{
+			// The Compare function acts oddly when comparing times.
+			// We need to strip out any operator, if there is one, convert the time format, then put the operator back.
+			$operator = $this->eventtime[0];
+			if(in_array($operator, array('>', '<', '=')))
+			{
+				$cutTime = str_replace($operator, "", $this->eventtime);
+				$criteria->compare('eventtime', $operator . date('H:i:s', strtotime($cutTime)),true);
+			}
+			else
+				$criteria->compare('eventtime', date('H:i:s', strtotime($this->eventtime)),true);
+		}
+		else
+			$criteria->compare('eventtime',$this->eventtime,true);
 		
 		// If the regular event date was set.
 		if((int)$this->eventdate)

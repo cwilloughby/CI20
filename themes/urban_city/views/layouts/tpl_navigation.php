@@ -21,7 +21,7 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
-							array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+							//array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
 							array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
 						),
 					),
@@ -72,7 +72,7 @@
 							Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 							|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
 						'items'=>array(
-							//array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+							array('label'=>'Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
 							array('label'=>'GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
 								|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id))),
 						),
