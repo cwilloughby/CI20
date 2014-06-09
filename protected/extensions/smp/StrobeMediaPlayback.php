@@ -447,7 +447,7 @@ class StrobeMediaPlayback extends CWidget
 	 * @var string altHtmlContent
      * the HTML content to be displayed if Flash player is not installed.
 	 */
-	public $altHtmlContent='Either Flash Player is not installed or javascript is disabled.No HTML5 video capability.
+	public $altHtmlContent='Either Flash Player is not installed or javascript is disabled. No HTML5 video capability.
             For best experience it is recommended that you download Flash Player from Adobe.';
 
 	/**
