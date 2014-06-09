@@ -35,6 +35,3 @@ $this->widget('CustomListView', array(
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 )); 
 ?>
-
-<h4>For More Training Materials Try:</h4>
-<a href="http://www.gcflearnfree.org/">www.gcflearnfree.org</a>

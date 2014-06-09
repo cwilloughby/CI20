@@ -24,7 +24,6 @@
 					echo "<h4>12 Hour Forecast</h4>";
 					$this->widget('WeatherReport');
 					?>
-
 				</div>
 			
 				<div class="span4 v_divider">
@@ -33,7 +32,7 @@
 					$this->widget('NewsReport');
 					?>
 				</div>
-			
+
 				<div class="span3">
 					<?php 
 					echo "<h4>IT News</h4>";
@@ -43,14 +42,6 @@
 				<?php
 			}
 			?>
-		</div>
-		<div class="row-fluid">
-			<div class="span6 flexslider">
-				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
-			</div>
-			<div class="span6 flexslider">
-				<?php $this->widget('RSSWidget', array('numPosts' => 5)); ?>
-			</div>
 		</div>
 	</div>
 </div>

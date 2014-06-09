@@ -9,4 +9,3 @@ $this->widget('CustomSmallListView', array(
 	'template'=>"{summary}\n{items}\n{pager}",
 )); 
 ?>
-

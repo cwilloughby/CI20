@@ -29,7 +29,7 @@ class MyTickets extends CPortlet
 			$dataProvider=new CActiveDataProvider('TroubleTickets', 
 				array(
 					'pagination'=>array(
-						'pageSize'=>2
+						'pageSize'=>4
 					),
 					'criteria'=>array(
 						'condition'=>$condition,

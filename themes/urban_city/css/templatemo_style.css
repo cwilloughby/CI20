@@ -200,7 +200,17 @@ a.more:hover { text-decoration: none; color: #fff; }
 	margin-bottom: 40px;
 	background: url(/themes/urban_city/images/templatemo_content.jpg) top left no-repeat
 }
-
+#templatemo_middle2 {
+	display: block;
+	clear: both;
+	width: 100%;
+	color: #f6f6f6;
+	margin-bottom: 40px;
+	background: url(/themes/urban_city/images/templatemo_content.jpg) top left no-repeat
+}
+.flexslider {
+	color: #000000;
+}
 #templatemo_middle h1 {
 	color: #fff;
 }
