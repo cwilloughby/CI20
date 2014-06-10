@@ -324,8 +324,16 @@ class TroubleTickets extends CActiveRecord
 		{
 			if(isset($name))
 			{
-				echo CHtml::label($value,$name, array('required' => true));
-				echo CHtml::textField($value,'', array('required' => true));
+				if($name == 'Location')
+				{
+					echo CHtml::label($value,$name);
+					echo CHtml::textField($value,'');
+				}
+				else 
+				{
+					echo CHtml::label($value,$name, array('required' => true));
+					echo CHtml::textField($value,'', array('required' => true));
+				}
 			}
 		}
 	}
