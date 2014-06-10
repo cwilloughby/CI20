@@ -21,8 +21,20 @@
 							array('label'=>'Create Ticket', 'url'=>array('/tickets/troubletickets/create')),
 							array('label'=>'View Open Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Open')),
 							array('label'=>'View Closed Tickets', 'url'=>array('/tickets/troubletickets/index', 'status'=>'Closed')),
-							array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
+						),
+					),
+					array(
+						'label'=>'<span class="hricon"></span>HR <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+						'visible'=>!Yii::app()->user->isGuest,
+						'items'=>array(
 							array('label'=>'Human Resources', 'url'=>array('/hr/hrpolicy/index')),
+						),
+					),
+					array(
+						'label'=>'<span class="trainingicon"></span>Training <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+						'visible'=>!Yii::app()->user->isGuest,
+						'items'=>array(
+							array('label'=>'Training Resources', 'url'=>array('/training/training/typeindex')),
 						),
 					),
 					array(
