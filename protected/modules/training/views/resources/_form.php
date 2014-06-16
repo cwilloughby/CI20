@@ -36,7 +36,7 @@
 	
 	<div class="row">
 		<?php
-		echo $form->labelEx($resource,'poster');
+		echo "Poster <span class='required'>*</span> (Note: 150 x 100 resolution is recommended, but not required.)<br/>";
 		echo $form->fileField($resource, 'poster');
 		echo $form->error($resource, 'poster');
 		?>
