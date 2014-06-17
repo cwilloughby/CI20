@@ -109,13 +109,13 @@ return array(
 			'caseSensitive'=>false,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'CI20/<controller:\w+>/<id:\d+>'=>'CI20/<controller>/view',
+				'CI2/<controller:\w+>/<id:\d+>'=>'CI2/<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'CI20/<controller:\w+>/<action:\w+>/<id:\d+>'=>'CI20/<controller>/<action>',
+				'CI2/<controller:\w+>/<action:\w+>/<id:\d+>'=>'CI2/<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-				'CI20/<controller:\w+>/<action:\w+>'=>'CI20/<controller>/<action>',
+				'CI2/<controller:\w+>/<action:\w+>'=>'CI2/<controller>/<action>',
 				'<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-				'CI20/<module:\w+>/<controller:\w+>/<action:\w+>' => 'CI20/<module>/<controller>/<action>',
+				'CI2/<module:\w+>/<controller:\w+>/<action:\w+>' => 'CI2/<module>/<controller>/<action>',
 			),
 		),
 		'cache'=>array(
