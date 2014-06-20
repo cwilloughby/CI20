@@ -74,7 +74,7 @@ class ResourcesController extends Controller
 						$resource->uploadImage();
 						
 						if($resource->save())
-							$this->redirect('/training/training/typeIndex');
+							$this->redirect(array('/training/training/typeIndex'));
 					}
 				}
 			}
