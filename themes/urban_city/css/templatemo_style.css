@@ -35,7 +35,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 .h50 { height: 50px }
 .h60 { height: 60px }
 
-a.more { display: block; width: 139px; height: 37px; text-align: center; font-size: 14px; padding-top: 15px; color: #fff; font-family: Georgia, "Times New Roman", Times, serif; font-weight: normal; background: url(/themes/urban_city/images/templatemo_button.png) }
+a.more { display: block; width: 139px; height: 37px; text-align: center; font-size: 14px; padding-top: 15px; color: #fff; font-family: Georgia, "Times New Roman", Times, serif; font-weight: normal; background: url(../images/templatemo_button.png) }
 a.more:hover { text-decoration: none; color: #fff; }
 
 .float_l { float: left }
@@ -52,7 +52,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 .v_divider 
 { 
 	padding-right: 50px;
-	background: url(/themes/urban_city/images/templatemo_divider.png);
+	background: url(../images/templatemo_divider.png);
 	background-repeat:no-repeat;
 	background-position:right; 
 }
@@ -64,7 +64,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 #templatemo_wrapper {
 	width: 100%;
-	background-image: url(/themes/urban_city/images/templatemo_body.jpg);
+	background-image: url(../images/templatemo_body.jpg);
 	background-position: top center;
 	background-repeat: repeat;
 }
@@ -160,10 +160,10 @@ a.more:hover { text-decoration: none; color: #fff; }
 	font-weight: normal;
 	outline: none;
 	border: none;
-	background: url(/themes/urban_city/images/templatemo_menu.png) no-repeat top
+	background: url(../images/templatemo_menu.png) no-repeat top
 }
 #templatemo_menu ul li ul li a {
-	background: url(/themes/urban_city/images/templatemo_menu.png) repeat-x;
+	background: url(../images/templatemo_menu.png) repeat-x;
 	background-size: 180px;
 	min-width: 180px;
 	padding-top: 10px;
@@ -178,7 +178,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 #templatemo_menu ul li a:hover, #templatemo_menu ul li .current { color: #0fa7ba;  }
 #templatemo_menu ul li .last { background: none }
 
-#search_box { float: right; width: 208px; height: 28px; margin-top: 30px; background: url(/themes/urban_city/images/templatemo_search.png) no-repeat; }
+#search_box { float: right; width: 208px; height: 28px; margin-top: 30px; background: url(../images/templatemo_search.png) no-repeat; }
 #search_box form { clear: both; width: 208px; height: 28px; padding: 0; } 
 #searchfield { height: 18px; width: 130px; padding: 5px; color: #ccc; background: none; border: none; } 
 #searchbutton { height: 26px; width: 60px; padding: 5px 0; margin: 0; cursor: pointer; background: none; border: none; }
@@ -198,7 +198,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 	width: 100%;
 	color: #f6f6f6;
 	margin-bottom: 40px;
-	background: url(/themes/urban_city/images/templatemo_content.jpg) top left no-repeat
+	background: url(../images/templatemo_content.jpg) top left no-repeat
 }
 #templatemo_middle2 {
 	display: block;
@@ -206,7 +206,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 	width: 100%;
 	color: #f6f6f6;
 	margin-bottom: 40px;
-	background: url(/themes/urban_city/images/templatemo_content.jpg) top left no-repeat
+	background: url(../images/templatemo_content.jpg) top left no-repeat
 }
 .flexslider {
 	color: #000000;
@@ -226,7 +226,7 @@ a.more:hover { text-decoration: none; color: #fff; }
 
 .twitter_box {
 	padding-top: 40px;
-	background: url(/themes/urban_city/images/templatemo_twitter.png) top left no-repeat;
+	background: url(../images/templatemo_twitter.png) top left no-repeat;
 }
 
 .tb_entry {

@@ -1,5 +1,5 @@
 .homeicon, .helpdeskicon, .evidenceicon, .cjisicon, .adminicon, .ITicon, .timeicon, .evaluationicon, .linksicon, .usericon, .hricon, .trainingicon{
-	background: url(/../images/sprites.png) no-repeat;
+	background: url(../images/sprites.png) no-repeat;
 }
 
 .homeicon{

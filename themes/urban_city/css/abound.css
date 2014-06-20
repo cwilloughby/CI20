@@ -5,7 +5,7 @@ body {
 
 #abound_wrapper {
 	width: 100%;
-	background-image: url(/themes/urban_city/images/small_body.png);
+	background-image: url(../images/small_body.png);
 	background-position: top center;
 	background-repeat: repeat-x;
 }
@@ -13,7 +13,7 @@ body {
 #footer_top {
 	width: 100%;
 	padding: 30px 0;
-	background-image: url(/themes/urban_city/images/footer_top.png);
+	background-image: url(../images/footer_top.png);
 	background-position: top center;
 	background-repeat: repeat-x;
 }
