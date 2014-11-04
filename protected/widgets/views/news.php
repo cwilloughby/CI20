@@ -7,12 +7,15 @@
 $count = 0;
 foreach($news as $key => $value)
 {
-	echo CHtml::encode(date('m/d/Y \a\t g:i a', strtotime($dates[$key])));
-	echo "<br/>" . CHtml::link($value, array('/news/news/view', 'id'=>$key), array('class'=>'news'));
-	if($count != 4)
+	if($key != "")
 	{
-		echo "<hr class='newsrule'>";
-		$count++;
+		echo CHtml::encode(date('m/d/Y \a\t g:i a', strtotime($dates[$key])));
+		echo "<br/>" . CHtml::link($value, array('/news/news/view', 'id'=>$key), array('class'=>'news'));
+		if($count != 4)
+		{
+			echo "<hr class='newsrule'>";
+			$count++;
+		}
 	}
 }
 ?>

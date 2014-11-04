@@ -56,24 +56,6 @@
 		<?php echo $form->dropDownList($model,'departmentid', $departments); ?>
 		<?php echo $form->error($model,'departmentid'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'hiredate'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
-			array(
-				'model' => $model,
-				'attribute' => 'hiredate',
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'mm/dd/yy',  
-					'defaultDate' => $model->hiredate,
-					'changeYear' => true,
-					'changeMonth' => true,
-				),
-			));
-		?>
-		<?php echo $form->error($model,'hiredate'); ?>
-	</div>
 	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

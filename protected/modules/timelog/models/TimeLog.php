@@ -75,7 +75,7 @@ class TimeLog extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'username' => 'Username',
-			'computername' => 'Computername',
+			'computername' => 'Computer Name',
 			'eventtype' => 'Event Type',
 			'eventtime' => 'Event Time',
 			'eventdate' => 'Event Date',

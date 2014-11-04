@@ -22,8 +22,8 @@
 					<p>We hope you enjoy the new CI site.</p>
 					<br/>
 					<?php
-					echo "<h4>12 Hour Forecast</h4>";
-					$this->widget('WeatherReport');
+					//echo "<h4>12 Hour Forecast</h4>";
+					//$this->widget('WeatherReport');
 					?>
 				</div>
 				<?php
@@ -50,9 +50,17 @@
 
 					<p>We hope you enjoy the new CI site.</p>
 					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
 					<?php
+					/*
 					echo "<h4>12 Hour Forecast</h4>";
 					$this->widget('WeatherReport');
+					*/
 					?>
 				</div>
 

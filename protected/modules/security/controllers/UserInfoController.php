@@ -51,7 +51,6 @@ class UserInfoController extends Controller
 			$model->firstname = $_GET['firstname'];
 			$model->phoneext = $_GET['phoneext'];
 			$model->departmentid = $_GET['departmentid'];
-			$model->hiredate = urldecode($_GET['hiredate']);
 		}
 		
 		if($model->attributes = Yii::app()->request->getPost('UserInfo'))

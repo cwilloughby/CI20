@@ -39,7 +39,7 @@
 					),
 					array(
 						'label'=>'<span class="cjisicon"></span>CJIS <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
-						'visible'=>!Yii::app()->user->isGuest,
+						'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 						'items'=>array(
 							array('label'=>'Search Documents', 'url'=>array('/cjisucflist/doctable/searchableFileTable')),
 							//array('label'=>'Upload CJIS File', 'url'=>array('/cjisucflist/doctable/createFileRecord'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),

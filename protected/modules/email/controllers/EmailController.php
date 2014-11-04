@@ -26,8 +26,7 @@ class EmailController extends Controller
 			$link = "http://jis18822/security/userinfo/create"				
 						. '?firstname=' . urlencode($_GET['firstname']) . '&lastname=' . urlencode($_GET['lastname'])
 						. '&middlename=' . urlencode($_GET['middlename']) . '&email=' . urlencode($_GET['email'])
-						. '&phoneext=' . urlencode($_GET['phoneext']) . '&departmentid=' . urlencode($_GET['departmentid'])
-						. '&hiredate=' . urlencode($_GET['hiredate']);
+						. '&phoneext=' . urlencode($_GET['phoneext']) . '&departmentid=' . urlencode($_GET['departmentid']);
 			
 			// Set the sender, the recipient, the subject, the body, and the message type.
 			$model->setEmail("ccc.helpdesk@nashville.gov", "ccc.helpdesk@nashville.gov", "CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'],

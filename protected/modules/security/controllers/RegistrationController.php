@@ -27,8 +27,6 @@ class RegistrationController extends Controller
 			{		
 				// Remove the flash message so the email will work again.
 				Yii::app()->user->getFlash('success');
-				
-				$hdate = date('Y-m-d', strtotime($model->hiredate));
 
 				// Redirect to the email controller's register email action in the email module.
 				$this->redirect(array('/email/email/registeremail',
@@ -37,8 +35,7 @@ class RegistrationController extends Controller
 							'middlename'=>$model->middlename,
 							'email'=>$model->email,
 							'phoneext'=>$model->phoneext,
-							'departmentid'=>$model->departmentid,
-							'hiredate'=>urlencode($hdate)));
+							'departmentid'=>$model->departmentid));
 			}
 		}
 		

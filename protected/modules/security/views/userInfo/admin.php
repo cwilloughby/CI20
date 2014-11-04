@@ -95,6 +95,4 @@ $this->widget('CustomGridView', array(
 		),
 	),
 )); 
-
-echo "Active: " . $model->active;
 ?>
