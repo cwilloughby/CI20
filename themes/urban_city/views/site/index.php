@@ -35,6 +35,7 @@
 					<?php
 					echo "<h4>News</h4>";
 					$this->widget('NewsReport');
+					echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 					?>
 				</div>
 			
@@ -68,6 +69,7 @@
 					<?php 
 					echo "<h4>IT News</h4>";
 					$this->widget('NewsReport', array('type'=>'IT News'));
+					echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 					?>
 				</div>
 				<?php
