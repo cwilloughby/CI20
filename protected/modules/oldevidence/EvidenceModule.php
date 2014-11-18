@@ -2,7 +2,7 @@
 
 class EvidenceModule extends CWebModule
 {
-	public $defaultController = 'evidence';
+	public $defaultController = 'summary';
 	
 	public function init()
 	{

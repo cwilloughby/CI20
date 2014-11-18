@@ -55,7 +55,7 @@ return array(
 		'hr',
 		'documentprocessor',
 		'news',
-		//'evidence',
+		'evidence',
 		'timelog',
 		'weather',
 		'centriod',
