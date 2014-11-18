@@ -42,6 +42,7 @@
 						'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id),
 						'items'=>array(
 							array('label'=>'Search Documents', 'url'=>array('/cjisucflist/doctable/searchableFileTable')),
+							array('label'=>'Search Evidence', 'url'=>array('/evidence/evidence/search')),
 							//array('label'=>'Upload CJIS File', 'url'=>array('/cjisucflist/doctable/createFileRecord'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							//array('label'=>'CJIS Dispositions', 'url'=>array('/cjisdispositions/cjisdispositions/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
