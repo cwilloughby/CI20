@@ -6,7 +6,7 @@
 $this->pageTitle = Yii::app()->name . ' - View Trouble Ticket';
 
 $this->breadcrumbs=array(
-	'Trouble Tickets'=>array('index'),
+	'Trouble Tickets'=>array('index', 'status'=>isset($model->closedbyuser)?'Closed':'Open'),
 	$model->ticketid,
 );
 
