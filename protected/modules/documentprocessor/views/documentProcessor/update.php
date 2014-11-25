@@ -1,5 +1,5 @@
 <?php
-/* @var $this DocumentsController */
+/* @var $this DocumentsProcessorController */
 /* @var $model Documents */
 
 $this->breadcrumbs=array(
@@ -9,11 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Search Documents', 'url'=>array('admin')),
-	array('label'=>'Create Documents', 'url'=>array('create')),
 	array('label'=>'List Documents', 'url'=>array('index')),
+	array('label'=>'Create Documents', 'url'=>array('create')),
 	array('label'=>'View Documents', 'url'=>array('view', 'id'=>$model->documentid)),
-	array('label'=>'Update Documents', 'url'=>array('update', 'id'=>$model->documentid)),
+	array('label'=>'Manage Documents', 'url'=>array('admin')),
 );
 ?>
 

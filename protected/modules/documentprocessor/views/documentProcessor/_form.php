@@ -1,5 +1,5 @@
 <?php
-/* @var $this DocumentsController */
+/* @var $this DocumentsProcessorController */
 /* @var $model Documents */
 /* @var $form CActiveForm */
 ?>
@@ -37,6 +37,66 @@
 		<?php echo $form->labelEx($model,'uploaddate'); ?>
 		<?php echo $form->textField($model,'uploaddate'); ?>
 		<?php echo $form->error($model,'uploaddate'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->textField($model,'type',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'type'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ext'); ?>
+		<?php echo $form->textField($model,'ext'); ?>
+		<?php echo $form->error($model,'ext'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'prefix'); ?>
+		<?php echo $form->textField($model,'prefix',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'prefix'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'content'); ?>
+		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'content'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'modifiedby'); ?>
+		<?php echo $form->textField($model,'modifiedby'); ?>
+		<?php echo $form->error($model,'modifiedby'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'modifieddate'); ?>
+		<?php echo $form->textField($model,'modifieddate'); ?>
+		<?php echo $form->error($model,'modifieddate'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'signed'); ?>
+		<?php echo $form->textField($model,'signed'); ?>
+		<?php echo $form->error($model,'signed'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'disabled'); ?>
+		<?php echo $form->textField($model,'disabled'); ?>
+		<?php echo $form->error($model,'disabled'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'shareable'); ?>
+		<?php echo $form->textField($model,'shareable'); ?>
+		<?php echo $form->error($model,'shareable'); ?>
 	</div>
 
 	<div class="row buttons">

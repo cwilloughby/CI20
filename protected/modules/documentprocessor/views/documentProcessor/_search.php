@@ -1,5 +1,5 @@
 <?php
-/* @var $this DocumentsController */
+/* @var $this DocumentsProcessorController */
 /* @var $model Documents */
 /* @var $form CActiveForm */
 ?>
@@ -34,6 +34,56 @@
 	<div class="row">
 		<?php echo $form->label($model,'uploaddate'); ?>
 		<?php echo $form->textField($model,'uploaddate'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'type'); ?>
+		<?php echo $form->textField($model,'type',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'ext'); ?>
+		<?php echo $form->textField($model,'ext'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'prefix'); ?>
+		<?php echo $form->textField($model,'prefix',array('size'=>10,'maxlength'=>10)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'content'); ?>
+		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'modifiedby'); ?>
+		<?php echo $form->textField($model,'modifiedby'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'modifieddate'); ?>
+		<?php echo $form->textField($model,'modifieddate'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'signed'); ?>
+		<?php echo $form->textField($model,'signed'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'disabled'); ?>
+		<?php echo $form->textField($model,'disabled'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'shareable'); ?>
+		<?php echo $form->textField($model,'shareable'); ?>
 	</div>
 
 	<div class="row buttons">

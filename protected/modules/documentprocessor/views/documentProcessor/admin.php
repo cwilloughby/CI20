@@ -1,80 +1,69 @@
 <?php
-/* @var $this DocumentsController */
-/* @var $documents Documents */
-/* @var $dir String */
-
-$this->pageTitle = Yii::app()->name . " - Document Processor Admin";
+/* @var $this DocumentsProcessorController */
+/* @var $model Documents */
 
 $this->breadcrumbs=array(
 	'Documents'=>array('index'),
-	'Admin Search',
+	'Manage',
 );
 
-$this->menu2=array(
-	array('label'=>'Search Documents', 'url'=>array('adminsearchablefiletree')),
-	array('label'=>'Upload Documents', 'url'=>array('create')),
-	array('label'=>'List Document Queues', 'url'=>array('listaccessiblequeues')),
+$this->menu=array(
+	array('label'=>'List Documents', 'url'=>array('index')),
+	array('label'=>'Create Documents', 'url'=>array('create')),
 );
-?>
 
-<h1>Search Documents</h1>
-
-<?php 
-$this->widget('SFileTree',
-	array(
-		"div"=>"filetree",
-		"root"=> $dir,
-		"multiFolder"=>"true",
-		"expandSpeed"=>500,
-		"collapseSpeed"=>500,
-		"callback"=>"window.alert('C:' + file)",
-		"script"=> "/../../../documentprocessor/documentprocessor/displayfiletree"
-	)
-);
-?>
-
-<br/>
-
-<div class="form">
-
-<?php echo CHtml::beginForm(); ?>
-
-	<?php echo CHtml::textField("search", "", array()); ?>
-
-	<?php echo CHtml::submitButton('Search', array("style" => "margin-bottom: 9px", "action" => "/documentprocessor/documentprocessor/adminsearchablefilelist")); ?>
-
-<?php echo CHtml::endForm(); ?>
-
-</div><!-- form -->
-
-<form action="/documentprocessor/documentprocessor/sharevalidatedfiles" method="post">
-
-	<input type="submit" value="Share Checked Files"/>
-	<br/><br/>
-	<ul id="atree">
-	<div id="filetree"></div>
-	</ul>
-	<br/>
-	<input type="submit" value="Share Checked Files"/>
-
-</form>
-
-<?php $this->widget('DocumentUploadWidget', array('uploadType'=>'Admin')); ?>
-
-<?php 
-Yii::app()->clientScript->registerCoreScript('jquery.ui');
-Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/scripts/jquery.mjs.nestedSortable.js');
-?>
-
-<?php
-Yii::app()->clientScript->registerScript('fileSort', "
-	$(function(){
-		$('#atree').nestedSortable({
-			listType: 'ul',
-            handle: 'a',
-            items: 'li',
-			helper: 'clone'
-		});
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('documents-grid', {
+		data: $(this).serialize()
 	});
-", CClientScript::POS_END);
+	return false;
+});
+");
 ?>
+
+<h1>Manage Documents</h1>
+
+<p>
+You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+</p>
+
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
+)); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'documents-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array(
+		'documentid',
+		'uploader',
+		'documentname',
+		'path',
+		'uploaddate',
+		'type',
+		/*
+		'ext',
+		'prefix',
+		'description',
+		'content',
+		'modifiedby',
+		'modifieddate',
+		'signed',
+		'disabled',
+		'shareable',
+		*/
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
+)); ?>

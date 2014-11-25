@@ -1,5 +1,5 @@
 <?php
-/* @var $this DocumentsController */
+/* @var $this DocumentsProcessorController */
 /* @var $model Documents */
 
 $this->breadcrumbs=array(
@@ -8,12 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Search Documents', 'url'=>array('admin')),
-	array('label'=>'Create Documents', 'url'=>array('create')),
 	array('label'=>'List Documents', 'url'=>array('index')),
-	array('label'=>'View Documents', 'url'=>array('view', 'id'=>$model->documentid)),
+	array('label'=>'Create Documents', 'url'=>array('create')),
 	array('label'=>'Update Documents', 'url'=>array('update', 'id'=>$model->documentid)),
 	array('label'=>'Delete Documents', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->documentid),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Documents', 'url'=>array('admin')),
 );
 ?>
 
@@ -27,5 +26,15 @@ $this->menu=array(
 		'documentname',
 		'path',
 		'uploaddate',
+		'type',
+		'ext',
+		'prefix',
+		'description',
+		'content',
+		'modifiedby',
+		'modifieddate',
+		'signed',
+		'disabled',
+		'shareable',
 	),
 )); ?>
