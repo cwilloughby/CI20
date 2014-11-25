@@ -22,7 +22,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('uploaddate')); ?>:</b>
-	<?php echo CHtml::encode($data->uploaddate); ?>
+	<?php echo CHtml::encode(date('g:i a m/d/Y', strtotime($data->uploaddate))); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>

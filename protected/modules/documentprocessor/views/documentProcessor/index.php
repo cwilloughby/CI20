@@ -6,9 +6,10 @@ $this->breadcrumbs=array(
 	'Documents',
 );
 
-$this->menu=array(
-	array('label'=>'Create Documents', 'url'=>array('create')),
-	array('label'=>'Manage Documents', 'url'=>array('admin')),
+$this->menu2=array(
+	array('label'=>'<i class="icon icon-search"></i> Search Documents', 'url'=>array('admin'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-file"></i> Create Document', 'url'=>array('create'), 'visible' => Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Documents', 'url'=>array('index')),
 );
 ?>
 

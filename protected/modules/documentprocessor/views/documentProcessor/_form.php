@@ -16,12 +16,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'uploader'); ?>
-		<?php echo $form->textField($model,'uploader'); ?>
-		<?php echo $form->error($model,'uploader'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'documentname'); ?>
 		<?php echo $form->textField($model,'documentname',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'documentname'); ?>
@@ -46,18 +40,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ext'); ?>
-		<?php echo $form->textField($model,'ext'); ?>
-		<?php echo $form->error($model,'ext'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'prefix'); ?>
-		<?php echo $form->textField($model,'prefix',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'prefix'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
@@ -67,18 +49,6 @@
 		<?php echo $form->labelEx($model,'content'); ?>
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'content'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modifiedby'); ?>
-		<?php echo $form->textField($model,'modifiedby'); ?>
-		<?php echo $form->error($model,'modifiedby'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modifieddate'); ?>
-		<?php echo $form->textField($model,'modifieddate'); ?>
-		<?php echo $form->error($model,'modifieddate'); ?>
 	</div>
 
 	<div class="row">

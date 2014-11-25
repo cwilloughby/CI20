@@ -2,14 +2,17 @@
 /* @var $this DocumentsProcessorController */
 /* @var $model Documents */
 
+$this->pageTitle = Yii::app()->name . ' - Manage Documents';
+
 $this->breadcrumbs=array(
 	'Documents'=>array('index'),
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Documents', 'url'=>array('index')),
-	array('label'=>'Create Documents', 'url'=>array('create')),
+$this->menu2=array(
+	array('label'=>'<i class="icon icon-search"></i> Search Documents', 'url'=>array('admin')),
+	array('label'=>'<i class="icon icon-file"></i> Create Document', 'url'=>array('create')),
+	array('label'=>'<i class="icon icon-list-alt"></i> List Documents', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +29,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Documents</h1>
+<h1>Search Documents</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,30 +43,25 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']);
+
+$this->widget('CustomGridView', array(
 	'id'=>'documents-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'filter'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id) ? $model : null),
+	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
-		'documentid',
-		'uploader',
 		'documentname',
-		'path',
 		'uploaddate',
 		'type',
-		/*
-		'ext',
-		'prefix',
-		'description',
 		'content',
-		'modifiedby',
-		'modifieddate',
-		'signed',
-		'disabled',
-		'shareable',
-		*/
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
+				'onchange'=>"$.fn.yiiGridView.update('documents-grid',{ data:{pageSize: $(this).val() }})",
+			)),
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

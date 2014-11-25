@@ -12,23 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'documentid'); ?>
-		<?php echo $form->textField($model,'documentid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'uploader'); ?>
-		<?php echo $form->textField($model,'uploader'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'documentname'); ?>
 		<?php echo $form->textField($model,'documentname',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'path'); ?>
-		<?php echo $form->textField($model,'path',array('size'=>60,'maxlength'=>100)); ?>
 	</div>
 
 	<div class="row">
@@ -47,11 +32,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'prefix'); ?>
-		<?php echo $form->textField($model,'prefix',array('size'=>10,'maxlength'=>10)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
@@ -59,11 +39,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'content'); ?>
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'modifiedby'); ?>
-		<?php echo $form->textField($model,'modifiedby'); ?>
 	</div>
 
 	<div class="row">

@@ -32,3 +32,4 @@ protected/runtime/application.log
 !/protected/modules/cjisdispo/views/cjisDispo/index.php
 !/protected/modules/cjisdispositions/views/cjisDispositions/index.php
 !/protected/modules/cjisucflist/views/docTable/index.php
+!/protected/modules/olddocumentprocessor/views/documentProcessor/index.php
