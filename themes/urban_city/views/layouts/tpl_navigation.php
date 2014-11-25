@@ -76,6 +76,7 @@
 							//array('label'=>'Log Controls', 'url'=>array('/security/log/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Modify User Privileges', 'url'=>array('/srbac'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 							array('label'=>'Centriod', 'url'=>array('/centriod/centriod/examinefiles'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
+							array('label'=>'OCR Documents', 'url'=>array('/documentprocessor/documentprocessor/admin'), 'visible'=>Yii::app()->user->checkAccess('IT', Yii::app()->user->id)),
 						),
 					),
 					array(
