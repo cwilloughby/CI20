@@ -47,10 +47,10 @@ class DocumentProcessorController extends Controller
 				$document->uploadType = $_GET['uploadType'];
 			
 			// If the form was posted.
-			if(!empty($_FILES)) 
+			if(isset($_POST['Documents'])) 
 			{	
 				// Read in the current file.
-				$document->file = array('tempName' => $_FILES['file']['tmp_name'], 'realName' => $_FILES['file']['name']);
+				$document->file = CUploadedFile::getInstance($document, 'file');
 				$document->setDocumentAttributes();
 				// Validate attributes.
 				if($document->validate())

@@ -1,6 +1,7 @@
 <?php
-/* @var $this DocumentUploadWidget */
+/* @var $this DocumentProcessorController */
 /* @var $form CActiveForm */
+/* @var $document Documents */
 
 $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
@@ -20,11 +21,17 @@ $cs->registerScriptFile(Yii::app()->baseUrl . '/scripts/dropzone.js');
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 	
-	<div class="fallback">
+	<div class="row">
 		<?php echo $form->fileField($document, 'file'); ?>
 		<?php echo $form->error($document, 'file'); ?>
 	</div>
-
+	<br/>
+	<div id="button" class="row buttons">
+		<?php
+		echo CHtml::submitButton("Upload");
+		?>
+	</div>
+	
 <?php $this->endWidget(); ?>
 	
 </div><!-- form -->

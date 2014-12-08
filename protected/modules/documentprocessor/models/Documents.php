@@ -61,6 +61,7 @@ class Documents extends CActiveRecord
 	{
 		// Define the validation rules in an array and return it.
 		return array(
+			array('file', 'file', 'types'=>'txt, doc, docx, xls, pdf, tif, png, jpg'),
 			array('uploader, modifiedby', 'numerical', 'integerOnly'=>true),
 			array('documentname', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>100),
@@ -284,8 +285,10 @@ class Documents extends CActiveRecord
 			// Set the complete path.
 			$this->path = $this->path . $this->documentname;
 
+			// Upload the file to the server.
+			$this->file->saveAs($this->path, 'false');
 			// Create a permanent version of the temporary file and save it on the server.
-			move_uploaded_file($this->file['tempName'], $this->path);
+			//move_uploaded_file($this->file['tempName'], $this->path);
 		}
 		catch(Exception $ex)
 		{
@@ -442,8 +445,8 @@ class Documents extends CActiveRecord
 		{
 			// OCR conversion here.
 			// Read in the contents of the pdf document and give it to the model’s content attribute.
-			$tess = new TesseractOCR();
-			$this->content = $tess->convertToText($this->path);
+			$tess = new TesseractOCR($this->path);
+			$this->content = $tess->recognize();
 		}
 	} // End function setPdfFileContentsAndMetadata
 	
@@ -455,7 +458,7 @@ class Documents extends CActiveRecord
 	{
 		// OCR conversion here.
 		// Read in the contents of the tiff document and give it to the model’s content attribute.
-		$tess = new TesseractOCR();
-		$this->content = $tess->convertToText($this->path);
+		$tess = new TesseractOCR($this->path);
+		$this->content = $tess->recognize();
 	} // End function setTiffFileContentsAndMetadata
 }
