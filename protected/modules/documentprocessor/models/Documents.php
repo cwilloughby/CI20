@@ -210,7 +210,6 @@ class Documents extends CActiveRecord
 		$criteria->compare('modifieddate',$this->modifieddate,true);
 		$criteria->compare('signed',$this->prefix,true);
 		$criteria->compare('disabled',$this->description,true);
-		$criteria->compare('shareable',$this->content,true);
 
 		return new CActiveDataProvider($this, array(
 			'pagination'=>array(
@@ -446,7 +445,7 @@ class Documents extends CActiveRecord
 			// OCR conversion here.
 			// Read in the contents of the pdf document and give it to the model’s content attribute.
 			$tess = new TesseractOCR($this->path);
-			$this->content = $tess->recognize();
+			$this->content = $tess->convertToText();
 		}
 	} // End function setPdfFileContentsAndMetadata
 	
