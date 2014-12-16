@@ -1,6 +1,7 @@
 <?php
 /* @var $this EvidenceController */
 /* @var $evidence Evidence */
+/* @var $results Array */
 
 $this->breadcrumbs=array(
 	'Evidence'=>array('search'),
@@ -15,4 +16,4 @@ $this->menu2=array(
 
 <?php echo $this->renderPartial('_form', array('model'=>$evidence)); ?>
 
-<?php echo $this->renderPartial('_results', array('model'=>$evidence)); ?>
+<?php echo $this->renderPartial('_results', array('model'=>$evidence, 'results'=>$results)); ?>

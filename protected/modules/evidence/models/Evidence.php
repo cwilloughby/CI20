@@ -37,51 +37,23 @@ class Evidence extends CFormModel
 	 */
 	public static function getEvidence()
 	{
-		/*
-		$value = Yii::app()->cache->get('weather');
-		if($value === false)
-		{
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, self::WEATHER);
-			curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)');
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($curl, CURLOPT_HEADER, false);
-			$value = curl_exec($curl);
-			curl_close($curl);
+		$evidenceData = FALSE;
 		
-			Yii::app()->cache->set('weather', $value, 3600);
-		}
-		return Evidence::convertReport($value);
-		*/
-	}
-	
-	/**
-	 * This function is used to parse out the information obtained from the web service return them in an array. 
-	 * @param string $xml the xml sent from the MPD
-	 * @return array contains minTemp, maxTemp, rainChance, and summary
-	 */
-	private static function convertReport($xml)
-	{
-		libxml_use_internal_errors(true);
-		$xml = simplexml_load_string($xml);
-		if(libxml_get_errors())
-			throw new Exception("XML Failure");
-		libxml_clear_errors();
-		
-		if(isset($xml->data->parameters->temperature[1]->value))
+		$fh = fopen("C:\Users\cwilloughby\Desktop\Property Query by Incident.csv", "r");
+		if($fh)
 		{
-			$weather = array(
-				'minTemp' => (string)$xml->data->parameters->temperature[1]->value,
-				'maxTemp' => (string)$xml->data->parameters->temperature[0]->value,
-				'rainChance' => (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0],
-				'summary' => (string)$xml->data->parameters->weather->{'weather-conditions'}->attributes()->{'weather-summary'}[0]
-			);
-		}
-		else 
-		{
-			$weather = null;
+			// This loop reads in each line of the csv one at a time.
+			while(($result = fgetcsv($fh)) !== false)
+			{
+				// Ignore blank lines.
+				if(array(null) !== $result)
+				{
+					$evidenceData[] = $result;
+				}
+			}
+			fclose($fh);
 		}
 		
-		return $weather;
+		return $evidenceData;
 	}
 }

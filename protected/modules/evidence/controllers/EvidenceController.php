@@ -20,11 +20,14 @@ class EvidenceController extends Controller
 			if($evidence->validate())
 			{
 				// Obtain the evidence.
-				//$evidence = Evidence::getEvidence();
+				$evidence = Evidence::getEvidence();
 			}
 		}
 		
+		// Obtain the evidence.
+		$results = Evidence::getEvidence();
+				
 		// Display the evidence.
-		$this->render('search', array('evidence'=>$evidence));
+		$this->render('search', array('evidence'=>$evidence, 'results'=>$results));
 	}
 }
