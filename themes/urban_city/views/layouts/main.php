@@ -19,7 +19,8 @@
 	$cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
 	$cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 	$cs->registerCssFile(Yii::app()->baseUrl . '/css/sprites.css');
-	//$cs->registerCssFile('/../vendors/flexSlider/flexslider.css');
+	$cs->registerCssFile('/../vendors/flexSlider/flexslider.css');
+	$cs->registerCssFile('/../vendors/bxslider/jquery.bxslider.css');
 	?>
 		
 	<link rel="shortcut icon" href="<?php echo $baseUrl;?>/images/favicon.ico">
@@ -34,6 +35,7 @@
 
 	<?php
 	//$cs->registerScriptFile('/../vendors/flexSlider/jquery.flexslider.js');
+	$cs->registerScriptFile('/../vendors/bxslider/jquery.bxslider.min.js');
 	$cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 	$cs->registerScriptFile($baseUrl.'/js/ddsmoothmenu.js');
 	?>

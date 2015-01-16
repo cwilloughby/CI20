@@ -109,8 +109,8 @@ h1,h2,h3,h4, .portlet > .portlet-decoration, .sidebar-nav > ul > li > a, .navbar
 /* Start Portlets*/
 .portlet{
 
-  margin-bottom:20px;
-  min-height:40px;
+  //margin-bottom:20px;
+  //min-height:40px;
 
 }
 .portlet_border
@@ -592,8 +592,6 @@ footer {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
-
-
 
 
 
@@ -1284,4 +1282,36 @@ span.required
   100% {
     background-position: -7px -400px;
   }
+}
+
+.news-row .news-slider {
+	background-image: url(../../urban_city/images/news-background.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color: black;
+}
+
+.news-slider {
+	margin: 10px 0 20px; 
+	padding: 5px; 
+	background: #fff; 
+	border: 2px solid #9BD567; 
+	position: relative; 
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	-o-border-radius: 2px; 
+	border-radius: 2px; 
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); 
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); 
+	-o-box-shadow: 0 1px 4px rgba(0,0,0,.2); 
+	box-shadow: 0 1px 4px rgba(0,0,0,.2); 
+	zoom: 1; 
+}
+
+.all-news:link{
+	color: #0000EE;
+}
+
+.all-news:visited { 
+	color: #551A8B; 
 }

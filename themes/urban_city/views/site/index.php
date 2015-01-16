@@ -23,10 +23,6 @@
 
 						<p>We hope you enjoy the new CI site.</p>
 						<br/>
-						<?php
-						//echo "<h4>12 Hour Forecast</h4>";
-						//$this->widget('WeatherReport');
-						?>
 					</div>
 				</div>
 				<?php
@@ -57,33 +53,33 @@
 						?>
 					</div>
 				</div>
-				<div class="row-fluid">
-					<div class="span3">
+				<div class="row-fluid news-row">
+					<div class="span3 news-slider">
 						<?php 
-						echo "<h4>Office News</h4>";
+						echo "<h4 class='news-title'>Office News</h4>";
+						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
 						$this->widget('NewsReport');
-						echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 						?>
 					</div>
-					<div class="span3">
+					<div class="span3 news-slider">
 						<?php
-						echo "<h4>Court News</h4>";
+						echo "<h4 class='news-title'>Court News</h4>";
+						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
 						$this->widget('NewsReport', array('type'=>'Court News'));
-						echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 						?>
 					</div>
-					<div class="span3">
+					<div class="span3 news-slider">
 						<?php 
-						echo "<h4>Finance News</h4>";
+						echo "<h4 class='news-title'>Finance News</h4>";
+						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
 						$this->widget('NewsReport', array('type'=>'Finance News'));
-						echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 						?>
 					</div>
-					<div class="span3">
+					<div class="span3 news-slider">
 						<?php 
-						echo "<h4>IT News</h4>";
+						echo "<h4 class='news-title'>IT News</h4>";
+						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
 						$this->widget('NewsReport', array('type'=>'IT News'));
-						echo "<a href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>" 
 						?>
 					</div>
 				</div>
@@ -93,5 +89,3 @@
 		</div>
 	</div>
 </div>
-
-
