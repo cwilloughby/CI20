@@ -28,7 +28,7 @@ class NewsReport extends CPortlet
 			->queryAll();
 		
 		// Put the news into an array.
-		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 350);
+		$newsReport = $this->customTruncate(CHtml::listData($news, 'newsid', 'news'), 420);
 		$newsDates = CHtml::listData($news, 'newsid', 'date');
 		
 		// Display the news.
