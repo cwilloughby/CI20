@@ -190,9 +190,9 @@ class Documents extends CActiveRecord
 	{
 		// If uploaddate or modifieddate are being searched, convert the date format into the format needed by the database.
 		if((int)$this->uploaddate)
-			$this->uploaddate = date('Y-m-d', strtotime($this-uploaddate));
+			$this->uploaddate = date('Y-m-d', strtotime($this->uploaddate));
 		if((int)$this->modifieddate)
-			$this->modifieddate = date('Y-m-d', strtotime($this-modifieddate));
+			$this->modifieddate = date('Y-m-d', strtotime($this->modifieddate));
 
 		$criteria=new CDbCriteria;
 
