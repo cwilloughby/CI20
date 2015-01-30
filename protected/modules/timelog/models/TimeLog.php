@@ -106,7 +106,7 @@ class TimeLog extends CActiveRecord
         }
 		
 		// Omit the supervisors.
-		$criteria->addCondition("username NOT IN ('tbradley', 'hgentry', 'sdothard', 'ntucker', 'eragan', 'deffler', 'pclayton')");
+		$criteria->addCondition("username NOT IN ('tbradley', 'hgentry', 'adegrafinreid', 'sdothard', 'ntucker', 'eragan', 'deffler', 'pclayton')");
 		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
