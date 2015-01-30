@@ -8,6 +8,8 @@ class DeviceInventoryController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
+	private $gpoFile = "//crim10048/TimeLogIn$/Logon.txt";
+	
 	/**
 	 * @return array action filters
 	 */
@@ -107,6 +109,14 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionSearch()
 	{
+		// Do not import the events if this code is being run locally. Otherwise 
+		// the events could be imported into the wrong database.
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+		{
+			// Auto import any new events in the text file to the database.
+			$this->importTimeLog();
+		}
+		
 		try
 		{
 			$model=new DeviceInventory('search');
@@ -141,6 +151,57 @@ class DeviceInventoryController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+	
+	/**
+	 * This function returns the path to the file that the GPO writes to.
+	 */
+	private function getGpoFile()
+	{
+		return $this->gpoFile;
+	}
+	
+	/**
+	 * Imports the events in the text file into the database.
+	 */
+	private function importTimeLog()
+	{
+		// Create a transaction so the sql can be rolled back if something goes wrong.
+		$transaction = Yii::app()->db->beginTransaction();
+
+		try
+		{
+			$sql = "LOAD DATA INFILE '" . $this->getGpoFile() . "' INTO TABLE ci_time_log
+				FIELDS TERMINATED BY ','
+				(@uName, @cName, @eType, @eTime, @date)
+				SET username = trim(@uName),
+				computername = trim(@cName),
+				eventtype = trim(@eType),
+				eventtime = trim(@eTime),
+				eventdate = STR_TO_DATE(@date, '%a %m/%d/%Y');";
+
+			$command=Yii::app()->db->createCommand($sql);
+
+			if($command->execute())
+			{
+				// Commit the transaction.
+				$transaction->commit();
+				// It is now safe to remove those events from the text file.
+				// Delete the lines from the text file so they won't be read in the next time the script is run.
+				$handle = fopen($this->getGpoFile(), "w");
+				fclose($handle);
+			}
+			else
+			{
+				// The command failed to execute. Throw an exception.
+				throw new Exception('Fail');
+			}
+		}
+		catch(Exception $e)
+		{
+			// If an error occured, nothing is inserted into the database and the text file is left alone. 
+			$transaction->rollback();
 		}
 	}
 }
