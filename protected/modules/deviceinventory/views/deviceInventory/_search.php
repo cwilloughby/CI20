@@ -83,6 +83,73 @@
 		<?php echo $form->textArea($model,'comments',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
+	<div class="row">
+        <?php echo $form->label($model,'location'); ?>
+        <?php echo $form->textField($model,'location',array('size'=>60,'maxlength'=>200)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model,'serial'); ?>
+        <?php echo $form->textField($model,'serial',array('size'=>45,'maxlength'=>45)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model,'url'); ?>
+        <?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>500)); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->label($model,'equipmenttype'); ?>
+        <?php echo $form->textField($model,'equipmenttype',array('size'=>45,'maxlength'=>45)); ?>
+    </div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'enabled'); ?>
+		<?php echo $form->dropDownList($model,'enabled', array(1=>'Yes', 0=>'No')); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'indate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'indate',
+				'language' => 'en',
+				'id'=>'in_date',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->revolvedate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->label($model,'outdate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', 
+			array(
+				'model' => $model,
+				'attribute' => 'outdate',
+				'language' => 'en',
+				'id'=>'out_date',
+				'i18nScriptFile' => 'jquery.ui.datepicker-en.js',
+				'options' => array(
+					'showAnim' => 'fold',
+					'dateFormat' => 'mm/dd/yy',
+					'defaultDate' => $model->outdate,
+					'changeYear' => true,
+					'changeMonth' => true,
+					'showButtonPanel' => true,
+				),
+			));
+		?>
+	</div>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

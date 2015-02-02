@@ -52,17 +52,32 @@ $this->widget('CustomGridView', array(
 	'filter'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id) ? $model : null),
 	'template'=>"{summary}\n{pager}\n{items}\n{pager}",
 	'columns'=>array(
+		'deviceid',
+		'equipmenttype',
 		'devicename',
-		'model',
-		'servicetag',
+		array
+		(
+			'name' => 'enabled',
+			'value' => '($data->enabled == 0) ? "No" : "Yes"',
+			'filter' => array(0 => 'No', '1' => 'Yes'),
+		),
+		'indate',
+		'outdate',
 		'username',
-		'comments',
+		'location',
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30),array(
 				'onchange'=>"$.fn.yiiGridView.update('device-inventory-grid',{ data:{pageSize: $(this).val() }})",
 			)),
 			'template'=>'{view}{update}',
+			'buttons'=>  array
+			(
+				'update' => array
+				(
+					'url' => 'Yii::app()->createUrl("deviceinventory/deviceinventory/quickupdate", array("id"=>$data->deviceid))',
+				)
+			)
 		),
 	),
 )); ?>

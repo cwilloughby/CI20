@@ -13,6 +13,13 @@
  * @property string $warrentyenddate
  * @property string $revolvedate
  * @property string $comments
+ * @property string $location
+ * @property string $serial
+ * @property string $url
+ * @property string $equipmenttype
+ * @property integer $enabled
+ * @property string $indate
+ * @property string $outdate
  */
 class DeviceInventory extends CActiveRecord
 {
@@ -43,15 +50,18 @@ class DeviceInventory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('model, devicename', 'required'),
-			array('extension', 'numerical', 'integerOnly'=>true),
-			array('username, model', 'length', 'max'=>45),
+			array('extension, enabled', 'numerical', 'integerOnly'=>true),
+			array('enabled', 'in', 'range'=>array(0,1), 'message' => '{attribute} must be either Yes or No'),
+			array('username, model, serial, equipmenttype', 'length', 'max'=>45),
 			array('servicetag', 'length', 'max'=>15),
 			array('devicename', 'length', 'max'=>30),
-			array('warrentyenddate, revolvedate', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'M/d/yyyy'),
-			array('warrentyenddate, revolvedate, comments', 'safe'),
+			array('location', 'length', 'max'=>200),
+			array('url', 'length', 'max'=>500),
+			array('warrentyenddate, revolvedate, indate, outdate', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'M/d/yyyy'),
+			array('warrentyenddate, revolvedate, comments, indate, outdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('username, extension, model, servicetag, devicename, warrentyenddate, revolvedate, comments', 'safe', 'on'=>'search'),
+			array('deviceid, username, extension, model, servicetag, devicename, warrentyenddate, revolvedate, comments, location, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,6 +91,13 @@ class DeviceInventory extends CActiveRecord
 			'warrentyenddate' => 'Warrenty End Date',
 			'revolvedate' => 'Revolve Date',
 			'comments' => 'Comments',
+			'location' => 'Location',
+			'serial' => 'Serial',
+			'url' => 'URL',
+			'equipmenttype' => 'Equipment Type',
+			'enabled' => 'Enabled',
+			'indate' => 'In Date',
+			'outdate' => 'Out Date',
 		);
 	}
 
@@ -93,8 +110,16 @@ class DeviceInventory extends CActiveRecord
 	
 	public function beforeSave()
 	{
+		// This loop prevents blank fields from changing nulls in the database to empty strings.
+		foreach($this->attributes as $key => $value)
+		{
+			if(!$value)
+				$this->$key = NULL;
+		}
+		
 		// Set the format for the dates back to YYYY-mm-dd before saving.
 		$this->dateFormatter("Y-m-d");
+		
 		return parent::beforeSave();
 	}
 	
@@ -118,6 +143,13 @@ class DeviceInventory extends CActiveRecord
 		$criteria->compare('warrentyenddate',$this->warrentyenddate,true);
 		$criteria->compare('revolvedate',$this->revolvedate,true);
 		$criteria->compare('comments',$this->comments,true);
+		$criteria->compare('location',$this->location,true);
+		$criteria->compare('serial',$this->serial,true);
+		$criteria->compare('url',$this->url,true);
+		$criteria->compare('equipmenttype',$this->equipmenttype,true);
+		$criteria->compare('enabled',$this->enabled);
+		$criteria->compare('indate',$this->indate,true);
+		$criteria->compare('outdate',$this->outdate,true);
 
 		return new CActiveDataProvider($this, array(
 			'pagination'=>array(
@@ -137,5 +169,9 @@ class DeviceInventory extends CActiveRecord
 			$this->warrentyenddate = date($format, strtotime($this->warrentyenddate));
 		if((int)$this->revolvedate)
 			$this->revolvedate = date($format, strtotime($this->revolvedate));
+		if((int)$this->indate)
+			$this->indate = date($format, strtotime($this->indate));
+		if((int)$this->outdate)
+			$this->outdate = date($format, strtotime($this->outdate));
 	}
 }

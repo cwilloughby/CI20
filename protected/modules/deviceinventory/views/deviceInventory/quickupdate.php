@@ -2,7 +2,7 @@
 /* @var $this DeviceInventoryController */
 /* @var $model DeviceInventory */
 
-$this->pageTitle = Yii::app()->name . ' - Update Inventory Item';
+$this->pageTitle = Yii::app()->name . ' - Fast Inventory Update';
 
 $this->breadcrumbs=array(
 	'Device Inventory'=>array('index'),
@@ -20,6 +20,6 @@ $this->menu2=array(
 );
 ?>
 
-<h1>Update Inventory Item <?php echo $model->deviceid; ?></h1>
+<h1>Fast Inventory Update</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_quickform', array('model'=>$model)); ?>

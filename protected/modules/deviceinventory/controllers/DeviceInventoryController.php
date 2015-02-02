@@ -64,14 +64,11 @@ class DeviceInventoryController extends Controller
 	{
 		$model=$this->loadModel($id, 'DeviceInventory');
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['DeviceInventory']))
 		{
 			$model->attributes=$_POST['DeviceInventory'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->deviceid));
+				$this->redirect(array('search'));
 		}
 
 		$this->render('update',array(
@@ -79,6 +76,27 @@ class DeviceInventoryController extends Controller
 		));
 	}
 
+	/**
+	 * Updates a particular model. This update method is condensed to only update the most commonly changed fields.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionQuickUpdate($id)
+	{
+		$model=$this->loadModel($id, 'DeviceInventory');
+
+		if(isset($_POST['DeviceInventory']))
+		{
+			$model->attributes=$_POST['DeviceInventory'];
+			if($model->save())
+				$this->redirect(array('search'));
+		}
+
+		$this->render('quickupdate',array(
+			'model'=>$model,
+		));
+	}
+	
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
