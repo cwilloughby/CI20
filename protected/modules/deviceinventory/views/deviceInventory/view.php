@@ -29,7 +29,7 @@ $this->menu2=array(
 		'username',
 		'extension',
 		'model',
-		'servicetag',
+		'serial',
 		'devicename',
 		array(        
 			'name'=>'warrentyenddate',
@@ -41,7 +41,6 @@ $this->menu2=array(
 		),
 		'comments',
 		'location',
-		'serial',
 		'url',
 		'equipmenttype',
 		'enabled',

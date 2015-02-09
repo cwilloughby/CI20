@@ -106,12 +106,6 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'servicetag'); ?>
-		<?php echo $form->textField($model,'servicetag',array('size'=>15,'maxlength'=>15)); ?>
-		<?php echo $form->error($model,'servicetag'); ?>
-	</div>
-	
-	<div class="row">
 		<?php echo $form->labelEx($model,'comments'); ?>
 		<?php echo $form->textArea($model,'comments',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'comments'); ?>

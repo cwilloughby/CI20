@@ -55,6 +55,7 @@ $this->widget('CustomGridView', array(
 		'deviceid',
 		'equipmenttype',
 		'devicename',
+		'serial',
 		array
 		(
 			'name' => 'enabled',

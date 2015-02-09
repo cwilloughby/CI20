@@ -21,10 +21,10 @@
 		<?php echo $form->textField($model,'model',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'servicetag'); ?>
-		<?php echo $form->textField($model,'servicetag',array('size'=>15,'maxlength'=>15)); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($model,'serial'); ?>
+        <?php echo $form->textField($model,'serial',array('size'=>45,'maxlength'=>45)); ?>
+    </div>
 
 	<div class="row">
 		<?php echo $form->label($model,'warrentyenddate'); ?>
@@ -86,11 +86,6 @@
 	<div class="row">
         <?php echo $form->label($model,'location'); ?>
         <?php echo $form->textField($model,'location',array('size'=>60,'maxlength'=>200)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'serial'); ?>
-        <?php echo $form->textField($model,'serial',array('size'=>45,'maxlength'=>45)); ?>
     </div>
 
     <div class="row">

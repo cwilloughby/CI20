@@ -8,7 +8,6 @@
  * @property string $username
  * @property integer $extension
  * @property string $model
- * @property string $servicetag
  * @property string $devicename
  * @property string $warrentyenddate
  * @property string $revolvedate
@@ -53,7 +52,7 @@ class DeviceInventory extends CActiveRecord
 			array('extension, enabled', 'numerical', 'integerOnly'=>true),
 			array('enabled', 'in', 'range'=>array(0,1), 'message' => '{attribute} must be either Yes or No'),
 			array('username, model, serial, equipmenttype', 'length', 'max'=>45),
-			array('servicetag', 'length', 'max'=>15),
+			array('serial', 'length', 'max'=>30),
 			array('devicename', 'length', 'max'=>30),
 			array('location', 'length', 'max'=>200),
 			array('url', 'length', 'max'=>500),
@@ -61,7 +60,7 @@ class DeviceInventory extends CActiveRecord
 			array('warrentyenddate, revolvedate, comments, indate, outdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('deviceid, username, extension, model, servicetag, devicename, warrentyenddate, revolvedate, comments, location, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
+			array('deviceid, username, extension, model, devicename, warrentyenddate, revolvedate, comments, location, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,7 +85,6 @@ class DeviceInventory extends CActiveRecord
 			'username' => 'Username',
 			'extension' => 'Extension',
 			'model' => 'Model',
-			'servicetag' => 'Service Tag',
 			'devicename' => 'Device Name',
 			'warrentyenddate' => 'Warrenty End Date',
 			'revolvedate' => 'Revolve Date',
@@ -138,7 +136,6 @@ class DeviceInventory extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('extension',$this->extension);
 		$criteria->compare('model',$this->model,true);
-		$criteria->compare('servicetag',$this->servicetag,true);
 		$criteria->compare('devicename',$this->devicename,true);
 		$criteria->compare('warrentyenddate',$this->warrentyenddate,true);
 		$criteria->compare('revolvedate',$this->revolvedate,true);

@@ -15,8 +15,8 @@
 	<?php echo CHtml::encode($data->model); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('servicetag')); ?>:</b>
-	<?php echo CHtml::encode($data->servicetag); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('serial')); ?>:</b>
+	<?php echo CHtml::encode($data->serial); ?>
 	<br />
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('warrentyenddate')); ?>:</b>
@@ -41,10 +41,6 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('location')); ?>:</b>
 	<?php echo CHtml::encode($data->location); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('serial')); ?>:</b>
-	<?php echo CHtml::encode($data->serial); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('url')); ?>:</b>
