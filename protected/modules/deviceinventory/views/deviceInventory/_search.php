@@ -69,24 +69,9 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->label($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'extension'); ?>
-		<?php echo $form->textField($model,'extension'); ?>
-	</div>
-	
-	<div class="row">
 		<?php echo $form->label($model,'comments'); ?>
 		<?php echo $form->textArea($model,'comments',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
-
-	<div class="row">
-        <?php echo $form->label($model,'location'); ?>
-        <?php echo $form->textField($model,'location',array('size'=>60,'maxlength'=>200)); ?>
-    </div>
 
     <div class="row">
         <?php echo $form->label($model,'url'); ?>

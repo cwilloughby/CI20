@@ -27,9 +27,29 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id, 'DeviceInventory'),
-		));
+		//try
+		{
+			$historic = new DeviceHistoric('search');
+			$historic->unsetAttributes();  // clear any default values
+			$historic->deviceid = $id;
+			
+			// If the pager number was changed.
+			if(isset($_GET['pageSize'])) 
+			{
+				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				unset($_GET['pageSize']);
+			}
+			
+			$this->render('view',array(
+				'model' => $this->loadModel($id, 'DeviceInventory'),
+				'current' => $this->loadModel($id, 'DeviceCurrent'),
+				'historic' => $historic,
+			));
+		}
+		//catch(Exception $ex)
+		{
+			//throw new CHttpException(500, "INV1: Inventory View failed with error " . $ex);
+		}
 	}
 
 	/**
@@ -39,9 +59,6 @@ class DeviceInventoryController extends Controller
 	public function actionCreate()
 	{
 		$model=new DeviceInventory;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['DeviceInventory']))
 		{
@@ -68,7 +85,7 @@ class DeviceInventoryController extends Controller
 		{
 			$model->attributes=$_POST['DeviceInventory'];
 			if($model->save())
-				$this->redirect(array('search'));
+				$this->redirect(array('reportTypeTwo'));
 		}
 
 		$this->render('update',array(
@@ -89,7 +106,7 @@ class DeviceInventoryController extends Controller
 		{
 			$model->attributes=$_POST['DeviceInventory'];
 			if($model->save())
-				$this->redirect(array('search'));
+				$this->redirect(array('reportTypeTwo'));
 		}
 
 		$this->render('quickupdate',array(
@@ -125,7 +142,7 @@ class DeviceInventoryController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionSearch()
+	public function actionReportInventory()
 	{
 		// Do not import the events if this code is being run locally. Otherwise 
 		// the events could be imported into the wrong database.
@@ -139,6 +156,36 @@ class DeviceInventoryController extends Controller
 		{
 			$model=new DeviceInventory('search');
 			$model->unsetAttributes();  // clear any default values
+			
+			// If a search form was posted, store the parameters in the session. 
+			if(isset($_GET['DeviceInventory']))
+			{
+				$model->attributes=$_GET['DeviceInventory'];
+				Yii::app()->user->setState('AssignmentSearchParams', $_GET['DeviceInventory']);
+			}
+			else
+			{
+				$searchParams = Yii::app()->user->getState('AssignmentSearchParams');
+				if(isset($searchParams))
+					$model->attributes = $searchParams;
+			}
+			
+			// If the export button on the search form was clicked.
+			if(Yii::app()->request->getParam('export'))
+			{
+				$this->actionPrintInventoryCSV(array(
+						'deviceid',
+						'equipmenttype',
+						'devicename',
+						'serial',
+						'enabled',
+						'indate',
+						'outdate',
+					),
+					$model
+				);
+				Yii::app()->end();
+			}
 
 			// If the pager number was changed.
 			if(isset($_GET['pageSize'])) 
@@ -146,19 +193,130 @@ class DeviceInventoryController extends Controller
 				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 				unset($_GET['pageSize']);
 			}
-
-			if(isset($_GET['DeviceInventory']))
-				$model->attributes=$_GET['DeviceInventory'];
 		}
 		catch(Exception $ex)
 		{
 			echo "Search page failed with error " . $ex;
 		}
-		$this->render('search',array(
+		$this->render('reportInventory',array(
 			'model'=>$model,
 		));
 	}
 
+	public function actionReportAssignments()
+	{
+		// Do not import the events if this code is being run locally. Otherwise 
+		// the events could be imported into the wrong database.
+		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+		{
+			// Auto import any new events in the text file to the database.
+			$this->importTimeLog();
+		}
+		
+		try
+		{
+			$model=new DeviceInventory('search');
+			$model->unsetAttributes();  // clear any default values
+			
+			// If a search form was posted, store the parameters in the session. 
+			if(isset($_GET['DeviceInventory']))
+			{
+				$model->attributes=$_GET['DeviceInventory'];
+				Yii::app()->user->setState('InventorySearchParams', $_GET['DeviceInventory']);
+			}
+			else
+			{
+				$searchParams = Yii::app()->user->getState('InventorySearchParams');
+				if(isset($searchParams))
+					$model->attributes = $searchParams;
+			}
+			
+			// If the export button on the search form was clicked.
+			if(Yii::app()->request->getParam('export'))
+			{
+				$this->actionPrintInventoryCSV(array(
+						'deviceid',
+						'equipmenttype',
+						'devicename',
+						'enabled',
+						'deviceCurrent.username',
+						'deviceCurrent.location',
+						'indate',
+						'outdate',
+					),
+					$model
+				);
+				Yii::app()->end();
+			}
+
+			// If the pager number was changed.
+			if(isset($_GET['pageSize'])) 
+			{
+				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				unset($_GET['pageSize']);
+			}
+		}
+		catch(Exception $ex)
+		{
+			echo "Search page failed with error " . $ex;
+		}
+		$this->render('reportAssignments',array(
+			'model'=>$model,
+		));
+	}
+	
+	/**
+	 * Export the inventory gridview to a csv file.
+	 */
+	public function actionPrintInventoryCSV($headers, $model)
+	{
+		$fp = fopen('php://temp', 'w');
+
+		// Write a header row of the csv file.
+		$row = array();
+		foreach($headers as $header) {
+			$row[] = DeviceInventory::model()->getAttributeLabel($header);
+		}
+		fputcsv($fp,$row);
+		
+		if(isset($_GET['DeviceInventory']))
+		{
+			$model->attributes=$_GET['DeviceInventory'];
+			
+			// If the date range was provided, convert the formats.
+			$model->dateFormatter("YYYY-mm-dd");
+		}
+		
+		$dp = $model->search();
+		$dp->setPagination(false);
+
+		// Get models, write to a file
+		$models = $dp->getData();
+		foreach($models as $model)
+		{
+			$row = array();
+			foreach($headers as $head)
+			{
+				$row[] = CHtml::value($model,$head);
+			}
+			fputcsv($fp,$row);
+		}
+		
+		// Save csv content to a session.
+		rewind($fp);
+		Yii::app()->user->setState('export',stream_get_contents($fp));
+		fclose($fp);
+	}
+	
+	/**
+	 * Pull the csv from the session and send it to the user.
+	 */
+	public function actionExportFile()
+	{
+		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
+		Yii::app()->user->clearState('export');
+	}
+	
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated

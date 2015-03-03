@@ -5,14 +5,11 @@
  *
  * The followings are the available columns in table 'ci_device_inventory':
  * @property integer $deviceid
- * @property string $username
- * @property integer $extension
  * @property string $model
  * @property string $devicename
  * @property string $warrentyenddate
  * @property string $revolvedate
  * @property string $comments
- * @property string $location
  * @property string $serial
  * @property string $url
  * @property string $equipmenttype
@@ -22,6 +19,10 @@
  */
 class DeviceInventory extends CActiveRecord
 {
+	// These variables are used to look up meaningful values of foreign keys.
+	public $user_search;
+	public $location_search;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -49,18 +50,16 @@ class DeviceInventory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('model, devicename', 'required'),
-			array('extension, enabled', 'numerical', 'integerOnly'=>true),
 			array('enabled', 'in', 'range'=>array(0,1), 'message' => '{attribute} must be either Yes or No'),
-			array('username, model, serial, equipmenttype', 'length', 'max'=>45),
+			array('model, serial, equipmenttype', 'length', 'max'=>45),
 			array('serial', 'length', 'max'=>30),
 			array('devicename', 'length', 'max'=>30),
-			array('location', 'length', 'max'=>200),
 			array('url', 'length', 'max'=>500),
 			array('warrentyenddate, revolvedate, indate, outdate', 'type', 'type' => 'date', 'message' => '{attribute} must be formatted like m/d/yyyy', 'dateFormat' => 'M/d/yyyy'),
 			array('warrentyenddate, revolvedate, comments, indate, outdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('deviceid, username, extension, model, devicename, warrentyenddate, revolvedate, comments, location, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
+			array('deviceid, model, devicename, warrentyenddate, revolvedate, comments, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +71,8 @@ class DeviceInventory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'deviceCurrent' => array(self::HAS_ONE, 'DeviceCurrent', 'deviceid'),
+			'deviceHistorics' => array(self::HAS_MANY, 'DeviceHistoric', 'deviceid'),
 		);
 	}
 
@@ -82,14 +83,11 @@ class DeviceInventory extends CActiveRecord
 	{
 		return array(
 			'deviceid' => 'Device ID',
-			'username' => 'Username',
-			'extension' => 'Extension',
 			'model' => 'Model',
 			'devicename' => 'Device Name',
 			'warrentyenddate' => 'Warrenty End Date',
 			'revolvedate' => 'Revolve Date',
 			'comments' => 'Comments',
-			'location' => 'Location',
 			'serial' => 'Serial',
 			'url' => 'URL',
 			'equipmenttype' => 'Equipment Type',
@@ -131,28 +129,41 @@ class DeviceInventory extends CActiveRecord
 		
 		// If warrentyenddate or modifieddate are being searched, convert the date format into the format needed by the database.
 		$this->dateFormatter("Y-m-d");
-
-		$criteria->compare('deviceid',$this->deviceid);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('extension',$this->extension);
+		// Set the database relation.
+		$criteria->with = array('deviceCurrent', 'deviceHistorics');
+		
+		$criteria->compare('t.deviceid',$this->deviceid);
 		$criteria->compare('model',$this->model,true);
 		$criteria->compare('devicename',$this->devicename,true);
 		$criteria->compare('warrentyenddate',$this->warrentyenddate,true);
 		$criteria->compare('revolvedate',$this->revolvedate,true);
 		$criteria->compare('comments',$this->comments,true);
-		$criteria->compare('location',$this->location,true);
 		$criteria->compare('serial',$this->serial,true);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('equipmenttype',$this->equipmenttype,true);
 		$criteria->compare('enabled',$this->enabled);
 		$criteria->compare('indate',$this->indate,true);
 		$criteria->compare('outdate',$this->outdate,true);
-
+		$criteria->compare('deviceCurrent.username',$this->user_search,true);
+		$criteria->compare('deviceCurrent.location',$this->location_search,true);
+		
 		return new CActiveDataProvider($this, array(
 			'pagination'=>array(
 				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
 			),
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'user_search'=>array(
+						'asc'=>'deviceCurrent.username',
+						'desc'=>'deviceCurrent.username DESC',
+					),
+					'location_search'=>array(
+						'asc'=>'deviceCurrent.location',
+						'desc'=>'deviceCurrent.location DESC',
+					),
+				),
+			),
 		));
 	}
 	

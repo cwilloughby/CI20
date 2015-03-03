@@ -76,24 +76,6 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'extension'); ?>
-		<?php echo $form->textField($model,'extension'); ?>
-		<?php echo $form->error($model,'extension'); ?>
-	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'location'); ?>
-		<?php echo $form->textField($model,'location',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'location'); ?>
-	</div>
-	
-	<div class="row">
 		<?php echo $form->labelEx($model,'model'); ?>
 		<?php echo $form->textField($model,'model',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'model'); ?>
