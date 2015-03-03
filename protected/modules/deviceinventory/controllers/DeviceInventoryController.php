@@ -416,7 +416,7 @@ class DeviceInventoryController extends Controller
 			else
 			{
 				// The command failed to execute. Throw an exception.
-				throw new CHttpException(500, "INV11: Inventory Time Log Import failed with error " . $ex);
+				throw new CHttpException(500, "INV11: Inventory Time Log Import failed.");
 			}
 		}
 		catch(Exception $e)
