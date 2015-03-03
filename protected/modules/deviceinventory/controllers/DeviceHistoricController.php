@@ -194,7 +194,7 @@ class DeviceHistoricController extends Controller
 			else
 			{
 				// The command failed to execute. Throw an exception.
-				throw new CHttpException(500, "INVH4: Inventory Historic Time Log Import failed with error " . $ex);
+				throw new CHttpException(500, "INVH4: Inventory Historic Time Log Import failed.");
 			}
 		}
 		catch(Exception $e)
