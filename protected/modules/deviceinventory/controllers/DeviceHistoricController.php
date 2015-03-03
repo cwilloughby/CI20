@@ -26,16 +26,16 @@ class DeviceHistoricController extends Controller
 	 */
 	public function actionReportHistoric()
 	{
-		// Do not import the events if this code is being run locally. Otherwise 
-		// the events could be imported into the wrong database.
-		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-		{
-			// Auto import any new events in the text file to the database.
-			$this->importTimeLog();
-		}
-		
 		try
 		{
+			// Do not import the events if this code is being run locally. Otherwise 
+			// the events could be imported into the wrong database.
+			if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+			{
+				// Auto import any new events in the text file to the database.
+				$this->importTimeLog();
+			}
+			
 			$model=new DeviceHistoric('search');
 			$model->unsetAttributes();  // clear any default values
 			
@@ -72,14 +72,15 @@ class DeviceHistoricController extends Controller
 				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 				unset($_GET['pageSize']);
 			}
+			
+			$this->render('reportHistoric',array(
+				'model'=>$model,
+			));
 		}
 		catch(Exception $ex)
 		{
-			echo "Search page failed with error " . $ex;
+			throw new CHttpException(500, "INVH1: Inventory Historic Report failed with error " . $ex);
 		}
-		$this->render('reportHistoric',array(
-			'model'=>$model,
-		));
 	}
 	
 	/**
@@ -87,42 +88,49 @@ class DeviceHistoricController extends Controller
 	 */
 	public function actionPrintHistoricCSV($headers, $model)
 	{
-		$fp = fopen('php://temp', 'w');
-
-		// Write a header row of the csv file.
-		$row = array();
-		foreach($headers as $header) {
-			$row[] = DeviceHistoric::model()->getAttributeLabel($header);
-		}
-		fputcsv($fp,$row);
-		
-		if(isset($_GET['DeviceHistoric']))
+		try
 		{
-			$model->attributes=$_GET['DeviceHistoric'];
-			
-			// If the date range was provided, convert the formats.
-			$model->dateFormatter("YYYY-mm-dd");
-		}
-		
-		$dp = $model->search();
-		$dp->setPagination(false);
+			$fp = fopen('php://temp', 'w');
 
-		// Get models, write to a file
-		$models = $dp->getData();
-		foreach($models as $model)
-		{
+			// Write a header row of the csv file.
 			$row = array();
-			foreach($headers as $head)
-			{
-				$row[] = CHtml::value($model,$head);
+			foreach($headers as $header) {
+				$row[] = DeviceHistoric::model()->getAttributeLabel($header);
 			}
 			fputcsv($fp,$row);
+
+			if(isset($_GET['DeviceHistoric']))
+			{
+				$model->attributes=$_GET['DeviceHistoric'];
+
+				// If the date range was provided, convert the formats.
+				$model->dateFormatter("YYYY-mm-dd");
+			}
+
+			$dp = $model->search();
+			$dp->setPagination(false);
+
+			// Get models, write to a file
+			$models = $dp->getData();
+			foreach($models as $model)
+			{
+				$row = array();
+				foreach($headers as $head)
+				{
+					$row[] = CHtml::value($model,$head);
+				}
+				fputcsv($fp,$row);
+			}
+
+			// Save csv content to a session.
+			rewind($fp);
+			Yii::app()->user->setState('export',stream_get_contents($fp));
+			fclose($fp);
 		}
-		
-		// Save csv content to a session.
-		rewind($fp);
-		Yii::app()->user->setState('export',stream_get_contents($fp));
-		fclose($fp);
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INVH2: Inventory Historic Print CSV failed with error " . $ex);
+		}
 	}
 	
 	/**
@@ -130,8 +138,15 @@ class DeviceHistoricController extends Controller
 	 */
 	public function actionExportFile()
 	{
-		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
-		Yii::app()->user->clearState('export');
+		try
+		{
+			Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
+			Yii::app()->user->clearState('export');
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INVH3: Inventory Historic File Export failed with error " . $ex);
+		}
 	}
 	
 	/**
@@ -188,7 +203,7 @@ class DeviceHistoricController extends Controller
 			else
 			{
 				// The command failed to execute. Throw an exception.
-				throw new Exception('Fail');
+				throw new CHttpException(500, "INVH4: Inventory Historic Time Log Import failed with error " . $ex);
 			}
 		}
 		catch(Exception $e)

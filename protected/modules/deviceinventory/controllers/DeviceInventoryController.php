@@ -27,7 +27,7 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionView($id)
 	{
-		//try
+		try
 		{
 			$historic = new DeviceHistoric('search');
 			$historic->unsetAttributes();  // clear any default values
@@ -46,9 +46,9 @@ class DeviceInventoryController extends Controller
 				'historic' => $historic,
 			));
 		}
-		//catch(Exception $ex)
+		catch(Exception $ex)
 		{
-			//throw new CHttpException(500, "INV1: Inventory View failed with error " . $ex);
+			throw new CHttpException(500, "INV1: Inventory View failed with error " . $ex);
 		}
 	}
 
@@ -58,18 +58,25 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new DeviceInventory;
-
-		if(isset($_POST['DeviceInventory']))
+		try
 		{
-			$model->attributes=$_POST['DeviceInventory'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->deviceid));
-		}
+			$model=new DeviceInventory;
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+			if(isset($_POST['DeviceInventory']))
+			{
+				$model->attributes=$_POST['DeviceInventory'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->deviceid));
+			}
+
+			$this->render('create',array(
+				'model'=>$model,
+			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV2: Inventory Create failed with error " . $ex);
+		}
 	}
 
 	/**
@@ -79,18 +86,25 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id, 'DeviceInventory');
-
-		if(isset($_POST['DeviceInventory']))
+		try
 		{
-			$model->attributes=$_POST['DeviceInventory'];
-			if($model->save())
-				$this->redirect(array('reportTypeTwo'));
-		}
+			$model=$this->loadModel($id, 'DeviceInventory');
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+			if(isset($_POST['DeviceInventory']))
+			{
+				$model->attributes=$_POST['DeviceInventory'];
+				if($model->save())
+					$this->redirect(array('reportTypeTwo'));
+			}
+
+			$this->render('update',array(
+				'model'=>$model,
+			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV3: Inventory Update failed with error " . $ex);
+		}
 	}
 
 	/**
@@ -100,18 +114,25 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionQuickUpdate($id)
 	{
-		$model=$this->loadModel($id, 'DeviceInventory');
-
-		if(isset($_POST['DeviceInventory']))
+		try
 		{
-			$model->attributes=$_POST['DeviceInventory'];
-			if($model->save())
-				$this->redirect(array('reportTypeTwo'));
-		}
+			$model=$this->loadModel($id, 'DeviceInventory');
 
-		$this->render('quickupdate',array(
-			'model'=>$model,
-		));
+			if(isset($_POST['DeviceInventory']))
+			{
+				$model->attributes=$_POST['DeviceInventory'];
+				if($model->save())
+					$this->redirect(array('reportTypeTwo'));
+			}
+
+			$this->render('quickupdate',array(
+				'model'=>$model,
+			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV4: Inventory Quick Update failed with error " . $ex);
+		}
 	}
 	
 	/**
@@ -121,11 +142,18 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id, 'DeviceInventory')->delete();
+		try
+		{
+			$this->loadModel($id, 'DeviceInventory')->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV5: Inventory Delete failed with error " . $ex);
+		}
 	}
 
 	/**
@@ -133,10 +161,17 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('DeviceInventory');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		try
+		{
+			$dataProvider=new CActiveDataProvider('DeviceInventory');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV6: Inventory Index failed with error " . $ex);
+		}
 	}
 
 	/**
@@ -144,16 +179,16 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionReportInventory()
 	{
-		// Do not import the events if this code is being run locally. Otherwise 
-		// the events could be imported into the wrong database.
-		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-		{
-			// Auto import any new events in the text file to the database.
-			$this->importTimeLog();
-		}
-		
 		try
 		{
+			// Do not import the events if this code is being run locally. Otherwise 
+			// the events could be imported into the wrong database.
+			if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+			{
+				// Auto import any new events in the text file to the database.
+				$this->importTimeLog();
+			}
+		
 			$model=new DeviceInventory('search');
 			$model->unsetAttributes();  // clear any default values
 			
@@ -193,28 +228,28 @@ class DeviceInventoryController extends Controller
 				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 				unset($_GET['pageSize']);
 			}
+			$this->render('reportInventory',array(
+				'model'=>$model,
+			));
 		}
 		catch(Exception $ex)
 		{
-			echo "Search page failed with error " . $ex;
+			throw new CHttpException(500, "INV7: Inventory Report failed with error " . $ex);
 		}
-		$this->render('reportInventory',array(
-			'model'=>$model,
-		));
 	}
 
 	public function actionReportAssignments()
 	{
-		// Do not import the events if this code is being run locally. Otherwise 
-		// the events could be imported into the wrong database.
-		if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
-		{
-			// Auto import any new events in the text file to the database.
-			$this->importTimeLog();
-		}
-		
 		try
 		{
+			// Do not import the events if this code is being run locally. Otherwise 
+			// the events could be imported into the wrong database.
+			if(($_SERVER['REMOTE_ADDR'] != "127.0.0.1")) 
+			{
+				// Auto import any new events in the text file to the database.
+				$this->importTimeLog();
+			}
+			
 			$model=new DeviceInventory('search');
 			$model->unsetAttributes();  // clear any default values
 			
@@ -255,14 +290,15 @@ class DeviceInventoryController extends Controller
 				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 				unset($_GET['pageSize']);
 			}
+			
+			$this->render('reportAssignments',array(
+				'model'=>$model,
+			));
 		}
 		catch(Exception $ex)
 		{
-			echo "Search page failed with error " . $ex;
+			throw new CHttpException(500, "INV8: Inventory Assignment Report failed with error " . $ex);
 		}
-		$this->render('reportAssignments',array(
-			'model'=>$model,
-		));
 	}
 	
 	/**
@@ -270,42 +306,49 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionPrintInventoryCSV($headers, $model)
 	{
-		$fp = fopen('php://temp', 'w');
-
-		// Write a header row of the csv file.
-		$row = array();
-		foreach($headers as $header) {
-			$row[] = DeviceInventory::model()->getAttributeLabel($header);
-		}
-		fputcsv($fp,$row);
-		
-		if(isset($_GET['DeviceInventory']))
+		try
 		{
-			$model->attributes=$_GET['DeviceInventory'];
-			
-			// If the date range was provided, convert the formats.
-			$model->dateFormatter("YYYY-mm-dd");
-		}
-		
-		$dp = $model->search();
-		$dp->setPagination(false);
+			$fp = fopen('php://temp', 'w');
 
-		// Get models, write to a file
-		$models = $dp->getData();
-		foreach($models as $model)
-		{
+			// Write a header row of the csv file.
 			$row = array();
-			foreach($headers as $head)
-			{
-				$row[] = CHtml::value($model,$head);
+			foreach($headers as $header) {
+				$row[] = DeviceInventory::model()->getAttributeLabel($header);
 			}
 			fputcsv($fp,$row);
+
+			if(isset($_GET['DeviceInventory']))
+			{
+				$model->attributes=$_GET['DeviceInventory'];
+
+				// If the date range was provided, convert the formats.
+				$model->dateFormatter("YYYY-mm-dd");
+			}
+
+			$dp = $model->search();
+			$dp->setPagination(false);
+
+			// Get models, write to a file
+			$models = $dp->getData();
+			foreach($models as $model)
+			{
+				$row = array();
+				foreach($headers as $head)
+				{
+					$row[] = CHtml::value($model,$head);
+				}
+				fputcsv($fp,$row);
+			}
+
+			// Save csv content to a session.
+			rewind($fp);
+			Yii::app()->user->setState('export',stream_get_contents($fp));
+			fclose($fp);
 		}
-		
-		// Save csv content to a session.
-		rewind($fp);
-		Yii::app()->user->setState('export',stream_get_contents($fp));
-		fclose($fp);
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV9: Inventory Print CSV failed with error " . $ex);
+		}
 	}
 	
 	/**
@@ -313,8 +356,15 @@ class DeviceInventoryController extends Controller
 	 */
 	public function actionExportFile()
 	{
-		Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
-		Yii::app()->user->clearState('export');
+		try
+		{
+			Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
+			Yii::app()->user->clearState('export');
+		}
+		catch(Exception $ex)
+		{
+			throw new CHttpException(500, "INV10: Inventory File Export failed with error " . $ex);
+		}
 	}
 	
 	/**
@@ -371,7 +421,7 @@ class DeviceInventoryController extends Controller
 			else
 			{
 				// The command failed to execute. Throw an exception.
-				throw new Exception('Fail');
+				throw new CHttpException(500, "INV11: Inventory Time Log Import failed with error " . $ex);
 			}
 		}
 		catch(Exception $e)
