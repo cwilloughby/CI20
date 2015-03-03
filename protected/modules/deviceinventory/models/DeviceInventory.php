@@ -23,6 +23,9 @@ class DeviceInventory extends CActiveRecord
 	public $user_search;
 	public $location_search;
 	
+	// This variable is used to hold an uploaded barcode file before it's contents are imported.
+	public $file;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -49,6 +52,7 @@ class DeviceInventory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('file', 'file', 'types'=>'txt, csv'),
 			array('model, devicename', 'required'),
 			array('enabled', 'in', 'range'=>array(0,1), 'message' => '{attribute} must be either Yes or No'),
 			array('model, serial, equipmenttype', 'length', 'max'=>45),
@@ -103,6 +107,7 @@ class DeviceInventory extends CActiveRecord
 			'enabled' => 'Enabled',
 			'indate' => 'In Date',
 			'outdate' => 'Out Date',
+			'file' => 'File',
 		);
 	}
 
@@ -190,5 +195,13 @@ class DeviceInventory extends CActiveRecord
 			$this->indate = date($format, strtotime($this->indate));
 		if((int)$this->outdate)
 			$this->outdate = date($format, strtotime($this->outdate));
+	}
+	
+	/**
+	 * This function is used to parse out the inventory changes from the barcode file.
+	 */
+	public function parseChangesFromBarcodesFile()
+	{
+		
 	}
 }

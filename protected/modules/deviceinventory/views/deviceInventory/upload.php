@@ -2,12 +2,11 @@
 /* @var $this DeviceInventoryController */
 /* @var $model DeviceInventory */
 
-$this->pageTitle = Yii::app()->name . ' - Update Inventory Item';
+$this->pageTitle = Yii::app()->name . ' - Upload Changes From Barcodes';
 
 $this->breadcrumbs=array(
 	'Device Inventory'=>array('index'),
-	$model->deviceid=>array('view','id'=>$model->deviceid),
-	'Update',
+	'Upload',
 );
 
 $this->menu2=array(
@@ -17,12 +16,9 @@ $this->menu2=array(
 	array('label'=>'<i class="icon icon-file"></i> Create Inventory Item', 'url'=>array('create')),
 	array('label'=>'<i class="icon icon-list-alt"></i> List Inventory', 'url'=>array('index')),
 	array('label'=>'<i class="icon icon-file"></i> Upload Inventory Changes', 'url'=>array('importChangesViaBarcodes')),
-	array('label'=>'<i class="icon icon-zoom-in"></i> View Inventory Item', 'url'=>array('view', 'id'=>$model->deviceid)),
-	array('label'=>'<i class="icon icon-edit"></i> Quick Item Update', 'url'=>array('quickupdate', 'id'=>$model->deviceid)),
-	array('label'=>'<i class="icon icon-edit"></i> Update Inventory Item', 'url'=>array('update', 'id'=>$model->deviceid)),
 );
 ?>
 
-<h1>Update Inventory Item <?php echo $model->deviceid; ?></h1>
+<h1>Upload Changes From Barcodes</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_uploadform', array('model'=>$model)); ?>

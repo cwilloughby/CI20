@@ -16,6 +16,7 @@ $this->menu2=array(
 	array('label'=>'<i class="icon icon-search"></i> Historic Report', 'url'=>array('devicehistoric/reportHistoric')),
 	array('label'=>'<i class="icon icon-file"></i> Create Inventory Item', 'url'=>array('create')),
 	array('label'=>'<i class="icon icon-list-alt"></i> List Inventory', 'url'=>array('index')),
+	array('label'=>'<i class="icon icon-file"></i> Upload Inventory Changes', 'url'=>array('importChangesViaBarcodes')),
 	array('label'=>'<i class="icon icon-zoom-in"></i> View Inventory Item', 'url'=>array('view', 'id'=>$model->deviceid)),
 	array('label'=>'<i class="icon icon-edit"></i> Quick Item Update', 'url'=>array('quickupdate', 'id'=>$model->deviceid)),
 	array('label'=>'<i class="icon icon-edit"></i> Update Inventory Item', 'url'=>array('update', 'id'=>$model->deviceid)),
