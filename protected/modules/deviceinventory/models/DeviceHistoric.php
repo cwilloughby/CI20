@@ -54,6 +54,15 @@ class DeviceHistoric extends CActiveRecord
 		);
 	}
 
+	public function behaviors()
+	{
+		return array(
+			'SearchSaver'=>array(
+				'class'=>'application.components.SearchSaver',
+			),
+		);
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */

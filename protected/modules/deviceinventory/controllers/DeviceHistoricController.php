@@ -40,17 +40,16 @@ class DeviceHistoricController extends Controller
 			$model->unsetAttributes();  // clear any default values
 			
 			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceHistoric']))
+			if(isset($_GET['DeviceHistoric']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceHistoric'];
-				Yii::app()->user->setState('HistoricSearchParams', $_GET['DeviceHistoric']);
+				// If the date range was provided, convert the formats.
+				$model->dateFormatter("YYYY-mm-dd");
+				// Save the search parameters so they will be remembered after a page refreash.
+				$model->saveSearchValues();
 			}
 			else
-			{
-				$searchParams = Yii::app()->user->getState('HistoricSearchParams');
-				if(isset($searchParams))
-					$model->attributes = $searchParams;
-			}
+				$model->readSearchValues();
 			
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))
@@ -98,14 +97,6 @@ class DeviceHistoricController extends Controller
 				$row[] = DeviceHistoric::model()->getAttributeLabel($header);
 			}
 			fputcsv($fp,$row);
-
-			if(isset($_GET['DeviceHistoric']))
-			{
-				$model->attributes=$_GET['DeviceHistoric'];
-
-				// If the date range was provided, convert the formats.
-				$model->dateFormatter("YYYY-mm-dd");
-			}
 
 			$dp = $model->search();
 			$dp->setPagination(false);

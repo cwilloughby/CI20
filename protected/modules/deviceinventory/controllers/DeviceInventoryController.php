@@ -193,18 +193,17 @@ class DeviceInventoryController extends Controller
 			$model->unsetAttributes();  // clear any default values
 			
 			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceInventory']))
+			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
-				Yii::app()->user->setState('AssignmentSearchParams', $_GET['DeviceInventory']);
+				// If a date was provided, convert the format.
+				$model->dateFormatter("YYYY-mm-dd");
+				// Save the search parameters so they will be remembered after a page refreash.
+				$model->saveSearchValues();
 			}
 			else
-			{
-				$searchParams = Yii::app()->user->getState('AssignmentSearchParams');
-				if(isset($searchParams))
-					$model->attributes = $searchParams;
-			}
-			
+				$model->readSearchValues();
+
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))
 			{
@@ -254,17 +253,16 @@ class DeviceInventoryController extends Controller
 			$model->unsetAttributes();  // clear any default values
 			
 			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceInventory']))
+			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
-				Yii::app()->user->setState('InventorySearchParams', $_GET['DeviceInventory']);
+				// If the date range was provided, convert the formats.
+				$model->dateFormatter("YYYY-mm-dd");
+				// Save the search parameters so they will be remembered after a page refreash.
+				$model->saveSearchValues();
 			}
 			else
-			{
-				$searchParams = Yii::app()->user->getState('InventorySearchParams');
-				if(isset($searchParams))
-					$model->attributes = $searchParams;
-			}
+				$model->readSearchValues();
 			
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))
@@ -317,14 +315,6 @@ class DeviceInventoryController extends Controller
 			}
 			fputcsv($fp,$row);
 
-			if(isset($_GET['DeviceInventory']))
-			{
-				$model->attributes=$_GET['DeviceInventory'];
-
-				// If the date range was provided, convert the formats.
-				$model->dateFormatter("YYYY-mm-dd");
-			}
-
 			$dp = $model->search();
 			$dp->setPagination(false);
 
@@ -335,7 +325,12 @@ class DeviceInventoryController extends Controller
 				$row = array();
 				foreach($headers as $head)
 				{
-					$row[] = CHtml::value($model,$head);
+					$value = CHtml::value($model,$head);
+					// The column named "enabled" is a boolean with a value of 1 or 0.
+					// For readability, we will convert that to a Yes or No.
+					if($head == "enabled")
+						$value = ($value == 0) ? "No" : "Yes";
+					$row[] = $value;
 				}
 				fputcsv($fp,$row);
 			}

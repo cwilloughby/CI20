@@ -59,7 +59,16 @@ class DeviceInventory extends CActiveRecord
 			array('warrentyenddate, revolvedate, comments, indate, outdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('deviceid, model, devicename, warrentyenddate, revolvedate, comments, serial, url, equipmenttype, enabled, indate, outdate', 'safe', 'on'=>'search'),
+			array('deviceid, model, devicename, warrentyenddate, revolvedate, comments, serial, url, equipmenttype, enabled, indate, outdate, user_search, location_search', 'safe', 'on'=>'search'),
+		);
+	}
+	
+	public function behaviors()
+	{
+		return array(
+			'SearchSaver'=>array(
+				'class'=>'application.components.SearchSaver',
+			),
 		);
 	}
 
