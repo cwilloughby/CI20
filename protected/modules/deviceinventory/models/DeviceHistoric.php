@@ -4,6 +4,7 @@
  * This is the model class for table "ci_device_historic".
  *
  * The followings are the available columns in table 'ci_device_historic':
+ * @property integer $changeid
  * @property integer $deviceid
  * @property string $datechanged
  * @property string $username

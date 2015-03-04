@@ -435,6 +435,12 @@ class DeviceInventoryController extends Controller
 	 */
 	private function importTimeLog()
 	{
+		// If the file is currently empty, don't do anything.
+		if(filesize($this->getGpoFile()) == 0)
+		{
+			return;
+		}
+		
 		// Create a transaction so the sql can be rolled back if something goes wrong.
 		$transaction = Yii::app()->db->beginTransaction();
 
