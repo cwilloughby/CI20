@@ -318,18 +318,22 @@ class DeviceInventoryController extends Controller
 		try
 		{
 			$model=new DeviceInventory;
-
+			$model->scenario = 'barcodeChangesUpload';
+			
 			if(isset($_POST['DeviceInventory']))
 			{
 				$model->attributes=$_POST['DeviceInventory'];
 				// Read in the file.
 				$model->file = CUploadedFile::getInstance($model, 'file');
 				
-				// Parse out the contents of the file.
-				$model->parseChangesFromBarcodesFile();
-				
-				//if($model->save())
-				//	$this->redirect(array('view','id'=>$model->deviceid));
+				if($model->validate())
+				{
+					// Parse out the contents of the file.
+					$model->parseChangesFromBarcodesFile();
+
+					//if($model->save())
+					//	$this->redirect(array('view','id'=>$model->deviceid));
+				}
 			}
 
 			$this->render('upload',array(

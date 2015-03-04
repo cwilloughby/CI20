@@ -22,6 +22,7 @@
 
 	<div class="row">
 		<?php 
+		echo "File <span class='required'>*</span> "; ;
 		echo $form->fileField($model, 'file');
 		echo $form->error($model, 'file'); 
 		?>

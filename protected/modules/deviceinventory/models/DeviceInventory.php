@@ -52,8 +52,8 @@ class DeviceInventory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('file', 'file', 'types'=>'txt, csv'),
-			array('model, devicename', 'required'),
+			array('model, devicename', 'required', 'on' => 'insert'),
+			array('file', 'file', 'types'=>'txt, csv', 'allowEmpty'=>false, 'on' => 'barcodeChangesUpload'),
 			array('enabled', 'in', 'range'=>array(0,1), 'message' => '{attribute} must be either Yes or No'),
 			array('model, serial, equipmenttype', 'length', 'max'=>45),
 			array('serial', 'length', 'max'=>30),
