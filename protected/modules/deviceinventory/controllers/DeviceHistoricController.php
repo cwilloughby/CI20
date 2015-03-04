@@ -197,7 +197,7 @@ class DeviceHistoricController extends Controller
 				throw new CHttpException(500, "INVH4: Inventory Historic Time Log Import failed.");
 			}
 		}
-		catch(Exception $e)
+		catch(Exception $ex)
 		{
 			// If an error occured, nothing is inserted into the database and the text file is left alone. 
 			$transaction->rollback();

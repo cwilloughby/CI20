@@ -71,7 +71,7 @@ class TimeLogController extends Controller
 				throw new Exception('Fail');
 			}
 		}
-		catch(Exception $e)
+		catch(Exception $ex)
 		{
 			// If an error occured, nothing is inserted into the database and the text file is left alone. 
 			$transaction->rollback();
