@@ -75,6 +75,7 @@ class TimeLogController extends Controller
 		{
 			// If an error occured, nothing is inserted into the database and the text file is left alone. 
 			$transaction->rollback();
+			throw new CHttpException(500, "TIME1: Failed to import with error " . $ex);
 		}
 		return;
 	}

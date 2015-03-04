@@ -201,6 +201,7 @@ class DeviceHistoricController extends Controller
 		{
 			// If an error occured, nothing is inserted into the database and the text file is left alone. 
 			$transaction->rollback();
+			throw new CHttpException(500, "INVH5: Failed to import time log with error " . $ex);
 		}
 	}
 }
