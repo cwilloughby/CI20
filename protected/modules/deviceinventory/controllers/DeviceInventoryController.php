@@ -203,8 +203,6 @@ class DeviceInventoryController extends Controller
 			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
-				// If a date was provided, convert the format.
-				$model->dateFormatter("YYYY-mm-dd");
 				// Save the search parameters so they will be remembered after a page refreash.
 				$model->saveSearchValues();
 			}
@@ -266,8 +264,6 @@ class DeviceInventoryController extends Controller
 			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
-				// If the date range was provided, convert the formats.
-				$model->dateFormatter("YYYY-mm-dd");
 				// Save the search parameters so they will be remembered after a page refreash.
 				$model->saveSearchValues();
 			}

@@ -43,8 +43,6 @@ class DeviceHistoricController extends Controller
 			if(isset($_GET['DeviceHistoric']) AND !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceHistoric'];
-				// If the date range was provided, convert the formats.
-				$model->dateFormatter("YYYY-mm-dd");
 				// Save the search parameters so they will be remembered after a page refreash.
 				$model->saveSearchValues();
 			}
