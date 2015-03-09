@@ -85,7 +85,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'enabled'); ?>
-		<?php echo $form->dropDownList($model,'enabled', array(1=>'Yes', 0=>'No')); ?>
+		<?php echo $form->dropDownList($model,'enabled', array(''=>'',1=>'Yes', 0=>'No')); ?>
 	</div>
 
 	<div class="row">
