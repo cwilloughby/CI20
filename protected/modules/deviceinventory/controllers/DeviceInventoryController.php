@@ -204,10 +204,10 @@ class DeviceInventoryController extends Controller
 			{
 				$model->attributes=$_GET['DeviceInventory'];
 				// Save the search parameters so they will be remembered after a page refreash.
-				$model->saveSearchValues();
+				$model->saveSearchValues("invReport");
 			}
 			else
-				$model->readSearchValues();
+				$model->readSearchValues("invReport");
 
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))
@@ -265,10 +265,10 @@ class DeviceInventoryController extends Controller
 			{
 				$model->attributes=$_GET['DeviceInventory'];
 				// Save the search parameters so they will be remembered after a page refreash.
-				$model->saveSearchValues();
+				$model->saveSearchValues("assignReport");
 			}
 			else
-				$model->readSearchValues();
+				$model->readSearchValues("assignReport");
 			
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))

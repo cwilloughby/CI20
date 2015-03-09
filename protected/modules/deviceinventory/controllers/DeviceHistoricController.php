@@ -44,10 +44,10 @@ class DeviceHistoricController extends Controller
 			{
 				$model->attributes=$_GET['DeviceHistoric'];
 				// Save the search parameters so they will be remembered after a page refreash.
-				$model->saveSearchValues();
+				$model->saveSearchValues("historyReport");
 			}
 			else
-				$model->readSearchValues();
+				$model->readSearchValues("historyReport");
 			
 			// If the export button on the search form was clicked.
 			if(Yii::app()->request->getParam('export'))
