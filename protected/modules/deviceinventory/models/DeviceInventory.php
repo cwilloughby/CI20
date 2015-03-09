@@ -202,6 +202,30 @@ class DeviceInventory extends CActiveRecord
 	 */
 	public function parseChangesFromBarcodesFile()
 	{
+		// Open the file.
+		$fileHandler = fopen($this->file->tempName, 'r');
+		if($fileHandler)
+		{
+			// Loop through each line in the file. One row in the array should be one row from the file.
+			while(($line = fgetcsv($fileHandler)) !== FALSE)
+			{
+				// Since each line in the array is not one complete QR code, 
+				// we will need an IF statement to search for a separator.
+				// Check to see if the current row is the beginning of a QR code.
+					// If this is a Location type QR code, store the location information in a variable that is usable on later
+					// iterations of this loop.
+
+					// If it's not a location code, all other QR codes have an ID in them that cooresponds to a device ID
+					// in the table. Find that value in the QR code here, then find that matching record in the database.
+
+					// Alter the location value then save the change back into the database.
+				// Check to see if the current row is the end of a QR code.
+			}
+		}
+		else
+			throw new CHttpException(500, "INVM1: Failed to open barcode file for parsing.");
 		
+		// Close the file.
+		fclose($fileHandler);
 	}
 }
