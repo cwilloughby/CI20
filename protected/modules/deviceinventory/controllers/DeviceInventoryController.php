@@ -101,7 +101,7 @@ class DeviceInventoryController extends Controller
 			{
 				$model->attributes=$_POST['DeviceInventory'];
 				if($model->save())
-					$this->redirect(array('reportTypeTwo'));
+					$this->redirect(array('reportAssignments'));
 			}
 
 			$this->render('update',array(
@@ -129,7 +129,7 @@ class DeviceInventoryController extends Controller
 			{
 				$model->attributes=$_POST['DeviceInventory'];
 				if($model->save())
-					$this->redirect(array('reportTypeTwo'));
+					$this->redirect(array('reportAssignments'));
 			}
 
 			$this->render('quickupdate',array(
