@@ -32,7 +32,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('url')); ?>:</b>
-	<?php echo CHtml::encode($data->url); ?>
+	<?php echo CHtml::link(CHtml::encode($data->url), $data->url); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('equipmenttype')); ?>:</b>
@@ -40,7 +40,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('enabled')); ?>:</b>
-	<?php echo CHtml::encode($data->enabled); ?>
+	<?php echo CHtml::encode(($data->enabled == 0) ? "No" : "Yes"); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('indate')); ?>:</b>
