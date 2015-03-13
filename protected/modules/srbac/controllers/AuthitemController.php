@@ -684,7 +684,7 @@ class AuthitemController extends SBaseController {
   }
 
   /**
-   * Getting a controllers actions and also th actions that are always allowed
+   * Getting a controller's actions and also the actions that are always allowed.
    * return array
    * */
   private function _getControllerInfo($controller, $getAll = false) {

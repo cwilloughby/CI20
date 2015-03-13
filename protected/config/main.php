@@ -61,6 +61,7 @@ return array(
 		'weather',
 		'centriod',
 		'links',
+		'hearingrequest',
 		'evaluations',
 		'training',
 		//'issuetracker',

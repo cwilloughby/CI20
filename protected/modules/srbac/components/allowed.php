@@ -2,15 +2,16 @@
  return array(
 	'SiteIndex',
 	'SiteError',
-	'SiteColor',
 	'SitePrints',
-	'security@LoginLoginform',
+	'security@LoginLoginForm',
 	'security@LoginLogout',
-	'security@PasswordPasswordrecoveryrequestform',
-	'security@PasswordPasswordrecoveryform',
+	'security@PasswordPasswordRecoveryRequestForm',
+	'security@PasswordPasswordRecoveryForm',
 	'security@RegistrationRegister',
 	'email@EmailRegisteremail',
 	'email@EmailRecoveryemail',
-	'weather@WeatherReport'
+	'weather@WeatherReport',
+	'hearingrequest@HearingRequestDARequest',
+	'hearingrequest@HearingRequestPDRequest'
 );
 ?>
