@@ -11,7 +11,7 @@
 	'email@EmailRegisteremail',
 	'email@EmailRecoveryemail',
 	'weather@WeatherReport',
-	'hearingrequest@HearingRequestDARequest',
-	'hearingrequest@HearingRequestPDRequest'
+	'hearingrequest@HearingrequestDarequest',
+	'hearingrequest@HearingrequestDdrequest'
 );
 ?>
