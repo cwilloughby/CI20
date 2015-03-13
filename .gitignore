@@ -35,4 +35,3 @@ protected/runtime/application.log
 !/protected/modules/olddocumentprocessor/views/documentProcessor/index.php
 protected/modules/links/models/Links.php
 !/protected/modules/deviceinventory/views/deviceInventory/index.php
-/protected/modules/hearingrequest/models/HearingRequest.php
