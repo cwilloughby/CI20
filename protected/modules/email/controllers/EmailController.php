@@ -272,6 +272,48 @@ class EmailController extends Controller
 	}
 	
 	/**
+	 * This action sends a hearing request email to CCC_Tape_Requests.
+	 */
+	public function actionHearingRequestEmail()
+	{
+		// This if statement will prevent the email from being resent if the user refreshes the page.
+		if(!Yii::app()->user->hasFlash('success'))
+		{
+			$model = new Messages;
+
+			// Set the recipient, the sender, the subject, the body, and the message type.
+			$model->setEmail($_GET['sendTo'], $_GET['yourEmail'], "Preliminary Hearing Request",
+				$this->renderPartial('hearingrequestemailbody', 
+					array(
+						'defName' => nl2br($_GET['defName']),
+						'caseNumber' => nl2br($_GET['caseNumber']),
+						'yourName' => nl2br($_GET['yourName']),
+						'yourEmail' => nl2br($_GET['yourEmail']),
+						'yourNumber' => nl2br($_GET['yourNumber']),
+						'yourExtension' => nl2br($_GET['yourExtension']),
+						'requestType' => nl2br($_GET['requestType'])
+					), true),
+				"Hearing Request"
+			);
+			// Send the email.
+			if($model->mail->Send())
+			{
+				// Save a record of the message in the ci_messages table.
+				$model->save();
+			}
+			else
+			{
+				throw new CHttpException(400, "A problem prevented the email alert from being sent. You can send your request manually to CCC_Tape_Requests@nashville.gov");
+			}
+			Yii::app()->user->setFlash('success', "Email Made!");
+		}
+		
+		$this->render('hearingrequestemail',array(
+			'requestType'=>$_GET['requestType'],
+		));
+	}
+	
+	/**
 	 * This function is used to send out the document share emails.
 	 */
 	public function actionDocumentShareEmail()

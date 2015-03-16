@@ -15,6 +15,7 @@ class HearingRequest extends CFormModel
 		return array(
 			array('defName, caseNumber, yourName, yourEmail, yourNumber', 'required'),
 			array('yourEmail', 'email'),
+			array('yourNumber', 'phoneNumber'),
 			array('yourExtension', 'numerical', 'integerOnly'=>true),
 			array('yourExtension', 'length', 'min' => 5, 'max'=>7),
 			array('defName', 'length', 'max'=>100),
@@ -22,6 +23,20 @@ class HearingRequest extends CFormModel
 			array('caseNumber', 'length', 'max'=>25),
 			array('yourEmail', 'length', 'max'=>200),
 		);
+	}
+	
+	/** 
+	* Checks the format of the phone number entered.
+	* @param string $attribute the name of the attribute to be validated
+	* @param array $params options specified in the validation rule
+	*/
+	public function phoneNumber($attribute,$params='')
+	{
+		if(preg_match("/^\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/", $this->$attribute) === 0)
+		{   
+			$this->addError($attribute,
+				'Your Contact Number must be a valid phone number, in a form like (615) 555-1212 or 6155551212 or 615-555-1212' );  
+		}
 	}
 	
 	/**

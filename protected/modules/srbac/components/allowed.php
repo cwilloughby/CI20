@@ -10,8 +10,9 @@
 	'security@RegistrationRegister',
 	'email@EmailRegisteremail',
 	'email@EmailRecoveryemail',
+	'email@EmailHearingrequestemail',
 	'weather@WeatherReport',
 	'hearingrequest@HearingrequestDarequest',
-	'hearingrequest@HearingrequestDdrequest'
+	'hearingrequest@HearingrequestPdrequest'
 );
 ?>
