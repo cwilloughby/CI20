@@ -17,7 +17,7 @@ class HearingRequest extends CFormModel
 			array('yourEmail', 'email'),
 			array('yourNumber', 'phoneNumber'),
 			array('yourExtension', 'numerical', 'integerOnly'=>true),
-			array('yourExtension', 'length', 'min' => 5, 'max'=>7),
+			array('yourExtension', 'length', 'min' => 3, 'max'=>7),
 			array('defName', 'length', 'max'=>100),
 			array('yourName', 'length', 'max'=>100),
 			array('caseNumber', 'length', 'max'=>25),
