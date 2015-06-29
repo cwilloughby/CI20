@@ -96,16 +96,20 @@ class DeviceInventoryController extends Controller
 		try
 		{
 			$model=$this->loadModel($id, 'DeviceInventory');
-
+			$data=$this->loadModel($id, 'DeviceCurrent');
+			
 			if(isset($_POST['DeviceInventory']))
 			{
 				$model->attributes=$_POST['DeviceInventory'];
+				$data->attributes=$_POST['DeviceCurrent'];
+				$data->save();
 				if($model->save())
 					$this->redirect(array('reportAssignments'));
 			}
 
 			$this->render('update',array(
 				'model'=>$model,
+				'loc'=>$data,
 			));
 		}
 		catch(Exception $ex)

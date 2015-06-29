@@ -1,6 +1,7 @@
 <?php
 /* @var $this DeviceInventoryController */
 /* @var $model DeviceInventory */
+/* @var $loc DeviceCurrent */
 
 $this->pageTitle = Yii::app()->name . ' - Update Inventory Item';
 
@@ -25,4 +26,4 @@ $this->menu2=array(
 
 <h1>Update Inventory Item <?php echo $model->deviceid; ?></h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model, 'loc'=>$loc)); ?>
