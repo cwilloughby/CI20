@@ -67,8 +67,6 @@
 								|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id)),
 							'items'=>array(
 								array('label'=>'<i class="icon icon-time"></i> Time Log', 'url'=>array('/timelog/timelog/admin'), 'visible'=>Yii::app()->user->checkAccess('Admin', Yii::app()->user->id)),
-								array('label'=>'<i class="icon icon-facetime-video"></i> GS Time Log', 'url'=>array('/timelog/gstimelog/admin'), 'visible'=>(Yii::app()->user->checkAccess('IT', Yii::app()->user->id)
-									|| Yii::app()->user->checkAccess('ExternalGS', Yii::app()->user->id))),
 							),
 						),
 						array(
