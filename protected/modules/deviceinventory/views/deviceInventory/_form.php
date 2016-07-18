@@ -1,7 +1,6 @@
 <?php
 /* @var $this DeviceInventoryController */
 /* @var $model DeviceInventory */
-/* @var $loc DeviceCurrent */
 /* @var $form CActiveForm */
 ?>
 
@@ -26,12 +25,6 @@
 		<?php echo $form->labelEx($model,'devicename'); ?>
 		<?php echo $form->textField($model,'devicename',array('size'=>30,'maxlength'=>30)); ?>
 		<?php echo $form->error($model,'devicename'); ?>
-	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($loc,'location'); ?>
-		<?php echo $form->textField($loc,'location',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($loc,'location'); ?>
 	</div>
 	
 	<div class="row">
