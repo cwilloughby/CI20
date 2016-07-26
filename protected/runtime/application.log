@@ -639,3 +639,146 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/test/site/index
 ---
+2016/07/26 16:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "CI20/index.php".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('CI20/index.php')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CI20/index.php
+---
+2016/07/26 16:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/CI20/index.php
+---
+2016/07/26 16:15:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/site/index
+---
+2016/07/26 16:15:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/index.php
+---
+2016/07/26 16:15:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/index.php
+---
+2016/07/26 16:15:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/tickets/troubletickets/index?status=Open
+---
+2016/07/26 16:15:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/reportAssignments
+---
+2016/07/26 16:15:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/tickets/troubletickets/index?status=Open
+---
+2016/07/26 16:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/reportAssignments
+---
+2016/07/26 16:17:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/reportAssignments
+---
+2016/07/26 16:18:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/view?id=1
+---
+2016/07/26 16:18:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/update?id=1
+---
+2016/07/26 16:18:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/reportAssignments
+---
+2016/07/26 16:18:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/view?id=1
+---
+2016/07/26 16:18:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/reportAssignments
+---
+2016/07/26 16:18:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/1d9afb15/srbac.css".' in C:\wamp\fw\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\fw\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('assets/1d9afb15...')
+#1 C:\wamp\fw\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\CI20\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/assets/1d9afb15/srbac.css
+HTTP_REFERER=http://localhost/deviceinventory/deviceinventory/view?id=1
+---
