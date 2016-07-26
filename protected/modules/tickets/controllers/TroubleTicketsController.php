@@ -57,7 +57,7 @@ class TroubleTicketsController extends Controller
 			if($ticket->validate())
 			{
 				// Retieve the conditional text boxes from the posted form data.
-				// The number of conditionals is dynamic, so this is need to extract them.
+				// The number of conditionals is dynamic, so this is needed to extract them.
 				$file->file = CUploadedFile::getInstance($file, 'file');
 				$ticket->IsolateAndRetrieveConditionals($_POST);
 				$temp = $ticket->description;
@@ -109,54 +109,6 @@ class TroubleTicketsController extends Controller
 				}
 				else
 					throw new CHttpException(400, "Ticket failed to save.");
-				
-				/*
-				// If one or more files was uploaded.
-				if(!empty($_FILES))
-				{
-					// Loop through each file.
-					foreach($_FILES['file']['name'] as $key => $value)
-					{
-						// Read in the properties of the current file.
-						$file->file = array('tempName' => $_FILES['file']['tmp_name'][$key], 'realName' => $_FILES['file']['name'][$key]);
-						$file->uploadType = 'attachment';
-						$file->setDocumentAttributes();
-
-						// Validate the current file's attributes.
-						if($file->validate())
-						{
-							// Upload the current file to the server.
-							$file->uploadFile();
-							// This description is used so the link to the document will work on the website.
-							$ticket->description .= "\nAttachment: " 
-								. CHtml::link($file->documentname,array('/files/attachments/' 
-									. $file->uploaddate . '/' . $file->documentname));
-							// This description is used so the link to the document will work on the email.
-							$temp .= "\nAttachment: <a href='file:///" . $file->path . "'>" . $file->documentname . "</a>";
-						}
-					}
-				}
-				else
-					$temp .= "\n";
-
-				// Try to save the new ticket.
-				if($ticket->save(false))
-				{
-					// Remove the flash message so the email will work again.
-					Yii::app()->user->getFlash('success');
-
-					// Send an email alert.
-					$this->redirect(
-						array('/email/email/helpopenemail', 
-							'ticketid' => $ticket->ticketid,
-							'category' => $ticket->categoryid,
-							'subject' => $ticket->subjectid,
-							'description' => $temp,
-						));
-				}
-				else
-					throw new CHttpException(400, "Ticket failed to save.");
-				*/
 			}
 		}
 		
