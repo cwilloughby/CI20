@@ -47,6 +47,5 @@ $this->menu2=array(
 			'name'=>'active',
 			'value'=>($model->hiredate == 1)?"Yes":"No",
 		),
-		'active',
 	),
 )); ?>
