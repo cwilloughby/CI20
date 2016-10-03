@@ -43,6 +43,10 @@ $this->menu2=array(
 			'name'=>'hiredate',
 			'value'=>isset($model->hiredate)?CHtml::encode(date('m/d/Y', strtotime($model->hiredate))):"N\\A"
 		),
+		array(        
+			'name'=>'active',
+			'value'=>($model->hiredate == 1)?"Yes":"No",
+		),
 		'active',
 	),
 )); ?>

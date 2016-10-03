@@ -63,25 +63,6 @@ $this->widget('CustomGridView', array(
 			'name'=>'department_search', 
 			'value'=>'$data->department->departmentname' 
 		),
-		array(
-			'name' => 'hiredate',
-			'value' => '(isset($data->hiredate) && ((int)$data->hiredate))
-				?CHtml::encode(date("m/d/Y", strtotime($data->hiredate))):"N/A"',
-			'type' => 'raw', 
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatepicker', array(
-				'model'=>$model,
-				'attribute'=>'hiredate', 
-				'htmlOptions' => array('id' => 'hire_date_search'), 
-				'options' => array(
-					'showAnim' => 'fold',
-					'dateFormat' => 'yy-mm-dd',
-					'defaultDate' => $model->hiredate,
-					'changeYear' => true,
-					'changeMonth' => true,
-					'showButtonPanel' => true,
-				)
-			), true)
-		),
 		array(        
 			'name'=>'active',
 			'value'=>'($data->active == 1)?"Yes":"No"',
