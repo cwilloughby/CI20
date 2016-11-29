@@ -120,8 +120,20 @@ class TimeLogController extends Controller
 		{
 			$model->attributes=$_GET['TimeLog'];
 
+			if($model->eventdate == "" 
+				&& $model->eventtime == "" 
+				&& $model->eventtype == "" 
+				&& $model->computername == "" 
+				&& $model->username == "")
+			{
+				$model->eventdate = date('m/d/Y');
+			}
 			// If the date range was provided, convert the formats.
 			$model->dateFormatter();
+		}
+		else
+		{
+			$model->eventdate=date('m/d/Y');
 		}
 
 		$this->render('admin',array(
