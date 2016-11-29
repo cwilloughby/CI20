@@ -50,7 +50,7 @@ class TimeLog extends CActiveRecord
 			array('eventtime, eventdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, computername, eventtype, eventtime, eventdate, from_date, to_date', 'safe', 'on'=>'search'),
+			array('username, computername, eventtype, eventtime, eventdate, from_date, to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -106,9 +106,8 @@ class TimeLog extends CActiveRecord
         }
 		
 		// Omit the supervisors.
-		$criteria->addCondition("username NOT IN ('tbradley', 'hgentry', 'adegrafinreid', 'sdothard', 'ntucker', 'eragan', 'deffler', 'pclayton')");
+		$criteria->addCondition("username NOT IN ('tbradley', 'hgentry', 'adegrafinreid', 'sdothard', 'ntucker', 'eragan', 'deffler', 'pclayton', 'arooker', 'asullivan')");
 		
-		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('computername',$this->computername,true);
 		$criteria->compare('eventtype',$this->eventtype,true);
