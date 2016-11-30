@@ -40,7 +40,8 @@ class DeviceHistoricController extends Controller
 			$model->unsetAttributes();  // clear any default values
 			
 			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceHistoric']) AND !(Yii::app()->request->getParam('export')))
+			$item = filter_input(INPUT_GET,'DeviceInventory');
+			if(isset($item) && !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceHistoric'];
 				// Save the search parameters so they will be remembered after a page refreash.
@@ -64,9 +65,10 @@ class DeviceHistoricController extends Controller
 			}
 
 			// If the pager number was changed.
-			if(isset($_GET['pageSize'])) 
+			$pageSizer = filter_input(INPUT_GET,'pageSize');
+			if($pageSizer) 
 			{
-				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				Yii::app()->user->setState('pageSize',(int)$pageSizer);
 				unset($_GET['pageSize']);
 			}
 			

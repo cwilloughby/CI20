@@ -34,9 +34,10 @@ class DeviceInventoryController extends Controller
 			$historic->deviceid = $id;
 			
 			// If the pager number was changed.
-			if(isset($_GET['pageSize'])) 
+			$pageSizer = filter_input(INPUT_GET,'pageSize');
+			if($pageSizer) 
 			{
-				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				Yii::app()->user->setState('pageSize',(int)$pageSizer);
 				unset($_GET['pageSize']);
 			}
 			
@@ -62,9 +63,8 @@ class DeviceInventoryController extends Controller
 		{
 			$model=new DeviceInventory;
 
-			if(isset($_POST['DeviceInventory']))
+			if($model->attributes = Yii::app()->request->getPost('DeviceInventory'))
 			{
-				$model->attributes=$_POST['DeviceInventory'];
 				if($model->save())
 				{
 					// Create a placeholder record for the DeviceCurrent table.
@@ -98,10 +98,9 @@ class DeviceInventoryController extends Controller
 			$model=$this->loadModel($id, 'DeviceInventory');
 			$data=$this->loadModel($id, 'DeviceCurrent');
 			
-			if(isset($_POST['DeviceInventory']))
+			if($model->attributes = Yii::app()->request->getPost('DeviceInventory'))
 			{
-				$model->attributes=$_POST['DeviceInventory'];
-				$data->attributes=$_POST['DeviceCurrent'];
+				$data->attributes=Yii::app()->request->getPost('DeviceCurrent');
 				$data->save();
 				if($model->save())
 					$this->redirect(array('reportAssignments'));
@@ -129,9 +128,8 @@ class DeviceInventoryController extends Controller
 		{
 			$model=$this->loadModel($id, 'DeviceInventory');
 
-			if(isset($_POST['DeviceInventory']))
+			if($model->attributes = Yii::app()->request->getPost('DeviceInventory'))
 			{
-				$model->attributes=$_POST['DeviceInventory'];
 				if($model->save())
 					$this->redirect(array('reportAssignments'));
 			}
@@ -143,27 +141,6 @@ class DeviceInventoryController extends Controller
 		catch(Exception $ex)
 		{
 			throw new CHttpException(500, "INV4: Inventory Quick Update failed with error " . $ex);
-		}
-	}
-	
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		try
-		{
-			$this->loadModel($id, 'DeviceInventory')->delete();
-
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		catch(Exception $ex)
-		{
-			throw new CHttpException(500, "INV5: Inventory Delete failed with error " . $ex);
 		}
 	}
 
@@ -203,8 +180,9 @@ class DeviceInventoryController extends Controller
 			$model=new DeviceInventory('search');
 			$model->unsetAttributes();  // clear any default values
 			
-			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
+			// If a search form was posted, store the parameters in the session.
+			$item = filter_input(INPUT_GET,'DeviceInventory');
+			if(isset($item) && !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
 				// Save the search parameters so they will be remembered after a page refreash.
@@ -231,11 +209,13 @@ class DeviceInventoryController extends Controller
 			}
 
 			// If the pager number was changed.
-			if(isset($_GET['pageSize'])) 
+			$pageSizer = filter_input(INPUT_GET,'pageSize');
+			if($pageSizer) 
 			{
-				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				Yii::app()->user->setState('pageSize',(int)$pageSizer);
 				unset($_GET['pageSize']);
 			}
+			
 			$this->render('reportInventory',array(
 				'model'=>$model,
 			));
@@ -265,7 +245,8 @@ class DeviceInventoryController extends Controller
 			$model->unsetAttributes();  // clear any default values
 			
 			// If a search form was posted, store the parameters in the session. 
-			if(isset($_GET['DeviceInventory']) AND !(Yii::app()->request->getParam('export')))
+			$item = filter_input(INPUT_GET,'DeviceInventory');
+			if(isset($item) && !(Yii::app()->request->getParam('export')))
 			{
 				$model->attributes=$_GET['DeviceInventory'];
 				// Save the search parameters so they will be remembered after a page refreash.
@@ -293,9 +274,10 @@ class DeviceInventoryController extends Controller
 			}
 
 			// If the pager number was changed.
-			if(isset($_GET['pageSize'])) 
+			$pageSizer = filter_input(INPUT_GET,'pageSize');
+			if($pageSizer) 
 			{
-				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				Yii::app()->user->setState('pageSize',(int)$pageSizer);
 				unset($_GET['pageSize']);
 			}
 			
@@ -306,43 +288,6 @@ class DeviceInventoryController extends Controller
 		catch(Exception $ex)
 		{
 			throw new CHttpException(500, "INV8: Inventory Assignment Report failed with error " . $ex);
-		}
-	}
-	
-	/*
-	 * This function allows the user to upload a file of inventory changes that
-	 * was generated by a barcode scanner.
-	 */
-	public function actionImportChangesViaBarcodes()
-	{
-		try
-		{
-			$model=new DeviceInventory;
-			$model->scenario = 'barcodeChangesUpload';
-			
-			if(isset($_POST['DeviceInventory']))
-			{
-				$model->attributes=$_POST['DeviceInventory'];
-				// Read in the file.
-				$model->file = CUploadedFile::getInstance($model, 'file');
-				
-				if($model->validate())
-				{
-					// Parse out the contents of the file.
-					$model->parseChangesFromBarcodesFile();
-
-					//if($model->save())
-					//	$this->redirect(array('view','id'=>$model->deviceid));
-				}
-			}
-
-			$this->render('upload',array(
-				'model'=>$model,
-			));
-		}
-		catch(Exception $ex)
-		{
-			throw new CHttpException(500, "INV9: Inventory Upload failed with error " . $ex);
 		}
 	}
 		

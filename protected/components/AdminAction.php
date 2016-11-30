@@ -14,9 +14,10 @@ class AdminAction extends CAction
 			$model->unsetAttributes();  // clear any default values
 
 			// If the pager number was changed.
-			if(isset($_GET['pageSize'])) 
+			$pageSizer = filter_input(INPUT_GET,'pageSize');
+			if($pageSizer) 
 			{
-				Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+				Yii::app()->user->setState('pageSize',(int)$pageSizer);
 				unset($_GET['pageSize']);
 			}
 

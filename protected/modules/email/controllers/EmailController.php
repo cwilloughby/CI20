@@ -2,6 +2,8 @@
 
 class EmailController extends Controller
 {
+	const HELPDESK = "ccc.helpdesk@nashville.gov";
+	
 	/**
 	 * @return array action filters
 	 */
@@ -21,17 +23,24 @@ class EmailController extends Controller
 		if(!Yii::app()->user->hasFlash('success'))
 		{
 			$model = new Messages;
-
+			
+			$firstName = filter_input(INPUT_GET, 'firstname');
+			$middleName = filter_input(INPUT_GET, 'middlename');
+			$lastName = filter_input(INPUT_GET, 'lastname');
+			$email = filter_input(INPUT_GET, 'email');
+			$phone = filter_input(INPUT_GET, 'phoneext');
+			$department = filter_input(INPUT_GET, 'departmentid');
+			
 			// Create the link to the user creation page that will go in the email.
 			$link = "http://jis18822/security/userinfo/create"				
-						. '?firstname=' . urlencode($_GET['firstname']) . '&lastname=' . urlencode($_GET['lastname'])
-						. '&middlename=' . urlencode($_GET['middlename']) . '&email=' . urlencode($_GET['email'])
-						. '&phoneext=' . urlencode($_GET['phoneext']) . '&departmentid=' . urlencode($_GET['departmentid']);
+						. '?firstname=' . urlencode($firstName) . '&lastname=' . urlencode($lastName)
+						. '&middlename=' . urlencode($middleName) . '&email=' . urlencode($email)
+						. '&phoneext=' . urlencode($phone) . '&departmentid=' . urlencode($department);
 			
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail("ccc.helpdesk@nashville.gov", "ccc.helpdesk@nashville.gov", "CI Registration Request From " . $_GET['firstname'] . " " .  $_GET['lastname'],
+			$model->setEmail(self::HELPDESK, self::HELPDESK, "CI Registration Request From " . $firstName . " " .  $lastName,
 				$this->renderPartial('registeremailbody', 
-					array('firstname' => $_GET['firstname'], 'lastname' => $_GET['lastname'], 'link' => $link), true),
+					array('firstname' => $firstName, 'lastname' => $lastName, 'link' => $link), true),
 				"Registration Request"
 			);
 
@@ -59,10 +68,11 @@ class EmailController extends Controller
 		if(!Yii::app()->user->hasFlash('success'))
 		{
 			$model = new Messages;
+			$username = filter_input(INPUT_GET, 'username');
 
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail(urldecode($_GET['email']), "ccc.helpdesk@nashville.gov", "CI Registration Request",
-				$this->renderPartial('addemailbody', array('username' => $_GET['username']), true),
+			$model->setEmail(urldecode($_GET['email']), self::HELPDESK, "CI Registration Request",
+				$this->renderPartial('addemailbody', array('username' => $username), true),
 				"New User"
 			);
 			
@@ -97,10 +107,11 @@ class EmailController extends Controller
 			$sec = Yii::app()->getSecurityManager();
 			$email = $sec->decrypt(urldecode($_GET["email"]));
 			// Create the link to the password recovery page.
-			$link = $this->createAbsoluteUrl('/security/password/passwordrecoveryform',array('username'=> $_GET['username']));
+			$username = filter_input(INPUT_GET, 'username');
+			$link = $this->createAbsoluteUrl('/security/password/passwordrecoveryform',array('username'=> $username));
 			
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail($email, "ccc.helpdesk@nashville.gov", "CI Password Recovery",
+			$model->setEmail($email, self::HELPDESK, "CI Password Recovery",
 				$this->renderPartial('recoveryemailbody', array('link' => $link), true),
 				"Recovery"
 			);
@@ -133,20 +144,24 @@ class EmailController extends Controller
 			// Get the current user's email to be CC'd.
 			$cc[0] = $user->email;
 			// Get the name of the subject.
-			$subject = TicketSubjects::model()->findByPk($_GET['subject'])->subjectname;
+			$subject = TicketSubjects::model()->findByPk(filter_input(INPUT_GET, 'subject'))->subjectname;
 			// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 			if($subject == "Courtroom Printer Not Working")	
 				$cc[1] = "GSCourtroomSupport@nashville.gov";
 
+			$ticketid = filter_input(INPUT_GET, 'ticketid');
+			$category = filter_input(INPUT_GET, 'category');
+			$description = filter_input(INPUT_GET, 'description');
+
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail("ccc.helpdesk@nashville.gov", $user->email, "Opening CI2 Ticket #" . $_GET['ticketid'],
+			$model->setEmail(self::HELPDESK, $user->email, "Opening CI2 Ticket #" . $ticketid,
 				$this->renderPartial('helpopenemailbody', 
 					array(
-						'ticketID' => $_GET['ticketid'],
+						'ticketID' => $ticketid,
 						'user' => Yii::app()->user->name,
-						'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
+						'category' => TicketCategories::model()->findByPk($category)->categoryname,
 						'subject' => $subject,
-						'description' => nl2br($_GET['description'])
+						'description' => nl2br($description)
 					), true),
 				"Trouble Ticket", $cc[0], (isset($cc[1]) ? $cc[1] : null)
 			);
@@ -158,7 +173,7 @@ class EmailController extends Controller
 				{
 					// Connect the new message to the ticket on the bridge table.
 					$bridge = new TicketMessages;
-					$bridge->ticketid = $_GET['ticketid'];
+					$bridge->ticketid = $ticketid;
 					$bridge->messageid = $model->messageid;
 					$bridge->save();
 				}
@@ -178,31 +193,34 @@ class EmailController extends Controller
 	public function actionHelpcloseemail()
 	{
 		$model = new Messages;
-		$creator = UserInfo::model()->findByPk($_GET['creator']);
-		$email = $creator->email;
 		
-		$body = explode("\n", $_GET['description']);
-		array_pop($body);
-		$body = implode("\n", $body);
+		$creator = UserInfo::model()->findByPk(filter_input(INPUT_GET, 'creator'));
+		$email = $creator->email;
+		$description = filter_input(INPUT_GET, 'description');
+		$body = implode("\n", array_pop(explode("\n", $description)));
+		$ticketid = filter_input(INPUT_GET, 'ticketid');
+		$category = TicketCategories::model()->findByPk(filter_input(INPUT_GET, 'category'))->categoryname;
+		$subject = TicketSubjects::model()->findByPk(filter_input(INPUT_GET, 'subject'))->subjectname;
+		$resolution = filter_input(INPUT_GET, 'resolution');
+		
 		// Get the helpdesk email to be CC'd.
-		$cc[0] = "ccc.helpdesk@nashville.gov";
-		// Get the name of the subject.
-		$subject = TicketSubjects::model()->findByPk($_GET['subject'])->subjectname;
+		$cc[0] = self::HELPDESK;
+
 		// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 		if($subject == "Courtroom Printer Not Working")	
 			$cc[1] = "GSCourtroomSupport@nashville.gov";
 		
 		// Set the sender, the recipient, the subject, the body, and the message type.
-		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Closing CI2 Ticket #" . $_GET['ticketid'],
+		$model->setEmail($email, self::HELPDESK, "Closing CI2 Ticket #" . $ticketid,
 			$this->renderPartial('helpcloseemailbody', 
 				array(
-					'ticketID' => $_GET['ticketid'],
+					'ticketID' => $ticketid,
 					'creator' => $creator->username,
 					'closer' => Yii::app()->user->name,
-					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
+					'category' => $category,
 					'subject' => $subject,
 					'description' => nl2br($body),
-					'resolution' => nl2br($_GET['resolution']),
+					'resolution' => nl2br($resolution),
 				), true),
 			"Trouble Ticket", $cc[0], (isset($cc[1]) ? $cc[1] : null)
 		);
@@ -215,7 +233,7 @@ class EmailController extends Controller
 			{
 				// Connect the new message to the ticket on the bridge table.
 				$bridge = new TicketMessages;
-				$bridge->ticketid = $_GET['ticketid'];
+				$bridge->ticketid = $ticketid;
 				$bridge->messageid = $model->messageid;
 				$bridge->save();
 			}
@@ -233,22 +251,28 @@ class EmailController extends Controller
 	public function actionCommentEmail()
 	{
 		$model = new Messages;
+		
 		$email = UserInfo::model()->findByPk($_GET['creator'])->email;
+		$ticketid = filter_input(INPUT_GET, 'ticketid');
+		$category = TicketCategories::model()->findByPk(filter_input(INPUT_GET, 'category'))->categoryname;
+		$subject = TicketSubjects::model()->findByPk(filter_input(INPUT_GET, 'subject'))->subjectname;
+		$content = filter_input(INPUT_GET, 'content');
+		$ticketBody = filter_input(INPUT_GET, 'ticketBody');
 		
 		// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
 		// The renderPartial function is used to apply a style to the body of the email.
-		$model->setEmail($email, "ccc.helpdesk@nashville.gov", "A new comment was made on CI2 Ticket #" . $_GET['ticketid'],
+		$model->setEmail($email, self::HELPDESK, "A new comment was made on CI2 Ticket #" . $ticketid,
 			$this->renderPartial('commentemailbody', 
 				array(
-					'ticketID' => $_GET['ticketid'],
+					'ticketID' => $ticketid,
 					'user' => Yii::app()->user->name,
-					'content' => nl2br($_GET['content']),
-					'category' => TicketCategories::model()->findByPk($_GET['category'])->categoryname,
-					'subject' => TicketSubjects::model()->findByPk($_GET['subject'])->subjectname,
-					'ticketBody' => nl2br($_GET['ticketBody'])
+					'content' => nl2br($content),
+					'category' => $category,
+					'subject' => $subject,
+					'ticketBody' => nl2br($ticketBody)
 				), true
 			),
-			"Comment", "ccc.helpdesk@nashville.gov"
+			"Comment", self::HELPDESK
 		);
 		
 		// Send the email.
@@ -259,7 +283,7 @@ class EmailController extends Controller
 			{
 				// Connect the new message to the ticket on the bridge table.
 				$bridge = new TicketMessages;
-				$bridge->ticketid = $_GET['ticketid'];
+				$bridge->ticketid = $ticketid;
 				$bridge->messageid = $model->messageid;
 				$bridge->save();
 			}
@@ -268,7 +292,7 @@ class EmailController extends Controller
 		{
 			throw new CHttpException(400, "Your comment was created, but a problem prevented the email alert from being sent. Please notify IT of this error.");
 		}
-		$this->redirect(array('/tickets/troubletickets/view?id=' . $_GET['ticketid']));
+		$this->redirect(array('/tickets/troubletickets/view?id=' . $ticketid));
 	}
 	
 	/**
@@ -311,33 +335,5 @@ class EmailController extends Controller
 		$this->render('hearingrequestemail',array(
 			'requestType'=>$_GET['requestType'],
 		));
-	}
-	
-	/**
-	 * This function is used to send out the document share emails.
-	 */
-	public function actionDocumentShareEmail()
-	{
-		// This will prevent the email from being resent if the user refreshes the page.
-		//if(!Yii::app()->user->hasFlash('success'))
-		{
-			// Create a message object.
-			$model = new Messages;
-			$email = UserInfo::model()->findByPk(Yii::app()->user->id)->email;
-
-			// Set the sender, the recipient, the subject, the body, the message type, and cc addresses.
-			$model->setEmail($email, "ccc.helpdesk@nashville.gov", "Someone shared a document with you",
-				$this->renderPartial('sharedocumentemailbody', array('file' => 'placeholder value'), true),
-				"Share", $email
-			);
-			
-			// Send the email.
-			$model->mail->Send();
-			// Save a record of the message in the ci_messages table.
-			$model->save();
-
-			//Yii::app()->user->setFlash('shared', "Email Made!");
-		}
-		$this->render('sharedocumentemail');
 	}
 }

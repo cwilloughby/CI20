@@ -110,9 +110,10 @@ class TimeLogController extends Controller
 		$model->unsetAttributes();  // Clear any default values.
 
 		// If the pager number was changed.
-		if(isset($_GET['pageSize'])) 
+		$pageSizer = filter_input(INPUT_GET,'pageSize');
+		if($pageSizer) 
 		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+			Yii::app()->user->setState('pageSize',(int)$pageSizer);
 			unset($_GET['pageSize']);
 		}
 		
