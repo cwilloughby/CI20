@@ -197,7 +197,9 @@ class EmailController extends Controller
 		$creator = UserInfo::model()->findByPk(filter_input(INPUT_GET, 'creator'));
 		$email = $creator->email;
 		$description = filter_input(INPUT_GET, 'description');
-		$body = implode("\n", array_pop(explode("\n", $description)));
+		$body = explode("\n", $_GET['description']);
+		array_pop($body);
+		$body = implode("\n", $body);
 		$ticketid = filter_input(INPUT_GET, 'ticketid');
 		$category = TicketCategories::model()->findByPk(filter_input(INPUT_GET, 'category'))->categoryname;
 		$subject = TicketSubjects::model()->findByPk(filter_input(INPUT_GET, 'subject'))->subjectname;
