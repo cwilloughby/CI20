@@ -87,7 +87,7 @@ class TroubleTicketsController extends Controller
 					else 
 					{
 						echo "bad file read";
-					};
+					}
 				}
 				else
 					$temp .= "\n";
