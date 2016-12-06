@@ -122,6 +122,8 @@ class TimeLogController extends Controller
 			$model->attributes=$_GET['TimeLog'];
 
 			if($model->eventdate == "" 
+				&& $model->from_date == "" 
+				&& $model->to_date == ""
 				&& $model->eventtime == "" 
 				&& $model->eventtype == "" 
 				&& $model->computername == "" 
