@@ -43,32 +43,48 @@ class Weather
 			throw new Exception("XML Failure");
 		libxml_clear_errors();
 		
-		if(isset($xml->data->parameters->temperature[1]->value))
+		try
 		{
-			try
+			if(isset($xml->data->parameters->temperature[1]->value))
 			{
-				$weather = array(
-					'minTemp' => (string)$xml->data->parameters->temperature[1]->value,
-					'maxTemp' => (string)$xml->data->parameters->temperature[0]->value,
-					'rainChance' => (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0],
-					'summary' => (string)$xml->data->parameters->weather->{'weather-conditions'}->attributes()->{'weather-summary'}[0]
-				);
+				$weather['minTemp'] = (string)$xml->data->parameters->temperature[1]->value;
 			}
-			catch(Exception $ex)
+			else 
 			{
-				$weather = array(
-					'minTemp' => (string)$xml->data->parameters->temperature[1]->value,
-					'maxTemp' => (string)$xml->data->parameters->temperature[0]->value,
-					'rainChance' => (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0],
-					'summary' => "Unknown"
-				);
+				$weather['minTemp'] = "Unknown";
+			}
+			
+			if(isset($xml->data->parameters->temperature[0]->value))
+			{
+				$weather['maxTemp'] = (string)$xml->data->parameters->temperature[0]->value;
+			}
+			else 
+			{
+				$weather['maxTemp'] = "Unknown";
+			}
+			
+			if(isset($xml->data->parameters->{'probability-of-precipitation'}->value[0]))
+			{
+				$weather['rainChance'] = (string)$xml->data->parameters->{'probability-of-precipitation'}->value[0];
+			}
+			else 
+			{
+				$weather['rainChance'] = "Unknown";
+			}
+			
+			if(isset($xml->data->parameters->weather->{'weather-conditions'}))
+			{
+				$weather['summary'] = (string)$xml->data->parameters->weather->{'weather-conditions'}->attributes()->{'weather-summary'}[0];
+			}
+			else 
+			{
+				$weather['summary'] = "Unknown";
 			}
 		}
-		else 
+		catch(Exception $ex)
 		{
 			$weather = null;
 		}
-		
 		return $weather;
 	}
 }
