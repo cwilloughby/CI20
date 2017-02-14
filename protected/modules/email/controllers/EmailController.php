@@ -148,7 +148,10 @@ class EmailController extends Controller
 			// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 			if($subject == "Courtroom Printer Not Working")	
 				$cc[1] = "GSCourtroomSupport@nashville.gov";
-
+			
+			if(Yii::app()->user->name == "tbrooks" || Yii::app()->user->name == "ethurman")
+				$cc[1] = "PattiMcNaney@jis.nashville.org";
+			
 			$ticketid = filter_input(INPUT_GET, 'ticketid');
 			$category = filter_input(INPUT_GET, 'category');
 			$description = filter_input(INPUT_GET, 'description');
@@ -211,6 +214,9 @@ class EmailController extends Controller
 		// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 		if($subject == "Courtroom Printer Not Working")	
 			$cc[1] = "GSCourtroomSupport@nashville.gov";
+		
+		if($creator->username == "tbrooks" || $creator->username == "ethurman")
+			$cc[1] = "PattiMcNaney@jis.nashville.org";
 		
 		// Set the sender, the recipient, the subject, the body, and the message type.
 		$model->setEmail($email, self::HELPDESK, "Closing CI2 Ticket #" . $ticketid,
