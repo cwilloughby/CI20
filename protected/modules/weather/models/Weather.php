@@ -5,7 +5,7 @@
 class Weather
 {
 	// This is the url that is used to obtain the weather report.
-	const WEATHER = 'http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdBrowserClientByDay.php?lat=36.16652&lon=-86.780319&format=12+hourly&numDays=1';
+	const WEATHER = 'https://graphical.weather.gov/xml/sample_products/browser_interface/ndfdBrowserClientByDay.php?lat=36.16652&lon=-86.780319&format=12+hourly&numDays=1';
 	
 	/**
 	 * Get the weather report from NOAA for the Nashville area. Stores the results in the cache for 60 minutes
@@ -20,6 +20,7 @@ class Weather
 			curl_setopt($curl, CURLOPT_URL, self::WEATHER);
 			curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)');
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($curl, CURLOPT_HEADER, false);
 			$value = curl_exec($curl);
 			curl_close($curl);
