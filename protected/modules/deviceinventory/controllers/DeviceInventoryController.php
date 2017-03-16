@@ -8,7 +8,7 @@ class DeviceInventoryController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
-	private $gpoFile = "//crim10048/TimeLogIn$/Logon.txt";
+	private $gpoFile = "//jis18822/TimeLogIn$/Logon.txt";
 	
 	/**
 	 * @return array action filters
