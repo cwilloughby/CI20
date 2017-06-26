@@ -171,4 +171,46 @@ class Messages extends CActiveRecord
 		else
 			$this->messagebody = $this->mail->Body;
 	}
+	
+	/**
+	 * Set all the details of the email.
+	 * @param string $toAddress the email address that the message will be sent to.
+	 * @param string $fromAddress the email address that the message comes from.
+	 * @param string $subject the email's subject.
+	 * @param string $body the email's body.
+	 * @param string $type the type of message.
+	 * @param string $ccAddress an additional email address that the message will be sent to.
+	 */
+	public function setEmailAlt($toAddress, $fromAddress, $subject, $body, $type, $dispName, $ccAddress1 = null, $ccAddress2 = null)
+	{
+		// Set the message's destination address.
+		$this->mail->AddAddress($toAddress);
+		$this->to = $toAddress;
+		
+		// Set the message's sender address.
+		$this->mail->SetFrom($fromAddress);
+		$this->mail->FromName = $dispName;
+		$this->from = $fromAddress;
+		
+		// Set the cc address if one was provided.
+		if(!is_null($ccAddress1))
+			$this->mail->AddCC($ccAddress1);
+		if(!is_null($ccAddress2))
+			$this->mail->AddCC($ccAddress2);
+				
+		// Set the message's subject.
+		$this->mail->Subject = $subject;
+		$this->subject = $subject;
+		
+		$this->messagetype = $type;
+		
+		// Set the message's body.
+		$this->mail->Body = $body;
+		
+		// The link to the recovery email page needs to be ommited from the log for security.
+		if($type == "Recovery")
+			$this->messagebody = "Follow this link to recover your password: Link omited for security";
+		else
+			$this->messagebody = $this->mail->Body;
+	}
 }
