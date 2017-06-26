@@ -152,12 +152,14 @@ class EmailController extends Controller
 			if(Yii::app()->user->name == "tbrooks" || Yii::app()->user->name == "ethurman")
 				$cc[1] = "PattiMcNaney@jis.nashville.org";
 			
+			$dispName = $user->lastname . ", " . $user->firstname . " (Crim Court Clerk)";
+			
 			$ticketid = filter_input(INPUT_GET, 'ticketid');
 			$category = filter_input(INPUT_GET, 'category');
 			$description = filter_input(INPUT_GET, 'description');
 
 			// Set the sender, the recipient, the subject, the body, and the message type.
-			$model->setEmail(self::HELPDESK, $user->email, "Opening CI2 Ticket #" . $ticketid,
+			$model->setEmailAlt(self::HELPDESK, $user->email, "Opening CI2 Ticket #" . $ticketid,
 				$this->renderPartial('helpopenemailbody', 
 					array(
 						'ticketID' => $ticketid,
@@ -166,7 +168,7 @@ class EmailController extends Controller
 						'subject' => $subject,
 						'description' => nl2br($description)
 					), true),
-				"Trouble Ticket", $cc[0], (isset($cc[1]) ? $cc[1] : null)
+				"Trouble Ticket", $dispName, $cc[0], (isset($cc[1]) ? $cc[1] : null)
 			);
 			// Send the email.
 			if($model->mail->Send())
