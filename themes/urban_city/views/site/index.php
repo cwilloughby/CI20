@@ -54,28 +54,14 @@
 					</div>
 				</div>
 				<div class="row-fluid news-row">
-					<div class="span3 news-slider">
+					<div class="span6 news-slider">
 						<?php 
 						echo "<h4 class='news-title'>Office News</h4>";
 						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
 						$this->widget('NewsReport');
 						?>
 					</div>
-					<div class="span3 news-slider">
-						<?php
-						echo "<h4 class='news-title'>Court News</h4>";
-						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
-						$this->widget('NewsReport', array('type'=>'Court News'));
-						?>
-					</div>
-					<div class="span3 news-slider">
-						<?php 
-						echo "<h4 class='news-title'>Finance News</h4>";
-						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
-						$this->widget('NewsReport', array('type'=>'Finance News'));
-						?>
-					</div>
-					<div class="span3 news-slider">
+					<div class="span6 news-slider">
 						<?php 
 						echo "<h4 class='news-title'>IT News</h4>";
 						echo "<a class='all-news' href='" . $this->createAbsoluteUrl("/news/news/index") . "'> View All Posts</a>";
