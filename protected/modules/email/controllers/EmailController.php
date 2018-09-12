@@ -145,29 +145,30 @@ class EmailController extends Controller
 			$cc[0] = $user->email;
 			// Get the name of the subject.
 			$subject = TicketSubjects::model()->findByPk(filter_input(INPUT_GET, 'subject'))->subjectname;
+			
+			$category = TicketCategories::model()->findByPk(filter_input(INPUT_GET, 'category'))->categoryname;
+			
 			// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 			if($subject == "Courtroom Printer Not Working")	
 				$cc[1] = "GSCourtroomSupport@nashville.gov";
-			
+			if($category == "CourtSmart or JAVS")
+				$cc[1] = "GSCourtroomSupport@nashville.gov";
+						
 			if(Yii::app()->user->name == "tbrooks" || Yii::app()->user->name == "ethurman")
 				$cc[1] = "PattiMcNaney@jis.nashville.org";
 			
 			$dispName = $user->lastname . ", " . $user->firstname . " (Crim Court Clerk)";
 			
 			$ticketid = filter_input(INPUT_GET, 'ticketid');
-			$category = filter_input(INPUT_GET, 'category');
 			$description = filter_input(INPUT_GET, 'description');
 			
-			if($category == "CourtSmart or JAVS")
-				$cc[1] = "GSCourtroomSupport@nashville.gov";
-
 			// Set the sender, the recipient, the subject, the body, and the message type.
 			$model->setEmailAlt(self::HELPDESK, $user->email, "Opening CI2 Ticket #" . $ticketid,
 				$this->renderPartial('helpopenemailbody', 
 					array(
 						'ticketID' => $ticketid,
 						'user' => Yii::app()->user->name,
-						'category' => TicketCategories::model()->findByPk($category)->categoryname,
+						'category' => $category,
 						'subject' => $subject,
 						'description' => nl2br($description)
 					), true),
