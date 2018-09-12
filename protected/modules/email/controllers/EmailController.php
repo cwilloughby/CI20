@@ -148,6 +148,8 @@ class EmailController extends Controller
 			// If the subject is "Courtroom Printer Not Working" then GS Courtroom Support should also be CC'd.
 			if($subject == "Courtroom Printer Not Working")	
 				$cc[1] = "GSCourtroomSupport@nashville.gov";
+			if($category == "CourtSmart or JAVS")
+				$cc[1] = "GSCourtroomSupport@nashville.gov";
 			
 			if(Yii::app()->user->name == "tbrooks" || Yii::app()->user->name == "ethurman")
 				$cc[1] = "PattiMcNaney@jis.nashville.org";
