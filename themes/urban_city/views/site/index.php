@@ -31,10 +31,10 @@
 			{
 				?>
 				<div class="row-fluid">
-					<div class="span1">
+					<div class="span2">
 
 					</div>
-					<div class="span8">
+					<div class="span9">
 						<h1>Welcome to CI2.0</h1>
 						<p>This is an Intranet website and can only be accessed from a computer 
 						inside the Metro/JIS Domain, just open an internet window and in the
@@ -45,12 +45,6 @@
 						Site functions are disabled until you have logged in.</p>
 
 						<p>We hope you enjoy the new CI site.</p>
-					</div>
-					<div class="span3">
-						<?php
-						echo "<h4>12 Hour Forecast</h4>";
-						$this->widget('WeatherReport');
-						?>
 					</div>
 				</div>
 				<div class="row-fluid news-row">
