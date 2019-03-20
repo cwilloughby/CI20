@@ -5,8 +5,8 @@
 class Centriod extends CModel
 {
 	// These are the paths to the folders where the flat files are.
-	const SUCCESS = '\\\\jis18828\\DATA\\FTP\\Courts2\\Success\\Arrest\\Final\\';
-	const FAILED = '\\\\jis18828\\DATA\\FTP\\Courts2\\Failed\\Arrest\\Final\\';
+	const SUCCESS = '\\\\10.107.12.183\\DATA\\FTP\\Courts2\\Success\\Arrest\\Final\\';
+	const FAILED = '\\\\10.107.12.183\\DATA\\FTP\\Courts2\\Failed\\Arrest\\Final\\';
 	
 	public $arrestnumber;
 	
